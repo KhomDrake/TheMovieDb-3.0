@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/movie">
+
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.vlv.themoviedb.ui.favorites.FavoritesFragment"
+        android:label="FavoritesFragment" />
+    <fragment
+        android:id="@+id/movie"
+        android:name="com.vlv.themoviedb.ui.movie.MovieFragment"
+        android:label="MovieFragment" />
+    <fragment
+        android:id="@+id/options"
+        android:name="com.vlv.themoviedb.ui.options.OptionsFragment"
+        android:label="OptionsFragment" />
+    <fragment
+        android:id="@+id/search"
+        android:name="com.vlv.themoviedb.ui.search.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/series"
+        android:name="com.vlv.themoviedb.ui.series.SeriesFragment"
+        android:label="SeriesFragment" />
+</navigation>

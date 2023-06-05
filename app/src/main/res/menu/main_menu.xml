@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/movie"
+        android:title="Movie"
+        android:icon="@drawable/ic_movie_enable"/>
+    <item
+        android:id="@+id/series"
+        android:title="Series"
+        android:icon="@drawable/ic_series"/>
+    <item
+        android:id="@+id/search"
+        android:title="Search"
+        android:icon="@drawable/ic_search"/>
+    <item
+        android:id="@+id/favorites"
+        android:title="Favorites"
+        android:icon="@drawable/ic_heart"/>
+    <item
+        android:id="@+id/options"
+        android:title="Options"
+        android:icon="@drawable/ic_options"/>
+</menu>
