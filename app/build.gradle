@@ -22,6 +22,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -35,6 +38,7 @@ android {
 dependencies {
 
     implementation project(':imperiya')
+    implementation project(':network')
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'
