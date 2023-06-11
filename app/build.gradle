@@ -26,6 +26,21 @@ android {
             minifyEnabled false
         }
     }
+
+    flavorDimensions += "uitool"
+    productFlavors {
+        create("compose") {
+            dimension = "uitool"
+            applicationIdSuffix = ".compose"
+            versionNameSuffix = "-compose"
+        }
+        create("views") {
+            dimension = "uitool"
+            applicationIdSuffix = ".views"
+            versionNameSuffix = "-views"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
