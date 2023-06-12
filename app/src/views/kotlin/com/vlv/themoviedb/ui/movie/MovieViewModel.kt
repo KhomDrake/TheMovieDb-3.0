@@ -13,7 +13,7 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
 
     fun liveData() = bondsmith<MoviesResponse>(viewModelScope)
         .request {
-            repository.movies()
+            repository.nowPlaying()
         }
         .execute()
         .responseLiveData

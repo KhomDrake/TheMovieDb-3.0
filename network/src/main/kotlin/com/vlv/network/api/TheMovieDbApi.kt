@@ -17,7 +17,11 @@ interface TheMovieDbApi {
 
     @GET("trending/movie/{time_window}")
     suspend fun trending(
-        @Path("time_window") timeWindow: String
+        @Path("time_window") timeWindow: String,
+        @Query("language")
+        language: String,
+        @Query("page")
+        page: Int
     ) : MoviesResponse
 
     @GET("search/movie")

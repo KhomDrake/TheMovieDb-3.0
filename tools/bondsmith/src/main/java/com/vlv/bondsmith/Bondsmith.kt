@@ -1,5 +1,6 @@
 package com.vlv.bondsmith
 
+import android.util.Log
 import br.com.arch.toolkit.common.DataResult
 import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
 import br.com.arch.toolkit.livedata.response.ResponseLiveData
@@ -31,6 +32,7 @@ class Bondsmith<Data>(private val scope: CoroutineScope) {
                     ?: return@runCatching _responseLiveData.postError(Throwable())
                 _responseLiveData.postData(data)
             }.onFailure {
+                Log.i("Vini", it.stackTraceToString())
                 _responseLiveData.postError(it)
             }
         }
