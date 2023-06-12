@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/imperiya" />
             <option value="$PROJECT_DIR$/imperiyasample" />
             <option value="$PROJECT_DIR$/network" />
+            <option value="$PROJECT_DIR$/tools" />
+            <option value="$PROJECT_DIR$/tools/bondsmith" />
           </set>
         </option>
       </GradleProjectSettings>

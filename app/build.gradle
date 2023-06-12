@@ -54,6 +54,7 @@ dependencies {
 
     implementation project(':imperiya')
     implementation project(':network')
+    implementation project(':tools:bondsmith')
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'

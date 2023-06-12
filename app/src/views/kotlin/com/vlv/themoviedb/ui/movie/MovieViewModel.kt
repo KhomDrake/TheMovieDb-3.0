@@ -4,21 +4,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
 import br.com.arch.toolkit.livedata.response.ResponseLiveData
+import com.vlv.bondsmith.bondsmith
 import com.vlv.network.data.movie.MoviesResponse
 import com.vlv.network.repository.MovieRepository
 import kotlinx.coroutines.launch
 
 class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
 
-    fun liveData() : ResponseLiveData<MoviesResponse> {
-        val liveData = MutableResponseLiveData<MoviesResponse>()
-
-        viewModelScope.launch {
-            liveData.postLoading()
-            liveData.postData(repository.movies())
+    fun liveData() = bondsmith<MoviesResponse>(viewModelScope)
+        .request {
+            repository.movies()
         }
-
-        return liveData
-    }
+        .execute()
+        .responseLiveData
 
 }

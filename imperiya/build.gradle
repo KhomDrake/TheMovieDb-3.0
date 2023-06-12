@@ -26,13 +26,9 @@ android {
     productFlavors {
         create("compose") {
             dimension = "uitool"
-            applicationIdSuffix = ".compose"
-            versionNameSuffix = "-compose"
         }
         create("views") {
             dimension = "uitool"
-            applicationIdSuffix = ".views"
-            versionNameSuffix = "-views"
         }
     }
 
