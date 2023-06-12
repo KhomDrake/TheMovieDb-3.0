@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="imperiya_color_primary">#3E6477</color>
+    <color name="imperiya_color_secondary">#27374D</color>
+    <color name="imperiya_color_background">#263238</color>
+    <color name="imperiya_color_background_secondary">#006A9E</color>
+    <color name="imperiya_color_background_tertiary">#526D82</color>
+    <color name="imperiya_color_link">#46BFFE</color>
+    <color name="imperiya_color_success">#38B49D</color>
+    <color name="imperiya_color_error">#F32F2F</color>
+
+    <color name="imperiya_title">#FFFFFF</color>
+    <color name="imperiya_sub_title">#FFFFFF</color>
+    <color name="imperiya_body">#FFFFFF</color>
+
+    <color name="imperiya_color_icon">#FFFFFF</color>
+    <color name="imperiya_color_icon_disable">#80FFFFFF</color>
+</resources>

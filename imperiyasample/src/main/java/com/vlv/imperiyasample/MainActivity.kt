@@ -1,4 +1,4 @@
-package com.vlv.themoviedb
+package com.vlv.imperiyasample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

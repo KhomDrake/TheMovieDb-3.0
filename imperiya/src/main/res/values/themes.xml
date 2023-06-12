@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="TheMovieDb"/>
+
+    <style name="TheMovieDb.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/imperiya_color_primary</item>
+        <item name="colorOnPrimary">@color/imperiya_body</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/imperiya_color_secondary</item>
+        <item name="colorOnSecondary">@color/imperiya_body</item>
+        <item name="android:statusBarColor">@color/imperiya_color_background</item>
+        <item name="android:windowBackground">@color/imperiya_color_background</item>
+    </style>
+
+    <style name="TheMovieDb.Theme.BottomNavigation">
+        <item name="colorPrimary">@color/imperiya_color_icon</item>
+        <item name="colorOnSurface">@color/imperiya_color_icon_disable</item>
+    </style>
+
+    <style name="TheMovieDb.Style"/>
+
+    <style name="TheMovieDb.Style.BottomNavigation">
+        <item name="theme">@style/TheMovieDb.Theme.BottomNavigation</item>
+        <item name="backgroundTint">@color/imperiya_color_background_tertiary</item>
+    </style>
+</resources>
