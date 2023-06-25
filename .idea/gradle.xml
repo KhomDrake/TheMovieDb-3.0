@@ -13,6 +13,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/movie" />
             <option value="$PROJECT_DIR$/imperiya" />
             <option value="$PROJECT_DIR$/imperiyasample" />
             <option value="$PROJECT_DIR$/network" />

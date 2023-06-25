@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
+import com.vlv.extensions.toUrlMovieDb
 import com.vlv.network.data.movie.MovieResponse
 import com.vlv.themoviedb.R
 
@@ -49,13 +50,9 @@ class MovieCarouselViewHolder(view: View): RecyclerView.ViewHolder(view) {
     fun bind(movieResponse: MovieResponse) {
         poster.clipToOutline = true
         title.text = movieResponse.title
-        poster.load(movieResponse.backdropPath?.toUrl()) {
+        poster.load(movieResponse.backdropPath?.toUrlMovieDb()) {
             crossfade(1000)
         }
     }
 
-}
-
-fun String.toUrl() = kotlin.run {
-    "https://image.tmdb.org/t/p/w500/$this"
 }

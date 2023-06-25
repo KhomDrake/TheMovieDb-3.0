@@ -7,14 +7,29 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title"
+        style="@style/TheMovieDb.Style.Text.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/see_all"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Trending Now" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/see_all"
+        style="@style/TheMovieDb.Style.Text.Link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Trending Now"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        style="@style/TheMovieDb.Style.Text.Title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="0dp"
+        android:text="@string/see_all_text"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies"

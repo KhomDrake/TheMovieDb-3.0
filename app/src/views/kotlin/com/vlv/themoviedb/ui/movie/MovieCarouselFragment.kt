@@ -1,7 +1,6 @@
 package com.vlv.themoviedb.ui.movie
 
 import android.os.Bundle
-import android.support.annotation.StringRes
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
@@ -27,6 +26,7 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.movies_shimmer)
     protected val emptyText: AppCompatTextView by viewProvider(R.id.empty_state_text)
     protected val indicator: ScrollingPagerIndicator by viewProvider(R.id.indicator)
+    protected val seeAll: AppCompatTextView by viewProvider(R.id.see_all)
 
     protected open val carouselDecorator = CarouselDecorator()
     protected val viewStateMachine = ViewStateMachine()
@@ -40,6 +40,7 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
         emptyText.text = getString(emptyTextRes)
         setupRecyclerView()
         setupViewStateMachine()
+        seeAll.setOnClickListener { onClickSeeAll() }
     }
 
     private fun setupRecyclerView() {
@@ -52,22 +53,24 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
         PagerSnapHelper().attachToRecyclerView(recyclerView)
     }
 
+    open fun onClickSeeAll() = Unit
+
     private fun setupViewStateMachine() {
         viewStateMachine.setup {
             stateData {
-                visibles(recyclerView, indicator)
+                visibles(recyclerView, indicator, seeAll)
                 gones(shimmer, emptyText)
             }
             stateLoading {
                 visibles(shimmer)
-                gones(recyclerView, emptyText, indicator)
+                gones(recyclerView, emptyText, indicator, seeAll)
                 onEnter {
                     shimmer.startShimmer()
                 }
             }
             stateEmpty {
                 visibles(emptyText)
-                gones(shimmer, recyclerView, indicator)
+                gones(shimmer, recyclerView, indicator, seeAll)
             }
         }
     }

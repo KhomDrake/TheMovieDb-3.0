@@ -15,8 +15,13 @@ dependencyResolutionManagement {
 rootProject.name = "themoviedb"
 
 include ':app'
+
+include ':feature:movie'
+
 include ':imperiya'
-include ':network'
 include ':imperiyasample'
+
+include ':network'
+
 include ':tools:bondsmith'
 include ':tools:extensions'

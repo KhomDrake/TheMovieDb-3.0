@@ -15,6 +15,7 @@ val appModule = module {
     viewModel { NowPlayingViewModel(get()) }
     viewModel { MovieFavoritesViewModel() }
     viewModel { TrendingNowViewModel(get()) }
+    viewModel { com.vlv.movie.ui.TrendingNowViewModel(get()) }
 }
 
 class TheMovieDb : Application() {
