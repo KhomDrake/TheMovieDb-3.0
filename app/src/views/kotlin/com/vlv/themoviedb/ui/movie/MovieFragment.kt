@@ -2,14 +2,14 @@ package com.vlv.themoviedb.ui.movie
 
 import android.os.Bundle
 import android.support.annotation.IdRes
-import android.support.annotation.LayoutRes
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.vlv.themoviedb.R
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesFragment
+import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingFragment
+import com.vlv.themoviedb.ui.movie.trending.TrendingNowFragment
 
 class MovieFragment : Fragment(R.layout.movie_fragment) {
 
@@ -27,6 +27,12 @@ class MovieFragment : Fragment(R.layout.movie_fragment) {
                 R.id.content,
                 NowPlayingFragment(),
                 NowPlayingFragment::class.java.name
+            )
+            addOrReplace(
+                childFragmentManager,
+                R.id.content,
+                MovieFavoritesFragment(),
+                MovieFavoritesFragment::class.java.name
             )
         }.commit()
     }

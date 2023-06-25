@@ -1,4 +1,4 @@
-package com.vlv.themoviedb.ui.movie
+package com.vlv.themoviedb.ui.movie.trending
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

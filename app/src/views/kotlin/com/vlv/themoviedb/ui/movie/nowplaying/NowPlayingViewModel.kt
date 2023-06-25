@@ -1,4 +1,4 @@
-package com.vlv.themoviedb.ui.movie
+package com.vlv.themoviedb.ui.movie.nowplaying
 
 import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith

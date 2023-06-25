@@ -33,7 +33,7 @@ class MoviesCarouselAdapter : ListAdapter<MovieResponse, MovieCarouselViewHolder
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieCarouselViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.trending_movie_item, parent, false
+            R.layout.movie_item, parent, false
         )
         return MovieCarouselViewHolder(view)
     }

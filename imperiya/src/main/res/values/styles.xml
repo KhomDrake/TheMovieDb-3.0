@@ -13,6 +13,13 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="TheMovieDb.Style.Text.Subtitle.Big">
+        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:alpha">.8</item>
+    </style>
+
     <style name="TheMovieDb.Style.Text.Subtitle.Bold">
         <item name="android:textStyle">bold</item>
     </style>
