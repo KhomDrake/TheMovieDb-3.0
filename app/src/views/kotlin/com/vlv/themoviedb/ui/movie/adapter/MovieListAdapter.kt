@@ -27,7 +27,6 @@ class MovieDiffUtil: DiffUtil.ItemCallback<MovieResponse>() {
 
 class MoviesCarouselAdapter : ListAdapter<MovieResponse, MovieCarouselViewHolder>(MovieDiffUtil()) {
 
-
     override fun onBindViewHolder(holder: MovieCarouselViewHolder, position: Int) {
         holder.bind(currentList[position])
     }

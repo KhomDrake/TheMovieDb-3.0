@@ -15,4 +15,7 @@
 
     <color name="imperiya_color_icon">#FFFFFF</color>
     <color name="imperiya_color_icon_disable">#80FFFFFF</color>
+
+    <color name="imperiya_color_start_shimmer">#6AFFFFFF</color>
+    <color name="imperiya_color_end_shimmer">#A6FFFFFF</color>
 </resources>

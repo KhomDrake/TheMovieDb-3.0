@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">The Movie Db</string>
+    <string name="trending_title">Trending now</string>
+    <string name="now_playing_title">Playing now</string>
 </resources>

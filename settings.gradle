@@ -13,8 +13,10 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "themoviedb"
+
 include ':app'
 include ':imperiya'
 include ':network'
 include ':imperiyasample'
 include ':tools:bondsmith'
+include ':tools:extensions'

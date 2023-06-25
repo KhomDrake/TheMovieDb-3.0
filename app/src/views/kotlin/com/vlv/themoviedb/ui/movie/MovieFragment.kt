@@ -3,6 +3,7 @@ package com.vlv.themoviedb.ui.movie
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.annotation.LayoutRes
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -39,6 +40,7 @@ fun FragmentTransaction.addOrReplace(
     tag: String
 ) {
     fragmentManager.findFragmentByTag(tag)?.let {
-        replace(layout, fragment, tag)
-    } ?: add(layout, fragment, tag)
+        remove(it)
+    }
+    add(layout, fragment, tag)
 }
