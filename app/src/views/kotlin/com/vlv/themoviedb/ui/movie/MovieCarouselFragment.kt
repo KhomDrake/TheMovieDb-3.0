@@ -18,13 +18,15 @@ import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.CarouselDecorator
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
+import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
 
 abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
 
     protected val title: AppCompatTextView by viewProvider(R.id.title)
-    protected val recyclerView: RecyclerView by viewProvider(R.id.trending_movies)
+    protected val recyclerView: RecyclerView by viewProvider(R.id.movies)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.movies_shimmer)
     protected val emptyText: AppCompatTextView by viewProvider(R.id.empty_state_text)
+    protected val indicator: ScrollingPagerIndicator by viewProvider(R.id.indicator)
 
     protected open val carouselDecorator = CarouselDecorator()
     protected val viewStateMachine = ViewStateMachine()
@@ -46,25 +48,26 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
         )
         recyclerView.adapter = MoviesCarouselAdapter()
         recyclerView.addItemDecoration(carouselDecorator)
+        indicator.attachToRecyclerView(recyclerView)
         PagerSnapHelper().attachToRecyclerView(recyclerView)
     }
 
     private fun setupViewStateMachine() {
         viewStateMachine.setup {
             stateData {
-                visibles(recyclerView)
+                visibles(recyclerView, indicator)
                 gones(shimmer, emptyText)
             }
             stateLoading {
                 visibles(shimmer)
-                gones(recyclerView, emptyText)
+                gones(recyclerView, emptyText, indicator)
                 onEnter {
                     shimmer.startShimmer()
                 }
             }
             stateEmpty {
                 visibles(emptyText)
-                gones(shimmer, recyclerView)
+                gones(shimmer, recyclerView, indicator)
             }
         }
     }
