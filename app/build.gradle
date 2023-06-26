@@ -58,6 +58,7 @@ dependencies {
     implementation project(':tools:extensions')
     implementation project(':feature:movie')
 
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
@@ -73,6 +74,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-common-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation "androidx.startup:startup-runtime:1.1.1"
 
 
     viewsImplementation 'com.facebook.shimmer:shimmer:0.5.0'

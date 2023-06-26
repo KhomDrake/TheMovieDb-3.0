@@ -22,4 +22,11 @@
         <item name="spi_dotSelectedColor">#FFFFFF</item>
     </style>
 
+    <style name="TheMovieDb.Style.SearchView">
+        <item name="android:background">@drawable/imperiya_background_search</item>
+        <item name="searchIcon">@drawable/ic_search_view</item>
+        <item name="searchHintIcon">@drawable/ic_search_view</item>
+        <item name="goIcon">@drawable/ic_search_view</item>
+    </style>
+
 </resources>

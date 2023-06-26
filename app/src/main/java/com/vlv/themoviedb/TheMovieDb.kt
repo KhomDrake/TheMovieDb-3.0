@@ -1,6 +1,7 @@
 package com.vlv.themoviedb
 
 import android.app.Application
+import com.vlv.movie.ui.search.SearchViewModel
 import com.vlv.network.networkModule
 import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesViewModel
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingViewModel
@@ -16,6 +17,7 @@ val appModule = module {
     viewModel { MovieFavoritesViewModel() }
     viewModel { TrendingNowViewModel(get()) }
     viewModel { com.vlv.movie.ui.TrendingNowViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
 }
 
 class TheMovieDb : Application() {

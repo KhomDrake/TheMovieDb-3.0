@@ -1,17 +1,24 @@
 package com.vlv.themoviedb.ui.movie
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.imperiya.ui.ImperiyaSearchView
+import com.vlv.movie.ui.search.SearchMovieActivity
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesFragment
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingFragment
 import com.vlv.themoviedb.ui.movie.trending.TrendingNowFragment
 
 class MovieFragment : Fragment(R.layout.movie_fragment) {
+
+    private val search: ImperiyaSearchView by viewProvider(R.id.search)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,6 +42,17 @@ class MovieFragment : Fragment(R.layout.movie_fragment) {
                 MovieFavoritesFragment::class.java.name
             )
         }.commit()
+        search.onCLickListener {
+            val intent = Intent(
+                requireContext(),
+                SearchMovieActivity::class.java
+            )
+
+            startActivity(
+                intent,
+                ActivityOptions.makeSceneTransitionAnimation(requireActivity()).toBundle()
+            )
+        }
     }
 
 }
