@@ -11,6 +11,14 @@
             android:theme="@style/TheMovieDb.Theme"
             android:name=".ui.search.SearchMovieActivity"/>
 
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data  android:name="com.vlv.movie.MovieInitializer"
+                android:value="androidx.startup" />
+        </provider>
 
     </application>
 </manifest>

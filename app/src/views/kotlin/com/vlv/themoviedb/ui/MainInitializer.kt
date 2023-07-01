@@ -26,8 +26,7 @@ class MainInitializer : Initializer<Module> {
 
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {
         return mutableListOf(
-            NetworkInitializer::class.java,
-            MovieInitializer::class.java,
+            NetworkInitializer::class.java
         )
     }
 

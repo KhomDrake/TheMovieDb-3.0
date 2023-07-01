@@ -7,7 +7,8 @@ import com.vlv.network.interceptors.InterceptorFactory
 import com.vlv.network.moshi.MoshiFactory
 import com.vlv.network.repository.MovieRepository
 import com.vlv.network.retrofit.RetrofitFactory
-import org.koin.core.context.loadKoinModules
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -23,7 +24,12 @@ class NetworkInitializer : Initializer<Module> {
 
             single { MovieRepository(get()) }
         }
-        loadKoinModules(module)
+
+        startKoin {
+            androidContext(context)
+            modules(module)
+        }
+
         return module
     }
 
