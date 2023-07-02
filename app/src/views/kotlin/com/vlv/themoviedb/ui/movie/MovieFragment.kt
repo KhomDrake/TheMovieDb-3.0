@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.imperiya.ui.ImperiyaSearchView
+import com.vlv.imperiya.ui.search.ImperiyaSearchView
 import com.vlv.movie.ui.search.SearchMovieActivity
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesFragment
@@ -50,7 +50,10 @@ class MovieFragment : Fragment(R.layout.movie_fragment) {
 
             startActivity(
                 intent,
-                ActivityOptions.makeSceneTransitionAnimation(requireActivity()).toBundle()
+                ActivityOptions.makeSceneTransitionAnimation(
+                    requireActivity(),
+                    android.util.Pair(search, "abcd")
+                ).toBundle()
             )
         }
     }

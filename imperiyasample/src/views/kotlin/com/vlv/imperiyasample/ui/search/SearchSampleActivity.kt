@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.imperiya.ui.ImperiyaSearchView
-import com.vlv.imperiya.ui.ImperiyaToolbarView
+import com.vlv.imperiya.ui.search.ImperiyaSearchView
+import com.vlv.imperiya.ui.search.ImperiyaToolbarView
 import com.vlv.imperiyasample.R
 
 class SearchSampleActivity : AppCompatActivity(R.layout.activity_search_sample) {
@@ -24,7 +24,7 @@ class SearchSampleActivity : AppCompatActivity(R.layout.activity_search_sample) 
         }
 
         search.setHint("Input Text")
-        search.onQuery(
+        search.setup(
             onTextChanged = {
                 changed.text = "Text Changed: $it"
             },
@@ -33,7 +33,6 @@ class SearchSampleActivity : AppCompatActivity(R.layout.activity_search_sample) 
             }
         )
 
-        searchThree.addSearchView()
         searchThree.searchView?.apply {
             setHint("Text")
         }

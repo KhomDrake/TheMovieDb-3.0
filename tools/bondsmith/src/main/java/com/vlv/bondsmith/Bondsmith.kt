@@ -32,6 +32,7 @@ class Bondsmith<Data>(private val scope: CoroutineScope) {
                     ?: return@runCatching _responseLiveData.postError(Throwable())
                 _responseLiveData.postData(data)
             }.onFailure {
+                Log.i("Vini", it.stackTraceToString())
                 _responseLiveData.postError(it)
             }
         }

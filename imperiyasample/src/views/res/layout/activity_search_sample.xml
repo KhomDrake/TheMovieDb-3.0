@@ -13,7 +13,7 @@
         style="@style/TheMovieDb.Style.Toolbar"
         app:title="Search" />
 
-    <com.vlv.imperiya.ui.ImperiyaSearchView
+    <com.vlv.imperiya.ui.search.ImperiyaSearchView
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:text="Text Submit: "
         style="@style/TheMovieDb.Style.Text.Paragraph"/>
 
-    <com.vlv.imperiya.ui.ImperiyaSearchView
+    <com.vlv.imperiya.ui.search.ImperiyaSearchView
         android:id="@+id/search_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,21 +47,11 @@
         android:layout_marginHorizontal="16dp"
         style="@style/TheMovieDb.Style.SearchView"/>
 
-    <com.vlv.imperiya.ui.ImperiyaToolbarView
+    <com.vlv.imperiya.ui.search.ImperiyaToolbarView
         android:id="@+id/search_three"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp"/>
-
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TheMovieDb.Style.Toolbar">
-        <com.vlv.imperiya.ui.ImperiyaSearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TheMovieDb.Style.SearchView"/>
-    </androidx.appcompat.widget.Toolbar>
+        style="@style/TheMovieDb.Style.Toolbar"
+        android:layout_marginTop="16dp"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
