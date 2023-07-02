@@ -15,7 +15,7 @@ class MovieInitializer : Initializer<Module> {
     override fun create(context: Context): Module {
         val module = module {
             viewModel { TrendingNowViewModel(get()) }
-            viewModel { SearchViewModel(get()) }
+            viewModel { SearchViewModel(get(), get()) }
         }
         loadKoinModules(module)
         return module

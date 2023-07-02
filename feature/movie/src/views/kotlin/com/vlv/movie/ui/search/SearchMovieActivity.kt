@@ -1,6 +1,7 @@
 package com.vlv.movie.ui.search
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -32,6 +33,7 @@ class SearchMovieActivity : AppCompatActivity(R.layout.search_activity) {
                 onTextSubmit = { query ->
                     lifecycleScope.launch {
                         val queryNotNull = query ?: return@launch
+                        viewModel.addHistory(queryNotNull)
                         viewModel.search(queryNotNull).distinctUntilChanged().apply {
                             collectLatest {
                                 paginationAdapter.submitData(it)
@@ -45,7 +47,11 @@ class SearchMovieActivity : AppCompatActivity(R.layout.search_activity) {
         movies.layoutManager = GridLayoutManager(this, 2)
         movies.adapter = paginationAdapter
 
-
+        viewModel.searchHistory().observe(this) {
+            data {
+                Log.i("Vini", it.map { it.text }.toString())
+            }
+        }
     }
 
 }
