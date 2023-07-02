@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TheMovieDb.Style.Text"/>
+
+    <style name="TheMovieDb.Style.Text.Paragraph">
+        <item name="android:textColor">@color/imperiya_body</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TheMovieDb.Style.Text.Link">
+        <item name="android:textColor">@color/imperiya_color_link</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TheMovieDb.Style.Text.Subtitle">
+        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TheMovieDb.Style.Text.Subtitle.Big">
+        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:alpha">.8</item>
+    </style>
+
+    <style name="TheMovieDb.Style.Text.Subtitle.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TheMovieDb.Style.Text.Title">
+        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
