@@ -4,25 +4,31 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <'com.vlv.imperiya.ui.ImperiyaSearchView'
-        android:id="@+id/search"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:transitionName="abcd"
+        style="@style/TheMovieDb.Style.Toolbar"
+        app:title="Sample Views"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/components_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        style="@style/TheMovieDb.Style.SearchView"
-        app:searchIcon="@drawable/ic_back"
-        app:queryHint="Search for movies"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:text="Components:"
+        style="@style/TheMovieDb.Style.Text.Title"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/movies"
+        android:id="@+id/components"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="8dp"
-        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintTop_toBottomOf="@id/components_title"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

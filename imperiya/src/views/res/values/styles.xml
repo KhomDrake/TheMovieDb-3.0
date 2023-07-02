@@ -22,6 +22,19 @@
         <item name="spi_dotSelectedColor">#FFFFFF</item>
     </style>
 
+    <style name="TheMovieDb.Style.Toolbar">
+        <item name="navigationIcon">@drawable/ic_back</item>
+        <item name="titleTextColor">@color/imperiya_title</item>
+    </style>
+
+    <style name="TheMovieDb.Style.Button">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:background">@drawable/imperiya_background_secondary</item>
+        <item name="background">@drawable/imperiya_background_secondary</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/imperiya_title</item>
+    </style>
+
     <style name="TheMovieDb.Style.SearchView">
         <item name="android:background">@drawable/imperiya_background_search</item>
         <item name="searchIcon">@drawable/ic_search_view</item>

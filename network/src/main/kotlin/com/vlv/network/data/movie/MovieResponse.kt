@@ -5,7 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 class MoviesResponse(
-    val dates: DatesRangeResponse? = null,
     @Json(name = "total_pages")
     val totalPages: Int,
     @Json(name = "total_results")
@@ -13,12 +12,6 @@ class MoviesResponse(
     val page: Int,
     @Json(name = "results")
     val movies: List<MovieResponse>
-)
-
-@JsonClass(generateAdapter = true)
-class DatesRangeResponse(
-    val maximum: String,
-    val minimum: String
 )
 
 @JsonClass(generateAdapter = true)

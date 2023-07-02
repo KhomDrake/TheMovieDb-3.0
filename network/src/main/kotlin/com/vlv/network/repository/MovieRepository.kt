@@ -40,6 +40,20 @@ class MovieRepository(private val api: TheMovieDbApi) {
         ).flow
     }
 
+    fun search(
+        config: PagingConfig,
+        query: String
+    ) : Flow<PagingData<MovieResponse>> {
+        return Pager(
+            config = config,
+            pagingSourceFactory = {
+                MoviePagingSource { page ->
+                    api.search( "en", query, page)
+                }
+            }
+        ).flow
+    }
+
     suspend fun nowPlaying() : MoviesResponse {
         return api.nowPlaying(
             "en",

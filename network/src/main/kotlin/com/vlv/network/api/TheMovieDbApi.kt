@@ -30,8 +30,10 @@ interface TheMovieDbApi {
         language: String,
         @Query("query")
         text: String,
+        @Query("page")
+        page: Int,
         @Query("include_adult")
-        includeAdult: Boolean
-    )
+        includeAdult: Boolean = false
+    ) : MoviesResponse
 
 }
