@@ -1,10 +1,11 @@
 package com.vlv.network.retrofit
 
 import com.squareup.moshi.Moshi
-import com.vlv.network.api.TheMovieDbApi
+import com.vlv.network.api.MovieApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import kotlin.reflect.KClass
 
 object RetrofitFactory {
 
@@ -16,8 +17,6 @@ object RetrofitFactory {
         }.build()
     }
 
-    fun service(retrofit: Retrofit) : TheMovieDbApi {
-        return retrofit.create(TheMovieDbApi::class.java)
-    }
+    fun service(retrofit: Retrofit, kclass: KClass<*>) = retrofit.create(kclass.java)
 
 }

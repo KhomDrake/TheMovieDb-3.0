@@ -11,22 +11,22 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
 import com.vlv.extensions.toUrlMovieDb
-import com.vlv.network.data.movie.MovieResponse
+import com.vlv.movie.data.Movie
 import com.vlv.themoviedb.R
 
-class MovieDiffUtil: DiffUtil.ItemCallback<MovieResponse>() {
+class MovieDiffUtil: DiffUtil.ItemCallback<Movie>() {
 
-    override fun areContentsTheSame(oldItem: MovieResponse, newItem: MovieResponse): Boolean {
+    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem.title == newItem.posterPath && oldItem.posterPath == newItem.posterPath
     }
 
-    override fun areItemsTheSame(oldItem: MovieResponse, newItem: MovieResponse): Boolean {
+    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem.id == newItem.id
     }
 
 }
 
-class MoviesCarouselAdapter : ListAdapter<MovieResponse, MovieCarouselViewHolder>(MovieDiffUtil()) {
+class MoviesCarouselAdapter : ListAdapter<Movie, MovieCarouselViewHolder>(MovieDiffUtil()) {
 
     override fun onBindViewHolder(holder: MovieCarouselViewHolder, position: Int) {
         holder.bind(currentList[position])
@@ -47,10 +47,10 @@ class MovieCarouselViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private val poster: AppCompatImageView by viewProvider(R.id.poster)
     private val title: AppCompatTextView by viewProvider(R.id.movie_title)
 
-    fun bind(movieResponse: MovieResponse) {
+    fun bind(movie: Movie) {
         poster.clipToOutline = true
-        title.text = movieResponse.title
-        poster.load(movieResponse.backdropPath?.toUrlMovieDb()) {
+        title.text = movie.title
+        poster.load(movie.backdropPath?.toUrlMovieDb()) {
             crossfade(1000)
         }
     }

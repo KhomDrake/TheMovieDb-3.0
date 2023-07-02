@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface TheMovieDbApi {
+interface MovieApi {
 
     @GET("movie/now_playing")
     suspend fun nowPlaying(

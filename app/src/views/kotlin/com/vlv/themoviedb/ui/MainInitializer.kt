@@ -7,6 +7,8 @@ import com.vlv.network.NetworkInitializer
 import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesViewModel
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingViewModel
 import com.vlv.themoviedb.ui.movie.trending.TrendingNowViewModel
+import com.vlv.themoviedb.ui.series.airingtoday.AiringTodayViewModel
+import com.vlv.themoviedb.ui.series.trending.TrendingSeriesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -19,6 +21,8 @@ class MainInitializer : Initializer<Module> {
             viewModel { NowPlayingViewModel(get()) }
             viewModel { MovieFavoritesViewModel() }
             viewModel { TrendingNowViewModel(get()) }
+            viewModel { TrendingSeriesViewModel(get()) }
+            viewModel { AiringTodayViewModel(get()) }
         }
         loadKoinModules(module)
         return module

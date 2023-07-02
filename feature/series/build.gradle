@@ -1,20 +1,28 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    namespace 'com.vlv.themoviedb'
+    namespace 'com.vlv.series'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.vlv.themoviedb"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    flavorDimensions += "uitool"
+    productFlavors {
+        create("compose") {
+            dimension = "uitool"
+        }
+        create("views") {
+            dimension = "uitool"
+        }
     }
 
     buildTypes {
@@ -22,25 +30,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            minifyEnabled false
-        }
     }
-
-    flavorDimensions += "uitool"
-    productFlavors {
-        create("compose") {
-            dimension = "uitool"
-            applicationIdSuffix = ".compose"
-            versionNameSuffix = "-compose"
-        }
-        create("views") {
-            dimension = "uitool"
-            applicationIdSuffix = ".views"
-            versionNameSuffix = "-views"
-        }
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -52,14 +42,11 @@ android {
 
 dependencies {
 
-    implementation project(':imperiya')
+    implementation project(":imperiya")
     implementation project(':network')
     implementation project(':tools:bondsmith')
     implementation project(':tools:extensions')
-    implementation project(':feature:movie')
-    implementation project(':feature:series')
 
-    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
@@ -75,12 +62,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-common-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation "androidx.paging:paging-runtime-ktx:3.1.0-alpha02"
     implementation "androidx.startup:startup-runtime:1.1.1"
-
-
-    viewsImplementation 'com.facebook.shimmer:shimmer:0.5.0'
-    viewsImplementation 'ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.2.5'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

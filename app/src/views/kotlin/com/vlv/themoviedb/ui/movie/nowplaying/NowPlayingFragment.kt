@@ -22,9 +22,9 @@ class NowPlayingFragment : MovieCarouselFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.nowPlaying().observe(viewLifecycleOwner) {
             data {
-                if(it.movies.isEmpty()) viewStateMachine.emptyState()
+                if(it.isEmpty()) viewStateMachine.emptyState()
                 else viewStateMachine.dataState()
-                (recyclerView.adapter as? MoviesCarouselAdapter)?.submitList(it.movies)
+                (recyclerView.adapter as? MoviesCarouselAdapter)?.submitList(it)
             }
             showLoading {
                 viewStateMachine.loadingState()

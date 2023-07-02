@@ -5,6 +5,7 @@
     <!--  Home Movie  -->
     <string name="trending_title">Trending now</string>
     <string name="now_playing_title">Playing now</string>
+    <string name="airing_today_title">Airing Today</string>
     <string name="favorites_title">Favorites</string>
     <string name="see_all_text">See All</string>
     <string name="empty_state_text_default">None found</string>

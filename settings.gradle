@@ -17,6 +17,7 @@ rootProject.name = "themoviedb"
 include ':app'
 
 include ':feature:movie'
+include ':feature:series'
 
 include ':imperiya'
 include ':imperiyasample'

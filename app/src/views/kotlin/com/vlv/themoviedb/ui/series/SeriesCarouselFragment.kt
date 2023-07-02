@@ -1,4 +1,4 @@
-package com.vlv.themoviedb.ui.movie
+package com.vlv.themoviedb.ui.series
 
 import android.os.Bundle
 import android.view.View
@@ -16,13 +16,13 @@ import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.CarouselDecorator
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
+import com.vlv.themoviedb.ui.series.adapter.SeriesCarouselAdapter
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
 
-abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
+abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) {
 
     protected val title: AppCompatTextView by viewProvider(R.id.title)
-    protected val recyclerView: RecyclerView by viewProvider(R.id.movies)
+    protected val recyclerView: RecyclerView by viewProvider(R.id.series)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer)
     protected val emptyText: AppCompatTextView by viewProvider(R.id.empty_state_text)
     protected val indicator: ScrollingPagerIndicator by viewProvider(R.id.indicator)
@@ -47,7 +47,7 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
-        recyclerView.adapter = MoviesCarouselAdapter()
+        recyclerView.adapter = SeriesCarouselAdapter()
         recyclerView.addItemDecoration(carouselDecorator)
         indicator.attachToRecyclerView(recyclerView)
         PagerSnapHelper().attachToRecyclerView(recyclerView)
