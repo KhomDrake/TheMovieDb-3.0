@@ -9,7 +9,7 @@
 
         <activity
             android:theme="@style/TheMovieDb.Theme"
-            android:name=".ui.search.SearchMovieActivity"/>
+            android:name=".ui.search.SearchMovieActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

@@ -6,7 +6,7 @@ import com.vlv.network.database.data.HistoryType
 
 class SearchRepository(private val dao: TheMovieDbDao) {
 
-    suspend fun history(type: HistoryType) = dao.historyByType(type)
+    fun history(type: HistoryType) = dao.historyByType(type)
 
     suspend fun addHistory(history: History) = dao.insertHistory(history)
 

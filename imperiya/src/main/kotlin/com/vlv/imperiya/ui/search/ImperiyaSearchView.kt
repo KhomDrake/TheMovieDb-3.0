@@ -57,6 +57,10 @@ class ImperiyaSearchView : SearchView {
         setOnClickListener(onClick)
     }
 
+    fun onClickSearchListener(onClick: OnClickListener) {
+        startIcon.setOnClickListener(onClick)
+    }
+
     fun setup(
         onTextChanged: (String?) -> Unit = {},
         onTextSubmit: (String?) -> Unit = {}

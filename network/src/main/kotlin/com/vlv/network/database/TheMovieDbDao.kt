@@ -1,5 +1,6 @@
 package com.vlv.network.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,8 +15,8 @@ interface TheMovieDbDao {
     suspend fun insertHistory(history: History)
 
     @Query("SELECT * FROM history WHERE type = :type")
-    suspend fun historyByType(
+    fun historyByType(
         type: HistoryType
-    ) : List<History>
+    ) : LiveData<List<History>>
 
 }

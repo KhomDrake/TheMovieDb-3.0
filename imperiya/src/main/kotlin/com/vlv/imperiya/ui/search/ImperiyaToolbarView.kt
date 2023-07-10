@@ -14,14 +14,27 @@ class ImperiyaToolbarView(context: Context, attrs: AttributeSet?) : Toolbar(cont
 
     init {
         _searchView = addSearchView()
-        val dimen = context.resources.getDimension(R.dimen.imperiya_carousel_margin).toInt()
+        val dimenLeft = context.resources.getDimension(R.dimen.imperiya_carousel_margin).toInt()
+        val dimenRight = context.resources.getDimension(R.dimen.imperiya_carousel_margin2).toInt()
 
-        setContentInsetsAbsolute(dimen, dimen)
+        setContentInsetsAbsolute(dimenLeft, dimenRight)
         contentInsetStartWithNavigation = 0
         isFocusableInTouchMode = false
 
         setTitleTextAppearance(context, R.style.TheMovieDb_Style_Text_Title)
-        setNavigationIcon(R.drawable.ic_back)
+        setupWithAttributes(context, attrs)
+    }
+
+    private fun setupWithAttributes(context: Context, set: AttributeSet?) {
+        val attrs = context.obtainStyledAttributes(set, R.styleable.ImperiyaToolbarView)
+
+        val showIcon = attrs.getBoolean(R.styleable.ImperiyaToolbarView_with_back_icon, true)
+
+        if(showIcon) {
+            setNavigationIcon(R.drawable.ic_back)
+        }
+
+        attrs.recycle()
     }
 
     fun setTitle(text: String) {

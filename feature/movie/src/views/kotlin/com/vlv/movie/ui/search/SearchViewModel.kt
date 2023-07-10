@@ -1,12 +1,15 @@
 package com.vlv.movie.ui.search
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
+import br.com.arch.toolkit.livedata.extention.mapList
 import com.vlv.bondsmith.bondsmith
 import com.vlv.movie.data.Movie
+import com.vlv.movie.ui.adapter.HistoryData
 import com.vlv.network.database.data.History
 import com.vlv.network.database.data.HistoryType
 import com.vlv.network.repository.MovieRepository
@@ -43,10 +46,6 @@ class SearchViewModel(
         }
         .execute()
 
-    fun searchHistory() = bondsmith<List<History>>()
-        .request {
-            searchRepository.history(HistoryType.MOVIE)
-        }
-        .execute()
-        .responseLiveData
+    fun searchHistory() = searchRepository.history(HistoryType.MOVIE)
+        .map { it.map(::HistoryData) }
 }
