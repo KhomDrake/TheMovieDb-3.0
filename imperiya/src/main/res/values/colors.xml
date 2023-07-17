@@ -9,6 +9,7 @@
     <color name="imperiya_color_link">#46BFFE</color>
     <color name="imperiya_color_success">#38B49D</color>
     <color name="imperiya_color_error">#F32F2F</color>
+    <color name="imperiya_color_ripple">#A7A7A8</color>
 
     <color name="imperiya_title">#FFFFFF</color>
     <color name="imperiya_sub_title">#FFFFFF</color>

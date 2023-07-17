@@ -3,10 +3,12 @@ package com.vlv.movie.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.movie.R
 import com.vlv.network.database.data.History
 import com.vlv.network.database.data.HistoryType
@@ -30,7 +32,8 @@ class HistoryDiffUtil: DiffUtil.ItemCallback<HistoryData>() {
 }
 
 class HistoryAdapter(
-    private val onCLickItem: (HistoryData) -> Unit
+    private val onCLickItem: (HistoryData) -> Unit,
+    private val onDelete: (HistoryData) -> Unit,
 ) : ListAdapter<HistoryData, HistoryViewHolder>(HistoryDiffUtil()) {
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
@@ -38,6 +41,9 @@ class HistoryAdapter(
         holder.bind(history)
         holder.itemView.setOnClickListener {
             onCLickItem.invoke(history)
+        }
+        holder.closeIcon.setOnClickListener {
+            onDelete.invoke(history)
         }
     }
 
@@ -51,10 +57,11 @@ class HistoryAdapter(
 
 class HistoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+    private val text: AppCompatTextView by viewProvider(R.id.text)
+    val closeIcon: AppCompatImageView by viewProvider(R.id.close_icon)
+
     fun bind(historyData: HistoryData) {
-        (itemView as? AppCompatTextView)?.apply {
-            text = historyData.text
-        }
+        text.text = historyData.text
     }
 
 }

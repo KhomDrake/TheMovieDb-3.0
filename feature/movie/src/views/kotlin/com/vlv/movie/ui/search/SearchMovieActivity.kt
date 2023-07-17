@@ -27,9 +27,13 @@ class SearchMovieActivity : AppCompatActivity(R.layout.search_activity) {
     private val historyItems: RecyclerView by viewProvider(R.id.history_items)
     private val viewModel: SearchViewModel by viewModel()
     private val paginationAdapter = MoviePaginationAdapter()
-    private val historyAdapter = HistoryAdapter {
-        query(it.text, addToHistory = false)
-    }
+    private val historyAdapter = HistoryAdapter(
+        onCLickItem = {
+            query(it.text, addToHistory = false)
+        }, onDelete = {
+            viewModel.deleteHistory(it.text)
+        }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

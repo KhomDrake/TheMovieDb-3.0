@@ -46,6 +46,12 @@ class SearchViewModel(
         }
         .execute()
 
+    fun deleteHistory(text: String) = bondsmith<Unit>()
+        .request {
+            searchRepository.deleteHistory(History(text, HistoryType.MOVIE))
+        }
+        .execute()
+
     fun searchHistory() = searchRepository.history(HistoryType.MOVIE)
         .map { it.map(::HistoryData) }
 }

@@ -10,4 +10,6 @@ class SearchRepository(private val dao: TheMovieDbDao) {
 
     suspend fun addHistory(history: History) = dao.insertHistory(history)
 
+    suspend fun deleteHistory(history: History) = dao.deleteHistory(history)
+
 }
