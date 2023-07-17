@@ -8,7 +8,7 @@
     android:paddingVertical="8dp"
     android:layout_marginEnd="10dp"
     android:clickable="true"
-    android:background="@drawable/imperiya_background_search_radius_xl"
+    android:background="@drawable/imperiya_background_search_radius_m"
     android:foreground="@drawable/rectangle_radius_ripple"
     android:focusable="true"
     android:orientation="horizontal">
