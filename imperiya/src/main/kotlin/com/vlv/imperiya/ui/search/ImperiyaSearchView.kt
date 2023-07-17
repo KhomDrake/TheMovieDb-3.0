@@ -32,6 +32,8 @@ class ImperiyaSearchView : SearchView {
         setIconifiedByDefault(false)
         searchText.setTextColor(ContextCompat.getColor(context, R.color.imperiya_title))
         searchText.setHintTextColor(ContextCompat.getColor(context, R.color.imperiya_hint))
+        startIcon.foreground = ContextCompat.getDrawable(context, R.drawable.oval_ripple)
+        endIcon.foreground = ContextCompat.getDrawable(context, R.drawable.oval_ripple)
     }
 
     fun setSearchIcon(@DrawableRes drawableRes: Int) = apply {
@@ -50,6 +52,10 @@ class ImperiyaSearchView : SearchView {
         searchText.hint = text
     }
 
+    fun setText(text: String) = apply {
+        searchText.setText(text)
+    }
+
     fun onCLickListener(onClick: OnClickListener) {
         searchText.isFocusable = false
         searchText.setOnClickListener(onClick)
@@ -59,6 +65,10 @@ class ImperiyaSearchView : SearchView {
 
     fun onClickSearchListener(onClick: OnClickListener) {
         startIcon.setOnClickListener(onClick)
+    }
+
+    fun onClickCloseListener(onClick: OnClickListener) {
+        endIcon.setOnClickListener(onClick)
     }
 
     fun setup(
@@ -81,6 +91,10 @@ class ImperiyaSearchView : SearchView {
 
     fun searchIcon(onClick: OnClickListener) {
         startIcon.setOnClickListener(onClick)
+    }
+
+    fun clearText() {
+        setText("")
     }
 
 }
