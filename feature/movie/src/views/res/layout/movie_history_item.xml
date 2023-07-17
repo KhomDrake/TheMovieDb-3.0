@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="8dp"
+    android:layout_marginEnd="10dp"
+    android:clickable="true"
+    android:background="@drawable/imperiya_background_search_radius_xl"
+    android:foreground="@drawable/rectangle_radius_ripple"
+    android:focusable="true"
+    android:orientation="horizontal">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_gravity="center_vertical"
+        tools:text="Avengers"
+        style="@style/TheMovieDb.Style.Text.Subtitle"
+        android:focusable="true"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/close_icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:padding="6dp"
+        android:layout_gravity="center_vertical"
+        android:foreground="@drawable/oval_ripple"
+        android:clickable="true"
+        android:src="@drawable/ic_close"
+        android:focusable="true"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

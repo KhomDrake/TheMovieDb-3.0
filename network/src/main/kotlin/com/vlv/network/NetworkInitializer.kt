@@ -1,13 +1,18 @@
 package com.vlv.network
 
 import android.content.Context
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import androidx.startup.Initializer
 import com.vlv.network.api.MovieApi
 import com.vlv.network.api.SeriesApi
 import com.vlv.network.client.OkHttpFactory
+import com.vlv.network.database.TheMovieDatabase
+import com.vlv.network.database.TheMovieDbDao
 import com.vlv.network.interceptors.InterceptorFactory
 import com.vlv.network.moshi.MoshiFactory
 import com.vlv.network.repository.MovieRepository
+import com.vlv.network.repository.SearchRepository
 import com.vlv.network.repository.SeriesRepository
 import com.vlv.network.retrofit.RetrofitFactory
 import org.koin.android.ext.koin.androidContext
@@ -25,7 +30,15 @@ class NetworkInitializer : Initializer<Module> {
             single { RetrofitFactory.retrofit(get(), get()) }
             single { RetrofitFactory.service(get(), MovieApi::class) as MovieApi }
             single { RetrofitFactory.service(get(), SeriesApi::class) as SeriesApi }
+            single {
+                Room.databaseBuilder(
+                    context,
+                    TheMovieDatabase::class.java,
+                    "Database TheMovieDb"
+                ).build().dao()
+            }
 
+            single { SearchRepository(get()) }
             single { MovieRepository(get()) }
             single { SeriesRepository(get()) }
         }
