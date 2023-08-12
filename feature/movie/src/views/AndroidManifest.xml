@@ -11,6 +11,16 @@
             android:theme="@style/TheMovieDb.Theme"
             android:name=".ui.search.SearchMovieActivity" />
 
+        <activity
+            android:theme="@style/TheMovieDb.Theme.Collapse"
+            android:name=".ui.detail.DetailActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.MOVIE_DETAIL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"

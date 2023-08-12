@@ -14,6 +14,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateLoading
+import com.vlv.extensions.toDetail
 import com.vlv.imperiya.ui.CarouselDecorator
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
@@ -47,7 +48,11 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
-        recyclerView.adapter = MoviesCarouselAdapter()
+        recyclerView.adapter = MoviesCarouselAdapter {
+            val intent = requireContext().toDetail()
+            intent.putExtra("MOVIE", it)
+            startActivity(intent)
+        }
         recyclerView.addItemDecoration(carouselDecorator)
         indicator.attachToRecyclerView(recyclerView)
         PagerSnapHelper().attachToRecyclerView(recyclerView)
