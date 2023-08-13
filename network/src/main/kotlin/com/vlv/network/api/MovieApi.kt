@@ -1,11 +1,19 @@
 package com.vlv.network.api
 
+import com.vlv.network.data.movie.MovieDetailResponse
 import com.vlv.network.data.movie.MoviesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApi {
+
+    @GET("movie/{movie_id}")
+    suspend fun movieDetail(
+        @Path("movie_id") movieId: Int,
+        @Query("language")
+        language: String = "en-US"
+    ) : MovieDetailResponse
 
     @GET("movie/now_playing")
     suspend fun nowPlaying(

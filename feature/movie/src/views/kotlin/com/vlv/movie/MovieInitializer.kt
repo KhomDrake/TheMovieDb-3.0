@@ -3,6 +3,7 @@ package com.vlv.movie
 import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.movie.ui.TrendingNowViewModel
+import com.vlv.movie.ui.detail.about.AboutMovieViewModel
 import com.vlv.movie.ui.search.SearchViewModel
 import com.vlv.network.NetworkInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -16,6 +17,7 @@ class MovieInitializer : Initializer<Module> {
         val module = module {
             viewModel { TrendingNowViewModel(get()) }
             viewModel { SearchViewModel(get(), get()) }
+            viewModel { AboutMovieViewModel(get()) }
         }
         loadKoinModules(module)
         return module
