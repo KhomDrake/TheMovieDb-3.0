@@ -15,7 +15,7 @@ import com.vlv.movie.R
 import com.vlv.movie.data.Movie
 import com.vlv.movie.ui.detail.adapter.DetailAdapter
 
-class DetailActivity : AppCompatActivity(R.layout.detail_activity) {
+class DetailActivity : AppCompatActivity(R.layout.movie_detail_activity) {
 
     private val backdrop: AppCompatImageView by viewProvider(R.id.path)
     private val tabs: TabLayout by viewProvider(R.id.tabs)

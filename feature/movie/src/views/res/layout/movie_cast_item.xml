@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/movie_background_cast"
+    android:outlineProvider="background"
+    android:layout_marginTop="16dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/avatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginVertical="16dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/movie_background_avatar"
+        android:outlineProvider="background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/person_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        tools:text="Angourie Rice"
+        style="@style/TheMovieDb.Style.Text.Subtitle.Bold"
+        app:layout_constraintTop_toTopOf="@id/avatar"
+        app:layout_constraintStart_toEndOf="@id/avatar"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        tools:text="Halley Quinn"
+        android:textColor="@color/imperiya_sub_title2"
+        style="@style/TheMovieDb.Style.Text.Subtitle"
+        app:layout_constraintTop_toBottomOf="@id/person_name"
+        app:layout_constraintStart_toEndOf="@id/avatar"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val SEARCH_STATE = 23
 
-class SearchMovieActivity : AppCompatActivity(R.layout.search_activity) {
+class SearchMovieActivity : AppCompatActivity(R.layout.movie_search_activity) {
 
     private val root: ViewGroup by viewProvider(R.id.root)
     private val search: ImperiyaSearchView by viewProvider(R.id.search)

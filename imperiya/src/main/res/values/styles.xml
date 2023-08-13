@@ -14,9 +14,20 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TheMovieDb.Style.Text.Chip">
+        <item name="android:textColor">@color/imperiya_color_background</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="TheMovieDb.Style.Text.Subtitle">
         <item name="android:textColor">@color/imperiya_title</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TheMovieDb.Style.Text.Subtitle.Small">
+        <item name="android:textColor">@color/imperiya_sub_title2</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="TheMovieDb.Style.Text.Subtitle.Big">

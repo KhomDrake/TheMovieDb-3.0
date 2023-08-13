@@ -18,13 +18,21 @@ class MovieDetailResponse(
     val video: Boolean,
     @Json(name = "vote_average")
     val voteAverage: Double,
+    @Json(name = "spoken_languages")
     val spokenLanguages: List<Languages>,
     @Json(name = "original_title")
     val originalTitle: String,
     @Json(name = "original_language")
     val originalLanguage: String,
     @Json(name = "belongs_to_collection")
-    val belongsToCollection: BelongsToCollection
+    val belongsToCollection: BelongsToCollection? = null,
+    @Json(name = "production_companies")
+    val productCompanies: List<ProductionCompany>,
+    @Json(name = "production_countries")
+    val productCountries: List<ProductionCountry>,
+    val status: String,
+    @Json(name = "release_date")
+    val releaseData: String
 )
 
 @JsonClass(generateAdapter = true)
@@ -44,18 +52,14 @@ class Languages(
     @Json(name = "iso_639_1")
     val iso639: String,
     @Json(name = "name")
-    val name: String,
-    @Json(name = "production_companies")
-    val productCompanies: List<ProductionCompany>,
-    @Json(name = "production_countries")
-    val productCountries: List<ProductionCountry>,
+    val name: String
 )
 
 @JsonClass(generateAdapter = true)
 class ProductionCompany(
     val id: Int,
     @Json(name = "logo_path")
-    val logoPath: String,
+    val logoPath: String? = null,
     @Json(name = "name")
     val name: String,
     @Json(name = "origin_country")
