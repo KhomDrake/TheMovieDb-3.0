@@ -8,6 +8,11 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="TheMovieDb.Style.Text.Paragraph.Big">
+        <item name="android:textColor">@color/imperiya_body</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="TheMovieDb.Style.Text.Link">
         <item name="android:textColor">@color/imperiya_color_link</item>
         <item name="android:textSize">14sp</item>

@@ -5,6 +5,7 @@ import androidx.startup.Initializer
 import com.vlv.movie.ui.TrendingNowViewModel
 import com.vlv.movie.ui.detail.about.AboutMovieViewModel
 import com.vlv.movie.ui.detail.cast.CastViewModel
+import com.vlv.movie.ui.detail.review.ReviewViewModel
 import com.vlv.movie.ui.search.SearchViewModel
 import com.vlv.network.NetworkInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -20,6 +21,7 @@ class MovieInitializer : Initializer<Module> {
             viewModel { SearchViewModel(get(), get()) }
             viewModel { AboutMovieViewModel(get()) }
             viewModel { CastViewModel(get()) }
+            viewModel { ReviewViewModel(get()) }
         }
         loadKoinModules(module)
         return module

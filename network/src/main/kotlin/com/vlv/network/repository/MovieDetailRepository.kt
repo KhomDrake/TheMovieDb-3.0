@@ -8,4 +8,6 @@ class MovieDetailRepository(private val api: MovieApi) {
 
     suspend fun movieCast(movieId: Int) = api.movieCast(movieId)
 
+    suspend fun movieReviews(movieId: Int) = api.movieReviews(movieId, page = 1)
+
 }

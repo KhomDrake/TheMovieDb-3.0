@@ -24,7 +24,7 @@ class DetailAdapter(
                 CastFragment.instance(movie)
             }
             else -> {
-                ReviewFragment()
+                ReviewFragment.instance(movie)
             }
         }
     }
