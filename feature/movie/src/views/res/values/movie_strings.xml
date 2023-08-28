@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_text_original_title">Original title</string>
+    <string name="movie_text_original_language">Original language</string>
+    <string name="movie_text_state">State</string>
+    <string name="movie_text_duration">Screen Time</string>
+    <string name="movie_text_revenue">Revenue</string>
+    <string name="movie_text_budget">Budget</string>
+    <string name="movie_text_companies">Companies</string>
+    <string name="movie_text_countries">Countries</string>
+    <string name="movie_text_spoken_languages">Spoken languages</string>
+    <string name="movie_text_release_status">Release status</string>
+</resources>

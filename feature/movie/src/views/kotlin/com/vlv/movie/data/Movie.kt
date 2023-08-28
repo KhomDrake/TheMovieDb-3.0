@@ -10,13 +10,15 @@ class Movie(
     val backdropPath: String?,
     val posterPath: String?,
     val id: Int,
-    val title: String
+    val title: String,
+    val overview: String
 ) : Parcelable {
     constructor(movieResponse: MovieResponse) : this(
         movieResponse.adult,
         movieResponse.backdropPath,
         movieResponse.posterPath,
         movieResponse.id,
-        movieResponse.title
+        movieResponse.title,
+        movieResponse.overview
     )
 }

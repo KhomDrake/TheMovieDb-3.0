@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TrendingNowActivity : AppCompatActivity(R.layout.trending_now_activity) {
+class TrendingNowActivity : AppCompatActivity(R.layout.movie_trending_now_activity) {
 
     private val viewModel: TrendingNowViewModel by viewModel()
 

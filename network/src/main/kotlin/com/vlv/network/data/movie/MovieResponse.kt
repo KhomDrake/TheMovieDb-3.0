@@ -22,5 +22,6 @@ class MovieResponse(
     @Json(name = "poster_path")
     val posterPath: String?,
     val id: Int,
-    val title: String
+    val title: String,
+    val overview: String
 )
