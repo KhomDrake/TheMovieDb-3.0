@@ -14,11 +14,11 @@
         android:theme="@style/TheMovieDb.Theme.CollapseToolbar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             app:contentScrim="@color/imperiya_color_primary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
-            app:title="Movie Db"
             app:toolbarId="@id/toolbar">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -41,39 +41,50 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        app:layout_anchor="@id/appBarLayout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:tabTextColor="@color/imperiya_title"
+        app:tabSelectedTextColor="@color/imperiya_color_link"
+        app:tabIndicatorColor="@color/imperiya_color_link"
+        app:tabIndicatorFullWidth="true"
+        app:tabTextAppearance="@style/TheMovieDb.Style.Text.Title"
+        app:tabMode="scrollable">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cast"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Review"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="48dp"
         android:fillViewport="true"
         app:layout_anchor="@id/appBarLayout"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:background="@android:color/transparent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tabTextColor="@color/imperiya_title"
-                app:tabSelectedTextColor="@color/imperiya_color_link"
-                app:tabIndicatorColor="@color/imperiya_color_link"
-                app:tabIndicatorFullWidth="true"
-                app:tabTextAppearance="@style/TheMovieDb.Style.Text.Title"
-                app:tabMode="scrollable"/>
-
-            <androidx.viewpager2.widget.ViewPager2
+            <com.vlv.movie.ui.AutoMeasureViewPager
                 android:id="@+id/layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@id/tabs"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"/>
 
     </androidx.core.widget.NestedScrollView>
 
