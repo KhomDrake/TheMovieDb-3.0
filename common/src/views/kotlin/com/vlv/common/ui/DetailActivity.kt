@@ -1,16 +1,32 @@
 package com.vlv.common.ui
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.Toolbar
+import br.com.arch.toolkit.delegate.extraProvider
 import br.com.arch.toolkit.delegate.viewProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.vlv.common.R
+import kotlinx.parcelize.Parcelize
 import java.lang.ref.WeakReference
 import kotlin.math.abs
+
+@Parcelize
+class DetailObject(
+    val id: Int,
+    val posterPath: String?,
+    val backdropPath: String?,
+    val title: String,
+    val overview: String,
+    val adult: Boolean = false
+) : Parcelable
+
+const val DETAIL_OBJECT_EXTRA = "DETAIL_OBJECT_EXTRA"
+const val DETAIL_SHARED_ELEMENT = "poster"
 
 abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activity) {
 
@@ -20,6 +36,7 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
     protected val collapsing: CollapsingToolbarLayout by viewProvider(R.id.collapsing)
     protected val layout: AutoMeasureViewPager by viewProvider(R.id.layout)
     protected val appBar: AppBarLayout by viewProvider(R.id.app_bar_layout)
+    protected val objDetail: DetailObject? by extraProvider(DETAIL_OBJECT_EXTRA, null)
 
     protected abstract val texts: List<String>
 

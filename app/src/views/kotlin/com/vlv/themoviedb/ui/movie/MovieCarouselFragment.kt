@@ -12,11 +12,13 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.vlv.common.ui.DETAIL_SHARED_ELEMENT
+import com.vlv.common.ui.route.toMovieDetail
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateLoading
-import com.vlv.extensions.toMovieDetail
 import com.vlv.imperiya.ui.CarouselDecorator
+import com.vlv.movie.data.toDetailObject
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
@@ -50,14 +52,13 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
         recyclerView.adapter = MoviesCarouselAdapter { view, movie ->
-            val intent = requireContext().toMovieDetail()
-            intent.putExtra("MOVIE", movie)
+            val intent = requireContext().toMovieDetail(movie.toDetailObject())
             startActivity(
                 intent,
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
                     requireActivity(),
                     view,
-                    "poster"
+                    DETAIL_SHARED_ELEMENT
                 ).toBundle()
             )
         }
