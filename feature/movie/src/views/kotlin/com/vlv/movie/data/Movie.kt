@@ -1,6 +1,7 @@
 package com.vlv.movie.data
 
 import android.os.Parcelable
+import com.vlv.common.ui.DetailObject
 import com.vlv.network.data.movie.MovieResponse
 import kotlinx.parcelize.Parcelize
 
@@ -22,3 +23,11 @@ class Movie(
         movieResponse.overview
     )
 }
+
+fun DetailObject.toMovie() = Movie(
+    adult, backdropPath, posterPath, id, title, overview
+)
+
+fun Movie.toDetailObject() = DetailObject(
+    id, posterPath, backdropPath, title, overview, adult
+)

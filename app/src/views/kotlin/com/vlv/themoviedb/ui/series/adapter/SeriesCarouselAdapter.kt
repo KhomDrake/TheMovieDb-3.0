@@ -24,10 +24,16 @@ class SeriesItemDiff: ItemCallback<Series>() {
     }
 }
 
-class SeriesCarouselAdapter : ListAdapter<Series, SeriesViewHolder>(SeriesItemDiff()) {
+class SeriesCarouselAdapter(
+    private val onClick: (View, Series) -> Unit
+) : ListAdapter<Series, SeriesViewHolder>(SeriesItemDiff()) {
 
     override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        val series = currentList[position]
+        holder.bind(series)
+        holder.itemView.setOnClickListener {
+            onClick.invoke(holder.poster, series)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeriesViewHolder {
@@ -44,7 +50,7 @@ class SeriesCarouselAdapter : ListAdapter<Series, SeriesViewHolder>(SeriesItemDi
 
 class SeriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    private val poster: AppCompatImageView by viewProvider(R.id.poster)
+    val poster: AppCompatImageView by viewProvider(R.id.poster)
     private val title: AppCompatTextView by viewProvider(R.id.series_title)
 
     fun bind(series: Series) {

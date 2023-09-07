@@ -3,6 +3,7 @@ package com.vlv.themoviedb.ui.movie
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -11,11 +12,13 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.vlv.common.ui.DETAIL_SHARED_ELEMENT
+import com.vlv.common.ui.route.toMovieDetail
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateLoading
-import com.vlv.extensions.toDetail
 import com.vlv.imperiya.ui.CarouselDecorator
+import com.vlv.movie.data.toDetailObject
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
@@ -48,10 +51,16 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
-        recyclerView.adapter = MoviesCarouselAdapter {
-            val intent = requireContext().toDetail()
-            intent.putExtra("MOVIE", it)
-            startActivity(intent)
+        recyclerView.adapter = MoviesCarouselAdapter { view, movie ->
+            val intent = requireContext().toMovieDetail(movie.toDetailObject())
+            startActivity(
+                intent,
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    requireActivity(),
+                    view,
+                    DETAIL_SHARED_ELEMENT
+                ).toBundle()
+            )
         }
         recyclerView.addItemDecoration(carouselDecorator)
         indicator.attachToRecyclerView(recyclerView)
