@@ -6,4 +6,6 @@ import android.content.Intent
 fun Context.intentForAction(name: String) =
     Intent("$packageName.$name")
 
-fun Context.toDetail() = intentForAction("MOVIE_DETAIL")
+fun Context.toMovieDetail() = intentForAction("MOVIE_DETAIL")
+
+fun Context.toSeriesDetail() = intentForAction("SERIES_DETAIL")

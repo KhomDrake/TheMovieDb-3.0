@@ -1,8 +1,11 @@
 package com.vlv.themoviedb.ui.series
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -11,9 +14,11 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateLoading
+import com.vlv.extensions.toSeriesDetail
 import com.vlv.imperiya.ui.CarouselDecorator
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.series.adapter.SeriesCarouselAdapter
@@ -47,7 +52,16 @@ abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) 
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
-        recyclerView.adapter = SeriesCarouselAdapter()
+        recyclerView.adapter = SeriesCarouselAdapter { view, series ->
+            requireContext().startActivity(
+                requireContext().toSeriesDetail(),
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    requireActivity(),
+                    view,
+                    "poster"
+                ).toBundle()
+            )
+        }
         recyclerView.addItemDecoration(carouselDecorator)
         indicator.attachToRecyclerView(recyclerView)
         PagerSnapHelper().attachToRecyclerView(recyclerView)

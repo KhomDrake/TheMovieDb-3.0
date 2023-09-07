@@ -12,5 +12,18 @@
                 android:value="androidx.startup" />
         </provider>
 
+        <activity
+            android:name=".ui.detail.SeriesDetailActivity"
+            android:theme="@style/TheMovieDb.Theme.Collapse"
+            android:label=""
+            android:exported="false"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="${applicationId}.SERIES_DETAIL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>

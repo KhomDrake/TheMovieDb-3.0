@@ -1,4 +1,4 @@
-package com.vlv.movie.ui
+package com.vlv.common.ui
 
 import android.content.Context
 import android.util.AttributeSet

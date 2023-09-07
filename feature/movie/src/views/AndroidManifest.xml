@@ -13,7 +13,7 @@
 
         <activity
             android:theme="@style/TheMovieDb.Theme.Collapse"
-            android:name=".ui.detail.DetailActivity"
+            android:name=".ui.detail.MovieDetailActivity"
             android:label=""
             android:exported="false">
             <intent-filter>

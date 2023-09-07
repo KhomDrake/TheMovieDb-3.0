@@ -27,14 +27,14 @@ class MovieDiffUtil: DiffUtil.ItemCallback<Movie>() {
 }
 
 class MoviesCarouselAdapter(
-    private val onClickMovie: (Movie) -> Unit = {}
+    private val onClickMovie: (View, Movie) -> Unit = { _, _ -> }
 ) : ListAdapter<Movie, MovieCarouselViewHolder>(MovieDiffUtil()) {
 
     override fun onBindViewHolder(holder: MovieCarouselViewHolder, position: Int) {
         val movie = currentList[position]
         holder.bind(movie)
         holder.itemView.setOnClickListener {
-            onClickMovie.invoke(movie)
+            onClickMovie.invoke(holder.poster, movie)
         }
     }
 
@@ -50,7 +50,7 @@ class MoviesCarouselAdapter(
 
 class MovieCarouselViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-    private val poster: AppCompatImageView by viewProvider(R.id.poster)
+    val poster: AppCompatImageView by viewProvider(R.id.poster)
     private val title: AppCompatTextView by viewProvider(R.id.movie_title)
 
     fun bind(movie: Movie) {
