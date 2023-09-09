@@ -1,12 +1,8 @@
-package com.vlv.movie.ui
+package com.vlv.movie.ui.trendingnow
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.movie.R
 import com.vlv.movie.ui.adapter.MoviePaginationAdapter

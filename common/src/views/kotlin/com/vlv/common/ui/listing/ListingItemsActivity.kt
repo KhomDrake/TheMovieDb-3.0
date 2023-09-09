@@ -24,8 +24,8 @@ abstract class ListingItemsActivity : AppCompatActivity(R.layout.common_listing_
             finish()
         }
 
-        toolbar.title = getString(title)
-
+        val titleText = getString(title)
+        toolbar.title = titleText
         configRecyclerView()
     }
 

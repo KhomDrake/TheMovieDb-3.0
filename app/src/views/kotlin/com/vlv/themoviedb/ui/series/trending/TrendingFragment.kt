@@ -2,6 +2,8 @@ package com.vlv.themoviedb.ui.series.trending
 
 import android.os.Bundle
 import android.view.View
+import com.vlv.common.ui.route.toSeriesAiringToday
+import com.vlv.common.ui.route.toSeriesTrendingNow
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.loadingState
@@ -38,6 +40,10 @@ class TrendingFragment : SeriesCarouselFragment() {
 
             }
         }
+    }
+
+    override fun onClickSeeAll() {
+        startActivity(requireContext().toSeriesTrendingNow())
     }
 
 }

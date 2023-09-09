@@ -2,6 +2,7 @@ package com.vlv.themoviedb.ui.movie.nowplaying
 
 import android.os.Bundle
 import android.view.View
+import com.vlv.common.ui.route.toMovieNowPlaying
 import com.vlv.extensions.*
 import com.vlv.imperiya.ui.CarouselDecorator
 import com.vlv.themoviedb.R
@@ -30,6 +31,12 @@ class NowPlayingFragment : MovieCarouselFragment() {
                 viewStateMachine.loadingState()
             }
         }
+    }
+
+    override fun onClickSeeAll() {
+        startActivity(
+            requireContext().toMovieNowPlaying()
+        )
     }
 
 }
