@@ -10,4 +10,7 @@
     <string name="movie_text_countries">Countries</string>
     <string name="movie_text_spoken_languages">Spoken languages</string>
     <string name="movie_text_release_status">Release status</string>
+
+    <string name="movie_title_trending_now">Trending Now</string>
+    <string name="movie_title_now_playing">Now Playing</string>
 </resources>

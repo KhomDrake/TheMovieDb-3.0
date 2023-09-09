@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="series_airing_today_title">Airing today</string>
+    <string name="series_trending_title">Trending now</string>
+    <string name="series_top_rated_title">Top rated</string>
+    <string name="series_on_the_air_title">On the air</string>
+    <string name="series_popular_title">Popular</string>
+</resources>

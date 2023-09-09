@@ -23,6 +23,20 @@
                 <action android:name="${applicationId}.SERIES_DETAIL" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".ui.listing.ListingSeriesActivity"
+            android:theme="@style/TheMovieDb.Theme"
+            android:exported="false"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="${applicationId}.SERIES_LISTING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
         </activity>
 
     </application>

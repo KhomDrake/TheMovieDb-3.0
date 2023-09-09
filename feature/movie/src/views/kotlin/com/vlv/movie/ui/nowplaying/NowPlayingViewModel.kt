@@ -1,4 +1,4 @@
-package com.vlv.movie.ui
+package com.vlv.movie.ui.nowplaying
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,7 @@ import com.vlv.network.repository.MovieRepository
 import com.vlv.network.repository.TimeWindow
 import kotlinx.coroutines.flow.map
 
-class TrendingNowViewModel(private val repository: MovieRepository) : ViewModel() {
+class NowPlayingViewModel(private val repository: MovieRepository) : ViewModel() {
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,
@@ -19,10 +19,7 @@ class TrendingNowViewModel(private val repository: MovieRepository) : ViewModel(
         initialLoadSize = 20
     )
 
-    fun trendingNow() = repository.trendingMoviesPaging(
-        pagingConfig,
-        TimeWindow.DAY
-    )
+    fun nowPlaying() = repository.nowPlayingPaging(pagingConfig)
         .map {
             it.map { movieResponse ->
                 Movie(movieResponse)

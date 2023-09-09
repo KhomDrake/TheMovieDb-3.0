@@ -2,6 +2,7 @@ package com.vlv.themoviedb.ui.series.airingtoday
 
 import android.os.Bundle
 import android.view.View
+import com.vlv.common.ui.route.toSeriesAiringToday
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.loadingState
@@ -32,6 +33,10 @@ class AiringTodayFragment : SeriesCarouselFragment() {
 
             }
         }
+    }
+
+    override fun onClickSeeAll() {
+        startActivity(requireContext().toSeriesAiringToday())
     }
 
 }

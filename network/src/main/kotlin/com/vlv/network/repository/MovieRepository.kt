@@ -39,6 +39,19 @@ class MovieRepository(private val api: MovieApi) {
         ).flow
     }
 
+    fun nowPlayingPaging(
+        config: PagingConfig
+    ) : Flow<PagingData<MovieResponse>> {
+        return Pager(
+            config = config,
+            pagingSourceFactory = {
+                MoviePagingSource { page ->
+                    api.nowPlaying("en", page)
+                }
+            }
+        ).flow
+    }
+
     fun search(
         config: PagingConfig,
         query: String
