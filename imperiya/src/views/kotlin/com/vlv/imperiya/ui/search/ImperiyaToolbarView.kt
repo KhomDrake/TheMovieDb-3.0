@@ -21,7 +21,7 @@ class ImperiyaToolbarView(context: Context, attrs: AttributeSet?) : Toolbar(cont
         contentInsetStartWithNavigation = 0
         isFocusableInTouchMode = false
 
-        setTitleTextAppearance(context, R.style.TheMovieDb_Style_Text_Title)
+        setTitleTextAppearance(context, R.style.Imperiya_Style_Text_Title)
         setupWithAttributes(context, attrs)
     }
 

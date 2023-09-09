@@ -4,7 +4,7 @@
     <application>
 
         <activity
-            android:theme="@style/TheMovieDb.Theme"
+            android:theme="@style/Imperiya.Theme"
             android:name=".ui.trendingnow.TrendingNowActivity"
             android:exported="false">
             <intent-filter>
@@ -14,7 +14,7 @@
         </activity>
 
         <activity
-            android:theme="@style/TheMovieDb.Theme"
+            android:theme="@style/Imperiya.Theme"
             android:name=".ui.nowplaying.NowPlayingActivity"
             android:exported="false">
             <intent-filter>
@@ -24,11 +24,11 @@
         </activity>
 
         <activity
-            android:theme="@style/TheMovieDb.Theme"
+            android:theme="@style/Imperiya.Theme"
             android:name=".ui.search.SearchMovieActivity" />
 
         <activity
-            android:theme="@style/TheMovieDb.Theme.Collapse"
+            android:theme="@style/Imperiya.Theme.Collapse"
             android:name=".ui.detail.MovieDetailActivity"
             android:label=""
             android:exported="false">

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:padding="16dp"
         android:layout_height="wrap_content"
-        style="@style/TheMovieDb.Style.Text.Title"
+        style="@style/Imperiya.Style.Text.Title"
         tools:text="Testing"
         app:layout_constraintTop_toTopOf="parent"/>
 
