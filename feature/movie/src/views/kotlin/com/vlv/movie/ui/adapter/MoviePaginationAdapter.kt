@@ -26,6 +26,8 @@ class MovieDiffUtil: ItemCallback<Movie>() {
 
 }
 
+const val VIEW_TYPE_MOVIE = 42
+
 class MoviePaginationAdapter : PagingDataAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffUtil()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -36,6 +38,11 @@ class MoviePaginationAdapter : PagingDataAdapter<Movie, RecyclerView.ViewHolder>
             }
             else -> Unit
         }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if(itemCount == position || peek(position) == null) super.getItemViewType(position)
+            else VIEW_TYPE_MOVIE
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

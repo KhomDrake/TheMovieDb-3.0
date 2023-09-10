@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         tools:text="Angourie Rice"
-        style="@style/TheMovieDb.Style.Text.Subtitle.Bold"
+        style="@style/Imperiya.Style.Text.Subtitle.Bold"
         app:layout_constraintTop_toTopOf="@id/avatar"
         app:layout_constraintStart_toEndOf="@id/avatar"/>
 
@@ -39,7 +39,7 @@
         android:layout_marginTop="8dp"
         tools:text="Halley Quinn"
         android:textColor="@color/imperiya_sub_title2"
-        style="@style/TheMovieDb.Style.Text.Subtitle"
+        style="@style/Imperiya.Style.Text.Subtitle"
         app:layout_constraintTop_toBottomOf="@id/person_name"
         app:layout_constraintStart_toEndOf="@id/avatar"/>
 

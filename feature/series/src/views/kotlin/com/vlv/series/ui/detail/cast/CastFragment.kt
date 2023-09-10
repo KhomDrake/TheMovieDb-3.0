@@ -9,7 +9,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.series.R
 import com.vlv.series.data.Series
 
-class CastFragment : Fragment(R.layout.fragment_about) {
+class CastFragment : Fragment(R.layout.series_fragment_about) {
 
     protected val title: AppCompatTextView by viewProvider(R.id.title)
 

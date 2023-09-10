@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:name=".TheMovieDb"
-        android:theme="@style/TheMovieDb.Theme"
+        android:theme="@style/Imperiya.Theme"
         tools:targetApi="31">
         <activity
             android:name=".IntroActivity"

@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="TheMovieDb"/>
+    <style name="Imperiya"/>
 
-    <style name="TheMovieDb.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Imperiya.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/imperiya_color_primary</item>
         <item name="colorOnPrimary">@color/imperiya_body</item>
         <!-- Secondary brand color. -->
@@ -14,24 +14,24 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="TheMovieDb.Theme.BottomNavigation">
+    <style name="Imperiya.Theme.BottomNavigation">
         <item name="colorPrimary">@color/imperiya_color_icon</item>
         <item name="colorOnSurface">@color/imperiya_color_icon_disable</item>
     </style>
 
-    <style name="TheMovieDb.Theme.Collapse">
+    <style name="Imperiya.Theme.Collapse">
         <item name="colorPrimary">@color/imperiya_color_background</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="TheMovieDb.Theme.CollapseToolbar" parent="ThemeOverlay.AppCompat.ActionBar">
+    <style name="Imperiya.Theme.CollapseToolbar" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:statusBarColor">@color/imperiya_color_primary</item>
     </style>
 
-    <style name="TheMovieDb.Style"/>
+    <style name="Imperiya.Style"/>
 
-    <style name="TheMovieDb.Style.BottomNavigation">
-        <item name="theme">@style/TheMovieDb.Theme.BottomNavigation</item>
+    <style name="Imperiya.Style.BottomNavigation">
+        <item name="theme">@style/Imperiya.Theme.BottomNavigation</item>
         <item name="backgroundTint">@color/imperiya_color_background_tertiary</item>
     </style>
 </resources>

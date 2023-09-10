@@ -14,7 +14,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp"
         tools:text="When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth."
-        style="@style/TheMovieDb.Style.Text.Paragraph"
+        style="@style/Imperiya.Style.Text.Paragraph"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -24,7 +24,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:text="Genres:"
-        style="@style/TheMovieDb.Style.Text.Title" />
+        style="@style/Imperiya.Style.Text.Title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/genres"
@@ -47,7 +47,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:text="Information:"
-        style="@style/TheMovieDb.Style.Text.Title" />
+        style="@style/Imperiya.Style.Text.Title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/information"
@@ -71,7 +71,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:text="Videos:"
-        style="@style/TheMovieDb.Style.Text.Title" />
+        style="@style/Imperiya.Style.Text.Title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/videos"

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:theme="@style/TheMovieDb.Theme.CollapseToolbar">
+        android:theme="@style/Imperiya.Theme.CollapseToolbar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing"
@@ -54,7 +54,7 @@
         app:tabSelectedTextColor="@color/imperiya_color_link"
         app:tabIndicatorColor="@color/imperiya_color_link"
         app:tabIndicatorFullWidth="true"
-        app:tabTextAppearance="@style/TheMovieDb.Style.Text.Title"
+        app:tabTextAppearance="@style/Imperiya.Style.Text.Title"
         app:tabMode="scrollable"/>
 
     <androidx.core.widget.NestedScrollView

@@ -2,13 +2,13 @@ package com.vlv.series.ui.listing
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.data.series.SeriesListType
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.common.ui.route.SERIES_LISTING_TYPE_EXTRA
 import com.vlv.series.R
-import com.vlv.series.ui.adapter.SeriesPaginationAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -22,8 +22,13 @@ class ListingSeriesActivity : ListingItemsActivity() {
 
     private val viewModel: ListingSeriesViewModel by viewModel()
 
-    override val adapter: RecyclerView.Adapter<*>
-        get() = SeriesPaginationAdapter()
+    override val adapter: PagingDataAdapter<*, *>
+        get() = pagingAdapter
+
+    private val pagingAdapter = SeriesPaginationAdapter()
+
+    override val loadingLayout: Int
+        get() = R.layout.series_listing_series_loading
 
     override val title: Int
         get() = when(type) {
@@ -39,10 +44,34 @@ class ListingSeriesActivity : ListingItemsActivity() {
         lifecycleScope.launch {
             viewModel.loadingType(type).distinctUntilChanged().apply {
                 collectLatest {
-                    (items.adapter as? SeriesPaginationAdapter)?.submitData(it)
+                    pagingAdapter.submitData(it)
                 }
             }
         }
+    }
+
+    override fun createLayoutManager() = GridLayoutManager(this, 2).apply {
+        spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                val viewType = pagingAdapter.getItemViewType(position)
+
+                return if (viewType == VIEW_TYPE_SERIES) 1 else 2
+            }
+
+        }
+    }
+
+    override fun configWarningView() {
+        warningView.setTitle("WarningTitle")
+        warningView.setBody("WarningBody")
+        warningView.setButtonText("WarningButton")
+        warningView.setOnTryAgain {
+            pagingAdapter.retry()
+        }
+    }
+
+    override fun loaderAdapter() = SeriesLoaderAdapter {
+        pagingAdapter.retry()
     }
 
 }

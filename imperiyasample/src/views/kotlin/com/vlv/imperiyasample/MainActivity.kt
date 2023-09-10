@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.imperiyasample.ui.error.WarningSampleActivity
 import com.vlv.imperiyasample.ui.search.SearchSampleActivity
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -23,6 +24,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         components.adapter = ComponentsAdapter(listOf(
             Component(
                 "Search", SearchSampleActivity::class
+            ),
+            Component(
+                "Warning", WarningSampleActivity::class
             )
         ))
 

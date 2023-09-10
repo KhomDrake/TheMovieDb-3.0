@@ -14,7 +14,7 @@
 
         <activity
             android:name=".ui.detail.SeriesDetailActivity"
-            android:theme="@style/TheMovieDb.Theme.Collapse"
+            android:theme="@style/Imperiya.Theme.Collapse"
             android:label=""
             android:exported="false"
             android:screenOrientation="portrait">
@@ -28,7 +28,7 @@
 
         <activity
             android:name=".ui.listing.ListingSeriesActivity"
-            android:theme="@style/TheMovieDb.Theme"
+            android:theme="@style/Imperiya.Theme"
             android:exported="false"
             android:screenOrientation="portrait">
 
