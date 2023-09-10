@@ -2,7 +2,7 @@ package com.vlv.themoviedb.ui.movie.trending
 
 import android.os.Bundle
 import android.view.View
-import com.vlv.common.ui.route.toMovieTrendingNow
+import com.vlv.common.ui.route.toMovieTrending
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.loadingState
@@ -41,7 +41,7 @@ class TrendingNowFragment : MovieCarouselFragment() {
 
     override fun onClickSeeAll() {
         startActivity(
-            requireContext().toMovieTrendingNow()
+            requireContext().toMovieTrending()
         )
     }
 

@@ -11,9 +11,7 @@ object OkHttpFactory {
             interceptorFactory.interceptors().forEach {
                 addInterceptor(it)
             }
-            addInterceptor(HttpLoggingInterceptor().apply {
-                setLevel(HttpLoggingInterceptor.Level.BODY)
-            })
+            addInterceptor(HttpLoggingInterceptor())
             connectTimeout(60, TimeUnit.SECONDS)
             callTimeout(60, TimeUnit.SECONDS)
             readTimeout(60, TimeUnit.SECONDS)

@@ -41,6 +41,30 @@ interface MovieApi {
         page: Int
     ) : MoviesResponse
 
+    @GET("movie/popular")
+    suspend fun popular(
+        @Query("language")
+        language: String,
+        @Query("page")
+        page: Int
+    ) : MoviesResponse
+
+    @GET("movie/top_rated")
+    suspend fun topRated(
+        @Query("language")
+        language: String,
+        @Query("page")
+        page: Int
+    ) : MoviesResponse
+
+    @GET("movie/upcoming")
+    suspend fun upcoming(
+        @Query("language")
+        language: String,
+        @Query("page")
+        page: Int
+    ) : MoviesResponse
+
     @GET("trending/movie/{time_window}")
     suspend fun trending(
         @Path("time_window") timeWindow: String,

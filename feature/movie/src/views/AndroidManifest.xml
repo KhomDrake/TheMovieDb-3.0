@@ -5,20 +5,10 @@
 
         <activity
             android:theme="@style/Imperiya.Theme"
-            android:name=".ui.trendingnow.TrendingNowActivity"
+            android:name=".ui.listing.ListingMovieActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="${applicationId}.MOVIE_TRENDING_NOW" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:theme="@style/Imperiya.Theme"
-            android:name=".ui.nowplaying.NowPlayingActivity"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="${applicationId}.MOVIE_NOW_PLAYING" />
+                <action android:name="${applicationId}.MOVIE_LISTING" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

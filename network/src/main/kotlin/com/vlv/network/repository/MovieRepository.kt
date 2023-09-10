@@ -25,45 +25,56 @@ class MovieRepository(private val api: MovieApi) {
         )
     }
 
-    fun trendingMoviesPaging(
+    private fun pagingDefault(
         config: PagingConfig,
-        timeWindow: TimeWindow
-    ) : Flow<PagingData<MovieResponse>> {
+        func: suspend (page: Int) -> MoviesResponse
+    ): Flow<PagingData<MovieResponse>> {
         return Pager(
             config = config,
             pagingSourceFactory = {
                 MoviePagingSource { page ->
-                    api.trending(timeWindow.name.lowercase(), "en", page)
+                    func.invoke(page)
                 }
             }
         ).flow
     }
 
+    fun trendingMoviesPaging(
+        config: PagingConfig,
+        timeWindow: TimeWindow
+    ) = pagingDefault(config) { page ->
+        api.trending(timeWindow.name.lowercase(), "en", page)
+    }
+
     fun nowPlayingPaging(
         config: PagingConfig
-    ) : Flow<PagingData<MovieResponse>> {
-        return Pager(
-            config = config,
-            pagingSourceFactory = {
-                MoviePagingSource { page ->
-                    api.nowPlaying("en", page)
-                }
-            }
-        ).flow
+    ) = pagingDefault(config) { page ->
+        api.nowPlaying("en", page)
+    }
+
+    fun topRatedPaging(
+        config: PagingConfig
+    ) = pagingDefault(config) { page ->
+        api.topRated("en", page)
+    }
+
+    fun popularPaging(
+        config: PagingConfig
+    ) = pagingDefault(config) { page ->
+        api.popular("en", page)
+    }
+
+    fun upcomingPaging(
+        config: PagingConfig
+    ) = pagingDefault(config) { page ->
+        api.upcoming("en", page)
     }
 
     fun search(
         config: PagingConfig,
         query: String
-    ) : Flow<PagingData<MovieResponse>> {
-        return Pager(
-            config = config,
-            pagingSourceFactory = {
-                MoviePagingSource { page ->
-                    api.search( "en", query, page)
-                }
-            }
-        ).flow
+    ) = pagingDefault(config) { page ->
+        api.search( "en", query, page)
     }
 
     suspend fun nowPlaying() : MoviesResponse {

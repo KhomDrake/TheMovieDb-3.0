@@ -1,48 +1,47 @@
-package com.vlv.series.ui.listing
+package com.vlv.movie.ui.listing
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import br.com.arch.toolkit.delegate.extraProvider
-import com.vlv.common.data.series.SeriesListType
+import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.ui.listing.ListingItemsActivity
-import com.vlv.common.ui.route.SERIES_LISTING_TYPE_EXTRA
-import com.vlv.series.R
-import com.vlv.series.ui.adapter.SeriesPaginationAdapter
+import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
+import com.vlv.movie.R
+import com.vlv.movie.ui.adapter.MoviePaginationAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ListingSeriesActivity : ListingItemsActivity() {
+class ListingMovieActivity : ListingItemsActivity() {
 
-    private val type: SeriesListType by extraProvider(
-        SERIES_LISTING_TYPE_EXTRA, default = SeriesListType.TRENDING
-    )
+    private val viewModel: ListingMovieViewModel by viewModel()
 
-    private val viewModel: ListingSeriesViewModel by viewModel()
+    private val type: MovieListType by
+        extraProvider(MOVIES_LISTING_TYPE_EXTRA, MovieListType.TRENDING)
 
     override val adapter: PagingDataAdapter<*, *>
         get() = pagingAdapter
 
-    private val pagingAdapter = SeriesPaginationAdapter()
-
     override val loadingLayout: Int
-        get() = R.layout.series_listing_series_loading
+        get() = R.layout.movie_listing_movie_loading
+
+    private val pagingAdapter = MoviePaginationAdapter()
 
     override val title: Int
         get() = when(type) {
-            SeriesListType.POPULAR -> R.string.series_popular_title
-            SeriesListType.TRENDING -> R.string.series_trending_title
-            SeriesListType.AIRING_TODAY -> R.string.series_airing_today_title
-            SeriesListType.TOP_RATED -> R.string.series_top_rated_title
-            SeriesListType.ON_THE_AIR -> R.string.series_on_the_air_title
+            MovieListType.TRENDING -> R.string.movie_title_trending_now
+            MovieListType.POPULAR -> R.string.movie_title_popular
+            MovieListType.TOP_RATED -> R.string.movie_title_top_rated
+            MovieListType.UPCOMING -> R.string.movie_title_upcoming
+            MovieListType.NOW_PLAYING -> R.string.movie_title_now_playing
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launch {
-            viewModel.loadingType(type).distinctUntilChanged().apply {
+            viewModel.loadMoviesByType(type).distinctUntilChanged().apply {
                 collectLatest {
                     pagingAdapter.submitData(it)
                 }
@@ -59,7 +58,7 @@ class ListingSeriesActivity : ListingItemsActivity() {
         }
     }
 
-    override fun loaderAdapter() = SeriesLoaderAdapter {
+    override fun loaderAdapter() = MovieLoaderAdapter {
         pagingAdapter.retry()
     }
 

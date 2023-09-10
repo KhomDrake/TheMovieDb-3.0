@@ -1,26 +1,29 @@
 package com.vlv.common.ui.adapter
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.vlv.extensions.inflate
 
-class LoaderAdapter(
+abstract class LoaderAdapter(
     @LayoutRes
     private val loadingLayout: Int,
-    private val createErrorViewHolder: (ViewGroup) -> ErrorViewHolder,
     private val retry: () -> Unit
 ) : LoadStateAdapter<LoaderViewHolder>() {
+
     override fun onBindViewHolder(holder: LoaderViewHolder, loadState: LoadState) {
         when(holder) {
             is ErrorViewHolder -> {
                 holder.bind(retry)
             }
+            else -> Unit
         }
     }
+
+    abstract fun createErrorViewHolder(parent: ViewGroup): ErrorViewHolder
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -28,14 +31,9 @@ class LoaderAdapter(
     ): LoaderViewHolder {
         return when(loadState) {
             is LoadState.Error -> {
-                createErrorViewHolder.invoke(parent)
+                createErrorViewHolder(parent)
             }
-            else -> {
-                val view = LayoutInflater.from(parent.context).inflate(
-                    loadingLayout, parent, false
-                )
-                LoadingViewHolder(view)
-            }
+            else -> LoadingViewHolder(parent.inflate(loadingLayout))
         }
     }
 

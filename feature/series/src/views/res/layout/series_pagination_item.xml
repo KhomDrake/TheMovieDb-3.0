@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/backdrop"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/series_pagination_item_height"
         android:outlineProvider="background"
         android:background="@drawable/rounded_background"
         android:scaleType="center"/>

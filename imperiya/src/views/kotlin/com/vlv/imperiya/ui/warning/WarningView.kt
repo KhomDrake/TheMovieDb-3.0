@@ -3,6 +3,7 @@ package com.vlv.imperiya.ui.warning
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -33,22 +34,40 @@ class WarningView : ConstraintLayout {
     private fun setupWithAttributes(context: Context, set: AttributeSet?) {
         val attrs = context.obtainStyledAttributes(set, R.styleable.WarningView)
 
-        if(attrs.hasValue(R.styleable.WarningView_warning_title)) {
-            val titleText = attrs.getString(R.styleable.WarningView_warning_title)
-            title.text = titleText
-        }
-
-        if(attrs.hasValue(R.styleable.WarningView_warning_body)) {
-            val bodyText = attrs.getString(R.styleable.WarningView_warning_body)
-            body.text = bodyText
-        }
-
-        if(attrs.hasValue(R.styleable.WarningView_warning_button_try_again)) {
-            val tryAgainText = attrs.getString(R.styleable.WarningView_warning_button_try_again)
-            tryAgainButton.text = tryAgainText
-        }
+        setTitle(attrs.getString(R.styleable.WarningView_warning_title))
+        setBody(attrs.getString(R.styleable.WarningView_warning_body))
+        setButtonText(attrs.getString(R.styleable.WarningView_warning_button_try_again))
 
         attrs.recycle()
     }
+
+    fun setTitle(@StringRes text: Int) {
+        val newText = resources.getString(text)
+        setTitle(newText)
+    }
+
+    fun setTitle(text: String?) {
+        title.text = text
+    }
+
+    fun setBody(@StringRes text: Int) {
+        val newText = resources.getString(text)
+        setBody(newText)
+    }
+
+    fun setBody(text: String?) {
+        body.text = text
+    }
+
+    fun setButtonText(@StringRes text: Int) {
+        val newText = resources.getString(text)
+        setButtonText(newText)
+    }
+
+    fun setButtonText(text: String?) {
+        tryAgainButton.text = text
+    }
+
+
 
 }
