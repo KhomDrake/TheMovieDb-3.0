@@ -1,4 +1,4 @@
-package com.vlv.series.ui.adapter
+package com.vlv.series.ui.listing
 
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +26,8 @@ class SeriesDiffUtil: ItemCallback<Series>() {
 
 }
 
+const val VIEW_TYPE_SERIES = 43
+
 class SeriesPaginationAdapter: PagingDataAdapter<Series, RecyclerView.ViewHolder>(SeriesDiffUtil()) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
@@ -35,6 +37,11 @@ class SeriesPaginationAdapter: PagingDataAdapter<Series, RecyclerView.ViewHolder
             }
             else -> Unit
         }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if(itemCount == position || peek(position) == null) super.getItemViewType(position)
+        else VIEW_TYPE_SERIES
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

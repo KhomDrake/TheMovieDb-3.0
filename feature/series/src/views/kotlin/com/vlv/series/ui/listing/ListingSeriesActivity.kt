@@ -3,12 +3,12 @@ package com.vlv.series.ui.listing
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.data.series.SeriesListType
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.common.ui.route.SERIES_LISTING_TYPE_EXTRA
 import com.vlv.series.R
-import com.vlv.series.ui.adapter.SeriesPaginationAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -47,6 +47,17 @@ class ListingSeriesActivity : ListingItemsActivity() {
                     pagingAdapter.submitData(it)
                 }
             }
+        }
+    }
+
+    override fun createLayoutManager() = GridLayoutManager(this, 2).apply {
+        spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                val viewType = pagingAdapter.getItemViewType(position)
+
+                return if (viewType == VIEW_TYPE_SERIES) 1 else 2
+            }
+
         }
     }
 

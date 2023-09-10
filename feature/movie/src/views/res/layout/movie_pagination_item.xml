@@ -12,7 +12,7 @@
         android:layout_height="@dimen/movie_pagination_item_height"
         android:outlineProvider="background"
         android:background="@drawable/rounded_background"
-        android:scaleType="center"/>
+        android:scaleType="centerCrop"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/movie_title"

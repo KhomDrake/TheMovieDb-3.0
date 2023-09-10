@@ -8,6 +8,9 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.vlv.extensions.inflate
 
+const val VIEW_TYPE_ERROR = 2342
+const val VIEW_TYPE_LOADING = 2343
+
 abstract class LoaderAdapter(
     @LayoutRes
     private val loadingLayout: Int,
@@ -20,6 +23,13 @@ abstract class LoaderAdapter(
                 holder.bind(retry)
             }
             else -> Unit
+        }
+    }
+
+    override fun getStateViewType(loadState: LoadState): Int {
+        return when(loadState) {
+            is LoadState.Error -> VIEW_TYPE_ERROR
+            else -> VIEW_TYPE_LOADING
         }
     }
 

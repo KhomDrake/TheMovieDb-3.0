@@ -3,12 +3,14 @@ package com.vlv.movie.ui.listing
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
 import com.vlv.movie.R
 import com.vlv.movie.ui.adapter.MoviePaginationAdapter
+import com.vlv.movie.ui.adapter.VIEW_TYPE_MOVIE
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -46,6 +48,17 @@ class ListingMovieActivity : ListingItemsActivity() {
                     pagingAdapter.submitData(it)
                 }
             }
+        }
+    }
+
+    override fun createLayoutManager() = GridLayoutManager(this, 2).apply {
+        spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                val viewType = pagingAdapter.getItemViewType(position)
+
+                return if (viewType == VIEW_TYPE_MOVIE) 1 else 2
+            }
+
         }
     }
 
