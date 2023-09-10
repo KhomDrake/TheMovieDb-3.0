@@ -12,8 +12,8 @@ class MovieDetailResponse(
     val budget: Int,
     @Json(name = "homepage")
     val homePage: String,
-    val revenue: String,
-    val runtime: String,
+    val revenue: Int,
+    val runtime: Int,
     val genres: List<GenreResponse>,
     val video: Boolean,
     @Json(name = "vote_average")
