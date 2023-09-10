@@ -28,12 +28,18 @@ class MovieDiffUtil: ItemCallback<Movie>() {
 
 const val VIEW_TYPE_MOVIE = 42
 
-class MoviePaginationAdapter : PagingDataAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffUtil()) {
+class MoviePaginationAdapter(
+    private val onClickListener: (Movie, View) -> Unit
+)
+    : PagingDataAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffUtil()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is MovieViewHolder -> {
                 val data = getItem(position) ?: return
+                holder.backdrop.setOnClickListener {
+                    onClickListener.invoke(data, it)
+                }
                 holder.bind(data)
             }
             else -> Unit
@@ -55,7 +61,7 @@ class MoviePaginationAdapter : PagingDataAdapter<Movie, RecyclerView.ViewHolder>
 
 class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    private val backdrop: AppCompatImageView by viewProvider(R.id.backdrop)
+    val backdrop: AppCompatImageView by viewProvider(R.id.backdrop)
     private val title: AppCompatTextView by viewProvider(R.id.movie_title)
 
     fun bind(movie: Movie) {

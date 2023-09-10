@@ -1,6 +1,5 @@
 package com.vlv.movie.ui.detail.review.adapter
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
@@ -10,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
+import com.vlv.extensions.inflate
 import com.vlv.extensions.toUrlMovieDb
 import com.vlv.movie.R
 import com.vlv.movie.data.Review
@@ -24,20 +24,53 @@ class ReviewDiffUtil: DiffUtil.ItemCallback<Review>() {
     }
 }
 
-class ReviewAdapter: ListAdapter<Review, ReviewViewHolder>(ReviewDiffUtil()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
-        return ReviewViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.movie_review_item,
-                parent,
-                false
-            )
-        )
+private const val VIEW_TYPE_REVIEW_TITLE = 0
+private const val VIEW_TYPE_REVIEW_ITEM = 1
+
+class ReviewAdapter: ListAdapter<Review, RecyclerView.ViewHolder>(ReviewDiffUtil()) {
+
+    override fun getItemViewType(position: Int): Int {
+        return when(position) {
+            0 -> VIEW_TYPE_REVIEW_TITLE
+            else -> VIEW_TYPE_REVIEW_ITEM
+        }
     }
 
-    override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
-        holder.bind(currentList[position])
+    override fun getItemCount(): Int {
+        val itemCount = super.getItemCount()
+        return if(itemCount == 0) itemCount else super.getItemCount() + 1
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when(viewType) {
+            VIEW_TYPE_REVIEW_TITLE -> ReviewTitleViewHolder(
+                parent.inflate(R.layout.movie_title_item)
+            )
+            else -> ReviewViewHolder(
+                parent.inflate(R.layout.movie_review_item)
+            )
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(holder) {
+            is ReviewViewHolder -> {
+                holder.bind(currentList[position - 1])
+            }
+            is ReviewTitleViewHolder -> {
+                holder.bind(currentList.size)
+            }
+            else -> Unit
+        }
+    }
+}
+
+class ReviewTitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    fun bind(viewCount: Int) {
+        (itemView as? AppCompatTextView)?.text = "$viewCount Reviews"
+    }
+
 }
 
 class ReviewViewHolder(view: View) : RecyclerView.ViewHolder(view) {

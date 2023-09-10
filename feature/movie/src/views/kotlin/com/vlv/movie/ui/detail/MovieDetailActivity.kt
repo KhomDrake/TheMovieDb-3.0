@@ -3,6 +3,7 @@ package com.vlv.movie.ui.detail
 import android.os.Bundle
 import coil.load
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.toUrlMovieDb
 import com.vlv.movie.data.toMovie
@@ -26,9 +27,11 @@ class MovieDetailActivity : DetailActivity() {
             }
         }
 
-        val adapter = DetailAdapter(texts, movie, supportFragmentManager)
+        val adapter = DetailAdapter(texts, movie, this)
         layout.adapter = adapter
-        tabs.setupWithViewPager(layout)
+        TabLayoutMediator(tabs, layout) { tab, position ->
+            tab.text = texts[position]
+        }.attach()
 
         collapsing.title = movie.title
     }

@@ -12,7 +12,6 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.vlv.common.ui.DETAIL_SHARED_ELEMENT
 import com.vlv.common.ui.route.toSeriesDetail
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
@@ -20,6 +19,7 @@ import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.CarouselDecorator
 import com.vlv.series.data.toDetailObject
 import com.vlv.themoviedb.R
+import com.vlv.common.R as RCommon
 import com.vlv.themoviedb.ui.series.adapter.SeriesCarouselAdapter
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
 
@@ -57,7 +57,7 @@ abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) 
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
                     requireActivity(),
                     view,
-                    DETAIL_SHARED_ELEMENT
+                    getString(RCommon.string.common_poster_transition_name)
                 ).toBundle()
             )
         }

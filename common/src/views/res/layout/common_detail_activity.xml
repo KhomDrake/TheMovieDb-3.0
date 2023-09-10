@@ -57,19 +57,12 @@
         app:tabTextAppearance="@style/Imperiya.Style.Text.Title"
         app:tabMode="scrollable"/>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="48dp"
-        android:fillViewport="true"
         app:layout_anchor="@id/app_bar_layout"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <com.vlv.common.ui.AutoMeasureViewPager
-            android:id="@+id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </androidx.core.widget.NestedScrollView>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

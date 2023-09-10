@@ -5,6 +5,7 @@ import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.Toolbar
+import androidx.viewpager2.widget.ViewPager2
 import br.com.arch.toolkit.delegate.extraProvider
 import br.com.arch.toolkit.delegate.viewProvider
 import com.google.android.material.appbar.AppBarLayout
@@ -26,7 +27,6 @@ class DetailObject(
 ) : Parcelable
 
 const val DETAIL_OBJECT_EXTRA = "DETAIL_OBJECT_EXTRA"
-const val DETAIL_SHARED_ELEMENT = "poster"
 
 abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activity) {
 
@@ -34,7 +34,7 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
     protected val toolbar: Toolbar by viewProvider(R.id.toolbar)
     protected val backdrop: AppCompatImageView by viewProvider(R.id.path)
     protected val collapsing: CollapsingToolbarLayout by viewProvider(R.id.collapsing)
-    protected val layout: AutoMeasureViewPager by viewProvider(R.id.layout)
+    protected val layout: ViewPager2 by viewProvider(R.id.layout)
     protected val appBar: AppBarLayout by viewProvider(R.id.app_bar_layout)
     protected val objDetail: DetailObject? by extraProvider(DETAIL_OBJECT_EXTRA, null)
 
