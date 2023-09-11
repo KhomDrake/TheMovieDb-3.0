@@ -1,6 +1,7 @@
 package com.vlv.movie.data
 
 import android.content.res.Resources
+import com.vlv.extensions.PATTERN_MONTH_AND_YEAR
 import com.vlv.extensions.capitalizeCustom
 import com.vlv.extensions.patternDate
 import com.vlv.extensions.toBillionsAndMillions
@@ -15,7 +16,9 @@ import com.vlv.network.data.movie.MovieDetailResponse
 class MovieDetail(
     val id: Int,
     val genres: List<Genre>,
-    val information: List<Information>
+    val information: List<Information>,
+    val score: String,
+    val dateAndTime: String,
 ) {
     constructor(resources: Resources, detail: MovieDetailResponse) : this(
         detail.id,
@@ -55,6 +58,8 @@ class MovieDetail(
                 title = R.string.movie_text_revenue,
                 data = detail.revenue.toBillionsAndMillions(resources)
             ),
-        )
+        ),
+        String.format("%.1f", detail.voteAverage),
+        "${detail.releaseData.toLocalDate().toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${detail.runtime.toHoursAndMinutes(resources)}"
     )
 }

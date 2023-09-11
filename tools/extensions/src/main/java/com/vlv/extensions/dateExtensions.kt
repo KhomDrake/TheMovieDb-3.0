@@ -18,6 +18,7 @@ fun patternDate2() = if(DateConfig.isUsLanguage()) "yyyy / MMM / dd" else  "dd /
 const val PATTERN_LOCAL_DATE_BR = "dd/MM/yyyy"
 const val PATTERN_LOCAL_DATE_BR_MONTH_TEXT = "dd/MMMM/yyyy"
 const val PATTERN_HOUR_AND_MINUTE = "HH:mm"
+const val PATTERN_MONTH_AND_YEAR = "MMM/yyyy"
 
 object DateConfig : KoinComponent {
 

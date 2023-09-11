@@ -26,6 +26,11 @@ class MovieDetailActivity : DetailActivity() {
                 crossfade(1000)
             }
         }
+        movie.posterPath?.toUrlMovieDb()?.let {
+            poster.load(it) {
+                crossfade(1000)
+            }
+        }
 
         val adapter = DetailAdapter(texts, movie, this)
         layout.adapter = adapter

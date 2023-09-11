@@ -16,6 +16,8 @@ import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.vlv.common.ui.DetailActivity
+import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.extensions.State
 import com.vlv.extensions.dataState
 import com.vlv.extensions.errorState
@@ -107,6 +109,10 @@ class AboutFragment : Fragment(R.layout.movie_fragment_about) {
                 description.text = movie.overview
                 (genres.adapter as? GenreAdapter)?.submitList(detail.genres)
                 (information.adapter as? InformationAdapter)?.submitList(detail.information)
+                (activity as? DetailActivity)?.showExpandedInfo(
+                    detail.score,
+                    detail.dateAndTime
+                )
                 viewStateMachine.dataState()
             }
             showLoading {

@@ -58,7 +58,7 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
                     requireActivity(),
                     view,
-                    getString(RCommon.string.common_poster_transition_name)
+                    getString(RCommon.string.common_backdrop_transition_name)
                 ).toBundle()
             )
         }
