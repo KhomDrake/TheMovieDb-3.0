@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/movie_pagination_item_height"
         android:outlineProvider="background"
+        android:transitionName="@string/common_poster_transition_name"
+        android:foreground="?android:attr/selectableItemBackground"
         android:background="@drawable/rounded_background"
         android:scaleType="centerCrop"/>
 

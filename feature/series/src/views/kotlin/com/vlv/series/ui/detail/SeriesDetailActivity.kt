@@ -27,8 +27,8 @@ class SeriesDetailActivity : DetailActivity() {
         }
 
         val adapter = DetailAdapter(texts, series, supportFragmentManager)
-        layout.adapter = adapter
-        tabs.setupWithViewPager(layout)
+//        layout.adapter = adapter
+//        tabs.setupWithViewPager(layout)
 
         collapsing.title = series.title
     }

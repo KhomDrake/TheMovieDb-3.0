@@ -7,6 +7,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isInvisible
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.imperiya.R
 
@@ -27,10 +28,6 @@ class WarningView : ConstraintLayout {
         setupWithAttributes(context, attrs)
     }
 
-    fun setOnTryAgain(onClickListener: OnClickListener) {
-        tryAgainButton.setOnClickListener(onClickListener)
-    }
-
     private fun setupWithAttributes(context: Context, set: AttributeSet?) {
         val attrs = context.obtainStyledAttributes(set, R.styleable.WarningView)
 
@@ -41,31 +38,36 @@ class WarningView : ConstraintLayout {
         attrs.recycle()
     }
 
-    fun setTitle(@StringRes text: Int) {
+    fun setOnTryAgain(onClickListener: OnClickListener) {
+        tryAgainButton.setOnClickListener(onClickListener)
+    }
+
+    fun setTitle(@StringRes text: Int) = apply {
         val newText = resources.getString(text)
         setTitle(newText)
     }
 
-    fun setTitle(text: String?) {
+    fun setTitle(text: String?) = apply {
         title.text = text
     }
 
-    fun setBody(@StringRes text: Int) {
+    fun setBody(@StringRes text: Int) = apply {
         val newText = resources.getString(text)
         setBody(newText)
     }
 
-    fun setBody(text: String?) {
+    fun setBody(text: String?) = apply {
         body.text = text
     }
 
-    fun setButtonText(@StringRes text: Int) {
+    fun setButtonText(@StringRes text: Int) = apply {
         val newText = resources.getString(text)
         setButtonText(newText)
     }
 
-    fun setButtonText(text: String?) {
+    fun setButtonText(text: String?) = apply {
         tryAgainButton.text = text
+        tryAgainButton.isInvisible = text.isNullOrBlank()
     }
 
 

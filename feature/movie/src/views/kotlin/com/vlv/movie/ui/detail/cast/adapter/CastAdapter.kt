@@ -1,6 +1,5 @@
 package com.vlv.movie.ui.detail.cast.adapter
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
@@ -10,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
+import com.vlv.extensions.inflate
 import com.vlv.extensions.toUrlMovieDb
 import com.vlv.movie.R
 import com.vlv.movie.data.Cast
@@ -24,20 +24,48 @@ class CastDiffUtil: DiffUtil.ItemCallback<Cast>() {
     }
 }
 
-class CastAdapter: ListAdapter<Cast, CastViewHolder>(CastDiffUtil()) {
+private const val VIEW_TYPE_CAST_TITLE = 0
+private const val VIEW_TYPE_CAST_ITEM = 1
 
-    override fun onBindViewHolder(holder: CastViewHolder, position: Int) {
-        holder.bind(currentList[position])
+class CastAdapter: ListAdapter<Cast, RecyclerView.ViewHolder>(CastDiffUtil()) {
+
+    override fun getItemViewType(position: Int): Int {
+        return when(position) {
+            0 -> VIEW_TYPE_CAST_TITLE
+            else -> VIEW_TYPE_CAST_ITEM
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastViewHolder {
-        return CastViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.movie_cast_item,
-                parent,
-                false
-            )
-        )
+    override fun getItemCount(): Int {
+        val itemCount = super.getItemCount()
+        return if(itemCount == 0) itemCount else super.getItemCount() + 1
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(holder) {
+            is CastViewHolder -> {
+                holder.bind(currentList[position - 1])
+            }
+            is CastTitleViewHolder -> {
+                holder.bind(currentList.size)
+            }
+            else -> Unit
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when(viewType) {
+            VIEW_TYPE_CAST_TITLE -> CastTitleViewHolder(parent.inflate(R.layout.movie_title_item))
+            else -> CastViewHolder(parent.inflate(R.layout.movie_cast_item))
+        }
+    }
+
+}
+
+class CastTitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    fun bind(itemCount: Int) {
+        (itemView as? AppCompatTextView)?.text = "$itemCount people"
     }
 
 }

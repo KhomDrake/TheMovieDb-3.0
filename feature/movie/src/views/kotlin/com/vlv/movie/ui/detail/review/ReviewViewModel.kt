@@ -14,5 +14,6 @@ class ReviewViewModel(private val repository: MovieDetailRepository) : ViewModel
         }
         .execute()
         .responseLiveData
+        .map { it.resultResponses.map(::Review) }
 
 }

@@ -1,6 +1,7 @@
 package com.vlv.movie.ui.listing
 
 import android.os.Bundle
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,7 +9,10 @@ import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
+import com.vlv.common.ui.route.toMovieDetail
 import com.vlv.movie.R
+import com.vlv.common.R as RCommon
+import com.vlv.movie.data.toDetailObject
 import com.vlv.movie.ui.adapter.MoviePaginationAdapter
 import com.vlv.movie.ui.adapter.VIEW_TYPE_MOVIE
 import kotlinx.coroutines.flow.collectLatest
@@ -29,7 +33,17 @@ class ListingMovieActivity : ListingItemsActivity() {
     override val loadingLayout: Int
         get() = R.layout.movie_listing_movie_loading
 
-    private val pagingAdapter = MoviePaginationAdapter()
+    private val pagingAdapter = MoviePaginationAdapter { movie, view ->
+        val intent = toMovieDetail(movie.toDetailObject())
+        startActivity(
+            intent,
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                view,
+                getString(RCommon.string.common_poster_transition_name)
+            ).toBundle()
+        )
+    }
 
     override val title: Int
         get() = when(type) {

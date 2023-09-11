@@ -4,7 +4,11 @@ import android.os.Bundle
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import androidx.viewpager2.widget.ViewPager2
 import br.com.arch.toolkit.delegate.extraProvider
 import br.com.arch.toolkit.delegate.viewProvider
 import com.google.android.material.appbar.AppBarLayout
@@ -26,15 +30,18 @@ class DetailObject(
 ) : Parcelable
 
 const val DETAIL_OBJECT_EXTRA = "DETAIL_OBJECT_EXTRA"
-const val DETAIL_SHARED_ELEMENT = "poster"
 
 abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activity) {
 
     protected val tabs: TabLayout by viewProvider(R.id.tabs)
     protected val toolbar: Toolbar by viewProvider(R.id.toolbar)
-    protected val backdrop: AppCompatImageView by viewProvider(R.id.path)
+    protected val backdrop: AppCompatImageView by viewProvider(R.id.backdrop)
+    protected val poster: AppCompatImageView by viewProvider(R.id.poster)
+    protected val expandedTitle: AppCompatTextView by viewProvider(R.id.expanded_title)
+    protected val expandedScore: AppCompatTextView by viewProvider(R.id.score)
+    protected val expandedDateAndTime: AppCompatTextView by viewProvider(R.id.expanded_date_and_time)
     protected val collapsing: CollapsingToolbarLayout by viewProvider(R.id.collapsing)
-    protected val layout: AutoMeasureViewPager by viewProvider(R.id.layout)
+    protected val layout: ViewPager2 by viewProvider(R.id.layout)
     protected val appBar: AppBarLayout by viewProvider(R.id.app_bar_layout)
     protected val objDetail: DetailObject? by extraProvider(DETAIL_OBJECT_EXTRA, null)
 
@@ -46,6 +53,9 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
             finishAfterTransition()
         }
 
+        poster.clipToOutline = true
+
+        showExpanded()
         configTabs()
         configAppBar()
     }
@@ -90,11 +100,41 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
                     }
                 }
 
+                when(state) {
+                    AppBarState.EXPANDED, AppBarState.COLLAPSING -> showExpanded()
+                    AppBarState.COLLAPSED -> showCollapsed()
+                    else -> Unit
+                }
+
                 appBar.setStatusBarForegroundResource(resource)
                 collapsing.setStatusBarScrimResource(resource)
             })
     }
 
+    open fun showCollapsed() {
+        val obj = objDetail ?: return
+        collapsing.title = obj.title
+        expandedTitle.text = obj.title
+        expandedTitle.isInvisible = true
+        expandedScore.isInvisible = true
+        expandedDateAndTime.isInvisible = true
+    }
+
+    open fun showExpanded() {
+        val obj = objDetail ?: return
+        collapsing.title = null
+        expandedTitle.text = obj.title
+        expandedTitle.isVisible = true
+        expandedScore.isVisible = expandedScore.text.isNullOrBlank().not()
+        expandedDateAndTime.isVisible = expandedDateAndTime.text.isNullOrBlank().not()
+    }
+
+    open fun showExpandedInfo(scoreText: String?, dateAndTimeText: String?) {
+        expandedScore.text = scoreText
+        expandedDateAndTime.text = dateAndTimeText
+        expandedScore.isVisible = expandedScore.text.isNullOrBlank().not()
+        expandedDateAndTime.isVisible = expandedDateAndTime.text.isNullOrBlank().not()
+    }
 
     @Deprecated("Deprecated in Java", ReplaceWith("finishAfterTransition()"))
     override fun onBackPressed() {
