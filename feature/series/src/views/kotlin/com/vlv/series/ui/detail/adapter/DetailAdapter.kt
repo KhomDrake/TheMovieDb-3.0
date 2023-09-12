@@ -1,8 +1,10 @@
 package com.vlv.series.ui.detail.adapter
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.vlv.series.data.Series
 import com.vlv.series.ui.detail.about.AboutFragment
 import com.vlv.series.ui.detail.cast.CastFragment
@@ -12,16 +14,12 @@ import com.vlv.series.ui.detail.season.SeasonsFragment
 class DetailAdapter(
     private val titles: List<String>,
     private val series: Series,
-    fragmentManager: FragmentManager
-) : FragmentPagerAdapter(fragmentManager) {
+    fragmentActivity: FragmentActivity
+) : FragmentStateAdapter(fragmentActivity) {
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return titles[position]
-    }
+    override fun getItemCount() = titles.size
 
-    override fun getCount() = 4
-
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         return when(position) {
             0 -> {
                 AboutFragment.instance(series)

@@ -11,11 +11,11 @@ import com.vlv.series.data.Series
 
 class CastFragment : Fragment(R.layout.series_fragment_about) {
 
-    protected val title: AppCompatTextView by viewProvider(R.id.title)
+//    protected val title: AppCompatTextView by viewProvider(R.id.title)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        title.text = "Cast"
+//        title.text = "Cast"
     }
 
     companion object {

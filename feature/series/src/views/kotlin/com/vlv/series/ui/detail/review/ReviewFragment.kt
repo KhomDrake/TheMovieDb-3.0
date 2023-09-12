@@ -11,11 +11,11 @@ import com.vlv.series.data.Series
 
 class ReviewFragment : Fragment(R.layout.series_fragment_about) {
 
-    protected val title: AppCompatTextView by viewProvider(R.id.title)
+//    protected val title: AppCompatTextView by viewProvider(R.id.title)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        title.text = "Review"
+//        title.text = "Review"
     }
 
     companion object {

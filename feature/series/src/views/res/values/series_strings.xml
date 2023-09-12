@@ -5,4 +5,14 @@
     <string name="series_top_rated_title">Top rated</string>
     <string name="series_on_the_air_title">On the air</string>
     <string name="series_popular_title">Popular</string>
+
+    <!-- Series Detail -->
+    <string name="series_information_original_title">Original title</string>
+    <string name="series_information_first_on_air">First time on the air</string>
+    <string name="series_information_last_on_air">Last time on the air</string>
+    <string name="series_information_aired_episded">Aired episodes</string>
+    <string name="series_information_duration">Duration of episodes</string>
+    <string name="series_information_language_of_origin">Language of origin</string>
+    <string name="series_information_country">Country of origin</string>
+    <string name="series_information_companies">Companies</string>
 </resources>

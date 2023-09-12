@@ -14,6 +14,7 @@ import com.vlv.network.moshi.MoshiFactory
 import com.vlv.network.repository.MovieDetailRepository
 import com.vlv.network.repository.MovieRepository
 import com.vlv.network.repository.SearchRepository
+import com.vlv.network.repository.SeriesDetailRepository
 import com.vlv.network.repository.SeriesRepository
 import com.vlv.network.retrofit.RetrofitFactory
 import org.koin.android.ext.koin.androidContext
@@ -43,6 +44,7 @@ class NetworkInitializer : Initializer<Module> {
             single { MovieRepository(get()) }
             single { SeriesRepository(get()) }
             single { MovieDetailRepository(get()) }
+            single { SeriesDetailRepository(get()) }
         }
 
         startKoin {

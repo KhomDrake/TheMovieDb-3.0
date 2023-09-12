@@ -1,17 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:padding="16dp"
-        android:layout_height="wrap_content"
-        style="@style/Imperiya.Style.Text.Title"
-        tools:text="Testing"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/root">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:id="@+id/content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                tools:text="When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth."
+                style="@style/Imperiya.Style.Text.Paragraph"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_genre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Genres:"
+                style="@style/Imperiya.Style.Text.Title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/genres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="0dp"
+                android:clipToPadding="false"
+                tools:itemCount="4"
+                tools:listitem="@layout/common_pill_item" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#5C6B73"
+                android:layout_marginTop="16dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Information:"
+                style="@style/Imperiya.Style.Text.Title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                tools:itemCount="4"
+                tools:listitem="@layout/common_information_item" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#5C6B73"
+                android:layout_marginTop="16dp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_videos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Videos:"
+                style="@style/Imperiya.Style.Text.Title" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp">
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="60dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="8dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="20dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <com.vlv.imperiya.ui.warning.WarningView
+            android:id="@+id/warning_view_about"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:warning_title="Title"
+            app:warning_body="Body"
+            app:warning_button_try_again="Try again"/>
+
+    </FrameLayout>
+
+</androidx.core.widget.NestedScrollView>
