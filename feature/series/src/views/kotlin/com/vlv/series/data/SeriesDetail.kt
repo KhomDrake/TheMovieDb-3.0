@@ -12,108 +12,106 @@ import com.vlv.network.data.series.LastEpisodeToAir
 import com.vlv.network.data.series.NextEpisodeToAir
 import com.vlv.network.data.series.SeriesDetailResponse
 import com.vlv.series.R
+import com.vlv.series.ui.detail.about.AboutItem
 
 class SeriesDetail(
-    val content: String,
-    val genres: List<PillItem>,
-    val information: List<Information>,
     val score: String,
     val dateAndTime: String,
-    val nextEpisode: Episode? = null,
-    val lastEpisode: Episode? = null
+    val aboutItems: List<AboutItem>
 ) {
-
     constructor(resources: Resources, response: SeriesDetailResponse) : this(
-        response.overview,
-        genres = response.genres.map { PillItem(it.id, it.name) },
-        information = listOf(
-            Information(
-                title = R.string.series_information_original_title,
-                data = response.originalName
-            ),
-            Information(
-                title = R.string.series_information_first_on_air,
-                data = response.firstAirDate.toLocalDate().toFormattedString(patternDate2())
-            ),
-            Information(
-                title = R.string.series_information_last_on_air,
-                data = response.lastAirDate.toLocalDate().toFormattedString(patternDate2())
-            ),
-            Information(
-                title = R.string.series_information_aired_episded,
-                data = response.numberOfEpisodes.toString()
-            ),
-            Information(
-                title = R.string.series_information_language_of_origin,
-                data = response.originalLanguage
-            ),
-            Information(
-                title = R.string.series_information_duration,
-                data = response.episodeRunTime.toHoursAndMinutes(resources)
-            ),
-            Information(
-                title = R.string.series_information_country,
-                data = response.originCountry.joinToString { it }
-            ),
-            Information(
-                title = R.string.series_information_companies,
-                data = response.productionCompanies.map { it.name }.joinToString { it }
-            ),
-        ),
         score = String.format("%.1f", response.voteAverage),
-        dateAndTime = "${response.firstAirDate.toLocalDate().toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${response.episodeRunTime.first().toHoursAndMinutes(resources)}",
-        nextEpisode = response.nextEpisodeToAir?.toEpisode(),
-        lastEpisode = response.lastEpisodeToAir?.toEpisode()
-    )
+        dateAndTime = response.run {
+            val episodeRunTime = response.episodeRunTime.firstOrNull()
+            episodeRunTime?.let {
+                "${response.firstAirDate.toLocalDate().toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${episodeRunTime.toHoursAndMinutes(resources)}"
+            }?: response.firstAirDate.toLocalDate().toFormattedString(PATTERN_MONTH_AND_YEAR)
+        },
+        aboutItems = response.run {
+            val items = mutableListOf<AboutItem>()
+            items.add(AboutItem.BigText(response.overview))
+            items.add(AboutItem.Title(R.string.series_title_genres))
+            items.add(AboutItem.Genres(response.genres.map { PillItem(it.id, it.name) }))
+            response.lastEpisodeToAir?.let { episode ->
+                items.add(AboutItem.Title(R.string.series_title_last_episode))
+                items.add(AboutItem.EpisodeItem(episode.toEpisode(resources)))
+            }
+            response.nextEpisodeToAir?.let { episode ->
+                items.add(AboutItem.Title(R.string.series_title_next_episode))
+                items.add(AboutItem.EpisodeItem(episode.toEpisode(resources)))
+            }
 
+            items.add(AboutItem.Title(R.string.series_title_information))
+
+            items.addAll(
+                listOf(
+                    Information(
+                        title = R.string.series_information_original_title,
+                        data = response.originalName
+                    ),
+                    Information(
+                        title = R.string.series_information_first_on_air,
+                        data = response.firstAirDate.toLocalDate().toFormattedString(patternDate2())
+                    ),
+                    Information(
+                        title = R.string.series_information_status,
+                        data = response.status
+                    ),
+                    Information(
+                        title = R.string.series_information_last_on_air,
+                        data = response.lastAirDate.toLocalDate().toFormattedString(patternDate2())
+                    ),
+                    Information(
+                        title = R.string.series_information_aired_seasons,
+                        data = response.numberOfSeasons.toString()
+                    ),
+                    Information(
+                        title = R.string.series_information_aired_episodes,
+                        data = response.numberOfEpisodes.toString()
+                    ),
+                    Information(
+                        title = R.string.series_information_language_of_origin,
+                        data = response.originalLanguage
+                    ),
+                    Information(
+                        title = R.string.series_information_duration,
+                        data = response.episodeRunTime.toHoursAndMinutes(resources)
+                    ),
+                    Information(
+                        title = R.string.series_information_country,
+                        data = response.originCountry.joinToString { it }
+                    ),
+                    Information(
+                        title = R.string.series_information_companies,
+                        data = response.productionCompanies.map { it.name }.joinToString { it }
+                    ),
+                ).map { AboutItem.InformationItem(it) }
+            )
+
+            items
+        }
+    )
 }
 
 class Episode(
-    val airDate: String,
-    val episodeNumber: Int,
-    val episodeType: String,
+    val episodeNumberAndDate: String,
     val id: Int,
     val name: String,
-    val overview: String,
-    val productionCode: String,
-    val runtime: Int?,
-    val seasonNumber: Int,
-    val showId: Int,
     val stillPath: String?,
-    val voteAverage: Double,
-    val voteCount: Int
 )
 
-fun NextEpisodeToAir.toEpisode() = Episode(
-    airDate,
-    episodeNumber,
-    episodeType,
+fun NextEpisodeToAir.toEpisode(resources: Resources) = Episode(
+    "S${seasonNumber}E$episodeNumber - ${airDate.toLocalDate().toFormattedString(patternDate2())}",
     id,
     name,
-    overview,
-    productionCode,
-    runtime,
-    seasonNumber,
-    showId,
-    stillPath,
-    voteAverage,
-    voteCount
+    stillPath
 )
 
 
 
-fun LastEpisodeToAir.toEpisode() = Episode(
-    airDate,
-    episodeNumber,
-    episodeType,
+fun LastEpisodeToAir.toEpisode(resources: Resources) = Episode(
+    "S${seasonNumber}E$episodeNumber - ${airDate.toLocalDate().toFormattedString(patternDate2())}",
     id,
     name,
-    overview,
-    productionCode,
-    runtime,
-    seasonNumber,
-    showId,
-    stillPath,
-    voteAverage,
-    voteCount
+    stillPath
 )

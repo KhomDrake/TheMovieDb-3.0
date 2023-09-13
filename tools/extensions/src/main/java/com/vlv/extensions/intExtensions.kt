@@ -33,6 +33,8 @@ fun Int.toMillions(resources: Resources) = run {
 }
 
 fun List<Int>.toHoursAndMinutes(resources: Resources) = run {
+    if(isEmpty()) return@run "Not available"
+
     val times = this.map { it.toHoursAndMinutes(resources) }
     times.joinToString { it }
 }

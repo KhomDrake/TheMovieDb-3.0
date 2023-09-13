@@ -11,82 +11,12 @@
         android:layout_height="match_parent"
         android:id="@+id/root">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false"
             android:visibility="gone"
-            android:id="@+id/content"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginHorizontal="16dp"
-                tools:text="When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth."
-                style="@style/Imperiya.Style.Text.Paragraph"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_genre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Genres:"
-                style="@style/Imperiya.Style.Text.Title" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/genres"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingStart="12dp"
-                android:paddingEnd="0dp"
-                android:clipToPadding="false"
-                tools:itemCount="4"
-                tools:listitem="@layout/common_pill_item" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#5C6B73"
-                android:layout_marginTop="16dp"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_information"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Information:"
-                style="@style/Imperiya.Style.Text.Title" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/information"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                tools:itemCount="4"
-                tools:listitem="@layout/common_information_item" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#5C6B73"
-                android:layout_marginTop="16dp"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_videos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Videos:"
-                style="@style/Imperiya.Style.Text.Title" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            android:id="@+id/content"/>
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_about"

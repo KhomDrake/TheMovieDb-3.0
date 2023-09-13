@@ -2,8 +2,6 @@ package com.vlv.series.ui.detail.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.vlv.series.data.Series
 import com.vlv.series.ui.detail.about.AboutFragment

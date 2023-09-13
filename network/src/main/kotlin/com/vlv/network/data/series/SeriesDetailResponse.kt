@@ -10,7 +10,7 @@ data class SeriesDetailResponse(
     @Json(name = "adult")
     val adult: Boolean,
     @Json(name = "backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @Json(name = "created_by")
     val creators: List<CreatorResponse>,
     @Json(name = "episode_run_time")
@@ -52,7 +52,7 @@ data class SeriesDetailResponse(
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @Json(name = "production_companies")
     val productionCompanies: List<ProductionCompany>,
     @Json(name = "production_countries")
@@ -106,13 +106,13 @@ data class LastEpisodeToAir(
     @Json(name = "production_code")
     val productionCode: String,
     @Json(name = "runtime")
-    val runtime: Int,
+    val runtime: Int?,
     @Json(name = "season_number")
     val seasonNumber: Int,
     @Json(name = "show_id")
     val showId: Int,
     @Json(name = "still_path")
-    val stillPath: String,
+    val stillPath: String?,
     @Json(name = "vote_average")
     val voteAverage: Double,
     @Json(name = "vote_count")
@@ -124,7 +124,7 @@ data class Network(
     @Json(name = "id")
     val id: Int,
     @Json(name = "logo_path")
-    val logoPath: String,
+    val logoPath: String?,
     @Json(name = "name")
     val name: String,
     @Json(name = "origin_country")
@@ -194,7 +194,7 @@ data class Season(
     @Json(name = "overview")
     val overview: String,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @Json(name = "season_number")
     val seasonNumber: Int,
     @Json(name = "vote_average")

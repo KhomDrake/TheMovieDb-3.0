@@ -21,5 +21,4 @@ class AboutViewModel(private val repository: SeriesDetailRepository) : ViewModel
         .map {
             SeriesDetail(resources, it)
         }
-
 }

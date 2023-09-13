@@ -9,10 +9,17 @@
     <!-- Series Detail -->
     <string name="series_information_original_title">Original title</string>
     <string name="series_information_first_on_air">First time on the air</string>
+    <string name="series_information_status">Status</string>
     <string name="series_information_last_on_air">Last time on the air</string>
-    <string name="series_information_aired_episded">Aired episodes</string>
+    <string name="series_information_aired_episodes">Aired episodes</string>
+    <string name="series_information_aired_seasons">Aired seasons</string>
     <string name="series_information_duration">Duration of episodes</string>
     <string name="series_information_language_of_origin">Language of origin</string>
     <string name="series_information_country">Country of origin</string>
     <string name="series_information_companies">Companies</string>
+    <string name="series_title_genres">Genres:</string>
+    <string name="series_title_last_episode">Last episode:</string>
+    <string name="series_title_next_episode">Next episode:</string>
+    <string name="series_title_information">Information:</string>
+    <string name="series_title_videos">Videos:</string>
 </resources>
