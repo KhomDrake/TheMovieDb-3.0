@@ -9,7 +9,7 @@ class CastResponse(
     @Json(name = "adult")
     val adult: Boolean,
     @Json(name = "cast_id")
-    val castId: Int,
+    val castId: Int?,
     @Json(name = "character")
     val character: String,
     @Json(name = "credit_id")

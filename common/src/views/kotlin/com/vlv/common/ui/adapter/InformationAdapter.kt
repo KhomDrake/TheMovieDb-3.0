@@ -1,4 +1,4 @@
-package com.vlv.movie.ui.detail.about.adapter
+package com.vlv.common.ui.adapter
 
 import android.support.annotation.StringRes
 import android.view.View
@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.common.R
 import com.vlv.extensions.inflate
-import com.vlv.movie.R
 import kotlin.random.Random
+
 
 class Information(
     val id: Int = Random.nextInt(Int.MIN_VALUE, Int.MAX_VALUE),
@@ -38,7 +39,7 @@ class InformationAdapter : ListAdapter<Information, InformationViewHolder>(Infor
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InformationViewHolder {
-        return InformationViewHolder(parent.inflate(R.layout.movie_information_item))
+        return InformationViewHolder(parent.inflate(R.layout.common_information_item))
     }
 
 }

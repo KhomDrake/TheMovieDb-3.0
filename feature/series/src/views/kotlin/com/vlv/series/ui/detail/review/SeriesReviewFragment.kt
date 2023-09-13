@@ -1,4 +1,4 @@
-package com.vlv.movie.ui.detail.review
+package com.vlv.series.ui.detail.review
 
 import androidx.core.os.bundleOf
 import br.com.arch.toolkit.delegate.extraProvider
@@ -8,27 +8,26 @@ import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
-import com.vlv.movie.data.Movie
-import com.vlv.movie.ui.detail.cast.EXTRA_MOVIE
+import com.vlv.series.data.Series
+import com.vlv.series.ui.detail.about.EXTRA_SERIES
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MovieReviewFragment : ReviewFragment() {
+class SeriesReviewFragment : ReviewFragment() {
 
-    private val viewModel: ReviewViewModel by viewModel()
+    private val series: Series? by extraProvider(EXTRA_SERIES, null)
 
-    private val movie: Movie? by extraProvider(EXTRA_MOVIE)
+    private val viewModel: SeriesReviewViewModel by viewModel()
 
     override fun loadReviews() {
-        val movie = movie ?: return
-
-        viewModel.movieReviews(movie.id).observe(viewLifecycleOwner) {
-            data { reviewList ->
-                if(reviewList.isEmpty()) {
+        val series = series ?: return
+        viewModel.reviews(series.id).observe(viewLifecycleOwner) {
+            data { reviewsList ->
+                if(reviewsList.isEmpty()) {
                     viewStateMachine.emptyState()
                 } else {
                     viewStateMachine.dataState()
                 }
-                (reviews.adapter as? ReviewAdapter)?.submitList(reviewList)
+                (reviews.adapter as? ReviewAdapter)?.submitList(reviewsList)
             }
             showLoading {
                 viewStateMachine.loadingState()
@@ -40,13 +39,11 @@ class MovieReviewFragment : ReviewFragment() {
     }
 
     companion object {
-
-        fun instance(movie: Movie) = MovieReviewFragment().apply {
+        fun instance(series: Series) = SeriesReviewFragment().apply {
             arguments = bundleOf(
-                EXTRA_MOVIE to movie
+                EXTRA_SERIES to series
             )
         }
-
     }
 
 }

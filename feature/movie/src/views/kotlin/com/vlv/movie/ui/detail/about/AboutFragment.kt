@@ -17,7 +17,8 @@ import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.ui.DetailActivity
-import com.vlv.common.ui.listing.ListingItemsActivity
+import com.vlv.common.ui.adapter.InformationAdapter
+import com.vlv.common.ui.adapter.PillAdapter
 import com.vlv.extensions.State
 import com.vlv.extensions.dataState
 import com.vlv.extensions.errorState
@@ -28,8 +29,6 @@ import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.warning.WarningView
 import com.vlv.movie.R
 import com.vlv.movie.data.Movie
-import com.vlv.movie.ui.detail.about.adapter.GenreAdapter
-import com.vlv.movie.ui.detail.about.adapter.InformationAdapter
 import com.vlv.movie.ui.detail.cast.EXTRA_MOVIE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -91,7 +90,7 @@ class AboutFragment : Fragment(R.layout.movie_fragment_about) {
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
 
-        genres.adapter = GenreAdapter()
+        genres.adapter = PillAdapter()
         information.adapter = InformationAdapter()
     }
 
@@ -107,7 +106,7 @@ class AboutFragment : Fragment(R.layout.movie_fragment_about) {
         viewModel.movieDetail(resources, movie.id).observe(viewLifecycleOwner) {
             data { detail ->
                 description.text = movie.overview
-                (genres.adapter as? GenreAdapter)?.submitList(detail.genres)
+                (genres.adapter as? PillAdapter)?.submitList(detail.genres)
                 (information.adapter as? InformationAdapter)?.submitList(detail.information)
                 (activity as? DetailActivity)?.showExpandedInfo(
                     detail.score,

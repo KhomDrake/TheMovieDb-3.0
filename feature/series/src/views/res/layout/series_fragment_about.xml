@@ -1,17 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:padding="16dp"
-        android:layout_height="wrap_content"
-        style="@style/Imperiya.Style.Text.Title"
-        tools:text="Testing"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/root">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="false"
+            android:visibility="gone"
+            android:id="@+id/content"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp">
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="60dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="16dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="8dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="20dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+                <View
+                    style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="12dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <com.vlv.imperiya.ui.warning.WarningView
+            android:id="@+id/warning_view_about"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:warning_title="Title"
+            app:warning_body="Body"
+            app:warning_button_try_again="Try again"/>
+
+    </FrameLayout>
+
+</androidx.core.widget.NestedScrollView>

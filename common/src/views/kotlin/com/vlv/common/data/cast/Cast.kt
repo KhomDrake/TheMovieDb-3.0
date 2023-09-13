@@ -1,4 +1,4 @@
-package com.vlv.movie.data
+package com.vlv.common.data.cast
 
 import com.vlv.network.data.credit.CastResponse
 
@@ -11,7 +11,7 @@ class Cast(
     val profilePath: String?
 ) {
     constructor(castResponse: CastResponse) : this(
-        castResponse.castId,
+        castResponse.castId ?: castResponse.id,
         castResponse.character,
         castResponse.id,
         castResponse.name,

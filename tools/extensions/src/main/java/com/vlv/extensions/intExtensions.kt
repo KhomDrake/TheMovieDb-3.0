@@ -15,8 +15,12 @@ fun Int.toHours(resources: Resources) = run {
 
 fun Int.toHoursAndMinutes(resources: Resources) = run {
     val hours = this / MINUTES_IN_HOUR
-    val minutes = this % MINUTES_IN_HOUR
-    resources.getString(R.string.extensions_hours_and_minutes, hours, minutes)
+    if(hours == 0)
+        toMinutes(resources)
+    else {
+        val minutes = this % MINUTES_IN_HOUR
+        resources.getString(R.string.extensions_hours_and_minutes, hours, minutes)
+    }
 }
 
 fun Int.toMinutes(resources: Resources) = run {
@@ -26,6 +30,13 @@ fun Int.toMinutes(resources: Resources) = run {
 fun Int.toMillions(resources: Resources) = run {
     val millions = this / MILLION
     resources.getQuantityString(R.plurals.extensions_million, millions)
+}
+
+fun List<Int>.toHoursAndMinutes(resources: Resources) = run {
+    if(isEmpty()) return@run "Not available"
+
+    val times = this.map { it.toHoursAndMinutes(resources) }
+    times.joinToString { it }
 }
 
 fun Int.toMillionsAndThousands(resources: Resources) = run {
