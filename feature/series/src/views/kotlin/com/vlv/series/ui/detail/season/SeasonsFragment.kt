@@ -5,23 +5,43 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import br.com.arch.toolkit.delegate.extraProvider
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.network.data.series.Season
 import com.vlv.series.R
 import com.vlv.series.data.Series
+import com.vlv.series.ui.detail.about.EXTRA_SERIES
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SeasonsFragment : Fragment(R.layout.series_fragment_about) {
+class SeasonsFragment : Fragment(R.layout.series_fragment_seasons) {
 
-//    protected val title: AppCompatTextView by viewProvider(R.id.title)
+    private val viewModel: SeasonsViewModel by viewModel()
+
+    private val series: Series? by extraProvider(EXTRA_SERIES, null)
+
+    private val seasons: RecyclerView by viewProvider(R.id.seasons_items)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        title.text = "Seasons"
+        val series = series ?: return
+        seasons.layoutManager = LinearLayoutManager(
+            requireContext(), LinearLayoutManager.VERTICAL, false
+        )
+        seasons.adapter = SeasonAdapter()
+        viewModel.seriesDetail(resources, series.id).observe(viewLifecycleOwner) {
+            data {
+                (seasons.adapter as? SeasonAdapter)?.submitList(it)
+            }
+        }
     }
 
     companion object {
         fun instance(series: Series) = SeasonsFragment().apply {
             arguments = bundleOf(
-                "series" to series
+                EXTRA_SERIES to series
             )
         }
     }
