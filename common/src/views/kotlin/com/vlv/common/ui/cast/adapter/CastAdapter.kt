@@ -1,4 +1,4 @@
-package com.vlv.movie.ui.detail.cast.adapter
+package com.vlv.common.ui.cast.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
+import com.vlv.common.R
+import com.vlv.common.data.cast.Cast
 import com.vlv.extensions.inflate
 import com.vlv.extensions.toUrlMovieDb
-import com.vlv.movie.R
-import com.vlv.movie.data.Cast
 
 class CastDiffUtil: DiffUtil.ItemCallback<Cast>() {
     override fun areContentsTheSame(oldItem: Cast, newItem: Cast): Boolean {
@@ -55,8 +55,8 @@ class CastAdapter: ListAdapter<Cast, RecyclerView.ViewHolder>(CastDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
-            VIEW_TYPE_CAST_TITLE -> CastTitleViewHolder(parent.inflate(R.layout.movie_title_item))
-            else -> CastViewHolder(parent.inflate(R.layout.movie_cast_item))
+            VIEW_TYPE_CAST_TITLE -> CastTitleViewHolder(parent.inflate(R.layout.common_title_item))
+            else -> CastViewHolder(parent.inflate(R.layout.common_cast_item))
         }
     }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.network.NetworkInitializer
 import com.vlv.series.ui.detail.about.AboutViewModel
+import com.vlv.series.ui.detail.cast.SeriesCastViewModel
 import com.vlv.series.ui.detail.season.SeasonsViewModel
 import com.vlv.series.ui.listing.ListingSeriesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -17,6 +18,7 @@ class SeriesInitializer: Initializer<Module> {
         val module = module {
             viewModel { ListingSeriesViewModel(get()) }
             viewModel { SeasonsViewModel(get()) }
+            viewModel { SeriesCastViewModel(get()) }
             viewModel { AboutViewModel(get()) }
         }
         loadKoinModules(module)

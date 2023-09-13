@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/movie_background_detail"
+    android:background="@drawable/common_background_detail"
     android:outlineProvider="background"
     android:paddingVertical="16dp"
     android:layout_marginBottom="16dp">
@@ -15,7 +15,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:scaleType="centerCrop"
-        android:background="@drawable/movie_background_avatar"
+        android:background="@drawable/common_background_avatar"
         android:outlineProvider="background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

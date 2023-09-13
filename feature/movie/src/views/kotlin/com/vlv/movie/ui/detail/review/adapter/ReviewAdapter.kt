@@ -44,7 +44,7 @@ class ReviewAdapter: ListAdapter<Review, RecyclerView.ViewHolder>(ReviewDiffUtil
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
             VIEW_TYPE_REVIEW_TITLE -> ReviewTitleViewHolder(
-                parent.inflate(R.layout.movie_title_item)
+                parent.inflate(com.vlv.common.R.layout.common_cast_item)
             )
             else -> ReviewViewHolder(
                 parent.inflate(R.layout.movie_review_item)

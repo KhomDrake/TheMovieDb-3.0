@@ -2,8 +2,7 @@ package com.vlv.movie.ui.detail.cast
 
 import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
-import com.vlv.movie.data.Cast
-import com.vlv.network.data.credit.CreditsResponse
+import com.vlv.common.data.cast.Cast
 import com.vlv.network.repository.MovieDetailRepository
 
 class CastViewModel(private val repository: MovieDetailRepository) : ViewModel() {

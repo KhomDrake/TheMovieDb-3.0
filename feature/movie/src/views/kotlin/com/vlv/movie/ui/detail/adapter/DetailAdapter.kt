@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.vlv.movie.data.Movie
 import com.vlv.movie.ui.detail.about.AboutFragment
-import com.vlv.movie.ui.detail.cast.CastFragment
+import com.vlv.movie.ui.detail.cast.MovieCastFragment
 import com.vlv.movie.ui.detail.review.ReviewFragment
 
 class DetailAdapter(
@@ -20,7 +20,7 @@ class DetailAdapter(
                 AboutFragment.instance(movie)
             }
             1 -> {
-                CastFragment.instance(movie)
+                MovieCastFragment.instance(movie)
             }
             else -> {
                 ReviewFragment.instance(movie)

@@ -6,4 +6,6 @@ class SeriesDetailRepository(private val api: SeriesApi) {
 
     suspend fun seriesDetail(seriesId: Int) = api.seriesDetail(seriesId, "en-US")
 
+    suspend fun seriesCast(seriesId: Int) = api.credits(seriesId, "en-US")
+
 }
