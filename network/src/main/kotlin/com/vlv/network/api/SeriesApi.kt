@@ -1,6 +1,7 @@
 package com.vlv.network.api
 
 import com.vlv.network.data.credit.CreditsResponse
+import com.vlv.network.data.review.ReviewsResponse
 import com.vlv.network.data.series.SeriesDetailResponse
 import com.vlv.network.data.series.SeriesResponse
 import retrofit2.http.GET
@@ -22,6 +23,13 @@ interface SeriesApi {
         @Query("language")
         language: String
     ) : CreditsResponse
+
+    @GET("tv/{series_id}/reviews")
+    suspend fun reviews(
+        @Path("series_id") seriesId: Int,
+        @Query("language")
+        language: String
+    ) : ReviewsResponse
 
     @GET("trending/tv/{time_window}")
     suspend fun trending(

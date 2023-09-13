@@ -1,4 +1,4 @@
-package com.vlv.movie.data
+package com.vlv.common.data.review
 
 import com.vlv.network.data.review.ReviewResponse
 

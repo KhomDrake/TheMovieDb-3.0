@@ -8,4 +8,6 @@ class SeriesDetailRepository(private val api: SeriesApi) {
 
     suspend fun seriesCast(seriesId: Int) = api.credits(seriesId, "en-US")
 
+    suspend fun seriesReview(seriesId: Int) = api.reviews(seriesId, "en-US")
+
 }

@@ -1,4 +1,4 @@
-package com.vlv.movie.ui.detail.review.adapter
+package com.vlv.common.ui.review.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
+import com.vlv.common.R
+import com.vlv.common.data.review.Review
 import com.vlv.extensions.inflate
 import com.vlv.extensions.toUrlMovieDb
-import com.vlv.movie.R
-import com.vlv.movie.data.Review
 
 class ReviewDiffUtil: DiffUtil.ItemCallback<Review>() {
     override fun areContentsTheSame(oldItem: Review, newItem: Review): Boolean {
@@ -44,10 +44,10 @@ class ReviewAdapter: ListAdapter<Review, RecyclerView.ViewHolder>(ReviewDiffUtil
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
             VIEW_TYPE_REVIEW_TITLE -> ReviewTitleViewHolder(
-                parent.inflate(com.vlv.common.R.layout.common_cast_item)
+                parent.inflate(R.layout.common_title_item)
             )
             else -> ReviewViewHolder(
-                parent.inflate(R.layout.movie_review_item)
+                parent.inflate(R.layout.common_review_item)
             )
         }
     }

@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.vlv.series.data.Series
 import com.vlv.series.ui.detail.about.AboutFragment
 import com.vlv.series.ui.detail.cast.SeriesCastFragment
-import com.vlv.series.ui.detail.review.ReviewFragment
+import com.vlv.series.ui.detail.review.SeriesReviewFragment
 import com.vlv.series.ui.detail.season.SeasonsFragment
 
 class DetailAdapter(
@@ -29,7 +29,7 @@ class DetailAdapter(
                 SeriesCastFragment.instance(series)
             }
             else -> {
-                ReviewFragment.instance(series)
+                SeriesReviewFragment.instance(series)
             }
         }
     }
