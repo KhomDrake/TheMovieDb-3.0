@@ -27,7 +27,7 @@
         android:paddingTop="16dp"
         android:paddingBottom="0dp"
         android:text="@string/see_all_text"
-        android:background="?android:attr/selectableItemBackground"
+        android:background="@drawable/imperiya_ripple_rounded"
         app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -21,15 +21,27 @@
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
         <activity
-            android:name=".ui.error.WarningSampleActivity"
+            android:name=".ui.warnings.WarningSampleActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
         <activity
-            android:name=".ui.error.BigWarningSampleActivity"
+            android:name=".ui.warnings.warning.BigWarningSampleActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
         <activity
-            android:name=".ui.error.SmallWarningSampleActivity"
+            android:name=".ui.warnings.smallwarning.SmallWarningSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.warnings.warning.examples.WarningErrorSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.warnings.warning.examples.WarningSuccessSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.warnings.warning.examples.WarningDefaultSampleActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
     </application>

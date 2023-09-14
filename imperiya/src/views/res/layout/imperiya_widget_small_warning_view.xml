@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="8dp"
         android:drawableStart="@drawable/ic_info"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
@@ -38,7 +38,7 @@
         android:padding="4dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="12dp"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:foreground="@drawable/imperiya_ripple_rounded"
         tools:text="Try Again" />
 
 </merge>

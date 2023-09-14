@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Imperiya.Widget.Toolbar"
-        app:title="Big Warning Sample"
+        app:title="Sample Big Warning Error"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.vlv.imperiya.ui.warning.WarningView
-        android:id="@+id/warning_view"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/warning_error_sample"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        app:warning_title="Failure title you put it here"
-        app:warning_body="Failure body you put it here"
-        app:warning_button_try_again="Text button"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        style="@style/Imperiya.Widget.Button"
+        android:gravity="center"
+        android:text="Warning Error Sample"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/warning_success_sample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        style="@style/Imperiya.Widget.Button"
+        android:gravity="center"
+        android:text="Warning Success Sample"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/warning_default_sample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        style="@style/Imperiya.Widget.Button"
+        android:gravity="center"
+        android:text="Warning Default Sample"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
