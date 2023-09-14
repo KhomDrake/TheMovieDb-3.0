@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.imperiyasample.ui.warnings.WarningSampleActivity
 import com.vlv.imperiyasample.ui.search.SearchSampleActivity
+import com.vlv.imperiyasample.ui.stateview.StateViewSampleActivity
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -23,10 +24,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         components.layoutManager = LinearLayoutManager(this)
         components.adapter = ComponentsAdapter(listOf(
             Component(
-                "Search", SearchSampleActivity::class
+                "Search Views", SearchSampleActivity::class
             ),
             Component(
-                "Warning", WarningSampleActivity::class
+                "Warning View", WarningSampleActivity::class
+            ),
+            Component(
+                "State View", StateViewSampleActivity::class
             )
         ))
 

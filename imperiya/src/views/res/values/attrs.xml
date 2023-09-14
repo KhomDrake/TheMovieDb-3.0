@@ -17,4 +17,10 @@
         <attr name="small_warning_button_try_again" format="string"/>
         <attr name="small_warning_with_icon" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="StateView">
+        <attr name="state_title" format="string"/>
+        <attr name="state_body" format="string"/>
+        <attr name="state_icon" format="reference"/>
+    </declare-styleable>
 </resources>
