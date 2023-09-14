@@ -32,8 +32,8 @@ class ImperiyaSearchView : SearchView {
         setIconifiedByDefault(false)
         searchText.setTextColor(ContextCompat.getColor(context, R.color.imperiya_title))
         searchText.setHintTextColor(ContextCompat.getColor(context, R.color.imperiya_hint))
-        startIcon.foreground = ContextCompat.getDrawable(context, R.drawable.oval_ripple)
-        endIcon.foreground = ContextCompat.getDrawable(context, R.drawable.oval_ripple)
+        startIcon.foreground = ContextCompat.getDrawable(context, R.drawable.imperiya_ripple_oval)
+        endIcon.foreground = ContextCompat.getDrawable(context, R.drawable.imperiya_ripple_oval)
     }
 
     fun setSearchIcon(@DrawableRes drawableRes: Int) = apply {

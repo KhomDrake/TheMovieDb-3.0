@@ -9,7 +9,7 @@
     android:layout_marginEnd="10dp"
     android:clickable="true"
     android:background="@drawable/imperiya_background_search_radius_m"
-    android:foreground="@drawable/rectangle_radius_ripple"
+    android:foreground="@drawable/imperiya_ripple_rounded"
     android:focusable="true"
     android:orientation="horizontal">
     <androidx.appcompat.widget.AppCompatTextView
@@ -28,7 +28,7 @@
         android:layout_height="24dp"
         android:padding="6dp"
         android:layout_gravity="center_vertical"
-        android:foreground="@drawable/oval_ripple"
+        android:foreground="@drawable/imperiya_ripple_oval"
         android:clickable="true"
         android:src="@drawable/ic_close"
         android:focusable="true"/>

@@ -1,4 +1,4 @@
-package com.vlv.imperiyasample.ui.error
+package com.vlv.imperiyasample.ui.warnings.smallwarning
 
 import android.os.Bundle
 import android.widget.Toast

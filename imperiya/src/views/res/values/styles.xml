@@ -34,7 +34,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/imperiya_button_background_secondary</item>
         <item name="background">@drawable/imperiya_button_background_secondary</item>
-        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:foreground">@drawable/imperiya_ripple_rounded</item>
         <item name="android:textColor">@color/imperiya_title</item>
     </style>
 

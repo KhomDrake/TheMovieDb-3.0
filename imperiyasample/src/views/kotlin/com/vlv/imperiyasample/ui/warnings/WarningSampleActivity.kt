@@ -1,4 +1,4 @@
-package com.vlv.imperiyasample.ui.error
+package com.vlv.imperiyasample.ui.warnings
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.Toolbar
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.imperiyasample.R
+import com.vlv.imperiyasample.ui.warnings.smallwarning.SmallWarningSampleActivity
+import com.vlv.imperiyasample.ui.warnings.warning.BigWarningSampleActivity
 
 class WarningSampleActivity : AppCompatActivity(R.layout.activity_warning_sample) {
 
