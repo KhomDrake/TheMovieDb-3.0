@@ -1,5 +1,6 @@
 package com.vlv.themoviedb.ui.menu
 
+import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
@@ -7,6 +8,8 @@ import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -24,16 +27,16 @@ class MenuItem(
     @StringRes
     val title: Int,
     @DrawableRes
-    val icon: Int = -1,
+    val icon: Int? = null,
     val type: MenuItemType = MenuItemType.ITEM,
-    val action: String? = null,
+    val action: Intent? = null,
     val id: Int = Random.nextInt(Int.MIN_VALUE, Int.MAX_VALUE)
 )
 
 class MenuItemDiffUtil: ItemCallback<MenuItem>() {
 
     override fun areContentsTheSame(oldItem: MenuItem, newItem: MenuItem): Boolean {
-        return oldItem.title == newItem.title && oldItem.icon == newItem.icon
+        return oldItem.title == newItem.title
     }
 
     override fun areItemsTheSame(oldItem: MenuItem, newItem: MenuItem): Boolean {
@@ -86,7 +89,11 @@ class MenuItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.clipToOutline = true
         icon.clipToOutline = true
 
-        icon.setImageDrawable(ContextCompat.getDrawable(itemView.context, menuItem.icon))
+        menuItem.icon?.let {
+            icon.setImageDrawable(ContextCompat.getDrawable(itemView.context, it))
+        }
+
+        icon.isInvisible = menuItem.icon == null
         title.text = itemView.resources.getString(menuItem.title)
     }
 
