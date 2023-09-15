@@ -45,6 +45,10 @@
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
         <activity
+            android:name=".ui.warnings.warning.examples.WarningWithoutIconSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
             android:name=".ui.stateview.StateViewSampleActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />

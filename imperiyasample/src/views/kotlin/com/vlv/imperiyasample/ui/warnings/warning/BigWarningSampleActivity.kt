@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.Toolbar
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.imperiya.ui.warning.WarningView
 import com.vlv.imperiyasample.R
 import com.vlv.imperiyasample.ui.warnings.warning.examples.WarningDefaultSampleActivity
 import com.vlv.imperiyasample.ui.warnings.warning.examples.WarningErrorSampleActivity
 import com.vlv.imperiyasample.ui.warnings.warning.examples.WarningSuccessSampleActivity
+import com.vlv.imperiyasample.ui.warnings.warning.examples.WarningWithoutIconSampleActivity
 
 class BigWarningSampleActivity : AppCompatActivity(R.layout.activity_big_warning_sample) {
 
@@ -19,6 +19,7 @@ class BigWarningSampleActivity : AppCompatActivity(R.layout.activity_big_warning
     private val warningErrorSample: AppCompatButton by viewProvider(R.id.warning_error_sample)
     private val warningSuccessSample: AppCompatButton by viewProvider(R.id.warning_success_sample)
     private val warningDefaultSample: AppCompatButton by viewProvider(R.id.warning_default_sample)
+    private val warningWithoutIconSample: AppCompatButton by viewProvider(R.id.warning_without_icon_sample)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,12 @@ class BigWarningSampleActivity : AppCompatActivity(R.layout.activity_big_warning
         warningDefaultSample.setOnClickListener {
             startActivity(
                 Intent(this, WarningDefaultSampleActivity::class.java)
+            )
+        }
+
+        warningWithoutIconSample.setOnClickListener {
+            startActivity(
+                Intent(this, WarningWithoutIconSampleActivity::class.java)
             )
         }
 

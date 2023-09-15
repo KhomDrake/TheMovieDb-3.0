@@ -18,7 +18,7 @@ class SmallWarningSampleActivity : AppCompatActivity(R.layout.activity_small_war
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        smallWarning.setOnTryAgain {
+        smallWarning.setOnClickLink {
             Toast.makeText(this, "Try again clicked", Toast.LENGTH_SHORT).show()
         }
     }

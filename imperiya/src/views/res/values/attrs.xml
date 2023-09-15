@@ -9,6 +9,7 @@
         <attr name="warning_body" format="string"/>
         <attr name="warning_button_try_again" format="string"/>
         <attr name="warning_status_icon" format="reference"/>
+        <attr name="warning_show_close_icon" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="SmallWarningView">
