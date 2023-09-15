@@ -1,6 +1,7 @@
 package com.vlv.series.ui.listing
 
 import android.os.Bundle
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
@@ -8,7 +9,9 @@ import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.data.series.SeriesListType
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.common.ui.route.SERIES_LISTING_TYPE_EXTRA
+import com.vlv.common.ui.route.toSeriesDetail
 import com.vlv.series.R
+import com.vlv.series.data.toDetailObject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -25,7 +28,16 @@ class ListingSeriesActivity : ListingItemsActivity() {
     override val adapter: PagingDataAdapter<*, *>
         get() = pagingAdapter
 
-    private val pagingAdapter = SeriesPaginationAdapter()
+    private val pagingAdapter = SeriesPaginationAdapter { series, view ->
+        startActivity(
+            toSeriesDetail(series.toDetailObject()),
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                view,
+                getString(com.vlv.common.R.string.common_poster_transition_name)
+            ).toBundle()
+        )
+    }
 
     override val loadingLayout: Int
         get() = R.layout.series_listing_series_loading
@@ -62,9 +74,10 @@ class ListingSeriesActivity : ListingItemsActivity() {
     }
 
     override fun configWarningView() {
-        warningView.setTitle("WarningTitle")
-        warningView.setBody("WarningBody")
-        warningView.setButtonText("WarningButton")
+        warningView.setTitle(com.vlv.common.R.string.common_error_title)
+        warningView.setBody(com.vlv.common.R.string.common_error_description)
+        warningView.setButtonText(com.vlv.common.R.string.common_error_button)
+        warningView.setVisibilityIcon(show = false)
         warningView.setOnTryAgain {
             pagingAdapter.retry()
         }

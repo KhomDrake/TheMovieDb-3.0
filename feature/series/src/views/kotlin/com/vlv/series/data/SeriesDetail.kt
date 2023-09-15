@@ -41,6 +41,7 @@ class SeriesDetail(
                 items.add(AboutItem.EpisodeItem(episode.toEpisode(resources)))
             }
 
+            items.add(AboutItem.Line())
             items.add(AboutItem.Title(R.string.series_title_information))
 
             items.addAll(

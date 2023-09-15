@@ -2,4 +2,13 @@
 <resources>
     <string name="common_poster_transition_name" translatable="false">poster</string>
     <string name="common_backdrop_transition_name" translatable="false">backdrop</string>
+    <string name="common_error_title">Failed to load</string>
+    <string name="common_error_button_load">Load again</string>
+    <string name="common_error_button">Try again</string>
+    <string name="common_error_description_load">Check your internet connection, wait a few moments and click in load again</string>
+    <string name="common_error_description">Check your internet connection, wait a few moments and click in try again</string>
+
+    <string name="common_error_cast_title">Failed to load cast</string>
+    <string name="common_error_review_title">Failed to load reviews</string>
+    <string name="common_review_empty_state_title">None review found</string>
 </resources>

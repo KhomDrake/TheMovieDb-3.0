@@ -5,6 +5,7 @@
     <string name="series_top_rated_title">Top rated</string>
     <string name="series_on_the_air_title">On the air</string>
     <string name="series_popular_title">Popular</string>
+    <string name="series_error_detail_title">Failed to load information</string>
 
     <!-- Series Detail -->
     <string name="series_information_original_title">Original title</string>

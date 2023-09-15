@@ -16,15 +16,16 @@
         tools:text="33 People"
         app:layout_constraintTop_toBottomOf="@id/cast_title"/>
 
-    <com.vlv.imperiya.ui.warning.WarningView
+    <com.vlv.imperiya.ui.warning.SmallWarningView
         android:id="@+id/warning_view_cast"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
         android:visibility="gone"
-        app:warning_title="Title"
-        app:warning_body="Body"
-        app:warning_button_try_again="Try again"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        app:small_warning_title="@string/common_error_cast_title"
+        app:small_warning_body="@string/common_error_description"
+        app:small_warning_button_try_again="@string/common_error_button"/>
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_cast"

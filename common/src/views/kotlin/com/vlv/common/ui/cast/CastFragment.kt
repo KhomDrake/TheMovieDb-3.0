@@ -19,14 +19,14 @@ import com.vlv.extensions.State
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
-import com.vlv.imperiya.ui.warning.WarningView
+import com.vlv.imperiya.ui.warning.SmallWarningView
 
 abstract class CastFragment : Fragment(R.layout.common_fragment_cast) {
 
     protected val cast: RecyclerView by viewProvider(R.id.cast_content)
     protected val root: ViewGroup by viewProvider(R.id.root)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer_cast)
-    protected val warningView: WarningView by viewProvider(R.id.warning_view_cast)
+    protected val warningView: SmallWarningView by viewProvider(R.id.warning_view_cast)
 
     protected val viewStateMachine = ViewStateMachine()
 
@@ -37,7 +37,7 @@ abstract class CastFragment : Fragment(R.layout.common_fragment_cast) {
         setupViewStateMachine()
         setupRecyclerView()
         loadCast()
-        warningView.setOnTryAgain {
+        warningView.setOnClickLink {
             loadCast()
         }
     }

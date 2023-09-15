@@ -1,29 +1,26 @@
 package com.vlv.series.ui.detail.about
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.TransitionManager
 import br.com.arch.toolkit.delegate.extraProvider
 import br.com.arch.toolkit.delegate.viewProvider
-import br.com.arch.toolkit.statemachine.StateMachine
 import br.com.arch.toolkit.statemachine.ViewStateMachine
-import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.ui.DetailActivity
-import com.vlv.extensions.State
 import com.vlv.extensions.dataState
+import com.vlv.extensions.defaultConfig
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
+import com.vlv.imperiya.ui.warning.SmallWarningView
 import com.vlv.imperiya.ui.warning.WarningView
 import com.vlv.series.R
 import com.vlv.series.data.Series
@@ -38,7 +35,7 @@ class AboutFragment : Fragment(R.layout.series_fragment_about) {
     private val root: ViewGroup by viewProvider(R.id.root)
     private val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer_about)
     private val content: RecyclerView by viewProvider(R.id.content)
-    private val warningView: WarningView by viewProvider(R.id.warning_view_about)
+    private val warningView: SmallWarningView by viewProvider(R.id.warning_view_about)
 
     private val viewStateMachine = ViewStateMachine()
 
@@ -47,7 +44,14 @@ class AboutFragment : Fragment(R.layout.series_fragment_about) {
         super.onViewCreated(view, savedInstanceState)
         setupViewStateMachine()
         setupRecyclerView()
+        setupWarningView()
         loadSeriesDetail()
+    }
+
+    private fun setupWarningView() {
+        warningView.setOnClickLink {
+            loadSeriesDetail()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -59,12 +63,7 @@ class AboutFragment : Fragment(R.layout.series_fragment_about) {
 
     private fun setupViewStateMachine() {
         viewStateMachine.setup {
-            config {
-                initialState = State.LOADING.ordinal
-                onChangeState = StateMachine.OnChangeStateCallback {
-                    TransitionManager.beginDelayedTransition(root)
-                }
-            }
+            defaultConfig(root)
 
             stateData {
                 visibles(content)
@@ -98,8 +97,7 @@ class AboutFragment : Fragment(R.layout.series_fragment_about) {
             showLoading {
                 viewStateMachine.loadingState()
             }
-            error { e ->
-                Log.i("Vini", e.stackTraceToString())
+            error { _ ->
                 viewStateMachine.errorState()
             }
         }
