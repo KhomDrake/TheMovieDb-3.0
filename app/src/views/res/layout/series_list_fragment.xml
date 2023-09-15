@@ -51,16 +51,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/series"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.vlv.imperiya.ui.stateview.StateView
         android:id="@+id/empty_state"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingVertical="16dp"
-        android:layout_marginHorizontal="16dp"
-        android:gravity="center"
         android:visibility="gone"
-        style="@style/Imperiya.Style.Text.Subtitle.Big"
-        tools:text="None movie favorite found"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.vlv.imperiya.ui.warning.SmallWarningView
+        android:id="@+id/error_state"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

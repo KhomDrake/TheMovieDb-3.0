@@ -32,8 +32,8 @@ class NowPlayingFragment : MovieCarouselFragment() {
     override fun configErrorView() {
         errorView.apply {
             setTitleText(R.string.error_movie_load_text_title_now_playing)
-            setBodyText(R.string.error_movie_load_text_body)
-            setButtonText(R.string.error_movie_load_text_button)
+            setBodyText(R.string.error_load_text_body)
+            setButtonText(R.string.error_load_text_button)
             setOnClickLink {
                 loadContent()
             }

@@ -1,8 +1,5 @@
 package com.vlv.themoviedb.ui.movie.trending
 
-import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import com.vlv.common.ui.route.toMovieTrending
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
@@ -34,8 +31,8 @@ class TrendingNowFragment : MovieCarouselFragment() {
     override fun configErrorView() {
         errorView.apply {
             setTitleText(R.string.error_movie_load_text_title_trending)
-            setBodyText(R.string.error_movie_load_text_body)
-            setButtonText(R.string.error_movie_load_text_button)
+            setBodyText(R.string.error_load_text_body)
+            setButtonText(R.string.error_load_text_button)
             setOnClickLink {
                 loadContent()
             }

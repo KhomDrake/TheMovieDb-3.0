@@ -59,8 +59,6 @@
         android:layout_height="wrap_content"
         android:paddingVertical="16dp"
         android:visibility="gone"
-        style="@style/Imperiya.Style.Text.Subtitle.Big"
-        tools:text="None movie favorite found"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

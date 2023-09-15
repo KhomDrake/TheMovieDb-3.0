@@ -15,8 +15,11 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.ui.route.toSeriesDetail
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
+import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.CarouselDecorator
+import com.vlv.imperiya.ui.stateview.StateView
+import com.vlv.imperiya.ui.warning.SmallWarningView
 import com.vlv.series.data.toDetailObject
 import com.vlv.themoviedb.R
 import com.vlv.common.R as RCommon
@@ -28,7 +31,8 @@ abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) 
     protected val title: AppCompatTextView by viewProvider(R.id.title)
     protected val recyclerView: RecyclerView by viewProvider(R.id.series)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer)
-    protected val emptyText: AppCompatTextView by viewProvider(R.id.empty_state)
+    protected val errorView: SmallWarningView by viewProvider(R.id.error_state)
+    protected val emptyView: StateView by viewProvider(R.id.empty_state)
     protected val indicator: ScrollingPagerIndicator by viewProvider(R.id.indicator)
     protected val seeAll: AppCompatTextView by viewProvider(R.id.see_all)
 
@@ -36,12 +40,18 @@ abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) 
     protected val viewStateMachine = ViewStateMachine()
 
     abstract val titleRes: Int
-    open val emptyTextRes: Int = R.string.now_playing_title
+
+    abstract fun configEmptyView()
+
+    abstract fun configErrorView()
+
+    open fun loadContent() = Unit
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         title.text = getString(titleRes)
-        emptyText.text = getString(emptyTextRes)
+        configEmptyView()
+        configErrorView()
         setupRecyclerView()
         setupViewStateMachine()
         seeAll.setOnClickListener { onClickSeeAll() }
@@ -72,18 +82,19 @@ abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) 
         viewStateMachine.setup {
             stateData {
                 visibles(recyclerView, indicator, seeAll)
-                gones(shimmer, emptyText)
+                gones(shimmer, emptyView, errorView)
             }
             stateLoading {
                 visibles(shimmer)
-                gones(recyclerView, emptyText, indicator, seeAll)
-                onEnter {
-                    shimmer.startShimmer()
-                }
+                gones(recyclerView, emptyView, indicator, seeAll, errorView)
             }
             stateEmpty {
-                visibles(emptyText)
-                gones(shimmer, recyclerView, indicator, seeAll)
+                visibles(emptyView)
+                gones(shimmer, recyclerView, indicator, seeAll, errorView)
+            }
+            stateError {
+                visibles(errorView)
+                gones(emptyView, shimmer, recyclerView, indicator, seeAll)
             }
         }
     }
