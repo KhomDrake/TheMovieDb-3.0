@@ -9,6 +9,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.imperiya.R
 
@@ -55,6 +56,7 @@ class StateView : ConstraintLayout {
 
     fun setBody(text: String?) = apply {
         body.text = text
+        body.isVisible = !text.isNullOrBlank()
     }
 
     fun setStateIcon(@DrawableRes drawableRes: Int) = apply {

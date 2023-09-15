@@ -1,7 +1,10 @@
 package com.vlv.extensions
 
+import android.view.ViewGroup
+import androidx.transition.TransitionManager
 import br.com.arch.toolkit.statemachine.StateMachine
 import br.com.arch.toolkit.statemachine.ViewStateMachine
+import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.state
 
 enum class State {
@@ -25,6 +28,17 @@ fun ViewStateMachine.loadingState() = apply {
 
 fun ViewStateMachine.emptyState() = apply {
     changeState(State.EMPTY.ordinal)
+}
+
+fun StateMachine<ViewStateMachine.State>.defaultConfig(
+    root: ViewGroup
+) = apply {
+    config {
+        initialState = State.LOADING.ordinal
+        onChangeState = StateMachine.OnChangeStateCallback {
+            TransitionManager.beginDelayedTransition(root)
+        }
+    }
 }
 
 fun StateMachine<ViewStateMachine.State>.stateData(func: ViewStateMachine.State.() -> Unit) = apply {

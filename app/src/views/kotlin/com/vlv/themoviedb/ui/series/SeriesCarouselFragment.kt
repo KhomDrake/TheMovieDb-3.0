@@ -28,7 +28,7 @@ abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) 
     protected val title: AppCompatTextView by viewProvider(R.id.title)
     protected val recyclerView: RecyclerView by viewProvider(R.id.series)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer)
-    protected val emptyText: AppCompatTextView by viewProvider(R.id.empty_state_text)
+    protected val emptyText: AppCompatTextView by viewProvider(R.id.empty_state)
     protected val indicator: ScrollingPagerIndicator by viewProvider(R.id.indicator)
     protected val seeAll: AppCompatTextView by viewProvider(R.id.see_all)
 

@@ -24,7 +24,7 @@ class SeriesErrorViewHolder(view: View): ErrorViewHolder(view) {
 
     override fun bind(retry: () -> Unit) {
         (itemView as? SmallWarningView)?.apply {
-            setOnTryAgain {
+            setOnClickLink {
                 retry.invoke()
             }
         }

@@ -2,8 +2,8 @@ package com.vlv.imperiya.ui.warning
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.View
+import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.isVisible
@@ -33,7 +33,7 @@ class SmallWarningView : LinearLayoutCompat {
         setupWithAttributes(context, attrs)
     }
 
-    fun setOnTryAgain(onClickListener: OnClickListener) {
+    fun setOnClickLink(onClickListener: OnClickListener) {
         tryAgainButton.setOnClickListener(onClickListener)
     }
 
@@ -42,12 +42,7 @@ class SmallWarningView : LinearLayoutCompat {
 
         setTitleText(attrs.getString(R.styleable.SmallWarningView_small_warning_title))
         setBodyText(attrs.getString(R.styleable.SmallWarningView_small_warning_body))
-
-        if(attrs.hasValue(R.styleable.SmallWarningView_small_warning_button_try_again)) {
-            val tryAgainText = attrs.
-            getString(R.styleable.SmallWarningView_small_warning_button_try_again)
-            tryAgainButton.text = tryAgainText
-        }
+        setButtonText(attrs.getString(R.styleable.SmallWarningView_small_warning_button_try_again))
 
         if(attrs.hasValue(R.styleable.SmallWarningView_small_warning_with_icon)) {
             val withIcon = attrs.getBoolean(
@@ -60,14 +55,31 @@ class SmallWarningView : LinearLayoutCompat {
         attrs.recycle()
     }
 
+    fun setTitleText(@StringRes text: Int) {
+        setTitleText(resources.getString(text))
+    }
+
     fun setTitleText(text: String?) {
         title.text = text
         title.isVisible = text.isNullOrBlank().not()
     }
 
+    fun setBodyText(@StringRes text: Int) {
+        setBodyText(resources.getString(text))
+    }
+
     fun setBodyText(text: String?) {
         body.text = text
         body.isVisible = text.isNullOrBlank().not()
+    }
+
+    fun setButtonText(@StringRes text: Int) {
+        setButtonText(resources.getString(text))
+    }
+
+    fun setButtonText(text: String?) {
+        tryAgainButton.text = text
+        tryAgainButton.isVisible = text.isNullOrBlank().not()
     }
 
 }
