@@ -1,9 +1,11 @@
 package com.vlv.themoviedb.ui
 
 import android.content.Context
+import androidx.appcompat.view.menu.MenuView
 import androidx.startup.Initializer
 import com.vlv.movie.MovieInitializer
 import com.vlv.network.NetworkInitializer
+import com.vlv.themoviedb.ui.menu.MenuViewModel
 import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesViewModel
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingViewModel
 import com.vlv.themoviedb.ui.movie.trending.TrendingNowViewModel
@@ -23,6 +25,7 @@ class MainInitializer : Initializer<Module> {
             viewModel { TrendingNowViewModel(get()) }
             viewModel { TrendingSeriesViewModel(get()) }
             viewModel { AiringTodayViewModel(get()) }
+            viewModel { MenuViewModel() }
         }
         loadKoinModules(module)
         return module
