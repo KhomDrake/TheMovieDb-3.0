@@ -19,16 +19,17 @@ import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
-import com.vlv.imperiya.ui.warning.WarningView
 import com.vlv.common.ui.review.adapter.ReviewAdapter
+import com.vlv.imperiya.ui.stateview.StateView
+import com.vlv.imperiya.ui.warning.SmallWarningView
 
 abstract class ReviewFragment : Fragment(R.layout.common_fragment_review) {
 
     protected val reviews: RecyclerView by viewProvider(R.id.review)
     protected val root: ViewGroup by viewProvider(R.id.root)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer_review)
-    protected val warningView: WarningView by viewProvider(R.id.warning_view_review)
-    protected val emptyView: WarningView by viewProvider(R.id.empty_view_review)
+    protected val warningView: SmallWarningView by viewProvider(R.id.warning_view_review)
+    protected val emptyView: StateView by viewProvider(R.id.empty_view_review)
     protected val viewStateMachine = ViewStateMachine()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,16 +37,11 @@ abstract class ReviewFragment : Fragment(R.layout.common_fragment_review) {
         setupViewStateMachine()
         setupRecyclerView()
         setupWarningView()
-        setupEmptyState()
         loadReviews()
     }
 
-    private fun setupEmptyState() {
-        warningView.setButtonText(null)
-    }
-
     private fun setupWarningView() {
-        warningView.setOnTryAgain {
+        warningView.setOnClickLink {
             loadReviews()
         }
     }

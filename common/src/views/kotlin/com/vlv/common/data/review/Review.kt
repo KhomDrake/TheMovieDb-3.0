@@ -1,5 +1,8 @@
 package com.vlv.common.data.review
 
+import com.vlv.extensions.patternFullDate
+import com.vlv.extensions.toFormattedString
+import com.vlv.extensions.toLocalDateTime
 import com.vlv.network.data.review.ReviewResponse
 
 class Review(
@@ -13,7 +16,7 @@ class Review(
         review.id,
         review.author,
         review.content,
-        review.createdAt,
+        review.createdAt.toLocalDateTime().toFormattedString(patternFullDate()),
         review.url
     )
 }

@@ -16,6 +16,9 @@
     <string name="movie_title_top_rated">Top rated</string>
     <string name="movie_title_popular">Popular</string>
     <string name="movie_title_upcoming">Upcoming</string>
+    <string name="movie_title_genres">Genres:</string>
+    <string name="movie_title_information">Information:</string>
+    <string name="movie_error_detail_title">Failed to load movie information</string>
 
     <!--  MOVIE LISTING  -->
     <string name="movie_listing_error_title">Failed to load</string>

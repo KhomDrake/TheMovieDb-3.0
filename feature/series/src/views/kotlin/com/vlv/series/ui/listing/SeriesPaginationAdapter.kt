@@ -28,12 +28,17 @@ class SeriesDiffUtil: ItemCallback<Series>() {
 
 const val VIEW_TYPE_SERIES = 43
 
-class SeriesPaginationAdapter: PagingDataAdapter<Series, RecyclerView.ViewHolder>(SeriesDiffUtil()) {
+class SeriesPaginationAdapter(
+    private val onClick: (Series, View) -> Unit
+): PagingDataAdapter<Series, RecyclerView.ViewHolder>(SeriesDiffUtil()) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is SeriesViewHolder -> {
                 val data = getItem(position) ?: return
                 holder.bind(data)
+                holder.itemView.setOnClickListener {
+                    onClick.invoke(data, it)
+                }
             }
             else -> Unit
         }

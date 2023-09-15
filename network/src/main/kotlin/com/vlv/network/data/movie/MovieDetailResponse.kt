@@ -12,6 +12,7 @@ class MovieDetailResponse(
     val budget: Int,
     @Json(name = "homepage")
     val homePage: String,
+    val overview: String,
     val revenue: Int,
     val runtime: Int,
     val genres: List<GenreResponse>,
@@ -40,7 +41,7 @@ class BelongsToCollection(
     val id: Int,
     val name: String,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @Json(name = "backdrop_path")
     val backdropPath: String
 )
