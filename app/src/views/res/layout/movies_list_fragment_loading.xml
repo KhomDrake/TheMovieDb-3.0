@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/TheMovieDb.Style.Shimmer"
+    style="@style/Imperiya.Widget.Shimmer"
     android:id="@+id/shimmer"
     android:layout_marginTop="12dp"
     android:visibility="gone"
@@ -19,13 +19,13 @@
         <View
             android:layout_width="300dp"
             android:layout_height="160dp"
-            style="@style/TheMovieDb.Style.Shimmer.Item.Rounded"
+            style="@style/Imperiya.Widget.Shimmer.Item.Rounded"
             android:layout_marginHorizontal="16dp"/>
 
         <View
             android:layout_width="300dp"
             android:layout_height="160dp"
-            style="@style/TheMovieDb.Style.Shimmer.Item.Rounded"/>
+            style="@style/Imperiya.Widget.Shimmer.Item.Rounded"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

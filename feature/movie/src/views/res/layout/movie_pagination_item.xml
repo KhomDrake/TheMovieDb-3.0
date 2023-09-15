@@ -9,10 +9,12 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/backdrop"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/movie_pagination_item_height"
         android:outlineProvider="background"
+        android:transitionName="@string/common_poster_transition_name"
+        android:foreground="@drawable/imperiya_ripple_rounded"
         android:background="@drawable/rounded_background"
-        android:scaleType="center"/>
+        android:scaleType="centerCrop"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/movie_title"
@@ -22,6 +24,6 @@
         android:layout_marginTop="12dp"
         android:textAlignment="center"
         tools:text="John Wick"
-        style="@style/TheMovieDb.Style.Text.Subtitle"/>
+        style="@style/Imperiya.Style.Text.Subtitle"/>
 
 </LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_text_original_title">Original title</string>
+    <string name="movie_text_original_language">Original language</string>
+    <string name="movie_text_state">State</string>
+    <string name="movie_text_duration">Screen Time</string>
+    <string name="movie_text_revenue">Revenue</string>
+    <string name="movie_text_budget">Budget</string>
+    <string name="movie_text_companies">Companies</string>
+    <string name="movie_text_countries">Countries</string>
+    <string name="movie_text_spoken_languages">Spoken languages</string>
+    <string name="movie_text_release_status">Release status</string>
+
+    <string name="movie_title_trending_now">Trending now</string>
+    <string name="movie_title_now_playing">Now playing</string>
+    <string name="movie_title_top_rated">Top rated</string>
+    <string name="movie_title_popular">Popular</string>
+    <string name="movie_title_upcoming">Upcoming</string>
+
+    <!--  MOVIE LISTING  -->
+    <string name="movie_listing_error_title">Failed to load</string>
+    <string name="movie_listing_error_body">Check your internet connection, wait a few moments and click in load again button</string>
+    <string name="movie_listing_error_button">Load again</string>
+</resources>

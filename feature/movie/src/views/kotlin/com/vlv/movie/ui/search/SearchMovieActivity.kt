@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,9 +15,12 @@ import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import br.com.arch.toolkit.statemachine.state
+import com.vlv.common.ui.route.toMovieDetail
 import com.vlv.extensions.*
 import com.vlv.imperiya.ui.search.ImperiyaSearchView
 import com.vlv.movie.R
+import com.vlv.common.R as RCommon
+import com.vlv.movie.data.toDetailObject
 import com.vlv.movie.ui.adapter.HistoryAdapter
 import com.vlv.movie.ui.adapter.MoviePaginationAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -26,7 +30,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val SEARCH_STATE = 23
 
-class SearchMovieActivity : AppCompatActivity(R.layout.search_activity) {
+class SearchMovieActivity : AppCompatActivity(R.layout.movie_search_activity) {
 
     private val root: ViewGroup by viewProvider(R.id.root)
     private val search: ImperiyaSearchView by viewProvider(R.id.search)
@@ -37,7 +41,17 @@ class SearchMovieActivity : AppCompatActivity(R.layout.search_activity) {
     private val historyTitle: AppCompatTextView by viewProvider(R.id.history_title)
     private val historyItems: RecyclerView by viewProvider(R.id.history_items)
     private val viewModel: SearchViewModel by viewModel()
-    private val paginationAdapter = MoviePaginationAdapter()
+    private val paginationAdapter = MoviePaginationAdapter { movie, view ->
+        val intent = toMovieDetail(movie.toDetailObject())
+        startActivity(
+            intent,
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                view,
+                getString(RCommon.string.common_poster_transition_name)
+            ).toBundle()
+        )
+    }
     private val historyAdapter = HistoryAdapter(
         onCLickItem = {
             search.setText(it.text)

@@ -9,5 +9,34 @@
     <string name="favorites_title">Favorites</string>
     <string name="see_all_text">See All</string>
     <string name="empty_state_text_default">None found</string>
+
+    <string name="error_load_text_body">Check your internet connection, wait a few moments and click in try again button</string>
+    <string name="error_load_text_button">Try again</string>
+
+
+    <!--  Home Movie - Favorites  -->
+    <string name="error_movie_load_text_title_favorites">Failed to load favorites movies</string>
     <string name="empty_state_text_movie_favorite">None favorite movie found</string>
+
+    <!--  Home Movie - Trending  -->
+    <string name="empty_state_text_movie_trending">None movie found</string>
+    <string name="error_movie_load_text_title_trending">Failed to load trending movies</string>
+
+    <!--  Home Movie - Now Playing  -->
+    <string name="empty_state_text_movie_now_playing">None movie found</string>
+    <string name="error_movie_load_text_title_now_playing">Failed to load movies</string>
+
+
+    <!--  Home Series - Favorites  -->
+    <string name="error_series_load_text_title_favorites">Failed to load favorites tv shows</string>
+    <string name="empty_state_text_series_favorite">None favorite series found</string>
+
+    <!--  Home Series - Trending  -->
+    <string name="empty_state_text_series_trending">None tv shows found</string>
+    <string name="error_series_load_text_title_trending">Failed to load trending tv shows</string>
+
+    <!--  Home Series - Airing Today  -->
+    <string name="empty_state_text_series_airing_today">None tv shows found</string>
+    <string name="error_series_load_text_title_airing_today">Failed to load tv shows</string>
+
 </resources>

@@ -49,6 +49,7 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.5.2"
     kapt "androidx.room:room-compiler:2.5.2"
 
+    api "com.jakewharton.threetenabp:threetenabp:1.4.6"
     api "io.insert-koin:koin-android:3.4.1"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

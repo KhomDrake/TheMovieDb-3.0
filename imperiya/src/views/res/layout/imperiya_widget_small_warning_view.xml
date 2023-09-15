@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="16dp"
+    android:background="@drawable/imperiya_background_tertiary"
+    android:orientation="vertical"
+    tools:parentTag="androidx.appcompat.widget.LinearLayoutCompat">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        style="@style/Imperiya.Style.Text.Subtitle.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:drawableStart="@drawable/ic_info"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        tools:text="Failure ocurred" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/body"
+        style="@style/Imperiya.Style.Text.Paragraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
+        tools:text="Unable to load data. Please try again." />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/try_again_button"
+        style="@style/Imperiya.Style.Text.Link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="12dp"
+        android:foreground="@drawable/imperiya_ripple_rounded"
+        tools:text="Try Again" />
+
+</merge>
