@@ -9,8 +9,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/Imperiya.Widget.Toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_back"
         tools:title="Trending Now" />
 
     <androidx.recyclerview.widget.RecyclerView
