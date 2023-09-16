@@ -59,6 +59,9 @@ dependencies {
     implementation project(':tools:extensions')
     implementation project(':feature:movie')
     implementation project(':feature:series')
+    implementation project(':feature:people')
+    implementation project(':feature:favorite')
+    implementation project(':feature:configuration')
     implementation project(':common')
 
     implementation 'androidx.core:core-ktx:1.10.1'
