@@ -31,6 +31,15 @@ interface SeriesApi {
         language: String
     ) : ReviewsResponse
 
+    @GET("tv/{series_id}/recommendations")
+    suspend fun recommendations(
+        @Path("series_id") seriesId: Int,
+        @Query("language")
+        language: String,
+        @Query("page")
+        page: Int
+    ) : SeriesResponse
+
     @GET("trending/tv/{time_window}")
     suspend fun trending(
         @Path("time_window") timeWindow: String,

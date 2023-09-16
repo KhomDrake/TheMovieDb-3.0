@@ -23,4 +23,10 @@
     <string name="series_title_next_episode">Next episode:</string>
     <string name="series_title_information">Information:</string>
     <string name="series_title_videos">Videos:</string>
+    <string name="series_about_tab_title">About</string>
+    <string name="series_seasons_tab_title">Seasons</string>
+    <string name="series_cast_tab_title">Cast</string>
+    <string name="series_review_tab_title">Reviews</string>
+    <string name="series_recommendation_tab_title">Recommendation</string>
+    <string name="series_empty_state_recommendation">None recommendation found</string>
 </resources>
