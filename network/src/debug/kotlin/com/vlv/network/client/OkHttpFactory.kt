@@ -1,8 +1,8 @@
 package com.vlv.network.client
 
+import br.com.mrocigno.bigbrother.network.BigBrotherInterceptor
 import com.vlv.network.interceptors.InterceptorFactory
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 object OkHttpFactory {
@@ -11,7 +11,7 @@ object OkHttpFactory {
             interceptorFactory.interceptors().forEach {
                 addInterceptor(it)
             }
-            addInterceptor(HttpLoggingInterceptor())
+            addInterceptor(BigBrotherInterceptor())
             connectTimeout(60, TimeUnit.SECONDS)
             callTimeout(60, TimeUnit.SECONDS)
             readTimeout(60, TimeUnit.SECONDS)
