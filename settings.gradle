@@ -18,6 +18,9 @@ include ':app'
 
 include ':feature:movie'
 include ':feature:series'
+include ':feature:people'
+include ':feature:configuration'
+include ':feature:favorite'
 
 include ':imperiya'
 include ':imperiyasample'
