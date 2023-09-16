@@ -3,23 +3,16 @@ package com.vlv.common.ui.listing
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import androidx.transition.TransitionManager
 import br.com.arch.toolkit.delegate.viewProvider
-import br.com.arch.toolkit.statemachine.StateMachine
 import br.com.arch.toolkit.statemachine.ViewStateMachine
-import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.R
 import com.vlv.common.ui.adapter.LoaderAdapter
-import com.vlv.extensions.State
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
 import com.vlv.extensions.emptyState
@@ -27,51 +20,45 @@ import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.extensions.setupState
 import com.vlv.extensions.stateData
+import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
-import com.vlv.imperiya.ui.warning.WarningView
+import com.vlv.imperiya.ui.stateview.StateView
+import com.vlv.imperiya.ui.warning.SmallWarningView
 
-abstract class ListingItemsActivity : AppCompatActivity(R.layout.common_listing_activity) {
+abstract class ListingItemsFragment : Fragment(R.layout.common_fragment_listing) {
 
     protected val viewStateMachine = ViewStateMachine()
 
     protected val root: ViewGroup by viewProvider(R.id.root)
-    protected val items: RecyclerView by viewProvider(R.id.items)
-    protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.loading)
-    protected val warningView: WarningView by viewProvider(R.id.warning_view)
-    private val toolbar: Toolbar by viewProvider(R.id.toolbar)
+    protected val items: RecyclerView by viewProvider(R.id.listing_content)
+    protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer_listing)
+    protected val emptyState: StateView by viewProvider(R.id.empty_view_listing)
+    protected val warningView: SmallWarningView by viewProvider(R.id.warning_view_listing)
 
-    abstract val title: Int
     abstract val adapter: PagingDataAdapter<*, *>
     abstract val loadingLayout: Int
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        configToolbar()
-        configLoading()
-        configViewStateMachine()
-        configWarningView()
-        configRecyclerView()
-    }
-
     abstract fun loaderAdapter() : LoaderAdapter
+
+    abstract fun configEmptyState()
 
     abstract fun configWarningView()
 
-    open fun createLayoutManager() : LayoutManager = GridLayoutManager(this, 2)
+    open fun createLayoutManager() : RecyclerView.LayoutManager = GridLayoutManager(requireContext(), 2)
 
-    private fun configToolbar() {
-        toolbar.setNavigationOnClickListener {
-            finish()
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val titleText = getString(title)
-        toolbar.title = titleText
+        configLoading()
+        configWarningView()
+        configEmptyState()
+        configRecyclerView()
+        configViewStateMachine()
     }
 
     private fun configLoading() {
-        View.inflate(this, loadingLayout, shimmer)
+        View.inflate(requireContext(), loadingLayout, shimmer)
     }
 
     private fun configViewStateMachine() {
@@ -80,17 +67,22 @@ abstract class ListingItemsActivity : AppCompatActivity(R.layout.common_listing_
 
             stateData {
                 visibles(items)
-                gones(shimmer, warningView)
+                gones(shimmer, warningView, emptyState)
             }
 
             stateError {
                 visibles(warningView)
-                gones(shimmer, items)
+                gones(shimmer, items, emptyState)
             }
 
             stateLoading {
                 visibles(shimmer)
-                gones(items, warningView)
+                gones(items, warningView, emptyState)
+            }
+
+            stateEmpty {
+                visibles(emptyState)
+                gones(items, warningView, shimmer)
             }
         }
     }

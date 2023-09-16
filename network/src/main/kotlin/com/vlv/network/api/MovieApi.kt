@@ -33,6 +33,15 @@ interface MovieApi {
         page: Int
     ) : ReviewsResponse
 
+    @GET("movie/{movie_id}/recommendations")
+    suspend fun movieRecommendations(
+        @Path("movie_id") movieId: Int,
+        @Query("language")
+        language: String = "en-US",
+        @Query("page")
+        page: Int
+    ) : MoviesResponse
+
     @GET("movie/now_playing")
     suspend fun nowPlaying(
         @Query("language")

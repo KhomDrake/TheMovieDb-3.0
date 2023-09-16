@@ -19,6 +19,11 @@
     <string name="movie_title_genres">Genres:</string>
     <string name="movie_title_information">Information:</string>
     <string name="movie_error_detail_title">Failed to load movie information</string>
+    <string name="movie_about_tab_title">About</string>
+    <string name="movie_cast_tab_title">Cast</string>
+    <string name="movie_review_tab_title">Review</string>
+    <string name="movie_recommendation_tab_title">Recommendation</string>
+    <string name="movie_empty_state_recommendation">None recommendation found</string>
 
     <!--  MOVIE LISTING  -->
     <string name="movie_listing_error_title">Failed to load</string>

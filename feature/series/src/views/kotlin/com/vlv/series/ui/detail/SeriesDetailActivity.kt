@@ -6,6 +6,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.toUrlMovieDb
+import com.vlv.series.R
 import com.vlv.series.data.toSeries
 import com.vlv.series.ui.detail.adapter.DetailAdapter
 
@@ -13,10 +14,11 @@ class SeriesDetailActivity : DetailActivity() {
 
     override val texts: List<String>
         get() = listOf(
-            "About",
-            "Seasons",
-            "Cast",
-            "Reviews"
+            getString(R.string.series_about_tab_title),
+            getString(R.string.series_seasons_tab_title),
+            getString(R.string.series_cast_tab_title),
+            getString(R.string.series_review_tab_title),
+            getString(R.string.series_recommendation_tab_title)
         )
 
     override fun onCreate(savedInstanceState: Bundle?) {
