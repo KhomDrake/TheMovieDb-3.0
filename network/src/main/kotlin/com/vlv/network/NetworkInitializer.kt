@@ -4,7 +4,12 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.startup.Initializer
+import com.vlv.network.api.ConfigurationApi
+import com.vlv.network.api.DiscoverApi
+import com.vlv.network.api.GenresApi
 import com.vlv.network.api.MovieApi
+import com.vlv.network.api.PeopleApi
+import com.vlv.network.api.SearchApi
 import com.vlv.network.api.SeriesApi
 import com.vlv.network.client.OkHttpFactory
 import com.vlv.network.database.TheMovieDatabase
@@ -24,35 +29,63 @@ import org.koin.dsl.module
 
 class NetworkInitializer : Initializer<Module> {
 
-    override fun create(context: Context): Module {
-        val module = module {
-            single { MoshiFactory.moshi() }
-            single { InterceptorFactory() }
-            single { OkHttpFactory.create(get()) }
-            single { RetrofitFactory.retrofit(get(), get()) }
-            single { RetrofitFactory.service(get(), MovieApi::class) as MovieApi }
-            single { RetrofitFactory.service(get(), SeriesApi::class) as SeriesApi }
-            single {
-                Room.databaseBuilder(
-                    context,
-                    TheMovieDatabase::class.java,
-                    "Database TheMovieDb"
-                ).build().dao()
-            }
+    private fun moshiModule() = module {
+        single { MoshiFactory.moshi() }
+    }
 
-            single { SearchRepository(get()) }
-            single { MovieRepository(get()) }
-            single { SeriesRepository(get()) }
-            single { MovieDetailRepository(get()) }
-            single { SeriesDetailRepository(get()) }
+    private fun interceptorModule() = module {
+        single { InterceptorFactory() }
+    }
+
+    private fun okHttpModule() = module {
+        single { OkHttpFactory.create(get()) }
+    }
+
+    private fun retrofitModule() = module {
+        single { RetrofitFactory.retrofit(get(), get()) }
+        single { RetrofitFactory.service(get(), MovieApi::class) as MovieApi }
+        single { RetrofitFactory.service(get(), SeriesApi::class) as SeriesApi }
+        single { RetrofitFactory.service(get(), ConfigurationApi::class) as ConfigurationApi }
+        single { RetrofitFactory.service(get(), DiscoverApi::class) as DiscoverApi }
+        single { RetrofitFactory.service(get(), GenresApi::class) as GenresApi }
+        single { RetrofitFactory.service(get(), PeopleApi::class) as PeopleApi }
+        single { RetrofitFactory.service(get(), SearchApi::class) as SearchApi }
+    }
+
+    private fun roomModule(context: Context) = module {
+        single {
+            Room.databaseBuilder(
+                context,
+                TheMovieDatabase::class.java,
+                "Database TheMovieDb"
+            ).build().dao()
         }
+    }
+
+    private fun repositoryModule() = module {
+        single { SearchRepository(get()) }
+        single { MovieRepository(get()) }
+        single { SeriesRepository(get()) }
+        single { MovieDetailRepository(get()) }
+        single { SeriesDetailRepository(get()) }
+    }
+
+    override fun create(context: Context): Module {
+        val modules = listOf(
+            moshiModule(),
+            interceptorModule(),
+            okHttpModule(),
+            retrofitModule(),
+            roomModule(context),
+            repositoryModule()
+        )
 
         startKoin {
             androidContext(context)
-            modules(module)
+            modules(modules)
         }
 
-        return module
+        return modules.first()
     }
 
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {

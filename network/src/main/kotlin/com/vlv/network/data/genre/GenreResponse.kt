@@ -7,3 +7,8 @@ class GenreResponse(
     val id: Int,
     val name: String
 )
+
+@JsonClass(generateAdapter = true)
+class GenresResponse(
+    val genres: List<GenreResponse>
+)
