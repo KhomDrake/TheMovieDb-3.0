@@ -2,6 +2,7 @@
 <resources>
     <string name="common_poster_transition_name" translatable="false">poster</string>
     <string name="common_backdrop_transition_name" translatable="false">backdrop</string>
+    <string name="common_avatar_transition_name" translatable="false">avatar</string>
     <string name="common_error_title">Failed to load</string>
     <string name="common_error_title_load_more">Failed to load more</string>
     <string name="common_error_button_load">Load again</string>

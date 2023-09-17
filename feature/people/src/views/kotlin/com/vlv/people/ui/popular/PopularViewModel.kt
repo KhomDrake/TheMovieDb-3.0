@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
+import com.vlv.common.data.people.People
 import com.vlv.network.repository.PeopleRepository
-import com.vlv.people.data.People
 import kotlinx.coroutines.flow.map
 
 class PopularViewModel(

@@ -8,10 +8,10 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.common.data.people.People
 import com.vlv.extensions.inflate
 import com.vlv.extensions.loadUrl
 import com.vlv.people.R
-import com.vlv.people.data.People
 
 class PeopleDiffUtil: ItemCallback<People>() {
 
@@ -27,11 +27,16 @@ class PeopleDiffUtil: ItemCallback<People>() {
 
 const val VIEW_TYPE_PEOPLE = 2398
 
-class PeoplePagingAdapter: PagingDataAdapter<People, PeopleViewHolder>(PeopleDiffUtil()) {
+class PeoplePagingAdapter(
+    private val onClick: (View, People) -> Unit
+): PagingDataAdapter<People, PeopleViewHolder>(PeopleDiffUtil()) {
 
     override fun onBindViewHolder(holder: PeopleViewHolder, position: Int) {
         val item = getItem(position) ?: return
         holder.bind(item)
+        holder.avatar.setOnClickListener {
+            onClick.invoke(it, item)
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -48,7 +53,7 @@ class PeoplePagingAdapter: PagingDataAdapter<People, PeopleViewHolder>(PeopleDif
 class PeopleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val name: AppCompatTextView by viewProvider(R.id.name)
-    private val avatar: AppCompatImageView by viewProvider(R.id.avatar)
+    val avatar: AppCompatImageView by viewProvider(R.id.avatar)
 
     fun bind(people: People) {
         avatar.clipToOutline = true

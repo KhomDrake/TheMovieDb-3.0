@@ -43,10 +43,4 @@ class MovieDetailActivity : DetailActivity() {
         collapsing.title = movie.title
     }
 
-    override fun onSelectedTab(tab: TabLayout.Tab?) {
-        val position = tab?.position ?: return
-        layout.setCurrentItem(position, true)
-        layout.requestLayout()
-    }
-
 }

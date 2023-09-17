@@ -61,17 +61,6 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
     }
 
     private fun configTabs() {
-        tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                onSelectedTab(tab)
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) = Unit
-
-            override fun onTabReselected(tab: TabLayout.Tab?) = Unit
-
-        })
-
         texts.forEach { name ->
             tabs.addTab(
                 tabs.newTab().apply {
@@ -80,8 +69,6 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
             )
         }
     }
-
-    open fun onSelectedTab(tab: TabLayout.Tab?) = Unit
 
     protected open fun configAppBar() {
         appBar.addOnOffsetChangedListener(

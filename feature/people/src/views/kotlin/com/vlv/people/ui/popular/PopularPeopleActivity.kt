@@ -1,11 +1,13 @@
 package com.vlv.people.ui.popular
 
 import android.os.Bundle
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vlv.common.ui.listing.ListingItemsActivity
+import com.vlv.common.ui.route.toPeopleDetail
 import com.vlv.people.R
 import com.vlv.people.ui.adapter.PeopleLoaderAdapter
 import com.vlv.people.ui.adapter.PeoplePagingAdapter
@@ -22,7 +24,16 @@ class PopularPeopleActivity : ListingItemsActivity() {
     override val adapter: PagingDataAdapter<*, *>
         get() = pagingAdapter
 
-    private val pagingAdapter = PeoplePagingAdapter()
+    private val pagingAdapter = PeoplePagingAdapter { image, people ->
+        startActivity(
+            toPeopleDetail(people),
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                image,
+                getString(com.vlv.common.R.string.common_avatar_transition_name)
+            ).toBundle()
+        )
+    }
 
     override val loadingLayout: Int
         get() = R.layout.people_listing_loading
