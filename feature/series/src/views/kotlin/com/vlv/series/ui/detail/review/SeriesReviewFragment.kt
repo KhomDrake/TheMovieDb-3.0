@@ -2,13 +2,13 @@ package com.vlv.series.ui.detail.review
 
 import androidx.core.os.bundleOf
 import br.com.arch.toolkit.delegate.extraProvider
+import com.vlv.common.data.series.Series
 import com.vlv.common.ui.review.ReviewFragment
 import com.vlv.common.ui.review.adapter.ReviewAdapter
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
-import com.vlv.series.data.Series
 import com.vlv.series.ui.detail.about.EXTRA_SERIES
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

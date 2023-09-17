@@ -1,4 +1,4 @@
-package com.vlv.series.data
+package com.vlv.common.data.series
 
 import android.os.Parcelable
 import com.vlv.common.ui.DetailObject

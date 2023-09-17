@@ -3,7 +3,7 @@ package com.vlv.series.ui.detail.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.vlv.series.data.Series
+import com.vlv.common.data.series.Series
 import com.vlv.series.ui.detail.about.AboutFragment
 import com.vlv.series.ui.detail.cast.SeriesCastFragment
 import com.vlv.series.ui.detail.recommendation.RecommendationFragment

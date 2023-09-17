@@ -12,6 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.vlv.common.data.series.toDetailObject
 import com.vlv.common.ui.route.toSeriesDetail
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
@@ -20,7 +21,6 @@ import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.CarouselDecorator
 import com.vlv.imperiya.ui.stateview.StateView
 import com.vlv.imperiya.ui.warning.SmallWarningView
-import com.vlv.series.data.toDetailObject
 import com.vlv.themoviedb.R
 import com.vlv.common.R as RCommon
 import com.vlv.themoviedb.ui.series.adapter.SeriesCarouselAdapter

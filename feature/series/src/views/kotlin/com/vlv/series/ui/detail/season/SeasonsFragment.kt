@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.extraProvider
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.network.data.series.Season
+import com.vlv.common.data.series.Series
 import com.vlv.series.R
-import com.vlv.series.data.Series
 import com.vlv.series.ui.detail.about.EXTRA_SERIES
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

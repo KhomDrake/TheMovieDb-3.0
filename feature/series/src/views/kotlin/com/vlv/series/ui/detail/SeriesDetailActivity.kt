@@ -2,12 +2,11 @@ package com.vlv.series.ui.detail
 
 import android.os.Bundle
 import coil.load
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.vlv.common.data.series.toSeries
 import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.toUrlMovieDb
 import com.vlv.series.R
-import com.vlv.series.data.toSeries
 import com.vlv.series.ui.detail.adapter.DetailAdapter
 
 class SeriesDetailActivity : DetailActivity() {
