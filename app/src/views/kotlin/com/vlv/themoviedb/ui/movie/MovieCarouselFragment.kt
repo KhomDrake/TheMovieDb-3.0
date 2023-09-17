@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
-import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.ui.route.toMovieDetail
-import com.vlv.extensions.State
 import com.vlv.extensions.defaultConfig
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
@@ -24,11 +23,10 @@ import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.CarouselDecorator
 import com.vlv.imperiya.ui.stateview.StateView
 import com.vlv.imperiya.ui.warning.SmallWarningView
-import com.vlv.movie.data.toDetailObject
 import com.vlv.themoviedb.R
-import com.vlv.common.R as RCommon
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+import com.vlv.common.R as RCommon
 
 abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
 

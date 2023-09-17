@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
+import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.MovieListType
-import com.vlv.movie.data.Movie
 import com.vlv.network.repository.MovieRepository
 import com.vlv.network.repository.TimeWindow
 import kotlinx.coroutines.flow.map

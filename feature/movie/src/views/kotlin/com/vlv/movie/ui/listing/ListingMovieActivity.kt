@@ -7,18 +7,19 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.data.movie.MovieListType
+import com.vlv.common.data.movie.toDetailObject
+import com.vlv.common.ui.adapter.MovieLoaderAdapter
+import com.vlv.common.ui.adapter.MoviePaginationAdapter
+import com.vlv.common.ui.adapter.VIEW_TYPE_MOVIE
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
 import com.vlv.common.ui.route.toMovieDetail
 import com.vlv.movie.R
-import com.vlv.common.R as RCommon
-import com.vlv.movie.data.toDetailObject
-import com.vlv.movie.ui.adapter.MoviePaginationAdapter
-import com.vlv.movie.ui.adapter.VIEW_TYPE_MOVIE
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.vlv.common.R as RCommon
 
 class ListingMovieActivity : ListingItemsActivity() {
 
