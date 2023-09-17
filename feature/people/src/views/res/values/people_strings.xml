@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="people_popular_title">Popular</string>
+    <string name="people_trending_title">Trending</string>
+</resources>

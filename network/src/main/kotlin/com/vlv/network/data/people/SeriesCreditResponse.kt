@@ -9,7 +9,7 @@ data class SeriesCreditResponse(
     @Json(name = "adult")
     val adult: Boolean,
     @Json(name = "backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @Json(name = "character")
     val character: String,
     @Json(name = "credit_id")
@@ -35,7 +35,7 @@ data class SeriesCreditResponse(
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @Json(name = "vote_average")
     val voteAverage: Double,
     @Json(name = "vote_count")

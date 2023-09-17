@@ -18,6 +18,7 @@ import com.vlv.network.interceptors.InterceptorFactory
 import com.vlv.network.moshi.MoshiFactory
 import com.vlv.network.repository.MovieDetailRepository
 import com.vlv.network.repository.MovieRepository
+import com.vlv.network.repository.PeopleRepository
 import com.vlv.network.repository.SearchRepository
 import com.vlv.network.repository.SeriesDetailRepository
 import com.vlv.network.repository.SeriesRepository
@@ -68,6 +69,7 @@ class NetworkInitializer : Initializer<Module> {
         single { SeriesRepository(get()) }
         single { MovieDetailRepository(get()) }
         single { SeriesDetailRepository(get()) }
+        single { PeopleRepository(get()) }
     }
 
     override fun create(context: Context): Module {

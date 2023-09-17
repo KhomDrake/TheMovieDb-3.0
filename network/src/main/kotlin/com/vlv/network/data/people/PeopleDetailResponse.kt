@@ -33,5 +33,5 @@ data class PeopleDetailResponse(
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "profile_path")
-    val profilePath: String
+    val profilePath: String?
 )

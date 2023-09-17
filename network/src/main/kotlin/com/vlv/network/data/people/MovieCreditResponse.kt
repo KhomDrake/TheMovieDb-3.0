@@ -9,7 +9,7 @@ data class MovieCreditResponse(
     @Json(name = "adult")
     val adult: Boolean,
     @Json(name = "backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @Json(name = "character")
     val character: String,
     @Json(name = "credit_id")
@@ -29,7 +29,7 @@ data class MovieCreditResponse(
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @Json(name = "release_date")
     val releaseDate: String,
     @Json(name = "title")

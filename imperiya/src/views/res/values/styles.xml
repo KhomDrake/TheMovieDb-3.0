@@ -17,6 +17,10 @@
         <item name="android:background">@drawable/imperiya_background_shimmer_rounded</item>
     </style>
 
+    <style name="Imperiya.Widget.Shimmer.Item.Oval">
+        <item name="android:background">@drawable/imperiya_background_shimmer_oval</item>
+    </style>
+
     <style name="Imperiya.Widget.PageIndicator">
         <item name="spi_dotSize">10dp</item>
         <item name="spi_dotSelectedSize">10dp</item>

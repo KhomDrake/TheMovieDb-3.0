@@ -8,18 +8,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import androidx.transition.TransitionManager
 import br.com.arch.toolkit.delegate.viewProvider
-import br.com.arch.toolkit.statemachine.StateMachine
 import br.com.arch.toolkit.statemachine.ViewStateMachine
-import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.R
 import com.vlv.common.ui.adapter.LoaderAdapter
-import com.vlv.extensions.State
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
 import com.vlv.extensions.emptyState
@@ -79,17 +74,17 @@ abstract class ListingItemsActivity : AppCompatActivity(R.layout.common_listing_
             defaultConfig(root)
 
             stateData {
-                visibles(items)
+                visibles(items, toolbar)
                 gones(shimmer, warningView)
             }
 
             stateError {
                 visibles(warningView)
-                gones(shimmer, items)
+                gones(shimmer, items, toolbar)
             }
 
             stateLoading {
-                visibles(shimmer)
+                visibles(shimmer, toolbar)
                 gones(items, warningView)
             }
         }
@@ -107,7 +102,7 @@ abstract class ListingItemsActivity : AppCompatActivity(R.layout.common_listing_
             onEmpty = {
                 viewStateMachine.emptyState()
             },
-            onError = {
+            onError = { _ ->
                 viewStateMachine.errorState()
             },
             onLoading = {
