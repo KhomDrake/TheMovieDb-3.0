@@ -12,7 +12,6 @@ import coil.load
 import com.vlv.extensions.inflate
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
-import com.vlv.extensions.toLocalDate
 import com.vlv.extensions.toUrlMovieDb
 import com.vlv.network.data.series.Season
 import com.vlv.series.R
@@ -59,7 +58,7 @@ class SeasonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             }
         }
 
-        numberAndDate.text = "${season.episodeCount} episodes - ${season.airDate?.toLocalDate()?.toFormattedString(patternDate2())}"
+        numberAndDate.text = "${season.episodeCount} episodes - ${season.airDate?.toFormattedString(patternDate2())}"
     }
 
 }

@@ -4,6 +4,7 @@ package com.vlv.network.data.series
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import com.vlv.network.data.genre.GenreResponse
+import org.threeten.bp.LocalDate
 
 @JsonClass(generateAdapter = true)
 data class SeriesDetailResponse(
@@ -16,7 +17,7 @@ data class SeriesDetailResponse(
     @Json(name = "episode_run_time")
     val episodeRunTime: List<Int>,
     @Json(name = "first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: LocalDate,
     @Json(name = "genres")
     val genres: List<GenreResponse>,
     @Json(name = "homepage")
@@ -28,7 +29,7 @@ data class SeriesDetailResponse(
     @Json(name = "languages")
     val languages: List<String>,
     @Json(name = "last_air_date")
-    val lastAirDate: String,
+    val lastAirDate: LocalDate,
     @Json(name = "last_episode_to_air")
     val lastEpisodeToAir: LastEpisodeToAir?,
     @Json(name = "name")
@@ -92,7 +93,7 @@ data class CreatorResponse(
 @JsonClass(generateAdapter = true)
 data class LastEpisodeToAir(
     @Json(name = "air_date")
-    val airDate: String,
+    val airDate: LocalDate,
     @Json(name = "episode_number")
     val episodeNumber: Int,
     @Json(name = "episode_type")
@@ -134,7 +135,7 @@ data class Network(
 @JsonClass(generateAdapter = true)
 data class NextEpisodeToAir(
     @Json(name = "air_date")
-    val airDate: String,
+    val airDate: LocalDate,
     @Json(name = "episode_number")
     val episodeNumber: Int,
     @Json(name = "episode_type")
@@ -184,7 +185,7 @@ data class ProductionCountry(
 @JsonClass(generateAdapter = true)
 data class Season(
     @Json(name = "air_date")
-    val airDate: String?,
+    val airDate: LocalDate?,
     @Json(name = "episode_count")
     val episodeCount: Int,
     @Json(name = "id")

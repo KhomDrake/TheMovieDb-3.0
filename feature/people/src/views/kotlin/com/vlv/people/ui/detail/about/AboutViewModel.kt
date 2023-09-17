@@ -6,7 +6,6 @@ import com.vlv.bondsmith.bondsmith
 import com.vlv.common.ui.adapter.Information
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
-import com.vlv.extensions.toLocalDate
 import com.vlv.network.data.people.PeopleDetailResponse
 import com.vlv.network.repository.PeopleDetailRepository
 import com.vlv.people.R
@@ -29,7 +28,7 @@ class AboutViewModel(
                     listOf(
                         Information(
                             title = R.string.people_information_item_date_of_birth,
-                            data = detail.birthday.toLocalDate().toFormattedString(patternDate2())
+                            data = detail.birthday.toFormattedString(patternDate2())
                         ),
                         Information(
                             title = R.string.people_information_item_place_of_birth,

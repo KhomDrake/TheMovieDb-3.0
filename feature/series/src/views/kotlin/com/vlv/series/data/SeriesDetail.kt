@@ -7,7 +7,6 @@ import com.vlv.extensions.PATTERN_MONTH_AND_YEAR
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
 import com.vlv.extensions.toHoursAndMinutes
-import com.vlv.extensions.toLocalDate
 import com.vlv.network.data.series.LastEpisodeToAir
 import com.vlv.network.data.series.NextEpisodeToAir
 import com.vlv.network.data.series.SeriesDetailResponse
@@ -24,8 +23,8 @@ class SeriesDetail(
         dateAndTime = response.run {
             val episodeRunTime = response.episodeRunTime.firstOrNull()
             episodeRunTime?.let {
-                "${response.firstAirDate.toLocalDate().toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${episodeRunTime.toHoursAndMinutes(resources)}"
-            }?: response.firstAirDate.toLocalDate().toFormattedString(PATTERN_MONTH_AND_YEAR)
+                "${response.firstAirDate.toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${episodeRunTime.toHoursAndMinutes(resources)}"
+            }?: response.firstAirDate.toFormattedString(PATTERN_MONTH_AND_YEAR)
         },
         aboutItems = response.run {
             val items = mutableListOf<AboutItem>()
@@ -52,7 +51,7 @@ class SeriesDetail(
                     ),
                     Information(
                         title = R.string.series_information_first_on_air,
-                        data = response.firstAirDate.toLocalDate().toFormattedString(patternDate2())
+                        data = response.firstAirDate.toFormattedString(patternDate2())
                     ),
                     Information(
                         title = R.string.series_information_status,
@@ -60,7 +59,7 @@ class SeriesDetail(
                     ),
                     Information(
                         title = R.string.series_information_last_on_air,
-                        data = response.lastAirDate.toLocalDate().toFormattedString(patternDate2())
+                        data = response.lastAirDate.toFormattedString(patternDate2())
                     ),
                     Information(
                         title = R.string.series_information_aired_seasons,
@@ -102,7 +101,7 @@ class Episode(
 )
 
 fun NextEpisodeToAir.toEpisode(resources: Resources) = Episode(
-    "S${seasonNumber}E$episodeNumber - ${airDate.toLocalDate().toFormattedString(patternDate2())}",
+    "S${seasonNumber}E$episodeNumber - ${airDate.toFormattedString(patternDate2())}",
     id,
     name,
     stillPath
@@ -111,7 +110,7 @@ fun NextEpisodeToAir.toEpisode(resources: Resources) = Episode(
 
 
 fun LastEpisodeToAir.toEpisode(resources: Resources) = Episode(
-    "S${seasonNumber}E$episodeNumber - ${airDate.toLocalDate().toFormattedString(patternDate2())}",
+    "S${seasonNumber}E$episodeNumber - ${airDate.toFormattedString(patternDate2())}",
     id,
     name,
     stillPath

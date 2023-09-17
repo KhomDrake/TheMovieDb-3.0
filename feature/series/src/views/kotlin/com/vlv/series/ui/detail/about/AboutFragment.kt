@@ -1,6 +1,7 @@
 package com.vlv.series.ui.detail.about
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -96,7 +97,8 @@ class AboutFragment : Fragment(R.layout.series_fragment_about) {
             showLoading {
                 viewStateMachine.loadingState()
             }
-            error { _ ->
+            error { e ->
+                Log.i("Vini", e.stackTraceToString())
                 viewStateMachine.errorState()
             }
         }
