@@ -43,7 +43,7 @@ class BelongsToCollection(
     @Json(name = "poster_path")
     val posterPath: String?,
     @Json(name = "backdrop_path")
-    val backdropPath: String
+    val backdropPath: String?
 )
 
 @JsonClass(generateAdapter = true)

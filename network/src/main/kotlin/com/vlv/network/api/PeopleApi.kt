@@ -18,8 +18,10 @@ interface PeopleApi {
         page: Int = 1
     ) : PeoplesResponse
 
-    @GET("trending/person")
+    @GET("trending/person/{time_window}")
     suspend fun trendingPeople(
+        @Path("time_window")
+        timeWindow: String,
         @Query("language")
         language: String = "en-US",
         @Query("page")
@@ -34,7 +36,7 @@ interface PeopleApi {
 
 
     @GET("people/{people_id}/movie_credits")
-    suspend fun peopleDetail2(
+    suspend fun peopleMovieCredits(
         @Path("people_id")
         peopleId: Int,
         @Query("language")
@@ -45,7 +47,7 @@ interface PeopleApi {
 
 
     @GET("people/{people_id}/tv_credits")
-    suspend fun peopleDetail1(
+    suspend fun peopleTvCredits(
         @Path("people_id")
         peopleId: Int,
         @Query("language")

@@ -33,7 +33,7 @@ data class PeopleResponse(
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "profile_path")
-    val profilePath: String
+    val profilePath: String?
 )
 
 @JsonClass(generateAdapter = true)
@@ -63,7 +63,7 @@ data class KnownFor(
     @Json(name = "overview")
     val overview: String,
     @Json(name = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @Json(name = "release_date")
     val releaseDate: String?,
     @Json(name = "title")

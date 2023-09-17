@@ -74,6 +74,7 @@
 
     <string name="menu_title_people">People</string>
     <string name="menu_title_people_option_trending">Trending</string>
+    <string name="menu_title_people_option_popular">Popular</string>
     <string name="menu_title_people_option_search">Search</string>
     <string name="menu_title_people_option_movie_credit">Movie credit</string>
     <string name="menu_title_people_option_tv_credit">Tv credit</string>

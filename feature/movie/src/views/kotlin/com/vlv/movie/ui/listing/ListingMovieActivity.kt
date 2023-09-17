@@ -77,12 +77,11 @@ class ListingMovieActivity : ListingItemsActivity() {
     }
 
     override fun configWarningView() {
-        warningView.setTitle(R.string.movie_listing_error_title)
-        warningView.setBody(R.string.movie_listing_error_body)
-        warningView.setButtonText(R.string.movie_listing_error_button)
-        warningView.setVisibilityIcon(show = false)
         warningView.setOnTryAgain {
             pagingAdapter.retry()
+        }
+        warningView.setCloseIcon {
+            finish()
         }
     }
 

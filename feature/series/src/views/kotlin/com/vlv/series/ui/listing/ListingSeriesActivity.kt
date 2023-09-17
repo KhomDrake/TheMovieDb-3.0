@@ -74,10 +74,9 @@ class ListingSeriesActivity : ListingItemsActivity() {
     }
 
     override fun configWarningView() {
-        warningView.setTitle(com.vlv.common.R.string.common_error_title)
-        warningView.setBody(com.vlv.common.R.string.common_error_description)
-        warningView.setButtonText(com.vlv.common.R.string.common_error_button)
-        warningView.setVisibilityIcon(show = false)
+        warningView.setCloseIcon {
+            finish()
+        }
         warningView.setOnTryAgain {
             pagingAdapter.retry()
         }
