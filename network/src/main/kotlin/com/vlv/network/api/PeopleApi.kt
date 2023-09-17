@@ -28,14 +28,16 @@ interface PeopleApi {
         page: Int = 1
     ) : PeoplesResponse
 
-    @GET("people/{people_id}")
+    @GET("person/{people_id}")
     suspend fun peopleDetail(
         @Path("people_id")
-        peopleId: Int
+        peopleId: Int,
+        @Query("language")
+        language: String = "en-US"
     ) : PeopleDetailResponse
 
 
-    @GET("people/{people_id}/movie_credits")
+    @GET("person/{people_id}/movie_credits")
     suspend fun peopleMovieCredits(
         @Path("people_id")
         peopleId: Int,
@@ -46,7 +48,7 @@ interface PeopleApi {
     ) : PeopleMovieCreditResponse
 
 
-    @GET("people/{people_id}/tv_credits")
+    @GET("person/{people_id}/tv_credits")
     suspend fun peopleTvCredits(
         @Path("people_id")
         peopleId: Int,

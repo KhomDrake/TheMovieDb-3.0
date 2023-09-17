@@ -3,6 +3,7 @@ package com.vlv.common.ui.cast
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,9 @@ import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.R
+import com.vlv.common.data.cast.toPeople
 import com.vlv.common.ui.cast.adapter.CastAdapter
+import com.vlv.common.ui.route.toPeopleDetail
 import com.vlv.extensions.State
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateError
@@ -74,7 +77,18 @@ abstract class CastFragment : Fragment(R.layout.common_fragment_cast) {
         cast.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
-        cast.adapter = CastAdapter()
+        cast.adapter = CastAdapter { image, people ->
+            startActivity(
+                requireContext().toPeopleDetail(
+                    people.toPeople()
+                ),
+                ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    requireActivity(),
+                    image,
+                    getString(R.string.common_avatar_transition_name)
+                ).toBundle()
+            )
+        }
     }
 
     override fun onDestroyView() {

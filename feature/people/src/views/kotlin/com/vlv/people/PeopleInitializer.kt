@@ -3,6 +3,9 @@ package com.vlv.people
 import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.network.NetworkInitializer
+import com.vlv.people.ui.detail.about.AboutViewModel
+import com.vlv.people.ui.detail.moviecredits.MovieCreditViewModel
+import com.vlv.people.ui.detail.seriescredit.SeriesCreditViewModel
 import com.vlv.people.ui.popular.PopularViewModel
 import com.vlv.people.ui.trending.TrendingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -16,6 +19,9 @@ class PeopleInitializer : Initializer<Module> {
         val module = module {
             viewModel { PopularViewModel(get()) }
             viewModel { TrendingViewModel(get()) }
+            viewModel { AboutViewModel(get()) }
+            viewModel { MovieCreditViewModel(get()) }
+            viewModel { SeriesCreditViewModel(get()) }
         }
         loadKoinModules(module)
         return module

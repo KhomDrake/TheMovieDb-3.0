@@ -3,7 +3,7 @@ package com.vlv.movie.ui.detail.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.vlv.movie.data.Movie
+import com.vlv.common.data.movie.Movie
 import com.vlv.movie.ui.detail.about.AboutFragment
 import com.vlv.movie.ui.detail.cast.MovieCastFragment
 import com.vlv.movie.ui.detail.recommendation.RecommendationFragment

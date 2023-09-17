@@ -6,15 +6,13 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
-import br.com.arch.toolkit.livedata.extention.mapList
 import com.vlv.bondsmith.bondsmith
-import com.vlv.movie.data.Movie
+import com.vlv.common.data.movie.Movie
 import com.vlv.movie.ui.adapter.HistoryData
 import com.vlv.network.database.data.History
 import com.vlv.network.database.data.HistoryType
 import com.vlv.network.repository.MovieRepository
 import com.vlv.network.repository.SearchRepository
-import com.vlv.network.repository.TimeWindow
 import kotlinx.coroutines.flow.map
 
 class SearchViewModel(

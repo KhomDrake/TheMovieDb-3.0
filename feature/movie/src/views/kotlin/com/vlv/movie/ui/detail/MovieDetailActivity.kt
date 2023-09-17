@@ -2,12 +2,11 @@ package com.vlv.movie.ui.detail
 
 import android.os.Bundle
 import coil.load
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.vlv.common.data.movie.toMovie
 import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.toUrlMovieDb
 import com.vlv.movie.R
-import com.vlv.movie.data.toMovie
 import com.vlv.movie.ui.detail.adapter.DetailAdapter
 
 class MovieDetailActivity : DetailActivity() {
@@ -41,12 +40,6 @@ class MovieDetailActivity : DetailActivity() {
         }.attach()
 
         collapsing.title = movie.title
-    }
-
-    override fun onSelectedTab(tab: TabLayout.Tab?) {
-        val position = tab?.position ?: return
-        layout.setCurrentItem(position, true)
-        layout.requestLayout()
     }
 
 }

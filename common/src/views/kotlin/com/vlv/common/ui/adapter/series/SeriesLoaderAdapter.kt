@@ -1,26 +1,26 @@
-package com.vlv.movie.ui.listing
+package com.vlv.common.ui.adapter.series
 
 import android.view.View
 import android.view.ViewGroup
+import com.vlv.common.R
 import com.vlv.common.ui.adapter.ErrorViewHolder
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.extensions.inflate
 import com.vlv.imperiya.ui.warning.SmallWarningView
-import com.vlv.movie.R
 
-class MovieLoaderAdapter(
+class SeriesLoaderAdapter(
     retry: () -> Unit
 ) : LoaderAdapter(
-    R.layout.movie_pagination_item_loading,
+    R.layout.common_series_pagination_item_loading,
     retry
 ) {
 
     override fun createErrorViewHolder(parent: ViewGroup) =
-        MovieErrorViewHolder(parent.inflate(R.layout.movie_pagination_item_error))
+        SeriesErrorViewHolder(parent.inflate(R.layout.common_series_pagination_item_error))
 
 }
 
-class MovieErrorViewHolder(view: View): ErrorViewHolder(view) {
+class SeriesErrorViewHolder(view: View): ErrorViewHolder(view) {
 
     override fun bind(retry: () -> Unit) {
         (itemView as? SmallWarningView)?.apply {

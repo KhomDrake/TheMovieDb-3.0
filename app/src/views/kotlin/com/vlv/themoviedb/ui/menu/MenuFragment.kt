@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.movie.ui.adapter.VIEW_TYPE_MOVIE
 import com.vlv.themoviedb.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

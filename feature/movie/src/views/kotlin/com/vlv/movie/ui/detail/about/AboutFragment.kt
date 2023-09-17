@@ -12,6 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.vlv.common.data.movie.Movie
 import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
@@ -22,7 +23,6 @@ import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.warning.SmallWarningView
 import com.vlv.movie.R
-import com.vlv.movie.data.Movie
 import com.vlv.movie.ui.detail.cast.EXTRA_MOVIE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

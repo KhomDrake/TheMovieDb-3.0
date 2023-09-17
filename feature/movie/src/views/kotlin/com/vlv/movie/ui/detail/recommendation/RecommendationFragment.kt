@@ -8,15 +8,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
+import com.vlv.common.data.movie.Movie
+import com.vlv.common.data.movie.toDetailObject
+import com.vlv.common.ui.adapter.movie.MovieLoaderAdapter
+import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
+import com.vlv.common.ui.adapter.movie.VIEW_TYPE_MOVIE
 import com.vlv.common.ui.listing.ListingItemsFragment
 import com.vlv.common.ui.route.toMovieDetail
 import com.vlv.movie.R
-import com.vlv.movie.data.Movie
-import com.vlv.movie.data.toDetailObject
-import com.vlv.movie.ui.adapter.MoviePaginationAdapter
-import com.vlv.movie.ui.adapter.VIEW_TYPE_MOVIE
 import com.vlv.movie.ui.detail.cast.EXTRA_MOVIE
-import com.vlv.movie.ui.listing.MovieLoaderAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -29,7 +29,7 @@ class RecommendationFragment : ListingItemsFragment() {
     private val movie: Movie? by extraProvider(EXTRA_MOVIE)
 
     override val loadingLayout: Int
-        get() = R.layout.movie_listing_movie_loading
+        get() = com.vlv.common.R.layout.common_listing_movie_loading
 
     override val adapter: PagingDataAdapter<*, *>
         get() = pagingAdapter

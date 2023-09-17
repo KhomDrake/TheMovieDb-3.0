@@ -12,6 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.vlv.common.data.series.Series
 import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
@@ -21,9 +22,7 @@ import com.vlv.extensions.stateData
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.warning.SmallWarningView
-import com.vlv.imperiya.ui.warning.WarningView
 import com.vlv.series.R
-import com.vlv.series.data.Series
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val EXTRA_SERIES = "EXTRA_SERIES"

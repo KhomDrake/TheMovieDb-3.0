@@ -1,4 +1,4 @@
-package com.vlv.series.ui.listing
+package com.vlv.common.ui.adapter.series
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
+import com.vlv.common.R
+import com.vlv.common.data.series.Series
 import com.vlv.extensions.toUrlMovieDb
-import com.vlv.series.R
-import com.vlv.series.data.Series
 
 class SeriesDiffUtil: ItemCallback<Series>() {
 
@@ -51,7 +51,7 @@ class SeriesPaginationAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.series_pagination_item, parent, false)
+            .inflate(R.layout.common_series_pagination_item, parent, false)
         return SeriesViewHolder(view)
     }
 }

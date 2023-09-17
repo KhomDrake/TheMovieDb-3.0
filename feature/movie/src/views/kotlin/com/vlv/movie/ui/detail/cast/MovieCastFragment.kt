@@ -2,12 +2,12 @@ package com.vlv.movie.ui.detail.cast
 
 import androidx.core.os.bundleOf
 import br.com.arch.toolkit.delegate.extraProvider
+import com.vlv.common.data.movie.Movie
 import com.vlv.common.ui.cast.CastFragment
 import com.vlv.common.ui.cast.adapter.CastAdapter
 import com.vlv.extensions.dataState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
-import com.vlv.movie.data.Movie
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val EXTRA_MOVIE = "EXTRA_MOVIE"

@@ -1,4 +1,4 @@
-package com.vlv.movie.ui.adapter
+package com.vlv.common.ui.adapter.movie
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
+import com.vlv.common.R
+import com.vlv.common.data.movie.Movie
 import com.vlv.extensions.toUrlMovieDb
-import com.vlv.movie.R
-import com.vlv.movie.data.Movie
-import com.vlv.network.data.movie.MovieResponse
 
 class MovieDiffUtil: ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -53,7 +52,7 @@ class MoviePaginationAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.movie_pagination_item, parent, false)
+            .inflate(R.layout.common_movie_pagination_item, parent, false)
         return MovieViewHolder(view)
     }
 

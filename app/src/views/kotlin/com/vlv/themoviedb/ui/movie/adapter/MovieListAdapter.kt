@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
+import com.vlv.common.data.movie.Movie
 import com.vlv.extensions.toUrlMovieDb
-import com.vlv.movie.data.Movie
 import com.vlv.themoviedb.R
 
 class MovieDiffUtil: DiffUtil.ItemCallback<Movie>() {

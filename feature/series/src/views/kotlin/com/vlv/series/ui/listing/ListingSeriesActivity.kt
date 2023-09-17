@@ -7,11 +7,14 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.data.series.SeriesListType
+import com.vlv.common.data.series.toDetailObject
+import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
+import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
+import com.vlv.common.ui.adapter.series.VIEW_TYPE_SERIES
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.common.ui.route.SERIES_LISTING_TYPE_EXTRA
 import com.vlv.common.ui.route.toSeriesDetail
 import com.vlv.series.R
-import com.vlv.series.data.toDetailObject
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -40,7 +43,7 @@ class ListingSeriesActivity : ListingItemsActivity() {
     }
 
     override val loadingLayout: Int
-        get() = R.layout.series_listing_series_loading
+        get() = com.vlv.common.R.layout.common_listing_series_loading
 
     override val title: Int
         get() = when(type) {

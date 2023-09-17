@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/backdrop"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/movie_pagination_item_height"
+        android:layout_height="@dimen/common_movie_pagination_item_height"
         android:outlineProvider="background"
         android:transitionName="@string/common_poster_transition_name"
         android:foreground="@drawable/imperiya_ripple_rounded"

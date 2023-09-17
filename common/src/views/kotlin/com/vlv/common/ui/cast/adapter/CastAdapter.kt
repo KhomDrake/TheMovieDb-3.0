@@ -27,7 +27,9 @@ class CastDiffUtil: DiffUtil.ItemCallback<Cast>() {
 private const val VIEW_TYPE_CAST_TITLE = 0
 private const val VIEW_TYPE_CAST_ITEM = 1
 
-class CastAdapter: ListAdapter<Cast, RecyclerView.ViewHolder>(CastDiffUtil()) {
+class CastAdapter(
+    private val onClickCast: (View, Cast) -> Unit
+) : ListAdapter<Cast, RecyclerView.ViewHolder>(CastDiffUtil()) {
 
     override fun getItemViewType(position: Int): Int {
         return when(position) {
@@ -44,7 +46,12 @@ class CastAdapter: ListAdapter<Cast, RecyclerView.ViewHolder>(CastDiffUtil()) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is CastViewHolder -> {
-                holder.bind(currentList[position - 1])
+                val item = currentList[position - 1]
+                holder.bind(item)
+                val image = holder.avatar
+                holder.itemView.setOnClickListener {
+                    onClickCast.invoke(image, item)
+                }
             }
             is CastTitleViewHolder -> {
                 holder.bind(currentList.size)
@@ -72,7 +79,7 @@ class CastTitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 class CastViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    private val avatar: AppCompatImageView by viewProvider(R.id.avatar)
+    val avatar: AppCompatImageView by viewProvider(R.id.avatar)
     private val personName: AppCompatTextView by viewProvider(R.id.person_name)
     private val character: AppCompatTextView by viewProvider(R.id.character)
 

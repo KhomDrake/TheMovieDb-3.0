@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
+import com.vlv.common.data.series.Series
 import com.vlv.network.repository.SeriesDetailRepository
-import com.vlv.series.data.Series
 import kotlinx.coroutines.flow.map
 
 class RecommendationViewModel(private val repository: SeriesDetailRepository) : ViewModel() {
