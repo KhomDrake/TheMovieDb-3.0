@@ -11,9 +11,9 @@ import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.R
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toDetailObject
-import com.vlv.common.ui.adapter.SeriesLoaderAdapter
-import com.vlv.common.ui.adapter.SeriesPaginationAdapter
-import com.vlv.common.ui.adapter.VIEW_TYPE_SERIES
+import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
+import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
+import com.vlv.common.ui.adapter.series.VIEW_TYPE_SERIES
 import com.vlv.common.ui.listing.ListingItemsFragment
 import com.vlv.common.ui.route.toSeriesDetail
 import com.vlv.series.ui.detail.about.EXTRA_SERIES
@@ -43,7 +43,7 @@ class RecommendationFragment : ListingItemsFragment() {
     }
 
     override val loadingLayout: Int
-        get() = com.vlv.series.R.layout.series_listing_series_loading
+        get() = R.layout.common_listing_series_loading
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

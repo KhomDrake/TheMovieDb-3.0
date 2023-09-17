@@ -2,6 +2,7 @@ package com.vlv.common.data.series
 
 import android.os.Parcelable
 import com.vlv.common.ui.DetailObject
+import com.vlv.network.data.people.SeriesCreditResponse
 import com.vlv.network.data.series.SeriesItemResponse
 import kotlinx.parcelize.Parcelize
 
@@ -19,6 +20,14 @@ class Series(
         response.backdropPath,
         response.posterPath,
         response.title,
+    )
+
+    constructor(response: SeriesCreditResponse): this(
+        response.adult,
+        response.id,
+        response.backdropPath,
+        response.posterPath,
+        response.name
     )
 }
 

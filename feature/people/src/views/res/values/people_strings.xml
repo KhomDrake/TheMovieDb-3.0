@@ -9,4 +9,7 @@
 
     <string name="people_information_item_date_of_birth">Date of birth</string>
     <string name="people_information_item_place_of_birth">Place of birth</string>
+
+    <string name="people_detail_empty_state_movie_title">None movie found</string>
+    <string name="people_detail_empty_state_series_title">None Tv shows found</string>
 </resources>

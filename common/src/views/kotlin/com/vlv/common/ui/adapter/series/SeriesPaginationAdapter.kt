@@ -1,4 +1,4 @@
-package com.vlv.common.ui.adapter
+package com.vlv.common.ui.adapter.series
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,35 +11,34 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
 import com.vlv.common.R
-import com.vlv.common.data.movie.Movie
+import com.vlv.common.data.series.Series
 import com.vlv.extensions.toUrlMovieDb
 
-class MovieDiffUtil: ItemCallback<Movie>() {
-    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-        return oldItem.id == newItem.id
+class SeriesDiffUtil: ItemCallback<Series>() {
+
+    override fun areContentsTheSame(oldItem: Series, newItem: Series): Boolean {
+        return oldItem.title == newItem.title
     }
 
-    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-        return oldItem.title == newItem.title
+    override fun areItemsTheSame(oldItem: Series, newItem: Series): Boolean {
+        return oldItem.id == newItem.id
     }
 
 }
 
-const val VIEW_TYPE_MOVIE = 42
+const val VIEW_TYPE_SERIES = 43
 
-class MoviePaginationAdapter(
-    private val onClickListener: (Movie, View) -> Unit
-)
-    : PagingDataAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffUtil()) {
-
+class SeriesPaginationAdapter(
+    private val onClick: (Series, View) -> Unit
+): PagingDataAdapter<Series, RecyclerView.ViewHolder>(SeriesDiffUtil()) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
-            is MovieViewHolder -> {
+            is SeriesViewHolder -> {
                 val data = getItem(position) ?: return
-                holder.backdrop.setOnClickListener {
-                    onClickListener.invoke(data, it)
-                }
                 holder.bind(data)
+                holder.itemView.setOnClickListener {
+                    onClick.invoke(data, it)
+                }
             }
             else -> Unit
         }
@@ -47,28 +46,28 @@ class MoviePaginationAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return if(itemCount == position || peek(position) == null) super.getItemViewType(position)
-            else VIEW_TYPE_MOVIE
+        else VIEW_TYPE_SERIES
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.common_movie_pagination_item, parent, false)
-        return MovieViewHolder(view)
+            .inflate(R.layout.common_series_pagination_item, parent, false)
+        return SeriesViewHolder(view)
     }
-
 }
 
-class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class SeriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    val backdrop: AppCompatImageView by viewProvider(R.id.backdrop)
-    private val title: AppCompatTextView by viewProvider(R.id.movie_title)
+    private val backdrop: AppCompatImageView by viewProvider(R.id.backdrop)
+    private val title: AppCompatTextView by viewProvider(R.id.series_title)
 
-    fun bind(movie: Movie) {
+    fun bind(data: Series) {
         backdrop.clipToOutline = true
-        title.text = movie.title
-        backdrop.load(movie.posterPath?.toUrlMovieDb()) {
+        title.text = data.title
+        backdrop.load(data.posterPath?.toUrlMovieDb()) {
             crossfade(1000)
         }
     }
+
 
 }

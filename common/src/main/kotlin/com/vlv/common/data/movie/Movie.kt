@@ -3,6 +3,7 @@ package com.vlv.common.data.movie
 import android.os.Parcelable
 import com.vlv.common.ui.DetailObject
 import com.vlv.network.data.movie.MovieResponse
+import com.vlv.network.data.people.MovieCreditResponse
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -21,6 +22,15 @@ class Movie(
         movieResponse.id,
         movieResponse.title,
         movieResponse.overview
+    )
+
+    constructor(movieCreditResponse: MovieCreditResponse) : this(
+        movieCreditResponse.adult,
+        movieCreditResponse.backdropPath,
+        movieCreditResponse.posterPath,
+        movieCreditResponse.id,
+        movieCreditResponse.title,
+        movieCreditResponse.overview
     )
 }
 

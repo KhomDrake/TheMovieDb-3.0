@@ -16,7 +16,7 @@ import br.com.arch.toolkit.statemachine.config
 import br.com.arch.toolkit.statemachine.setup
 import br.com.arch.toolkit.statemachine.state
 import com.vlv.common.data.movie.toDetailObject
-import com.vlv.common.ui.adapter.MoviePaginationAdapter
+import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
 import com.vlv.common.ui.route.toMovieDetail
 import com.vlv.extensions.*
 import com.vlv.imperiya.ui.search.ImperiyaSearchView
