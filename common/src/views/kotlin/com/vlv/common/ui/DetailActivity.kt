@@ -35,6 +35,7 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
 
     protected val tabs: TabLayout by viewProvider(R.id.tabs)
     protected val toolbar: Toolbar by viewProvider(R.id.toolbar)
+    protected val heart: AppCompatImageView by viewProvider(R.id.favorite)
     protected val backdrop: AppCompatImageView by viewProvider(R.id.backdrop)
     protected val poster: AppCompatImageView by viewProvider(R.id.poster)
     protected val expandedTitle: AppCompatTextView by viewProvider(R.id.expanded_title)

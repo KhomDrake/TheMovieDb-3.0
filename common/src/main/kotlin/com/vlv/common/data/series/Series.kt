@@ -4,6 +4,7 @@ import android.os.Parcelable
 import com.vlv.common.ui.DetailObject
 import com.vlv.network.data.people.SeriesCreditResponse
 import com.vlv.network.data.series.SeriesItemResponse
+import com.vlv.network.database.data.Favorite
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -20,6 +21,14 @@ class Series(
         response.backdropPath,
         response.posterPath,
         response.title,
+    )
+
+    constructor(favorite: Favorite): this(
+        false,
+        favorite.itemId,
+        favorite.backdrop,
+        favorite.poster,
+        favorite.name
     )
 
     constructor(response: SeriesCreditResponse): this(

@@ -35,6 +35,17 @@
                     android:fitsSystemWindows="true"
                     android:transitionName="@string/common_backdrop_transition_name" />
 
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/favorite"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_heart_enable"
+                    android:layout_marginBottom="8dp"
+                    android:foreground="@drawable/imperiya_ripple_oval"
+                    app:layout_constraintStart_toStartOf="@id/expanded_title"
+                    app:layout_constraintBottom_toTopOf="@id/expanded_title"/>
+
                 <View
                     android:id="@+id/background_gradient"
                     android:layout_width="match_parent"
@@ -120,21 +131,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:background="@android:color/transparent"
+        style="@style/Imperiya.Widget.TabLayout"
         app:layout_anchor="@id/app_bar_layout"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:tabTextColor="@color/imperiya_title"
-        app:tabSelectedTextColor="@color/imperiya_color_link"
-        app:tabIndicatorColor="@color/imperiya_color_link"
-        app:tabIndicatorFullWidth="true"
-        app:tabTextAppearance="@style/Imperiya.Style.Text.Title"
-        app:tabMode="scrollable"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="?attr/actionBarSize"
         app:layout_anchor="@id/app_bar_layout"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 

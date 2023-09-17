@@ -2,6 +2,7 @@ package com.vlv.movie
 
 import android.content.Context
 import androidx.startup.Initializer
+import com.vlv.movie.ui.detail.MovieDetailViewModel
 import com.vlv.movie.ui.detail.about.AboutMovieViewModel
 import com.vlv.movie.ui.detail.cast.CastViewModel
 import com.vlv.movie.ui.detail.recommendation.RecommendationViewModel
@@ -24,6 +25,7 @@ class MovieInitializer : Initializer<Module> {
             viewModel { CastViewModel(get()) }
             viewModel { ReviewViewModel(get()) }
             viewModel { RecommendationViewModel(get()) }
+            viewModel { MovieDetailViewModel(get()) }
         }
         loadKoinModules(module)
         return module
