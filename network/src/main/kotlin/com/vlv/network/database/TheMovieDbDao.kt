@@ -25,10 +25,16 @@ interface TheMovieDbDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(favorite: Favorite)
 
+    @Delete
+    suspend fun deleteFavorite(favorite: Favorite)
+
     @Query("SELECT * FROM favorite WHERE type = :type order by id asc")
     suspend fun favoriteByType(
         type: FavoriteType
     ) : List<Favorite>
+
+    @Query("SELECT * FROM favorite WHERE itemId = :itemId")
+    suspend fun getFavorite(itemId: Int) : Favorite?
 
 
 }

@@ -34,10 +34,14 @@ abstract class BaseFavoriteFragment : Fragment(R.layout.favorite_listing_fragmen
         setupRecyclerView()
         setupStateView()
         setupViewStateMachine()
-        loadFavorites()
         error.setOnClickLink {
             loadFavorites()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        loadFavorites()
     }
 
     abstract val loadingLayout: Int

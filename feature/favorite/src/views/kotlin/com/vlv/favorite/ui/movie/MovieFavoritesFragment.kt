@@ -28,7 +28,10 @@ class MovieFavoritesFragment : BaseFavoriteFragment() {
     override fun setupRecyclerView() {
         items.layoutManager = GridLayoutManager(requireContext(), 2)
         items.adapter = MovieAdapter { movie, view ->
-            val intent = requireContext().toMovieDetail(movie.toDetailObject())
+            val intent = requireContext().toMovieDetail(
+                movie.toDetailObject(),
+                finishAfterTransition = false
+            )
             startActivity(
                 intent,
                 ActivityOptionsCompat.makeSceneTransitionAnimation(

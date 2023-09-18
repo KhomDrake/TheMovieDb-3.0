@@ -28,7 +28,10 @@ class SeriesFavoritesFragment : BaseFavoriteFragment() {
     override fun setupRecyclerView() {
         items.layoutManager = GridLayoutManager(requireContext(), 2)
         items.adapter = SeriesAdapter { series, view ->
-            val intent = requireContext().toSeriesDetail(series.toDetailObject())
+            val intent = requireContext().toSeriesDetail(
+                series.toDetailObject(),
+                finishAfterTransition = false
+            )
             startActivity(
                 intent,
                 ActivityOptionsCompat.makeSceneTransitionAnimation(

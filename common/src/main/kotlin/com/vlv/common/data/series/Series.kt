@@ -5,6 +5,7 @@ import com.vlv.common.ui.DetailObject
 import com.vlv.network.data.people.SeriesCreditResponse
 import com.vlv.network.data.series.SeriesItemResponse
 import com.vlv.network.database.data.Favorite
+import com.vlv.network.database.data.FavoriteType
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -46,4 +47,14 @@ fun DetailObject.toSeries() = Series(
 
 fun Series.toDetailObject() = DetailObject(
     id, posterPath, backdropPath, title, overview = ""
+)
+
+fun Series.toFavorite() = Favorite(
+    id,
+    id,
+    title,
+    posterPath,
+    backdropPath,
+    "",
+    FavoriteType.SERIES
 )

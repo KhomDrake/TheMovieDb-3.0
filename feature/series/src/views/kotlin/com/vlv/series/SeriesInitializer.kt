@@ -3,6 +3,7 @@ package com.vlv.series
 import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.network.NetworkInitializer
+import com.vlv.series.ui.detail.SeriesDetailViewModel
 import com.vlv.series.ui.detail.about.AboutViewModel
 import com.vlv.series.ui.detail.cast.SeriesCastViewModel
 import com.vlv.series.ui.detail.recommendation.RecommendationViewModel
@@ -24,6 +25,7 @@ class SeriesInitializer: Initializer<Module> {
             viewModel { SeriesReviewViewModel(get()) }
             viewModel { AboutViewModel(get()) }
             viewModel { RecommendationViewModel(get()) }
+            viewModel { SeriesDetailViewModel(get()) }
         }
         loadKoinModules(module)
         return module

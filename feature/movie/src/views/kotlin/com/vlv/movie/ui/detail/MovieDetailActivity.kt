@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import coil.load
 import com.google.android.material.tabs.TabLayoutMediator
+import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toMovie
 import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.toUrlMovieDb
@@ -26,17 +27,6 @@ class MovieDetailActivity : DetailActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val movie = objDetail?.toMovie() ?: return
-
-        heart.setOnClickListener {
-            viewModel.addToFavorite(movie).observe(this) {
-                data {
-                    heart.setImageDrawable(
-                        ContextCompat.getDrawable(this@MovieDetailActivity, com.vlv.imperiya.R.drawable.ic_heart_filled)
-                    )
-                }
-            }
-        }
-
         movie.backdropPath?.toUrlMovieDb()?.let {
             backdrop.load(it) {
                 crossfade(1000)
@@ -48,6 +38,19 @@ class MovieDetailActivity : DetailActivity() {
             }
         }
 
+
+        toolbar.inflateMenu(com.vlv.common.R.menu.common_detail_menu)
+        toolbar.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                com.vlv.common.R.id.heart -> {
+                    changeFavorite(movie)
+                    true
+                }
+                else -> false
+            }
+        }
+        updatedMenu()
+
         val adapter = DetailAdapter(texts, movie, this)
         layout.adapter = adapter
         TabLayoutMediator(tabs, layout) { tab, position ->
@@ -55,6 +58,34 @@ class MovieDetailActivity : DetailActivity() {
         }.attach()
 
         collapsing.title = movie.title
+    }
+
+    private fun updatedMenu() {
+        val movie = objDetail?.toMovie() ?: return
+        viewModel.getFavorite(movie.id).observe(this) {
+            data {
+                updatedMenuItem(isFavorite = it)
+            }
+        }
+    }
+
+    private fun updatedMenuItem(isFavorite : Boolean) {
+        runCatching {
+            val menuHeart = toolbar.menu?.getItem(0) ?: return@runCatching
+            menuHeart.icon = ContextCompat.getDrawable(
+                this@MovieDetailActivity,
+                if(isFavorite) com.vlv.imperiya.R.drawable.ic_heart_filled
+                else com.vlv.imperiya.R.drawable.ic_heart_enable
+            )
+        }
+    }
+
+    private fun changeFavorite(movie: Movie) {
+        viewModel.changeFavorite(movie).observe(this) {
+            data { isFavorite ->
+                updatedMenuItem(isFavorite)
+            }
+        }
     }
 
 }

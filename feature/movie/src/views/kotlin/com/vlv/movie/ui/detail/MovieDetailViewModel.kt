@@ -8,11 +8,27 @@ import com.vlv.network.repository.FavoriteRepository
 
 class MovieDetailViewModel(private val repository: FavoriteRepository) : ViewModel() {
 
-    fun addToFavorite(movie: Movie) = bondsmith<Unit>()
+    fun changeFavorite(movie: Movie) = bondsmith<Boolean>()
         .request {
-            repository.addFavorite(movie.toFavorite())
+            val favorite = repository.getFavorite(movie.id)
+            if(favorite != null) {
+                repository.removeFavorite(favorite)
+                false
+            } else {
+                repository.addFavorite(movie.toFavorite())
+                true
+            }
+
         }
         .execute()
         .responseLiveData
+
+    fun getFavorite(movieId: Int) = bondsmith<Boolean>()
+        .request {
+            repository.getFavorite(movieId) != null
+        }
+        .execute()
+        .responseLiveData
+
 
 }

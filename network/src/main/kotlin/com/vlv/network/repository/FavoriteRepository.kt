@@ -10,6 +10,12 @@ class FavoriteRepository(private val dao: TheMovieDbDao) {
         dao.insertFavorite(favorite)
     }
 
+    suspend fun removeFavorite(favorite: Favorite) {
+        dao.deleteFavorite(favorite)
+    }
+
+    suspend fun getFavorite(itemId: Int) = dao.getFavorite(itemId)
+
     suspend fun favoriteByType(type: FavoriteType) = dao.favoriteByType(type)
 
 }
