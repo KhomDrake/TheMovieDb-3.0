@@ -11,9 +11,10 @@ class MovieFavoritesViewModel(
     private val dao: TheMovieDbDao
 ) : ViewModel() {
 
-    fun movieFavorites() = bondsmith<List<Favorite>>()
+    fun movieFavorites(shouldTake: Boolean = false) = bondsmith<List<Favorite>>()
         .request {
-            dao.favoriteByType(FavoriteType.MOVIE)
+            val data = dao.favoriteByType(FavoriteType.MOVIE)
+            if(shouldTake) data.take(20) else data
         }
         .execute()
         .responseLiveData

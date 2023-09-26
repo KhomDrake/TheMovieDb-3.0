@@ -9,9 +9,10 @@ import com.vlv.network.database.data.FavoriteType
 
 class SeriesFavoriteViewModel(private val dao: TheMovieDbDao) : ViewModel() {
 
-    fun seriesFavorites() = bondsmith<List<Favorite>>()
+    fun seriesFavorites(shouldTake: Boolean = false) = bondsmith<List<Favorite>>()
         .request {
-            dao.favoriteByType(FavoriteType.SERIES)
+            val data = dao.favoriteByType(FavoriteType.SERIES)
+            if(shouldTake) data.take(20) else data
         }
         .execute()
         .responseLiveData

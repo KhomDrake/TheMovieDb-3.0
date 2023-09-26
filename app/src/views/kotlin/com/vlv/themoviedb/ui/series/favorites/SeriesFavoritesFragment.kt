@@ -1,36 +1,33 @@
-package com.vlv.themoviedb.ui.movie.favorites
+package com.vlv.themoviedb.ui.series.favorites
+
 
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
-import com.vlv.favorite.ui.movie.MovieFavoritesViewModel
-import com.vlv.imperiya.ui.CarouselDecorator
+import com.vlv.favorite.ui.series.SeriesFavoriteViewModel
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.movie.MovieCarouselFragment
-import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
+import com.vlv.themoviedb.ui.series.SeriesCarouselFragment
+import com.vlv.themoviedb.ui.series.adapter.SeriesCarouselAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MovieFavoritesFragment : MovieCarouselFragment() {
+class SeriesFavoritesFragment : SeriesCarouselFragment() {
 
-    override val carouselDecorator: CarouselDecorator
-        get() = CarouselDecorator(edgeTimeBaseline = 10)
+    private val viewModel: SeriesFavoriteViewModel by viewModel()
 
     override val titleRes: Int
         get() = R.string.favorites_title
 
-    private val viewModel: MovieFavoritesViewModel by viewModel()
-
     override fun configEmptyView() {
         emptyView.apply {
-            setTitle(R.string.empty_state_text_movie_favorite)
+            setTitle(R.string.error_series_load_text_title_favorites)
             setStateIcon(com.vlv.imperiya.R.drawable.ic_hearts)
         }
     }
 
     override fun configErrorView() {
         errorView.apply {
-            setTitleText(R.string.error_movie_load_text_title_favorites)
+            setTitleText(R.string.error_series_load_text_title_favorites)
             setBodyText(R.string.error_load_text_body)
             setButtonText(R.string.error_load_text_button)
             setOnClickLink {
@@ -39,17 +36,12 @@ class MovieFavoritesFragment : MovieCarouselFragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        loadContent()
-    }
-
     override fun loadContent() {
-        viewModel.movieFavorites(shouldTake = true).observe(viewLifecycleOwner) {
+        viewModel.seriesFavorites(shouldTake = true).observe(viewLifecycleOwner) {
             data {
                 if(it.isEmpty()) viewStateMachine.emptyState()
                 else viewStateMachine.dataState()
-                (recyclerView.adapter as? MoviesCarouselAdapter)?.submitList(it)
+                (recyclerView.adapter as? SeriesCarouselAdapter)?.submitList(it)
             }
             showLoading {
                 viewStateMachine.loadingState()
@@ -60,8 +52,9 @@ class MovieFavoritesFragment : MovieCarouselFragment() {
         }
     }
 
-    override fun onClickSeeAll() {
-
+    override fun onStart() {
+        super.onStart()
+        loadContent()
     }
 
 }
