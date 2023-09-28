@@ -1,11 +1,13 @@
 package com.vlv.themoviedb.ui.movie.favorites
 
+import com.vlv.common.ui.route.toFavorites
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.favorite.ui.movie.MovieFavoritesViewModel
 import com.vlv.imperiya.ui.CarouselDecorator
+import com.vlv.network.database.data.FavoriteType
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.MovieCarouselFragment
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
@@ -61,7 +63,7 @@ class MovieFavoritesFragment : MovieCarouselFragment() {
     }
 
     override fun onClickSeeAll() {
-
+        startActivity(requireContext().toFavorites(FavoriteType.MOVIE))
     }
 
 }

@@ -30,7 +30,7 @@ class SeriesFavoritesFragment : BaseFavoriteFragment() {
         items.adapter = SeriesAdapter { series, view ->
             val intent = requireContext().toSeriesDetail(
                 series.toDetailObject(),
-                finishAfterTransition = false
+                finishAfterTransition = true
             )
             startActivity(
                 intent,

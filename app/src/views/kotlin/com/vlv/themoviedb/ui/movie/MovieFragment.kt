@@ -3,12 +3,10 @@ package com.vlv.themoviedb.ui.movie
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.IdRes
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.extensions.addOrReplace
 import com.vlv.imperiya.ui.search.ImperiyaSearchView
 import com.vlv.movie.ui.search.SearchMovieActivity
 import com.vlv.themoviedb.R
@@ -58,16 +56,4 @@ class MovieFragment : Fragment(R.layout.movie_fragment) {
         }
     }
 
-}
-
-fun FragmentTransaction.addOrReplace(
-    fragmentManager: FragmentManager,
-    @IdRes layout: Int,
-    fragment: Fragment,
-    tag: String
-) {
-    fragmentManager.findFragmentByTag(tag)?.let {
-        remove(it)
-    }
-    add(layout, fragment, tag)
 }

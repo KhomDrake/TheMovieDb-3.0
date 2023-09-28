@@ -12,5 +12,15 @@
                 android:value="androidx.startup" />
         </provider>
 
+        <activity
+            android:theme="@style/Imperiya.Theme"
+            android:name=".ui.FavoritesActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.FAVORITES_LISTING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>

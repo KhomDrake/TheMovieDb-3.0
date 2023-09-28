@@ -3,8 +3,8 @@ package com.vlv.themoviedb.ui.series
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.vlv.extensions.addOrReplace
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.movie.addOrReplace
 import com.vlv.themoviedb.ui.series.airingtoday.AiringTodayFragment
 import com.vlv.themoviedb.ui.series.favorites.SeriesFavoritesFragment
 import com.vlv.themoviedb.ui.series.trending.TrendingFragment

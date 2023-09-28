@@ -1,11 +1,13 @@
 package com.vlv.themoviedb.ui.series.favorites
 
 
+import com.vlv.common.ui.route.toFavorites
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.favorite.ui.series.SeriesFavoriteViewModel
+import com.vlv.network.database.data.FavoriteType
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.series.SeriesCarouselFragment
 import com.vlv.themoviedb.ui.series.adapter.SeriesCarouselAdapter
@@ -55,6 +57,10 @@ class SeriesFavoritesFragment : SeriesCarouselFragment() {
     override fun onStart() {
         super.onStart()
         loadContent()
+    }
+
+    override fun onClickSeeAll() {
+        startActivity(requireContext().toFavorites(FavoriteType.SERIES))
     }
 
 }

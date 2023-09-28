@@ -30,7 +30,7 @@ class MovieFavoritesFragment : BaseFavoriteFragment() {
         items.adapter = MovieAdapter { movie, view ->
             val intent = requireContext().toMovieDetail(
                 movie.toDetailObject(),
-                finishAfterTransition = false
+                finishAfterTransition = true
             )
             startActivity(
                 intent,
