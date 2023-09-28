@@ -3,6 +3,7 @@ package com.vlv.people
 import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.network.NetworkInitializer
+import com.vlv.people.ui.detail.PeopleDetailViewModel
 import com.vlv.people.ui.detail.about.AboutViewModel
 import com.vlv.people.ui.detail.moviecredits.MovieCreditViewModel
 import com.vlv.people.ui.detail.seriescredit.SeriesCreditViewModel
@@ -22,6 +23,7 @@ class PeopleInitializer : Initializer<Module> {
             viewModel { AboutViewModel(get()) }
             viewModel { MovieCreditViewModel(get()) }
             viewModel { SeriesCreditViewModel(get()) }
+            viewModel { PeopleDetailViewModel(get()) }
         }
         loadKoinModules(module)
         return module

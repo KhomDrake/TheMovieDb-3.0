@@ -34,6 +34,12 @@ class SeasonsFragment : Fragment(R.layout.series_fragment_seasons) {
             data {
                 (seasons.adapter as? SeasonAdapter)?.submitList(it)
             }
+            showLoading {
+
+            }
+            error { _ ->
+
+            }
         }
     }
 

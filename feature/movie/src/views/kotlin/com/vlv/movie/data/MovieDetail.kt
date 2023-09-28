@@ -9,7 +9,6 @@ import com.vlv.extensions.patternDate
 import com.vlv.extensions.toBillionsAndMillions
 import com.vlv.extensions.toFormattedString
 import com.vlv.extensions.toHoursAndMinutes
-import com.vlv.extensions.toLocalDate
 import com.vlv.extensions.toMillionsAndThousands
 import com.vlv.movie.R
 import com.vlv.movie.ui.detail.about.AboutItem
@@ -57,7 +56,7 @@ class MovieDetail(
                     ),
                     Information(
                         title = R.string.movie_text_release_status,
-                        data = response.releaseData.toLocalDate().toFormattedString(
+                        data = response.releaseData.toFormattedString(
                             pattern = patternDate()
                         )
                     ),
@@ -75,6 +74,6 @@ class MovieDetail(
             items
         },
         String.format("%.1f", response.voteAverage),
-        "${response.releaseData.toLocalDate().toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${response.runtime.toHoursAndMinutes(resources)}"
+        "${response.releaseData.toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${response.runtime.toHoursAndMinutes(resources)}"
     )
 }

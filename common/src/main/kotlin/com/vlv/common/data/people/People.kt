@@ -2,6 +2,8 @@ package com.vlv.common.data.people
 
 import android.os.Parcelable
 import com.vlv.network.data.people.PeopleResponse
+import com.vlv.network.database.data.Favorite
+import com.vlv.network.database.data.FavoriteType
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -17,4 +19,21 @@ class People(
         peopleResponse.knownForDepartment,
         peopleResponse.profilePath
     )
+
+    constructor(favorite: Favorite) : this(
+        favorite.itemId,
+        favorite.name,
+        favorite.overview,
+        favorite.poster
+    )
 }
+
+fun People.toFavorite() = Favorite(
+    id,
+    id,
+    name,
+    profilePath,
+    profilePath,
+    department,
+    FavoriteType.PEOPLE
+)

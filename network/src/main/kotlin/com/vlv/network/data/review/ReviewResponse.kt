@@ -3,6 +3,7 @@ package com.vlv.network.data.review
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import org.threeten.bp.LocalDateTime
 
 @JsonClass(generateAdapter = true)
 data class ReviewResponse(
@@ -13,7 +14,7 @@ data class ReviewResponse(
     @Json(name = "content")
     val content: String,
     @Json(name = "created_at")
-    val createdAt: String,
+    val createdAt: LocalDateTime,
     @Json(name = "id")
     val id: String,
     @Json(name = "updated_at")

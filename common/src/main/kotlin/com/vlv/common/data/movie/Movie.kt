@@ -4,6 +4,8 @@ import android.os.Parcelable
 import com.vlv.common.ui.DetailObject
 import com.vlv.network.data.movie.MovieResponse
 import com.vlv.network.data.people.MovieCreditResponse
+import com.vlv.network.database.data.Favorite
+import com.vlv.network.database.data.FavoriteType
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -24,6 +26,15 @@ class Movie(
         movieResponse.overview
     )
 
+    constructor(favorite: Favorite) : this(
+        false,
+        favorite.backdrop,
+        favorite.poster,
+        favorite.itemId,
+        favorite.name,
+        favorite.overview
+    )
+
     constructor(movieCreditResponse: MovieCreditResponse) : this(
         movieCreditResponse.adult,
         movieCreditResponse.backdropPath,
@@ -40,4 +51,14 @@ fun DetailObject.toMovie() = Movie(
 
 fun Movie.toDetailObject() = DetailObject(
     id, posterPath, backdropPath, title, overview, adult
+)
+
+fun Movie.toFavorite() = Favorite(
+    id,
+    id,
+    title,
+    posterPath,
+    backdropPath,
+    overview,
+    FavoriteType.MOVIE
 )

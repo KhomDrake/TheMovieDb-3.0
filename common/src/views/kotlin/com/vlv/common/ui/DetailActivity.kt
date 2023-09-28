@@ -30,6 +30,7 @@ class DetailObject(
 ) : Parcelable
 
 const val DETAIL_OBJECT_EXTRA = "DETAIL_OBJECT_EXTRA"
+const val FINISH_AFTER_TRANSITION_EXTRA = "FINISH_AFTER_TRANSITION_EXTRA"
 
 abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activity) {
 
@@ -44,13 +45,17 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
     protected val layout: ViewPager2 by viewProvider(R.id.layout)
     protected val appBar: AppBarLayout by viewProvider(R.id.app_bar_layout)
     protected val objDetail: DetailObject? by extraProvider(DETAIL_OBJECT_EXTRA, null)
+    protected val finishAfterTransition: Boolean?
+        by extraProvider(FINISH_AFTER_TRANSITION_EXTRA, true)
 
     protected abstract val texts: List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         toolbar.setNavigationOnClickListener {
-            finishAfterTransition()
+            if(finishAfterTransition == true) {
+                finishAfterTransition()
+            } else finish()
         }
 
         poster.clipToOutline = true
@@ -125,7 +130,9 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
 
     @Deprecated("Deprecated in Java", ReplaceWith("finishAfterTransition()"))
     override fun onBackPressed() {
-        finishAfterTransition()
+        if(finishAfterTransition == true) {
+            finishAfterTransition()
+        } else finish()
     }
 
 }

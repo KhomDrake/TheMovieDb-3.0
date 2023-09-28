@@ -6,7 +6,6 @@ import com.vlv.bondsmith.bondsmith
 import com.vlv.common.ui.adapter.Information
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
-import com.vlv.extensions.toLocalDate
 import com.vlv.network.data.people.PeopleDetailResponse
 import com.vlv.network.repository.PeopleDetailRepository
 import com.vlv.people.R
@@ -25,18 +24,25 @@ class AboutViewModel(
             mutableListOf<AboutItem>().apply {
                 add(AboutItem.BigText(detail.biography))
                 add(AboutItem.Line())
-                addAll(
-                    listOf(
-                        Information(
-                            title = R.string.people_information_item_date_of_birth,
-                            data = detail.birthday.toLocalDate().toFormattedString(patternDate2())
-                        ),
+
+                val items = mutableListOf<Information>().apply {
+                    detail.birthday?.let {
+                        add(
+                            Information(
+                                title = R.string.people_information_item_date_of_birth,
+                                data = it.toFormattedString(patternDate2())
+                            )
+                        )
+                    }
+                    detail.placeOfBirth?.let {
                         Information(
                             title = R.string.people_information_item_place_of_birth,
-                            data = detail.placeOfBirth
+                            data = it
                         )
-                    ).map { AboutItem.InformationItem(it) }
-                )
+                    }
+                }
+
+                addAll(items.map { AboutItem.InformationItem(it) })
             }
         }
 }

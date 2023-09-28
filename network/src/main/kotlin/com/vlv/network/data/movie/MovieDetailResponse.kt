@@ -3,6 +3,7 @@ package com.vlv.network.data.movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import com.vlv.network.data.genre.GenreResponse
+import org.threeten.bp.LocalDate
 
 @JsonClass(generateAdapter = true)
 class MovieDetailResponse(
@@ -33,7 +34,7 @@ class MovieDetailResponse(
     val productCountries: List<ProductionCountry>,
     val status: String,
     @Json(name = "release_date")
-    val releaseData: String
+    val releaseData: LocalDate
 )
 
 @JsonClass(generateAdapter = true)

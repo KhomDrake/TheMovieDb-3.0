@@ -6,12 +6,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.vlv.common.ui.adapter.people.PeopleLoaderAdapter
+import com.vlv.common.ui.adapter.people.PeoplePagingAdapter
 import com.vlv.common.ui.listing.ListingItemsActivity
 import com.vlv.common.ui.route.toPeopleDetail
 import com.vlv.people.R
-import com.vlv.people.ui.adapter.PeopleLoaderAdapter
-import com.vlv.people.ui.adapter.PeoplePagingAdapter
-import com.vlv.people.ui.adapter.VIEW_TYPE_PEOPLE
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -36,7 +35,7 @@ class PopularPeopleActivity : ListingItemsActivity() {
     }
 
     override val loadingLayout: Int
-        get() = R.layout.people_listing_loading
+        get() = com.vlv.common.R.layout.common_people_listing_loading
 
     override val title: Int
         get() = R.string.people_popular_title

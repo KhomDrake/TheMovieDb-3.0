@@ -3,6 +3,7 @@ package com.vlv.network.data.people
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import org.threeten.bp.LocalDate
 
 @JsonClass(generateAdapter = true)
 data class PeopleDetailResponse(
@@ -13,7 +14,7 @@ data class PeopleDetailResponse(
     @Json(name = "biography")
     val biography: String,
     @Json(name = "birthday")
-    val birthday: String,
+    val birthday: LocalDate?,
     @Json(name = "deathday")
     val deathday: Any?,
     @Json(name = "gender")
@@ -29,7 +30,7 @@ data class PeopleDetailResponse(
     @Json(name = "name")
     val name: String,
     @Json(name = "place_of_birth")
-    val placeOfBirth: String,
+    val placeOfBirth: String?,
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "profile_path")

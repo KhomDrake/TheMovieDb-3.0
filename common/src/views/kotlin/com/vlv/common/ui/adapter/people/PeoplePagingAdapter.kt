@@ -1,4 +1,4 @@
-package com.vlv.people.ui.adapter
+package com.vlv.common.ui.adapter.people
 
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +8,10 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.common.R
 import com.vlv.common.data.people.People
 import com.vlv.extensions.inflate
 import com.vlv.extensions.loadUrl
-import com.vlv.people.R
 
 class PeopleDiffUtil: ItemCallback<People>() {
 
@@ -45,7 +45,7 @@ class PeoplePagingAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeopleViewHolder {
-        return PeopleViewHolder(parent.inflate(R.layout.people_listing_item))
+        return PeopleViewHolder(parent.inflate(R.layout.common_people_listing_item))
     }
 
 }

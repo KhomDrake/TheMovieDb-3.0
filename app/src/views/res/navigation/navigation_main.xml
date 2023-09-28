@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/favorites"
-        android:name="com.vlv.themoviedb.ui.favorites.FavoritesFragment"
+        android:name="com.vlv.favorite.ui.FavoritesFragment"
         android:label="FavoritesFragment" />
     <fragment
         android:id="@+id/movie"

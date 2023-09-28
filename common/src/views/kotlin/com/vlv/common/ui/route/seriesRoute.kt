@@ -5,12 +5,15 @@ import android.content.Intent
 import com.vlv.common.data.series.SeriesListType
 import com.vlv.common.ui.DETAIL_OBJECT_EXTRA
 import com.vlv.common.ui.DetailObject
+import com.vlv.common.ui.FINISH_AFTER_TRANSITION_EXTRA
 
 fun Context.toSeriesDetail(
-    detailObject: DetailObject
+    detailObject: DetailObject,
+    finishAfterTransition: Boolean = true
 ) = intentForAction("SERIES_DETAIL")
     .apply {
         putExtra(DETAIL_OBJECT_EXTRA, detailObject)
+        putExtra(FINISH_AFTER_TRANSITION_EXTRA, finishAfterTransition)
     }
 
 const val SERIES_LISTING_TYPE_EXTRA = "SERIES_LISTING_TYPE_EXTRA"
