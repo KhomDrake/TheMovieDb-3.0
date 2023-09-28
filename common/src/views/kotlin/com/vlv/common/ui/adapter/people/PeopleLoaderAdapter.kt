@@ -1,22 +1,22 @@
-package com.vlv.people.ui.adapter
+package com.vlv.common.ui.adapter.people
 
 import android.view.View
 import android.view.ViewGroup
+import com.vlv.common.R
 import com.vlv.common.ui.adapter.ErrorViewHolder
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.extensions.inflate
 import com.vlv.imperiya.ui.warning.SmallWarningView
-import com.vlv.people.R
 
 class PeopleLoaderAdapter(
     retry: () -> Unit
 ) : LoaderAdapter(
-    R.layout.people_listing_item_loading,
+    R.layout.common_people_listing_item_loading,
     retry = retry
 ) {
 
     override fun createErrorViewHolder(parent: ViewGroup): ErrorViewHolder {
-        return PeopleErrorViewHolder(parent.inflate(R.layout.people_pagination_item_error))
+        return PeopleErrorViewHolder(parent.inflate(R.layout.common_people_pagination_item_error))
     }
 
 }

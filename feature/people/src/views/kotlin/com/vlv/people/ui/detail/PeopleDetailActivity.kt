@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import br.com.arch.toolkit.delegate.extraProvider
@@ -13,17 +14,23 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.ui.AppBarState
 import com.vlv.common.ui.AppBarStateChangeListener
+import com.vlv.common.ui.FINISH_AFTER_TRANSITION_EXTRA
 import com.vlv.common.ui.route.EXTRA_PEOPLE
 import com.vlv.extensions.loadUrl
 import com.vlv.people.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.ref.WeakReference
 
 class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) {
 
+    private val viewModel: PeopleDetailViewModel by viewModel()
+
     private val people: People? by extraProvider(EXTRA_PEOPLE, null)
+    private val finishAfterTransition: Boolean by extraProvider(FINISH_AFTER_TRANSITION_EXTRA, default = true)
 
     private val tabs: TabLayout by viewProvider(R.id.tabs)
     private val toolbar: Toolbar by viewProvider(R.id.toolbar)
@@ -43,17 +50,59 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         toolbar.setNavigationOnClickListener {
-            finishAfterTransition()
+            if(finishAfterTransition) finishAfterTransition() else finish()
         }
         avatar.clipToOutline = true
 
         val people = people ?: return
         people.profilePath?.loadUrl(avatar)
 
+        setupMenu(people)
         configTabs()
         configAppBar()
         configViewPager()
         showExpanded()
+    }
+
+    private fun setupMenu(people: People) {
+        toolbar.inflateMenu(com.vlv.common.R.menu.common_detail_menu)
+        toolbar.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                com.vlv.common.R.id.heart -> {
+                    changeFavorite(people)
+                    true
+                }
+                else -> false
+            }
+        }
+        updatedMenu(people)
+    }
+
+    private fun changeFavorite(people: People) {
+        viewModel.changeFavorite(people).observe(this) {
+            data { isFavorite ->
+                updatedMenuItem(isFavorite)
+            }
+        }
+    }
+
+    private fun updatedMenu(people: People) {
+        viewModel.getFavorite(people.id).observe(this) {
+            data {
+                updatedMenuItem(isFavorite = it)
+            }
+        }
+    }
+
+    private fun updatedMenuItem(isFavorite : Boolean) {
+        runCatching {
+            val menuHeart = toolbar.menu?.getItem(0) ?: return@runCatching
+            menuHeart.icon = ContextCompat.getDrawable(
+                this@PeopleDetailActivity,
+                if(isFavorite) com.vlv.imperiya.R.drawable.ic_heart_filled
+                else com.vlv.imperiya.R.drawable.ic_heart_enable
+            )
+        }
     }
 
     private fun configViewPager() {
@@ -121,7 +170,7 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
 
     @Deprecated("Deprecated in Java", ReplaceWith("finishAfterTransition()"))
     override fun onBackPressed() {
-        finishAfterTransition()
+        if(finishAfterTransition) finishAfterTransition() else finish()
     }
     
 }

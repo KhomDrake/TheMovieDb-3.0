@@ -24,7 +24,7 @@ class Cast(
 }
 
 fun Cast.toPeople() = People(
-    castId,
+    personId,
     name,
     knowFor,
     profilePath

@@ -18,7 +18,6 @@ class MovieDetailViewModel(private val repository: FavoriteRepository) : ViewMod
                 repository.addFavorite(movie.toFavorite())
                 true
             }
-
         }
         .execute()
         .responseLiveData

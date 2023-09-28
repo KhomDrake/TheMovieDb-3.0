@@ -24,18 +24,25 @@ class AboutViewModel(
             mutableListOf<AboutItem>().apply {
                 add(AboutItem.BigText(detail.biography))
                 add(AboutItem.Line())
-                addAll(
-                    listOf(
-                        Information(
-                            title = R.string.people_information_item_date_of_birth,
-                            data = detail.birthday.toFormattedString(patternDate2())
-                        ),
+
+                val items = mutableListOf<Information>().apply {
+                    detail.birthday?.let {
+                        add(
+                            Information(
+                                title = R.string.people_information_item_date_of_birth,
+                                data = it.toFormattedString(patternDate2())
+                            )
+                        )
+                    }
+                    detail.placeOfBirth?.let {
                         Information(
                             title = R.string.people_information_item_place_of_birth,
-                            data = detail.placeOfBirth
+                            data = it
                         )
-                    ).map { AboutItem.InformationItem(it) }
-                )
+                    }
+                }
+
+                addAll(items.map { AboutItem.InformationItem(it) })
             }
         }
 }

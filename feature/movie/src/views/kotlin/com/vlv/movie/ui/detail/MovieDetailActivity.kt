@@ -39,6 +39,18 @@ class MovieDetailActivity : DetailActivity() {
         }
 
 
+        setupMenu(movie)
+
+        val adapter = DetailAdapter(texts, movie, this)
+        layout.adapter = adapter
+        TabLayoutMediator(tabs, layout) { tab, position ->
+            tab.text = texts[position]
+        }.attach()
+
+        collapsing.title = movie.title
+    }
+
+    private fun setupMenu(movie: Movie) {
         toolbar.inflateMenu(com.vlv.common.R.menu.common_detail_menu)
         toolbar.setOnMenuItemClickListener { item ->
             when(item.itemId) {
@@ -50,14 +62,6 @@ class MovieDetailActivity : DetailActivity() {
             }
         }
         updatedMenu()
-
-        val adapter = DetailAdapter(texts, movie, this)
-        layout.adapter = adapter
-        TabLayoutMediator(tabs, layout) { tab, position ->
-            tab.text = texts[position]
-        }.attach()
-
-        collapsing.title = movie.title
     }
 
     private fun updatedMenu() {

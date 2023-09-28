@@ -14,7 +14,7 @@ data class PeopleDetailResponse(
     @Json(name = "biography")
     val biography: String,
     @Json(name = "birthday")
-    val birthday: LocalDate,
+    val birthday: LocalDate?,
     @Json(name = "deathday")
     val deathday: Any?,
     @Json(name = "gender")
@@ -30,7 +30,7 @@ data class PeopleDetailResponse(
     @Json(name = "name")
     val name: String,
     @Json(name = "place_of_birth")
-    val placeOfBirth: String,
+    val placeOfBirth: String?,
     @Json(name = "popularity")
     val popularity: Double,
     @Json(name = "profile_path")

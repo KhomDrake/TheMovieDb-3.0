@@ -3,6 +3,7 @@ package com.vlv.favorite
 import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.favorite.ui.movie.MovieFavoritesViewModel
+import com.vlv.favorite.ui.people.PeopleFavoritesViewModel
 import com.vlv.favorite.ui.series.SeriesFavoriteViewModel
 import com.vlv.network.NetworkInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -16,6 +17,7 @@ class FavoriteInitializer : Initializer<Module> {
         val module = module {
             viewModel { MovieFavoritesViewModel(get()) }
             viewModel { SeriesFavoriteViewModel(get()) }
+            viewModel { PeopleFavoritesViewModel(get()) }
         }
         loadKoinModules(module)
         return module
