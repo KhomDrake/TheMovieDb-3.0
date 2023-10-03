@@ -36,6 +36,25 @@
                     android:transitionName="@string/common_backdrop_transition_name" />
 
                 <View
+                    android:id="@+id/background_gradient_start"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="0dp"
+                    android:background="@drawable/common_gradient_background_detail_toolbar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <View
+                    android:id="@+id/background_gradient_end"
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="0dp"
+                    android:rotationY="180"
+                    android:background="@drawable/common_gradient_background_detail_toolbar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <View
                     android:id="@+id/background_gradient"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
