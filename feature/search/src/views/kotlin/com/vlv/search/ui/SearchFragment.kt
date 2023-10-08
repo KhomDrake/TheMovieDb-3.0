@@ -44,6 +44,7 @@ import com.vlv.extensions.stateError
 import com.vlv.extensions.stateInitial
 import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.ui.search.ImperiyaSearchView
+import com.vlv.imperiya.ui.stateview.StateView
 import com.vlv.imperiya.ui.warning.SmallWarningView
 import com.vlv.search.R
 import com.vlv.search.data.SearchType
@@ -61,6 +62,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
     private val root: ViewGroup by viewProvider(R.id.root)
     private val loading: ShimmerFrameLayout by viewProvider(R.id.loading)
     private val warning: SmallWarningView by viewProvider(R.id.warning_view)
+    private val state: StateView by viewProvider(R.id.state_view)
     private val searchView: ImperiyaSearchView by viewProvider(R.id.search)
     private val items: RecyclerView by viewProvider(R.id.items)
     private val historyItems: RecyclerView by viewProvider(R.id.history_items)
@@ -88,6 +90,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         viewModel.searchType.observe(viewLifecycleOwner) { searchType ->
             searchView.clearText()
             setupSearchBySearchType(searchType)
+            setupStateView(searchType)
             loadHistory()
         }
 
@@ -126,33 +129,50 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         )
     }
 
+    private fun setupStateView(searchType: SearchType) {
+        when(searchType) {
+            SearchType.SERIES -> {
+                state.setTitle(R.string.search_series_empty_title)
+                state.setStateIcon(com.vlv.imperiya.R.drawable.ic_series)
+            }
+            SearchType.MOVIE -> {
+                state.setTitle(R.string.search_movie_empty_title)
+                state.setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
+            }
+            SearchType.PERSON -> {
+                state.setTitle(R.string.search_people_empty_title)
+                state.setStateIcon(com.vlv.imperiya.R.drawable.ic_people)
+            }
+        }
+    }
+
     private fun setupViewStateMachine() {
         viewStateMachine.setup {
             defaultConfig(root, initial = State.INITIAL)
 
             stateInitial {
                 visibles(historyItems)
-                gones(items, loading, warning)
+                gones(items, loading, warning, state)
             }
 
             stateData {
                 visibles(items)
-                gones(loading, warning, historyItems)
+                gones(loading, warning, historyItems, state)
             }
 
             stateError {
                 visibles(warning)
-                gones(loading, items, historyItems)
+                gones(loading, items, historyItems, state)
             }
 
             stateEmpty {
-                visibles(items)
-                gones(loading, warning, historyItems)
+                visibles(state)
+                gones(loading, warning, historyItems, items)
             }
 
             stateLoading {
                 visibles(loading)
-                gones(items, warning, historyItems)
+                gones(items, warning, historyItems, state)
             }
         }
     }

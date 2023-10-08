@@ -80,12 +80,12 @@ class ImperiyaSearchView : SearchView {
     ) {
         setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                onTextSubmit.invoke(query)
+                onTextSubmit.invoke(query?.trim())
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                onTextChanged.invoke(newText)
+                onTextChanged.invoke(newText?.trim())
                 return true
             }
 
