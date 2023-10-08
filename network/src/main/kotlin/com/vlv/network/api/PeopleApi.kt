@@ -38,7 +38,7 @@ interface PeopleApi {
 
     @GET("search/person")
     suspend fun search(
-        @Path("query")
+        @Query("query")
         query: String,
         @Query("language")
         language: String = "en-US",
