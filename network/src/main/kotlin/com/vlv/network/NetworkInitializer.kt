@@ -66,7 +66,7 @@ class NetworkInitializer : Initializer<Module> {
     }
 
     private fun repositoryModule() = module {
-        single { SearchRepository(get()) }
+        single { SearchRepository(get(), get(), get(), get()) }
         single { MovieRepository(get()) }
         single { SeriesRepository(get()) }
         single { MovieDetailRepository(get()) }

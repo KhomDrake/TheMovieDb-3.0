@@ -21,6 +21,7 @@ include ':feature:series'
 include ':feature:people'
 include ':feature:configuration'
 include ':feature:favorite'
+include ':feature:search'
 
 include ':imperiya'
 include ':imperiyasample'
