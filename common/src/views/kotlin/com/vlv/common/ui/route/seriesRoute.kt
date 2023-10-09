@@ -16,6 +16,8 @@ fun Context.toSeriesDetail(
         putExtra(FINISH_AFTER_TRANSITION_EXTRA, finishAfterTransition)
     }
 
+fun Context.toSeriesSearch() = intentForAction("SERIES_SEARCH")
+
 const val SERIES_LISTING_TYPE_EXTRA = "SERIES_LISTING_TYPE_EXTRA"
 
 fun Context.toSeriesTrendingNow() = toSeriesListing(SeriesListType.TRENDING)

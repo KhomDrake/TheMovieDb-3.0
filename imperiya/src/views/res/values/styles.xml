@@ -58,6 +58,17 @@
         <item name="android:textColor">@color/imperiya_color_primary</item>
     </style>
 
+    <style name="Imperiya.Widget.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/imperiya_chip_background_color</item>
+        <item name="android:textColor">@color/imperiya_chip_text_color</item>
+        <item name="chipStrokeColor">@color/imperiya_chip_stroke_color</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="chipStartPadding">12dp</item>
+        <item name="chipEndPadding">12dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:outlineProvider">background</item>
+    </style>
+
     <style name="Imperiya.Style.SearchView">
         <item name="android:background">@drawable/imperiya_background_search</item>
         <item name="searchIcon">@drawable/ic_search_view</item>

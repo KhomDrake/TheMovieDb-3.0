@@ -3,6 +3,10 @@
     <string name="people_popular_title">Popular</string>
     <string name="people_trending_title">Trending</string>
 
+    <string name="people_search_empty_title">No person was found that match with this name</string>
+    <string name="people_search_hint_title">Search people…</string>
+    <string name="people_search_history_title">People recently search:</string>
+
     <string name="people_tab_about">About</string>
     <string name="people_tab_movie_credit">Movies</string>
     <string name="people_tab_series_credit">Tv shows</string>

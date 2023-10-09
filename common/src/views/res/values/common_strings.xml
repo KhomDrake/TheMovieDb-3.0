@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="common_search_transition_name" translatable="false">search</string>
     <string name="common_poster_transition_name" translatable="false">poster</string>
     <string name="common_backdrop_transition_name" translatable="false">backdrop</string>
     <string name="common_avatar_transition_name" translatable="false">avatar</string>

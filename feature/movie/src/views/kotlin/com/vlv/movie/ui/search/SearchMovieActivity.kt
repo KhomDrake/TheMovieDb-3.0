@@ -1,45 +1,29 @@
 package com.vlv.movie.ui.search
 
-import android.os.Bundle
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.TransitionManager
-import br.com.arch.toolkit.delegate.viewProvider
-import br.com.arch.toolkit.statemachine.ViewStateMachine
-import br.com.arch.toolkit.statemachine.config
-import br.com.arch.toolkit.statemachine.setup
-import br.com.arch.toolkit.statemachine.state
 import com.vlv.common.data.movie.toDetailObject
+import com.vlv.common.ui.adapter.LoaderAdapter
+import com.vlv.common.ui.adapter.movie.MovieLoaderAdapter
 import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
 import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.common.ui.search.SearchActivity
 import com.vlv.extensions.*
-import com.vlv.imperiya.ui.search.ImperiyaSearchView
+import com.vlv.imperiya.ui.stateview.StateView
+import com.vlv.imperiya.ui.warning.SmallWarningView
 import com.vlv.movie.R
-import com.vlv.common.R as RCommon
-import com.vlv.movie.ui.adapter.HistoryAdapter
+import com.vlv.network.database.data.History
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.vlv.common.R as RCommon
 
-private const val SEARCH_STATE = 23
+class SearchMovieActivity : SearchActivity() {
 
-class SearchMovieActivity : AppCompatActivity(R.layout.movie_search_activity) {
-
-    private val root: ViewGroup by viewProvider(R.id.root)
-    private val search: ImperiyaSearchView by viewProvider(R.id.search)
-    private val movies: RecyclerView by viewProvider(R.id.movies)
-    private val empty: AppCompatTextView by viewProvider(R.id.empty)
-    private val error: AppCompatTextView by viewProvider(R.id.error)
-    private val loading: AppCompatTextView by viewProvider(R.id.loading)
-    private val historyTitle: AppCompatTextView by viewProvider(R.id.history_title)
-    private val historyItems: RecyclerView by viewProvider(R.id.history_items)
     private val viewModel: SearchViewModel by viewModel()
     private val paginationAdapter = MoviePaginationAdapter { movie, view ->
         val intent = toMovieDetail(movie.toDetailObject())
@@ -52,124 +36,19 @@ class SearchMovieActivity : AppCompatActivity(R.layout.movie_search_activity) {
             ).toBundle()
         )
     }
-    private val historyAdapter = HistoryAdapter(
-        onCLickItem = {
-            search.setText(it.text)
-            query(it.text, addToHistory = false)
-        }, onDelete = {
-            viewModel.deleteHistory(it.text)
-        }
-    )
-    private val viewStateMachine = ViewStateMachine()
+    override val loadingLayout: Int
+        get() = RCommon.layout.common_listing_movie_loading
+    override val titleHistoryTitle: Int
+        get() = R.string.movie_search_history_title
+    override val searchHint: Int
+        get() = R.string.movie_search_hint
+    override val adapter: PagingDataAdapter<*, *>
+        get() = paginationAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setupViewStateMachine()
-        setupSearch()
-        setupHistory()
-        setupMovies()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        loadHistory()
-    }
-
-    private fun setupViewStateMachine() {
-        viewStateMachine.setup {
-            config {
-                initialState = SEARCH_STATE
-                setOnChangeState {
-                    TransitionManager.beginDelayedTransition(root)
-                }
-            }
-
-            state(SEARCH_STATE) {
-                visibles(historyItems, historyTitle)
-                gones(movies, empty, error, loading)
-            }
-
-            stateData {
-                visibles(movies)
-                gones(historyItems, historyTitle, empty, error, loading)
-            }
-
-            stateEmpty {
-                visibles(empty, historyItems, historyTitle)
-                gones(error, loading, movies)
-            }
-
-            stateLoading {
-                visibles(loading, historyItems, historyTitle)
-                gones(empty, error, movies)
-            }
-
-            stateError {
-                visibles(error, historyItems, historyTitle)
-                gones(empty, loading, movies)
-            }
-        }
-    }
-
-    private fun setupHistory() {
-        historyItems.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        historyItems.adapter = historyAdapter
-    }
-
-    private fun loadHistory() {
-        viewModel.searchHistory().observe(this) {
-            historyAdapter.submitList(it)
-        }
-    }
-
-    private fun setupMovies() {
-        movies.layoutManager = GridLayoutManager(this, 2)
-        movies.adapter = paginationAdapter
-        paginationAdapter.setupState(
-            onData = {
-                viewStateMachine.dataState()
-            },
-            onError = {
-                viewStateMachine.errorState()
-            },
-            onEmpty = {
-                viewStateMachine.emptyState()
-            },
-            onLoading = {
-                viewStateMachine.loadingState()
-            }
-        )
-    }
-
-    private fun setupSearch() {
-        search.apply {
-            onClickSearchListener {
-                finishAfterTransition()
-            }
-            setHint("Search for movies")
-            setup(
-                onTextSubmit = { queryText ->
-                    query(queryText)
-                }
-            )
-            onClickCloseListener {
-                lifecycleScope.launch {
-                    search.clearText()
-                    viewStateMachine.changeState(SEARCH_STATE)
-                }
-            }
-        }
-    }
-
-    private fun query(text: String?, addToHistory: Boolean = true) {
+    override fun onTextSubmit(query: String?) {
         lifecycleScope.launch {
-            val queryNotNull = text ?: return@launch
-
-            if(addToHistory) {
-                viewModel.addHistory(queryNotNull)
-            }
-            viewModel.search(queryNotNull).distinctUntilChanged().apply {
+            val queryNotNull = query ?: return@launch
+            viewModel.searchMovie(queryNotNull).distinctUntilChanged().apply {
                 collectLatest {
                     paginationAdapter.submitData(it)
                 }
@@ -177,9 +56,38 @@ class SearchMovieActivity : AppCompatActivity(R.layout.movie_search_activity) {
         }
     }
 
-    override fun onDestroy() {
-        viewStateMachine.shutdown()
-        super.onDestroy()
+    override fun addHistory(text: String?) {
+        text?.let {
+            viewModel.addToHistory(it)
+        }
     }
+
+    override fun removeHistory(history: History) {
+        viewModel.removeHistory(history)
+    }
+
+    override fun loadHistory() {
+        viewModel.historyBySearchType().observe(this) {
+            updateHistory(it)
+        }
+    }
+
+    override fun createLayoutManager(): RecyclerView.LayoutManager {
+        return GridLayoutManager(this, 2)
+    }
+
+    override fun loaderAdapter(): LoaderAdapter {
+        return MovieLoaderAdapter {
+            paginationAdapter.retry()
+        }
+    }
+
+    override fun configStateView(stateView: StateView) {
+        stateView
+            .setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
+            .setTitle(R.string.movie_search_empty_state)
+    }
+
+    override fun configWarningView(smallWarningView: SmallWarningView) = Unit
 
 }

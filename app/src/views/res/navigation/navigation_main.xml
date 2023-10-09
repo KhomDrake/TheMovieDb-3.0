@@ -18,7 +18,7 @@
         android:label="OptionsFragment" />
     <fragment
         android:id="@+id/search"
-        android:name="com.vlv.themoviedb.ui.search.SearchFragment"
+        android:name="com.vlv.search.ui.SearchFragment"
         android:label="SearchFragment" />
     <fragment
         android:id="@+id/series"

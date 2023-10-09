@@ -1,14 +1,13 @@
 package com.vlv.themoviedb.ui.movie
 
 import android.app.ActivityOptions
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.common.ui.route.toMovieSearch
 import com.vlv.extensions.addOrReplace
 import com.vlv.imperiya.ui.search.ImperiyaSearchView
-import com.vlv.movie.ui.search.SearchMovieActivity
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesFragment
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingFragment
@@ -41,16 +40,12 @@ class MovieFragment : Fragment(R.layout.movie_fragment) {
             )
         }.commit()
         search.onCLickListener {
-            val intent = Intent(
-                requireContext(),
-                SearchMovieActivity::class.java
-            )
-
             startActivity(
-                intent,
+                requireContext().toMovieSearch(),
                 ActivityOptions.makeSceneTransitionAnimation(
                     requireActivity(),
-                    android.util.Pair(search, "abcd")
+                    search,
+                    getString(com.vlv.common.R.string.common_search_transition_name)
                 ).toBundle()
             )
         }

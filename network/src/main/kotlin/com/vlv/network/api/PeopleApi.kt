@@ -36,6 +36,16 @@ interface PeopleApi {
         language: String = "en-US"
     ) : PeopleDetailResponse
 
+    @GET("search/person")
+    suspend fun search(
+        @Query("query")
+        query: String,
+        @Query("language")
+        language: String = "en-US",
+        @Query("page")
+        page: Int = 1
+    ) : PeoplesResponse
+
 
     @GET("person/{people_id}/movie_credits")
     suspend fun peopleMovieCredits(

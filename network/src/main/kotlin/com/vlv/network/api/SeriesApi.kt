@@ -81,4 +81,14 @@ interface SeriesApi {
         page: Int
     ) : SeriesResponse
 
+    @GET("search/tv")
+    suspend fun search(
+        @Query("language")
+        language: String,
+        @Query("query")
+        text: String,
+        @Query("page")
+        page: Int
+    ) : SeriesResponse
+
 }

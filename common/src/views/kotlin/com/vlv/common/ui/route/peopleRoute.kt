@@ -10,6 +10,8 @@ fun Context.toPeopleTrending() = intentForAction("PEOPLE_TRENDING")
 
 const val EXTRA_PEOPLE = "EXTRA_PEOPLE"
 
+fun Context.toPeopleSearch() = intentForAction("PEOPLE_SEARCH")
+
 fun Context.toPeopleDetail(
     people: People,
     finishAfterTransition: Boolean = true

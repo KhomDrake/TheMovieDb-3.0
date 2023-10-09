@@ -15,7 +15,13 @@
 
         <activity
             android:theme="@style/Imperiya.Theme"
-            android:name=".ui.search.SearchMovieActivity" />
+            android:name=".ui.search.SearchMovieActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.MOVIE_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:theme="@style/Imperiya.Theme.Collapse"

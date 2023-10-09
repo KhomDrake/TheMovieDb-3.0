@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vlv.network.data.movie.MovieResponse
 import com.vlv.network.data.movie.MoviesResponse
+import kotlinx.coroutines.delay
 
 const val MAX_PAGE = 500
 

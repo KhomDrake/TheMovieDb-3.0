@@ -7,6 +7,11 @@
     <string name="series_popular_title">Popular</string>
     <string name="series_error_detail_title">Failed to load information</string>
 
+    <!-- Series Search -->
+    <string name="series_search_hint">Search tv show…</string>
+    <string name="series_search_history_title">Tv shows searched recently:</string>
+    <string name="series_search_empty_title">No tv show was found</string>
+
     <!-- Series Detail -->
     <string name="series_information_original_title">Original title</string>
     <string name="series_information_first_on_air">First time on the air</string>

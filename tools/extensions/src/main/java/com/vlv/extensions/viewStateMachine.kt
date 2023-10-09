@@ -11,7 +11,8 @@ enum class State {
     EMPTY,
     DATA,
     LOADING,
-    ERROR
+    ERROR,
+    INITIAL
 }
 
 fun ViewStateMachine.dataState() = apply {
@@ -30,11 +31,18 @@ fun ViewStateMachine.emptyState() = apply {
     changeState(State.EMPTY.ordinal)
 }
 
+fun ViewStateMachine.initialState() = apply {
+    changeState(State.INITIAL.ordinal)
+}
+
+fun ViewStateMachine.isInInitialState() = this.currentStateKey == State.INITIAL.ordinal
+
 fun StateMachine<ViewStateMachine.State>.defaultConfig(
-    root: ViewGroup
+    root: ViewGroup,
+    initial: State = State.LOADING
 ) = apply {
     config {
-        initialState = State.LOADING.ordinal
+        initialState = initial.ordinal
         onChangeState = StateMachine.OnChangeStateCallback {
             TransitionManager.beginDelayedTransition(root)
         }
@@ -51,6 +59,10 @@ fun StateMachine<ViewStateMachine.State>.stateLoading(func: ViewStateMachine.Sta
 
 fun StateMachine<ViewStateMachine.State>.stateError(func: ViewStateMachine.State.() -> Unit) = apply {
     state(State.ERROR.ordinal, func)
+}
+
+fun StateMachine<ViewStateMachine.State>.stateInitial(func: ViewStateMachine.State.() -> Unit) = apply {
+    state(State.INITIAL.ordinal, func)
 }
 
 fun StateMachine<ViewStateMachine.State>.stateEmpty(func: ViewStateMachine.State.() -> Unit) = apply {

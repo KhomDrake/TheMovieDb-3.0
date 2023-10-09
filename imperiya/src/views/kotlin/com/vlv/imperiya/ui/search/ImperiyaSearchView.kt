@@ -2,6 +2,7 @@ package com.vlv.imperiya.ui.search
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
@@ -19,6 +20,7 @@ class ImperiyaSearchView : SearchView {
     private val startIcon: ImageView by viewProvider(androidx.appcompat.R.id.search_mag_icon)
     private val endIcon: ImageView by viewProvider(androidx.appcompat.R.id.search_close_btn)
     private val searchText: EditText by viewProvider(androidx.appcompat.R.id.search_src_text)
+    private val searchPlate: View by viewProvider(androidx.appcompat.R.id.search_plate)
 
     constructor(context: Context): this(context, null)
 
@@ -32,6 +34,7 @@ class ImperiyaSearchView : SearchView {
         setIconifiedByDefault(false)
         searchText.setTextColor(ContextCompat.getColor(context, R.color.imperiya_title))
         searchText.setHintTextColor(ContextCompat.getColor(context, R.color.imperiya_hint))
+        searchPlate.setBackgroundResource(android.R.color.transparent)
         startIcon.foreground = ContextCompat.getDrawable(context, R.drawable.imperiya_ripple_oval)
         endIcon.foreground = ContextCompat.getDrawable(context, R.drawable.imperiya_ripple_oval)
     }
@@ -77,12 +80,12 @@ class ImperiyaSearchView : SearchView {
     ) {
         setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                onTextSubmit.invoke(query)
+                onTextSubmit.invoke(query?.trim())
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                onTextChanged.invoke(newText)
+                onTextChanged.invoke(newText?.trim())
                 return true
             }
 
