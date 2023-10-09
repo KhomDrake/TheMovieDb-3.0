@@ -1,56 +1,54 @@
-package com.vlv.movie.ui.search
+package com.vlv.people.ui.search
 
 import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.ui.adapter.LoaderAdapter
-import com.vlv.common.ui.adapter.movie.MovieLoaderAdapter
-import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
-import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.common.ui.adapter.people.PeopleLoaderAdapter
+import com.vlv.common.ui.adapter.people.PeoplePagingAdapter
+import com.vlv.common.ui.route.toPeopleDetail
 import com.vlv.common.ui.search.SearchActivity
-import com.vlv.extensions.*
 import com.vlv.imperiya.ui.stateview.StateView
 import com.vlv.imperiya.ui.warning.SmallWarningView
-import com.vlv.movie.R
 import com.vlv.network.database.data.History
+import com.vlv.people.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.vlv.common.R as RCommon
 
-class SearchMovieActivity : SearchActivity() {
+class SearchPeopleActivity : SearchActivity() {
 
-    private val viewModel: SearchViewModel by viewModel()
-    private val paginationAdapter = MoviePaginationAdapter { movie, view ->
-        val intent = toMovieDetail(movie.toDetailObject())
+    private val viewModel: SearchPeopleViewModel by viewModel()
+
+    private val pagingAdapter = PeoplePagingAdapter { image, people ->
         startActivity(
-            intent,
+            toPeopleDetail(people),
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this,
-                view,
-                getString(RCommon.string.common_poster_transition_name)
+                image,
+                getString(com.vlv.common.R.string.common_avatar_transition_name)
             ).toBundle()
         )
     }
+
     override val loadingLayout: Int
-        get() = RCommon.layout.common_listing_movie_loading
+        get() = com.vlv.common.R.layout.common_people_listing_loading
     override val titleHistoryTitle: Int
-        get() = R.string.movie_search_history_title
+        get() = R.string.people_search_history_title
     override val searchHint: Int
-        get() = R.string.movie_search_hint
+        get() = R.string.people_search_hint_title
     override val adapter: PagingDataAdapter<*, *>
-        get() = paginationAdapter
+        get() = pagingAdapter
 
     override fun onTextSubmit(query: String?) {
         lifecycleScope.launch {
-            val queryNotNull = query ?: return@launch
-            viewModel.searchMovie(queryNotNull).distinctUntilChanged().apply {
+            val textQuery = query ?: return@launch
+            viewModel.searchPeople(query).distinctUntilChanged().apply {
                 collectLatest {
-                    paginationAdapter.submitData(it)
+                    (pagingAdapter as? PeoplePagingAdapter)?.submitData(it)
                 }
             }
         }
@@ -73,21 +71,21 @@ class SearchMovieActivity : SearchActivity() {
     }
 
     override fun createLayoutManager(): RecyclerView.LayoutManager {
-        return GridLayoutManager(this, 2)
+        return GridLayoutManager(this, 3)
     }
 
     override fun loaderAdapter(): LoaderAdapter {
-        return MovieLoaderAdapter {
-            paginationAdapter.retry()
+        return PeopleLoaderAdapter {
+            pagingAdapter.retry()
         }
     }
 
     override fun configStateView(stateView: StateView) {
         stateView
-            .setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
-            .setTitle(R.string.movie_search_empty_state)
+            .setStateIcon(com.vlv.imperiya.R.drawable.ic_people)
+            .setTitle(R.string.people_search_empty_title)
+
     }
 
     override fun configWarningView(smallWarningView: SmallWarningView) = Unit
-
 }

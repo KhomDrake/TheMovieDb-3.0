@@ -10,6 +10,7 @@ import com.vlv.series.ui.detail.recommendation.RecommendationViewModel
 import com.vlv.series.ui.detail.review.SeriesReviewViewModel
 import com.vlv.series.ui.detail.season.SeasonsViewModel
 import com.vlv.series.ui.listing.ListingSeriesViewModel
+import com.vlv.series.ui.search.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -26,6 +27,7 @@ class SeriesInitializer: Initializer<Module> {
             viewModel { AboutViewModel(get()) }
             viewModel { RecommendationViewModel(get()) }
             viewModel { SeriesDetailViewModel(get()) }
+            viewModel { SearchViewModel(get()) }
         }
         loadKoinModules(module)
         return module

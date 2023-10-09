@@ -57,7 +57,7 @@
     <string name="menu_title_movie_option_upcoming">Upcoming</string>
     <string name="menu_title_movie_option_popular">Popular</string>
     <string name="menu_title_movie_option_genres">Genres</string>
-    <string name="menu_title_movie_option_discover">Discover</string>
+    <string name="menu_title_movie_option_discover">Search</string>
     <string name="menu_title_movie_option_updated_recent">Updated recent</string>
     <string name="menu_title_movie_option_certifications">Certifications</string>
 
@@ -68,7 +68,7 @@
     <string name="menu_title_series_option_on_the_air">On the air</string>
     <string name="menu_title_series_option_popular">Popular</string>
     <string name="menu_title_series_option_genres">Genres</string>
-    <string name="menu_title_series_option_discover">Discover</string>
+    <string name="menu_title_series_option_discover">Search</string>
     <string name="menu_title_series_option_updated_recent">Updated recent</string>
     <string name="menu_title_series_option_certifications">Certifications</string>
 

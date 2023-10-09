@@ -50,5 +50,18 @@
 
         </activity>
 
+        <activity
+            android:name=".ui.search.SearchPeopleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="${applicationId}.PEOPLE_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
     </application>
 </manifest>

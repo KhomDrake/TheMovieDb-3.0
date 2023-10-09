@@ -10,6 +10,8 @@ import com.vlv.common.ui.FINISH_AFTER_TRANSITION_EXTRA
 fun Context.intentForAction(name: String) =
     Intent("$packageName.$name")
 
+fun Context.toMovieSearch() = intentForAction("MOVIE_SEARCH")
+
 fun Context.toMovieDetail(
     detailObject: DetailObject,
     finishAfterTransition: Boolean = true

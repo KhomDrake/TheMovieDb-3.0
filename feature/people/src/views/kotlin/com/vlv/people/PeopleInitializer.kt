@@ -8,6 +8,7 @@ import com.vlv.people.ui.detail.about.AboutViewModel
 import com.vlv.people.ui.detail.moviecredits.MovieCreditViewModel
 import com.vlv.people.ui.detail.seriescredit.SeriesCreditViewModel
 import com.vlv.people.ui.popular.PopularViewModel
+import com.vlv.people.ui.search.SearchPeopleViewModel
 import com.vlv.people.ui.trending.TrendingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
@@ -24,6 +25,7 @@ class PeopleInitializer : Initializer<Module> {
             viewModel { MovieCreditViewModel(get()) }
             viewModel { SeriesCreditViewModel(get()) }
             viewModel { PeopleDetailViewModel(get()) }
+            viewModel { SearchPeopleViewModel(get()) }
         }
         loadKoinModules(module)
         return module

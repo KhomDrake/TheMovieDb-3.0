@@ -20,7 +20,7 @@ class MovieInitializer : Initializer<Module> {
     override fun create(context: Context): Module {
         val module = module {
             viewModel { ListingMovieViewModel(get()) }
-            viewModel { SearchViewModel(get(), get()) }
+            viewModel { SearchViewModel(get()) }
             viewModel { AboutMovieViewModel(get()) }
             viewModel { CastViewModel(get()) }
             viewModel { ReviewViewModel(get()) }

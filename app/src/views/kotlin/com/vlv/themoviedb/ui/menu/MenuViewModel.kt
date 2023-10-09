@@ -5,10 +5,12 @@ import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.ui.route.toMovieNowPlaying
 import com.vlv.common.ui.route.toMoviePopular
+import com.vlv.common.ui.route.toMovieSearch
 import com.vlv.common.ui.route.toMovieTopRated
 import com.vlv.common.ui.route.toMovieTrending
 import com.vlv.common.ui.route.toMovieUpcoming
 import com.vlv.common.ui.route.toPeoplePopular
+import com.vlv.common.ui.route.toPeopleSearch
 import com.vlv.common.ui.route.toPeopleTrending
 import com.vlv.common.ui.route.toSeriesAiringToday
 import com.vlv.common.ui.route.toSeriesOnTheAir
@@ -85,7 +87,8 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_movie_option_discover,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts
+            icon = RCommon.drawable.ic_hearts,
+            action = context.toMovieSearch()
         ),
         MenuItem(
             R.string.menu_title_movie_option_updated_recent,
@@ -107,74 +110,77 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_series_option_trending,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts,
+            icon = RCommon.drawable.ic_tv,
             action = context.toSeriesTrendingNow()
         ),
         MenuItem(
             R.string.menu_title_series_option_top_rated,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts,
+            icon = RCommon.drawable.ic_tv,
             action = context.toSeriesTopRated()
         ),
         MenuItem(
             R.string.menu_title_series_option_airing_today,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts,
+            icon = RCommon.drawable.ic_tv,
             action = context.toSeriesAiringToday()
         ),
         MenuItem(
             R.string.menu_title_series_option_on_the_air,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts,
+            icon = RCommon.drawable.ic_tv,
             action = context.toSeriesOnTheAir()
         ),
         MenuItem(
             R.string.menu_title_series_option_popular,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts,
+            icon = RCommon.drawable.ic_tv,
             action = context.toSeriesPopular()
         ),
         MenuItem(
             R.string.menu_title_series_option_genres,
-            type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts
+            type = MenuItemType.ITEM
         ),
         MenuItem(
             R.string.menu_title_series_option_discover,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts
+            icon = RCommon.drawable.ic_search,
+            action = context.toPeopleSearch()
         ),
         MenuItem(
             R.string.menu_title_series_option_updated_recent,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts
+            icon = RCommon.drawable.ic_tv
         ),
         MenuItem(
             R.string.menu_title_series_option_certifications,
-            type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts
+            type = MenuItemType.ITEM
         ),
     )
 
     private fun peopleItems(context: Context) = listOf<MenuItem>(
         MenuItem(
             R.string.menu_title_people,
-            type = MenuItemType.HEADER
+            type = MenuItemType.HEADER,
+            icon = RCommon.drawable.ic_people
         ),
         MenuItem(
             R.string.menu_title_people_option_popular,
             type = MenuItemType.ITEM,
-            action = context.toPeoplePopular()
+            action = context.toPeoplePopular(),
+            icon = RCommon.drawable.ic_people
         ),
         MenuItem(
             R.string.menu_title_people_option_trending,
             type = MenuItemType.ITEM,
-            action = context.toPeopleTrending()
+            action = context.toPeopleTrending(),
+            icon = RCommon.drawable.ic_people
         ),
         MenuItem(
             R.string.menu_title_people_option_search,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_search
+            icon = RCommon.drawable.ic_search,
+            action = context.toPeopleSearch()
         ),
         MenuItem(
             R.string.menu_title_people_option_movie_credit,
@@ -188,7 +194,8 @@ class MenuViewModel : ViewModel() {
         ),
         MenuItem(
             R.string.menu_title_people_option_updated_recent,
-            type = MenuItemType.ITEM
+            type = MenuItemType.ITEM,
+            icon = RCommon.drawable.ic_people
         )
     )
 
@@ -201,7 +208,7 @@ class MenuViewModel : ViewModel() {
                 addAll(moviesItems(context))
                 addAll(seriesItems(context))
                 addAll(peopleItems(context))
-            }
+            }.filter { it.action != null || it.type == MenuItemType.HEADER }
         }
         .execute()
         .responseLiveData

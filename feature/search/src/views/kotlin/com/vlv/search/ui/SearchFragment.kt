@@ -119,6 +119,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
     private fun setupHistoryAdapter() {
         historyItems.layoutManager = LinearLayoutManager(requireContext())
         historyItems.adapter = HistoryAdapter(
+            title = "Recents:",
             onClick = { history ->
                 searchView.setText(history.text)
                 onTextSubmit(history.text)

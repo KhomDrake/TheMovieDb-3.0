@@ -11,6 +11,10 @@
     <string name="movie_text_spoken_languages">Spoken languages</string>
     <string name="movie_text_release_status">Release status</string>
 
+    <string name="movie_search_hint">Search for movies</string>
+    <string name="movie_search_empty_state">No movie was found</string>
+    <string name="movie_search_history_title">Movies searched recently:</string>
+
     <string name="movie_title_trending_now">Trending now</string>
     <string name="movie_title_now_playing">Now playing</string>
     <string name="movie_title_top_rated">Top rated</string>
