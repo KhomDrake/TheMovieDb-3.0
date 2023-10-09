@@ -158,7 +158,7 @@ class MenuViewModel : ViewModel() {
         ),
     )
 
-    private fun peopleItems(context: Context) = listOf<MenuItem>(
+    private fun peopleItems(context: Context) = listOf(
         MenuItem(
             R.string.menu_title_people,
             type = MenuItemType.HEADER,
