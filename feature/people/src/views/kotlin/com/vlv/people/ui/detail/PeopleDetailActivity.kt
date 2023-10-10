@@ -19,8 +19,9 @@ import com.vlv.common.data.people.People
 import com.vlv.common.ui.AppBarState
 import com.vlv.common.ui.AppBarStateChangeListener
 import com.vlv.common.ui.FINISH_AFTER_TRANSITION_EXTRA
+import com.vlv.common.ui.extension.loadUrl
 import com.vlv.common.ui.route.EXTRA_PEOPLE
-import com.vlv.extensions.loadUrl
+import com.vlv.network.database.data.ImageType
 import com.vlv.people.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.ref.WeakReference
@@ -55,7 +56,7 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
         avatar.clipToOutline = true
 
         val people = people ?: return
-        people.profilePath?.loadUrl(avatar)
+        people.profilePath?.loadUrl(avatar, ImageType.PROFILE)
 
         setupMenu(people)
         configTabs()

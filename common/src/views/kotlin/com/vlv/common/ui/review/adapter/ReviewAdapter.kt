@@ -12,7 +12,7 @@ import coil.load
 import com.vlv.common.R
 import com.vlv.common.data.review.Review
 import com.vlv.extensions.inflate
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 
 class ReviewDiffUtil: DiffUtil.ItemCallback<Review>() {
     override fun areContentsTheSame(oldItem: Review, newItem: Review): Boolean {

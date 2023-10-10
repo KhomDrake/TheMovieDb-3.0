@@ -8,6 +8,11 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="Imperiya.Style.Text.Paragraph.Gray">
+        <item name="android:textColor">@color/imperiya_sub_title2</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="Imperiya.Style.Text.Paragraph.Bold">
         <item name="android:textStyle">bold</item>
     </style>

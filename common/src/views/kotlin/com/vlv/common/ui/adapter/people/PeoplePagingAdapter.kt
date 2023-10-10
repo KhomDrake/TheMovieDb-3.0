@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.R
 import com.vlv.common.data.people.People
+import com.vlv.common.ui.extension.loadUrl
 import com.vlv.extensions.inflate
-import com.vlv.extensions.loadUrl
+import com.vlv.network.database.data.ImageType
 
 class PeopleDiffUtil: ItemCallback<People>() {
 
@@ -58,7 +59,7 @@ class PeopleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(people: People) {
         avatar.clipToOutline = true
         name.text = people.name
-        people.profilePath?.loadUrl(avatar)
+        people.profilePath?.loadUrl(avatar, ImageType.PROFILE)
     }
 
 }

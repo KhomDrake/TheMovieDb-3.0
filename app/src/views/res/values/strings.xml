@@ -48,7 +48,7 @@
     <string name="menu_title_user">User</string>
     <string name="menu_title_user_option_favorite">Favorites</string>
     <string name="menu_title_user_option_review">Review</string>
-    <string name="menu_title_user_option_session">Session</string>
+    <string name="menu_title_user_option_session">Settings</string>
 
     <string name="menu_title_movie">Movies</string>
     <string name="menu_title_movie_option_trending">Trending</string>
@@ -58,7 +58,6 @@
     <string name="menu_title_movie_option_popular">Popular</string>
     <string name="menu_title_movie_option_genres">Genres</string>
     <string name="menu_title_movie_option_discover">Search</string>
-    <string name="menu_title_movie_option_updated_recent">Updated recent</string>
     <string name="menu_title_movie_option_certifications">Certifications</string>
 
     <string name="menu_title_series">Series</string>
@@ -69,7 +68,6 @@
     <string name="menu_title_series_option_popular">Popular</string>
     <string name="menu_title_series_option_genres">Genres</string>
     <string name="menu_title_series_option_discover">Search</string>
-    <string name="menu_title_series_option_updated_recent">Updated recent</string>
     <string name="menu_title_series_option_certifications">Certifications</string>
 
     <string name="menu_title_people">People</string>
@@ -78,7 +76,6 @@
     <string name="menu_title_people_option_search">Search</string>
     <string name="menu_title_people_option_movie_credit">Movie credit</string>
     <string name="menu_title_people_option_tv_credit">Tv credit</string>
-    <string name="menu_title_people_option_updated_recent">Updated recent</string>
 
 
 </resources>

@@ -7,7 +7,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toMovie
 import com.vlv.common.ui.DetailActivity
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 import com.vlv.movie.R
 import com.vlv.movie.ui.detail.adapter.DetailAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel

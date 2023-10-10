@@ -17,6 +17,7 @@ import com.vlv.common.ui.route.toSeriesOnTheAir
 import com.vlv.common.ui.route.toSeriesPopular
 import com.vlv.common.ui.route.toSeriesTopRated
 import com.vlv.common.ui.route.toSeriesTrendingNow
+import com.vlv.common.ui.route.toSettings
 import com.vlv.themoviedb.R
 import com.vlv.imperiya.R as RCommon
 
@@ -40,7 +41,7 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_user_option_session,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv_off
+            action = context.toSettings()
         )
     )
 
@@ -89,11 +90,6 @@ class MenuViewModel : ViewModel() {
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_hearts,
             action = context.toMovieSearch()
-        ),
-        MenuItem(
-            R.string.menu_title_movie_option_updated_recent,
-            type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_hearts
         ),
         MenuItem(
             R.string.menu_title_movie_option_certifications,
@@ -148,11 +144,6 @@ class MenuViewModel : ViewModel() {
             action = context.toPeopleSearch()
         ),
         MenuItem(
-            R.string.menu_title_series_option_updated_recent,
-            type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv
-        ),
-        MenuItem(
             R.string.menu_title_series_option_certifications,
             type = MenuItemType.ITEM
         ),
@@ -191,11 +182,6 @@ class MenuViewModel : ViewModel() {
             R.string.menu_title_people_option_tv_credit,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_tv
-        ),
-        MenuItem(
-            R.string.menu_title_people_option_updated_recent,
-            type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_people
         )
     )
 

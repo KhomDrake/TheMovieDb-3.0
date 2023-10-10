@@ -8,7 +8,7 @@ import com.vlv.common.data.movie.toMovie
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toSeries
 import com.vlv.common.ui.DetailActivity
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 import com.vlv.series.R
 import com.vlv.series.ui.detail.adapter.DetailAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel

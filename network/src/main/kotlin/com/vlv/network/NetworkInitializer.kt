@@ -16,6 +16,7 @@ import com.vlv.network.database.TheMovieDatabase
 import com.vlv.network.database.TheMovieDbDao
 import com.vlv.network.interceptors.InterceptorFactory
 import com.vlv.network.moshi.MoshiFactory
+import com.vlv.network.repository.ConfigurationRepository
 import com.vlv.network.repository.FavoriteRepository
 import com.vlv.network.repository.MovieDetailRepository
 import com.vlv.network.repository.MovieRepository
@@ -74,6 +75,7 @@ class NetworkInitializer : Initializer<Module> {
         single { PeopleRepository(get()) }
         single { PeopleDetailRepository(get()) }
         single { FavoriteRepository(get()) }
+        single { ConfigurationRepository(get(), get()) }
     }
 
     override fun create(context: Context): Module {

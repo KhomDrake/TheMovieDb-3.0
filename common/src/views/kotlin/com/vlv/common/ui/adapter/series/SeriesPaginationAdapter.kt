@@ -12,7 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
 import com.vlv.common.R
 import com.vlv.common.data.series.Series
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 
 class SeriesDiffUtil: ItemCallback<Series>() {
 
