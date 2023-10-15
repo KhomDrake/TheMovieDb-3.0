@@ -10,10 +10,7 @@ import retrofit2.http.Query
 interface ConfigurationApi {
 
     @GET("configuration")
-    suspend fun configuration(
-        @Query("language")
-        language: String = "en-US"
-    ) : ConfigurationResponse
+    suspend fun configuration() : ConfigurationResponse
 
     @GET("configuration/countries")
     suspend fun countries(
@@ -22,16 +19,10 @@ interface ConfigurationApi {
     ) : List<CountriesResponseItem>
 
     @GET("configuration/languages")
-    suspend fun languages(
-        @Query("language")
-        language: String = "en-US"
-    ) : List<LanguageResponseItem>
+    suspend fun languages() : List<LanguageResponseItem>
 
     @GET("configuration/countries")
-    suspend fun timezones(
-        @Query("language")
-        language: String = "en-US"
-    ) : List<TimeZonesResponseItem>
+    suspend fun timezones() : List<TimeZonesResponseItem>
 
 
 }

@@ -12,7 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
 import com.vlv.common.R
 import com.vlv.common.data.movie.Movie
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 
 class MovieDiffUtil: ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {

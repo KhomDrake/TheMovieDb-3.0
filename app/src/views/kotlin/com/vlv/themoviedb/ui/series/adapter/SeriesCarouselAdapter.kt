@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import coil.load
 import com.vlv.common.data.series.Series
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 import com.vlv.themoviedb.R
 
 class SeriesItemDiff: ItemCallback<Series>() {

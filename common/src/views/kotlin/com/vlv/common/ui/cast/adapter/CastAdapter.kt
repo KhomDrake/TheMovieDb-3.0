@@ -12,7 +12,7 @@ import coil.load
 import com.vlv.common.R
 import com.vlv.common.data.cast.Cast
 import com.vlv.extensions.inflate
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 
 class CastDiffUtil: DiffUtil.ItemCallback<Cast>() {
     override fun areContentsTheSame(oldItem: Cast, newItem: Cast): Boolean {

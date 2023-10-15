@@ -12,7 +12,7 @@ import coil.load
 import com.vlv.extensions.inflate
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 import com.vlv.network.data.series.Season
 import com.vlv.series.R
 

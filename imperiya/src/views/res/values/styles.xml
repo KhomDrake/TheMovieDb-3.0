@@ -49,7 +49,7 @@
         <item name="android:background">@drawable/imperiya_button_background_secondary</item>
         <item name="background">@drawable/imperiya_button_background_secondary</item>
         <item name="android:foreground">@drawable/imperiya_ripple_rounded</item>
-        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textColor">@color/imperiya_button_text_color</item>
     </style>
 
     <style name="Imperiya.Widget.Button.Neutral">
@@ -74,6 +74,20 @@
         <item name="searchIcon">@drawable/ic_search_view</item>
         <item name="searchHintIcon">@drawable/ic_search_view</item>
         <item name="goIcon">@drawable/ic_search_view</item>
+    </style>
+
+    <style name="Imperiya.ActionSheet"/>
+
+    <style name="Imperiya.ActionSheet.Rounded">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/Imperiya.ActionSheet.BottomSheetRounded</item>
+    </style>
+
+    <style name="Imperiya.ActionSheet.BottomSheetRounded">
+        <item name="android:background">@drawable/imperiya_rounded_background_bottom_sheet</item>
     </style>
 
 </resources>

@@ -8,15 +8,9 @@ import retrofit2.http.Query
 interface DiscoverApi {
 
     @GET("discover/movie")
-    suspend fun discoverMovie(
-        @Query("language")
-        language: String = "en-US"
-    ) : MoviesResponse
+    suspend fun discoverMovie() : MoviesResponse
 
     @GET("discover/tv")
-    suspend fun discoverSeries(
-        @Query("language")
-        language: String = "en-US"
-    ) : SeriesResponse
+    suspend fun discoverSeries() : SeriesResponse
 
 }

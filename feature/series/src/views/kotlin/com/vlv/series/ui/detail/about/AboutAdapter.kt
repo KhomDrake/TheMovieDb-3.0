@@ -17,7 +17,7 @@ import com.vlv.common.ui.adapter.PillAdapter
 import com.vlv.common.ui.adapter.PillItem
 import com.vlv.extensions.inflate
 import com.vlv.extensions.setMargins
-import com.vlv.extensions.toUrlMovieDb
+import com.vlv.common.ui.extension.toUrlMovieDb
 import com.vlv.series.R
 import com.vlv.common.R as RCommon
 import com.vlv.series.data.Episode

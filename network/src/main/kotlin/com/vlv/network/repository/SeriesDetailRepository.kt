@@ -7,11 +7,11 @@ import com.vlv.network.paging.SeriesPagingSource
 
 class SeriesDetailRepository(private val api: SeriesApi) {
 
-    suspend fun seriesDetail(seriesId: Int) = api.seriesDetail(seriesId, "en-US")
+    suspend fun seriesDetail(seriesId: Int) = api.seriesDetail(seriesId)
 
-    suspend fun seriesCast(seriesId: Int) = api.credits(seriesId, "en-US")
+    suspend fun seriesCast(seriesId: Int) = api.credits(seriesId)
 
-    suspend fun seriesReview(seriesId: Int) = api.reviews(seriesId, "en-US")
+    suspend fun seriesReview(seriesId: Int) = api.reviews(seriesId)
 
     fun seriesRecommendation(seriesId: Int, config: PagingConfig) = Pager(
         config = config,
@@ -19,7 +19,6 @@ class SeriesDetailRepository(private val api: SeriesApi) {
             SeriesPagingSource { page ->
                 api.recommendations(
                     seriesId,
-                    "en-US",
                     page
                 )
             }

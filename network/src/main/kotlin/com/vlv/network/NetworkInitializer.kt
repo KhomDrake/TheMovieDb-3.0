@@ -16,6 +16,7 @@ import com.vlv.network.database.TheMovieDatabase
 import com.vlv.network.database.TheMovieDbDao
 import com.vlv.network.interceptors.InterceptorFactory
 import com.vlv.network.moshi.MoshiFactory
+import com.vlv.network.repository.ConfigurationRepository
 import com.vlv.network.repository.FavoriteRepository
 import com.vlv.network.repository.MovieDetailRepository
 import com.vlv.network.repository.MovieRepository
@@ -25,6 +26,7 @@ import com.vlv.network.repository.SearchRepository
 import com.vlv.network.repository.SeriesDetailRepository
 import com.vlv.network.repository.SeriesRepository
 import com.vlv.network.retrofit.RetrofitFactory
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -74,6 +76,7 @@ class NetworkInitializer : Initializer<Module> {
         single { PeopleRepository(get()) }
         single { PeopleDetailRepository(get()) }
         single { FavoriteRepository(get()) }
+        single { ConfigurationRepository(androidApplication().resources, get(), get()) }
     }
 
     override fun create(context: Context): Module {

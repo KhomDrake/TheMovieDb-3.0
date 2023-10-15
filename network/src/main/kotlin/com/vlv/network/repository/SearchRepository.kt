@@ -38,7 +38,7 @@ class SearchRepository(
             config = pagingConfig,
             pagingSourceFactory = {
                 MoviePagingSource { page ->
-                    movieApi.search( "en", query, page)
+                    movieApi.search(query, page)
                 }
             }
         ).flow
@@ -52,7 +52,7 @@ class SearchRepository(
             config = pagingConfig,
             pagingSourceFactory = {
                 PeoplePagingSource { page ->
-                    peopleApi.search(query, "en", page)
+                    peopleApi.search(query, page)
                 }
             }
         ).flow
@@ -66,7 +66,7 @@ class SearchRepository(
             config = pagingConfig,
             pagingSourceFactory = {
                 SeriesPagingSource { page ->
-                    seriesApi.search( "en", query, page)
+                    seriesApi.search(query, page)
                 }
             }
         ).flow
