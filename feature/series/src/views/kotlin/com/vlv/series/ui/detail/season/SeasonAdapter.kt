@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import coil.load
+import com.vlv.common.ui.extension.loadUrl
 import com.vlv.extensions.inflate
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
-import com.vlv.common.ui.extension.toUrlMovieDb
 import com.vlv.network.data.series.Season
 import com.vlv.series.R
 
@@ -52,11 +51,7 @@ class SeasonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         poster.clipToOutline = true
 
-        season.posterPath?.toUrlMovieDb()?.let {
-            poster.load(it) {
-                crossfade(1000)
-            }
-        }
+        season.posterPath.loadUrl(poster)
 
         numberAndDate.text = "${season.episodeCount} episodes - ${season.airDate?.toFormattedString(patternDate2())}"
     }

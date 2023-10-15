@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import coil.load
 import com.vlv.common.R
 import com.vlv.common.data.review.Review
+import com.vlv.common.ui.extension.loadUrl
 import com.vlv.extensions.inflate
-import com.vlv.common.ui.extension.toUrlMovieDb
+import com.vlv.network.database.data.ImageType
 
 class ReviewDiffUtil: DiffUtil.ItemCallback<Review>() {
     override fun areContentsTheSame(oldItem: Review, newItem: Review): Boolean {
@@ -81,11 +81,7 @@ class ReviewViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val text: AppCompatTextView by viewProvider(R.id.text)
 
     fun bind(review: Review) {
-        review.url?.toUrlMovieDb()?.let {
-            avatar.load(it) {
-                crossfade(1000)
-            }
-        }
+        review.url.loadUrl(avatar, ImageType.PROFILE)
         personName.text = review.author
         date.text = review.createdAt
         text.text = review.content

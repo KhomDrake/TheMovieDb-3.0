@@ -9,10 +9,9 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import coil.load
 import com.vlv.common.R
 import com.vlv.common.data.movie.Movie
-import com.vlv.common.ui.extension.toUrlMovieDb
+import com.vlv.common.ui.extension.loadUrl
 
 class MovieDiffUtil: ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -66,9 +65,7 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(movie: Movie) {
         backdrop.clipToOutline = true
         title.text = movie.title
-        backdrop.load(movie.posterPath?.toUrlMovieDb()) {
-            crossfade(1000)
-        }
+        movie.posterPath.loadUrl(backdrop)
     }
 
 }

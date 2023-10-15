@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import coil.load
 import com.vlv.common.R
 import com.vlv.common.data.cast.Cast
+import com.vlv.common.ui.extension.loadUrl
 import com.vlv.extensions.inflate
-import com.vlv.common.ui.extension.toUrlMovieDb
+import com.vlv.network.database.data.ImageType
 
 class CastDiffUtil: DiffUtil.ItemCallback<Cast>() {
     override fun areContentsTheSame(oldItem: Cast, newItem: Cast): Boolean {
@@ -85,11 +85,7 @@ class CastViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(cast: Cast) {
         avatar.clipToOutline = true
-        cast.profilePath?.toUrlMovieDb()?.let {
-            avatar.load(it) {
-                crossfade(1000)
-            }
-        }
+        cast.profilePath.loadUrl(avatar, ImageType.PROFILE)
         personName.text = cast.name
         character.text = cast.character
     }

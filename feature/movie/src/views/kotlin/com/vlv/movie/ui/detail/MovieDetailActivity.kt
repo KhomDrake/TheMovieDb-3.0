@@ -2,14 +2,14 @@ package com.vlv.movie.ui.detail
 
 import android.os.Bundle
 import androidx.core.content.ContextCompat
-import coil.load
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toMovie
 import com.vlv.common.ui.DetailActivity
-import com.vlv.common.ui.extension.toUrlMovieDb
+import com.vlv.common.ui.extension.loadUrl
 import com.vlv.movie.R
 import com.vlv.movie.ui.detail.adapter.DetailAdapter
+import com.vlv.network.database.data.ImageType
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieDetailActivity : DetailActivity() {
@@ -27,15 +27,11 @@ class MovieDetailActivity : DetailActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val movie = objDetail?.toMovie() ?: return
-        movie.backdropPath?.toUrlMovieDb()?.let {
-            backdrop.load(it) {
-                crossfade(1000)
-            }
+        movie.backdropPath?.let {
+            it.loadUrl(backdrop, ImageType.BACKDROP)
         }
-        movie.posterPath?.toUrlMovieDb()?.let {
-            poster.load(it) {
-                crossfade(1000)
-            }
+        movie.posterPath?.let {
+            it.loadUrl(poster, ImageType.POSTER)
         }
 
 

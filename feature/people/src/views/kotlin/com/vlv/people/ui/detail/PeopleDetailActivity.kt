@@ -56,7 +56,7 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
         avatar.clipToOutline = true
 
         val people = people ?: return
-        people.profilePath?.loadUrl(avatar, ImageType.PROFILE)
+        people.profilePath.loadUrl(avatar, ImageType.PROFILE)
 
         setupMenu(people)
         configTabs()

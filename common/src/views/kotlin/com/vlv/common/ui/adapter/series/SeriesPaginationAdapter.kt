@@ -9,10 +9,9 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import coil.load
 import com.vlv.common.R
 import com.vlv.common.data.series.Series
-import com.vlv.common.ui.extension.toUrlMovieDb
+import com.vlv.common.ui.extension.loadUrl
 
 class SeriesDiffUtil: ItemCallback<Series>() {
 
@@ -64,9 +63,7 @@ class SeriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(data: Series) {
         backdrop.clipToOutline = true
         title.text = data.title
-        backdrop.load(data.posterPath?.toUrlMovieDb()) {
-            crossfade(1000)
-        }
+        data.posterPath.loadUrl(backdrop)
     }
 
 

@@ -8,7 +8,8 @@ import com.vlv.common.data.movie.toMovie
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toSeries
 import com.vlv.common.ui.DetailActivity
-import com.vlv.common.ui.extension.toUrlMovieDb
+import com.vlv.common.ui.extension.loadUrl
+import com.vlv.network.database.data.ImageType
 import com.vlv.series.R
 import com.vlv.series.ui.detail.adapter.DetailAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -29,15 +30,11 @@ class SeriesDetailActivity : DetailActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val series = objDetail?.toSeries() ?: return
-        series.backdropPath?.toUrlMovieDb()?.let {
-            backdrop.load(it) {
-                crossfade(1000)
-            }
+        series.backdropPath?.let {
+            it.loadUrl(backdrop, ImageType.BACKDROP)
         }
-        series.posterPath?.toUrlMovieDb()?.let {
-            poster.load(it) {
-                crossfade(1000)
-            }
+        series.posterPath?.let {
+            it.loadUrl(poster, ImageType.POSTER)
         }
 
         toolbar.inflateMenu(com.vlv.common.R.menu.common_detail_menu)

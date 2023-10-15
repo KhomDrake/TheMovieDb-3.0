@@ -15,9 +15,10 @@ import com.vlv.common.ui.adapter.Information
 import com.vlv.common.ui.adapter.InformationViewHolder
 import com.vlv.common.ui.adapter.PillAdapter
 import com.vlv.common.ui.adapter.PillItem
+import com.vlv.common.ui.extension.loadUrl
 import com.vlv.extensions.inflate
 import com.vlv.extensions.setMargins
-import com.vlv.common.ui.extension.toUrlMovieDb
+import com.vlv.network.database.data.ImageType
 import com.vlv.series.R
 import com.vlv.common.R as RCommon
 import com.vlv.series.data.Episode
@@ -162,11 +163,8 @@ class EpisodeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(episodeItem: AboutItem.EpisodeItem) {
         poster.clipToOutline = true
-        episodeItem.episode.stillPath?.toUrlMovieDb()?.let {
-            poster.load(it) {
-                crossfade(1000)
-            }
-        }
+
+        episodeItem.episode.stillPath.loadUrl(poster, ImageType.POSTER)
         episodeTitle.text = episodeItem.episode.name
         episodeNumberAndDate.text = episodeItem.episode.episodeNumberAndDate
     }
