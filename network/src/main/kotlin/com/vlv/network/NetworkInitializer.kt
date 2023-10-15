@@ -18,6 +18,7 @@ import com.vlv.network.interceptors.InterceptorFactory
 import com.vlv.network.moshi.MoshiFactory
 import com.vlv.network.repository.ConfigurationRepository
 import com.vlv.network.repository.FavoriteRepository
+import com.vlv.network.repository.GenreRepository
 import com.vlv.network.repository.MovieDetailRepository
 import com.vlv.network.repository.MovieRepository
 import com.vlv.network.repository.PeopleDetailRepository
@@ -75,6 +76,7 @@ class NetworkInitializer : Initializer<Module> {
         single { SeriesDetailRepository(get()) }
         single { PeopleRepository(get()) }
         single { PeopleDetailRepository(get()) }
+        single { GenreRepository(get(), get()) }
         single { FavoriteRepository(get()) }
         single { ConfigurationRepository(androidApplication().resources, get(), get()) }
     }
