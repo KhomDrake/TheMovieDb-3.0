@@ -59,7 +59,7 @@ class PeopleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(people: People) {
         avatar.clipToOutline = true
         name.text = people.name
-        people.profilePath?.loadUrl(avatar, ImageType.PROFILE)
+        people.profilePath.loadUrl(avatar, ImageType.PROFILE)
     }
 
 }

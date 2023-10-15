@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import coil.load
 import com.vlv.common.data.movie.Movie
-import com.vlv.common.ui.extension.toUrlMovieDb
+import com.vlv.common.ui.extension.loadUrl
 import com.vlv.network.database.data.ImageType
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.TheMovieDb
 
 class MovieDiffUtil: DiffUtil.ItemCallback<Movie>() {
 
@@ -58,9 +56,7 @@ class MovieCarouselViewHolder(view: View): RecyclerView.ViewHolder(view) {
     fun bind(movie: Movie) {
         poster.clipToOutline = true
         title.text = movie.title
-        poster.load(movie.backdropPath?.toUrlMovieDb(ImageType.BACKDROP)) {
-            crossfade(1000)
-        }
+        movie.backdropPath.loadUrl(poster, ImageType.BACKDROP)
     }
 
 }
