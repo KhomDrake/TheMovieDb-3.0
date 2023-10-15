@@ -12,7 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.imperiya.R
 import kotlin.random.Random
 
-class Item(
+data class Item(
     val name: String,
     val value: String,
     var checked: Boolean = false,

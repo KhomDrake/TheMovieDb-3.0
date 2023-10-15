@@ -1,6 +1,6 @@
 package com.vlv.configuration.ui
 
-import android.content.Context
+import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
@@ -14,6 +14,7 @@ import com.vlv.network.repository.SettingsOption
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
+    private val resources: Resources,
     private val repository: ConfigurationRepository
 ) : ViewModel() {
 
@@ -24,7 +25,21 @@ class SettingsViewModel(
 
     fun config() = bondsmith<SettingsData>()
         .request {
-            SettingsData(repository.getConfig(), DataVault)
+            val config = SettingsData(resources, repository.getConfig())
+
+            config.backdropSizes.firstOrNull { it.checked }?.let {
+                DataVault.setValue(SettingsOption.BACKDROP.name.lowercase(), it.name)
+            }
+            config.logoSizes.firstOrNull { it.checked }?.let {
+                DataVault.setValue(SettingsOption.LOGO.name.lowercase(), it.name)
+            }
+            config.profileSizes.firstOrNull { it.checked }?.let {
+                DataVault.setValue(SettingsOption.PROFILE.name.lowercase(), it.name)
+            }
+            config.posterSizes.firstOrNull { it.checked }?.let {
+                DataVault.setValue(SettingsOption.POSTER.name.lowercase(), it.name)
+            }
+            config
         }
         .execute()
         .responseLiveData
@@ -32,24 +47,24 @@ class SettingsViewModel(
             _config.postData(it)
         }
 
-    fun options(context: Context) = run {
+    fun options() = run {
         listOf(
             SettingsItem(
-                context.getString(R.string.configuration_options_header_general),
+                resources.getString(R.string.configuration_options_header_general),
                 SettingsItemType.TITLE,
-                context.getString(R.string.configuration_options_header_general),
+                resources.getString(R.string.configuration_options_header_general),
             ),
             SettingsItem(
                 SettingsOption.ADULT_CONTENT.name,
                 SettingsItemType.SWITCH,
-                context.getString(R.string.configuration_options_item_adult_content_title),
+                resources.getString(R.string.configuration_options_item_adult_content_title),
                 value = DataVault.cachedDataBoolean(SettingsOption.ADULT_CONTENT.name)
             ),
             SettingsItem(
                 SettingsOption.LANGUAGE.name,
                 SettingsItemType.NORMAL,
-                context.getString(R.string.configuration_options_item_language_title),
-                context.getString(
+                resources.getString(R.string.configuration_options_item_language_title),
+                resources.getString(
                     R.string.configuration_options_item_language_body,
                     DataVault.cachedDataString(SettingsOption.LANGUAGE.name)
                 )
@@ -57,58 +72,59 @@ class SettingsViewModel(
             SettingsItem(
                 SettingsOption.REGION.name,
                 SettingsItemType.NORMAL,
-                context.getString(R.string.configuration_options_item_region_title),
-                context.getString(
+                resources.getString(R.string.configuration_options_item_region_title),
+                resources.getString(
                     R.string.configuration_options_item_region_body,
                     DataVault.cachedDataString(SettingsOption.REGION.name)
                 )
             ),
             SettingsItem(
-                context.getString(R.string.configuration_options_header_image_definition),
+                resources.getString(R.string.configuration_options_header_image_definition),
                 SettingsItemType.TITLE,
-                context.getString(R.string.configuration_options_header_image_definition)
+                resources.getString(R.string.configuration_options_header_image_definition)
             ),
             SettingsItem(
                 SettingsOption.BACKDROP.name,
                 SettingsItemType.NORMAL,
-                context.getString(R.string.configuration_options_item_backdrop_title),
-                context.getString(
+                resources.getString(R.string.configuration_options_item_backdrop_title),
+                resources.getString(
                     R.string.configuration_options_item_backdrop_body,
-                    DataVault.cachedDataString(SettingsOption.BACKDROP.name)
+                    DataVault.cachedDataString(SettingsOption.BACKDROP.name.lowercase())
                 )
             ),
             SettingsItem(
                 SettingsOption.LOGO.name,
                 SettingsItemType.NORMAL,
-                context.getString(R.string.configuration_options_item_logo_title),
-                context.getString(
+                resources.getString(R.string.configuration_options_item_logo_title),
+                resources.getString(
                     R.string.configuration_options_item_logo_body,
-                    DataVault.cachedDataString(SettingsOption.LOGO.name)
+                    DataVault.cachedDataString(SettingsOption.LOGO.name.lowercase())
                 )
             ),
             SettingsItem(
                 SettingsOption.POSTER.name,
                 SettingsItemType.NORMAL,
-                context.getString(R.string.configuration_options_item_poster_title),
-                context.getString(
+                resources.getString(R.string.configuration_options_item_poster_title),
+                resources.getString(
                     R.string.configuration_options_item_poster_body,
-                    DataVault.cachedDataString(SettingsOption.POSTER.name)
+                    DataVault.cachedDataString(SettingsOption.POSTER.name.lowercase())
                 )
             ),
             SettingsItem(
                 SettingsOption.PROFILE.name,
                 SettingsItemType.NORMAL,
-                context.getString(R.string.configuration_options_item_profile_title),
-                context.getString(
+                resources.getString(R.string.configuration_options_item_profile_title),
+                resources.getString(
                     R.string.configuration_options_item_profile_body,
-                    DataVault.cachedDataString(SettingsOption.PROFILE.name)
+                    DataVault.cachedDataString(SettingsOption.PROFILE.name.lowercase())
                 )
             )
         )
     }
 
-    fun setConfigValue(key: String, value: String) {
+    fun setConfigValue(title: String?, key: String, value: String) {
         viewModelScope.launch {
+            title?.let { DataVault.setValue(key.lowercase(), it) }
             DataVault.setValue(key, value)
         }
     }

@@ -2,7 +2,6 @@ package com.vlv.configuration.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,16 +35,17 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
 
         viewModel.config.observe(this) {
             data {
-                adapter.submitList(viewModel.options(this@SettingsActivity))
-            }
-            error { e ->
-                Log.i("Vini", e.stackTraceToString())
+                updateOptions()
             }
         }
     }
 
     private fun loadConfig() {
         viewModel.config().observe(this) {}
+    }
+
+    private fun updateOptions() {
+        adapter.submitList(viewModel.options())
     }
 
     private fun setupRecyclerView() {
@@ -89,8 +89,8 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
 
             setOnClickConfirm {
                 val item = it ?: return@setOnClickConfirm
-                viewModel.setConfigValue(settingsItem.id, item.value)
-                loadConfig()
+                viewModel.setConfigValue(item.name, settingsItem.id, item.value)
+                updateOptions()
                 dismiss()
             }
             setButtonText(context.getString(R.string.configuration_button))
@@ -99,7 +99,7 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
 
     private fun onClickSwitch(settingsItem: SettingsItem, checkbox: Boolean) {
         viewModel.setConfigValue(settingsItem.id, checkbox)
-        loadConfig()
+        updateOptions()
     }
 
 }

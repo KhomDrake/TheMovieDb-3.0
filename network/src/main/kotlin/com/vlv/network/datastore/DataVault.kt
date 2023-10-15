@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.vlv.network.repository.SettingsOption
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import org.koin.core.component.KoinComponent
@@ -33,26 +34,37 @@ object DataVault : KoinComponent {
 
     fun cachedDataString(key: String) = cachedData[key] as String
 
+    fun language() = "${cachedDataString(SettingsOption.LANGUAGE.name)}-${cachedDataString(SettingsOption.REGION.name)}"
+
     suspend fun setValue(key: String, value: String) {
+        cachedData[key] = value
         dataStore?.apply {
             val newKey = stringPreferencesKey(key)
             dataStore?.edit { settings ->
                 settings[newKey] = value
-                cachedData[key]  = value
             }
         }
     }
 
-    suspend fun containsValue(key: String) = dataStore?.data?.map { settings ->
+    suspend fun loadCache() {
+        dataStore?.data?.map { preferences ->
+            preferences.asMap()
+        }?.first()?.forEach { (key, any) ->
+            cachedData[key.name] = any
+        }
+        cachedData
+    }
+
+    suspend fun containsKey(key: String) = dataStore?.data?.map { settings ->
         settings.contains(stringPreferencesKey(key))
     }?.first() ?: false
 
     suspend fun setValue(key: String, value: Boolean) {
+        cachedData[key] = value
         dataStore?.apply {
             val newKey = booleanPreferencesKey(key)
             dataStore?.edit { settings ->
                 settings[newKey] = value
-                cachedData[key]  = value
             }
         }
     }

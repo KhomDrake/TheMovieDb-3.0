@@ -26,4 +26,35 @@
     <string name="configuration_options_item_poster_body">Definition chosen: %s</string>
     <string name="configuration_options_item_profile_title">Profile image definition</string>
     <string name="configuration_options_item_profile_body">Definition chosen: %s</string>
+
+    <!--  Backdrop  -->
+    <string name="configuration_backdrop_low">Low</string>
+    <string name="configuration_backdrop_medium">medium</string>
+    <string name="configuration_backdrop_high">High</string>
+    <string name="configuration_backdrop_original">original</string>
+
+    <!--  Logo  -->
+    <string name="configuration_logo_lowest">Lowest</string>
+    <string name="configuration_logo_low">Low</string>
+    <string name="configuration_logo_medium_low">Medium low</string>
+    <string name="configuration_logo_medium">Medium</string>
+    <string name="configuration_logo_high">High</string>
+    <string name="configuration_logo_highest">Highest</string>
+    <string name="configuration_logo_original">Original</string>
+
+    <!--  Poster  -->
+    <string name="configuration_poster_lowest">Lowest</string>
+    <string name="configuration_poster_low">Low</string>
+    <string name="configuration_poster_medium_low">Medium low</string>
+    <string name="configuration_poster_medium">Medium</string>
+    <string name="configuration_poster_high">High</string>
+    <string name="configuration_poster_highest">Highest</string>
+    <string name="configuration_poster_original">Original</string>
+
+    <!--  Profile  -->
+    <string name="configuration_profile_low">Low</string>
+    <string name="configuration_profile_medium">medium</string>
+    <string name="configuration_profile_high">High</string>
+    <string name="configuration_profile_original">original</string>
+
 </resources>

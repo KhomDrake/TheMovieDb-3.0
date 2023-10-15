@@ -26,6 +26,7 @@ import com.vlv.network.repository.SearchRepository
 import com.vlv.network.repository.SeriesDetailRepository
 import com.vlv.network.repository.SeriesRepository
 import com.vlv.network.retrofit.RetrofitFactory
+import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -75,7 +76,7 @@ class NetworkInitializer : Initializer<Module> {
         single { PeopleRepository(get()) }
         single { PeopleDetailRepository(get()) }
         single { FavoriteRepository(get()) }
-        single { ConfigurationRepository(get(), get()) }
+        single { ConfigurationRepository(androidApplication().resources, get(), get()) }
     }
 
     override fun create(context: Context): Module {

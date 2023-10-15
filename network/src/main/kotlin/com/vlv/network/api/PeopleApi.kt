@@ -12,8 +12,6 @@ interface PeopleApi {
 
     @GET("person/popular")
     suspend fun popularPeople(
-        @Query("language")
-        language: String = "en-US",
         @Query("page")
         page: Int = 1
     ) : PeoplesResponse
@@ -22,8 +20,6 @@ interface PeopleApi {
     suspend fun trendingPeople(
         @Path("time_window")
         timeWindow: String,
-        @Query("language")
-        language: String = "en-US",
         @Query("page")
         page: Int = 1
     ) : PeoplesResponse
@@ -31,17 +27,13 @@ interface PeopleApi {
     @GET("person/{people_id}")
     suspend fun peopleDetail(
         @Path("people_id")
-        peopleId: Int,
-        @Query("language")
-        language: String = "en-US"
+        peopleId: Int
     ) : PeopleDetailResponse
 
     @GET("search/person")
     suspend fun search(
         @Query("query")
         query: String,
-        @Query("language")
-        language: String = "en-US",
         @Query("page")
         page: Int = 1
     ) : PeoplesResponse
@@ -51,8 +43,6 @@ interface PeopleApi {
     suspend fun peopleMovieCredits(
         @Path("people_id")
         peopleId: Int,
-        @Query("language")
-        language: String = "en-US",
         @Query("page")
         page: Int = 1
     ) : PeopleMovieCreditResponse
@@ -62,8 +52,6 @@ interface PeopleApi {
     suspend fun peopleTvCredits(
         @Path("people_id")
         peopleId: Int,
-        @Query("language")
-        language: String = "en-US",
         @Query("page")
         page: Int = 1
     ) : PeopleSeriesCreditResponse

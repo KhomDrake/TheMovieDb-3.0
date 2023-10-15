@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.configuration.R
 import com.vlv.extensions.inflate
+import com.vlv.imperiya.ui.bottomsheet.Item
 
 
 enum class SettingsItemType {

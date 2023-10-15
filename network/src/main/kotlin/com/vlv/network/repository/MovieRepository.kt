@@ -20,7 +20,6 @@ class MovieRepository(private val api: MovieApi) {
     suspend fun trendingMovies(timeWindow: TimeWindow) : MoviesResponse {
         return api.trending(
             timeWindow.name.lowercase(),
-            "en",
             1
         )
     }
@@ -43,45 +42,42 @@ class MovieRepository(private val api: MovieApi) {
         config: PagingConfig,
         timeWindow: TimeWindow
     ) = pagingDefault(config) { page ->
-        api.trending(timeWindow.name.lowercase(), "en", page)
+        api.trending(timeWindow.name.lowercase(), page)
     }
 
     fun nowPlayingPaging(
         config: PagingConfig
     ) = pagingDefault(config) { page ->
-        api.nowPlaying("en", page)
+        api.nowPlaying(page)
     }
 
     fun topRatedPaging(
         config: PagingConfig
     ) = pagingDefault(config) { page ->
-        api.topRated("en", page)
+        api.topRated(page)
     }
 
     fun popularPaging(
         config: PagingConfig
     ) = pagingDefault(config) { page ->
-        api.popular("en", page)
+        api.popular(page)
     }
 
     fun upcomingPaging(
         config: PagingConfig
     ) = pagingDefault(config) { page ->
-        api.upcoming("en", page)
+        api.upcoming(page)
     }
 
     fun search(
         config: PagingConfig,
         query: String
     ) = pagingDefault(config) { page ->
-        api.search( "en", query, page)
+        api.search( query, page)
     }
 
     suspend fun nowPlaying() : MoviesResponse {
-        return api.nowPlaying(
-            "en",
-            1
-        )
+        return api.nowPlaying(1)
     }
 
 }

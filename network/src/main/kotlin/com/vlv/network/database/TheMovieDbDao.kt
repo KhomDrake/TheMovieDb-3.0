@@ -45,13 +45,13 @@ interface TheMovieDbDao {
     @Query("DELETE FROM imageentity")
     suspend fun removeImages()
 
-    @Query("SELECT * FROM countryentity")
+    @Query("SELECT * FROM countryentity ORDER BY countryentity.englishName")
     suspend fun getCountries() : List<CountryEntity>
 
     @Query("DELETE FROM countryentity")
     suspend fun removeCountries()
 
-    @Query("SELECT * FROM languageentity")
+    @Query("SELECT * FROM languageentity ORDER BY languageentity.englishName")
     suspend fun getLanguages() : List<LanguageEntity>
 
     @Query("DELETE FROM languageentity")

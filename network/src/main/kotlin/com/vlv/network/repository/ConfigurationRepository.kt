@@ -1,5 +1,8 @@
 package com.vlv.network.repository
 
+import android.content.res.Resources
+import android.util.Log
+import com.vlv.network.R
 import com.vlv.network.api.ConfigurationApi
 import com.vlv.network.data.configuration.ConfigurationData
 import com.vlv.network.database.TheMovieDbDao
@@ -22,11 +25,12 @@ enum class SettingsOption {
 }
 
 class ConfigurationRepository(
+    private val resources: Resources,
     private val api: ConfigurationApi,
     private val dao: TheMovieDbDao
 ) {
 
-    suspend fun setupDataVault() = runCatching {
+    private suspend fun configDataVault() = runCatching {
         val data = getConfig()
 
         DataVault.setValue(SettingsOption.BASE_URL.name, data.baseUrl.data)
@@ -37,22 +41,27 @@ class ConfigurationRepository(
         DataVault.setValue(SettingsOption.POSTER.name, data.posterSizes.first().data)
         DataVault.setValue(SettingsOption.PROFILE.name, data.profileSizes.first().data)
 
-        data.languages.find { it.name == "en" }?.name?.let {
+        DataVault.setValue(SettingsOption.ADULT_CONTENT.name, false)
+
+        data.languages.find {
+            it.name == resources.getString(R.string.network_language_default)
+        }?.name?.let {
             DataVault.setValue(
                 SettingsOption.LANGUAGE.name, it
             )
         }
 
-        data.countries.find { it.isoName == "US" }?.isoName?.let {
+        data.countries.find {
+            it.isoName == resources.getString(R.string.network_country_default)
+        }?.isoName?.let {
             DataVault.setValue(
                 SettingsOption.REGION.name, it
             )
         }
-
     }
 
     suspend fun loadConfig() {
-        val keysNotLoaded = SettingsOption.values().filter { DataVault.containsValue(it.name).not() }
+        val keysNotLoaded = SettingsOption.values().filter { DataVault.containsKey(it.name).not() }
 
         if(keysNotLoaded.isEmpty()) return
 
@@ -85,6 +94,8 @@ class ConfigurationRepository(
                 CountryEntity(it.iso31661, it.englishName, it.nativeName)
             })
         }
+
+        configDataVault()
     }
 
     suspend fun getConfig() : ConfigurationData {

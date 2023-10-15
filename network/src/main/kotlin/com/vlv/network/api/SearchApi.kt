@@ -10,8 +10,6 @@ interface SearchApi {
 
     @GET("search/movie")
     suspend fun searchMovie(
-        @Query("language")
-        language: String = "en-US",
         @Query("query")
         query: String,
         @Query("region")
@@ -24,8 +22,6 @@ interface SearchApi {
 
     @GET("search/tv")
     suspend fun searchSeries(
-        @Query("language")
-        language: String = "en-US",
         @Query("query")
         query: String,
         @Query("first_air_date_year")
@@ -38,8 +34,6 @@ interface SearchApi {
 
     @GET("search/person")
     suspend fun searchPeople(
-        @Query("language")
-        language: String = "en-US",
         @Query("query")
         query: String,
         @Query("page")

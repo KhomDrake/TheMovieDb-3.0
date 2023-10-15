@@ -14,7 +14,6 @@ class SeriesRepository(private val api: SeriesApi) {
     suspend fun trendingSeries(timeWindow: TimeWindow) : SeriesResponse {
         return api.trending(
             timeWindow.name.lowercase(),
-            "en",
             1
         )
     }
@@ -36,37 +35,34 @@ class SeriesRepository(private val api: SeriesApi) {
     fun airingTodayPaging(
         config: PagingConfig
     ) = pagingDefault(config) { page ->
-        api.airingToday("en", page)
+        api.airingToday(page)
     }
 
     fun popularPaging(
         config: PagingConfig
     ) = pagingDefault(config) { page ->
-        api.popular("en", page)
+        api.popular(page)
     }
 
     fun topRatedPaging(
         config: PagingConfig
     ) = pagingDefault(config) { page ->
-        api.topRated("en", page)
+        api.topRated(page)
     }
 
     fun onTheAirPaging(
         config: PagingConfig
     ) = pagingDefault(config) { page ->
-        api.onTheAir("en", page)
+        api.onTheAir(page)
     }
 
     fun trendingNowPaging(
         config: PagingConfig,
         timeWindow: TimeWindow
     ) = pagingDefault(config) { page ->
-        api.trending(timeWindow.name.lowercase(), "en", page)
+        api.trending(timeWindow.name.lowercase(), page)
     }
 
-    suspend fun airingToday() = api.airingToday(
-        "en",
-        1
-    )
+    suspend fun airingToday() = api.airingToday(1)
 
 }
