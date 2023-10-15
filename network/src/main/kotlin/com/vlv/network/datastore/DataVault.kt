@@ -3,6 +3,7 @@ package com.vlv.network.datastore
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -21,18 +22,34 @@ object DataVault : KoinComponent {
     private val dataStore: DataStore<Preferences>?
         get() = context.get()?.dataStore
 
-    private val cachedData: MutableMap<String, String> = mutableMapOf()
+    private val cachedData: MutableMap<String, Any> = mutableMapOf()
 
     fun init(ctx: Context) {
         context = WeakReference(ctx)
         context.get()?.dataStore
     }
 
-    fun cachedData(key: String) = cachedData[key]
+    fun cachedDataBoolean(key: String) = (cachedData[key] as? Boolean) ?: false
+
+    fun cachedDataString(key: String) = cachedData[key] as String
 
     suspend fun setValue(key: String, value: String) {
         dataStore?.apply {
             val newKey = stringPreferencesKey(key)
+            dataStore?.edit { settings ->
+                settings[newKey] = value
+                cachedData[key]  = value
+            }
+        }
+    }
+
+    suspend fun containsValue(key: String) = dataStore?.data?.map { settings ->
+        settings.contains(stringPreferencesKey(key))
+    }?.first() ?: false
+
+    suspend fun setValue(key: String, value: Boolean) {
+        dataStore?.apply {
+            val newKey = booleanPreferencesKey(key)
             dataStore?.edit { settings ->
                 settings[newKey] = value
                 cachedData[key]  = value

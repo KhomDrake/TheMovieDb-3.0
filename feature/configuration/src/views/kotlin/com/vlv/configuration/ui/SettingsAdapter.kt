@@ -19,16 +19,6 @@ enum class SettingsItemType {
     NORMAL
 }
 
-enum class SettingsItemOption {
-    ADULT_CONTENT,
-    LANGUAGE,
-    REGION,
-    BACKDROP,
-    LOGO,
-    POSTER,
-    PROFILE
-}
-
 class SettingsItem(
     val id: String,
     val type: SettingsItemType,
@@ -49,7 +39,10 @@ class SettingsItemDiffUtil: DiffUtil.ItemCallback<SettingsItem>() {
     }
 }
 
-class SettingsAdapter : ListAdapter<SettingsItem, ViewHolder>(SettingsItemDiffUtil()) {
+class SettingsAdapter(
+    private val onClickIem: (SettingsItem) -> Unit,
+    private val onSwitch: (SettingsItem, Boolean) -> Unit
+) : ListAdapter<SettingsItem, ViewHolder>(SettingsItemDiffUtil()) {
 
     override fun getItemViewType(position: Int): Int {
         return currentList[position].type.ordinal
@@ -59,7 +52,18 @@ class SettingsAdapter : ListAdapter<SettingsItem, ViewHolder>(SettingsItemDiffUt
         val item = currentList[position]
         when(holder) {
             is SettingsTitleViewHolder -> holder.bind(item)
-            is SettingsNormalViewHolder -> holder.bind(item)
+            is SettingsNormalViewHolder -> {
+                holder.bind(item)
+                if(item.type == SettingsItemType.SWITCH) {
+                    holder.switch.setOnClickListener {
+                        onSwitch.invoke(item, holder.switch.isChecked)
+                    }
+                } else {
+                    holder.itemView.setOnClickListener {
+                        onClickIem.invoke(item)
+                    }
+                }
+            }
             else -> Unit
         }
     }
@@ -85,7 +89,7 @@ class SettingsNormalViewHolder(view: View): ViewHolder(view) {
 
     private val title: AppCompatTextView by viewProvider(R.id.title)
     private val body: AppCompatTextView by viewProvider(R.id.body)
-    private val switch: SwitchCompat by viewProvider(R.id.switch_settings)
+    val switch: SwitchCompat by viewProvider(R.id.switch_settings)
 
     fun bind(settingsItem: SettingsItem) {
         title.text = settingsItem.title
@@ -93,6 +97,7 @@ class SettingsNormalViewHolder(view: View): ViewHolder(view) {
 
         body.isVisible = settingsItem.body.isNullOrBlank().not()
 
+        switch.isChecked = settingsItem.value
         switch.isVisible = settingsItem.type == SettingsItemType.SWITCH
     }
 }

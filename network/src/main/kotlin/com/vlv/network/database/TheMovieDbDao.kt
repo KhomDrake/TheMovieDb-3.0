@@ -42,11 +42,20 @@ interface TheMovieDbDao {
     @Query("SELECT * FROM imageentity")
     suspend fun getImages() : List<ImageEntity>
 
+    @Query("DELETE FROM imageentity")
+    suspend fun removeImages()
+
     @Query("SELECT * FROM countryentity")
     suspend fun getCountries() : List<CountryEntity>
 
+    @Query("DELETE FROM countryentity")
+    suspend fun removeCountries()
+
     @Query("SELECT * FROM languageentity")
     suspend fun getLanguages() : List<LanguageEntity>
+
+    @Query("DELETE FROM languageentity")
+    suspend fun removeLanguages()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertImages(images: List<ImageEntity>)

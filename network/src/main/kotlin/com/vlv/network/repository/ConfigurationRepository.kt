@@ -9,6 +9,18 @@ import com.vlv.network.database.data.ImageType
 import com.vlv.network.database.data.LanguageEntity
 import com.vlv.network.datastore.DataVault
 
+enum class SettingsOption {
+    ADULT_CONTENT,
+    LANGUAGE,
+    REGION,
+    BACKDROP,
+    LOGO,
+    POSTER,
+    PROFILE,
+    BASE_URL,
+    SECURE_BASE_URL
+}
+
 class ConfigurationRepository(
     private val api: ConfigurationApi,
     private val dao: TheMovieDbDao
@@ -17,17 +29,32 @@ class ConfigurationRepository(
     suspend fun setupDataVault() = runCatching {
         val data = getConfig()
 
-        DataVault.setValue(ImageType.BASE_URL.name, data.baseUrl.data)
-        DataVault.setValue(ImageType.SECURE_BASE_URL.name, data.baseSecureUrl.data)
+        DataVault.setValue(SettingsOption.BASE_URL.name, data.baseUrl.data)
+        DataVault.setValue(SettingsOption.SECURE_BASE_URL.name, data.baseSecureUrl.data)
 
-        DataVault.setValue(ImageType.BACKDROP.name, data.backdropSizes.first().data)
-        DataVault.setValue(ImageType.LOGO.name, data.logoSizes.first().data)
-        DataVault.setValue(ImageType.POSTER.name, data.posterSizes.first().data)
-        DataVault.setValue(ImageType.PROFILE.name, data.profileSizes.first().data)
+        DataVault.setValue(SettingsOption.BACKDROP.name, data.backdropSizes.first().data)
+        DataVault.setValue(SettingsOption.LOGO.name, data.logoSizes.first().data)
+        DataVault.setValue(SettingsOption.POSTER.name, data.posterSizes.first().data)
+        DataVault.setValue(SettingsOption.PROFILE.name, data.profileSizes.first().data)
+
+        data.languages.find { it.name == "en" }?.name?.let {
+            DataVault.setValue(
+                SettingsOption.LANGUAGE.name, it
+            )
+        }
+
+        data.countries.find { it.isoName == "US" }?.isoName?.let {
+            DataVault.setValue(
+                SettingsOption.REGION.name, it
+            )
+        }
+
     }
 
     suspend fun loadConfig() {
-        if(DataVault.getValue(ImageType.BASE_URL.name) != null) return
+        val keysNotLoaded = SettingsOption.values().filter { DataVault.containsValue(it.name).not() }
+
+        if(keysNotLoaded.isEmpty()) return
 
         val config = api.configuration()
         val languages = api.languages()
@@ -44,6 +71,10 @@ class ConfigurationRepository(
         }
 
         dao.apply {
+            removeLanguages()
+            removeCountries()
+            removeImages()
+
             insertImages(imageItems)
 
             insertLanguages(languages.map {
