@@ -1,8 +1,8 @@
 package com.vlv.common.ui.adapter
 
-import android.support.annotation.StringRes
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter

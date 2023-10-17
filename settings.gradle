@@ -10,6 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 }
 rootProject.name = "themoviedb"
@@ -22,6 +23,7 @@ include ':feature:people'
 include ':feature:configuration'
 include ':feature:favorite'
 include ':feature:search'
+include ':feature:genre'
 
 include ':imperiya'
 include ':imperiyasample'
@@ -32,4 +34,4 @@ include ':common'
 
 include ':tools:bondsmith'
 include ':tools:extensions'
-include ':feature:genre'
+include ':tools:test'

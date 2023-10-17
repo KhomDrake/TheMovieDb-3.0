@@ -82,7 +82,9 @@ class AboutFragment : Fragment(R.layout.movie_fragment_about) {
     }
 
     private fun loadMovieDetail() {
-        val movie = movie ?: return
+        val movie = movie ?: return run {
+            viewStateMachine.errorState()
+        }
 
         viewModel.movieDetail(resources, movie.id).observe(viewLifecycleOwner) {
             data { detail ->
@@ -96,7 +98,7 @@ class AboutFragment : Fragment(R.layout.movie_fragment_about) {
             showLoading {
                 viewStateMachine.loadingState()
             }
-            error { e ->
+            error { _ ->
                 viewStateMachine.errorState()
             }
         }
