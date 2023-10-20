@@ -2,7 +2,10 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id "jacoco"
 }
+
+apply from: "$rootDir/gradle/coverage.gradle"
 
 android {
     namespace 'com.vlv.movie'
@@ -29,6 +32,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
+            minifyEnabled false
         }
     }
     compileOptions {

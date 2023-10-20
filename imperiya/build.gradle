@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+apply from: "$rootDir/gradle/coverage.gradle"
+
 android {
     namespace 'com.vlv.imperiya'
     compileSdk 34

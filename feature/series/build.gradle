@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+apply from: "$rootDir/gradle/coverage.gradle"
+
 android {
     namespace 'com.vlv.series'
     compileSdk 34
