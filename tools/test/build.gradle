@@ -1,0 +1,57 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.vlv.test'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 26
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "com.jakewharton.threetenabp:threetenabp:1.4.6"
+    implementation "io.github.matheus-corregiari:livedata:1.0.0-rc-04"
+    implementation "androidx.startup:startup-runtime:1.1.1"
+
+    api("io.mockk:mockk:1.12.2") {
+        exclude module: 'objenesis'
+        exclude module: "mockk-agent-jvm"
+    }
+    api('io.mockk:mockk-android:1.12.2') {
+        exclude module: 'objenesis'
+        exclude module: "mockk-agent-jvm"
+    }
+    api 'com.google.guava:guava:27.0.1-android'
+    api 'org.objenesis:objenesis:3.1'
+    api "androidx.arch.core:core-testing:2.2.0"
+    api "androidx.test.espresso:espresso-intents:3.5.1"
+    api "io.insert-koin:koin-android:3.4.1"
+    debugApi "androidx.fragment:fragment-testing:1.6.1"
+    api "androidx.test.espresso:espresso-contrib:3.5.1"
+    api 'androidx.test.ext:junit:1.1.5'
+    api "androidx.arch.core:core-testing:2.2.0"
+    api 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
+}

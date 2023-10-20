@@ -2,7 +2,6 @@ package com.vlv.network
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import androidx.startup.Initializer
 import com.vlv.network.api.ConfigurationApi
 import com.vlv.network.api.DiscoverApi
@@ -13,7 +12,6 @@ import com.vlv.network.api.SearchApi
 import com.vlv.network.api.SeriesApi
 import com.vlv.network.client.OkHttpFactory
 import com.vlv.network.database.TheMovieDatabase
-import com.vlv.network.database.TheMovieDbDao
 import com.vlv.network.interceptors.InterceptorFactory
 import com.vlv.network.moshi.MoshiFactory
 import com.vlv.network.repository.ConfigurationRepository

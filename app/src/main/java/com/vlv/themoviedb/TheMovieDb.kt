@@ -9,6 +9,6 @@ open class TheMovieDb : Application() {
     override fun onCreate() {
         super.onCreate()
         DataVault.init(this)
-        AndroidThreeTen.init(this);
+        AndroidThreeTen.init(this)
     }
 }

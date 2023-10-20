@@ -6,14 +6,10 @@ plugins {
 
 android {
     namespace 'com.vlv.common'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
-
+        minSdk 26
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -41,6 +37,7 @@ android {
         jvmTarget = '1.8'
     }
 }
+
 
 dependencies {
 

@@ -16,7 +16,8 @@ import com.vlv.network.database.data.LanguageEntity
         ImageEntity::class,
         LanguageEntity::class
     ],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class TheMovieDatabase : RoomDatabase() {
 

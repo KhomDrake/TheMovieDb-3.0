@@ -15,6 +15,7 @@ import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
 import com.vlv.common.ui.adapter.movie.VIEW_TYPE_MOVIE
 import com.vlv.common.ui.listing.ListingItemsFragment
 import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.extensions.errorState
 import com.vlv.movie.R
 import com.vlv.movie.ui.detail.cast.EXTRA_MOVIE
 import kotlinx.coroutines.flow.collectLatest
@@ -48,7 +49,9 @@ class RecommendationFragment : ListingItemsFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val movie = movie ?: return
+        val movie = movie ?: return run {
+            viewStateMachine.errorState()
+        }
         lifecycleScope.launch {
             viewModel.recommendations(movie.id).distinctUntilChanged().apply {
                 collectLatest {

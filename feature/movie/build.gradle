@@ -6,11 +6,10 @@ plugins {
 
 android {
     namespace 'com.vlv.movie'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
-        minSdk 24
-        targetSdk 33
+        minSdk 26
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -49,7 +48,6 @@ dependencies {
     implementation project(':tools:extensions')
     implementation project(':common')
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation project(':tools:test')
+    androidTestImplementation project(':tools:test')
 }
