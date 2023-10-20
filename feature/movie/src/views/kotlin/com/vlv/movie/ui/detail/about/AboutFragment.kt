@@ -34,7 +34,7 @@ class AboutFragment : Fragment(R.layout.movie_fragment_about) {
 
     private val root: ViewGroup by viewProvider(R.id.root)
     private val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer_about)
-    private val content: RecyclerView by viewProvider(R.id.content)
+    private val content: RecyclerView by viewProvider(R.id.about_content)
     private val warningView: SmallWarningView by viewProvider(R.id.warning_view_about)
 
     private val viewStateMachine = ViewStateMachine()

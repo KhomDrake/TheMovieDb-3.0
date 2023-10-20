@@ -1,14 +1,11 @@
 package com.vlv.movie.ui.listing
 
-import androidx.test.core.app.ApplicationProvider
 import com.vlv.movie.MovieInitializer
 import com.vlv.network.NetworkInitializer
 import com.vlv.network.api.MovieApi
-import com.vlv.network.datastore.DataVault
 import com.vlv.network.repository.MovieRepository
 import com.vlv.test.KoinRule
 import io.mockk.mockk
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.koin.dsl.module
@@ -27,11 +24,6 @@ class ListingMovieActivityTest {
         NetworkInitializer::class.java,
         MovieInitializer::class.java
     )
-
-    @Before
-    fun setup() {
-        DataVault.init(ApplicationProvider.getApplicationContext())
-    }
 
     @Test
     fun whenLoadMovies_shouldShowMovies() {

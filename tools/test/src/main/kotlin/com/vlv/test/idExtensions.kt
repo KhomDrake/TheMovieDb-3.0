@@ -1,5 +1,6 @@
 package com.vlv.test
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
@@ -8,9 +9,15 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import com.vinicius.githubapi.utils.action.ClickIgnoreConstraint
-import com.vinicius.githubapi.utils.action.ClickTabLayout
-import com.vinicius.githubapi.utils.matcher.TabLayoutTextMatcher
+import com.vlv.test.action.ClickIgnoreConstraint
+import com.vlv.test.action.ClickTabLayout
+import com.vlv.test.matcher.TabLayoutTextMatcher
+import com.vlv.test.action.ClickOnChildView
+import com.vlv.test.matcher.ImageDrawableMatcher
+import com.vlv.test.matcher.RecyclerViewMatcherQuantityItems
+import com.vlv.test.matcher.atPosition
+import com.vlv.test.matcher.withRecyclerViewItem
+import org.hamcrest.Matcher
 import org.hamcrest.Matchers.not
 
 fun Int.hasText(text: String) {
@@ -62,3 +69,38 @@ fun Int.scrollToPosition(position: Int) {
     onView(withId(this)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(position))
 }
 
+fun Int.checkRecyclerViewQuantityOfItems(quantityOfItems: Int) {
+    onView(withId(this)).check(matches(RecyclerViewMatcherQuantityItems(quantityOfItems)))
+}
+
+fun Int.checkViewOnRecyclerViewPosition(
+    position: Int,
+    viewMatcher: Matcher<View>,
+    childId: Int = -1
+) {
+    onView(withRecyclerViewItem(this))
+        .check(matches(atPosition(
+            position,
+            viewMatcher,
+            childId
+        )))
+}
+
+fun Int.withDrawable(drawableId: Int) =
+    onView(withId(this)).check(
+        matches(ImageDrawableMatcher(drawableId))
+    )
+
+fun Int.clickOnRecyclerViewInsideItem(position: Int, childId: Int) =
+    onView(withId(this)).perform(
+        RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+            position, ClickOnChildView(childId)
+        )
+    )
+
+fun Int.clickOnRecyclerViewItem(position: Int) =
+    onView(withId(this)).perform(
+        RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+            position, ViewActions.click()
+        )
+    )

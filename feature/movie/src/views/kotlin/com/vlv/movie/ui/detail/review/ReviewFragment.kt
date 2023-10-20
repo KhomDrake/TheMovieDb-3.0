@@ -19,7 +19,9 @@ class MovieReviewFragment : ReviewFragment() {
     private val movie: Movie? by extraProvider(EXTRA_MOVIE)
 
     override fun loadReviews() {
-        val movie = movie ?: return
+        val movie = movie ?: return run {
+            viewStateMachine.errorState()
+        }
 
         viewModel.movieReviews(movie.id).observe(viewLifecycleOwner) {
             data { reviewList ->

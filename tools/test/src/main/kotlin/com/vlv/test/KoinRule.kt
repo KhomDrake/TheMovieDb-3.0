@@ -34,7 +34,7 @@ class KoinRule(
                     AppInitializer.getInstance(ApplicationProvider.getApplicationContext())
                         .apply {
                             initializer.map { initializeComponent(it) }.let {
-                                loadKoinModules(modules + it)
+                                loadKoinModules(it + modules)
                             }
                         }
 

@@ -1,4 +1,4 @@
-package com.vinicius.githubapi.utils.matcher
+package com.vlv.test.matcher
 
 import android.view.View
 import androidx.test.espresso.matcher.BoundedMatcher

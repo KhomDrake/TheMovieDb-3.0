@@ -20,7 +20,9 @@ class MovieCastFragment : CastFragment() {
 
 
     override fun loadCast() {
-        val movie = movie ?: return
+        val movie = movie ?: return run {
+            viewStateMachine.errorState()
+        }
         viewModel.movieCast(movie.id).observe(viewLifecycleOwner) {
             data { castList ->
                 viewStateMachine.dataState()

@@ -4,6 +4,7 @@ import android.content.res.Resources.NotFoundException
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.fragment.app.testing.launchFragmentInContainer
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
@@ -14,6 +15,7 @@ import com.vlv.network.repository.MovieDetailRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
+import com.vlv.test.checkViewOnRecyclerViewPosition
 import com.vlv.test.clickIgnoreConstraint
 import com.vlv.test.isDisplayed
 import com.vlv.test.isNotDisplayed
@@ -106,16 +108,32 @@ class AboutFragmentCheck : Check, KoinComponent {
 
     fun errorDisplayed() {
         R.id.warning_view_about.isDisplayed()
-        R.id.content.isNotDisplayed()
+        R.id.about_content.isNotDisplayed()
     }
 
     fun dataDisplayed() {
-        R.id.content.isDisplayed()
+        R.id.about_content.isDisplayed()
         R.id.warning_view_about.isNotDisplayed()
     }
 
     fun rightDataDisplayed() {
-
+        R.id.about_content.apply {
+            checkViewOnRecyclerViewPosition(
+                0,
+                childId = com.vlv.common.R.id.big_text,
+                viewMatcher = ViewMatchers.withText("Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.")
+            )
+            checkViewOnRecyclerViewPosition(
+                1,
+                childId = com.vlv.common.R.id.about_item_title,
+                viewMatcher = ViewMatchers.withText("Genres:")
+            )
+            checkViewOnRecyclerViewPosition(
+                2,
+                childId = com.vlv.common.R.id.genres,
+                viewMatcher = ViewMatchers.isDisplayed()
+            )
+        }
     }
 
 }

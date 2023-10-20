@@ -1,4 +1,4 @@
-package com.vinicius.githubapi.utils.action
+package com.vlv.test.action
 
 import android.view.View
 import androidx.test.espresso.UiController
