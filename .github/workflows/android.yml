@@ -34,11 +34,16 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
 
+      - name: Config Env.properties
+        run: echo 'api_key=${{ secrets.API_KEY }}' > env.properties
+
+      - name: Build with Gradle
+        run: ./gradlew :app:assembleViewsDebug
+
       - name: Run espresso tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           arch: x86_64
           disable-animations: true
           profile: Nexus 6
