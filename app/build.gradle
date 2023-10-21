@@ -6,15 +6,18 @@ plugins {
 }
 
 apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
 
 android {
     namespace 'com.vlv.themoviedb'
-    compileSdk 34
+    compileSdk config.compileSdk
 
     defaultConfig {
         applicationId "com.vlv.themoviedb"
-        minSdk 26
-        targetSdk 34
+
+        minSdk config.minSdk
+        targetSdkVersion config.targetSdkVersion
+
         versionCode 1
         versionName "1.0"
 
@@ -78,18 +81,17 @@ dependencies {
     implementation project(':feature:genre')
     implementation project(':common')
 
-    debugImplementation("io.github.mrocigno:big-brother-core:0.0.4")
-    debugImplementation("io.github.mrocigno:big-brother-network:0.0.4")
-    debugImplementation("io.github.mrocigno:big-brother-log:0.0.4")
+    debugImplementation(libs.bigbrother.core)
+    debugImplementation(libs.bigbrother.network)
+    debugImplementation(libs.bigbrother.log)
 
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation "androidx.startup:startup-runtime:1.1.1"
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.startup)
+    implementation(libs.google.material)
 
-    viewsImplementation 'com.facebook.shimmer:shimmer:0.5.0'
-    viewsImplementation 'ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.2.5'
+    viewsImplementation(libs.shimmer)
+    viewsImplementation(libs.pagerindicator)
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation project(':tools:test')
+    androidTestImplementation project(':tools:test')
 }

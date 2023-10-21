@@ -4,13 +4,14 @@ plugins {
 }
 
 apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
 
 android {
     namespace 'com.vlv.extensions'
-    compileSdk 34
+    compileSdk config.compileSdk
 
     defaultConfig {
-        minSdk 26
+        minSdk config.minSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -33,25 +34,24 @@ android {
 
 dependencies {
 
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
-    implementation 'android.arch.lifecycle:livedata:1.1.1'
-    implementation "io.github.matheus-corregiari:delegate:1.0.0-rc-04"
-    implementation "io.github.matheus-corregiari:livedata:1.0.0-rc-04"
-    implementation "io.github.matheus-corregiari:statemachine:1.0.0-rc-04"
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation("io.coil-kt:coil:2.4.0")
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-common-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
-    implementation "androidx.paging:paging-runtime-ktx:3.1.0-alpha02"
-    implementation "com.jakewharton.threetenabp:threetenabp:1.4.6"
-    implementation "io.insert-koin:koin-android:3.4.1"
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.common.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.java)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.android.lifecycle.livedata)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.toolkit.delegate)
+    implementation(libs.toolkit.livedata)
+    implementation(libs.toolkit.statemachine)
+    implementation(libs.coil)
+    implementation(libs.google.material)
+    implementation(libs.threetenabp)
+    implementation(libs.koin.android)
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation project(':tools:test')
+    androidTestImplementation project(':tools:test')
 }

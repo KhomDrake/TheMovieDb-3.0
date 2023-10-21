@@ -6,13 +6,15 @@ plugins {
 }
 
 apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
 
 android {
     namespace 'com.vlv.movie'
-    compileSdk 34
+    compileSdk config.compileSdk
 
     defaultConfig {
-        minSdk 26
+        minSdk config.minSdk
+        targetSdkVersion config.targetSdkVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

@@ -4,13 +4,14 @@ plugins {
 }
 
 apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
 
 android {
     namespace 'com.vlv.test'
-    compileSdk 34
+    compileSdk config.compileSdk
 
     defaultConfig {
-        minSdk 26
+        minSdk config.minSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -33,27 +34,29 @@ android {
 
 dependencies {
 
-    implementation "com.jakewharton.threetenabp:threetenabp:1.4.6"
-    implementation "io.github.matheus-corregiari:livedata:1.0.0-rc-04"
-    implementation "androidx.startup:startup-runtime:1.1.1"
+    implementation(libs.threetenabp)
+    implementation(libs.toolkit.livedata)
+    implementation(libs.androidx.startup)
+    implementation(libs.squareup.moshi.kotlin)
 
-    api("io.mockk:mockk:1.12.2") {
+    debugApi(libs.tests.androidx.fragment.testing)
+
+    api(libs.tests.mockk.normal) {
         exclude module: 'objenesis'
         exclude module: "mockk-agent-jvm"
     }
-    api('io.mockk:mockk-android:1.12.2') {
+    api(libs.tests.mockk.android) {
         exclude module: 'objenesis'
         exclude module: "mockk-agent-jvm"
     }
-    api 'com.google.guava:guava:27.0.1-android'
-    api 'org.objenesis:objenesis:3.1'
-    api "androidx.arch.core:core-testing:2.2.0"
-    api "androidx.test.espresso:espresso-intents:3.5.1"
-    api "io.insert-koin:koin-android:3.4.1"
-    debugApi "androidx.fragment:fragment-testing:1.6.1"
-    api "androidx.test.espresso:espresso-contrib:3.5.1"
-    api 'androidx.test.ext:junit:1.1.5'
-    api "androidx.arch.core:core-testing:2.2.0"
-    api 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
+    api(libs.tests.guava)
+    api(libs.tests.objenesis)
+    api(libs.tests.androidx.core.testing)
+    api(libs.tests.androidx.espresso.core)
+    api(libs.tests.androidx.espresso.contrib)
+    api(libs.tests.androidx.espresso.intents)
+    api(libs.tests.androidx.fragment.testing)
+    api(libs.tests.androidx.junit)
+    api(libs.koin.android)
+    api(libs.tests.junit)
 }

@@ -1,6 +1,6 @@
 buildscript {
     dependencies {
-        classpath('org.jacoco:org.jacoco.core:0.8.11')
+        classpath(libs.org.jacoco.core)
     }
 }
 
