@@ -1,0 +1,7 @@
+def propertiesFile = file("${rootDir}/env.properties")
+def properties = new Properties()
+properties.load(propertiesFile.newDataInputStream())
+
+ext.env = [
+    api_key: properties.getProperty("api_key")
+]

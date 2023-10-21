@@ -3,7 +3,6 @@ package com.vlv.movie.ui.detail.about
 import androidx.test.core.app.ApplicationProvider
 import com.vlv.movie.MovieInitializer
 import com.vlv.network.NetworkInitializer
-import com.vlv.network.api.MovieApi
 import com.vlv.network.datastore.DataVault
 import com.vlv.network.repository.MovieDetailRepository
 import com.vlv.test.KoinRule

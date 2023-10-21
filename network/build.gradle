@@ -2,14 +2,19 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id "jacoco"
 }
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
+apply from: "$rootDir/gradle/load-env.gradle"
 
 android {
     namespace 'com.vlv.network'
-    compileSdk 34
+    compileSdk config.compileSdk
 
     defaultConfig {
-        minSdk 26
+        minSdk config.minSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -19,6 +24,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_KEY", "\"$env.api_key\""
+        }
+        debug {
+            buildConfigField "String", "API_KEY", "\"$env.api_key\""
+            testCoverageEnabled true
         }
     }
     compileOptions {
@@ -34,29 +44,33 @@ dependencies {
 
     implementation project(":tools:extensions")
 
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
-    implementation 'androidx.room:room-common:2.5.2'
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
-    implementation "androidx.paging:paging-runtime-ktx:3.1.0-alpha02"
-    implementation "androidx.startup:startup-runtime:1.1.1"
-    implementation "androidx.room:room-ktx:2.5.2"
-    implementation "androidx.room:room-runtime:2.5.2"
-    annotationProcessor "androidx.room:room-compiler:2.5.2"
-    kapt "androidx.room:room-compiler:2.5.2"
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
+    implementation(libs.squareup.retrofit.main)
+    implementation(libs.squareup.retrofit.converter.moshi)
+    implementation(libs.squareup.moshi.codegen)
+    implementation(libs.squareup.moshi.kotlin)
+    implementation(libs.squareup.moshi.kotlin)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.squareup.okhttp3)
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.startup)
 
-    api 'com.squareup.moshi:moshi-kotlin:1.14.0'
-    api "androidx.datastore:datastore-preferences:1.0.0"
-    api "com.jakewharton.threetenabp:threetenabp:1.4.6"
-    api "io.insert-koin:koin-android:3.4.1"
+    annotationProcessor(libs.androidx.room.compiler)
 
-    debugImplementation("io.github.mrocigno:big-brother-network:0.0.4")
+    kapt(libs.squareup.moshi.codegen)
+    kapt(libs.androidx.room.compiler)
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    api(libs.squareup.moshi.kotlin)
+    api(libs.androidx.datastore)
+    api(libs.threetenabp)
+    api(libs.koin.android)
+
+    debugImplementation(libs.bigbrother.network)
+
+    testImplementation project(':tools:test')
+    androidTestImplementation project(':tools:test')
 }

@@ -109,6 +109,7 @@ class MovieCastFragmentCheck : Check, KoinComponent {
     private val repository: MovieDetailRepository by inject()
 
     fun castInformationLoaded(times: Int) {
+        Thread.sleep(100)
         coVerify(exactly = times) {
             repository.movieCast(2)
         }

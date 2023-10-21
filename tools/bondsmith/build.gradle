@@ -1,14 +1,18 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id "jacoco"
 }
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
 
 android {
     namespace 'com.vlv.bondsmith'
-    compileSdk 34
+    compileSdk config.compileSdk
 
     defaultConfig {
-        minSdk 26
+        minSdk config.minSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -31,12 +35,12 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation "io.github.matheus-corregiari:livedata:1.0.0-rc-04"
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.google.material)
+    implementation(libs.toolkit.livedata)
+
+    testImplementation project(':tools:test')
+    androidTestImplementation project(':tools:test')
 }

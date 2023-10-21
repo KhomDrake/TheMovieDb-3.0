@@ -1,16 +1,21 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id "jacoco"
 }
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
 
 android {
     namespace 'com.vlv.imperiyasample'
-    compileSdk 34
+    compileSdk config.compileSdk
 
     defaultConfig {
+
         applicationId "com.vlv.imperiyasample"
-        minSdk 26
-        targetSdk 34
+        minSdk config.minSdk
+        targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -50,9 +55,10 @@ android {
 dependencies {
 
     implementation project(":imperiya")
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "io.github.matheus-corregiari:delegate:1.0.0-rc-04"
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.google.material)
+    implementation(libs.toolkit.delegate)
+
 }
