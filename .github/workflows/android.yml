@@ -22,7 +22,20 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Grant execute permission for gradlew
+      - name: Config Env.properties
         run: echo 'api_key=${{ secrets.API_KEY }}' > env.properties
       - name: Build with Gradle
         run: ./gradlew :app:assembleViewsDebug
+
+  views-instrumentation-tests:
+    needs: [build-views]
+    runs-on: macos-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Run espresso tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew createViewsDebugCoverageReport
