@@ -115,6 +115,7 @@ class ReviewFragmentCheck : Check, KoinComponent {
     private val repository: MovieDetailRepository by inject()
 
     fun reviewsLoaded(times: Int) {
+        Thread.sleep(100)
         coVerify(exactly = times) {
             repository.movieReviews(2)
         }

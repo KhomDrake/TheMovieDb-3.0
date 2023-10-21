@@ -8,57 +8,88 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.withHint
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.vlv.test.action.ClickIgnoreConstraint
-import com.vlv.test.action.ClickTabLayout
-import com.vlv.test.matcher.TabLayoutTextMatcher
 import com.vlv.test.action.ClickOnChildView
+import com.vlv.test.action.ClickTabLayout
 import com.vlv.test.matcher.ImageDrawableMatcher
 import com.vlv.test.matcher.RecyclerViewMatcherQuantityItems
+import com.vlv.test.matcher.TabLayoutTextMatcher
 import com.vlv.test.matcher.atPosition
 import com.vlv.test.matcher.withRecyclerViewItem
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.not
 
-fun Int.hasText(text: String) {
-    onView(withId(this)).check(matches(withText(text)))
+fun runWithWaitFor(block: () -> Unit) {
+    runCatching {
+        block.invoke()
+    }.onFailure {
+        Thread.sleep(1000)
+        block.invoke()
+    }
 }
 
-fun Int.typeText(text: String): ViewInteraction = onView(withId(this))
-    .perform(ViewActions.typeText(text), ViewActions.closeSoftKeyboard())
+fun Int.hasText(text: String) {
+    runWithWaitFor {
+        onView(withId(this)).check(matches(withText(text)))
+    }
+}
+
+fun Int.typeText(text: String) = runWithWaitFor {
+    onView(withId(this))
+        .perform(ViewActions.typeText(text), ViewActions.closeSoftKeyboard())
+}
 
 fun Int.hasHint(text: String) {
-    onView(withId(this)).check(matches(withHint(text)))
+    runWithWaitFor {
+        onView(withId(this)).check(matches(withHint(text)))
+    }
 }
 
 fun Int.isDisplayed() {
-    onView(withId(this)).check(matches(ViewMatchers.isDisplayed()))
+    runWithWaitFor {
+        onView(withId(this)).check(matches(ViewMatchers.isDisplayed()))
+    }
 }
 
+
+
 fun Int.isNotDisplayed() {
-    onView(withId(this)).check(matches(not(ViewMatchers.isDisplayed())))
+    runWithWaitFor {
+        onView(withId(this)).check(matches(not(ViewMatchers.isDisplayed())))
+    }
 }
 
 fun Int.click() {
-    onView(withId(this)).perform(ViewActions.click())
+    runWithWaitFor {
+        onView(withId(this)).perform(ViewActions.click())
+    }
 }
 
 fun Int.clickIgnoreConstraint() {
-    onView(withId(this)).perform(ClickIgnoreConstraint())
+    runWithWaitFor {
+        onView(withId(this)).perform(ClickIgnoreConstraint())
+    }
 }
 
 fun Int.clickRecyclerViewItemPosition(position: Int) {
-    onView(withId(this))
-        .perform(
-            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                position,
-                ClickIgnoreConstraint()
+    runWithWaitFor {
+        onView(withId(this))
+            .perform(
+                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                    position,
+                    ClickIgnoreConstraint()
+                )
             )
-        )
+    }
 }
 
 fun Int.clickTabLayoutPosition(position: Int) {
-    onView(withId(this)).perform(ClickTabLayout(position))
+    runWithWaitFor {
+        onView(withId(this)).perform(ClickTabLayout(position))
+    }
 }
 
 fun Int.checkTextTabLayoutPosition(text: String, position: Int) {
@@ -78,12 +109,14 @@ fun Int.checkViewOnRecyclerViewPosition(
     viewMatcher: Matcher<View>,
     childId: Int = -1
 ) {
-    onView(withRecyclerViewItem(this))
-        .check(matches(atPosition(
-            position,
-            viewMatcher,
-            childId
-        )))
+    runWithWaitFor {
+        onView(withRecyclerViewItem(this))
+            .check(matches(atPosition(
+                position,
+                viewMatcher,
+                childId
+            )))
+    }
 }
 
 fun Int.withDrawable(drawableId: Int) =

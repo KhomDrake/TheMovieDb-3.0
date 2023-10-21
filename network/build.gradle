@@ -2,10 +2,12 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id "jacoco"
 }
 
 apply from: "$rootDir/gradle/coverage.gradle"
 apply from: "$rootDir/gradle/config.gradle"
+apply from: "$rootDir/gradle/load-env.gradle"
 
 android {
     namespace 'com.vlv.network'
@@ -22,6 +24,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_KEY", "\"$env.api_key\""
+        }
+        debug {
+            buildConfigField "String", "API_KEY", "\"$env.api_key\""
+            testCoverageEnabled true
         }
     }
     compileOptions {
