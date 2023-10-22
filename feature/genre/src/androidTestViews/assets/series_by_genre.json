@@ -1,0 +1,421 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "backdrop_path": "/8CXw90lEmnJQeUvkgSnl5bEjbQI.jpg",
+      "first_air_date": "2013-12-02",
+      "genre_ids": [
+        16,
+        35,
+        10765,
+        10759
+      ],
+      "id": 60625,
+      "name": "Rick and Morty",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Rick and Morty",
+      "overview": "Rick is a mentally-unbalanced but scientifically gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+      "popularity": 2247.738,
+      "poster_path": "/gdIrmf2DdY5mgN6ycVP0XlzKzbE.jpg",
+      "vote_average": 8.7,
+      "vote_count": 8658
+    },
+    {
+      "backdrop_path": "/gmECX1DvFgdUPjtio2zaL8BPYPu.jpg",
+      "first_air_date": "2020-10-03",
+      "genre_ids": [
+        16,
+        10759,
+        10765
+      ],
+      "id": 95479,
+      "name": "Jujutsu Kaisen",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "呪術廻戦",
+      "overview": "Yuji Itadori is a boy with tremendous physical strength, though he lives a completely ordinary high school life. One day, to save a classmate who has been attacked by curses, he eats the finger of Ryomen Sukuna, taking the curse into his own soul. From then on, he shares one body with Ryomen Sukuna. Guided by the most powerful of sorcerers, Satoru Gojo, Itadori is admitted to Tokyo Jujutsu High School, an organization that fights the curses... and thus begins the heroic tale of a boy who became a curse to exorcise a curse, a life from which he could never turn back.",
+      "popularity": 1525.159,
+      "poster_path": "/hFWP5HkbVEe40hrXgtCeQxoccHE.jpg",
+      "vote_average": 8.6,
+      "vote_count": 2833
+    },
+    {
+      "backdrop_path": "/72iLiVaagM42DSygSs4xAnXvDzh.jpg",
+      "first_air_date": "2023-10-02",
+      "genre_ids": [
+        16
+      ],
+      "id": 233643,
+      "name": "Secret Mission: Sennyuu Sousakan wa Zettai ni Makenai!",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "しーくれっとみっしょん～潜入捜査官は絶対に負けない！～",
+      "overview": "The story follows two undercover agents Riko Ikazuchi and her junior partner Noma, who are infiltrating an apartment that is also the hideout of a criminal organization. They pretend to be newlyweds. However, when the culprits do not hear noise from them at night, they get suspicious. In order to convince the culprits that they are a married in couple in love, they start to touch and make some noise... Despite feelings of humiliation and pleasure throughout the undercover investigations, Riko endures it and devotes herself to her justice.",
+      "popularity": 902.425,
+      "poster_path": "/ipqu76qqHiVB2vlK2gGZNwF9SwX.jpg",
+      "vote_average": 5.5,
+      "vote_count": 7
+    },
+    {
+      "backdrop_path": "/wU1y7snEVYiJBpZ2k1DjIpHgJbx.jpg",
+      "first_air_date": "1999-01-31",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "id": 1434,
+      "name": "Family Guy",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Family Guy",
+      "overview": "Sick, twisted, politically incorrect and Freakin' Sweet animated series featuring the adventures of the dysfunctional Griffin family. Bumbling Peter and long-suffering Lois have three kids. Stewie (a brilliant but sadistic baby bent on killing his mother and taking over the world), Meg (the oldest, and is the most unpopular girl in town) and Chris (the middle kid, he's not very bright but has a passion for movies). The final member of the family is Brian - a talking dog and much more than a pet, he keeps Stewie in check whilst sipping Martinis and sorting through his own life issues.",
+      "popularity": 1439.267,
+      "poster_path": "/hw2vi8agaJZ7oeSvS8uEYgOtK32.jpg",
+      "vote_average": 7.3,
+      "vote_count": 3905
+    },
+    {
+      "backdrop_path": "/zNugnnR5KEmq9EzLcl0Me1UmHYk.jpg",
+      "first_air_date": "2022-04-09",
+      "genre_ids": [
+        16,
+        35,
+        10759
+      ],
+      "id": 120089,
+      "name": "SPY x FAMILY",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "SPY×FAMILY",
+      "overview": "World peace is at stake and secret agent Twilight must undergo his most difficult mission yet—pretend to be a family man. Posing as a loving husband and father, he’ll infiltrate an elite school to get close to a high-profile politician. He has the perfect cover, except his wife’s a deadly assassin and neither knows each other’s identity. But someone does, his adopted daughter who’s a telepath!",
+      "popularity": 907.606,
+      "poster_path": "/7NAvPYPAu7MeHwP8E9sn81PqsRh.jpg",
+      "vote_average": 8.6,
+      "vote_count": 1485
+    },
+    {
+      "backdrop_path": "/mc3rG5M9dFVjMfaCFNfbD5gu2pK.jpg",
+      "first_air_date": "2005-02-06",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "id": 1433,
+      "name": "American Dad!",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "American Dad!",
+      "overview": "The series focuses on an eccentric motley crew that is the Smith family and their three housemates: Father, husband, and breadwinner Stan Smith; his better half housewife, Francine Smith; their college-aged daughter, Hayley Smith; and their high-school-aged son, Steve Smith. Outside of the Smith family, there are three additional main characters, including Hayley's boyfriend turned husband, Jeff Fischer; the family's man-in-a-goldfish-body pet, Klaus; and most notably the family's zany alien, Roger, who is \"full of masquerades, brazenness, and shocking antics.\"",
+      "popularity": 894.297,
+      "poster_path": "/xnFFz3etm1vftF0ns8RMHA8XdqT.jpg",
+      "vote_average": 7,
+      "vote_count": 1873
+    },
+    {
+      "backdrop_path": "/pxeqQX4qFQ0cVxPt5SWZENV5BH3.jpg",
+      "first_air_date": "1989-12-17",
+      "genre_ids": [
+        10751,
+        16,
+        35
+      ],
+      "id": 456,
+      "name": "The Simpsons",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "The Simpsons",
+      "overview": "Set in Springfield, the average American town, the show focuses on the antics and everyday adventures of the Simpson family; Homer, Marge, Bart, Lisa and Maggie, as well as a virtual cast of thousands. Since the beginning, the series has been a pop culture icon, attracting hundreds of celebrities to guest star. The show has also made name for itself in its fearless satirical take on politics, media and American life in general.",
+      "popularity": 1091.236,
+      "poster_path": "/vHqeLzYl3dEAutojCO26g0LIkom.jpg",
+      "vote_average": 8,
+      "vote_count": 9165
+    },
+    {
+      "backdrop_path": "/26fIuY9zEYW2EowRaRtk8eTkxcC.jpg",
+      "first_air_date": "2023-09-18",
+      "genre_ids": [
+        16,
+        10762
+      ],
+      "id": 222206,
+      "name": "La Orquestita",
+      "origin_country": [
+        "ES"
+      ],
+      "original_language": "es",
+      "original_name": "La Orquestita",
+      "overview": "",
+      "popularity": 428.349,
+      "poster_path": "/fCCtlYlnc6sNWtO9Lgu0AZF1Hmf.jpg",
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "backdrop_path": "/qtfMr08KQsWXnCHY0a96N8NpQ2l.jpg",
+      "first_air_date": "2004-10-05",
+      "genre_ids": [
+        10759,
+        16,
+        10765
+      ],
+      "id": 30984,
+      "name": "Bleach",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "BLEACH",
+      "overview": "For as long as he can remember, Ichigo Kurosaki has been able to see ghosts. But when he meets Rukia, a Soul Reaper who battles evil spirits known as Hollows, he finds his life is changed forever. Now, with a newfound wealth of spiritual energy, Ichigo discovers his true calling: to protect the living and the dead from evil.",
+      "popularity": 738.203,
+      "poster_path": "/2EewmxXe72ogD0EaWM8gqa0ccIw.jpg",
+      "vote_average": 8.4,
+      "vote_count": 1615
+    },
+    {
+      "backdrop_path": "/j9fRIimor0AMFJR9kjZubXcABzZ.jpg",
+      "first_air_date": "2021-01-11",
+      "genre_ids": [
+        16,
+        10759,
+        10765
+      ],
+      "id": 94664,
+      "name": "Mushoku Tensei: Jobless Reincarnation",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "無職転生 ～異世界行ったら本気だす～",
+      "overview": "A 34-year-old hikikomori is kicked out of his home by his family after the death of his parents. After his eviction, he saves a group of teenagers from being killed by a speeding truck, but loses his life in the process. When he comes to, he realizes he has been reborn as Rudeus Greyrat, in a world of swords and sorcery.",
+      "popularity": 778.375,
+      "poster_path": "/z4rvmhoqQiGMnwuBHY1QcH3OqUo.jpg",
+      "vote_average": 8.6,
+      "vote_count": 788
+    },
+    {
+      "backdrop_path": "/2vbE9ajftJ7dkqUAyxDS0WFILx8.jpg",
+      "first_air_date": "2010-09-06",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "id": 31132,
+      "name": "Regular Show",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Regular Show",
+      "overview": "Two bored groundskeepers, Mordecai (a six-foot-tall blue jay) and Rigby (a hyperactive raccoon) are best friends who spend their days trying to entertain themselves by any means necessary, much to the displeasure of their boss. Their everyday pursuits often lead to things spiraling out of control and into the surreal.",
+      "popularity": 680.655,
+      "poster_path": "/mS5SLxMYcKfUxA0utBSR5MOAWWr.jpg",
+      "vote_average": 8.7,
+      "vote_count": 1790
+    },
+    {
+      "backdrop_path": "/bFKKyCI89Xq98Gul8cGox8K3sZa.jpg",
+      "first_air_date": "2011-10-02",
+      "genre_ids": [
+        16,
+        10759,
+        10765
+      ],
+      "id": 46298,
+      "name": "Hunter x Hunter",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "HUNTER×HUNTER",
+      "overview": "Twelve-year-old Gon Freecss one day discovers that the father he had always been told was dead was alive. His Father, Ging, is a Hunter — a member of society's elite with a license to go anywhere or do almost anything. Gon, determined to follow in his father's footsteps, decides to take the Hunter Examination and eventually find his father to prove himself as a Hunter in his own right. But on the way, he learns that there is more to becoming a Hunter than previously thought, and the challenges that he must face are considered the toughest in the world.",
+      "popularity": 438.992,
+      "poster_path": "/ucpgmUR1h5Te1BYegKItoPjOeF7.jpg",
+      "vote_average": 8.6,
+      "vote_count": 1488
+    },
+    {
+      "backdrop_path": "/htD5SJpPOvkmAowU80KrWnN59WO.jpg",
+      "first_air_date": "2022-10-05",
+      "genre_ids": [
+        16,
+        35,
+        10765,
+        10759
+      ],
+      "id": 119495,
+      "name": "The Eminence in Shadow",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "陰の実力者になりたくて！",
+      "overview": "Shadowbrokers are those who go unnoticed, posing as unremarkable people, when in truth, they control everything from behind the scenes. Sid wants to be someone just like that more than anything, and something as insignificant as boring reality isn’t going to get in his way! He trains in secret every single night, preparing for his eventual rise to power—only to denied his destiny by a run-of-the-mill (yet deadly) traffic accident. But when he wakes up in a another world and suddenly finds himself at the head of an actual secret organization doing battle with evil in the shadows, he’ll finally get a chance to act out all of his delusional fantasies!",
+      "popularity": 436.128,
+      "poster_path": "/7JKYmtLydAwo9ZsEmAknZiO4U8g.jpg",
+      "vote_average": 7.8,
+      "vote_count": 63
+    },
+    {
+      "backdrop_path": "/z0YhJvomqedHF85bplUJEotkN5l.jpg",
+      "first_air_date": "2007-02-15",
+      "genre_ids": [
+        16,
+        10759,
+        10765
+      ],
+      "id": 31910,
+      "name": "Naruto Shippūden",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "ナルト 疾風伝",
+      "overview": "After 2 and a half years Naruto finally returns to his village of Konoha, and sets about putting his ambitions to work. It will not be easy though as he has amassed a few more dangerous enemies, in the likes of the shinobi organization; Akatsuki.",
+      "popularity": 453.279,
+      "poster_path": "/kV27j3Nz4d5z8u6mN3EJw9RiLg2.jpg",
+      "vote_average": 8.6,
+      "vote_count": 7732
+    },
+    {
+      "backdrop_path": "/6mE69fVYpgNVXFI0ezNaiQ3GS8.jpg",
+      "first_air_date": "2011-01-09",
+      "genre_ids": [
+        35,
+        16
+      ],
+      "id": 32726,
+      "name": "Bob's Burgers",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Bob's Burgers",
+      "overview": "Bob's Burgers follows a third-generation restaurateur, Bob, as he runs Bob's Burgers with the help of his wife and their three kids. Bob and his quirky family have big ideas about burgers, but fall short on service and sophistication. Despite the greasy counters, lousy location and a dearth of customers, Bob and his family are determined to make Bob's Burgers \"grand re-re-re-opening\" a success.",
+      "popularity": 520.323,
+      "poster_path": "/couFnWryh9JRmmfDyPU6hUyTKIa.jpg",
+      "vote_average": 7.9,
+      "vote_count": 810
+    },
+    {
+      "backdrop_path": "/xuJ0F9RfKvVSJNDg2usurQ9WvY5.jpg",
+      "first_air_date": "2002-10-03",
+      "genre_ids": [
+        16,
+        10759,
+        10765
+      ],
+      "id": 46260,
+      "name": "Naruto",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "ナルト",
+      "overview": "“I will become Hokage one day...Believe it!” Naruto Uzumaki, the outcast of the Hidden Leaf Village, has a dream of one day becoming the Hokage, the leader of the village. Due to having the Nine-Tailed Fox sealed within him, Naruto's upbringing was one of isolation. But his days of loneliness end when he begins going on missions as a member of Team 7 alongside Sasuke, Sakura, and the team's Jonin leader, Kakashi!",
+      "popularity": 407.336,
+      "poster_path": "/xppeysfvDKVx775MFuH8Z9BlpMk.jpg",
+      "vote_average": 8.4,
+      "vote_count": 5204
+    },
+    {
+      "backdrop_path": "/ullfy98STkno11rDGi44SK6llwx.jpg",
+      "first_air_date": "2020-07-11",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "id": 96316,
+      "name": "Rent-a-Girlfriend",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "彼女、お借りします",
+      "overview": "Kinoshita Kazuya is a 20-year-old failure of a college student. He managed to kiss his girlfriend once, but was dumped after a month. Completely spiteful, Kazuya uses a certain method to date a girl. He goes to their meeting place and a beautiful girl brushing her long, black hair behind her ear was there, smiling at him. Her name was Mizuhara Chizuru. Something real is born after just a single rental! A reckless rom-com filled with love and excitement is about to begin!",
+      "popularity": 326.404,
+      "poster_path": "/6ZpDPUNtVw6UdJoStvVlRZ62yAi.jpg",
+      "vote_average": 8.5,
+      "vote_count": 817
+    },
+    {
+      "backdrop_path": "/pe4B3OYBb7qYCdkAz7nKWordbls.jpg",
+      "first_air_date": "2010-04-05",
+      "genre_ids": [
+        16,
+        35,
+        10765
+      ],
+      "id": 15260,
+      "name": "Adventure Time",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Adventure Time",
+      "overview": "Hook up with Finn and Jake as they travel the Land of Ooo searching for adventure. But remember, adventure isn’t always easy. Sometimes you’ve got to battle fire gnomes that torture old ladies, save a smelly hot dog princess from the Ice King, and thaw out a bunch of frozen businessmen. What the cabbage?!",
+      "popularity": 360.649,
+      "poster_path": "/qk3eQ8jW4opJ48gFWYUXWaMT4l.jpg",
+      "vote_average": 8.5,
+      "vote_count": 2497
+    },
+    {
+      "backdrop_path": "/m6eRgkR1KC6Mr6gKx6gKCzSn6vD.jpg",
+      "first_air_date": "2008-10-03",
+      "genre_ids": [
+        10759,
+        16,
+        10765
+      ],
+      "id": 4194,
+      "name": "Star Wars: The Clone Wars",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Star Wars: The Clone Wars",
+      "overview": "Yoda, Obi-Wan Kenobi, Anakin Skywalker, Mace Windu and other Jedi Knights lead the Grand Army of the Republic against the droid army of the Separatists.",
+      "popularity": 396.341,
+      "poster_path": "/e1nWfnnCVqxS2LeTO3dwGyAsG2V.jpg",
+      "vote_average": 8.5,
+      "vote_count": 1785
+    },
+    {
+      "backdrop_path": "/seMRyWVwIVBWbC9xaMzDMZJ8fUH.jpg",
+      "first_air_date": "2022-10-09",
+      "genre_ids": [
+        16,
+        10759,
+        18
+      ],
+      "id": 131041,
+      "name": "BLUELOCK",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "ブルーロック",
+      "overview": "After a disastrous defeat at the 2018 World Cup, Japan's team struggles to regroup. But what's missing? An absolute Ace Striker, who can guide them to the win. The Japan Football Union is hell-bent on creating a striker who hungers for goals and thirsts for victory, and who can be the decisive instrument in turning around a losing match...and to do so, they've gathered 300 of Japan's best and brightest youth players. Who will emerge to lead the team...and will they be able to out-muscle and out-ego everyone who stands in their way?",
+      "popularity": 326.349,
+      "poster_path": "/tP16wAT98CLwnQ14iWTMZZwfLBr.jpg",
+      "vote_average": 8,
+      "vote_count": 87
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 20
+}

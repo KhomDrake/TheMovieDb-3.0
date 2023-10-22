@@ -13,9 +13,9 @@ import com.vlv.imperiya.R
 
 class SmallWarningView : LinearLayoutCompat {
 
-    private val title: AppCompatTextView by viewProvider(R.id.title)
-    private val body: AppCompatTextView by viewProvider(R.id.body)
-    private val tryAgainButton: AppCompatTextView by viewProvider(R.id.try_again_button)
+    private val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
+    private val body: AppCompatTextView by viewProvider(R.id.small_warning_body)
+    private val tryAgainButton: AppCompatTextView by viewProvider(R.id.small_warning_try_again_button)
 
     constructor(context: Context) : this(context, null)
 

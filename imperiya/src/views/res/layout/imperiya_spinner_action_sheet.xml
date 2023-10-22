@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/title"
+            android:id="@+id/small_warning_title"
             style="@style/Imperiya.Style.Text.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             tools:text="Title" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/body"
+            android:id="@+id/small_warning_body"
             style="@style/Imperiya.Style.Text.Paragraph"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

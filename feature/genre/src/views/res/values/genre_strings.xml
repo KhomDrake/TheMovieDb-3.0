@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="genre_movie_toolbar_title">Movies by genre</string>
-    <string name="genre_series_toolbar_title">Series by genre</string>
+    <string name="genre_series_toolbar_title">Tv shows by genre</string>
+    <string name="genre_no_movie_found">No movie found</string>
+    <string name="genre_no_series_found">No tv show found</string>
+    <string name="genre_error_general">Failed to load genres</string>
 </resources>

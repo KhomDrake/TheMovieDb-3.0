@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
+        android:id="@+id/small_warning_title"
         style="@style/Imperiya.Style.Text.Title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,19 +30,19 @@
         tools:text="Failure ocurred" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/body"
+        android:id="@+id/small_warning_body"
         style="@style/Imperiya.Style.Text.Paragraph"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@id/status_icon"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/small_warning_title"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Unable to load data. Please try again." />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/try_again_button"
+        android:id="@+id/small_warning_try_again_button"
         style="@style/Imperiya.Style.Text.Link"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         android:layout_marginTop="12dp"
         android:foreground="@drawable/imperiya_ripple_rounded"
         app:layout_constraintEnd_toStartOf="@id/status_icon"
-        app:layout_constraintTop_toBottomOf="@id/body"
+        app:layout_constraintTop_toBottomOf="@id/small_warning_body"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Try Again" />
 

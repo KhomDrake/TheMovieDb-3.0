@@ -91,7 +91,7 @@ class AboutFragmentLaunch : Launch<AboutFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }

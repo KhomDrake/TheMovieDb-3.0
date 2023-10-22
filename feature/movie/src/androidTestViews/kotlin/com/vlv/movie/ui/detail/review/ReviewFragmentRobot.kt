@@ -8,7 +8,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
 import com.vlv.movie.ui.detail.cast.EXTRA_MOVIE
-import com.vlv.network.data.credit.CreditsResponse
 import com.vlv.network.data.review.ReviewsResponse
 import com.vlv.network.repository.MovieDetailRepository
 import com.vlv.test.Check
@@ -105,7 +104,7 @@ class ReviewFragmentLaunch : Launch<ReviewFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }
@@ -127,9 +126,9 @@ class ReviewFragmentCheck : Check, KoinComponent {
         com.vlv.common.R.id.empty_view_review.isNotDisplayed()
         com.vlv.common.R.id.shimmer_review.isNotDisplayed()
 
-        com.vlv.imperiya.R.id.title.hasText("Failed to load reviews")
-        com.vlv.imperiya.R.id.body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.R.id.try_again_button.hasText("Try again")
+        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load reviews")
+        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun reviewsDisplayed() {

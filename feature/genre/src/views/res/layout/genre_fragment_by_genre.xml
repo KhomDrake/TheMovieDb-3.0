@@ -17,6 +17,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <com.vlv.imperiya.ui.stateview.StateView
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="gone"/>
+
     <com.vlv.imperiya.ui.warning.SmallWarningView
         android:id="@+id/error"
         android:layout_width="match_parent"

@@ -10,7 +10,7 @@
     tools:parentTag="androidx.appcompat.widget.LinearLayoutCompat">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title"
+        android:id="@+id/small_warning_title"
         style="@style/Imperiya.Style.Text.Subtitle.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         tools:text="Failure ocurred" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/body"
+        android:id="@+id/small_warning_body"
         style="@style/Imperiya.Style.Text.Paragraph"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         tools:text="Unable to load data. Please try again." />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/try_again_button"
+        android:id="@+id/small_warning_try_again_button"
         style="@style/Imperiya.Style.Text.Link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
