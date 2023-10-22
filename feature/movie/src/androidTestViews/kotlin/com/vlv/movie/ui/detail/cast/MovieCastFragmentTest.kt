@@ -67,7 +67,7 @@ class MovieCastFragmentTest {
         } launch {
             clickTryAgain()
         } check {
-            castInformationLoaded(times = 2)
+            castInformationLoaded(times = 3)
         }
     }
 
