@@ -44,9 +44,6 @@ jobs:
       - name: Config Env.properties
         run: echo 'api_key=${{ secrets.API_KEY }}' > env.properties
 
-      - name: Build with Gradle
-        run: ./gradlew :app:assembleViewsDebug
-
       - name: Run espresso tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
