@@ -13,6 +13,7 @@ dependencyResolutionManagement {
         jcenter()
     }
 }
+
 rootProject.name = "themoviedb"
 
 include ':app'
