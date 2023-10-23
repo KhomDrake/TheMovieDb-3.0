@@ -136,9 +136,13 @@ fun Int.clickOnRecyclerViewInsideItem(position: Int, childId: Int) =
         )
     )
 
-fun Int.clickOnRecyclerViewItem(position: Int) =
-    onView(withId(this)).perform(
-        RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-            position, ViewActions.click()
+fun Int.clickOnRecyclerViewItem(position: Int) {
+    runWithWaitFor {
+        onView(withId(this)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position, ViewActions.click()
+            )
         )
-    )
+    }
+}
+

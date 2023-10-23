@@ -1,5 +1,7 @@
 package com.vlv.themoviedb.ui.movie.trending
 
+import android.os.Bundle
+import android.view.View
 import com.vlv.common.ui.route.toMovieTrending
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
@@ -26,6 +28,11 @@ class TrendingNowFragment : MovieCarouselFragment() {
             setTitle(R.string.empty_state_text_movie_trending)
             setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        loadContent()
     }
 
     override fun configErrorView() {

@@ -7,7 +7,7 @@
     android:id="@+id/shimmer"
     android:layout_marginTop="12dp"
     android:visibility="gone"
-    app:layout_constraintTop_toBottomOf="@id/small_warning_title"
+    app:layout_constraintTop_toBottomOf="@id/list_title"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
