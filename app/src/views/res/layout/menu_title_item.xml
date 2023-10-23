@@ -7,5 +7,6 @@
     android:layout_marginHorizontal="8dp"
     android:layout_marginTop="12dp"
     android:layout_marginBottom="16dp"
+    android:id="@+id/title_menu"
     style="@style/Imperiya.Style.Text.Title.Big"
     tools:text="User"/>

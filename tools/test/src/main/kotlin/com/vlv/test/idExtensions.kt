@@ -1,5 +1,6 @@
 package com.vlv.test
 
+import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
@@ -10,6 +11,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withHint
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.platform.app.InstrumentationRegistry
 import com.vlv.test.action.ClickIgnoreConstraint
 import com.vlv.test.action.ClickOnChildView
 import com.vlv.test.action.ClickTabLayout
@@ -53,7 +55,11 @@ fun Int.isDisplayed() {
     }
 }
 
-
+fun Int.clickOnString(targetContext: Boolean = false) {
+    val context = if(targetContext) InstrumentationRegistry.getInstrumentation().targetContext
+        else InstrumentationRegistry.getInstrumentation().context
+    context.getString(this).clickIgnoreConstraint()
+}
 
 fun Int.isNotDisplayed() {
     runWithWaitFor {

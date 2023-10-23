@@ -82,7 +82,7 @@ class MenuAdapter(
 class MenuItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val icon: AppCompatImageView by viewProvider(R.id.icon)
-    private val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
+    private val title: AppCompatTextView by viewProvider(R.id.menu_item_title)
 
     fun bind(menuItem: MenuItem) {
         itemView.clipToOutline = true
