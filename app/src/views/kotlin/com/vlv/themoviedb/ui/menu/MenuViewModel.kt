@@ -92,7 +92,7 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_movie_option_discover,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie,
+            icon = RCommon.drawable.ic_search,
             action = context.toMovieSearch()
         ),
         MenuItem(

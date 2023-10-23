@@ -15,4 +15,5 @@ fun String.clickIgnoreConstraint() {
     onView(withText(this)).apply {
         perform(scrollTo(), ClickIgnoreConstraint())
     }
+    Thread.sleep(100)
 }

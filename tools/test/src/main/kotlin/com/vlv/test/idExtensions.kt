@@ -75,6 +75,7 @@ fun Int.click() {
 fun Int.clickIgnoreConstraint() {
     runWithWaitFor {
         onView(withId(this)).perform(ClickIgnoreConstraint())
+        Thread.sleep(100)
     }
 }
 
@@ -87,6 +88,7 @@ fun Int.clickRecyclerViewItemPosition(position: Int) {
                     ClickIgnoreConstraint()
                 )
             )
+        Thread.sleep(100)
     }
 }
 
