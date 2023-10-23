@@ -1,6 +1,5 @@
 package com.vlv.test
 
-import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView

@@ -1,8 +1,8 @@
 package com.vlv.themoviedb.ui.series.trending
 
 import com.vlv.favorite.FavoriteInitializer
-import com.vlv.movie.MovieInitializer
 import com.vlv.network.NetworkInitializer
+import com.vlv.network.repository.SeriesRepository
 import com.vlv.series.SeriesInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
@@ -13,7 +13,7 @@ import org.junit.Test
 import org.koin.dsl.module
 
 private val myModule = module { 
-    single { mockk<TrendingFragment>(relaxed = true) }
+    single { mockk<SeriesRepository>(relaxed = true) }
 }
 
 class TrendingFragmentTest {
@@ -26,7 +26,6 @@ class TrendingFragmentTest {
     val koinRule = KoinRule(
         listOf(myModule),
         NetworkInitializer::class.java,
-        MovieInitializer::class.java,
         SeriesInitializer::class.java,
         FavoriteInitializer::class.java,
         MainInitializer::class.java

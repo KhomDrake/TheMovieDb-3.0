@@ -27,7 +27,6 @@ class SeriesFavoritesFragmentTest {
         listOf(myModule),
         NetworkInitializer::class.java,
         SeriesInitializer::class.java,
-        SeriesInitializer::class.java,
         FavoriteInitializer::class.java,
         MainInitializer::class.java
     )
