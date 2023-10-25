@@ -43,6 +43,7 @@ class SeriesFragmentTest {
             withSeriesTrending()
             withSeriesAiringToday()
         } check {
+            Thread.sleep(200)
             favoritesLoaded()
             trendingLoaded()
             airingTodayLoaded()
