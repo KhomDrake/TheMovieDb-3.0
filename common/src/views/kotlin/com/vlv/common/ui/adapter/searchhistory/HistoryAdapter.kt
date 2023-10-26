@@ -6,7 +6,6 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.R
@@ -87,7 +86,7 @@ class HistoryTitleViewHolder(view: View): ViewHolder(view) {
 class HistoryViewHolder(view: View): ViewHolder(view) {
 
     val closeIcon: AppCompatImageView by viewProvider(R.id.close_icon)
-    private val title: AppCompatTextView by viewProvider(R.id.title)
+    private val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
 
     fun bind(history: History) {
         title.text = history.text

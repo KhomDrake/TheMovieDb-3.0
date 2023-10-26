@@ -133,7 +133,7 @@ class SearchMovieActivityLaunch : Launch<SearchMovieActivityCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }
@@ -158,17 +158,17 @@ class SearchMovieActivityCheck : Check, KoinComponent {
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.withText("Spiderman"),
-                com.vlv.common.R.id.title
+                com.vlv.common.R.id.small_warning_title
             )
             checkViewOnRecyclerViewPosition(
                 2,
                 ViewMatchers.withText("Superman"),
-                com.vlv.common.R.id.title
+                com.vlv.common.R.id.small_warning_title
             )
             checkViewOnRecyclerViewPosition(
                 3,
                 ViewMatchers.withText("Bacate"),
-                com.vlv.common.R.id.title
+                com.vlv.common.R.id.small_warning_title
             )
         }
     }
@@ -211,8 +211,8 @@ class SearchMovieActivityCheck : Check, KoinComponent {
         com.vlv.common.R.id.search.isDisplayed()
         com.vlv.common.R.id.warning_view.isDisplayed()
 
-        com.vlv.imperiya.R.id.title.hasText("Failed to load")
-        com.vlv.imperiya.R.id.body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load")
+        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
 
         com.vlv.common.R.id.state_view.isNotDisplayed()
         com.vlv.common.R.id.items.isNotDisplayed()

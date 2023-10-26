@@ -114,7 +114,7 @@ class RecommendationFragmentLaunch : Launch<RecommendationFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickRecommendation(position: Int) {
@@ -159,9 +159,9 @@ class RecommendationFragmentCheck : Check, KoinComponent {
         com.vlv.common.R.id.listing_content.isNotDisplayed()
         com.vlv.common.R.id.warning_view_listing.isDisplayed()
         com.vlv.common.R.id.shimmer_listing.isNotDisplayed()
-        com.vlv.imperiya.R.id.title.hasText("Failed to load")
-        com.vlv.imperiya.R.id.body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.R.id.try_again_button.hasText("Try again")
+        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load")
+        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun recommendationLoaded(times: Int) {

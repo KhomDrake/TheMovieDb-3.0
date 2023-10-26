@@ -3,7 +3,6 @@ package com.vlv.test
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -11,6 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withHint
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.platform.app.InstrumentationRegistry
 import com.vlv.test.action.ClickIgnoreConstraint
 import com.vlv.test.action.ClickOnChildView
 import com.vlv.test.action.ClickTabLayout
@@ -54,7 +54,11 @@ fun Int.isDisplayed() {
     }
 }
 
-
+fun Int.clickOnString(targetContext: Boolean = false) {
+    val context = if(targetContext) InstrumentationRegistry.getInstrumentation().targetContext
+        else InstrumentationRegistry.getInstrumentation().context
+    context.getString(this).clickIgnoreConstraint()
+}
 
 fun Int.isNotDisplayed() {
     runWithWaitFor {
@@ -71,6 +75,7 @@ fun Int.click() {
 fun Int.clickIgnoreConstraint() {
     runWithWaitFor {
         onView(withId(this)).perform(ClickIgnoreConstraint())
+        Thread.sleep(100)
     }
 }
 
@@ -83,6 +88,7 @@ fun Int.clickRecyclerViewItemPosition(position: Int) {
                     ClickIgnoreConstraint()
                 )
             )
+        Thread.sleep(100)
     }
 }
 
@@ -131,9 +137,13 @@ fun Int.clickOnRecyclerViewInsideItem(position: Int, childId: Int) =
         )
     )
 
-fun Int.clickOnRecyclerViewItem(position: Int) =
-    onView(withId(this)).perform(
-        RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-            position, ViewActions.click()
+fun Int.clickOnRecyclerViewItem(position: Int) {
+    runWithWaitFor {
+        onView(withId(this)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position, ViewActions.click()
+            )
         )
-    )
+    }
+}
+

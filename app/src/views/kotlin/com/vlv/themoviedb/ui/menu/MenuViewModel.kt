@@ -17,6 +17,7 @@ import com.vlv.common.ui.route.toSeriesAiringToday
 import com.vlv.common.ui.route.toSeriesGenre
 import com.vlv.common.ui.route.toSeriesOnTheAir
 import com.vlv.common.ui.route.toSeriesPopular
+import com.vlv.common.ui.route.toSeriesSearch
 import com.vlv.common.ui.route.toSeriesTopRated
 import com.vlv.common.ui.route.toSeriesTrendingNow
 import com.vlv.common.ui.route.toSettings
@@ -91,7 +92,7 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_movie_option_discover,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie,
+            icon = RCommon.drawable.ic_search,
             action = context.toMovieSearch()
         ),
         MenuItem(
@@ -146,7 +147,7 @@ class MenuViewModel : ViewModel() {
             R.string.menu_title_series_option_discover,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_search,
-            action = context.toPeopleSearch()
+            action = context.toSeriesSearch()
         ),
         MenuItem(
             R.string.menu_title_series_option_certifications,

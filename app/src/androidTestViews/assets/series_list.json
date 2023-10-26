@@ -1,0 +1,402 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "backdrop_path": "/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
+      "first_air_date": "1952-12-26",
+      "genre_ids": [
+        10763
+      ],
+      "id": 94722,
+      "name": "Tagesschau",
+      "origin_country": [
+        "DE"
+      ],
+      "original_language": "de",
+      "original_name": "Tagesschau",
+      "overview": "German daily news program, the oldest still existing program on German television.",
+      "popularity": 3090.653,
+      "poster_path": "/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
+      "vote_average": 7.4,
+      "vote_count": 153
+    },
+    {
+      "backdrop_path": "/218ZehBKlH8efPRRccmB7bu0oLQ.jpg",
+      "first_air_date": "2023-09-25",
+      "genre_ids": [
+        35,
+        9648,
+        10766,
+        18
+      ],
+      "id": 219109,
+      "name": "Elas por Elas",
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "pt",
+      "original_name": "Elas por Elas",
+      "overview": "",
+      "popularity": 2269.834,
+      "poster_path": "/hCSH5KvSqShWXhFiXr88wtJXwlO.jpg",
+      "vote_average": 9.5,
+      "vote_count": 4
+    },
+    {
+      "backdrop_path": "/sLFzswJzWUBwTNnLaQ7EOikR1He.jpg",
+      "first_air_date": "2023-10-07",
+      "genre_ids": [
+        18
+      ],
+      "id": 233076,
+      "name": "The Heart",
+      "origin_country": [
+        "CN"
+      ],
+      "original_language": "zh",
+      "original_name": "问心",
+      "overview": "Xiao Feng is the Deputy Chief Physician of the Cardiology Department at Dongli Hospital. He is introverted and strict. He becomes work partners with the impulsive doctor Lin Yi, yet friction arises due to the differences in their medical beliefs. Meanwhile, Xiao Feng's younger sister also gets a job working as a doctor at the Intensive Care Unit.",
+      "popularity": 1549.21,
+      "poster_path": "/sEyJgrm80Lad7MRMchh6ZrdoAAi.jpg",
+      "vote_average": 9,
+      "vote_count": 2
+    },
+    {
+      "backdrop_path": "/2N4LXvTkUwPRkbvyzdmzvtnCHgR.jpg",
+      "first_air_date": "2023-07-25",
+      "genre_ids": [],
+      "id": 225660,
+      "name": "Pira-Pirasong Paraiso",
+      "origin_country": [
+        "PH"
+      ],
+      "original_language": "tl",
+      "original_name": "Pira-Pirasong Paraiso",
+      "overview": "A con artist takes on the job of pretending to be one of the long-lost sisters of a young and rich woman. As she navigates a world of cunning and lies, she learns about right and wrong, love and family, and spectacular truths about herself.",
+      "popularity": 1791.383,
+      "poster_path": "/gELcO56G9EsUj6LSjaDq8VvI8De.jpg",
+      "vote_average": 6.5,
+      "vote_count": 20
+    },
+    {
+      "backdrop_path": "/gMMnf8VRg3Z98WaFmOLr9Jk8pIs.jpg",
+      "first_air_date": "2015-09-08",
+      "genre_ids": [
+        35,
+        10767
+      ],
+      "id": 63770,
+      "name": "The Late Show with Stephen Colbert",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "The Late Show with Stephen Colbert",
+      "overview": "Stephen Colbert brings his signature satire and comedy to The Late Show with Stephen Colbert, the #1 show in late night, where he talks with an eclectic mix of guests about what is new and relevant in the worlds of politics, entertainment, business, music, technology, and more. Featuring bandleader Jon Batiste with his band Stay Human, the Emmy Award-nominated show is broadcast from the historic Ed Sullivan Theater. Stephen Colbert, Chris Licht, Tom Purcell, and Jon Stewart are executive producers. Barry Julien and Denise Rehrig serve as co-executive producers.",
+      "popularity": 1698.151,
+      "poster_path": "/9jkThAGYj2yp8jsS6Nriy5mzKFT.jpg",
+      "vote_average": 6.5,
+      "vote_count": 209
+    },
+    {
+      "backdrop_path": "/5MkBAawsj7O9zitVtzMXagyrIBw.jpg",
+      "first_air_date": "2023-01-30",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "id": 217216,
+      "name": "Flor Sem Tempo",
+      "origin_country": [
+        "PT"
+      ],
+      "original_language": "pt",
+      "original_name": "Flor Sem Tempo",
+      "overview": "",
+      "popularity": 1441.854,
+      "poster_path": "/bclnfDXvx7UydFSk83B258vRRvI.jpg",
+      "vote_average": 6.9,
+      "vote_count": 46
+    },
+    {
+      "backdrop_path": "/l7LRGYJY3NzIGBlpvHpMsNXHbm5.jpg",
+      "first_air_date": "2023-01-09",
+      "genre_ids": [
+        10751,
+        35
+      ],
+      "id": 218145,
+      "name": "Mama na prenájom",
+      "origin_country": [
+        "SK"
+      ],
+      "original_language": "sk",
+      "original_name": "Mama na prenájom",
+      "overview": "",
+      "popularity": 1389.588,
+      "poster_path": "/fH7PP2Rkdlo414IHvZABBHhtoqd.jpg",
+      "vote_average": 6.3,
+      "vote_count": 6
+    },
+    {
+      "backdrop_path": "/aWPhMZ0P2DyfWB7k5NXhGHSZHGC.jpg",
+      "first_air_date": "2023-05-08",
+      "genre_ids": [
+        18,
+        80,
+        10766
+      ],
+      "id": 209265,
+      "name": "Land of Desire",
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "pt",
+      "original_name": "Terra e Paixão",
+      "overview": "When her husband is killed in a land grabbing attempt, Aline takes charge of cultivating his land and protecting his family. Facing the powerful Antonio La Selva, responsible for the death of her husband and the largest landowner in the region, Aline is determined to keep possession of her land and invest in its production. However, she didn't expect that she would fall in love with Daniel, son of her rival, who is at odds with his rebellious half-brother, Caio, who, in turn, also falls in love with the girl. In the interior of Brazil, Aline will have to fight two battles: the dispute for her lands and for her heart.",
+      "popularity": 1377.971,
+      "poster_path": "/6SgKArqMYmqSl5XlHEucGXvotw.jpg",
+      "vote_average": 6.6,
+      "vote_count": 122
+    },
+    {
+      "backdrop_path": "/dsJLciKge3JeyUXu0VQkxVgnrRK.jpg",
+      "first_air_date": "",
+      "genre_ids": [
+        10764
+      ],
+      "id": 233680,
+      "name": "Hotel Paradise Extra",
+      "origin_country": [
+        "PL"
+      ],
+      "original_language": "pl",
+      "original_name": "Hotel Paradise Extra",
+      "overview": "",
+      "popularity": 1285.416,
+      "poster_path": "/jxI6eEulbhE6IdHMX5fM4QTVdqa.jpg",
+      "vote_average": 7.5,
+      "vote_count": 2
+    },
+    {
+      "backdrop_path": "/ohJTnu93hJ0Uonl86Wn3mOSlWXN.jpg",
+      "first_air_date": "2017-02-06",
+      "genre_ids": [
+        10751,
+        35,
+        18
+      ],
+      "id": 91759,
+      "name": "Come Home Love: Lo and Behold",
+      "origin_country": [
+        "HK"
+      ],
+      "original_language": "cn",
+      "original_name": "愛·回家之開心速遞",
+      "overview": "Hung Sue Gan starting from the bottom, established his own logistics company, which is now running smoothly. His only concern now are his three daughters. His eldest daughter has immigrated overseas. His second daughter Hung Yeuk Shui has reached the marriageable age, but has no hopes for marriage anytime soon. She is constantly bickering with her younger sister Hung Sum Yue, who is an honour student, over trivial matters, causing their father to not know whether to laugh or cry. Hung Sue Yan, Hung Sue Gan's brother, moves in with the family, temporarily ending his life as a nomadic photographer. He joins Hung Yeuk Shui's company and encounters Ko Pak Fei, the director of an online shop. The two appear to be former lovers, making for lots of laughter. Since Hung Sue Yan moved in, a series of strange events have occurred in the family. Upon investigation, the source is traced to Lung Ging Fung, a promising young man who is the son of department store mogul Lung Gam Wai.",
+      "popularity": 968.512,
+      "poster_path": "/lgD4j9gUGmMckZpWWRJjorWqGVT.jpg",
+      "vote_average": 5,
+      "vote_count": 31
+    },
+    {
+      "backdrop_path": "/yii7eIlaw1MRMfa7FTA6mW8hBUQ.jpg",
+      "first_air_date": "2023-08-14",
+      "genre_ids": [
+        35,
+        10766
+      ],
+      "id": 213026,
+      "name": "Fuzuê",
+      "origin_country": [
+        "BR"
+      ],
+      "original_language": "pt",
+      "original_name": "Fuzuê",
+      "overview": "",
+      "popularity": 1228.163,
+      "poster_path": "/zNNFg8z3z7uT817n6M0kHRcYwq1.jpg",
+      "vote_average": 5.8,
+      "vote_count": 19
+    },
+    {
+      "backdrop_path": "/69Jblm3seQgiPuPQMrJqg9Nxhaz.jpg",
+      "first_air_date": "2011-01-10",
+      "genre_ids": [
+        10763,
+        10767
+      ],
+      "id": 101463,
+      "name": "Al rojo vivo",
+      "origin_country": [
+        "ES"
+      ],
+      "original_language": "es",
+      "original_name": "Al rojo vivo",
+      "overview": "\"Al rojo vivo\" is a program on laSexta focused on the analysis and debate of national and international political current affairs. The format is hosted and directed by Antonio García Ferreras and produced by the News Services of laSexta.",
+      "popularity": 1100.807,
+      "poster_path": "/ag6PmoBxkF2s1uY3An618NCEt3g.jpg",
+      "vote_average": 2.8,
+      "vote_count": 16
+    },
+    {
+      "backdrop_path": "/1Xm0WqoT0DjZm5JdG2V6YFabrOz.jpg",
+      "first_air_date": "2023-02-13",
+      "genre_ids": [
+        10759,
+        35,
+        18
+      ],
+      "id": 215803,
+      "name": "Batang Quiapo",
+      "origin_country": [
+        "PH"
+      ],
+      "original_language": "tl",
+      "original_name": "Quiapo Kid",
+      "overview": "A young man rises to be one of the biggest outlaws in the neighborhood while he navigates his way in life to survive in Quiapo. Hoping to earn the affection of his parents, his feat draws him closer to the truth about his identity.",
+      "popularity": 1068.411,
+      "poster_path": "/9McqS8mgMf5NJCAKZIY6J1oOl8y.jpg",
+      "vote_average": 7,
+      "vote_count": 103
+    },
+    {
+      "backdrop_path": "/ottT2Yt0OfHiHp3PHJTLNVV8JPE.jpg",
+      "first_air_date": "1992-05-11",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "id": 13945,
+      "name": "Gute Zeiten, schlechte Zeiten",
+      "origin_country": [
+        "DE"
+      ],
+      "original_language": "de",
+      "original_name": "Gute Zeiten, schlechte Zeiten",
+      "overview": "Gute Zeiten, schlechte Zeiten is a long-running German television soap opera, first broadcast on RTL in 1992. The programme concerns the lives of a fictional neighborhood in Germany's capital city Berlin. Over the years the soap opera tends to have an overhaul of young people in their late teens and early twenties; targeting a young viewership.",
+      "popularity": 984.239,
+      "poster_path": "/fNHBzjxsydcAssxXqb5IV2obDdU.jpg",
+      "vote_average": 7.2,
+      "vote_count": 19
+    },
+    {
+      "backdrop_path": "/i4n8ZKmCUaxcGMkPhm12selZiff.jpg",
+      "first_air_date": "2023-06-12",
+      "genre_ids": [
+        18,
+        10766
+      ],
+      "id": 226411,
+      "name": "Mía es la venganza",
+      "origin_country": [
+        "ES"
+      ],
+      "original_language": "es",
+      "original_name": "Mía es la venganza",
+      "overview": "",
+      "popularity": 978.121,
+      "poster_path": "/wysp5AcY9JpLjje5NunKYw7Mrtc.jpg",
+      "vote_average": 7,
+      "vote_count": 61
+    },
+    {
+      "backdrop_path": "/2GflJk6Hm1L3FFVWIvnuOskDFGv.jpg",
+      "first_air_date": "2023-08-28",
+      "genre_ids": [
+        18,
+        9648
+      ],
+      "id": 226773,
+      "name": "Senior High",
+      "origin_country": [
+        "PH"
+      ],
+      "original_language": "tl",
+      "original_name": "Senior High",
+      "overview": "A student’s death causes a scandal at the prestigious Northford High. Investigations conclude it was a suicide. The victim’s twin sister thinks otherwise. As she searches for truth, she will unravel secrets that are far more shocking and dangerous.",
+      "popularity": 957.24,
+      "poster_path": "/k285iD6gZIoLsVSczSjc4WIXkdc.jpg",
+      "vote_average": 0,
+      "vote_count": 0
+    },
+    {
+      "backdrop_path": "/9TXcHOeCsM8W3ZKKIKjdYUsRSeq.jpg",
+      "first_air_date": "2017-07-17",
+      "genre_ids": [
+        80,
+        18
+      ],
+      "id": 72879,
+      "name": "Tomorrow is Ours",
+      "origin_country": [
+        "FR"
+      ],
+      "original_language": "fr",
+      "original_name": "Demain nous appartient",
+      "overview": "The story revolves around the people of Sète, France. Their lives are punctuated by family rivalries, romance and scenes from daily life, but also by plots involving police investigations, secrets and betrayals.",
+      "popularity": 945.085,
+      "poster_path": "/3uU5uJzOX7xe7mn7YKpBM9oiEZO.jpg",
+      "vote_average": 6.3,
+      "vote_count": 42
+    },
+    {
+      "backdrop_path": "/mlX6SG7lJ0BiLui5x5Nu4agetBA.jpg",
+      "first_air_date": "2014-05-26",
+      "genre_ids": [
+        10766,
+        18
+      ],
+      "id": 82708,
+      "name": "The First Years",
+      "origin_country": [],
+      "original_language": "nl",
+      "original_name": "Brugklas",
+      "overview": "The First Years is a contemporary scripted reality serie about the first year of secondary school with recognizable and poignant stories about the fascinations, challenges and problems of first graders. The stories are based on true events, which makes them very recognizable for young viewers. But also uplifting: love, first kiss…",
+      "popularity": 915.946,
+      "poster_path": "/klPqN1oITjVub0Yss0Kqnx8NfY3.jpg",
+      "vote_average": 5.5,
+      "vote_count": 6
+    },
+    {
+      "backdrop_path": "/1stoC4UstDtmST8x8VATtf08KfL.jpg",
+      "first_air_date": "2005-10-13",
+      "genre_ids": [
+        10766
+      ],
+      "id": 206559,
+      "name": "Binnelanders",
+      "origin_country": [
+        "ZA"
+      ],
+      "original_language": "af",
+      "original_name": "Binnelanders",
+      "overview": "A South African Afrikaans soap opera. It is set in and around the fictional private hospital, Binneland Kliniek, in Pretoria, and the storyline follows the trials, trauma and tribulations of the staff and patients of the hospital.",
+      "popularity": 915.447,
+      "poster_path": "/v9nGSRx5lFz6KEgfmgHJMSgaARC.jpg",
+      "vote_average": 4.9,
+      "vote_count": 16
+    },
+    {
+      "backdrop_path": "/rj3jBAZwPiOgkwAy1205MAgLahj.jpg",
+      "first_air_date": "2018-08-27",
+      "genre_ids": [
+        10766
+      ],
+      "id": 81329,
+      "name": "Chronicles of the Sun",
+      "origin_country": [
+        "FR"
+      ],
+      "original_language": "fr",
+      "original_name": "Un si grand soleil",
+      "overview": "",
+      "popularity": 911.088,
+      "poster_path": "/t6jVlbPMtZOJoAOfeoR4yQmnjXM.jpg",
+      "vote_average": 7.6,
+      "vote_count": 50
+    }
+  ],
+  "total_pages": 16,
+  "total_results": 311
+}

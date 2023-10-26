@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.configuration.R
 import com.vlv.extensions.inflate
-import com.vlv.imperiya.ui.bottomsheet.Item
 
 
 enum class SettingsItemType {
@@ -88,8 +87,8 @@ class SettingsTitleViewHolder(view: View): ViewHolder(view) {
 
 class SettingsNormalViewHolder(view: View): ViewHolder(view) {
 
-    private val title: AppCompatTextView by viewProvider(R.id.title)
-    private val body: AppCompatTextView by viewProvider(R.id.body)
+    private val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
+    private val body: AppCompatTextView by viewProvider(R.id.small_warning_body)
     val switch: SwitchCompat by viewProvider(R.id.switch_settings)
 
     fun bind(settingsItem: SettingsItem) {

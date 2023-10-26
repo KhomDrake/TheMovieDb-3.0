@@ -7,7 +7,6 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.arch.toolkit.delegate.extraProvider
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.imperiya.R
 
@@ -18,8 +17,8 @@ class SpinnerBottomSheet(
     override val layoutRes: Int
         get() = R.layout.imperiya_spinner_action_sheet
 
-    private val title: AppCompatTextView by viewProvider(R.id.title)
-    private val body: AppCompatTextView by viewProvider(R.id.body)
+    private val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
+    private val body: AppCompatTextView by viewProvider(R.id.small_warning_body)
     private val button: AppCompatButton by viewProvider(R.id.confirm_button)
     private val items: RecyclerView by viewProvider(R.id.items)
 

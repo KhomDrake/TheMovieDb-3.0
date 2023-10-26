@@ -34,7 +34,7 @@
 
     <!--  Home Series - Favorites  -->
     <string name="error_series_load_text_title_favorites">Failed to load favorites tv shows</string>
-    <string name="empty_state_text_series_favorite">None favorite series found</string>
+    <string name="empty_state_text_series_favorite">None favorite tv shows found</string>
 
     <!--  Home Series - Trending  -->
     <string name="empty_state_text_series_trending">None tv shows found</string>

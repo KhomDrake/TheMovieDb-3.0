@@ -86,7 +86,7 @@ class SpinnerAdapter(
 
 class ItemViewHolder(view: View): ViewHolder(view) {
 
-    val title: AppCompatTextView by viewProvider(R.id.title)
+    val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
     val checkbox: AppCompatCheckBox by viewProvider(R.id.checkbox)
 
     fun bind(item: Item) {

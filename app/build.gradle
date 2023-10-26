@@ -75,6 +75,14 @@ android {
         exclude "META-INF/AL2.0"
         exclude "META-INF/LGPL2.1"
     }
+
+    testOptions {
+        packagingOptions {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
+    }
 }
 
 dependencies {
@@ -102,6 +110,8 @@ dependencies {
 
     viewsImplementation(libs.shimmer)
     viewsImplementation(libs.pagerindicator)
+    viewsImplementation(libs.tests.androidx.fragment.testing)
+    viewsImplementation(libs.tests.androidx.test.core)
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')

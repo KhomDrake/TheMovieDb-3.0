@@ -9,7 +9,6 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -83,7 +82,7 @@ class MenuAdapter(
 class MenuItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val icon: AppCompatImageView by viewProvider(R.id.icon)
-    private val title: AppCompatTextView by viewProvider(R.id.title)
+    private val title: AppCompatTextView by viewProvider(R.id.menu_item_title)
 
     fun bind(menuItem: MenuItem) {
         itemView.clipToOutline = true

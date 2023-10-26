@@ -28,7 +28,7 @@ import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
 
 abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) {
 
-    protected val title: AppCompatTextView by viewProvider(R.id.title)
+    protected val title: AppCompatTextView by viewProvider(R.id.list_title)
     protected val recyclerView: RecyclerView by viewProvider(R.id.series)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer)
     protected val errorView: SmallWarningView by viewProvider(R.id.error_state)

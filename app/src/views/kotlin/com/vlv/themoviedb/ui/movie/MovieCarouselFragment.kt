@@ -31,7 +31,7 @@ import com.vlv.common.R as RCommon
 abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
 
     protected val root: ViewGroup by viewProvider(R.id.root)
-    protected val title: AppCompatTextView by viewProvider(R.id.title)
+    protected val title: AppCompatTextView by viewProvider(R.id.list_title)
     protected val recyclerView: RecyclerView by viewProvider(R.id.movies)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer)
     protected val errorView: SmallWarningView by viewProvider(R.id.error_state)
@@ -58,7 +58,6 @@ abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
         setupRecyclerView()
         setupViewStateMachine()
         seeAll.setOnClickListener { onClickSeeAll() }
-        loadContent()
     }
 
     private fun setupRecyclerView() {

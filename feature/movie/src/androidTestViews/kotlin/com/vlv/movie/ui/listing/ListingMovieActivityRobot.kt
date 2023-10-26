@@ -141,7 +141,7 @@ class ListingMovieActivityLaunch : Launch<ListingMovieActivityCheck> {
     }
 
     fun clickTryAgain() {
-        ImperiyaR.id.try_again_button.clickIgnoreConstraint()
+        ImperiyaR.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }
