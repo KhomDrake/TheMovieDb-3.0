@@ -33,7 +33,7 @@ class MovieFragmentTest {
     )
 
     @Test
-    @Ignore("Not working on CI")
+    @Ignore("Not working on CI ")
     fun checkIfMoviesAllBeingLoaded() {
         movieFragment {
             withFavorites()
