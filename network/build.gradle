@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.squareup.okhttp3)
     implementation(libs.androidx.paging)
     implementation(libs.androidx.startup)
+    implementation(libs.mock.interceptor.core)
 
     annotationProcessor(libs.androidx.room.compiler)
 

@@ -8,14 +8,19 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.vlv.network.repository.SettingsOption
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import org.koin.core.component.KoinComponent
+import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
 
 private const val DATA_STORE_KEY = "93481903dkhsj"
 
-object DataVault : KoinComponent {
+val dataVaultScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
+object DataVault {
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = DATA_STORE_KEY)
     private var context: WeakReference<Context> = WeakReference(null)
@@ -69,9 +74,28 @@ object DataVault : KoinComponent {
         }
     }
 
+    fun setValue(key: String, value: Boolean, scope: CoroutineScope = dataVaultScope) {
+        scope.launch {
+            setValue(key, value)
+        }
+    }
+
+    fun setValue(key: String, value: String, scope: CoroutineScope = dataVaultScope) {
+        scope.launch {
+            setValue(key, value)
+        }
+    }
+
     suspend fun getValue(key: String) : String? {
         return dataStore?.data?.map { settings: Preferences ->
             val newKey = stringPreferencesKey(key)
+            settings[newKey]
+        }?.first()
+    }
+
+    suspend fun getValueBoolean(key: String) : Boolean? {
+        return dataStore?.data?.map { settings: Preferences ->
+            val newKey = booleanPreferencesKey(key)
             settings[newKey]
         }?.first()
     }

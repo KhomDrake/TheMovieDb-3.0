@@ -3,15 +3,16 @@ package com.vlv.network
 import android.content.Context
 import androidx.room.Room
 import androidx.startup.Initializer
+import com.vlv.network.di.Initializers.initializers
 import com.vlv.network.api.ConfigurationApi
 import com.vlv.network.api.DiscoverApi
 import com.vlv.network.api.GenresApi
 import com.vlv.network.api.MovieApi
 import com.vlv.network.api.PeopleApi
-import com.vlv.network.api.SearchApi
 import com.vlv.network.api.SeriesApi
 import com.vlv.network.client.OkHttpFactory
 import com.vlv.network.database.TheMovieDatabase
+import com.vlv.network.di.ModuleInitializer
 import com.vlv.network.interceptors.InterceptorFactory
 import com.vlv.network.moshi.MoshiFactory
 import com.vlv.network.repository.ConfigurationRepository
@@ -27,11 +28,12 @@ import com.vlv.network.repository.SeriesRepository
 import com.vlv.network.retrofit.RetrofitFactory
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-class NetworkInitializer : Initializer<Module> {
+class NetworkInitializer : ModuleInitializer() {
 
     private fun moshiModule() = module {
         single { MoshiFactory.moshi() }
@@ -53,7 +55,6 @@ class NetworkInitializer : Initializer<Module> {
         single { RetrofitFactory.service(get(), DiscoverApi::class) as DiscoverApi }
         single { RetrofitFactory.service(get(), GenresApi::class) as GenresApi }
         single { RetrofitFactory.service(get(), PeopleApi::class) as PeopleApi }
-        single { RetrofitFactory.service(get(), SearchApi::class) as SearchApi }
     }
 
     private fun roomModule(context: Context) = module {

@@ -11,6 +11,18 @@
             android:name=".BigBrotherTheMovieDb"
             android:enabled="true"
             android:exported="false"/>
+
+        <activity
+            android:name=".EnvActivity"
+            android:icon="@drawable/ic_tmdb"
+            android:taskAffinity="com.vlv.themoviedb.EnvActivity"
+            android:label="Env Config"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

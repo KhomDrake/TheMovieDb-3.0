@@ -1,0 +1,24 @@
+{
+  "reference": "Configuration",
+  "default": -1,
+  "saved_data": [
+    {
+      "description": "Configuration Data",
+      "code": 200,
+      "data_path": "configuration/config.json"
+    },
+    {
+      "description": "Error - No body",
+      "code": 400,
+      "is_unit": true
+    },
+    {
+      "description": "Error",
+      "code": 500,
+      "data": {
+        "message": "Unexpected error while getting the list",
+        "type": "UNEXPECTED_ERROR"
+      }
+    }
+  ]
+}

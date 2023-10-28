@@ -11,6 +11,7 @@ squareup-okhttp3-version = "4.11.0"
 squareup-moshi-version = "1.14.0"
 threetenabp-version = "1.4.6"
 koin-version = "3.4.1"
+mock-interceptor-version = "1.6.0"
 
 junit-version = "4.13.2"
 espresso-core-version = "3.5.1"
@@ -78,6 +79,7 @@ coil = { group = "io.coil-kt", name = "coil", version.ref = 'coil-version' }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 'koin-version' }
 threetenabp = { group = "com.jakewharton.threetenabp", name = "threetenabp", version.ref = 'threetenabp-version' }
 org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "orgjacoco-core-version" }
+mock-interceptor-core = { group = "com.github.gustafah", name = "mock-interceptor", version.ref = 'mock-interceptor-version' }
 
 # Big Brother
 bigbrother-core = { group = "io.github.mrocigno", name = "big-brother-core", version.ref = 'bigbrother-version'  }

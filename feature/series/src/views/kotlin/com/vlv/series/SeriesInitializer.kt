@@ -3,6 +3,7 @@ package com.vlv.series
 import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.network.NetworkInitializer
+import com.vlv.network.di.ModuleInitializer
 import com.vlv.series.ui.detail.SeriesDetailViewModel
 import com.vlv.series.ui.detail.about.AboutViewModel
 import com.vlv.series.ui.detail.cast.SeriesCastViewModel
@@ -16,7 +17,7 @@ import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-class SeriesInitializer: Initializer<Module> {
+class SeriesInitializer: ModuleInitializer() {
 
     override fun create(context: Context): Module {
         val module = module {

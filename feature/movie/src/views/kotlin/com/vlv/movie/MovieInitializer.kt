@@ -10,12 +10,13 @@ import com.vlv.movie.ui.detail.review.ReviewViewModel
 import com.vlv.movie.ui.listing.ListingMovieViewModel
 import com.vlv.movie.ui.search.SearchViewModel
 import com.vlv.network.NetworkInitializer
+import com.vlv.network.di.ModuleInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-class MovieInitializer : Initializer<Module> {
+class MovieInitializer : ModuleInitializer() {
 
     override fun create(context: Context): Module {
         val module = module {

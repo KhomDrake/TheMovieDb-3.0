@@ -3,6 +3,11 @@
 
     <style name="Imperiya.Widget"/>
 
+    <style name="Imperiya.Widget.Switch">
+        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textAppearance">@style/Imperiya.Style.Text.Subtitle.Bold</item>
+    </style>
+
     <style name="Imperiya.Widget.Shimmer">
         <item name="shimmer_auto_start">true</item>
         <item name="shimmer_base_color">@color/imperiya_color_start_shimmer</item>

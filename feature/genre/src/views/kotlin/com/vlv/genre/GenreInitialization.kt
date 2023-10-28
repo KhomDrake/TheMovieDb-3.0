@@ -5,12 +5,13 @@ import androidx.startup.Initializer
 import com.vlv.genre.ui.movie.MovieGenreViewModel
 import com.vlv.genre.ui.series.SeriesGenreViewModel
 import com.vlv.network.NetworkInitializer
+import com.vlv.network.di.ModuleInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-class GenreInitialization : Initializer<Module> {
+class GenreInitialization : ModuleInitializer() {
 
 
     override fun create(context: Context): Module {
