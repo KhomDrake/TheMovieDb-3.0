@@ -11,7 +11,7 @@ object OkHttpFactory {
             interceptorFactory.interceptors().forEach {
                 addInterceptor(it)
             }
-//            addInterceptor(BigBrotherInterceptor())
+            addInterceptor(BigBrotherInterceptor())
             connectTimeout(60, TimeUnit.SECONDS)
             callTimeout(60, TimeUnit.SECONDS)
             readTimeout(60, TimeUnit.SECONDS)
