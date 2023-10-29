@@ -73,142 +73,142 @@ Currently, the View version is almost finished, there are a few things that I ne
 
 <p align="center">
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Home Movie" title="#Movie" src="./images/views/1_home_movie.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Home Movie" title="#Movie" src="./images/views/1_home_movie.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Home Series" title="#Sereis" src="./images/views/2_home_series.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Home Series" title="#Sereis" src="./images/views/2_home_series.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Search" title="#Search" src="./images/views/3_search.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Search" title="#Search" src="./images/views/3_search.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Search - Movies" title="#Search" src="./images/views/4_search_movies.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Search - Movies" title="#Search" src="./images/views/4_search_movies.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Search - Series" title="#Search" src="./images/views/5_search_series.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Search - Series" title="#Search" src="./images/views/5_search_series.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Search - History" title="#Search" src="./images/views/6_search_history.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Search - History" title="#Search" src="./images/views/6_search_history.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Search - Series - Naruto" title="#Search" src="./images/views/7_search_series_naruto.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Search - Series - Naruto" title="#Search" src="./images/views/7_search_series_naruto.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Favorites - Movie" title="#Favorites" src="./images/views/8_favorites_home_movie.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Favorites - Movie" title="#Favorites" src="./images/views/8_favorites_home_movie.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Favorites - Series" title="#Favorites" src="./images/views/9_favorites_home_series.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Favorites - Series" title="#Favorites" src="./images/views/9_favorites_home_series.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Menu" title="#Menu" src="./images/views/10_menu_1.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Menu" title="#Menu" src="./images/views/10_menu_1.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Menu 2" title="#Menu" src="./images/views/11_menu_2.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Menu 2" title="#Menu" src="./images/views/11_menu_2.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Settings" title="#Settings" src="./images/views/12_settings.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Settings" title="#Settings" src="./images/views/12_settings.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Trending Now" title="#Movie" src="./images/views/13_movie_trending_now.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Trending Now" title="#Movie" src="./images/views/13_movie_trending_now.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Top Rated" title="#Movie" src="./images/views/14_movie_top_rated.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Top Rated" title="#Movie" src="./images/views/14_movie_top_rated.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Now Playing" title="#Movie" src="./images/views/15_movie_now_playing.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Now Playing" title="#Movie" src="./images/views/15_movie_now_playing.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Upcoming" title="#Movie" src="./images/views/16_movie_upcoming.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Upcoming" title="#Movie" src="./images/views/16_movie_upcoming.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Popular" title="#Movie" src="./images/views/17_movie_popular.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Popular" title="#Movie" src="./images/views/17_movie_popular.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Genres" title="#Movie" src="./images/views/18_movies_genres.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Genres" title="#Movie" src="./images/views/18_movies_genres.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Genres 2" title="#Movie" src="./images/views/19_movies_genre.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Genres 2" title="#Movie" src="./images/views/19_movies_genre.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Trending Now" title="#Movie" src="./images/views/20_series_trending_now.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Trending Now" title="#Movie" src="./images/views/20_series_trending_now.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Top Rated" title="#Series" src="./images/views/21_series_top_rated.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Top Rated" title="#Series" src="./images/views/21_series_top_rated.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Airing Today" title="#Series" src="./images/views/22_series_airing_today.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Airing Today" title="#Series" src="./images/views/22_series_airing_today.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - On The Air" title="#Series" src="./images/views/23_series_on_the_air.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - On The Air" title="#Series" src="./images/views/23_series_on_the_air.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Popular" title="#Series" src="./images/views/24_series_popular.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Popular" title="#Series" src="./images/views/24_series_popular.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Genres" title="#Series" src="./images/views/25_series_genres.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Genres" title="#Series" src="./images/views/25_series_genres.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Search" title="#Series" src="./images/views/26_series_search.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Search" title="#Series" src="./images/views/26_series_search.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Search - Search 2" title="#Series" src="./images/views/27_series_search_2.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Search - Search 2" title="#Series" src="./images/views/27_series_search_2.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="People - Popular" title="#People" src="./images/views/28_people_popular.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="People - Popular" title="#People" src="./images/views/28_people_popular.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="People - Trending" title="#People" src="./images/views/29_people_trending.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="People - Trending" title="#People" src="./images/views/29_people_trending.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="People - Search" title="#People" src="./images/views/30_people_search.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="People - Search" title="#People" src="./images/views/30_people_search.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Detail - 1" title="#MovieDetail" src="./images/views/31_movie_detail_1.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Detail - 1" title="#MovieDetail" src="./images/views/31_movie_detail_1.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Detail - 2" title="#MovieDetail" src="./images/views/32_movie_detail_2.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Detail - 2" title="#MovieDetail" src="./images/views/32_movie_detail_2.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Detail - Cast" title="#MovieDetail" src="./images/views/33_movie_detail_cast.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Detail - Cast" title="#MovieDetail" src="./images/views/33_movie_detail_cast.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Detail - 3" title="#MovieDetail" src="./images/views/34_movie_detail_3.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Detail - 3" title="#MovieDetail" src="./images/views/34_movie_detail_3.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Detail - Review" title="#MovieDetail" src="./images/views/35_movie_detail_review.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Detail - Review" title="#MovieDetail" src="./images/views/35_movie_detail_review.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Movie - Detail - Recommendation" title="#MovieDetail" src="./images/views/36_movie_detail_recommendation.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Movie - Detail - Recommendation" title="#MovieDetail" src="./images/views/36_movie_detail_recommendation.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Detail - 1" title="#SeriesDetail" src="./images/views/37_series_detail_1.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Detail - 1" title="#SeriesDetail" src="./images/views/37_series_detail_1.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Detail - 2" title="#SeriesDetail" src="./images/views/38_series_detail_2.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Detail - 2" title="#SeriesDetail" src="./images/views/38_series_detail_2.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Detail - 3" title="#SeriesDetail" src="./images/views/39_series_detail_3.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Detail - 3" title="#SeriesDetail" src="./images/views/39_series_detail_3.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Detail - Seasons" title="#SeriesDetail" src="./images/views/40_series_detail_seasons.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Detail - Seasons" title="#SeriesDetail" src="./images/views/40_series_detail_seasons.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Detail - Cast" title="#SeriesDetail" src="./images/views/41_series_detail_cast.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Detail - Cast" title="#SeriesDetail" src="./images/views/41_series_detail_cast.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Detail - Reviews" title="#SeriesDetail" src="./images/views/42_series_detail_reviews.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Detail - Reviews" title="#SeriesDetail" src="./images/views/42_series_detail_reviews.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="Series - Detail - Recommendation" title="#SeriesDetail" src="./images/views/43_series_detail_recommendation.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="Series - Detail - Recommendation" title="#SeriesDetail" src="./images/views/43_series_detail_recommendation.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="People - Detail" title="#PeopleDetail" src="./images/views/44_people_detail_1.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="People - Detail" title="#PeopleDetail" src="./images/views/44_people_detail_1.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="People - Detail - Movies" title="#PeopleDetail" src="./images/views/45_people_detail_movies.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="People - Detail - Movies" title="#PeopleDetail" src="./images/views/45_people_detail_movies.png"/>
   </kbd>
   <kbd>
-    <img width="250" style="border-radius: 2px" height="600" alt="People - Detail - Series" title="#PeopleDetail" src="./images/views/46_people_detail_series.png"/>
+    <img width="250" style="border-radius: 2px" height="450" alt="People - Detail - Series" title="#PeopleDetail" src="./images/views/46_people_detail_series.png"/>
   </kbd>
 </p>
 
