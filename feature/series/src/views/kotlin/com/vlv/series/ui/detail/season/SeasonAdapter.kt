@@ -52,8 +52,11 @@ class SeasonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         poster.clipToOutline = true
 
         season.posterPath.loadUrl(poster)
-
-        numberAndDate.text = "${season.episodeCount} episodes - ${season.airDate?.toFormattedString(patternDate2())}"
+        numberAndDate.text = numberAndDate.context.getString(
+            R.string.series_season_description,
+            season.episodeCount,
+            season.airDate?.toFormattedString(patternDate2())
+        )
     }
 
 }

@@ -2,7 +2,6 @@ package com.vlv.themoviedb.ui.menu
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,13 +15,10 @@ class MenuFragment : Fragment(R.layout.menu_fragment) {
 
     private val menuItems: RecyclerView by viewProvider(R.id.menu_items)
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = MenuAdapter {
-            val intent = it.action ?:
-                return@MenuAdapter Toast.makeText(requireContext(), "Not implemented", Toast.LENGTH_SHORT).show()
-
+            val intent = it.action ?: return@MenuAdapter
             startActivity(intent)
         }
         val layoutManager = GridLayoutManager(

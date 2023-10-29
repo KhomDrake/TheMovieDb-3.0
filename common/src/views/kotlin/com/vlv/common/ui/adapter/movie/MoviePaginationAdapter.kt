@@ -12,6 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.R
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.extensions.addAccessibilityDelegate
 
 class MovieDiffUtil: ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -64,6 +65,9 @@ class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(movie: Movie) {
         backdrop.clipToOutline = true
+        backdrop.contentDescription =
+            backdrop.context.getString(R.string.common_movie_backdrop_content_description)
+        backdrop.addAccessibilityDelegate(R.string.common_open_movie_detail)
         title.text = movie.title
         movie.posterPath.loadUrl(backdrop)
     }

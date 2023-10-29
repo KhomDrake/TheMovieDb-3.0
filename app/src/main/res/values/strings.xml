@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logo_content_description">App Logo</string>
+    <string name="logo_animation_start">Starting animation to show app logo</string>
+    <string name="logo_animation_ending">Animation ended</string>
+</resources>

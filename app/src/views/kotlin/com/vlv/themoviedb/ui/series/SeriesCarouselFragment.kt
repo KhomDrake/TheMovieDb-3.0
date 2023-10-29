@@ -14,6 +14,8 @@ import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.data.series.toDetailObject
 import com.vlv.common.ui.route.toSeriesDetail
+import com.vlv.extensions.addButtonAccessibilityDelegate
+import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateError
@@ -50,11 +52,13 @@ abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         title.text = getString(titleRes)
+        title.addHeadingAccessibilityDelegate()
         configEmptyView()
         configErrorView()
         setupRecyclerView()
         setupViewStateMachine()
         seeAll.setOnClickListener { onClickSeeAll() }
+        seeAll.addButtonAccessibilityDelegate()
     }
 
     private fun setupRecyclerView() {

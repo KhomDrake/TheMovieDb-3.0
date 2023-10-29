@@ -34,4 +34,13 @@
     <string name="series_review_tab_title">Reviews</string>
     <string name="series_recommendation_tab_title">Recommendation</string>
     <string name="series_empty_state_recommendation">None recommendation found</string>
+    <string name="series_season_description">%1$d episodes - %2$s</string>
+    <string name="series_description">Description: %s</string>
+    <string name="series_added_to_favorite">Tv show added to favorites</string>
+    <string name="series_add_favorite">add tv show to favorites</string>
+    <string name="series_removed_from_favorite">Tv show removed from favorites</string>
+    <string name="series_remove_favorite">remove tv show from favorites</string>
+    <string name="series_is_favorite">Favorite tv show</string>
+    <string name="series_is_not_favorite">Not favorite tv show</string>
+    
 </resources>

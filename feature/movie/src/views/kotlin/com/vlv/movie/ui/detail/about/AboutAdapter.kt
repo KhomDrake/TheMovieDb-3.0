@@ -13,6 +13,7 @@ import com.vlv.common.ui.adapter.Information
 import com.vlv.common.ui.adapter.InformationViewHolder
 import com.vlv.common.ui.adapter.PillAdapter
 import com.vlv.common.ui.adapter.PillItem
+import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
 import com.vlv.extensions.setMargins
 import kotlin.random.Random
@@ -34,7 +35,10 @@ sealed class AboutItem(
 
     class Title(@StringRes val text: Int) : AboutItem(type = AboutItemType.TITLE)
 
-    class BigText(val text: String) : AboutItem(type = AboutItemType.BIG_TEXT)
+    class BigText(
+        val description: String?,
+        val text: String
+    ) : AboutItem(type = AboutItemType.BIG_TEXT)
 
     class InformationItem(
         val information: Information
@@ -124,6 +128,7 @@ class TitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(title: AboutItem.Title) {
         (itemView as? AppCompatTextView)?.apply {
             val titleText = context.getString(title.text)
+            addHeadingAccessibilityDelegate()
             text = titleText
         }
     }
@@ -133,7 +138,10 @@ class TitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 class BigTextViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(bigText: AboutItem.BigText) {
-        (itemView as? AppCompatTextView)?.text = bigText.text
+        (itemView as? AppCompatTextView)?.apply {
+            contentDescription = bigText.description ?: bigText.text
+            text = bigText.text
+        }
     }
 
 }

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
 import com.vlv.themoviedb.R
 import kotlin.random.Random
@@ -100,7 +101,10 @@ class MenuItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 class MenuTitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(menuItem: MenuItem) {
-        (itemView as? AppCompatTextView)?.text = itemView.resources.getString(menuItem.title)
+        (itemView as? AppCompatTextView)?.apply {
+            text = itemView.resources.getString(menuItem.title)
+            addHeadingAccessibilityDelegate()
+        }
     }
 
 }

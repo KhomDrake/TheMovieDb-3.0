@@ -27,7 +27,7 @@ class PillItemDiffUtil : DiffUtil.ItemCallback<PillItem>() {
 }
 
 class PillAdapter(
-    val onClickItem: ((PillItem) -> Unit)? = null
+    private val onClickItem: ((PillItem) -> Unit)? = null
 ) : ListAdapter<PillItem, PillViewHolder>(PillItemDiffUtil()) {
 
     override fun onBindViewHolder(holder: PillViewHolder, position: Int) {

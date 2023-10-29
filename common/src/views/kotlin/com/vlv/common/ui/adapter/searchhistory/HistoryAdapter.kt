@@ -9,17 +9,19 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.R
+import com.vlv.extensions.addAccessibilityDelegate
+import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
 import com.vlv.network.database.data.History
 
-class HistoryDiffItem: DiffUtil.ItemCallback<History>() {
+class HistoryDiffItem: DiffUtil.ItemCallback<HistoryItems>() {
 
-    override fun areContentsTheSame(oldItem: History, newItem: History): Boolean {
-        return oldItem.text == newItem.text
+    override fun areContentsTheSame(oldItem: HistoryItems, newItem: HistoryItems): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areItemsTheSame(oldItem: History, newItem: History): Boolean {
-        return oldItem.type.ordinal == newItem.type.ordinal && oldItem.text == newItem.text
+    override fun areItemsTheSame(oldItem: HistoryItems, newItem: HistoryItems): Boolean {
+        return oldItem.id == newItem.id
     }
 
 }
@@ -27,19 +29,24 @@ class HistoryDiffItem: DiffUtil.ItemCallback<History>() {
 const val HISTORY_VIEW_TYPE = 23
 const val HISTORY_TITLE_VIEW_TYPE = 24
 
+sealed class HistoryItems(val id: String) {
+    class HistoryTitle(val title: String): HistoryItems(title)
+
+    class HistoryItem(val data: History): HistoryItems(data.toString())
+}
+
 class HistoryAdapter(
-    private val title: String,
     private val onClick: (History) -> Unit,
     private val onClickClose: (History) -> Unit,
-) : ListAdapter<History, ViewHolder>(HistoryDiffItem()) {
+) : ListAdapter<HistoryItems, ViewHolder>(HistoryDiffItem()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         when(holder) {
             is HistoryTitleViewHolder -> {
-                holder.bind(title)
+                holder.bind((currentList[position] as HistoryItems.HistoryTitle).title)
             }
             is HistoryViewHolder -> {
-                val item = currentList[position - 1]
+                val item = (currentList[position] as HistoryItems.HistoryItem).data
                 holder.bind(item)
                 holder.itemView.setOnClickListener {
                     onClick.invoke(item)
@@ -51,11 +58,6 @@ class HistoryAdapter(
             else -> Unit
         }
 
-    }
-
-    override fun getItemCount(): Int {
-        val itemCount = super.getItemCount()
-        return if(itemCount > 0) itemCount + 1 else itemCount
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -78,7 +80,10 @@ class HistoryAdapter(
 class HistoryTitleViewHolder(view: View): ViewHolder(view) {
 
     fun bind(title: String) {
-        (itemView as? AppCompatTextView)?.text = title
+        (itemView as? AppCompatTextView)?.apply {
+            addHeadingAccessibilityDelegate()
+            text = title
+        }
     }
 
 }
@@ -89,6 +94,15 @@ class HistoryViewHolder(view: View): ViewHolder(view) {
     private val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
 
     fun bind(history: History) {
+        val description = closeIcon.context.getString(R.string.common_search_history_icon_content_description)
+        closeIcon.contentDescription = description
+
+        itemView.addAccessibilityDelegate(R.string.common_search_history_click_history)
+
+        closeIcon.addAccessibilityDelegate(
+            closeIcon.context.getString(R.string.common_search_history_icon_action_description),
+            description
+        )
         title.text = history.text
     }
 

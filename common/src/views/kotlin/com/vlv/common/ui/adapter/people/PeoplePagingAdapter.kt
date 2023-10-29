@@ -11,6 +11,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.R
 import com.vlv.common.data.people.People
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.extensions.inflate
 import com.vlv.network.database.data.ImageType
 
@@ -59,6 +60,9 @@ class PeopleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(people: People) {
         avatar.clipToOutline = true
         name.text = people.name
+        avatar.contentDescription =
+            avatar.context.getString(R.string.common_people_avatar_content_description)
+        avatar.addAccessibilityDelegate(R.string.common_open_people_detail)
         people.profilePath.loadUrl(avatar, ImageType.PROFILE)
     }
 

@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.data.series.Series
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.network.database.data.ImageType
 import com.vlv.themoviedb.R
+import com.vlv.common.R as RCommon
 
 class SeriesItemDiff: ItemCallback<Series>() {
     override fun areItemsTheSame(oldItem: Series, newItem: Series): Boolean {
@@ -31,7 +33,7 @@ class SeriesCarouselAdapter(
     override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
         val series = currentList[position]
         holder.bind(series)
-        holder.itemView.setOnClickListener {
+        holder.poster.setOnClickListener {
             onClick.invoke(holder.poster, series)
         }
     }
@@ -56,6 +58,11 @@ class SeriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(series: Series) {
         poster.clipToOutline = true
         title.text = series.title
+        poster.contentDescription =
+            poster.context.getString(RCommon.string.common_series_poster_content_description)
+        poster.addAccessibilityDelegate(
+            RCommon.string.common_open_series_detail
+        )
         series.backdropPath.loadUrl(poster, ImageType.POSTER)
     }
 

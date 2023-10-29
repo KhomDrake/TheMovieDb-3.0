@@ -123,6 +123,10 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
 
     open fun showExpandedInfo(scoreText: String?, dateAndTimeText: String?) {
         expandedScore.text = scoreText
+        expandedScore.contentDescription = getString(
+            R.string.common_expanded_score,
+            scoreText
+        )
         expandedDateAndTime.text = dateAndTimeText
         expandedScore.isVisible = expandedScore.text.isNullOrBlank().not()
         expandedDateAndTime.isVisible = expandedDateAndTime.text.isNullOrBlank().not()

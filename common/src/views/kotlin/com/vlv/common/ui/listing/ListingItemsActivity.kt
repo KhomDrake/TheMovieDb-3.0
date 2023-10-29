@@ -60,6 +60,7 @@ abstract class ListingItemsActivity : AppCompatActivity(R.layout.common_listing_
         toolbar.setNavigationOnClickListener {
             finish()
         }
+        toolbar.navigationContentDescription = getString(R.string.common_back_content_description)
 
         val titleText = getString(title)
         toolbar.title = titleText

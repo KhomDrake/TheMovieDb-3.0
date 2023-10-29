@@ -16,6 +16,7 @@
         android:layout_height="128dp"
         android:outlineProvider="background"
         android:scaleType="centerCrop"
+        android:importantForAccessibility="no"
         android:background="@drawable/common_poster_foreground"
         android:foreground="@drawable/common_poster_foreground"
         app:layout_constraintStart_toStartOf="parent"

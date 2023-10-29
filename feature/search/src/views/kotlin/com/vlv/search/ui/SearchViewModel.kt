@@ -3,14 +3,16 @@ package com.vlv.search.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.vlv.bondsmith.bondsmith
+import br.com.arch.toolkit.livedata.extention.mapList
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
+import com.vlv.common.ui.adapter.searchhistory.HistoryItems
 import com.vlv.network.data.movie.MovieResponse
 import com.vlv.network.database.data.History
 import com.vlv.network.database.data.HistoryType
@@ -63,10 +65,16 @@ class SearchViewModel(
         _searchType.postValue(type)
     }
 
-    fun historyBySearchType() = run {
+    fun historyBySearchType(title: String) = run {
         val searchType = _searchType.value ?: SearchType.MOVIE
         val historyType = HistoryType.values()[searchType.ordinal]
         searchRepository.history(historyType)
+    }.mapList {
+        HistoryItems.HistoryItem(it) as HistoryItems
+    }.map {
+        it.toMutableList().apply {
+            if(isNotEmpty()) add(0, HistoryItems.HistoryTitle(title))
+        }.toList()
     }
 
     fun addToHistory(query: String) {
