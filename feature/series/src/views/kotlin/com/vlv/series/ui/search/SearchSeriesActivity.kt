@@ -52,7 +52,7 @@ class SearchSeriesActivity : SearchActivity() {
     }
 
     override fun loadHistory() {
-        viewModel.historyBySearchType().observe(this) {
+        viewModel.historyBySearchType(getString(titleHistoryTitle)).observe(this) {
             updateHistory(it)
         }
     }

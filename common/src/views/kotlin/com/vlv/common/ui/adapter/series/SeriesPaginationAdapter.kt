@@ -12,6 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.R
 import com.vlv.common.data.series.Series
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.extensions.addAccessibilityDelegate
 
 class SeriesDiffUtil: ItemCallback<Series>() {
 
@@ -63,6 +64,9 @@ class SeriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(data: Series) {
         backdrop.clipToOutline = true
         title.text = data.title
+        backdrop.contentDescription =
+            backdrop.context.getString(R.string.common_series_backdrop_content_description)
+        backdrop.addAccessibilityDelegate(R.string.common_open_series_detail)
         data.posterPath.loadUrl(backdrop)
     }
 

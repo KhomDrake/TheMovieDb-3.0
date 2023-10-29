@@ -39,6 +39,7 @@ class MovieGenreActivity : AppCompatActivity(R.layout.genre_items_genre_activity
         toolbar.setNavigationOnClickListener {
             finish()
         }
+        toolbar.navigationContentDescription = getString(com.vlv.common.R.string.common_back_content_description)
 
         setupViewStateMachine()
         loadGenres()

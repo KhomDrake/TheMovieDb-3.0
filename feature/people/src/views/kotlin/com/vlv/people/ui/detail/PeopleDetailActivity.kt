@@ -53,6 +53,7 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
         toolbar.setNavigationOnClickListener {
             if(finishAfterTransition) finishAfterTransition() else finish()
         }
+        toolbar.navigationContentDescription = getString(com.vlv.common.R.string.common_back_content_description)
         avatar.clipToOutline = true
 
         val people = people ?: return

@@ -28,7 +28,10 @@ class SeriesDetail(
         },
         aboutItems = response.run {
             val items = mutableListOf<AboutItem>()
-            items.add(AboutItem.BigText(response.overview))
+            items.add(AboutItem.BigText(
+                resources.getString(R.string.series_description, overview),
+                response.overview
+            ))
             items.add(AboutItem.Title(R.string.series_title_genres))
             items.add(AboutItem.Genres(response.genres.map { PillItem(it.id, it.name) }))
             response.lastEpisodeToAir?.let { episode ->

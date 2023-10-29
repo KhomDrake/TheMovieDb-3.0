@@ -11,6 +11,8 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.R
 import com.vlv.common.data.cast.Cast
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.extensions.addAccessibilityDelegate
+import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
 import com.vlv.network.database.data.ImageType
 
@@ -40,7 +42,7 @@ class CastAdapter(
 
     override fun getItemCount(): Int {
         val itemCount = super.getItemCount()
-        return if(itemCount == 0) itemCount else super.getItemCount() + 1
+        return if(itemCount > 0) itemCount + 1 else itemCount
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -72,7 +74,13 @@ class CastAdapter(
 class CastTitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(itemCount: Int) {
-        (itemView as? AppCompatTextView)?.text = "$itemCount people"
+        (itemView as? AppCompatTextView)?.apply {
+            addHeadingAccessibilityDelegate()
+            text = itemView.context.getString(
+                R.string.common_cast_title,
+                itemCount
+            )
+        }
     }
 
 }
@@ -88,6 +96,13 @@ class CastViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         cast.profilePath.loadUrl(avatar, ImageType.PROFILE)
         personName.text = cast.name
         character.text = cast.character
+        character.contentDescription = avatar.context.getString(
+            R.string.common_cast_character_description,
+            cast.character
+        )
+        itemView.addAccessibilityDelegate(
+            R.string.common_open_people_detail
+        )
     }
 
 }

@@ -19,6 +19,7 @@
         android:background="@drawable/common_background_avatar"
         android:outlineProvider="background"
         android:transitionName="@string/common_avatar_transition_name"
+        android:importantForAccessibility="no"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

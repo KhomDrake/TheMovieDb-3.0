@@ -17,6 +17,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.R
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.common.ui.adapter.searchhistory.HistoryAdapter
+import com.vlv.common.ui.adapter.searchhistory.HistoryItems
 import com.vlv.extensions.State
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
@@ -83,7 +84,7 @@ abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activit
         }
     }
 
-    protected fun updateHistory(items: List<History>) {
+    protected fun updateHistory(items: List<HistoryItems>) {
         (historyItems.adapter as? HistoryAdapter)?.submitList(items)
         historyItems.isVisible = items.isEmpty().not() && viewStateMachine.isInInitialState()
     }
@@ -101,7 +102,6 @@ abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activit
                 viewStateMachine.emptyState()
             },
             onError = { e ->
-                Log.i("Vini", e?.stackTraceToString() ?: "asdadsa")
                 viewStateMachine.errorState()
             },
             onLoading = {
@@ -131,7 +131,6 @@ abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activit
     private fun setupHistoryItems() {
         historyItems.layoutManager = LinearLayoutManager(this)
         historyItems.adapter = HistoryAdapter(
-            title = getString(titleHistoryTitle),
             onClick = { history ->
                 searchView.setText(history.text)
                 onTextSubmit(history.text)

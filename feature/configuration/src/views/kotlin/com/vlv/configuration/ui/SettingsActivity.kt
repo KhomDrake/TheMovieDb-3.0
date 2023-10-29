@@ -29,6 +29,7 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
         toolbar.setNavigationOnClickListener {
             finish()
         }
+        toolbar.navigationContentDescription = getString(com.vlv.common.R.string.common_back_content_description)
 
         setupRecyclerView()
         loadConfig()
@@ -90,6 +91,9 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
             setOnClickConfirm {
                 val item = it ?: return@setOnClickConfirm
                 viewModel.setConfigValue(item.name, settingsItem.id, item.value)
+                items.announceForAccessibility(
+                    getString(R.string.configuration_options_change_configuration)
+                )
                 updateOptions()
                 dismiss()
             }

@@ -11,6 +11,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.R
 import com.vlv.common.data.review.Review
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
 import com.vlv.network.database.data.ImageType
 
@@ -38,7 +39,7 @@ class ReviewAdapter: ListAdapter<Review, RecyclerView.ViewHolder>(ReviewDiffUtil
 
     override fun getItemCount(): Int {
         val itemCount = super.getItemCount()
-        return if(itemCount == 0) itemCount else super.getItemCount() + 1
+        return if(itemCount > 0) itemCount + 1 else itemCount
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -68,7 +69,10 @@ class ReviewAdapter: ListAdapter<Review, RecyclerView.ViewHolder>(ReviewDiffUtil
 class ReviewTitleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(viewCount: Int) {
-        (itemView as? AppCompatTextView)?.text = "$viewCount Reviews"
+        (itemView as? AppCompatTextView)?.apply {
+            text = context.getString(R.string.common_reviews_title, viewCount)
+            addHeadingAccessibilityDelegate()
+        }
     }
 
 }
@@ -82,8 +86,12 @@ class ReviewViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(review: Review) {
         review.url.loadUrl(avatar, ImageType.PROFILE)
+        val context = itemView.context
+        avatar.clipToOutline = true
         personName.text = review.author
+        personName.contentDescription = context.getString(R.string.common_review_person_description, review.author)
         date.text = review.createdAt
+        date.contentDescription = context.getString(R.string.common_review_date_description, review.createdAt)
         text.text = review.content
     }
 

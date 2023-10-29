@@ -1,13 +1,16 @@
 package com.vlv.common.ui.search
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
+import br.com.arch.toolkit.livedata.extention.mapList
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
+import com.vlv.common.ui.adapter.searchhistory.HistoryItems
 import com.vlv.network.data.movie.MovieResponse
 import com.vlv.network.database.data.History
 import com.vlv.network.database.data.HistoryType
@@ -49,8 +52,14 @@ abstract class BaseSearchViewModel(
         }
         .cachedIn(viewModelScope)
 
-    fun historyBySearchType() = run {
+    fun historyBySearchType(title: String) = run {
         searchRepository.history(historyType)
+    }.mapList {
+        HistoryItems.HistoryItem(it) as HistoryItems
+    }.map {
+        it.toMutableList().apply {
+            if(isNotEmpty()) add(0, HistoryItems.HistoryTitle(title))
+        }.toList()
     }
 
     fun addToHistory(query: String) {

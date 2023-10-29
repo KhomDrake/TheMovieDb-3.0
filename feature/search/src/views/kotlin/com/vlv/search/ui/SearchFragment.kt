@@ -11,6 +11,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionManager
 import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
@@ -81,6 +82,8 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         updateLastChecked(movieOption)
         setupHistoryAdapter()
 
+        searchView.requestFocus()
+
         filter.setOnCheckedStateChangeListener { _, checkedIds ->
             options.firstOrNull { it.id == checkedIds.firstOrNull() }?.let { chip ->
                 updateLastChecked(chip)
@@ -89,11 +92,13 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
         viewModel.searchType.observe(viewLifecycleOwner) { searchType ->
             searchView.clearText()
+            searchView.setHint(searchType.hint)
             setupSearchBySearchType(searchType)
             setupStateView(searchType)
+            TransitionManager.beginDelayedTransition(root)
+            setupHistoryAdapter(onlyAdapter = true)
             loadHistory()
         }
-
 
         searchView.apply {
             setup(onTextSubmit = ::onTextSubmit)
@@ -110,22 +115,25 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
     }
 
     private fun loadHistory() {
-        viewModel.historyBySearchType().observe(viewLifecycleOwner) {
+        viewModel.historyBySearchType(getString(R.string.search_history_title)).observe(viewLifecycleOwner) {
             (historyItems.adapter as? HistoryAdapter)?.submitList(it)
             historyItems.isVisible = it.isEmpty().not() && viewStateMachine.isInInitialState()
         }
     }
 
-    private fun setupHistoryAdapter() {
-        historyItems.layoutManager = LinearLayoutManager(requireContext())
+    private fun setupHistoryAdapter(onlyAdapter: Boolean = false) {
+        if(!onlyAdapter) historyItems.layoutManager = LinearLayoutManager(requireContext())
+
         historyItems.adapter = HistoryAdapter(
-            title = "Recents:",
             onClick = { history ->
                 searchView.setText(history.text)
                 onTextSubmit(history.text)
             },
             onClickClose = { history ->
                 viewModel.removeHistory(history)
+                searchView.announceForAccessibility(
+                    getString(R.string.search_history_item_removed_description)
+                )
             }
         )
     }

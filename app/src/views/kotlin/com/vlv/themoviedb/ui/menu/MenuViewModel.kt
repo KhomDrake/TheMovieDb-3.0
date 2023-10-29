@@ -44,6 +44,7 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_user_option_session,
             type = MenuItemType.ITEM,
+            icon = RCommon.drawable.ic_settings,
             action = context.toSettings()
         )
     )

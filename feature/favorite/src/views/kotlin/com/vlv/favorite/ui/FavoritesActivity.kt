@@ -17,6 +17,7 @@ class FavoritesActivity : AppCompatActivity(R.layout.favorite_activity_favorites
         toolbar.setNavigationOnClickListener {
             finish()
         }
+        toolbar.navigationContentDescription = getString(com.vlv.common.R.string.common_back_content_description)
 
         val favoritesFragment = FavoritesFragment().apply {
             arguments = intent.extras

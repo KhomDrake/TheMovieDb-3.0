@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:outlineProvider="background"
-        android:transitionName="poster"
+        android:transitionName="@string/common_poster_transition_name"
+        android:foreground="@drawable/imperiya_ripple_rounded"
         android:background="@drawable/rounded_background"
         android:scaleType="centerCrop"/>
 

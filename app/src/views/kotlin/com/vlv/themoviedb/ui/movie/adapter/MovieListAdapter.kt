@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.network.database.data.ImageType
 import com.vlv.themoviedb.R
+import com.vlv.common.R as RCommon
 
 class MovieDiffUtil: DiffUtil.ItemCallback<Movie>() {
 
@@ -33,7 +35,7 @@ class MoviesCarouselAdapter(
     override fun onBindViewHolder(holder: MovieCarouselViewHolder, position: Int) {
         val movie = currentList[position]
         holder.bind(movie)
-        holder.itemView.setOnClickListener {
+        holder.poster.setOnClickListener {
             onClickMovie.invoke(holder.poster, movie)
         }
     }
@@ -56,6 +58,11 @@ class MovieCarouselViewHolder(view: View): RecyclerView.ViewHolder(view) {
     fun bind(movie: Movie) {
         poster.clipToOutline = true
         title.text = movie.title
+        poster.contentDescription =
+            poster.context.getString(RCommon.string.common_movie_poster_content_description)
+        poster.addAccessibilityDelegate(
+            RCommon.string.common_open_movie_detail
+        )
         movie.backdropPath.loadUrl(poster, ImageType.BACKDROP)
     }
 

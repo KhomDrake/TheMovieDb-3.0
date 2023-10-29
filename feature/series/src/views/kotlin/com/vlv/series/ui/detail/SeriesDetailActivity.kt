@@ -1,14 +1,15 @@
 package com.vlv.series.ui.detail
 
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.ContextCompat
-import coil.load
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vlv.common.data.movie.toMovie
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toSeries
 import com.vlv.common.ui.DetailActivity
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.network.database.data.ImageType
 import com.vlv.series.R
 import com.vlv.series.ui.detail.adapter.DetailAdapter
@@ -70,6 +71,14 @@ class SeriesDetailActivity : DetailActivity() {
     private fun updatedMenuItem(isFavorite : Boolean) {
         runCatching {
             val menuHeart = toolbar.menu?.getItem(0) ?: return@runCatching
+            menuHeart.contentDescription = getString(
+                if (isFavorite) R.string.series_is_favorite
+                else R.string.series_is_not_favorite
+            )
+            toolbar.findViewById<View?>(menuHeart.itemId)?.addAccessibilityDelegate(
+                if (isFavorite) R.string.series_remove_favorite
+                else R.string.series_add_favorite
+            )
             menuHeart.icon = ContextCompat.getDrawable(
                 this@SeriesDetailActivity,
                 if(isFavorite) com.vlv.imperiya.R.drawable.ic_heart_filled
@@ -81,6 +90,12 @@ class SeriesDetailActivity : DetailActivity() {
     private fun changeFavorite(series: Series) {
         viewModel.changeFavorite(series).observe(this) {
             data { isFavorite ->
+                toolbar.announceForAccessibility(
+                    getString(
+                        if (isFavorite) R.string.series_added_to_favorite
+                        else R.string.series_removed_from_favorite
+                    )
+                )
                 updatedMenuItem(isFavorite)
             }
         }

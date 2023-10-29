@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.configuration.R
+import com.vlv.extensions.addAccessibilityDelegate
+import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
 
 
@@ -62,6 +64,9 @@ class SettingsAdapter(
                     holder.itemView.setOnClickListener {
                         onClickIem.invoke(item)
                     }
+                    holder.itemView.addAccessibilityDelegate(
+                        R.string.configuration_options_item_description
+                    )
                 }
             }
             else -> Unit
@@ -81,7 +86,10 @@ class SettingsAdapter(
 
 class SettingsTitleViewHolder(view: View): ViewHolder(view) {
     fun bind(settingsItem: SettingsItem) {
-        (itemView as? AppCompatTextView)?.text = settingsItem.title
+        (itemView as? AppCompatTextView)?.apply {
+            text = settingsItem.title
+            addHeadingAccessibilityDelegate()
+        }
     }
 }
 

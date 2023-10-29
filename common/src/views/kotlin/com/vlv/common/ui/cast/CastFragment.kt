@@ -33,7 +33,6 @@ abstract class CastFragment : Fragment(R.layout.common_fragment_cast) {
 
     protected val viewStateMachine = ViewStateMachine()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

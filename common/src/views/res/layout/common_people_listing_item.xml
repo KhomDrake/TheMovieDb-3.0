@@ -21,8 +21,8 @@
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Robert Downey Jr."
         android:gravity="center_horizontal"
+        tools:text="Robert Downey Jr."
         style="@style/Imperiya.Style.Text.Title"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

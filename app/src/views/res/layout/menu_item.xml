@@ -16,6 +16,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:outlineProvider="background"
+        android:importantForAccessibility="no"
         android:padding="8dp"
         tools:src="@drawable/ic_heart"
         android:background="@drawable/common_background_secondary_oval"/>
