@@ -48,6 +48,7 @@
     <string name="menu_title_user_option_favorite">Favorites</string>
     <string name="menu_title_user_option_review">Review</string>
     <string name="menu_title_user_option_session">Settings</string>
+    <string name="menu_title_item_action_description">Access</string>
 
     <string name="menu_title_movie">Movies</string>
     <string name="menu_title_movie_option_trending">Trending</string>

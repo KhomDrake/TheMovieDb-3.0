@@ -57,6 +57,7 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
                 finishAfterTransition()
             } else finish()
         }
+        toolbar.navigationContentDescription = getString(R.string.common_back_content_description)
 
         poster.clipToOutline = true
 
