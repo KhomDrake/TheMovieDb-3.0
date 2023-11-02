@@ -19,7 +19,7 @@ import com.vlv.extensions.stateData
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
 import com.vlv.genre.R
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieGenreActivity : AppCompatActivity(R.layout.genre_items_genre_activity) {
@@ -39,7 +39,7 @@ class MovieGenreActivity : AppCompatActivity(R.layout.genre_items_genre_activity
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        toolbar.navigationContentDescription = getString(com.vlv.common.R.string.common_back_content_description)
+        toolbar.navigationContentDescription = getString(com.vlv.ui.R.string.common_back_content_description)
 
         setupViewStateMachine()
         loadGenres()

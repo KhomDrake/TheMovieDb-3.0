@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.vlv.imperiya.ui.warning.SmallWarningView
+<com.vlv.imperiya.core.ui.warning.SmallWarningView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

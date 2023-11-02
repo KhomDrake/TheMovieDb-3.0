@@ -53,7 +53,7 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
         toolbar.setNavigationOnClickListener {
             if(finishAfterTransition) finishAfterTransition() else finish()
         }
-        toolbar.navigationContentDescription = getString(com.vlv.common.R.string.common_back_content_description)
+        toolbar.navigationContentDescription = getString(com.vlv.ui.R.string.common_back_content_description)
         avatar.clipToOutline = true
 
         val people = people ?: return
@@ -67,10 +67,10 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
     }
 
     private fun setupMenu(people: People) {
-        toolbar.inflateMenu(com.vlv.common.R.menu.common_detail_menu)
+        toolbar.inflateMenu(com.vlv.ui.R.menu.common_detail_menu)
         toolbar.setOnMenuItemClickListener { item ->
             when(item.itemId) {
-                com.vlv.common.R.id.heart -> {
+                com.vlv.ui.R.id.heart -> {
                     changeFavorite(people)
                     true
                 }
@@ -101,8 +101,8 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
             val menuHeart = toolbar.menu?.getItem(0) ?: return@runCatching
             menuHeart.icon = ContextCompat.getDrawable(
                 this@PeopleDetailActivity,
-                if(isFavorite) com.vlv.imperiya.R.drawable.ic_heart_filled
-                else com.vlv.imperiya.R.drawable.ic_heart_enable
+                if(isFavorite) com.vlv.imperiya.core.R.drawable.ic_heart_filled
+                else com.vlv.imperiya.core.R.drawable.ic_heart_enable
             )
         }
     }
@@ -133,13 +133,13 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
             ) { _, state ->
                 val resource = when(state) {
                     AppBarState.COLLAPSED -> {
-                        com.vlv.imperiya.R.color.imperiya_color_primary
+                        com.vlv.imperiya.core.R.color.imperiya_color_primary
                     }
                     AppBarState.FULL_COLLAPSED -> {
-                        com.vlv.imperiya.R.color.imperiya_color_background
+                        com.vlv.imperiya.core.R.color.imperiya_color_background
                     }
                     AppBarState.EXPANDED, AppBarState.IDLE, AppBarState.COLLAPSING -> {
-                        com.vlv.imperiya.R.color.imperiya_color_transparent
+                        com.vlv.imperiya.core.R.color.imperiya_color_transparent
                     }
                 }
 

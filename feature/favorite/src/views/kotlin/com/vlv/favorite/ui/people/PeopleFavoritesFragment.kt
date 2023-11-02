@@ -17,10 +17,10 @@ class PeopleFavoritesFragment : BaseFavoriteFragment() {
     private val viewModel: PeopleFavoritesViewModel by viewModel()
 
     override val loadingLayout: Int
-        get() = com.vlv.common.R.layout.common_people_listing_loading
+        get() = com.vlv.ui.R.layout.common_people_listing_loading
 
     override fun setupStateView() {
-        emptyState.setStateIcon(com.vlv.imperiya.R.drawable.ic_review)
+        emptyState.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_review)
         emptyState.setTitle(R.string.favorite_people_empty_state)
     }
 
@@ -36,7 +36,7 @@ class PeopleFavoritesFragment : BaseFavoriteFragment() {
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
                     requireActivity(),
                     view,
-                    getString(com.vlv.common.R.string.common_avatar_transition_name)
+                    getString(com.vlv.ui.R.string.common_avatar_transition_name)
                 ).toBundle()
             )
         }

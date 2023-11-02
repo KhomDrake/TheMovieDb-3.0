@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="imperiya_carousel_s">8dp</dimen>
-    <dimen name="imperiya_carousel_m">16dp</dimen>
-
-    <dimen name="imperiya_carousel_margin">8dp</dimen>
-    <dimen name="imperiya_carousel_margin2">16dp</dimen>
-</resources>

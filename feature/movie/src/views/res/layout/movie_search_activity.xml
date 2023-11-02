@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.vlv.imperiya.ui.search.ImperiyaSearchView
+    <com.vlv.imperiya.core.ui.search.ImperiyaSearchView
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

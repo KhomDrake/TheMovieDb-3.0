@@ -37,7 +37,7 @@ class SeriesFragmentSetup : Setup<SeriesFragmentLaunch, SeriesFragmentCheck>, Ko
 
     override fun setupLaunch() {
         launchFragmentInContainer<SeriesFragment>(
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 

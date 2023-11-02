@@ -88,7 +88,7 @@ class SeriesGenreActivityLauncher : Launch<SeriesGenreActivityCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 }
 
@@ -117,9 +117,9 @@ class SeriesGenreActivityCheck : Check, KoinComponent {
         R.id.loading.isNotDisplayed()
         R.id.error.isDisplayed()
 
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load genres")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load genres")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun genresLoaded(times: Int) {

@@ -163,7 +163,7 @@ class MovieDetailActivityLaunch : Launch<MovieDetailActivityCheck> {
     }
 
     fun clickFavoriteIcon() {
-        com.vlv.common.R.id.heart.clickIgnoreConstraint()
+        com.vlv.ui.R.id.heart.clickIgnoreConstraint()
     }
 
 }
@@ -173,32 +173,32 @@ class MovieDetailActivityCheck : Check, KoinComponent {
     private val favoriteRepository: FavoriteRepository by inject()
 
     fun movieNormalInformationDisplayed() {
-        com.vlv.common.R.id.expanded_title.hasText("Test Movie")
-        com.vlv.common.R.id.score.isNotDisplayed()
-        com.vlv.common.R.id.expanded_date_and_time.isNotDisplayed()
+        com.vlv.ui.R.id.expanded_title.hasText("Test Movie")
+        com.vlv.ui.R.id.score.isNotDisplayed()
+        com.vlv.ui.R.id.expanded_date_and_time.isNotDisplayed()
     }
 
     fun movieTotalInformationDisplayed() {
-        com.vlv.common.R.id.expanded_title.hasText("Test Movie")
-        com.vlv.common.R.id.score.apply {
+        com.vlv.ui.R.id.expanded_title.hasText("Test Movie")
+        com.vlv.ui.R.id.score.apply {
             isDisplayed()
             hasText("8.0")
         }
-        com.vlv.common.R.id.expanded_date_and_time.apply {
+        com.vlv.ui.R.id.expanded_date_and_time.apply {
             isDisplayed()
             hasText("Dec/2021 - 2h 29min")
         }
     }
 
     fun iconFavoriteDisplayed() {
-        com.vlv.common.R.id.heart.withDrawable(
-            com.vlv.imperiya.R.drawable.ic_heart_filled
+        com.vlv.ui.R.id.heart.withDrawable(
+            com.vlv.imperiya.core.R.drawable.ic_heart_filled
         )
     }
 
     fun iconNotFavoriteDisplayed() {
-        com.vlv.common.R.id.heart.withDrawable(
-            com.vlv.imperiya.R.drawable.ic_heart_enable
+        com.vlv.ui.R.id.heart.withDrawable(
+            com.vlv.imperiya.core.R.drawable.ic_heart_enable
         )
     }
 

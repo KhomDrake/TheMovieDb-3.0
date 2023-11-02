@@ -37,7 +37,7 @@ class MovieFragmentSetup : Setup<MovieFragmentLaunch, MovieFragmentCheck>, KoinC
 
     override fun setupLaunch() {
         launchFragmentInContainer<MovieFragment>(
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 

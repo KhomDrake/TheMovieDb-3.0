@@ -16,8 +16,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "themoviedb"
 
+// Sample
 include ':app'
+include ':imperiyasample'
 
+// Features
 include ':feature:movie'
 include ':feature:series'
 include ':feature:people'
@@ -26,13 +29,16 @@ include ':feature:favorite'
 include ':feature:search'
 include ':feature:genre'
 
-include ':imperiya'
-include ':imperiyasample'
+// Data
+include ':data:network'
 
-include ':network'
+// Core
+include ':core:ui'
 
-include ':common'
-
-include ':tools:bondsmith'
+// Tools
 include ':tools:extensions'
 include ':tools:test'
+
+// Libraries
+include ':libraries:imperiya:core'
+include ':libraries:bondsmith'

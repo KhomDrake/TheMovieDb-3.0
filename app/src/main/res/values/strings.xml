@@ -3,4 +3,81 @@
     <string name="logo_content_description">App Logo</string>
     <string name="logo_animation_start">Starting animation to show app logo</string>
     <string name="logo_animation_ending">Animation ended</string>
+
+    <!--  Bottom Navigation  -->
+    <string name="movie_title">Movie</string>
+    <string name="series_title">Series</string>
+    <string name="search_title">Search</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="menu_title">Menu</string>
+
+    <!--  Home Movie/Series  -->
+    <string name="trending_title">Trending now</string>
+    <string name="now_playing_title">Playing now</string>
+    <string name="airing_today_title">Airing Today</string>
+    <string name="see_all_text">See All</string>
+    <string name="empty_state_text_default">None found</string>
+
+    <string name="error_load_text_body">Check your internet connection, wait a few moments and click in try again button</string>
+    <string name="error_load_text_button">Try again</string>
+
+    <!--  Home Movie - Favorites  -->
+    <string name="error_movie_load_text_title_favorites">Failed to load favorites movies</string>
+    <string name="empty_state_text_movie_favorite">None favorite movie found</string>
+
+    <!--  Home Movie - Trending  -->
+    <string name="empty_state_text_movie_trending">None movie found</string>
+    <string name="error_movie_load_text_title_trending">Failed to load trending movies</string>
+
+    <!--  Home Movie - Now Playing  -->
+    <string name="empty_state_text_movie_now_playing">None movie found</string>
+    <string name="error_movie_load_text_title_now_playing">Failed to load movies</string>
+
+
+    <!--  Home Series - Favorites  -->
+    <string name="error_series_load_text_title_favorites">Failed to load favorites tv shows</string>
+    <string name="empty_state_text_series_favorite">None favorite tv shows found</string>
+
+    <!--  Home Series - Trending  -->
+    <string name="empty_state_text_series_trending">None tv shows found</string>
+    <string name="error_series_load_text_title_trending">Failed to load trending tv shows</string>
+
+    <!--  Home Series - Airing Today  -->
+    <string name="empty_state_text_series_airing_today">None tv shows found</string>
+    <string name="error_series_load_text_title_airing_today">Failed to load tv shows</string>
+
+    <!--  Menu  -->
+    <string name="menu_title_user">User</string>
+    <string name="menu_title_user_option_favorite">Favorites</string>
+    <string name="menu_title_user_option_review">Review</string>
+    <string name="menu_title_user_option_session">Settings</string>
+    <string name="menu_title_item_action_description">Access</string>
+
+    <string name="menu_title_movie">Movies</string>
+    <string name="menu_title_movie_option_trending">Trending</string>
+    <string name="menu_title_movie_option_top_rated">Top rated</string>
+    <string name="menu_title_movie_option_now_playing">Now playing</string>
+    <string name="menu_title_movie_option_upcoming">Upcoming</string>
+    <string name="menu_title_movie_option_popular">Popular</string>
+    <string name="menu_title_movie_option_genres">Genres</string>
+    <string name="menu_title_movie_option_discover">Search</string>
+    <string name="menu_title_movie_option_certifications">Certifications</string>
+
+    <string name="menu_title_series">Series</string>
+    <string name="menu_title_series_option_trending">Trending</string>
+    <string name="menu_title_series_option_top_rated">Top rated</string>
+    <string name="menu_title_series_option_airing_today">Airing today</string>
+    <string name="menu_title_series_option_on_the_air">On the air</string>
+    <string name="menu_title_series_option_popular">Popular</string>
+    <string name="menu_title_series_option_genres">Genres</string>
+    <string name="menu_title_series_option_discover">Search</string>
+    <string name="menu_title_series_option_certifications">Certifications</string>
+
+    <string name="menu_title_people">People</string>
+    <string name="menu_title_people_option_trending">Trending</string>
+    <string name="menu_title_people_option_popular">Popular</string>
+    <string name="menu_title_people_option_search">Search</string>
+    <string name="menu_title_people_option_movie_credit">Movie credit</string>
+    <string name="menu_title_people_option_tv_credit">Tv credit</string>
+
 </resources>

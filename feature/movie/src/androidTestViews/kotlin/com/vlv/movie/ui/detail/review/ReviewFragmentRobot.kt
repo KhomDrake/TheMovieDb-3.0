@@ -45,7 +45,7 @@ class ReviewFragmentSetup : Setup<ReviewFragmentLaunch, ReviewFragmentCheck>, Ko
     override fun setupLaunch() {
         launchFragmentInContainer<MovieReviewFragment>(
             fragmentArgs = arguments,
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -104,7 +104,7 @@ class ReviewFragmentLaunch : Launch<ReviewFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }
@@ -121,37 +121,37 @@ class ReviewFragmentCheck : Check, KoinComponent {
     }
 
     fun errorStateDisplayed() {
-        com.vlv.common.R.id.warning_view_review.isDisplayed()
-        com.vlv.common.R.id.review.isNotDisplayed()
-        com.vlv.common.R.id.empty_view_review.isNotDisplayed()
-        com.vlv.common.R.id.shimmer_review.isNotDisplayed()
+        com.vlv.ui.R.id.warning_view_review.isDisplayed()
+        com.vlv.ui.R.id.review.isNotDisplayed()
+        com.vlv.ui.R.id.empty_view_review.isNotDisplayed()
+        com.vlv.ui.R.id.shimmer_review.isNotDisplayed()
 
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load reviews")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load reviews")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun reviewsDisplayed() {
-        com.vlv.common.R.id.warning_view_review.isNotDisplayed()
-        com.vlv.common.R.id.empty_view_review.isNotDisplayed()
-        com.vlv.common.R.id.shimmer_review.isNotDisplayed()
+        com.vlv.ui.R.id.warning_view_review.isNotDisplayed()
+        com.vlv.ui.R.id.empty_view_review.isNotDisplayed()
+        com.vlv.ui.R.id.shimmer_review.isNotDisplayed()
 
-        com.vlv.common.R.id.review.apply {
+        com.vlv.ui.R.id.review.apply {
             isDisplayed()
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.withText("garethmb"),
-                com.vlv.common.R.id.person_name
+                com.vlv.ui.R.id.person_name
             )
         }
     }
 
     fun emptyStateDisplayed() {
-        com.vlv.common.R.id.warning_view_review.isNotDisplayed()
-        com.vlv.common.R.id.review.isNotDisplayed()
-        com.vlv.common.R.id.shimmer_review.isNotDisplayed()
-        com.vlv.common.R.id.empty_view_review.isDisplayed()
-        com.vlv.imperiya.R.id.title_state.hasText("None review found")
+        com.vlv.ui.R.id.warning_view_review.isNotDisplayed()
+        com.vlv.ui.R.id.review.isNotDisplayed()
+        com.vlv.ui.R.id.shimmer_review.isNotDisplayed()
+        com.vlv.ui.R.id.empty_view_review.isDisplayed()
+        com.vlv.imperiya.core.R.id.title_state.hasText("None review found")
     }
 
 }

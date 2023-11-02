@@ -7,7 +7,7 @@ import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
-import com.vlv.imperiya.ui.CarouselDecorator
+import com.vlv.imperiya.core.ui.CarouselDecorator
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.series.SeriesCarouselFragment
 import com.vlv.themoviedb.ui.series.adapter.SeriesCarouselAdapter
@@ -26,7 +26,7 @@ class TrendingFragment : SeriesCarouselFragment() {
     override fun configEmptyView() {
         emptyView.apply {
             setTitle(R.string.empty_state_text_series_trending)
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_tv_off)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv_off)
         }
     }
 

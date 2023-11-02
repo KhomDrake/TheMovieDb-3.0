@@ -48,7 +48,7 @@ class TrendingFragmentSetup :
 
     override fun setupLaunch() {
         launchFragmentInContainer<TrendingFragment>(
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -105,7 +105,7 @@ class TrendingFragmentLaunch : Launch<TrendingFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 }
 
@@ -160,7 +160,7 @@ class TrendingFragmentCheck : Check, KoinComponent {
 
         R.id.empty_state.isDisplayed()
 
-        com.vlv.imperiya.R.id.title_state.hasText("None tv shows found")
+        com.vlv.imperiya.core.R.id.title_state.hasText("None tv shows found")
     }
 
     fun errorStateDisplayed() {
@@ -173,9 +173,9 @@ class TrendingFragmentCheck : Check, KoinComponent {
         R.id.empty_state.isNotDisplayed()
 
         R.id.error_state.isDisplayed()
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load trending tv shows")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again button")
-        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load trending tv shows")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again button")
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun seriesTrendingLoaded(times: Int) {

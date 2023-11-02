@@ -30,8 +30,8 @@ import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
 import com.vlv.genre.R
 import com.vlv.genre.ui.movie.GENRE_ID_EXTRA
-import com.vlv.imperiya.ui.stateview.StateView
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.stateview.StateView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -58,7 +58,7 @@ class SeriesByGenreFragment : Fragment(R.layout.genre_fragment_by_genre) {
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 requireActivity(),
                 view,
-                getString(com.vlv.common.R.string.common_poster_transition_name)
+                getString(com.vlv.ui.R.string.common_poster_transition_name)
             ).toBundle()
         )
     }
@@ -67,7 +67,7 @@ class SeriesByGenreFragment : Fragment(R.layout.genre_fragment_by_genre) {
         super.onViewCreated(view, savedInstanceState)
         View.inflate(
             requireContext(),
-            com.vlv.common.R.layout.common_listing_series_loading,
+            com.vlv.ui.R.layout.common_listing_series_loading,
             loading
         )
         setupViewStateMachine()
@@ -75,7 +75,7 @@ class SeriesByGenreFragment : Fragment(R.layout.genre_fragment_by_genre) {
         loadMovies()
         emptyState.apply {
             setTitle(R.string.genre_no_series_found)
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_tv)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv)
         }
         error.setOnClickLink {
             adapter.retry()

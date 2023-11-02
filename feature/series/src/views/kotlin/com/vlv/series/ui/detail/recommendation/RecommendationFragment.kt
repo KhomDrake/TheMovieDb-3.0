@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
-import com.vlv.common.R
+import com.vlv.ui.R
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toDetailObject
 import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
@@ -74,7 +74,7 @@ class RecommendationFragment : ListingItemsFragment() {
 
     override fun configEmptyState() {
         emptyState.apply {
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
             setTitle(com.vlv.series.R.string.series_empty_state_recommendation)
         }
     }

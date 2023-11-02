@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.vlv.common.R as RCommon
+import com.vlv.ui.R as RCommon
 
 class ListingMovieActivity : ListingItemsActivity() {
 
@@ -32,7 +32,7 @@ class ListingMovieActivity : ListingItemsActivity() {
         get() = pagingAdapter
 
     override val loadingLayout: Int
-        get() = com.vlv.common.R.layout.common_listing_movie_loading
+        get() = com.vlv.ui.R.layout.common_listing_movie_loading
 
     private val pagingAdapter = MoviePaginationAdapter { movie, view ->
         val intent = toMovieDetail(movie.toDetailObject())

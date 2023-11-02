@@ -23,7 +23,7 @@ class SeriesFavoritesFragment : SeriesCarouselFragment() {
     override fun configEmptyView() {
         emptyView.apply {
             setTitle(R.string.empty_state_text_series_favorite)
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_hearts)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_hearts)
         }
     }
 

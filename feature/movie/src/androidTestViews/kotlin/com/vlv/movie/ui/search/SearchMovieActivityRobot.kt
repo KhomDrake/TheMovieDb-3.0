@@ -119,7 +119,7 @@ class SearchMovieActivityLaunch : Launch<SearchMovieActivityCheck> {
     }
 
     fun clickHistory(position: Int) {
-        com.vlv.common.R.id.history_items.clickOnRecyclerViewItem(
+        com.vlv.ui.R.id.history_items.clickOnRecyclerViewItem(
             position
         )
     }
@@ -133,7 +133,7 @@ class SearchMovieActivityLaunch : Launch<SearchMovieActivityCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }
@@ -145,30 +145,30 @@ class SearchMovieActivityCheck : Check, KoinComponent {
 
     fun initialStateDisplayed() {
         androidx.appcompat.R.id.search_src_text.hasHint("Search for movies")
-        com.vlv.common.R.id.search.isDisplayed()
-        com.vlv.common.R.id.items.isNotDisplayed()
-        com.vlv.common.R.id.warning_view.isNotDisplayed()
-        com.vlv.common.R.id.state_view.isNotDisplayed()
-        com.vlv.common.R.id.loading.isNotDisplayed()
+        com.vlv.ui.R.id.search.isDisplayed()
+        com.vlv.ui.R.id.items.isNotDisplayed()
+        com.vlv.ui.R.id.warning_view.isNotDisplayed()
+        com.vlv.ui.R.id.state_view.isNotDisplayed()
+        com.vlv.ui.R.id.loading.isNotDisplayed()
     }
 
     fun historyDisplayed() {
-        com.vlv.common.R.id.history_items.apply {
+        com.vlv.ui.R.id.history_items.apply {
             isDisplayed()
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.withText("Spiderman"),
-                com.vlv.common.R.id.small_warning_title
+                com.vlv.ui.R.id.small_warning_title
             )
             checkViewOnRecyclerViewPosition(
                 2,
                 ViewMatchers.withText("Superman"),
-                com.vlv.common.R.id.small_warning_title
+                com.vlv.ui.R.id.small_warning_title
             )
             checkViewOnRecyclerViewPosition(
                 3,
                 ViewMatchers.withText("Bacate"),
-                com.vlv.common.R.id.small_warning_title
+                com.vlv.ui.R.id.small_warning_title
             )
         }
     }
@@ -196,27 +196,27 @@ class SearchMovieActivityCheck : Check, KoinComponent {
     }
 
     fun emptyStateDisplayed() {
-        com.vlv.common.R.id.search.isDisplayed()
-        com.vlv.common.R.id.state_view.isDisplayed()
+        com.vlv.ui.R.id.search.isDisplayed()
+        com.vlv.ui.R.id.state_view.isDisplayed()
 
-        com.vlv.imperiya.R.id.title_state.hasText("No movie was found")
-        com.vlv.imperiya.R.id.body_state.isNotDisplayed()
+        com.vlv.imperiya.core.R.id.title_state.hasText("No movie was found")
+        com.vlv.imperiya.core.R.id.body_state.isNotDisplayed()
 
-        com.vlv.common.R.id.items.isNotDisplayed()
-        com.vlv.common.R.id.warning_view.isNotDisplayed()
-        com.vlv.common.R.id.loading.isNotDisplayed()
+        com.vlv.ui.R.id.items.isNotDisplayed()
+        com.vlv.ui.R.id.warning_view.isNotDisplayed()
+        com.vlv.ui.R.id.loading.isNotDisplayed()
     }
 
     fun errorStateDisplayed() {
-        com.vlv.common.R.id.search.isDisplayed()
-        com.vlv.common.R.id.warning_view.isDisplayed()
+        com.vlv.ui.R.id.search.isDisplayed()
+        com.vlv.ui.R.id.warning_view.isDisplayed()
 
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
 
-        com.vlv.common.R.id.state_view.isNotDisplayed()
-        com.vlv.common.R.id.items.isNotDisplayed()
-        com.vlv.common.R.id.loading.isNotDisplayed()
+        com.vlv.ui.R.id.state_view.isNotDisplayed()
+        com.vlv.ui.R.id.items.isNotDisplayed()
+        com.vlv.ui.R.id.loading.isNotDisplayed()
     }
 
 }

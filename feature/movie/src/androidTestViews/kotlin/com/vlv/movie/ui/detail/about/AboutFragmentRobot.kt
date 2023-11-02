@@ -46,7 +46,7 @@ class AboutFragmentSetup : Setup<AboutFragmentLaunch, AboutFragmentCheck>, KoinC
     override fun setupLaunch() {
         launchFragmentInContainer<AboutFragment>(
             fragmentArgs = args,
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -91,7 +91,7 @@ class AboutFragmentLaunch : Launch<AboutFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }
@@ -120,17 +120,17 @@ class AboutFragmentCheck : Check, KoinComponent {
         R.id.about_content.apply {
             checkViewOnRecyclerViewPosition(
                 0,
-                childId = com.vlv.common.R.id.big_text,
+                childId = com.vlv.ui.R.id.big_text,
                 viewMatcher = ViewMatchers.withText("Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.")
             )
             checkViewOnRecyclerViewPosition(
                 1,
-                childId = com.vlv.common.R.id.about_item_title,
+                childId = com.vlv.ui.R.id.about_item_title,
                 viewMatcher = ViewMatchers.withText("Genres:")
             )
             checkViewOnRecyclerViewPosition(
                 2,
-                childId = com.vlv.common.R.id.genres,
+                childId = com.vlv.ui.R.id.genres,
                 viewMatcher = ViewMatchers.isDisplayed()
             )
         }

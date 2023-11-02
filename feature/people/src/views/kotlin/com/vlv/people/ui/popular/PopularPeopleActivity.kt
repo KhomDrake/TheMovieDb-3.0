@@ -29,13 +29,13 @@ class PopularPeopleActivity : ListingItemsActivity() {
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this,
                 image,
-                getString(com.vlv.common.R.string.common_avatar_transition_name)
+                getString(com.vlv.ui.R.string.common_avatar_transition_name)
             ).toBundle()
         )
     }
 
     override val loadingLayout: Int
-        get() = com.vlv.common.R.layout.common_people_listing_loading
+        get() = com.vlv.ui.R.layout.common_people_listing_loading
 
     override val title: Int
         get() = R.string.people_popular_title
@@ -53,9 +53,9 @@ class PopularPeopleActivity : ListingItemsActivity() {
 
     override fun configWarningView() {
         warningView.apply {
-            setTitle(com.vlv.common.R.string.common_error_title)
-            setBody(com.vlv.common.R.string.common_error_description)
-            setButtonText(com.vlv.common.R.string.common_error_button)
+            setTitle(com.vlv.ui.R.string.common_error_title)
+            setBody(com.vlv.ui.R.string.common_error_description)
+            setButtonText(com.vlv.ui.R.string.common_error_button)
             setCloseIcon {
                 finish()
             }

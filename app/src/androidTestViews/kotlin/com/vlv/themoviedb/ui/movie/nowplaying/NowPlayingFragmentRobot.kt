@@ -47,7 +47,7 @@ class NowPlayingFragmentSetup : Setup<NowPlayingFragmentLaunch, NowPlayingFragme
 
     override fun setupLaunch() {
         launchFragmentInContainer<NowPlayingFragment>(
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -88,7 +88,7 @@ class NowPlayingFragmentLaunch : Launch<NowPlayingFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickMovie(position: Int) {
@@ -145,9 +145,9 @@ class NowPlayingFragmentCheck : Check, KoinComponent {
         R.id.empty_state.isNotDisplayed()
 
         R.id.error_state.isDisplayed()
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load movies")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again button")
-        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load movies")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again button")
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun emptyStateDisplayed() {
@@ -161,7 +161,7 @@ class NowPlayingFragmentCheck : Check, KoinComponent {
 
         R.id.empty_state.isDisplayed()
 
-        com.vlv.imperiya.R.id.title_state.hasText("None movie found")
+        com.vlv.imperiya.core.R.id.title_state.hasText("None movie found")
     }
 
     fun moviesNowPlayingLoaded(times: Int) {

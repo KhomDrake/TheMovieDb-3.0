@@ -13,7 +13,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/ui" />
+            <option value="$PROJECT_DIR$/data" />
+            <option value="$PROJECT_DIR$/data/network" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/configuration" />
             <option value="$PROJECT_DIR$/feature/favorite" />
@@ -22,11 +25,12 @@
             <option value="$PROJECT_DIR$/feature/people" />
             <option value="$PROJECT_DIR$/feature/search" />
             <option value="$PROJECT_DIR$/feature/series" />
-            <option value="$PROJECT_DIR$/imperiya" />
             <option value="$PROJECT_DIR$/imperiyasample" />
-            <option value="$PROJECT_DIR$/network" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/bondsmith" />
+            <option value="$PROJECT_DIR$/libraries/imperiya" />
+            <option value="$PROJECT_DIR$/libraries/imperiya/core" />
             <option value="$PROJECT_DIR$/tools" />
-            <option value="$PROJECT_DIR$/tools/bondsmith" />
             <option value="$PROJECT_DIR$/tools/extensions" />
             <option value="$PROJECT_DIR$/tools/test" />
           </set>

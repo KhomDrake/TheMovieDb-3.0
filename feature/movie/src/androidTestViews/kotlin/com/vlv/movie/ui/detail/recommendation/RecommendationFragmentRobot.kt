@@ -49,7 +49,7 @@ class RecommendationFragmentSetup :
     override fun setupLaunch() {
         launchFragmentInContainer<RecommendationFragment>(
             arguments,
-            com.vlv.imperiya.R.style.Imperiya_Theme
+            com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -114,12 +114,12 @@ class RecommendationFragmentLaunch : Launch<RecommendationFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickRecommendation(position: Int) {
         mockIntent("MOVIE_DETAIL")
-        com.vlv.common.R.id.listing_content.clickOnRecyclerViewItem(position)
+        com.vlv.ui.R.id.listing_content.clickOnRecyclerViewItem(position)
     }
 
 }
@@ -129,39 +129,39 @@ class RecommendationFragmentCheck : Check, KoinComponent {
     private val movieApi: MovieApi by inject()
 
     fun moviesDisplayed() {
-        com.vlv.common.R.id.empty_view_listing.isNotDisplayed()
-        com.vlv.common.R.id.warning_view_listing.isNotDisplayed()
-        com.vlv.common.R.id.shimmer_listing.isNotDisplayed()
-        com.vlv.common.R.id.listing_content.apply {
+        com.vlv.ui.R.id.empty_view_listing.isNotDisplayed()
+        com.vlv.ui.R.id.warning_view_listing.isNotDisplayed()
+        com.vlv.ui.R.id.shimmer_listing.isNotDisplayed()
+        com.vlv.ui.R.id.listing_content.apply {
             isDisplayed()
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.withText("Doctor Strange in the Multiverse of Madness"),
-                com.vlv.common.R.id.movie_title
+                com.vlv.ui.R.id.movie_title
             )
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.isDisplayed(),
-                com.vlv.common.R.id.backdrop
+                com.vlv.ui.R.id.backdrop
             )
         }
     }
 
     fun emptyStateDisplayed() {
-        com.vlv.common.R.id.empty_view_listing.isDisplayed()
-        com.vlv.common.R.id.listing_content.isNotDisplayed()
-        com.vlv.common.R.id.warning_view_listing.isNotDisplayed()
-        com.vlv.common.R.id.shimmer_listing.isNotDisplayed()
+        com.vlv.ui.R.id.empty_view_listing.isDisplayed()
+        com.vlv.ui.R.id.listing_content.isNotDisplayed()
+        com.vlv.ui.R.id.warning_view_listing.isNotDisplayed()
+        com.vlv.ui.R.id.shimmer_listing.isNotDisplayed()
     }
 
     fun errorDisplayed() {
-        com.vlv.common.R.id.empty_view_listing.isNotDisplayed()
-        com.vlv.common.R.id.listing_content.isNotDisplayed()
-        com.vlv.common.R.id.warning_view_listing.isDisplayed()
-        com.vlv.common.R.id.shimmer_listing.isNotDisplayed()
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
+        com.vlv.ui.R.id.empty_view_listing.isNotDisplayed()
+        com.vlv.ui.R.id.listing_content.isNotDisplayed()
+        com.vlv.ui.R.id.warning_view_listing.isDisplayed()
+        com.vlv.ui.R.id.shimmer_listing.isNotDisplayed()
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun recommendationLoaded(times: Int) {

@@ -30,7 +30,7 @@ class RecommendationFragment : ListingItemsFragment() {
     private val movie: Movie? by extraProvider(EXTRA_MOVIE)
 
     override val loadingLayout: Int
-        get() = com.vlv.common.R.layout.common_listing_movie_loading
+        get() = com.vlv.ui.R.layout.common_listing_movie_loading
 
     override val adapter: PagingDataAdapter<*, *>
         get() = pagingAdapter
@@ -42,7 +42,7 @@ class RecommendationFragment : ListingItemsFragment() {
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 requireActivity(),
                 view,
-                getString(com.vlv.common.R.string.common_poster_transition_name)
+                getString(com.vlv.ui.R.string.common_poster_transition_name)
             ).toBundle()
         )
     }
@@ -63,7 +63,7 @@ class RecommendationFragment : ListingItemsFragment() {
 
     override fun configEmptyState() {
         emptyState.apply {
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
             setTitle(R.string.movie_empty_state_recommendation)
         }
     }

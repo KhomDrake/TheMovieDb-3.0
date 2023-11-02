@@ -2,7 +2,7 @@ package com.vlv.search.data
 
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
-import com.vlv.common.R as RCommon
+import com.vlv.ui.R as RCommon
 import com.vlv.search.R
 
 enum class SearchType(

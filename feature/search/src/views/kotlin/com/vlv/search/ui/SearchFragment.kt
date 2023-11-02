@@ -44,9 +44,9 @@ import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateInitial
 import com.vlv.extensions.stateLoading
-import com.vlv.imperiya.ui.search.ImperiyaSearchView
-import com.vlv.imperiya.ui.stateview.StateView
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
+import com.vlv.imperiya.core.ui.stateview.StateView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.search.R
 import com.vlv.search.data.SearchType
 import kotlinx.coroutines.flow.collectLatest
@@ -142,15 +142,15 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         when(searchType) {
             SearchType.SERIES -> {
                 state.setTitle(R.string.search_series_empty_title)
-                state.setStateIcon(com.vlv.imperiya.R.drawable.ic_series)
+                state.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_series)
             }
             SearchType.MOVIE -> {
                 state.setTitle(R.string.search_movie_empty_title)
-                state.setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
+                state.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
             }
             SearchType.PERSON -> {
                 state.setTitle(R.string.search_people_empty_title)
-                state.setStateIcon(com.vlv.imperiya.R.drawable.ic_people)
+                state.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_people)
             }
         }
     }
@@ -244,7 +244,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
                         ActivityOptionsCompat.makeSceneTransitionAnimation(
                             requireActivity(),
                             view,
-                            getString(com.vlv.common.R.string.common_poster_transition_name)
+                            getString(com.vlv.ui.R.string.common_poster_transition_name)
                         ).toBundle()
                     )
                 }
@@ -262,7 +262,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
                         ActivityOptionsCompat.makeSceneTransitionAnimation(
                             requireActivity(),
                             view,
-                            getString(com.vlv.common.R.string.common_poster_transition_name)
+                            getString(com.vlv.ui.R.string.common_poster_transition_name)
                         ).toBundle()
                     )
                 }
@@ -280,7 +280,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
                         ActivityOptionsCompat.makeSceneTransitionAnimation(
                             requireActivity(),
                             image,
-                            getString(com.vlv.common.R.string.common_avatar_transition_name)
+                            getString(com.vlv.ui.R.string.common_avatar_transition_name)
                         ).toBundle()
                     )
                 }

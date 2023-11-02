@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.configuration.R
-import com.vlv.imperiya.ui.bottomsheet.SpinnerBottomSheet
+import com.vlv.imperiya.core.ui.bottomsheet.SpinnerBottomSheet
 import com.vlv.network.repository.SettingsOption
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,7 +29,7 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        toolbar.navigationContentDescription = getString(com.vlv.common.R.string.common_back_content_description)
+        toolbar.navigationContentDescription = getString(com.vlv.ui.R.string.common_back_content_description)
 
         setupRecyclerView()
         loadConfig()

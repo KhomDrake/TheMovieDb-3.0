@@ -11,8 +11,8 @@ import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
 import com.vlv.common.ui.route.toSeriesDetail
 import com.vlv.common.ui.search.SearchActivity
-import com.vlv.imperiya.ui.stateview.StateView
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.stateview.StateView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.network.database.data.History
 import com.vlv.series.R
 import kotlinx.coroutines.flow.collectLatest
@@ -33,13 +33,13 @@ class SearchSeriesActivity : SearchActivity() {
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this,
                 view,
-                getString(com.vlv.common.R.string.common_poster_transition_name)
+                getString(com.vlv.ui.R.string.common_poster_transition_name)
             ).toBundle()
         )
     }
 
     override val loadingLayout: Int
-        get() = com.vlv.common.R.layout.common_listing_series_loading
+        get() = com.vlv.ui.R.layout.common_listing_series_loading
 
     override val searchHint: Int
         get() = R.string.series_search_hint
@@ -81,7 +81,7 @@ class SearchSeriesActivity : SearchActivity() {
 
     override fun configStateView(stateView: StateView) {
         stateView.setTitle(R.string.series_search_empty_title)
-        stateView.setStateIcon(com.vlv.imperiya.R.drawable.ic_series)
+        stateView.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_series)
     }
 
     override fun configWarningView(smallWarningView: SmallWarningView) {

@@ -7,7 +7,7 @@ import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
-import com.vlv.imperiya.ui.CarouselDecorator
+import com.vlv.imperiya.core.ui.CarouselDecorator
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.MovieCarouselFragment
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
@@ -26,7 +26,7 @@ class TrendingNowFragment : MovieCarouselFragment() {
     override fun configEmptyView() {
         emptyView.apply {
             setTitle(R.string.empty_state_text_movie_trending)
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
         }
     }
 

@@ -38,10 +38,10 @@ class SeriesDetailActivity : DetailActivity() {
             it.loadUrl(poster, ImageType.POSTER)
         }
 
-        toolbar.inflateMenu(com.vlv.common.R.menu.common_detail_menu)
+        toolbar.inflateMenu(com.vlv.ui.R.menu.common_detail_menu)
         toolbar.setOnMenuItemClickListener { item ->
             when(item.itemId) {
-                com.vlv.common.R.id.heart -> {
+                com.vlv.ui.R.id.heart -> {
                     changeFavorite(series)
                     true
                 }
@@ -81,8 +81,8 @@ class SeriesDetailActivity : DetailActivity() {
             )
             menuHeart.icon = ContextCompat.getDrawable(
                 this@SeriesDetailActivity,
-                if(isFavorite) com.vlv.imperiya.R.drawable.ic_heart_filled
-                else com.vlv.imperiya.R.drawable.ic_heart_enable
+                if(isFavorite) com.vlv.imperiya.core.R.drawable.ic_heart_filled
+                else com.vlv.imperiya.core.R.drawable.ic_heart_enable
             )
         }
     }

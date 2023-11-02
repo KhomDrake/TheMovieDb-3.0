@@ -21,7 +21,7 @@ import com.vlv.extensions.inflate
 import com.vlv.extensions.setMargins
 import com.vlv.network.database.data.ImageType
 import com.vlv.series.R
-import com.vlv.common.R as RCommon
+import com.vlv.ui.R as RCommon
 import com.vlv.series.data.Episode
 import kotlin.random.Random
 
@@ -84,7 +84,7 @@ class AboutAdapter : ListAdapter<AboutItem, RecyclerView.ViewHolder>(AboutItemDi
         when(val item = currentList[position]) {
             is AboutItem.InformationItem -> {
                 val marginHorizontal = holder.itemView.context.resources.
-                    getDimension(com.vlv.imperiya.R.dimen.imperiya_carousel_m).toInt()
+                    getDimension(com.vlv.imperiya.core.R.dimen.imperiya_carousel_m).toInt()
                 holder.itemView.setMargins(left = marginHorizontal, right = marginHorizontal)
                 (holder as? InformationViewHolder)?.bind(item.information)
             }

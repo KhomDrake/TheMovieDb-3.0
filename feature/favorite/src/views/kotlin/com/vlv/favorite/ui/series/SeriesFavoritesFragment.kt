@@ -18,10 +18,10 @@ class SeriesFavoritesFragment : BaseFavoriteFragment() {
     private val viewModel: SeriesFavoriteViewModel by viewModel()
 
     override val loadingLayout: Int
-        get() = com.vlv.common.R.layout.common_listing_series_loading
+        get() = com.vlv.ui.R.layout.common_listing_series_loading
 
     override fun setupStateView() {
-        emptyState.setStateIcon(com.vlv.imperiya.R.drawable.ic_tv)
+        emptyState.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv)
         emptyState.setTitle(R.string.favorite_series_empty_state)
     }
 
@@ -37,7 +37,7 @@ class SeriesFavoritesFragment : BaseFavoriteFragment() {
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
                     requireActivity(),
                     view,
-                    getString(com.vlv.common.R.string.common_poster_transition_name)
+                    getString(com.vlv.ui.R.string.common_poster_transition_name)
                 ).toBundle()
             )
         }

@@ -22,7 +22,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import com.vlv.imperiya.R as ImperiyaR
+import com.vlv.imperiya.core.R as ImperiyaR
 
 fun ListingMovieActivityTest.listingMovie(func: ListingMovieActivitySetup.() -> Unit) =
     ListingMovieActivitySetup().apply(func)
@@ -191,6 +191,6 @@ class ListingMovieActivityCheck : Check, KoinComponent {
     }
 
     fun dataDisplayed() {
-        com.vlv.common.R.id.items.isDisplayed()
+        com.vlv.ui.R.id.items.isDisplayed()
     }
 }

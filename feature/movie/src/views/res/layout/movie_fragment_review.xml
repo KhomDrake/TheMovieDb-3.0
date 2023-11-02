@@ -17,7 +17,7 @@
         tools:text="33 People"
         style="@style/Imperiya.Style.Text.Title"/>
 
-    <com.vlv.imperiya.ui.warning.WarningView
+    <com.vlv.imperiya.core.ui.warning.WarningView
         android:id="@+id/warning_view_review"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +27,7 @@
         app:warning_body="Body"
         app:warning_button_try_again="Try again"/>
 
-    <com.vlv.imperiya.ui.warning.WarningView
+    <com.vlv.imperiya.core.ui.warning.WarningView
         android:id="@+id/empty_view_review"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

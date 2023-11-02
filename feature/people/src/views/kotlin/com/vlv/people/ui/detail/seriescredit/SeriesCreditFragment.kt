@@ -27,8 +27,8 @@ import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
-import com.vlv.imperiya.ui.stateview.StateView
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.stateview.StateView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.people.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,7 +47,7 @@ class SeriesCreditFragment : Fragment(R.layout.people_credit_listing) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        View.inflate(requireContext(), com.vlv.common.R.layout.common_listing_movie_loading, shimmer)
+        View.inflate(requireContext(), com.vlv.ui.R.layout.common_listing_movie_loading, shimmer)
         setupRecyclerView()
         setupStateView()
         setupViewStateMachine()
@@ -59,7 +59,7 @@ class SeriesCreditFragment : Fragment(R.layout.people_credit_listing) {
 
     private fun setupStateView() {
         emptyState.apply {
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_tv)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv)
             setTitle(R.string.people_detail_empty_state_series_title)
         }
     }
@@ -73,7 +73,7 @@ class SeriesCreditFragment : Fragment(R.layout.people_credit_listing) {
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
                     requireActivity(),
                     view,
-                    getString(com.vlv.common.R.string.common_poster_transition_name)
+                    getString(com.vlv.ui.R.string.common_poster_transition_name)
                 ).toBundle()
             )
         }

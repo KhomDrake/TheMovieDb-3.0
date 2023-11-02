@@ -46,7 +46,7 @@ class MovieCastFragmentSetup : Setup<MovieCastFragmentLaunch, MovieCastFragmentC
     override fun setupLaunch() {
         launchFragmentInContainer<MovieCastFragment>(
             arguments,
-            com.vlv.imperiya.R.style.Imperiya_Theme
+            com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -94,12 +94,12 @@ class MovieCastFragmentLaunch : Launch<MovieCastFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickCast(position: Int) {
         mockIntent("PEOPLE_DETAIL")
-        com.vlv.common.R.id.cast_content.clickOnRecyclerViewItem(position)
+        com.vlv.ui.R.id.cast_content.clickOnRecyclerViewItem(position)
     }
 
 }
@@ -116,24 +116,24 @@ class MovieCastFragmentCheck : Check, KoinComponent {
     }
 
     fun errorStateDisplayed() {
-        com.vlv.common.R.id.warning_view_cast.isDisplayed()
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load cast")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
+        com.vlv.ui.R.id.warning_view_cast.isDisplayed()
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load cast")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun castInformationDisplayed() {
-        com.vlv.common.R.id.cast_content.apply {
+        com.vlv.ui.R.id.cast_content.apply {
             isDisplayed()
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.withText("Tom Holland"),
-                com.vlv.common.R.id.person_name
+                com.vlv.ui.R.id.person_name
             )
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.withText("Peter Parker / Spider-Man"),
-                com.vlv.common.R.id.character
+                com.vlv.ui.R.id.character
             )
         }
     }

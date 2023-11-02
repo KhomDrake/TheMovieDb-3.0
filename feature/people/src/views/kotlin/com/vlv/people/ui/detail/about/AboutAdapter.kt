@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.vlv.common.R
+import com.vlv.ui.R
 import com.vlv.common.ui.adapter.Information
 import com.vlv.common.ui.adapter.InformationViewHolder
 import com.vlv.common.ui.adapter.PillAdapter
@@ -68,7 +68,7 @@ class AboutAdapter : ListAdapter<AboutItem, RecyclerView.ViewHolder>(AboutItemDi
         when(val item = currentList[position]) {
             is AboutItem.InformationItem -> {
                 val marginHorizontal = holder.itemView.context.resources.
-                getDimension(com.vlv.imperiya.R.dimen.imperiya_carousel_m).toInt()
+                getDimension(com.vlv.imperiya.core.R.dimen.imperiya_carousel_m).toInt()
                 holder.itemView.setMargins(left = marginHorizontal, right = marginHorizontal)
                 (holder as? InformationViewHolder)?.bind(item.information)
             }

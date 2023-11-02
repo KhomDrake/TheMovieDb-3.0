@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="common_movie_pagination_item_height">200dp</dimen>
-    <dimen name="common_series_pagination_item_height">200dp</dimen>
-</resources>

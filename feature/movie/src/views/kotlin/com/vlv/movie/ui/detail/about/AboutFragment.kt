@@ -21,7 +21,7 @@ import com.vlv.extensions.loadingState
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.movie.R
 import com.vlv.movie.ui.detail.cast.EXTRA_MOVIE
 import org.koin.androidx.viewmodel.ext.android.viewModel

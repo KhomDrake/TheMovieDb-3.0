@@ -18,7 +18,7 @@
         android:layout_marginTop="16dp"
         android:visibility="gone"/>
 
-    <com.vlv.imperiya.ui.warning.SmallWarningView
+    <com.vlv.imperiya.core.ui.warning.SmallWarningView
         android:id="@+id/small_warning_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         app:small_warning_body="@string/common_error_description"
         app:small_warning_button_try_again="@string/common_error_button"/>
 
-    <com.vlv.imperiya.ui.stateview.StateView
+    <com.vlv.imperiya.core.ui.stateview.StateView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

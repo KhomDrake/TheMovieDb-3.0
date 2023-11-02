@@ -49,7 +49,7 @@ class SeriesByGenreFragmentSetup :
     override fun setupLaunch() {
         launchFragmentInContainer<SeriesByGenreFragment>(
             fragmentArgs = arguments,
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -110,7 +110,7 @@ class SeriesByGenreFragmentLauncher : Launch<SeriesByGenreFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickSeries(position: Int) {
@@ -136,9 +136,9 @@ class SeriesByGenreFragmentCheck : Check, KoinComponent {
         R.id.empty_state.isNotDisplayed()
         R.id.shimmer.isNotDisplayed()
 
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun seriesDisplayed() {
@@ -151,7 +151,7 @@ class SeriesByGenreFragmentCheck : Check, KoinComponent {
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.withText("Rick and Morty"),
-                com.vlv.common.R.id.series_title
+                com.vlv.ui.R.id.series_title
             )
         }
     }
@@ -162,7 +162,7 @@ class SeriesByGenreFragmentCheck : Check, KoinComponent {
         R.id.empty_state.isDisplayed()
         R.id.shimmer.isNotDisplayed()
 
-        com.vlv.imperiya.R.id.title_state.hasText("No tv show found")
+        com.vlv.imperiya.core.R.id.title_state.hasText("No tv show found")
     }
 
     fun seriesDetailOpened() {

@@ -49,11 +49,11 @@ android {
 
 dependencies {
 
-    implementation project(":imperiya")
-    implementation project(':network')
-    implementation project(':tools:bondsmith')
+    implementation project(':libraries:imperiya:core')
+    implementation project(':data:network')
+    implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
-    implementation project(':common')
+    implementation project(':core:ui')
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')

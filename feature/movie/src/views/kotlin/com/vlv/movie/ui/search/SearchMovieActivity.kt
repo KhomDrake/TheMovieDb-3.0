@@ -12,15 +12,15 @@ import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
 import com.vlv.common.ui.route.toMovieDetail
 import com.vlv.common.ui.search.SearchActivity
 import com.vlv.extensions.*
-import com.vlv.imperiya.ui.stateview.StateView
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.stateview.StateView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.movie.R
 import com.vlv.network.database.data.History
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.vlv.common.R as RCommon
+import com.vlv.ui.R as RCommon
 
 class SearchMovieActivity : SearchActivity() {
 
@@ -84,7 +84,7 @@ class SearchMovieActivity : SearchActivity() {
 
     override fun configStateView(stateView: StateView) {
         stateView
-            .setStateIcon(com.vlv.imperiya.R.drawable.ic_movie)
+            .setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
             .setTitle(R.string.movie_search_empty_state)
     }
 

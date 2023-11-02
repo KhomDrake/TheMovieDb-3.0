@@ -87,9 +87,9 @@ android {
 
 dependencies {
 
-    implementation project(':imperiya')
-    implementation project(':network')
-    implementation project(':tools:bondsmith')
+    implementation project(':libraries:imperiya:core')
+    implementation project(':data:network')
+    implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
     implementation project(':feature:movie')
     implementation project(':feature:series')
@@ -98,7 +98,7 @@ dependencies {
     implementation project(':feature:favorite')
     implementation project(':feature:configuration')
     implementation project(':feature:genre')
-    implementation project(':common')
+    implementation project(':core:ui')
 
     debugImplementation(libs.bigbrother.core)
     debugImplementation(libs.bigbrother.network)

@@ -88,7 +88,7 @@
 
         </com.facebook.shimmer.ShimmerFrameLayout>
 
-        <com.vlv.imperiya.ui.warning.SmallWarningView
+        <com.vlv.imperiya.core.ui.warning.SmallWarningView
             android:id="@+id/warning_view_about"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

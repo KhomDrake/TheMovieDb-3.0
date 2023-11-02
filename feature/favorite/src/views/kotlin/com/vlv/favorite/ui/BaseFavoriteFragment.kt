@@ -15,8 +15,8 @@ import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
 import com.vlv.favorite.R
-import com.vlv.imperiya.ui.stateview.StateView
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.stateview.StateView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 
 abstract class BaseFavoriteFragment : Fragment(R.layout.favorite_listing_fragment) {
 

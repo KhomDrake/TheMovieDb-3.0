@@ -3,7 +3,7 @@ package com.vlv.configuration.data
 import android.content.res.Resources
 import androidx.annotation.StringRes
 import com.vlv.configuration.R
-import com.vlv.imperiya.ui.bottomsheet.Item
+import com.vlv.imperiya.core.ui.bottomsheet.Item
 import com.vlv.network.data.configuration.ConfigurationData
 import com.vlv.network.datastore.DataVault
 import com.vlv.network.repository.SettingsOption
