@@ -1,0 +1,76 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id "jacoco"
+}
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
+apply from: "$rootDir/gradle/load-env.gradle"
+
+android {
+    namespace 'com.vlv.network'
+    compileSdk config.compileSdk
+
+    defaultConfig {
+        minSdk config.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_KEY", "\"$env.api_key\""
+        }
+        debug {
+            buildConfigField "String", "API_KEY", "\"$env.api_key\""
+            testCoverageEnabled true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(":tools:extensions")
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
+    implementation(libs.squareup.retrofit.main)
+    implementation(libs.squareup.retrofit.converter.moshi)
+    implementation(libs.squareup.moshi.codegen)
+    implementation(libs.squareup.moshi.kotlin)
+    implementation(libs.squareup.moshi.kotlin)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.squareup.okhttp3)
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.startup)
+
+    annotationProcessor(libs.androidx.room.compiler)
+
+    kapt(libs.squareup.moshi.codegen)
+    kapt(libs.androidx.room.compiler)
+
+    api(libs.squareup.moshi.kotlin)
+    api(libs.androidx.datastore)
+    api(libs.threetenabp)
+    api(libs.koin.android)
+
+    debugImplementation(libs.bigbrother.network)
+
+    testImplementation project(':tools:test')
+    androidTestImplementation project(':tools:test')
+}

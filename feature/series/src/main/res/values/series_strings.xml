@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="series_airing_today_title">Airing today</string>
+    <string name="series_trending_title">Trending now</string>
+    <string name="series_top_rated_title">Top rated</string>
+    <string name="series_on_the_air_title">On the air</string>
+    <string name="series_popular_title">Popular</string>
+    <string name="series_error_detail_title">Failed to load information</string>
+
+    <!-- Series Search -->
+    <string name="series_search_hint">Search tv show…</string>
+    <string name="series_search_history_title">Tv shows searched recently:</string>
+    <string name="series_search_empty_title">No tv show was found</string>
+
+    <!-- Series Detail -->
+    <string name="series_information_original_title">Original title</string>
+    <string name="series_information_first_on_air">First time on the air</string>
+    <string name="series_information_status">Status</string>
+    <string name="series_information_last_on_air">Last time on the air</string>
+    <string name="series_information_aired_episodes">Aired episodes</string>
+    <string name="series_information_aired_seasons">Aired seasons</string>
+    <string name="series_information_duration">Duration of episodes</string>
+    <string name="series_information_language_of_origin">Language of origin</string>
+    <string name="series_information_country">Country of origin</string>
+    <string name="series_information_companies">Companies</string>
+    <string name="series_title_genres">Genres:</string>
+    <string name="series_title_last_episode">Last episode:</string>
+    <string name="series_title_next_episode">Next episode:</string>
+    <string name="series_title_information">Information:</string>
+    <string name="series_title_videos">Videos:</string>
+    <string name="series_about_tab_title">About</string>
+    <string name="series_seasons_tab_title">Seasons</string>
+    <string name="series_cast_tab_title">Cast</string>
+    <string name="series_review_tab_title">Reviews</string>
+    <string name="series_recommendation_tab_title">Recommendation</string>
+    <string name="series_empty_state_recommendation">None recommendation found</string>
+    <string name="series_season_description">%1$d episodes - %2$s</string>
+    <string name="series_description">Description: %s</string>
+    <string name="series_added_to_favorite">Tv show added to favorites</string>
+    <string name="series_add_favorite">add tv show to favorites</string>
+    <string name="series_removed_from_favorite">Tv show removed from favorites</string>
+    <string name="series_remove_favorite">remove tv show from favorites</string>
+    <string name="series_is_favorite">Favorite tv show</string>
+    <string name="series_is_not_favorite">Not favorite tv show</string>
+    
+</resources>
