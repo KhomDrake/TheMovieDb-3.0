@@ -10,9 +10,9 @@ import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toFavorite
 import com.vlv.common.ui.route.FAVORITE_TYPE_EXTRA
-import com.vlv.network.data.movie.MoviesResponse
-import com.vlv.network.database.TheMovieDbDao
-import com.vlv.network.database.data.FavoriteType
+import com.vlv.data.network.model.movie.MoviesResponse
+import com.vlv.data.network.database.TheMovieDbDao
+import com.vlv.data.network.database.data.FavoriteType
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

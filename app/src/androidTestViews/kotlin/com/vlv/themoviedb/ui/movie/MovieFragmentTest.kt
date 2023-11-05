@@ -2,9 +2,9 @@ package com.vlv.themoviedb.ui.movie
 
 import com.vlv.favorite.FavoriteInitializer
 import com.vlv.movie.MovieInitializer
-import com.vlv.network.NetworkInitializer
-import com.vlv.network.database.TheMovieDbDao
-import com.vlv.network.repository.MovieRepository
+import com.vlv.data.network.NetworkInitializer
+import com.vlv.data.network.database.TheMovieDbDao
+import com.vlv.data.network.repository.MovieRepository
 import com.vlv.series.SeriesInitializer
 import com.vlv.test.KoinRule
 import com.vlv.themoviedb.ui.MainInitializer

@@ -1,4 +1,4 @@
-package com.vlv.network
+package com.vlv.data.network
 
 import org.junit.Test
 

@@ -1,0 +1,47 @@
+plugins {
+    alias(libs.plugins.com.android.library)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    id "jacoco"
+}
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
+apply from: "$rootDir/gradle/load-env.gradle"
+
+android {
+    namespace 'com.vlv.util'
+    compileSdk config.compileSdk
+
+    defaultConfig {
+        minSdk config.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
+    api(libs.androidx.startup)
+    api(libs.squareup.moshi.kotlin)
+    api(libs.androidx.datastore)
+    api(libs.threetenabp)
+    api(libs.koin.android)
+}

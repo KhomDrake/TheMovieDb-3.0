@@ -52,6 +52,8 @@ dependencies {
     implementation project(':libraries:imperiya:core')
     implementation project(':data:network')
     implementation project(":tools:extensions")
+    implementation project(':data:database')
+    implementation project(':data:local')
 
     viewsApi(libs.shimmer)
 

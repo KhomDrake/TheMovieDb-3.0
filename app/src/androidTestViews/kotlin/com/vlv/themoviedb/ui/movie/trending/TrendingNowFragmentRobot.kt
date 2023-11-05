@@ -10,8 +10,8 @@ import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
 import com.vlv.themoviedb.R
-import com.vlv.network.data.movie.MoviesResponse
-import com.vlv.network.repository.MovieRepository
+import com.vlv.data.network.model.movie.MoviesResponse
+import com.vlv.data.network.repository.MovieRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

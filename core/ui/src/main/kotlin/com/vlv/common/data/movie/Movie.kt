@@ -2,10 +2,10 @@ package com.vlv.common.data.movie
 
 import android.os.Parcelable
 import com.vlv.common.ui.DetailObject
-import com.vlv.network.data.movie.MovieResponse
-import com.vlv.network.data.people.MovieCreditResponse
-import com.vlv.network.database.data.Favorite
-import com.vlv.network.database.data.FavoriteType
+import com.vlv.data.network.database.data.Favorite
+import com.vlv.data.network.database.data.FavoriteType
+import com.vlv.data.network.model.movie.MovieResponse
+import com.vlv.data.network.model.people.MovieCreditResponse
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

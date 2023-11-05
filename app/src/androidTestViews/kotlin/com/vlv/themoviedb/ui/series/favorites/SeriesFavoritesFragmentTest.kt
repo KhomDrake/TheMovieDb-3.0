@@ -1,8 +1,8 @@
 package com.vlv.themoviedb.ui.series.favorites
 
 import com.vlv.favorite.FavoriteInitializer
-import com.vlv.network.NetworkInitializer
-import com.vlv.network.database.TheMovieDbDao
+import com.vlv.data.network.NetworkInitializer
+import com.vlv.data.network.database.TheMovieDbDao
 import com.vlv.series.SeriesInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule

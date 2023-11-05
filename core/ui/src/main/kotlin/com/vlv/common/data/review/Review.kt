@@ -2,7 +2,7 @@ package com.vlv.common.data.review
 
 import com.vlv.extensions.patternFullDate
 import com.vlv.extensions.toFormattedString
-import com.vlv.network.data.review.ReviewResponse
+import com.vlv.data.network.model.review.ReviewResponse
 
 class Review(
     val id: String,

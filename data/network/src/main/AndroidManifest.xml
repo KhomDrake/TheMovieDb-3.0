@@ -7,7 +7,7 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-            <meta-data  android:name="com.vlv.network.NetworkInitializer"
+            <meta-data  android:name="com.vlv.data.network.NetworkInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>

@@ -13,7 +13,7 @@ import com.vlv.common.data.review.Review
 import com.vlv.common.ui.extension.loadUrl
 import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
-import com.vlv.network.database.data.ImageType
+import com.vlv.data.network.database.data.ImageType
 
 class ReviewDiffUtil: DiffUtil.ItemCallback<Review>() {
     override fun areContentsTheSame(oldItem: Review, newItem: Review): Boolean {

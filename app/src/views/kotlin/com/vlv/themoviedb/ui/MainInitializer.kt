@@ -2,8 +2,7 @@ package com.vlv.themoviedb.ui
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.vlv.favorite.ui.series.SeriesFavoriteViewModel
-import com.vlv.network.NetworkInitializer
+import com.vlv.data.network.NetworkInitializer
 import com.vlv.themoviedb.ui.menu.MenuViewModel
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingViewModel
 import com.vlv.themoviedb.ui.movie.trending.TrendingNowViewModel

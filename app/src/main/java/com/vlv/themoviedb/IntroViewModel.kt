@@ -1,18 +1,18 @@
 package com.vlv.themoviedb
 
+import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
-import com.vlv.network.datastore.DataVault
-import com.vlv.network.repository.ConfigurationRepository
+import com.vlv.configuration.domain.usecase.SetupConfigurationUseCase
 
 class IntroViewModel(
-    private val repository: ConfigurationRepository
+    private val resources: Resources,
+    private val useCase: SetupConfigurationUseCase
 ) : ViewModel() {
 
     fun loadConfig() = bondsmith<Unit>()
         .request {
-            repository.loadConfig()
-            DataVault.loadCache()
+            useCase.loadConfig(resources)
         }
         .execute()
         .responseLiveData

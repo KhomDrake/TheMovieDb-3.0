@@ -2,14 +2,13 @@ package com.vlv.themoviedb.ui.series
 
 import com.vlv.favorite.FavoriteInitializer
 import com.vlv.movie.MovieInitializer
-import com.vlv.network.NetworkInitializer
-import com.vlv.network.database.TheMovieDbDao
-import com.vlv.network.repository.SeriesRepository
+import com.vlv.data.network.NetworkInitializer
+import com.vlv.data.network.database.TheMovieDbDao
+import com.vlv.data.network.repository.SeriesRepository
 import com.vlv.series.SeriesInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
 import com.vlv.themoviedb.ui.MainInitializer
-import com.vlv.themoviedb.ui.movie.movieFragment
 import io.mockk.mockk
 import org.junit.Ignore
 import org.junit.Rule

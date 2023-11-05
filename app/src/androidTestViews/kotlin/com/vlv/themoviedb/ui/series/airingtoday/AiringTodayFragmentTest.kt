@@ -1,8 +1,8 @@
 package com.vlv.themoviedb.ui.series.airingtoday
 
 import com.vlv.favorite.FavoriteInitializer
-import com.vlv.network.NetworkInitializer
-import com.vlv.network.repository.SeriesRepository
+import com.vlv.data.network.NetworkInitializer
+import com.vlv.data.network.repository.SeriesRepository
 import com.vlv.series.SeriesInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule

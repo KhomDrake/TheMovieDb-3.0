@@ -1,6 +1,6 @@
-package com.vlv.network.client
+package com.vlv.data.network.client
 
-import com.vlv.network.interceptors.InterceptorFactory
+import com.vlv.data.network.interceptors.InterceptorFactory
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 object OkHttpFactory {

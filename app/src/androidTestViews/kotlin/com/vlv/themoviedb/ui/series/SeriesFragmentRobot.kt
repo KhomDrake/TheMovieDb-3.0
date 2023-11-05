@@ -5,10 +5,10 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toFavorite
-import com.vlv.network.data.series.SeriesResponse
-import com.vlv.network.database.TheMovieDbDao
-import com.vlv.network.database.data.FavoriteType
-import com.vlv.network.repository.SeriesRepository
+import com.vlv.data.network.model.series.SeriesResponse
+import com.vlv.data.network.database.TheMovieDbDao
+import com.vlv.data.network.database.data.FavoriteType
+import com.vlv.data.network.repository.SeriesRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

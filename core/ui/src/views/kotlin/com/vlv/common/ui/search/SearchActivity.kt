@@ -33,7 +33,7 @@ import com.vlv.extensions.stateLoading
 import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
-import com.vlv.network.database.data.History
+import com.vlv.data.network.database.data.History
 
 abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activity) {
 

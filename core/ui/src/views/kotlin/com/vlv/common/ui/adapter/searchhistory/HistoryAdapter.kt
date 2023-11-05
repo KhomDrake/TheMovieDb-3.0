@@ -12,7 +12,7 @@ import com.vlv.ui.R
 import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
-import com.vlv.network.database.data.History
+import com.vlv.data.network.database.data.History
 
 class HistoryDiffItem: DiffUtil.ItemCallback<HistoryItems>() {
 

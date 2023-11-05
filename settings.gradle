@@ -21,16 +21,19 @@ include ':app'
 include ':imperiyasample'
 
 // Features
-include ':feature:movie'
-include ':feature:series'
-include ':feature:people'
-include ':feature:configuration'
-include ':feature:favorite'
-include ':feature:search'
-include ':feature:genre'
+include ':feature:configuration:apresentation'
+include ':feature:configuration:domain'
+include ':feature:configuration:data'
+include ':feature:movie:apresentation'
+include ':feature:series:apresentation'
+include ':feature:people:apresentation'
+include ':feature:favorite:apresentation'
+include ':feature:search:apresentation'
+include ':feature:genre:apresentation'
 
 // Data
 include ':data:network'
+include ':data:database'
 
 // Core
 include ':core:ui'
@@ -38,7 +41,9 @@ include ':core:ui'
 // Tools
 include ':tools:extensions'
 include ':tools:test'
+include ':tools:util'
 
 // Libraries
 include ':libraries:imperiya:core'
 include ':libraries:bondsmith'
+include ':data:local'

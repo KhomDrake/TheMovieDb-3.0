@@ -1,7 +1,6 @@
 package com.vlv.bondsmith
 
 import android.util.Log
-import br.com.arch.toolkit.common.DataResult
 import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
 import br.com.arch.toolkit.livedata.response.ResponseLiveData
 import kotlinx.coroutines.CoroutineScope
@@ -9,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
-private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+private val bondsmithScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
 class Bondsmith<Data>(private val scope: CoroutineScope) {
 
@@ -40,6 +39,6 @@ class Bondsmith<Data>(private val scope: CoroutineScope) {
 
 }
 
-fun <T>bondsmith(scope: CoroutineScope = coroutineScope) : Bondsmith<T> {
+fun <T>bondsmith(scope: CoroutineScope = bondsmithScope) : Bondsmith<T> {
     return Bondsmith(scope)
 }
