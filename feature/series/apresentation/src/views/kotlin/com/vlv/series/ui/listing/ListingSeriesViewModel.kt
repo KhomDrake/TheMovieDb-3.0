@@ -7,8 +7,8 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.SeriesListType
-import com.vlv.data.network.repository.SeriesRepository
-import com.vlv.data.network.repository.TimeWindow
+import com.vlv.data.network.model.TimeWindow
+import com.vlv.series.data.repository.SeriesRepository
 import kotlinx.coroutines.flow.map
 
 class ListingSeriesViewModel(private val repository: SeriesRepository) : ViewModel() {

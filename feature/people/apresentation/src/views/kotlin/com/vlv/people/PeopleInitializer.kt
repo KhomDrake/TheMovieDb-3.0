@@ -2,7 +2,8 @@ package com.vlv.people
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.vlv.data.network.NetworkInitializer
+import com.vlv.favorite.domain.FavoriteDomainInitializer
+import com.vlv.people.data.PeopleDataInitializer
 import com.vlv.people.ui.detail.PeopleDetailViewModel
 import com.vlv.people.ui.detail.about.AboutViewModel
 import com.vlv.people.ui.detail.moviecredits.MovieCreditViewModel
@@ -25,7 +26,7 @@ class PeopleInitializer : Initializer<Module> {
             viewModel { MovieCreditViewModel(get()) }
             viewModel { SeriesCreditViewModel(get()) }
             viewModel { PeopleDetailViewModel(get()) }
-            viewModel { SearchPeopleViewModel(get()) }
+            viewModel { SearchPeopleViewModel(get(), get(), get(), get()) }
         }
         loadKoinModules(module)
         return module
@@ -33,7 +34,8 @@ class PeopleInitializer : Initializer<Module> {
 
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {
         return mutableListOf(
-            NetworkInitializer::class.java
+            PeopleDataInitializer::class.java,
+            FavoriteDomainInitializer::class.java,
         )
     }
 

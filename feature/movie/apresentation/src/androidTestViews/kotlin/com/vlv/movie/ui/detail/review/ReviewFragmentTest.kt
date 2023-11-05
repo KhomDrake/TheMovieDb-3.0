@@ -2,7 +2,6 @@ package com.vlv.movie.ui.detail.review
 
 import com.vlv.movie.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.repository.MovieDetailRepository
 import com.vlv.test.KoinRule
 import io.mockk.mockk
 import org.junit.Rule

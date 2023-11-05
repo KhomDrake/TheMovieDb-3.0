@@ -27,7 +27,7 @@ class SeriesInitializer: Initializer<Module> {
             viewModel { AboutViewModel(get()) }
             viewModel { RecommendationViewModel(get()) }
             viewModel { SeriesDetailViewModel(get()) }
-            viewModel { SearchViewModel(get()) }
+            viewModel { SearchViewModel(get(), get(), get(), get()) }
         }
         loadKoinModules(module)
         return module

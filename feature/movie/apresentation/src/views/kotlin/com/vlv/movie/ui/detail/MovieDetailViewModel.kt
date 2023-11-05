@@ -4,18 +4,20 @@ import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toFavorite
-import com.vlv.data.network.repository.FavoriteRepository
+import com.vlv.favorite.domain.usecase.FavoriteUseCase
 
-class MovieDetailViewModel(private val repository: FavoriteRepository) : ViewModel() {
+class MovieDetailViewModel(
+    private val useCase: FavoriteUseCase
+) : ViewModel() {
 
     fun changeFavorite(movie: Movie) = bondsmith<Boolean>()
         .request {
-            val favorite = repository.getFavorite(movie.id)
+            val favorite = useCase.getFavorite(movie.id)
             if(favorite != null) {
-                repository.removeFavorite(favorite)
+                useCase.removeFavorite(favorite)
                 false
             } else {
-                repository.addFavorite(movie.toFavorite())
+                useCase.addFavorite(movie.toFavorite())
                 true
             }
         }
@@ -24,7 +26,7 @@ class MovieDetailViewModel(private val repository: FavoriteRepository) : ViewMod
 
     fun getFavorite(movieId: Int) = bondsmith<Boolean>()
         .request {
-            repository.getFavorite(movieId) != null
+            useCase.getFavorite(movieId) != null
         }
         .execute()
         .responseLiveData

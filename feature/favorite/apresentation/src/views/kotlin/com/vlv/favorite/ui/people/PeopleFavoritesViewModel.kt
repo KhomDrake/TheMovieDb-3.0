@@ -4,16 +4,15 @@ import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.people.People
 import com.vlv.data.network.database.data.Favorite
-import com.vlv.data.network.database.data.FavoriteType
-import com.vlv.data.network.repository.FavoriteRepository
+import com.vlv.favorite.domain.usecase.PeopleFavoriteUseCase
 
 class PeopleFavoritesViewModel(
-    private val repository: FavoriteRepository
+    private val useCase: PeopleFavoriteUseCase
 ) : ViewModel() {
 
     fun peopleFavorites() = bondsmith<List<Favorite>>()
         .request {
-            repository.favoriteByType(FavoriteType.PEOPLE)
+            useCase.favorites()
         }
         .execute()
         .responseLiveData

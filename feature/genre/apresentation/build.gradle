@@ -48,11 +48,15 @@ android {
 
 dependencies {
 
+    implementation project(":data:network")
     implementation project(':libraries:imperiya:core')
-    implementation project(':data:network')
     implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
     implementation project(':core:ui')
+    implementation project(':feature:genre:domain')
+
+    implementation libs.koin.android
+    implementation libs.androidx.paging
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')

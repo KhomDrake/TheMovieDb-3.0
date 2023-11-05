@@ -8,7 +8,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.genre.R
 import com.vlv.genre.ui.movie.GENRE_ID_EXTRA
-import com.vlv.data.network.api.DiscoverApi
 import com.vlv.data.network.model.series.SeriesResponse
 import com.vlv.test.Check
 import com.vlv.test.Launch

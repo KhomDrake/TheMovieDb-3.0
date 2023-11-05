@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.movie.data.MovieDetail
 import com.vlv.data.network.model.movie.MovieDetailResponse
-import com.vlv.data.network.repository.MovieDetailRepository
+import com.vlv.movie.data.repository.MovieDetailRepository
 
 class AboutMovieViewModel(private val repository: MovieDetailRepository) : ViewModel() {
 

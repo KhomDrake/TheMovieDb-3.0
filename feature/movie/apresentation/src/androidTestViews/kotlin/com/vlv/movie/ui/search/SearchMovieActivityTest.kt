@@ -2,11 +2,7 @@ package com.vlv.movie.ui.search
 
 import com.vlv.movie.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.api.MovieApi
-import com.vlv.data.network.api.PeopleApi
-import com.vlv.data.network.api.SeriesApi
 import com.vlv.data.network.database.TheMovieDbDao
-import com.vlv.data.network.repository.MovieDetailRepository
 import com.vlv.data.network.repository.MovieRepository
 import com.vlv.data.network.repository.SearchRepository
 import com.vlv.test.IntentsRule

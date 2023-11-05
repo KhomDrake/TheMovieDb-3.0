@@ -8,11 +8,11 @@ import androidx.paging.map
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.series.Series
 import com.vlv.data.network.model.genre.GenreResponse
-import com.vlv.data.network.repository.GenreRepository
+import com.vlv.genre.domain.usecase.SeriesGenreUseCase
 import kotlinx.coroutines.flow.map
 
 class SeriesGenreViewModel(
-    private val repository: GenreRepository
+    private val genreUseCase: SeriesGenreUseCase
 ) : ViewModel() {
 
     private val pagingConfig = PagingConfig(
@@ -24,12 +24,12 @@ class SeriesGenreViewModel(
 
     fun genres() = bondsmith<List<GenreResponse>>()
         .request {
-            repository.seriesGenre().genres
+            genreUseCase.genres().genres
         }
         .execute()
         .responseLiveData
 
-    fun seriesByGenre(genreId: Int) = repository.seriesByGenre(pagingConfig, genreId)
+    fun seriesByGenre(genreId: Int) = genreUseCase.seriesByGenre(pagingConfig, genreId)
         .map {
             it.map { seriesResponse ->
                 Series(seriesResponse)

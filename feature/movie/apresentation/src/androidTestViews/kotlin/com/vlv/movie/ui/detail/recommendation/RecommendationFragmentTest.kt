@@ -2,8 +2,6 @@ package com.vlv.movie.ui.detail.recommendation
 
 import com.vlv.movie.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.api.MovieApi
-import com.vlv.data.network.repository.MovieDetailRepository
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
 import io.mockk.mockk

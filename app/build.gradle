@@ -93,14 +93,20 @@ dependencies {
     implementation project(':data:local')
     implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
+
     implementation project(':feature:movie:apresentation')
     implementation project(':feature:series:apresentation')
     implementation project(':feature:people:apresentation')
     implementation project(':feature:search:apresentation')
     implementation project(':feature:favorite:apresentation')
     implementation project(':feature:configuration:apresentation')
-    implementation project(':feature:configuration:domain')
     implementation project(':feature:genre:apresentation')
+
+    implementation project(':feature:configuration:domain')
+
+    implementation project(':feature:movie:data')
+    implementation project(':feature:series:data')
+
     implementation project(':core:ui')
 
     debugImplementation(libs.bigbrother.core)

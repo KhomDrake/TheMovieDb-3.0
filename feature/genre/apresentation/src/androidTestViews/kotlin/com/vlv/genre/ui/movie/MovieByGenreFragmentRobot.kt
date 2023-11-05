@@ -7,7 +7,6 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.genre.R
-import com.vlv.data.network.api.DiscoverApi
 import com.vlv.data.network.model.movie.MoviesResponse
 import com.vlv.test.Check
 import com.vlv.test.Launch

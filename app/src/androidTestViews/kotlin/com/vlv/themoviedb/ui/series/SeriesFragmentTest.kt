@@ -4,7 +4,6 @@ import com.vlv.favorite.FavoriteInitializer
 import com.vlv.movie.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
 import com.vlv.data.network.database.TheMovieDbDao
-import com.vlv.data.network.repository.SeriesRepository
 import com.vlv.series.SeriesInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule

@@ -3,17 +3,16 @@ package com.vlv.favorite.ui.movie
 import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
-import com.vlv.data.database.TheMovieDbDao
 import com.vlv.data.network.database.data.Favorite
-import com.vlv.data.network.database.data.FavoriteType
+import com.vlv.favorite.domain.usecase.MovieFavoriteUseCase
 
 class MovieFavoritesViewModel(
-    private val dao: TheMovieDbDao
+    private val useCase: MovieFavoriteUseCase
 ) : ViewModel() {
 
     fun movieFavorites(shouldTake: Boolean = false) = bondsmith<List<Favorite>>()
         .request {
-            val data = dao.favoriteByType(FavoriteType.MOVIE)
+            val data = useCase.favorites()
             if(shouldTake) data.take(20) else data
         }
         .execute()

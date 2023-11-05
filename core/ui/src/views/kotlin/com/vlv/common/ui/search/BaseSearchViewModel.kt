@@ -14,12 +14,18 @@ import com.vlv.common.ui.adapter.searchhistory.HistoryItems
 import com.vlv.data.network.model.movie.MovieResponse
 import com.vlv.data.network.database.data.History
 import com.vlv.data.network.database.data.HistoryType
-import com.vlv.data.network.repository.SearchRepository
+import com.vlv.search.domain.usecase.HistoryUseCase
+import com.vlv.search.domain.usecase.SearchMovieUseCase
+import com.vlv.search.domain.usecase.SearchPeopleUseCase
+import com.vlv.search.domain.usecase.SearchSeriesUseCase
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 abstract class BaseSearchViewModel(
-    private val searchRepository: SearchRepository
+    private val movieUseCase: SearchMovieUseCase,
+    private val seriesUseCase: SearchSeriesUseCase,
+    private val peopleUseCase: SearchPeopleUseCase,
+    private val historyUseCase: HistoryUseCase
 ) : ViewModel() {
 
     abstract val historyType: HistoryType
@@ -31,21 +37,21 @@ abstract class BaseSearchViewModel(
         initialLoadSize = 20
     )
 
-    fun searchMovie(query: String) = searchRepository
+    fun searchMovie(query: String) = movieUseCase
         .searchMovie(pagingConfig, query)
         .map {
             it.map { movieResponse: MovieResponse -> Movie(movieResponse) }
         }
         .cachedIn(viewModelScope)
 
-    fun searchSeries(query: String) = searchRepository
+    fun searchSeries(query: String) = seriesUseCase
         .searchSeries(pagingConfig, query)
         .map {
             it.map { seriesItem -> Series(seriesItem) }
         }
         .cachedIn(viewModelScope)
 
-    fun searchPeople(query: String) = searchRepository
+    fun searchPeople(query: String) = peopleUseCase
         .searchPeople(pagingConfig, query)
         .map {
             it.map { peopleItem -> People(peopleItem) }
@@ -53,7 +59,7 @@ abstract class BaseSearchViewModel(
         .cachedIn(viewModelScope)
 
     fun historyBySearchType(title: String) = run {
-        searchRepository.history(historyType)
+        historyUseCase.history(historyType)
     }.mapList {
         HistoryItems.HistoryItem(it) as HistoryItems
     }.map {
@@ -64,7 +70,7 @@ abstract class BaseSearchViewModel(
 
     fun addToHistory(query: String) {
         viewModelScope.launch {
-            searchRepository.addHistory(
+            historyUseCase.addHistory(
                 History(query, historyType)
             )
         }
@@ -72,7 +78,7 @@ abstract class BaseSearchViewModel(
 
     fun removeHistory(history: History) {
         viewModelScope.launch {
-            searchRepository.deleteHistory(history)
+            historyUseCase.deleteHistory(history)
         }
     }
 

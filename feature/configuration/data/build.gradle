@@ -43,7 +43,6 @@ dependencies {
     implementation libs.squareup.retrofit.converter.moshi
     implementation libs.squareup.retrofit.main
     implementation libs.androidx.appcompat
-    implementation libs.google.material
     testImplementation libs.tests.junit
 
     testImplementation project(':tools:test')

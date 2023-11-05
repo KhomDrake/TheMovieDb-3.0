@@ -8,7 +8,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
 import com.vlv.data.network.model.credit.CreditsResponse
-import com.vlv.data.network.repository.MovieDetailRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

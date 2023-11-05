@@ -49,11 +49,14 @@ android {
 dependencies {
 
     implementation project(':libraries:imperiya:core')
+    implementation project(':libraries:bondsmith')
     implementation project(':data:network')
     implementation project(':data:database')
-    implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
     implementation project(':core:ui')
+    implementation project(':feature:search:domain')
+
+    implementation(libs.koin.android)
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')

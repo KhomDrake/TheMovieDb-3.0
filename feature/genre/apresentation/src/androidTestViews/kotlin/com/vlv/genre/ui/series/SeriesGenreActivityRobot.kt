@@ -6,8 +6,6 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.ui.route.toSeriesGenre
 import com.vlv.genre.R
-import com.vlv.data.network.api.DiscoverApi
-import com.vlv.data.network.api.GenresApi
 import com.vlv.data.network.model.genre.GenresResponse
 import com.vlv.data.network.model.series.SeriesResponse
 import com.vlv.test.Check

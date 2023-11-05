@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
+import com.vlv.data.network.model.TimeWindow
 import com.vlv.data.network.model.movie.MoviesResponse
-import com.vlv.data.network.repository.MovieRepository
-import com.vlv.data.network.repository.TimeWindow
+import com.vlv.movie.data.repository.MovieRepository
 
 class TrendingNowViewModel(private val repository: MovieRepository) : ViewModel() {
 

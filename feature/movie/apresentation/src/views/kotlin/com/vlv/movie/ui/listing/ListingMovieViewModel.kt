@@ -7,8 +7,8 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.MovieListType
-import com.vlv.data.network.repository.MovieRepository
-import com.vlv.data.network.repository.TimeWindow
+import com.vlv.data.network.model.TimeWindow
+import com.vlv.movie.data.repository.MovieRepository
 import kotlinx.coroutines.flow.map
 
 class ListingMovieViewModel(private val repository: MovieRepository) : ViewModel() {

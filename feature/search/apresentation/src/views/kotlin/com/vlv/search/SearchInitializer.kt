@@ -12,7 +12,7 @@ import org.koin.dsl.module
 class SearchInitializer : Initializer<Module> {
     override fun create(context: Context): Module {
         val module = module {
-            viewModel { SearchViewModel(get()) }
+            viewModel { SearchViewModel(get(), get(), get(), get()) }
         }
         loadKoinModules(module)
         return module

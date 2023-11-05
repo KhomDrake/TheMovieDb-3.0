@@ -50,11 +50,13 @@ android {
 dependencies {
 
     implementation project(':libraries:imperiya:core')
-    implementation project(':data:database')
-    implementation project(':data:network')
     implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
     implementation project(':core:ui')
+
+    implementation project(':feature:people:data')
+    implementation project(':feature:favorite:domain')
+    implementation project(':feature:search:domain')
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')

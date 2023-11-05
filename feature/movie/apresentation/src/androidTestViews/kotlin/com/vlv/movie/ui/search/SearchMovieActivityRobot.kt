@@ -7,7 +7,6 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.ui.route.toMovieSearch
-import com.vlv.data.network.api.MovieApi
 import com.vlv.data.network.model.movie.MoviesResponse
 import com.vlv.data.network.database.TheMovieDbDao
 import com.vlv.data.network.database.data.History

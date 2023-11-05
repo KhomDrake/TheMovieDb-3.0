@@ -14,8 +14,6 @@ import com.vlv.data.network.model.credit.CreditsResponse
 import com.vlv.data.network.model.movie.MovieDetailResponse
 import com.vlv.data.network.model.movie.MoviesResponse
 import com.vlv.data.network.model.review.ReviewsResponse
-import com.vlv.data.network.repository.FavoriteRepository
-import com.vlv.data.network.repository.MovieDetailRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

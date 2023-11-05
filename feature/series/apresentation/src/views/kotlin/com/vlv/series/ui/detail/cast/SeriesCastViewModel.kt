@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.cast.Cast
 import com.vlv.data.network.model.credit.CreditsResponse
-import com.vlv.data.network.repository.SeriesDetailRepository
+import com.vlv.series.data.repository.SeriesDetailRepository
 
 class SeriesCastViewModel(private val repository: SeriesDetailRepository) : ViewModel() {
 

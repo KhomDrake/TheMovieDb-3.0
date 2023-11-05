@@ -20,10 +20,8 @@ rootProject.name = "themoviedb"
 include ':app'
 include ':imperiyasample'
 
-// Features
+// Features Apresentation
 include ':feature:configuration:apresentation'
-include ':feature:configuration:domain'
-include ':feature:configuration:data'
 include ':feature:movie:apresentation'
 include ':feature:series:apresentation'
 include ':feature:people:apresentation'
@@ -31,9 +29,26 @@ include ':feature:favorite:apresentation'
 include ':feature:search:apresentation'
 include ':feature:genre:apresentation'
 
+// Features Domain
+include ':feature:configuration:domain'
+include ':feature:favorite:domain'
+include ':feature:genre:domain'
+include ':feature:people:domain'
+include ':feature:search:domain'
+
+// Features Data
+include ':feature:configuration:data'
+include ':feature:genre:data'
+include ':feature:favorite:data'
+include ':feature:movie:data'
+include ':feature:people:data'
+include ':feature:search:data'
+include ':feature:series:data'
+
 // Data
 include ':data:network'
 include ':data:database'
+include ':data:local'
 
 // Core
 include ':core:ui'
@@ -46,4 +61,3 @@ include ':tools:util'
 // Libraries
 include ':libraries:imperiya:core'
 include ':libraries:bondsmith'
-include ':data:local'

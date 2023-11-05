@@ -4,27 +4,27 @@ import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.people.People
 import com.vlv.common.data.people.toFavorite
-import com.vlv.data.network.repository.FavoriteRepository
+import com.vlv.favorite.domain.usecase.FavoriteUseCase
 
 class PeopleDetailViewModel(
-    private val repository: FavoriteRepository
+    private val useCase: FavoriteUseCase
 ) : ViewModel() {
 
     fun getFavorite(peopleId: Int) = bondsmith<Boolean>()
         .request {
-            repository.getFavorite(peopleId) != null
+            useCase.getFavorite(peopleId) != null
         }
         .execute()
         .responseLiveData
 
     fun changeFavorite(people: People) = bondsmith<Boolean>()
         .request {
-            val favorite = repository.getFavorite(people.id)
+            val favorite = useCase.getFavorite(people.id)
             if(favorite != null) {
-                repository.removeFavorite(favorite)
+                useCase.removeFavorite(favorite)
                 false
             } else {
-                repository.addFavorite(people.toFavorite())
+                useCase.addFavorite(people.toFavorite())
                 true
             }
         }

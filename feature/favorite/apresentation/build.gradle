@@ -49,6 +49,7 @@ android {
 dependencies {
 
     implementation project(':libraries:imperiya:core')
+    implementation project(':feature:favorite:domain')
     implementation project(':data:database')
     implementation project(':data:network')
     implementation project(':libraries:bondsmith')

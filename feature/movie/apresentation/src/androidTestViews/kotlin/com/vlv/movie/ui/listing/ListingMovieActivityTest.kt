@@ -2,7 +2,6 @@ package com.vlv.movie.ui.listing
 
 import com.vlv.movie.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.api.MovieApi
 import com.vlv.data.network.repository.MovieRepository
 import com.vlv.test.KoinRule
 import io.mockk.mockk

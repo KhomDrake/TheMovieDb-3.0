@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
 import com.vlv.data.network.model.people.PeopleMovieCreditResponse
-import com.vlv.data.network.repository.PeopleDetailRepository
+import com.vlv.people.data.repository.PeopleDetailRepository
 
 class MovieCreditViewModel(private val repository: PeopleDetailRepository) : ViewModel() {
     fun movieCredit(peopleId: Int) = bondsmith<PeopleMovieCreditResponse>()

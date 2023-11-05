@@ -30,7 +30,7 @@ class SeasonsFragment : Fragment(R.layout.series_fragment_seasons) {
             requireContext(), LinearLayoutManager.VERTICAL, false
         )
         seasons.adapter = SeasonAdapter()
-        viewModel.seriesDetail(resources, series.id).observe(viewLifecycleOwner) {
+        viewModel.seriesDetail(series.id).observe(viewLifecycleOwner) {
             data {
                 (seasons.adapter as? SeasonAdapter)?.submitList(it)
             }

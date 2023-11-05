@@ -6,7 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.vlv.common.data.movie.Movie
-import com.vlv.data.network.repository.MovieDetailRepository
+import com.vlv.movie.data.repository.MovieDetailRepository
 import kotlinx.coroutines.flow.map
 
 class RecommendationViewModel(private val repository: MovieDetailRepository) : ViewModel() {

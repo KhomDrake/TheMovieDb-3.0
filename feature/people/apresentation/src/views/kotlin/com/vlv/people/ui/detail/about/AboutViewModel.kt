@@ -7,8 +7,8 @@ import com.vlv.common.ui.adapter.Information
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
 import com.vlv.data.network.model.people.PeopleDetailResponse
-import com.vlv.data.network.repository.PeopleDetailRepository
 import com.vlv.people.R
+import com.vlv.people.data.repository.PeopleDetailRepository
 
 class AboutViewModel(
     private val repository: PeopleDetailRepository
