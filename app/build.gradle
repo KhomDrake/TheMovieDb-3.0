@@ -91,6 +91,7 @@ dependencies {
     implementation project(':data:database')
     implementation project(':data:network')
     implementation project(':data:local')
+    implementation project(':data:common')
     implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
 

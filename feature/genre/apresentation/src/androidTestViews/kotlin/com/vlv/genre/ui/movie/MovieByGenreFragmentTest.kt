@@ -2,6 +2,9 @@ package com.vlv.genre.ui.movie
 
 import com.vlv.genre.GenreInitialization
 import com.vlv.data.network.NetworkInitializer
+import com.vlv.genre.data.GenreRepository
+import com.vlv.genre.data.api.DiscoverApi
+import com.vlv.genre.data.api.GenresApi
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
 import io.mockk.mockk

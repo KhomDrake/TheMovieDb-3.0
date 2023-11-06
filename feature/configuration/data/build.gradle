@@ -37,6 +37,7 @@ dependencies {
     api project(":data:network")
     api project(":data:database")
     api project(":data:local")
+    api project(":data:common")
     implementation project(":tools:util")
 
     implementation libs.androidx.core.ktx

@@ -2,7 +2,10 @@ package com.vlv.movie.ui.listing
 
 import com.vlv.movie.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.repository.MovieRepository
+import com.vlv.favorite.domain.FavoriteDomainInitializer
+import com.vlv.movie.data.MovieDataInitializer
+import com.vlv.movie.data.api.MovieApi
+import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.test.KoinRule
 import io.mockk.mockk
 import org.junit.Rule
@@ -21,7 +24,9 @@ class ListingMovieActivityTest {
     val koinRule = KoinRule(
         listOf(myModule),
         NetworkInitializer::class.java,
-        MovieInitializer::class.java
+        MovieInitializer::class.java,
+        MovieDataInitializer::class.java,
+        FavoriteDomainInitializer::class.java
     )
 
     @Test

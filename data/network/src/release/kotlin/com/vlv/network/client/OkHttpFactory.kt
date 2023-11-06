@@ -1,4 +1,4 @@
-package com.vlv.data.network.client
+package com.vlv.network.client
 
 import com.vlv.data.network.interceptors.InterceptorFactory
 import okhttp3.OkHttpClient

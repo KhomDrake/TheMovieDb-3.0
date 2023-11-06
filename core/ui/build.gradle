@@ -55,6 +55,7 @@ dependencies {
     implementation project(':data:database')
     implementation project(':data:local')
     implementation project(':feature:search:domain')
+    implementation project(':data:common')
 
     viewsApi(libs.shimmer)
 

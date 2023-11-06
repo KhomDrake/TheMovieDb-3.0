@@ -1,7 +1,7 @@
 package com.vlv.common.data.cast
 
 import com.vlv.common.data.people.People
-import com.vlv.data.network.model.credit.CastResponse
+import com.vlv.data.common.model.credit.CastResponse
 
 class Cast(
     val castId: Int,

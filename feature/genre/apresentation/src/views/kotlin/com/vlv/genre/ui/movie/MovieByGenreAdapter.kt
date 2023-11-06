@@ -3,7 +3,7 @@ package com.vlv.genre.ui.movie
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.vlv.data.network.model.genre.GenreResponse
+import com.vlv.data.common.model.genre.GenreResponse
 
 class MovieByGenreAdapter(
     private val genres: List<GenreResponse>,

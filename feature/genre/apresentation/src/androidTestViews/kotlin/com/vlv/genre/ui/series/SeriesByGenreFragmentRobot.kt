@@ -9,6 +9,7 @@ import com.squareup.moshi.Moshi
 import com.vlv.genre.R
 import com.vlv.genre.ui.movie.GENRE_ID_EXTRA
 import com.vlv.data.network.model.series.SeriesResponse
+import com.vlv.genre.data.api.DiscoverApi
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

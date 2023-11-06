@@ -55,6 +55,7 @@ dependencies {
     implementation project(':tools:extensions')
     implementation project(':core:ui')
     implementation project(':feature:search:domain')
+    implementation project(path: ':data:common')
 
     implementation(libs.koin.android)
 

@@ -3,6 +3,7 @@ package com.vlv.movie.data
 import android.content.res.Resources
 import com.vlv.common.ui.adapter.Information
 import com.vlv.common.ui.adapter.PillItem
+import com.vlv.data.common.model.movie.MovieDetailResponse
 import com.vlv.extensions.PATTERN_MONTH_AND_YEAR
 import com.vlv.extensions.capitalizeCustom
 import com.vlv.extensions.patternDate
@@ -12,7 +13,6 @@ import com.vlv.extensions.toHoursAndMinutes
 import com.vlv.extensions.toMillionsAndThousands
 import com.vlv.movie.R
 import com.vlv.movie.ui.detail.about.AboutItem
-import com.vlv.data.network.model.movie.MovieDetailResponse
 
 class MovieDetail(
     val id: Int,

@@ -1,7 +1,7 @@
 package com.vlv.common.data.people
 
 import android.os.Parcelable
-import com.vlv.data.network.model.people.PeopleResponse
+import com.vlv.data.common.model.people.PeopleResponse
 import com.vlv.data.network.database.data.Favorite
 import com.vlv.data.network.database.data.FavoriteType
 import kotlinx.parcelize.Parcelize

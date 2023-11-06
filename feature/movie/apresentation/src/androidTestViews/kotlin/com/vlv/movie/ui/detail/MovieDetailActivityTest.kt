@@ -1,9 +1,10 @@
 package com.vlv.movie.ui.detail
 
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.repository.MovieRepository
-import com.vlv.data.network.repository.SearchRepository
+import com.vlv.favorite.data.FavoriteRepository
 import com.vlv.movie.MovieInitializer
+import com.vlv.movie.data.repository.MovieDetailRepository
+import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.test.KoinRule
 import io.mockk.mockk
 import org.junit.Ignore
@@ -14,13 +15,7 @@ import org.koin.dsl.module
 private val myModule = module {
     single { mockk<FavoriteRepository>(relaxed = true) }
     single { mockk<MovieDetailRepository>(relaxed = true) }
-    single { mockk<SearchRepository>(relaxed = true) }
-    single { mockk<SeriesRepository>(relaxed = true) }
     single { mockk<MovieRepository>(relaxed = true) }
-    single { mockk<SeriesDetailRepository>(relaxed = true) }
-    single { mockk<PeopleRepository>(relaxed = true) }
-    single { mockk<PeopleDetailRepository>(relaxed = true) }
-    single { mockk<GenreRepository>(relaxed = true) }
 }
 
 @Ignore("All tests are running forever, without reason")

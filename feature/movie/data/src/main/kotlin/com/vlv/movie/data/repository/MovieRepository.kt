@@ -3,10 +3,10 @@ package com.vlv.movie.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.vlv.data.network.model.TimeWindow
-import com.vlv.data.network.model.movie.MovieResponse
-import com.vlv.data.network.model.movie.MoviesResponse
-import com.vlv.data.network.paging.MoviePagingSource
+import com.vlv.data.common.model.TimeWindow
+import com.vlv.data.common.model.movie.MovieResponse
+import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.data.common.paging.MoviePagingSource
 import com.vlv.movie.data.api.MovieApi
 import kotlinx.coroutines.flow.Flow
 

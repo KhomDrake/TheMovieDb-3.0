@@ -2,7 +2,7 @@ package com.vlv.series.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.vlv.data.network.paging.SeriesPagingSource
+import com.vlv.data.common.paging.SeriesPagingSource
 import com.vlv.series.data.api.SeriesApi
 
 class SeriesDetailRepository(private val api: SeriesApi) {

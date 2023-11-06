@@ -1,4 +1,4 @@
-package com.vlv.data.network.client
+package com.vlv.network.client
 
 import br.com.mrocigno.bigbrother.network.BigBrotherInterceptor
 import com.vlv.data.network.interceptors.InterceptorFactory

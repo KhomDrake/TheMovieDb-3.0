@@ -57,7 +57,9 @@ dependencies {
 
     implementation libs.koin.android
     implementation libs.androidx.paging
+    implementation project(path: ':data:common')
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')
+    androidTestImplementation project(path: ':feature:genre:data')
 }

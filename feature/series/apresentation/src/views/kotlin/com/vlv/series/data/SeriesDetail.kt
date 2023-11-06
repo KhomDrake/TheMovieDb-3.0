@@ -3,13 +3,13 @@ package com.vlv.series.data
 import android.content.res.Resources
 import com.vlv.common.ui.adapter.Information
 import com.vlv.common.ui.adapter.PillItem
+import com.vlv.data.common.model.series.LastEpisodeToAir
+import com.vlv.data.common.model.series.NextEpisodeToAir
+import com.vlv.data.common.model.series.SeriesDetailResponse
 import com.vlv.extensions.PATTERN_MONTH_AND_YEAR
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
 import com.vlv.extensions.toHoursAndMinutes
-import com.vlv.data.network.model.series.LastEpisodeToAir
-import com.vlv.data.network.model.series.NextEpisodeToAir
-import com.vlv.data.network.model.series.SeriesDetailResponse
 import com.vlv.series.R
 import com.vlv.series.ui.detail.about.AboutItem
 

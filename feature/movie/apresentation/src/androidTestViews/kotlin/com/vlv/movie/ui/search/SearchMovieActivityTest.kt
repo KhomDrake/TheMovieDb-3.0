@@ -1,10 +1,11 @@
 package com.vlv.movie.ui.search
 
-import com.vlv.movie.MovieInitializer
+import com.vlv.data.database.TheMovieDbDao
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.database.TheMovieDbDao
-import com.vlv.data.network.repository.MovieRepository
-import com.vlv.data.network.repository.SearchRepository
+import com.vlv.movie.MovieInitializer
+import com.vlv.movie.data.api.MovieApi
+import com.vlv.movie.data.repository.MovieDetailRepository
+import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
 import io.mockk.mockk
@@ -15,10 +16,10 @@ import org.koin.dsl.module
 
 private val myModule = module {
     single { mockk<TheMovieDbDao>(relaxed = true) }
-    single { mockk<PeopleApi>(relaxed = true) }
+//    single { mockk<PeopleApi>(relaxed = true) }
     single { mockk<MovieApi>(relaxed = true) }
-    single { mockk<SeriesApi>(relaxed = true) }
-    single { SearchRepository(get(), get(), get(), get()) }
+//    single { mockk<SeriesApi>(relaxed = true) }
+//    single { SearchRepository(get(), get(), get(), get()) }
     single { mockk<MovieRepository>(relaxed = true) }
     single { mockk<MovieDetailRepository>(relaxed = true) }
 }

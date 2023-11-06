@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.data.common.model.series.Season
 import com.vlv.extensions.inflate
 import com.vlv.extensions.patternDate2
 import com.vlv.extensions.toFormattedString
-import com.vlv.data.network.model.series.Season
 import com.vlv.series.R
 
 class SeasonDiffUtil: ItemCallback<Season>() {

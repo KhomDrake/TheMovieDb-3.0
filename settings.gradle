@@ -49,6 +49,7 @@ include ':feature:series:data'
 include ':data:network'
 include ':data:database'
 include ':data:local'
+include ':data:common'
 
 // Core
 include ':core:ui'

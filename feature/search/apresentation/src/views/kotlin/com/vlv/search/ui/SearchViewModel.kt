@@ -13,7 +13,7 @@ import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
 import com.vlv.common.ui.adapter.searchhistory.HistoryItems
-import com.vlv.data.network.model.movie.MovieResponse
+import com.vlv.data.common.model.movie.MovieResponse
 import com.vlv.data.network.database.data.History
 import com.vlv.data.network.database.data.HistoryType
 import com.vlv.search.data.SearchType

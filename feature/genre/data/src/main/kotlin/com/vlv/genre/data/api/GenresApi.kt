@@ -1,6 +1,6 @@
 package com.vlv.genre.data.api
 
-import com.vlv.data.network.model.genre.GenresResponse
+import com.vlv.data.common.model.genre.GenresResponse
 import retrofit2.http.GET
 
 interface GenresApi {

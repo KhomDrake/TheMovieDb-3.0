@@ -1,7 +1,7 @@
 package com.vlv.data.network
 
 import androidx.startup.Initializer
-import com.vlv.data.network.client.OkHttpFactory
+import com.vlv.network.client.OkHttpFactory
 import com.vlv.data.network.interceptors.InterceptorFactory
 import com.vlv.data.network.moshi.MoshiFactory
 import com.vlv.data.network.retrofit.RetrofitFactory

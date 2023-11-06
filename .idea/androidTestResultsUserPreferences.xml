@@ -107,6 +107,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-700990416">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="samsung SM-S901E" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-692701691">
           <value>
             <AndroidTestResultsTableState>
@@ -239,6 +252,19 @@
           </value>
         </entry>
         <entry key="30886902">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                  <entry key="samsung SM-S901E" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="80065195">
           <value>
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">

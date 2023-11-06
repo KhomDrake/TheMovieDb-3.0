@@ -2,8 +2,8 @@ package com.vlv.common.data.series
 
 import android.os.Parcelable
 import com.vlv.common.ui.DetailObject
-import com.vlv.data.network.model.people.SeriesCreditResponse
-import com.vlv.data.network.model.series.SeriesItemResponse
+import com.vlv.data.common.model.people.SeriesCreditResponse
+import com.vlv.data.common.model.series.SeriesItemResponse
 import com.vlv.data.network.database.data.Favorite
 import com.vlv.data.network.database.data.FavoriteType
 import kotlinx.parcelize.Parcelize

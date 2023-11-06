@@ -2,8 +2,8 @@ package com.vlv.genre.data
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.vlv.data.network.paging.MoviePagingSource
-import com.vlv.data.network.paging.SeriesPagingSource
+import com.vlv.data.common.paging.MoviePagingSource
+import com.vlv.data.common.paging.SeriesPagingSource
 import com.vlv.genre.data.api.DiscoverApi
 import com.vlv.genre.data.api.GenresApi
 

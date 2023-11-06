@@ -8,6 +8,8 @@ import com.vlv.common.ui.route.toSeriesGenre
 import com.vlv.genre.R
 import com.vlv.data.network.model.genre.GenresResponse
 import com.vlv.data.network.model.series.SeriesResponse
+import com.vlv.genre.data.api.DiscoverApi
+import com.vlv.genre.data.api.GenresApi
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

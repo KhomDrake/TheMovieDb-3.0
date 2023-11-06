@@ -1,9 +1,9 @@
 package com.vlv.movie.data.api
 
-import com.vlv.data.network.model.credit.CreditsResponse
-import com.vlv.data.network.model.movie.MovieDetailResponse
-import com.vlv.data.network.model.movie.MoviesResponse
-import com.vlv.data.network.model.review.ReviewsResponse
+import com.vlv.data.common.model.movie.MovieDetailResponse
+import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.data.common.model.review.ReviewsResponse
+import com.vlv.data.common.model.credit.CreditsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

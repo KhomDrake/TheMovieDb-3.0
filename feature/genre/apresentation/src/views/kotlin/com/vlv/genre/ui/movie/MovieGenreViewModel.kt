@@ -7,7 +7,7 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
-import com.vlv.data.network.model.genre.GenreResponse
+import com.vlv.data.common.model.genre.GenreResponse
 import com.vlv.genre.domain.usecase.MovieGenreUseCase
 import kotlinx.coroutines.flow.map
 

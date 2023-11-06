@@ -11,7 +11,6 @@ import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
 import com.vlv.common.ui.adapter.searchhistory.HistoryItems
-import com.vlv.data.network.model.movie.MovieResponse
 import com.vlv.data.network.database.data.History
 import com.vlv.data.network.database.data.HistoryType
 import com.vlv.search.domain.usecase.HistoryUseCase
@@ -40,7 +39,7 @@ abstract class BaseSearchViewModel(
     fun searchMovie(query: String) = movieUseCase
         .searchMovie(pagingConfig, query)
         .map {
-            it.map { movieResponse: MovieResponse -> Movie(movieResponse) }
+            it.map { movieResponse -> Movie(movieResponse) }
         }
         .cachedIn(viewModelScope)
 

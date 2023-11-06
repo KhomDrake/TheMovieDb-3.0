@@ -10,7 +10,8 @@ import com.vlv.common.ui.route.toMoviePopular
 import com.vlv.common.ui.route.toMovieTopRated
 import com.vlv.common.ui.route.toMovieTrending
 import com.vlv.common.ui.route.toMovieUpcoming
-import com.vlv.data.network.model.movie.MoviesResponse
+import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.movie.data.api.MovieApi
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

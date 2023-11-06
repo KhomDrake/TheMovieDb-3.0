@@ -1,8 +1,8 @@
 package com.vlv.search.data.api
 
-import com.vlv.data.network.model.movie.MoviesResponse
-import com.vlv.data.network.model.people.PeoplesResponse
-import com.vlv.data.network.model.series.SeriesResponse
+import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.data.common.model.people.PeoplesResponse
+import com.vlv.data.common.model.series.SeriesResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

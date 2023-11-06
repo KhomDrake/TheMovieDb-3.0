@@ -3,10 +3,10 @@ package com.vlv.series.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.vlv.data.network.model.TimeWindow
-import com.vlv.data.network.model.series.SeriesItemResponse
-import com.vlv.data.network.model.series.SeriesResponse
-import com.vlv.data.network.paging.SeriesPagingSource
+import com.vlv.data.common.model.TimeWindow
+import com.vlv.data.common.model.series.SeriesItemResponse
+import com.vlv.data.common.model.series.SeriesResponse
+import com.vlv.data.common.paging.SeriesPagingSource
 import com.vlv.series.data.api.SeriesApi
 import kotlinx.coroutines.flow.Flow
 

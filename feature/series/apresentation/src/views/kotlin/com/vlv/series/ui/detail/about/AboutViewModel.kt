@@ -3,7 +3,7 @@ package com.vlv.series.ui.detail.about
 import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
-import com.vlv.data.network.model.series.SeriesDetailResponse
+import com.vlv.data.common.model.series.SeriesDetailResponse
 import com.vlv.series.data.SeriesDetail
 import com.vlv.series.data.repository.SeriesDetailRepository
 

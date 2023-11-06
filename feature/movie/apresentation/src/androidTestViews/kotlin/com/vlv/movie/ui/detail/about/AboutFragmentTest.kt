@@ -1,9 +1,12 @@
 package com.vlv.movie.ui.detail.about
 
 import androidx.test.core.app.ApplicationProvider
+import com.vlv.data.local.datastore.DataVault
 import com.vlv.movie.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.datastore.DataVault
+import com.vlv.favorite.domain.FavoriteDomainInitializer
+import com.vlv.movie.data.MovieDataInitializer
+import com.vlv.movie.data.repository.MovieDetailRepository
 import com.vlv.test.KoinRule
 import io.mockk.mockk
 import org.junit.Before
@@ -22,7 +25,9 @@ class AboutFragmentTest {
     val koinRule = KoinRule(
         listOf(myModule),
         NetworkInitializer::class.java,
-        MovieInitializer::class.java
+        MovieInitializer::class.java,
+        MovieDataInitializer::class.java,
+        FavoriteDomainInitializer::class.java
     )
 
     @Before

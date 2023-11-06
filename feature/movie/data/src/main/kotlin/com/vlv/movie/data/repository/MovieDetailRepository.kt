@@ -2,7 +2,7 @@ package com.vlv.movie.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import com.vlv.data.network.paging.MoviePagingSource
+import com.vlv.data.common.paging.MoviePagingSource
 import com.vlv.movie.data.api.MovieApi
 
 class MovieDetailRepository(private val api: MovieApi) {

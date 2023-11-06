@@ -3,10 +3,10 @@ package com.vlv.people.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.vlv.data.network.model.TimeWindow
-import com.vlv.data.network.model.people.PeopleResponse
-import com.vlv.data.network.model.people.PeoplesResponse
-import com.vlv.data.network.paging.PeoplePagingSource
+import com.vlv.data.common.model.TimeWindow
+import com.vlv.data.common.model.people.PeopleResponse
+import com.vlv.data.common.model.people.PeoplesResponse
+import com.vlv.data.common.paging.PeoplePagingSource
 import com.vlv.people.data.api.PeopleApi
 import kotlinx.coroutines.flow.Flow
 
