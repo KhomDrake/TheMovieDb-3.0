@@ -7,7 +7,7 @@ import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.favorite.ui.series.SeriesFavoriteViewModel
-import com.vlv.network.database.data.FavoriteType
+import com.vlv.data.network.database.data.FavoriteType
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.series.SeriesCarouselFragment
 import com.vlv.themoviedb.ui.series.adapter.SeriesCarouselAdapter
@@ -23,7 +23,7 @@ class SeriesFavoritesFragment : SeriesCarouselFragment() {
     override fun configEmptyView() {
         emptyView.apply {
             setTitle(R.string.empty_state_text_series_favorite)
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_hearts)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_hearts)
         }
     }
 

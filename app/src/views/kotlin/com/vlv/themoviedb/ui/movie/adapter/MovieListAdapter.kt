@@ -12,9 +12,9 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.ui.extension.loadUrl
 import com.vlv.extensions.addAccessibilityDelegate
-import com.vlv.network.database.data.ImageType
+import com.vlv.data.network.database.data.ImageType
 import com.vlv.themoviedb.R
-import com.vlv.common.R as RCommon
+import com.vlv.ui.R as RCommon
 
 class MovieDiffUtil: DiffUtil.ItemCallback<Movie>() {
 

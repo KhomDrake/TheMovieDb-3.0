@@ -87,18 +87,28 @@ android {
 
 dependencies {
 
-    implementation project(':imperiya')
-    implementation project(':network')
-    implementation project(':tools:bondsmith')
+    implementation project(':libraries:imperiya:core')
+    implementation project(':data:database')
+    implementation project(':data:network')
+    implementation project(':data:local')
+    implementation project(':data:common')
+    implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
-    implementation project(':feature:movie')
-    implementation project(':feature:series')
-    implementation project(':feature:people')
-    implementation project(':feature:search')
-    implementation project(':feature:favorite')
-    implementation project(':feature:configuration')
-    implementation project(':feature:genre')
-    implementation project(':common')
+    implementation project(':feature:movie:presentation')
+    implementation project(':feature:series:presentation')
+
+    implementation project(':feature:people:presentation')
+    implementation project(':feature:search:presentation')
+    implementation project(':feature:favorite:presentation')
+    implementation project(':feature:configuration:presentation')
+    implementation project(':feature:genre:presentation')
+
+    implementation project(':feature:configuration:domain')
+
+    implementation project(':feature:movie:data')
+    implementation project(':feature:series:data')
+
+    implementation project(':core:ui')
 
     debugImplementation(libs.bigbrother.core)
     debugImplementation(libs.bigbrother.network)
@@ -115,4 +125,5 @@ dependencies {
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')
+    androidTestImplementation project(':feature:favorite:domain')
 }

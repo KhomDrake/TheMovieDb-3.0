@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id "jacoco"
+}
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
+
+android {
+    namespace 'com.vlv.imperiya.core'
+    compileSdk config.compileSdk
+
+    defaultConfig {
+        minSdk config.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions += "uitool"
+    productFlavors {
+        create("compose") {
+            dimension = "uitool"
+        }
+        create("views") {
+            dimension = "uitool"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.material)
+    implementation(libs.toolkit.delegate)
+    implementation(libs.toolkit.livedata)
+    implementation(libs.toolkit.statemachine)
+    implementation(libs.shimmer)
+    implementation(libs.pagerindicator)
+
+    testImplementation project(':tools:test')
+    androidTestImplementation project(':tools:test')
+
+}

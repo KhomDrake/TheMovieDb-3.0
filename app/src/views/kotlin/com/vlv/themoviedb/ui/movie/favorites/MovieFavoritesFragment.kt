@@ -6,8 +6,8 @@ import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.favorite.ui.movie.MovieFavoritesViewModel
-import com.vlv.imperiya.ui.CarouselDecorator
-import com.vlv.network.database.data.FavoriteType
+import com.vlv.imperiya.core.ui.CarouselDecorator
+import com.vlv.data.network.database.data.FavoriteType
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.MovieCarouselFragment
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
@@ -26,7 +26,7 @@ class MovieFavoritesFragment : MovieCarouselFragment() {
     override fun configEmptyView() {
         emptyView.apply {
             setTitle(R.string.empty_state_text_movie_favorite)
-            setStateIcon(com.vlv.imperiya.R.drawable.ic_hearts)
+            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_hearts)
         }
     }
 

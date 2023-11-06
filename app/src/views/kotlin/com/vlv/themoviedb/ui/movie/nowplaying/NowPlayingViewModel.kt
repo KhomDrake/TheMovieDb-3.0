@@ -3,8 +3,8 @@ package com.vlv.themoviedb.ui.movie.nowplaying
 import androidx.lifecycle.ViewModel
 import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
-import com.vlv.network.data.movie.MoviesResponse
-import com.vlv.network.repository.MovieRepository
+import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.movie.data.repository.MovieRepository
 
 class NowPlayingViewModel(private val repository: MovieRepository) : ViewModel() {
 

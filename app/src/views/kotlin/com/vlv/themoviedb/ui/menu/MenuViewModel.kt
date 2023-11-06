@@ -22,7 +22,7 @@ import com.vlv.common.ui.route.toSeriesTopRated
 import com.vlv.common.ui.route.toSeriesTrendingNow
 import com.vlv.common.ui.route.toSettings
 import com.vlv.themoviedb.R
-import com.vlv.imperiya.R as RCommon
+import com.vlv.imperiya.core.R as RCommon
 
 class MenuViewModel : ViewModel() {
 

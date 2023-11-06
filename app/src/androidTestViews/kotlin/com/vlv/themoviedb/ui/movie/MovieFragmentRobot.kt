@@ -5,10 +5,9 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toFavorite
-import com.vlv.network.data.movie.MoviesResponse
-import com.vlv.network.database.TheMovieDbDao
-import com.vlv.network.database.data.FavoriteType
-import com.vlv.network.repository.MovieRepository
+import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.favorite.domain.usecase.MovieFavoriteUseCase
+import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -24,7 +23,7 @@ fun MovieFragmentTest.movieFragment(func: MovieFragmentSetup.() -> Unit) =
 class MovieFragmentSetup : Setup<MovieFragmentLaunch, MovieFragmentCheck>, KoinComponent {
 
     private val repository: MovieRepository by inject()
-    private val theMovieDbDao: TheMovieDbDao by inject()
+    private val useCase: MovieFavoriteUseCase by inject()
     private val moshi: Moshi by inject()
 
     override fun createCheck(): MovieFragmentCheck {
@@ -37,7 +36,7 @@ class MovieFragmentSetup : Setup<MovieFragmentLaunch, MovieFragmentCheck>, KoinC
 
     override fun setupLaunch() {
         launchFragmentInContainer<MovieFragment>(
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -49,7 +48,7 @@ class MovieFragmentSetup : Setup<MovieFragmentLaunch, MovieFragmentCheck>, KoinC
         ) ?: return
 
         coEvery {
-            theMovieDbDao.favoriteByType(FavoriteType.MOVIE)
+            useCase.favorites()
         } returns data.movies.map { Movie(it).toFavorite() }
     }
 
@@ -88,11 +87,11 @@ class MovieFragmentLaunch : Launch<MovieFragmentCheck> {
 class MovieFragmentCheck : Check, KoinComponent {
 
     private val repository: MovieRepository by inject()
-    private val theMovieDbDao: TheMovieDbDao by inject()
+    private val useCase: MovieFavoriteUseCase by inject()
 
     fun favoritesLoaded() {
         coVerify {
-            theMovieDbDao.favoriteByType(FavoriteType.MOVIE)
+            useCase.favorites()
         }
     }
 

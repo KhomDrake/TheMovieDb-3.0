@@ -32,6 +32,8 @@ androidx-constraintLayout-version = "2.1.4"
 androidx-datastore-version = "1.0.0"
 androidx-fragment-version = "1.6.1"
 androidx-test-version = "1.2.0"
+agp = "7.4.1"
+org-jetbrains-kotlin-android = "1.8.0"
 
 
 [libraries]
@@ -101,6 +103,8 @@ tests-androidx-test-rules = { group = "androidx.test", name = "rules", version.r
 tests-androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = 'androidx-test-version'  }
 
 [plugins]
+com-android-library = { id = "com.android.library", version.ref = "agp" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
 
 
 [bundles]

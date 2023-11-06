@@ -10,9 +10,9 @@ import com.squareup.moshi.Moshi
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toFavorite
 import com.vlv.common.ui.route.FAVORITE_TYPE_EXTRA
-import com.vlv.network.data.series.SeriesResponse
-import com.vlv.network.database.TheMovieDbDao
-import com.vlv.network.database.data.FavoriteType
+import com.vlv.data.common.model.series.SeriesResponse
+import com.vlv.data.network.database.data.FavoriteType
+import com.vlv.favorite.domain.usecase.SeriesFavoriteUseCase
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -37,7 +37,7 @@ fun SeriesFavoritesFragmentTest.seriesFavoritesFragment(func: SeriesFavoritesFra
 class SeriesFavoritesFragmentSetup
     : Setup<SeriesFavoritesFragmentLaunch, SeriesFavoritesFragmentCheck>, KoinComponent {
 
-    private val theMovieDbDao: TheMovieDbDao by inject()
+    private val useCase: SeriesFavoriteUseCase by inject()
     private val moshi: Moshi by inject()
 
     override fun createCheck(): SeriesFavoritesFragmentCheck {
@@ -50,7 +50,7 @@ class SeriesFavoritesFragmentSetup
 
     override fun setupLaunch() {
         launchFragmentInContainer<SeriesFavoritesFragment>(
-            themeResId = com.vlv.imperiya.R.style.Imperiya_Theme
+            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
 
@@ -62,19 +62,19 @@ class SeriesFavoritesFragmentSetup
         ) ?: return
 
         coEvery {
-            theMovieDbDao.favoriteByType(FavoriteType.SERIES)
+            useCase.favorites()
         } returns data.series.map { Series(it).toFavorite() }
     }
 
     fun withFavoritesEmpty() {
         coEvery {
-            theMovieDbDao.favoriteByType(FavoriteType.SERIES)
+            useCase.favorites()
         } returns listOf()
     }
 
     fun withFavoritesError() {
         coEvery {
-            theMovieDbDao.favoriteByType(FavoriteType.SERIES)
+            useCase.favorites()
         } throws NotFoundException()
     }
 }
@@ -86,7 +86,7 @@ class SeriesFavoritesFragmentLaunch : Launch<SeriesFavoritesFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickFavorite(position: Int) {
@@ -109,7 +109,7 @@ class SeriesFavoritesFragmentLaunch : Launch<SeriesFavoritesFragmentCheck> {
 
 class SeriesFavoritesFragmentCheck : Check, KoinComponent {
 
-    private val theMovieDbDao: TheMovieDbDao by inject()
+    private val useCase: SeriesFavoriteUseCase by inject()
 
     fun favoritesDisplayed() {
         R.id.list_title.hasText("Favorites")
@@ -145,7 +145,7 @@ class SeriesFavoritesFragmentCheck : Check, KoinComponent {
 
         R.id.empty_state.isDisplayed()
 
-        com.vlv.imperiya.R.id.title_state.hasText("None favorite tv shows found")
+        com.vlv.imperiya.core.R.id.title_state.hasText("None favorite tv shows found")
     }
 
     fun errorStateDisplayed() {
@@ -158,14 +158,14 @@ class SeriesFavoritesFragmentCheck : Check, KoinComponent {
         R.id.empty_state.isNotDisplayed()
 
         R.id.error_state.isDisplayed()
-        com.vlv.imperiya.R.id.small_warning_title.hasText("Failed to load favorites tv shows")
-        com.vlv.imperiya.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again button")
-        com.vlv.imperiya.R.id.small_warning_try_again_button.hasText("Try again")
+        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load favorites tv shows")
+        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again button")
+        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun favoritesLoaded(times: Int) {
         coVerify(exactly = times) {
-            theMovieDbDao.favoriteByType(FavoriteType.SERIES)
+            useCase.favorites()
         }
     }
 

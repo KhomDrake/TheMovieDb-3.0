@@ -16,23 +16,49 @@ dependencyResolutionManagement {
 
 rootProject.name = "themoviedb"
 
+// Sample
 include ':app'
+include ':libraries:imperiya:imperiyasample'
 
-include ':feature:movie'
-include ':feature:series'
-include ':feature:people'
-include ':feature:configuration'
-include ':feature:favorite'
-include ':feature:search'
-include ':feature:genre'
+// Features Presentation
+include ':feature:configuration:presentation'
+include ':feature:movie:presentation'
+include ':feature:series:presentation'
+include ':feature:people:presentation'
+include ':feature:favorite:presentation'
+include ':feature:search:presentation'
+include ':feature:genre:presentation'
 
-include ':imperiya'
-include ':imperiyasample'
+// Features Domain
+include ':feature:configuration:domain'
+include ':feature:favorite:domain'
+include ':feature:genre:domain'
+include ':feature:people:domain'
+include ':feature:search:domain'
 
-include ':network'
+// Features Data
+include ':feature:configuration:data'
+include ':feature:genre:data'
+include ':feature:favorite:data'
+include ':feature:movie:data'
+include ':feature:people:data'
+include ':feature:search:data'
+include ':feature:series:data'
 
-include ':common'
+// Data
+include ':data:network'
+include ':data:database'
+include ':data:local'
+include ':data:common'
 
-include ':tools:bondsmith'
+// Core
+include ':core:ui'
+
+// Tools
 include ':tools:extensions'
 include ':tools:test'
+include ':tools:util'
+
+// Libraries
+include ':libraries:imperiya:core'
+include ':libraries:bondsmith'

@@ -22,13 +22,13 @@ import com.vlv.extensions.stateData
 import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateLoading
-import com.vlv.imperiya.ui.CarouselDecorator
-import com.vlv.imperiya.ui.stateview.StateView
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.CarouselDecorator
+import com.vlv.imperiya.core.ui.stateview.StateView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.adapter.MoviesCarouselAdapter
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
-import com.vlv.common.R as RCommon
+import com.vlv.ui.R as RCommon
 
 abstract class MovieCarouselFragment : Fragment(R.layout.movies_list_fragment) {
 

@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movies"/>
 
-    <com.vlv.imperiya.ui.stateview.StateView
+    <com.vlv.imperiya.core.ui.stateview.StateView
         android:id="@+id/empty_state"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <com.vlv.imperiya.ui.warning.SmallWarningView
+    <com.vlv.imperiya.core.ui.warning.SmallWarningView
         android:id="@+id/error_state"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

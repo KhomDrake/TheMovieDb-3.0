@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.ui.route.toMovieSearch
 import com.vlv.extensions.addOrReplace
-import com.vlv.imperiya.ui.search.ImperiyaSearchView
+import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesFragment
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingFragment
@@ -45,7 +45,7 @@ class MovieFragment : Fragment(R.layout.movie_fragment) {
                 ActivityOptions.makeSceneTransitionAnimation(
                     requireActivity(),
                     search,
-                    getString(com.vlv.common.R.string.common_search_transition_name)
+                    getString(com.vlv.ui.R.string.common_search_transition_name)
                 ).toBundle()
             )
         }

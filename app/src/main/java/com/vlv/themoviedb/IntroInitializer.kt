@@ -2,7 +2,8 @@ package com.vlv.themoviedb
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.vlv.network.NetworkInitializer
+import com.vlv.data.network.NetworkInitializer
+import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -12,7 +13,12 @@ class IntroInitializer: Initializer<Module> {
 
     override fun create(context: Context): Module {
         val module = module {
-            viewModel { IntroViewModel(get()) }
+            viewModel {
+                IntroViewModel(
+                    androidApplication().resources,
+                    get()
+                )
+            }
         }
         loadKoinModules(module)
         return module
