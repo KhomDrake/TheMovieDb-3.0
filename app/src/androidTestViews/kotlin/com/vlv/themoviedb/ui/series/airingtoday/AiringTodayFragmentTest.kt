@@ -3,6 +3,7 @@ package com.vlv.themoviedb.ui.series.airingtoday
 import com.vlv.favorite.FavoriteInitializer
 import com.vlv.data.network.NetworkInitializer
 import com.vlv.series.SeriesInitializer
+import com.vlv.series.data.repository.SeriesRepository
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
 import com.vlv.themoviedb.ui.MainInitializer

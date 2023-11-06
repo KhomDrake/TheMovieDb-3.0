@@ -2,7 +2,7 @@ package com.vlv.themoviedb.ui.series.favorites
 
 import com.vlv.favorite.FavoriteInitializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.database.TheMovieDbDao
+import com.vlv.favorite.domain.usecase.SeriesFavoriteUseCase
 import com.vlv.series.SeriesInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
@@ -13,7 +13,7 @@ import org.junit.Test
 import org.koin.dsl.module
 
 private val myModule = module {
-    single { mockk<TheMovieDbDao>(relaxed = true) }
+    single { mockk<SeriesFavoriteUseCase>(relaxed = true) }
 }
 
 class SeriesFavoritesFragmentTest {

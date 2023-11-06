@@ -5,9 +5,9 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toFavorite
-import com.vlv.data.network.model.series.SeriesResponse
-import com.vlv.data.network.database.TheMovieDbDao
-import com.vlv.data.network.database.data.FavoriteType
+import com.vlv.data.common.model.series.SeriesResponse
+import com.vlv.favorite.domain.usecase.SeriesFavoriteUseCase
+import com.vlv.series.data.repository.SeriesRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -23,7 +23,7 @@ fun SeriesFragmentTest.seriesFragment(func: SeriesFragmentSetup.() -> Unit) =
 class SeriesFragmentSetup : Setup<SeriesFragmentLaunch, SeriesFragmentCheck>, KoinComponent {
 
     private val repository: SeriesRepository by inject()
-    private val theMovieDbDao: TheMovieDbDao by inject()
+    private val useCase: SeriesFavoriteUseCase by inject()
     private val moshi: Moshi by inject()
 
     override fun createCheck(): SeriesFragmentCheck {
@@ -48,7 +48,7 @@ class SeriesFragmentSetup : Setup<SeriesFragmentLaunch, SeriesFragmentCheck>, Ko
         ) ?: return
 
         coEvery {
-            theMovieDbDao.favoriteByType(FavoriteType.SERIES)
+            useCase.favorites()
         } returns data.series.map { Series(it).toFavorite() }
     }
 
@@ -87,11 +87,11 @@ class SeriesFragmentLaunch : Launch<SeriesFragmentCheck> {
 class SeriesFragmentCheck : Check, KoinComponent {
 
     private val repository: SeriesRepository by inject()
-    private val theMovieDbDao: TheMovieDbDao by inject()
+    private val useCase: SeriesFavoriteUseCase by inject()
 
     fun favoritesLoaded() {
         coVerify {
-            theMovieDbDao.favoriteByType(FavoriteType.SERIES)
+            useCase.favorites()
         }
     }
 

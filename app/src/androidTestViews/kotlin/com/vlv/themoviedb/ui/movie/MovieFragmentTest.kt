@@ -1,10 +1,10 @@
 package com.vlv.themoviedb.ui.movie
 
-import com.vlv.favorite.FavoriteInitializer
-import com.vlv.movie.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.data.network.database.TheMovieDbDao
-import com.vlv.data.network.repository.MovieRepository
+import com.vlv.favorite.FavoriteInitializer
+import com.vlv.favorite.domain.usecase.SeriesFavoriteUseCase
+import com.vlv.movie.MovieInitializer
+import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.series.SeriesInitializer
 import com.vlv.test.KoinRule
 import com.vlv.themoviedb.ui.MainInitializer
@@ -16,7 +16,7 @@ import org.koin.dsl.module
 
 private val myModule = module {
     single { mockk<MovieRepository>(relaxed = true) }
-    single { mockk<TheMovieDbDao>(relaxed = true) }
+    single { mockk<SeriesFavoriteUseCase>(relaxed = true) }
 }
 
 class MovieFragmentTest {

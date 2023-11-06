@@ -18,16 +18,16 @@ rootProject.name = "themoviedb"
 
 // Sample
 include ':app'
-include ':imperiyasample'
+include ':libraries:imperiya:imperiyasample'
 
-// Features Apresentation
-include ':feature:configuration:apresentation'
-include ':feature:movie:apresentation'
-include ':feature:series:apresentation'
-include ':feature:people:apresentation'
-include ':feature:favorite:apresentation'
-include ':feature:search:apresentation'
-include ':feature:genre:apresentation'
+// Features Presentation
+include ':feature:configuration:presentation'
+include ':feature:movie:presentation'
+include ':feature:series:presentation'
+include ':feature:people:presentation'
+include ':feature:favorite:presentation'
+include ':feature:search:presentation'
+include ':feature:genre:presentation'
 
 // Features Domain
 include ':feature:configuration:domain'

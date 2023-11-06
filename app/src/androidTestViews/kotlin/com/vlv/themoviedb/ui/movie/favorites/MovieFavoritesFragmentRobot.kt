@@ -10,9 +10,9 @@ import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toFavorite
 import com.vlv.common.ui.route.FAVORITE_TYPE_EXTRA
-import com.vlv.data.network.model.movie.MoviesResponse
-import com.vlv.data.network.database.TheMovieDbDao
+import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.data.network.database.data.FavoriteType
+import com.vlv.favorite.domain.usecase.MovieFavoriteUseCase
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -37,7 +37,7 @@ fun MovieFavoritesFragmentTest.movieFavoritesFragment(func: MovieFavoritesFragme
 class MovieFavoritesFragmentSetup :
     Setup<MovieFavoritesFragmentLaunch, MovieFavoritesFragmentCheck>, KoinComponent {
 
-    private val theMovieDbDao: TheMovieDbDao by inject()
+    private val useCase: MovieFavoriteUseCase by inject()
     private val moshi: Moshi by inject()
 
     override fun createCheck(): MovieFavoritesFragmentCheck {
@@ -62,19 +62,19 @@ class MovieFavoritesFragmentSetup :
         ) ?: return
 
         coEvery {
-            theMovieDbDao.favoriteByType(FavoriteType.MOVIE)
+            useCase.favorites()
         } returns data.movies.map { Movie(it).toFavorite() }
     }
 
     fun withFavoritesError() {
         coEvery {
-            theMovieDbDao.favoriteByType(FavoriteType.MOVIE)
+            useCase.favorites()
         } throws NotFoundException()
     }
 
     fun withFavoritesEmpty() {
         coEvery {
-            theMovieDbDao.favoriteByType(FavoriteType.MOVIE)
+            useCase.favorites()
         } returns listOf()
     }
 
@@ -108,7 +108,7 @@ class MovieFavoritesFragmentLaunch : Launch<MovieFavoritesFragmentCheck> {
 
 class MovieFavoritesFragmentCheck : Check, KoinComponent {
 
-    private val theMovieDbDao: TheMovieDbDao by inject()
+    private val useCase: MovieFavoriteUseCase by inject()
 
     fun favoritesDisplayed() {
         R.id.list_title.hasText("Favorites")
@@ -164,7 +164,7 @@ class MovieFavoritesFragmentCheck : Check, KoinComponent {
 
     fun favoritesLoaded(times: Int) {
         coVerify(exactly = times) {
-            theMovieDbDao.favoriteByType(FavoriteType.MOVIE)
+            useCase.favorites()
         }
     }
 

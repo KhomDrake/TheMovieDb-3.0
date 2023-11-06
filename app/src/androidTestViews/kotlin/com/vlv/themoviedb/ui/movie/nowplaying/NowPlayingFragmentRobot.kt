@@ -9,8 +9,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
-import com.vlv.data.network.model.movie.MoviesResponse
-import com.vlv.data.network.repository.MovieRepository
+import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
