@@ -9,7 +9,7 @@ import com.vlv.common.data.series.toDetailObject
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
-import com.vlv.common.ui.route.toSeriesDetail
+import com.vlv.common.route.toSeriesDetail
 import com.vlv.common.ui.search.SearchActivity
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView

@@ -20,6 +20,9 @@ objenesis-version = "3.1"
 core-testing-version = "2.2.0"
 
 android-lifecycle-livedata-version = "1.1.1"
+androidx-compose-bom-version = "2023.10.01"
+androidx-compose-activity-version = "1.7.2"
+androidx-compose-viewmodel-version = "2.6.1"
 androidx-lifecycle-viewmodel-version = "2.6.1"
 androidx-startup-runtime-version = "1.1.1"
 androidx-room-version = "2.5.2"
@@ -55,6 +58,15 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = 'androidx-paging-runtime-version' }
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = 'androidx-datastore-version' }
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = 'androidx-fragment-version' }
+
+# Compose
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom-version" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3"  }
+androidx-compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-tooling-debug = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-compose-activity-version" }
+androidx-compose-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-compose-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidx-compose-viewmodel-version" }
 
 # Squareup
 squareup-okhttp3 = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = 'squareup-okhttp3-version' }

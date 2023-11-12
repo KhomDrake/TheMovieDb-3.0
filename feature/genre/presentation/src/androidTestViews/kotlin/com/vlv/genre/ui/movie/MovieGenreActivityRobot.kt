@@ -4,7 +4,7 @@ import android.content.res.Resources.NotFoundException
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
-import com.vlv.common.ui.route.toMovieGenre
+import com.vlv.common.route.toMovieGenre
 import com.vlv.data.common.model.genre.GenresResponse
 import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.test.Check

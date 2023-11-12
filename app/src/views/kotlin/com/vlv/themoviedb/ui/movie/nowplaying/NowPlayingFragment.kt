@@ -2,7 +2,7 @@ package com.vlv.themoviedb.ui.movie.nowplaying
 
 import android.os.Bundle
 import android.view.View
-import com.vlv.common.ui.route.toMovieNowPlaying
+import com.vlv.common.route.toMovieNowPlaying
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState

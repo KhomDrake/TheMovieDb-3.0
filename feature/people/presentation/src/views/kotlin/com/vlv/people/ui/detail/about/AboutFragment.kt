@@ -14,7 +14,7 @@ import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.data.people.People
-import com.vlv.common.ui.route.EXTRA_PEOPLE
+import com.vlv.common.route.EXTRA_PEOPLE
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
 import com.vlv.extensions.errorState

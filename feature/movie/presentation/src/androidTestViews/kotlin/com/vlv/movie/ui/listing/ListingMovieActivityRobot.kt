@@ -5,11 +5,11 @@ import android.content.res.Resources.NotFoundException
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
-import com.vlv.common.ui.route.toMovieNowPlaying
-import com.vlv.common.ui.route.toMoviePopular
-import com.vlv.common.ui.route.toMovieTopRated
-import com.vlv.common.ui.route.toMovieTrending
-import com.vlv.common.ui.route.toMovieUpcoming
+import com.vlv.common.route.toMovieNowPlaying
+import com.vlv.common.route.toMoviePopular
+import com.vlv.common.route.toMovieTopRated
+import com.vlv.common.route.toMovieTrending
+import com.vlv.common.route.toMovieUpcoming
 import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.movie.data.api.MovieApi
 import com.vlv.test.Check

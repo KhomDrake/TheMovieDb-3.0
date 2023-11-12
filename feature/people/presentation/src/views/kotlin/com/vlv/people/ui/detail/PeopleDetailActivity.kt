@@ -14,13 +14,12 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.ui.AppBarState
 import com.vlv.common.ui.AppBarStateChangeListener
-import com.vlv.common.ui.FINISH_AFTER_TRANSITION_EXTRA
+import com.vlv.common.route.FINISH_AFTER_TRANSITION_EXTRA
 import com.vlv.common.ui.extension.loadUrl
-import com.vlv.common.ui.route.EXTRA_PEOPLE
+import com.vlv.common.route.EXTRA_PEOPLE
 import com.vlv.data.network.database.data.ImageType
 import com.vlv.people.R
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -1,11 +1,9 @@
-package com.vlv.common.ui.route
+package com.vlv.common.route
 
 import android.content.Context
-import android.content.Intent
 import com.vlv.common.data.series.SeriesListType
-import com.vlv.common.ui.DETAIL_OBJECT_EXTRA
 import com.vlv.common.ui.DetailObject
-import com.vlv.common.ui.FINISH_AFTER_TRANSITION_EXTRA
+import com.vlv.extensions.intentForAction
 
 fun Context.toSeriesDetail(
     detailObject: DetailObject,

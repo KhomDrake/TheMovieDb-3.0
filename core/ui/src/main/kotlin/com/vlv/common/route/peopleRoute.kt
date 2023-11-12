@@ -1,8 +1,8 @@
-package com.vlv.common.ui.route
+package com.vlv.common.route
 
 import android.content.Context
 import com.vlv.common.data.people.People
-import com.vlv.common.ui.FINISH_AFTER_TRANSITION_EXTRA
+import com.vlv.extensions.intentForAction
 
 fun Context.toPeoplePopular() = intentForAction("PEOPLE_POPULAR")
 

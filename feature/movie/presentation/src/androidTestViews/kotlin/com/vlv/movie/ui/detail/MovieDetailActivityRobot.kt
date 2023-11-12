@@ -9,7 +9,7 @@ import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.data.movie.toFavorite
-import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.common.route.toMovieDetail
 import com.vlv.data.common.model.credit.CreditsResponse
 import com.vlv.data.common.model.movie.MovieDetailResponse
 import com.vlv.data.common.model.movie.MoviesResponse

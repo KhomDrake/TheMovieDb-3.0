@@ -1,7 +1,6 @@
 package com.vlv.common.ui
 
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
@@ -14,23 +13,11 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
+import com.vlv.common.route.FINISH_AFTER_TRANSITION_EXTRA
+import com.vlv.common.route.DETAIL_OBJECT_EXTRA
 import com.vlv.ui.R
-import kotlinx.parcelize.Parcelize
 import java.lang.ref.WeakReference
 import kotlin.math.abs
-
-@Parcelize
-class DetailObject(
-    val id: Int,
-    val posterPath: String?,
-    val backdropPath: String?,
-    val title: String,
-    val overview: String,
-    val adult: Boolean = false
-) : Parcelable
-
-const val DETAIL_OBJECT_EXTRA = "DETAIL_OBJECT_EXTRA"
-const val FINISH_AFTER_TRANSITION_EXTRA = "FINISH_AFTER_TRANSITION_EXTRA"
 
 abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activity) {
 

@@ -4,7 +4,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.ui.adapter.movie.MovieAdapter
-import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.common.route.toMovieDetail
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState

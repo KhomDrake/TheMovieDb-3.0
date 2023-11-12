@@ -14,7 +14,7 @@ import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.data.movie.toDetailObject
-import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.common.route.toMovieDetail
 import com.vlv.extensions.addButtonAccessibilityDelegate
 import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.defaultConfig

@@ -27,9 +27,9 @@ import com.vlv.common.ui.adapter.people.PeoplePagingAdapter
 import com.vlv.common.ui.adapter.searchhistory.HistoryAdapter
 import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
-import com.vlv.common.ui.route.toMovieDetail
-import com.vlv.common.ui.route.toPeopleDetail
-import com.vlv.common.ui.route.toSeriesDetail
+import com.vlv.common.route.toMovieDetail
+import com.vlv.common.route.toPeopleDetail
+import com.vlv.common.route.toSeriesDetail
 import com.vlv.extensions.State
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig

@@ -12,8 +12,8 @@ import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
 import com.vlv.common.ui.adapter.series.VIEW_TYPE_SERIES
 import com.vlv.common.ui.listing.ListingItemsActivity
-import com.vlv.common.ui.route.SERIES_LISTING_TYPE_EXTRA
-import com.vlv.common.ui.route.toSeriesDetail
+import com.vlv.common.route.SERIES_LISTING_TYPE_EXTRA
+import com.vlv.common.route.toSeriesDetail
 import com.vlv.series.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged

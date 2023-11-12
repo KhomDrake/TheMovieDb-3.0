@@ -13,7 +13,7 @@ import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.data.series.toDetailObject
-import com.vlv.common.ui.route.toSeriesDetail
+import com.vlv.common.route.toSeriesDetail
 import com.vlv.extensions.addButtonAccessibilityDelegate
 import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.stateData

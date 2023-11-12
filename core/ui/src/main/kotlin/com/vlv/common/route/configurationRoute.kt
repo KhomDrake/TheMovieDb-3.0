@@ -1,5 +1,6 @@
-package com.vlv.common.ui.route
+package com.vlv.common.route
 
 import android.content.Context
+import com.vlv.extensions.intentForAction
 
 fun Context.toSettings() = intentForAction("SETTINGS")

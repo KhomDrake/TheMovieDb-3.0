@@ -8,7 +8,7 @@ import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.common.ui.route.intentForAction
+import com.vlv.common.route.toMain
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IntroActivity : AppCompatActivity(R.layout.intro_activity) {
@@ -37,8 +37,6 @@ class IntroActivity : AppCompatActivity(R.layout.intro_activity) {
             }
         }.start()
 
-
-
         viewModel.loadConfig().observe(this) {
             data {
                 openMain(endAnimationText)
@@ -51,7 +49,7 @@ class IntroActivity : AppCompatActivity(R.layout.intro_activity) {
     }
 
     private fun openMain(endAnimationText: String) {
-        startActivity(intentForAction("MAIN"))
+        startActivity(toMain())
         icon.announceForAccessibility(endAnimationText)
     }
 

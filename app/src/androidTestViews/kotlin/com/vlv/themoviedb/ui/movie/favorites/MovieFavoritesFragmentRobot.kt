@@ -9,7 +9,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toFavorite
-import com.vlv.common.ui.route.FAVORITE_TYPE_EXTRA
+import com.vlv.common.route.FAVORITE_TYPE_EXTRA
 import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.data.network.database.data.FavoriteType
 import com.vlv.favorite.domain.usecase.MovieFavoriteUseCase

@@ -45,10 +45,9 @@
     </style>
 
     <style name="Imperiya.Style.Text.Subtitle.Big">
-        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textColor">@color/imperiya_sub_title2</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:alpha">.8</item>
     </style>
 
     <style name="Imperiya.Style.Text.Subtitle.Bold">
