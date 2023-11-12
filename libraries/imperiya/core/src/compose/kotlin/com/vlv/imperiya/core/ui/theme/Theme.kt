@@ -81,8 +81,8 @@ fun TheMovieDbAppTheme(
 ) {
     val useDynamicColors = false
     val colors = when {
-        useDynamicColors && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
-        useDynamicColors && !darkTheme -> dynamicLightColorScheme(LocalContext.current)
+//        useDynamicColors && darkTheme -> dynamicDarkColorScheme(LocalContext.current)
+//        useDynamicColors && !darkTheme -> dynamicLightColorScheme(LocalContext.current)
         darkTheme -> DarkColors
         else -> LightColors
     }

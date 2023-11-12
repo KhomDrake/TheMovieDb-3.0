@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Imperiya.Style.Text"/>
+
+    <style name="Imperiya.Style.Text.Paragraph">
+        <item name="android:textColor">@color/imperiya_body</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Paragraph.Gray">
+        <item name="android:textColor">@color/imperiya_sub_title2</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Paragraph.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Paragraph.Big">
+        <item name="android:textColor">@color/imperiya_body</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Link">
+        <item name="android:textColor">@color/imperiya_color_link</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Chip">
+        <item name="android:textColor">@color/imperiya_color_background</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Subtitle">
+        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Subtitle.Small">
+        <item name="android:textColor">@color/imperiya_sub_title2</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Subtitle.Big">
+        <item name="android:textColor">@color/imperiya_sub_title2</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Subtitle.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Title">
+        <item name="android:textColor">@color/imperiya_title</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Imperiya.Style.Text.Title.Big">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>

@@ -36,6 +36,7 @@ androidx-datastore-version = "1.0.0"
 androidx-fragment-version = "1.6.1"
 androidx-test-version = "1.2.0"
 agp = "7.4.1"
+ksp-version = "1.5.31-1.0.0"
 org-jetbrains-kotlin-android = "1.8.0"
 
 
@@ -113,10 +114,11 @@ tests-androidx-core-testing = { group = "androidx.arch.core", name = "core-testi
 tests-androidx-test-core = { group = "androidx.test", name = "core", version.ref = 'androidx-test-version'  }
 tests-androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = 'androidx-test-version'  }
 tests-androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = 'androidx-test-version'  }
+androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.4" }
 
 [plugins]
 com-android-library = { id = "com.android.library", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
-
+com-google-ksp-plugin = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
 
 [bundles]

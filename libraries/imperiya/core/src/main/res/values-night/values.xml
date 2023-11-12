@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Imperiya.Theme" parent="Theme.Material3.Dark">
+        <item name="colorPrimary">@color/imperiya_color_primary</item>
+        <item name="colorOnPrimary">@color/imperiya_body</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/imperiya_color_secondary</item>
+        <item name="colorOnSecondary">@color/imperiya_body</item>
+        <item name="android:statusBarColor">@color/imperiya_color_background</item>
+        <item name="android:windowBackground">@color/imperiya_color_background</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
