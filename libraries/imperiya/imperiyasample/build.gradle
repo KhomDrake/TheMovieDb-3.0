@@ -63,6 +63,7 @@ android {
 dependencies {
 
     implementation project(':libraries:imperiya:core')
+    implementation project(':tools:extensions')
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)

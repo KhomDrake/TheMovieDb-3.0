@@ -1,5 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Theme Light  -->
+    <color name="md_theme_light_primary">#006686</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#C0E8FF</color>
+    <color name="md_theme_light_onPrimaryContainer">#001E2B</color>
+    <color name="md_theme_light_secondary">#1960A5</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#D3E3FF</color>
+    <color name="md_theme_light_onSecondaryContainer">#001C39</color>
+    <color name="md_theme_light_tertiary">#006684</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#BDE9FF</color>
+    <color name="md_theme_light_onTertiaryContainer">#001F2A</color>
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_background">#FBFCFE</color>
+    <color name="md_theme_light_onBackground">#191C1E</color>
+    <color name="md_theme_light_surface">#FBFCFE</color>
+    <color name="md_theme_light_onSurface">#191C1E</color>
+    <color name="md_theme_light_surfaceVariant">#DCE3E9</color>
+    <color name="md_theme_light_onSurfaceVariant">#40484C</color>
+    <color name="md_theme_light_outline">#71787D</color>
+    <color name="md_theme_light_inverseOnSurface">#F0F1F3</color>
+    <color name="md_theme_light_inverseSurface">#2E3133</color>
+    <color name="md_theme_light_inversePrimary">#71D2FF</color>
+    <color name="md_theme_light_shadow">#000000</color>
+    <color name="md_theme_light_surfaceTint">#006686</color>
+    <color name="md_theme_light_outlineVariant">#C0C7CD</color>
+    <color name="md_theme_light_scrim">#000000</color>
+
+    <!--  Theme Dark  -->
+    <color name="md_theme_dark_primary">#71D2FF</color>
+    <color name="md_theme_dark_onPrimary">#003547</color>
+    <color name="md_theme_dark_primaryContainer">#004D66</color>
+    <color name="md_theme_dark_onPrimaryContainer">#C0E8FF</color>
+    <color name="md_theme_dark_secondary">#A3C9FF</color>
+    <color name="md_theme_dark_onSecondary">#00315D</color>
+    <color name="md_theme_dark_secondaryContainer">#004883</color>
+    <color name="md_theme_dark_onSecondaryContainer">#D3E3FF</color>
+    <color name="md_theme_dark_tertiary">#67D3FF</color>
+    <color name="md_theme_dark_onTertiary">#003546</color>
+    <color name="md_theme_dark_tertiaryContainer">#004D64</color>
+    <color name="md_theme_dark_onTertiaryContainer">#BDE9FF</color>
+    <color name="md_theme_dark_error">#FFB4AB</color>
+    <color name="md_theme_dark_errorContainer">#93000A</color>
+    <color name="md_theme_dark_onError">#690005</color>
+    <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
+    <color name="md_theme_dark_background">#191C1E</color>
+    <color name="md_theme_dark_onBackground">#E1E2E5</color>
+    <color name="md_theme_dark_surface">#191C1E</color>
+    <color name="md_theme_dark_onSurface">#E1E2E5</color>
+    <color name="md_theme_dark_surfaceVariant">#40484C</color>
+    <color name="md_theme_dark_onSurfaceVariant">#C0C7CD</color>
+    <color name="md_theme_dark_outline">#8A9297</color>
+    <color name="md_theme_dark_inverseOnSurface">#191C1E</color>
+    <color name="md_theme_dark_inverseSurface">#E1E2E5</color>
+    <color name="md_theme_dark_inversePrimary">#006686</color>
+    <color name="md_theme_dark_shadow">#000000</color>
+    <color name="md_theme_dark_surfaceTint">#71D2FF</color>
+    <color name="md_theme_dark_outlineVariant">#40484C</color>
+    <color name="md_theme_dark_scrim">#000000</color>
+
+    <!--  Others  -->
     <color name="imperiya_color_primary">#3E6477</color>
     <color name="imperiya_color_secondary">#27374D</color>
     <color name="imperiya_color_background">#263238</color>
@@ -15,11 +80,11 @@
     <color name="imperiya_color_on_primary">#FFFFFF</color>
     <color name="imperiya_color_transparent">@android:color/transparent</color>
 
-    <color name="imperiya_title">#FFFFFF</color>
-    <color name="imperiya_sub_title">#FFFFFF</color>
-    <color name="imperiya_body">#FFFFFF</color>
-    <color name="imperiya_hint">#80FFFFFF</color>
-    <color name="imperiya_sub_title2">#CCFFFFFF</color>
+    <color name="imperiya_title">#000000</color>
+    <color name="imperiya_sub_title">#000000</color>
+    <color name="imperiya_body">#000000</color>
+    <color name="imperiya_hint">#80000000</color>
+    <color name="imperiya_sub_title2">#CC000000</color>
 
     <color name="imperiya_color_icon">#FFFFFF</color>
     <color name="imperiya_color_icon_disable">#80FFFFFF</color>

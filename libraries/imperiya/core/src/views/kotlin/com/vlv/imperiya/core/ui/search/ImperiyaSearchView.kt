@@ -12,6 +12,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.extensions.getAttrColor
 import com.vlv.imperiya.core.R
 
 class ImperiyaSearchView : SearchView {
@@ -32,11 +33,17 @@ class ImperiyaSearchView : SearchView {
 
         searchBar.setBackgroundResource(R.drawable.imperiya_background_search)
         setIconifiedByDefault(false)
-        searchText.setTextColor(ContextCompat.getColor(context, R.color.imperiya_title))
+        searchText.setTextColor(
+            context.getAttrColor(com.google.android.material.R.attr.colorOnTertiary)
+        )
         searchText.setHintTextColor(ContextCompat.getColor(context, R.color.imperiya_hint))
         searchPlate.setBackgroundResource(android.R.color.transparent)
         startIcon.foreground = ContextCompat.getDrawable(context, R.drawable.imperiya_ripple_oval)
         endIcon.foreground = ContextCompat.getDrawable(context, R.drawable.imperiya_ripple_oval)
+    }
+
+    fun setTextColor(color: Int) = apply {
+        searchText.setTextColor(color)
     }
 
     fun setSearchIcon(@DrawableRes drawableRes: Int) = apply {

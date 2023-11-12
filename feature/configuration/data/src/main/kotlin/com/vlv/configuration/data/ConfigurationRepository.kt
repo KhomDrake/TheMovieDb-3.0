@@ -20,14 +20,14 @@ class ConfigurationRepository(
 ) {
 
     suspend fun defaultConfigData() = run {
-        val config = newScope.async {
-            api.configuration()
-        }.await()
         val languages = newScope.async {
             api.languages()
         }.await()
         val countries = newScope.async {
             api.countries()
+        }.await()
+        val config = newScope.async {
+            api.configuration()
         }.await()
 
         ConfigurationData(

@@ -18,13 +18,13 @@
             android:id="@+id/collapsing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="@color/imperiya_color_background"
+            app:contentScrim="@color/md_theme_light_background"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/imperiya_color_background"
+                android:background="@color/md_theme_light_background"
                 android:orientation="vertical">
 
                 <com.vlv.imperiya.core.ui.search.ImperiyaSearchView

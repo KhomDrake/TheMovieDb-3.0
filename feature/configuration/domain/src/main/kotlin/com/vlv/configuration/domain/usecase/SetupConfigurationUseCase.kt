@@ -18,17 +18,17 @@ class SetupConfigurationUseCase(
         if(keysNotLoaded.isNotEmpty()) repository.updateDatabase(data)
 
         DataVault.loadCache()
-        loadConfigDataToCache(resources, data)
+        if(keysNotLoaded.isNotEmpty()) loadConfigDataToCache(resources, data)
     }
 
     private suspend fun loadConfigDataToCache(resources: Resources, data: ConfigurationData) {
         DataVault.setValue(SettingsOption.BASE_URL.name, data.baseUrl.data)
         DataVault.setValue(SettingsOption.SECURE_BASE_URL.name, data.baseSecureUrl.data)
 
-        DataVault.setValue(SettingsOption.BACKDROP.name, data.backdropSizes.first().data)
-        DataVault.setValue(SettingsOption.LOGO.name, data.logoSizes.first().data)
-        DataVault.setValue(SettingsOption.POSTER.name, data.posterSizes.first().data)
-        DataVault.setValue(SettingsOption.PROFILE.name, data.profileSizes.first().data)
+        DataVault.setValue(SettingsOption.BACKDROP.name, data.backdropSizes.last().data)
+        DataVault.setValue(SettingsOption.LOGO.name, data.logoSizes.last().data)
+        DataVault.setValue(SettingsOption.POSTER.name, data.posterSizes.last().data)
+        DataVault.setValue(SettingsOption.PROFILE.name, data.profileSizes.last().data)
 
         DataVault.setValue(SettingsOption.ADULT_CONTENT.name, false)
 

@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.imperiya.ui.search.ImperiyaSearchView
-import com.vlv.imperiya.ui.search.ImperiyaToolbarView
+import com.vlv.extensions.getAttrColor
+import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
+import com.vlv.imperiya.core.ui.search.ImperiyaToolbarView
 import com.vlv.imperiyasample.R
 
 class SearchSampleActivity : AppCompatActivity(R.layout.activity_search_sample) {
@@ -23,6 +24,7 @@ class SearchSampleActivity : AppCompatActivity(R.layout.activity_search_sample) 
             finish()
         }
 
+        search.setCloseIcon(com.vlv.imperiya.core.R.drawable.ic_close)
         search.setHint("Input Text")
         search.setup(
             onTextChanged = {

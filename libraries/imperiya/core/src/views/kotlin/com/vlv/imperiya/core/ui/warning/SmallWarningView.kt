@@ -26,7 +26,7 @@ class SmallWarningView : LinearLayoutCompat {
     ) : super(context, attrs, defStyleAttr) {
         View.inflate(context, R.layout.imperiya_widget_small_warning_view, this)
         orientation = VERTICAL
-        setBackgroundResource(R.drawable.imperiya_background_tertiary)
+        setBackgroundResource(R.drawable.imperiya_background_tertiary_container)
 
         val paddingVertical = resources.getDimension(R.dimen.imperiya_carousel_m).toInt()
         setPadding(paddingLeft, paddingVertical, paddingRight, paddingVertical)

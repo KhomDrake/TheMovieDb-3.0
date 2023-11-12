@@ -2,6 +2,7 @@ package com.vlv.themoviedb
 
 import android.animation.ValueAnimator
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.animation.doOnEnd
@@ -41,7 +42,8 @@ class IntroActivity : AppCompatActivity(R.layout.intro_activity) {
             data {
                 openMain(endAnimationText)
             }
-            error { _ ->
+            error { e ->
+                Log.i("Vini", e.stackTraceToString())
                 openMain(endAnimationText)
             }
         }

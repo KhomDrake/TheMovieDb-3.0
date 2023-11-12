@@ -1,4 +1,4 @@
-package com.vlv.configuration.data.model
+package com.vlv.data.common.model.settings
 
 
 import com.squareup.moshi.Json

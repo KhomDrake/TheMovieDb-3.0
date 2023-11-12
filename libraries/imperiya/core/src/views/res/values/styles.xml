@@ -6,7 +6,7 @@
     <style name="Imperiya.Widget.Shimmer">
         <item name="shimmer_auto_start">true</item>
         <item name="shimmer_base_color">@color/imperiya_color_start_shimmer</item>
-        <item name="shimmer_highlight_color">@color/imperiya_color_primary</item>
+        <item name="shimmer_highlight_color">?attr/colorPrimary</item>
     </style>
 
     <style name="Imperiya.Widget.Shimmer.Item">
@@ -34,8 +34,8 @@
     <style name="Imperiya.Widget.PageIndicator">
         <item name="spi_dotSize">10dp</item>
         <item name="spi_dotSelectedSize">10dp</item>
-        <item name="spi_dotColor">#66FFFFFF</item>
-        <item name="spi_dotSelectedColor">#FFFFFF</item>
+        <item name="spi_dotColor">?attr/colorOutline</item>
+        <item name="spi_dotSelectedColor">?attr/colorOnBackground</item>
     </style>
 
     <style name="Imperiya.Widget.Toolbar">
@@ -58,7 +58,7 @@
         <item name="android:textColor">@color/imperiya_color_primary</item>
     </style>
 
-    <style name="Imperiya.Widget.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+    <style name="Imperiya.Widget.Chip" parent="Widget.Material3.Chip.Assist">
         <item name="chipBackgroundColor">@color/imperiya_chip_background_color</item>
         <item name="android:textColor">@color/imperiya_chip_text_color</item>
         <item name="chipStrokeColor">@color/imperiya_chip_stroke_color</item>

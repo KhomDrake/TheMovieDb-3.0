@@ -1,9 +1,9 @@
 package com.vlv.configuration.data.api
 
-import com.vlv.configuration.data.model.ConfigurationResponse
-import com.vlv.configuration.data.model.CountriesResponseItem
-import com.vlv.configuration.data.model.LanguageResponseItem
-import com.vlv.configuration.data.model.TimeZonesResponseItem
+import com.vlv.data.common.model.settings.ConfigurationResponse
+import com.vlv.data.common.model.settings.CountriesResponseItem
+import com.vlv.data.common.model.settings.LanguageResponseItem
+import com.vlv.data.common.model.settings.TimeZonesResponseItem
 import retrofit2.http.GET
 
 interface ConfigurationApi {

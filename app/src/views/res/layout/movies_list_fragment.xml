@@ -11,6 +11,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/list_title"
         style="@style/Imperiya.Style.Text.Title"
+        android:textColor="?attr/colorOnBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -22,6 +23,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/see_all"
         style="@style/Imperiya.Style.Text.Link"
+        android:textColor="@color/imperiya_color_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
