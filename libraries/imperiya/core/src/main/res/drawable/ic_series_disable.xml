@@ -8,6 +8,6 @@
       android:strokeLineJoin="round"
       android:strokeWidth="2"
       android:strokeAlpha=".8"
-      android:strokeColor="?attr/colorTertiary"
+      android:strokeColor="@color/color_imperiya_tertiary"
       android:strokeLineCap="round"/>
 </vector>

@@ -29,7 +29,7 @@
     </style>
 
     <style name="Imperiya.Style.Text.Chip">
-        <item name="android:textColor">@color/imperiya_color_background</item>
+        <item name="android:textColor">@color/color_imperiya_on_background</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">normal</item>
     </style>

@@ -7,6 +7,6 @@
       android:pathData="M13,1L1,13M1,1L13,13"
       android:strokeLineJoin="round"
       android:strokeWidth="2"
-      android:strokeColor="?attr/colorOnTertiary"
+      android:strokeColor="@color/color_imperiya_on_tertiary"
       android:strokeLineCap="round"/>
 </vector>

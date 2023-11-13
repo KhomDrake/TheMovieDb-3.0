@@ -139,7 +139,7 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
                     AppBarState.FULL_COLLAPSED -> {
                         ContextCompat.getColor(
                             this,
-                            com.vlv.imperiya.core.R.color.imperiya_color_background
+                            com.vlv.imperiya.core.R.color.color_imperiya_background
                         )
                     }
                     AppBarState.EXPANDED, AppBarState.IDLE, AppBarState.COLLAPSING -> {

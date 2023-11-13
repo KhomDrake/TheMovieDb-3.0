@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/list_title"
         style="@style/Imperiya.Style.Text.Title"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="@color/color_imperiya_on_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

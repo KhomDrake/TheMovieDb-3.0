@@ -33,10 +33,8 @@ class ImperiyaSearchView : SearchView {
 
         searchBar.setBackgroundResource(R.drawable.imperiya_background_search)
         setIconifiedByDefault(false)
-        searchText.setTextColor(
-            context.getAttrColor(com.google.android.material.R.attr.colorOnTertiary)
-        )
-        searchText.setHintTextColor(ContextCompat.getColor(context, R.color.imperiya_hint))
+        searchText.setTextColor(ContextCompat.getColor(context, R.color.color_imperiya_on_tertiary))
+        searchText.setHintTextColor(ContextCompat.getColor(context, R.color.color_imperiya_hint_tertiary))
         searchPlate.setBackgroundResource(android.R.color.transparent)
         startIcon.foreground = ContextCompat.getDrawable(context, R.drawable.imperiya_ripple_oval)
         endIcon.foreground = ContextCompat.getDrawable(context, R.drawable.imperiya_ripple_oval)

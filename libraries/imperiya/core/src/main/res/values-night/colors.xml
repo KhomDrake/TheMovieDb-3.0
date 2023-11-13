@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="imperiya_backdground_color">@color/md_theme_dark_background</color>
+    <color name="color_imperiya_primary">@color/color_imperiya_dark_primary</color>
+    <color name="color_imperiya_on_primary">@color/color_imperiya_dark_onPrimary</color>
+    <color name="color_imperiya_primary_container">@color/color_imperiya_dark_primaryContainer</color>
+    <color name="color_imperiya_on_primary_container">@color/color_imperiya_dark_onPrimaryContainer</color>
+    <color name="color_imperiya_secondary">@color/color_imperiya_dark_secondary</color>
+    <color name="color_imperiya_on_secondary">@color/color_imperiya_dark_onSecondary</color>
+    <color name="color_imperiya_secondary_container">@color/color_imperiya_dark_secondaryContainer</color>
+    <color name="color_imperiya_on_secondary_container">@color/color_imperiya_dark_onSecondaryContainer</color>
+    <color name="color_imperiya_tertiary">@color/color_imperiya_dark_tertiary</color>
+    <color name="color_imperiya_on_tertiary">@color/color_imperiya_dark_onTertiary</color>
+    <color name="color_imperiya_tertiary_container">@color/color_imperiya_dark_tertiaryContainer</color>
+    <color name="color_imperiya_on_tertiary_container">@color/color_imperiya_dark_onTertiaryContainer</color>
+    <color name="color_imperiya_error">@color/color_imperiya_dark_error</color>
+    <color name="color_imperiya_error_container">@color/color_imperiya_dark_errorContainer</color>
+    <color name="color_imperiya_on_error">@color/color_imperiya_dark_onError</color>
+    <color name="color_imperiya_on_error_container">@color/color_imperiya_dark_onErrorContainer</color>
+    <color name="color_imperiya_background">@color/color_imperiya_dark_background</color>
+    <color name="color_imperiya_on_background">@color/color_imperiya_dark_onBackground</color>
+    <color name="color_imperiya_surface">@color/color_imperiya_dark_surface</color>
+    <color name="color_imperiya_on_surface">@color/color_imperiya_dark_onSurface</color>
+    <color name="color_imperiya_surface_variant">@color/color_imperiya_dark_surfaceVariant</color>
+    <color name="color_imperiya_on_surface_variant">@color/color_imperiya_dark_onSurfaceVariant</color>
+    <color name="color_imperiya_outline">@color/color_imperiya_dark_outline</color>
+    <color name="color_imperiya_inverse_on_surface">@color/color_imperiya_dark_inverseOnSurface</color>
+    <color name="color_imperiya_inverse_surface">@color/color_imperiya_dark_inverseSurface</color>
+    <color name="color_imperiya_inverse_primary">@color/color_imperiya_dark_inversePrimary</color>
+    <color name="color_imperiya_shadow">@color/color_imperiya_dark_shadow</color>
+    <color name="color_imperiya_surface_tint">@color/color_imperiya_dark_surfaceTint</color>
+    <color name="color_imperiya_outline_variant">@color/color_imperiya_dark_outlineVariant</color>
+    <color name="color_imperiya_scrim">@color/color_imperiya_dark_scrim</color>
+    <color name="color_imperiya_hint_tertiary">#CC003546</color>
+    
+    <color name="imperiya_backdground_color">@color/color_imperiya_dark_background</color>
     <color name="imperiya_backdground_mid_color">#B5191C1E</color>
     <color name="imperiya_backdground_end_color">#81191C1E</color>
     <color name="imperiya_title">#FFFFFF</color>

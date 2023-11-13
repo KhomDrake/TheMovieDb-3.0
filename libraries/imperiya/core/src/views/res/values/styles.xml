@@ -6,7 +6,7 @@
     <style name="Imperiya.Widget.Shimmer">
         <item name="shimmer_auto_start">true</item>
         <item name="shimmer_base_color">@color/imperiya_color_start_shimmer</item>
-        <item name="shimmer_highlight_color">?attr/colorPrimary</item>
+        <item name="shimmer_highlight_color">@color/color_imperiya_primary</item>
     </style>
 
     <style name="Imperiya.Widget.Shimmer.Item">
@@ -23,7 +23,7 @@
 
     <style name="Imperiya.Widget.TabLayout">
         <item name="android:background">@android:color/transparent</item>
-        <item name="tabTextColor">?attr/colorOnBackground</item>
+        <item name="tabTextColor">@color/color_imperiya_on_background</item>
         <item name="tabSelectedTextColor">@color/imperiya_color_link</item>
         <item name="tabIndicatorColor">@color/imperiya_color_link</item>
         <item name="tabIndicatorFullWidth">true</item>
@@ -34,22 +34,22 @@
     <style name="Imperiya.Widget.PageIndicator">
         <item name="spi_dotSize">10dp</item>
         <item name="spi_dotSelectedSize">10dp</item>
-        <item name="spi_dotColor">?attr/colorOutline</item>
-        <item name="spi_dotSelectedColor">?attr/colorOnBackground</item>
+        <item name="spi_dotColor">@color/color_imperiya_outline</item>
+        <item name="spi_dotSelectedColor">@color/color_imperiya_on_background</item>
     </style>
 
     <style name="Imperiya.Widget.Toolbar">
         <item name="navigationIcon">@drawable/ic_back</item>
-        <item name="titleTextColor">@color/imperiya_title</item>
+        <item name="titleTextColor">@color/color_imperiya_on_background</item>
     </style>
 
     <style name="Imperiya.Widget.Button">
         <item name="android:minHeight">48dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/imperiya_button_background_secondary</item>
-        <item name="background">@drawable/imperiya_button_background_secondary</item>
+        <item name="android:background">@drawable/imperiya_button_background_tertiary</item>
+        <item name="background">@drawable/imperiya_button_background_tertiary</item>
         <item name="android:foreground">@drawable/imperiya_ripple_rounded</item>
-        <item name="android:textColor">@color/imperiya_button_text_color</item>
+        <item name="android:textColor">@color/color_imperiya_on_tertiary</item>
     </style>
 
     <style name="Imperiya.Widget.Button.Neutral">
@@ -58,8 +58,13 @@
         <item name="android:textColor">@color/imperiya_color_primary</item>
     </style>
 
-    <style name="Imperiya.Widget.Chip" parent="Widget.Material3.Chip.Assist">
+    <style name="Imperiya.Widget.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/imperiya_chip_background_color</item>
+        <item name="android:textColor">@color/imperiya_chip_text_color</item>
+        <item name="chipStrokeColor">@color/imperiya_chip_stroke_color</item>
         <item name="chipStrokeWidth">2dp</item>
+        <item name="chipCornerRadius">12dp</item>
+        <item name="checkedIconEnabled">false</item>
         <item name="chipStartPadding">12dp</item>
         <item name="chipEndPadding">12dp</item>
         <item name="android:textStyle">bold</item>

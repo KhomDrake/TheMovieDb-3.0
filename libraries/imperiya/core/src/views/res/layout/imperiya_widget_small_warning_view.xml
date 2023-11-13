@@ -11,13 +11,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/small_warning_title"
-        android:textColor="?attr/colorOnTertiaryContainer"
+        android:textColor="@color/color_imperiya_on_tertiary_container"
         style="@style/Imperiya.Style.Text.Subtitle.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
-        android:drawableTint="?attr/colorOnTertiaryContainer"
+        android:drawableTint="@color/color_imperiya_on_tertiary_container"
         android:drawableStart="@drawable/ic_info"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
@@ -26,7 +26,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/small_warning_body"
         style="@style/Imperiya.Style.Text.Paragraph"
-        android:textColor="?attr/colorOnTertiaryContainer"
+        android:textColor="@color/color_imperiya_on_tertiary_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

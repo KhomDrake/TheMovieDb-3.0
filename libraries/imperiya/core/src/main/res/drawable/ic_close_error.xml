@@ -7,6 +7,6 @@
       android:pathData="M13,1L1,13M1,1L13,13"
       android:strokeLineJoin="round"
       android:strokeWidth="2"
-      android:strokeColor="?attr/colorError"
+      android:strokeColor="@color/imperiya_color_error"
       android:strokeLineCap="round"/>
 </vector>

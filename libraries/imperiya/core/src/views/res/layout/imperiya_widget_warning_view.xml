@@ -13,7 +13,7 @@
         android:padding="16dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_close"
-        android:tint="?attr/colorOnBackground"
+        android:tint="@color/color_imperiya_background"
         android:foreground="@drawable/imperiya_ripple_oval"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -21,7 +21,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/small_warning_title"
         style="@style/Imperiya.Style.Text.Title"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="@color/color_imperiya_on_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -34,7 +34,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/small_warning_body"
         style="@style/Imperiya.Style.Text.Paragraph"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="@color/color_imperiya_on_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

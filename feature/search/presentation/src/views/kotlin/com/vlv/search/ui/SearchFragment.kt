@@ -318,31 +318,12 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
     private fun updateLastChecked(chip: Chip) {
         lastChecked?.isClickable = true
-        lastChecked?.styleUnchecked()
         lastChecked = chip
         chip.isClickable = false
-        chip.styleChecked()
         val type = SearchType.values().find {
             it.name.lowercase() == chip.tag.toString()
         } ?: SearchType.MOVIE
         viewModel.setSearchType(type)
-    }
-
-    private fun Chip.styleUnchecked() {
-//        chipBackgroundColor = ColorStateList.valueOf(
-//            ContextCompat.getColor(
-//                context,
-//                com.vlv.imperiya.core.R.color.imperiya_backdground_color
-//            )
-//        )
-    }
-
-    private fun Chip.styleChecked() {
-//        setChipBackgroundColorResource(
-//            context.getAttrColorResourceId(
-//                com.google.android.material.R.attr.colorSecondary
-//            )
-//        )
     }
 
     override fun onDestroyView() {

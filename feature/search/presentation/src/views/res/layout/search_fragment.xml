@@ -18,7 +18,8 @@
             android:id="@+id/collapsing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="@color/color_imperiya_background"
+            android:background="@color/color_imperiya_background"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -33,7 +34,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginHorizontal="16dp"
                     style="@style/Imperiya.Style.SearchView"
-                    app:queryHint="Search for..."
+                    tools:queryHint="Search for..."
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <com.google.android.material.chip.ChipGroup
@@ -53,6 +54,7 @@
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:tag="movie"
+                        app:checkedIconEnabled="false"
                         style="@style/Imperiya.Widget.Chip"
                         android:text="@string/search_movie_option" />
 
@@ -62,6 +64,7 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:tag="series"
+                        app:checkedIconEnabled="false"
                         style="@style/Imperiya.Widget.Chip"
                         android:text="@string/search_series_option" />
 
@@ -71,6 +74,7 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:tag="person"
+                        app:checkedIconEnabled="false"
                         style="@style/Imperiya.Widget.Chip"
                         android:text="@string/search_people_option" />
 

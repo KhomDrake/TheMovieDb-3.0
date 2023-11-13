@@ -5,7 +5,7 @@
     android:layout_marginTop="16dp"
     android:layout_marginHorizontal="16dp"
     android:id="@+id/big_text"
-    android:textColor="?attr/colorOnBackground"
+    android:textColor="@color/color_imperiya_on_background"
     tools:text="When a new threat capable of destroying the entire planet emerges, Optimus Prime and the Autobots must team up with a powerful faction known as the Maximals. With the fate of humanity hanging in the balance, humans Noah and Elena will do whatever it takes to help the Transformers as they engage in the ultimate battle to save Earth."
     style="@style/Imperiya.Style.Text.Paragraph"
     xmlns:android="http://schemas.android.com/apk/res/android"

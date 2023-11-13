@@ -18,7 +18,7 @@
         android:outlineProvider="background"
         android:importantForAccessibility="no"
         android:padding="8dp"
-        android:tint="?attr/colorOnTertiaryContainer"
+        android:tint="@color/color_imperiya_on_tertiary_container"
         tools:src="@drawable/ic_heart"
         android:background="@drawable/imperiya_background_tertiary_container"/>
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_gravity="bottom"
-        android:textColor="?attr/colorOnTertiary"
+        android:textColor="@color/color_imperiya_on_tertiary"
         tools:text="Favorites"
         style="@style/Imperiya.Style.Text.Paragraph.Bold"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

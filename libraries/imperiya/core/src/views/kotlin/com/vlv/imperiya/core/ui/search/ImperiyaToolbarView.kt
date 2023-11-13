@@ -2,7 +2,10 @@ package com.vlv.imperiya.core.ui.search
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
 
@@ -43,8 +46,11 @@ class ImperiyaToolbarView(context: Context, attrs: AttributeSet?) : Toolbar(cont
     }
 
     private fun addSearchView() : ImperiyaSearchView {
-        val search = ImperiyaSearchView(context)
+        val search = LayoutInflater.from(context).inflate(
+            R.layout.imperiya_widget_search_view, this, false
+        ) as ImperiyaSearchView
         _searchView = search
+        _searchView.setCloseIcon(R.drawable.ic_close)
         addView(
             search, -1,
             LayoutParams(

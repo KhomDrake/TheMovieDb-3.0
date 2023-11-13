@@ -8,8 +8,8 @@
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/imperiya_color_secondary</item>
         <item name="colorOnSecondary">@color/imperiya_body</item>
-        <item name="android:statusBarColor">@color/imperiya_color_background</item>
-        <item name="android:windowBackground">@color/imperiya_color_background</item>
+        <item name="android:statusBarColor">@color/color_imperiya_background</item>
+        <item name="android:windowBackground">@color/color_imperiya_background</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -20,7 +20,7 @@
     </style>
 
     <style name="Imperiya.Theme.Collapse">
-        <item name="colorPrimary">@color/imperiya_color_background</item>
+        <item name="colorPrimary">@color/color_imperiya_background</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 

@@ -34,11 +34,12 @@ import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.data.network.database.data.History
+import com.vlv.imperiya.core.ui.search.ImperiyaToolbarView
 
 abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activity) {
 
     protected val root: ViewGroup by viewProvider(R.id.root)
-    protected val searchView: ImperiyaSearchView by viewProvider(R.id.search)
+    protected val toolbarView: ImperiyaToolbarView by viewProvider(R.id.search)
     protected val historyItems: RecyclerView by viewProvider(R.id.history_items)
     protected val items: RecyclerView by viewProvider(R.id.items)
     private val warning: SmallWarningView by viewProvider(R.id.warning_view)
@@ -109,16 +110,16 @@ abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activit
     }
 
     private fun setupSearchView() {
-        searchView.apply {
+        toolbarView.setNavigationOnClickListener {
+            finishAfterTransition()
+        }
+        toolbarView.searchView.apply {
             setCloseIcon(com.vlv.imperiya.core.R.drawable.ic_close)
             setHint(searchHint)
             setup(onTextSubmit = {
                 addHistory(it)
                 onTextSubmit(it)
             })
-            onClickSearchListener {
-                finishAfterTransition()
-            }
             onClickCloseListener {
                 clearText()
                 viewStateMachine.initialState()
@@ -131,7 +132,7 @@ abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activit
         historyItems.layoutManager = LinearLayoutManager(this)
         historyItems.adapter = HistoryAdapter(
             onClick = { history ->
-                searchView.setText(history.text)
+                toolbarView.searchView.setText(history.text)
                 onTextSubmit(history.text)
             },
             onClickClose = { history ->

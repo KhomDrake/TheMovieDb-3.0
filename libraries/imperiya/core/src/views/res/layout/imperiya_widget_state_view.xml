@@ -10,7 +10,7 @@
         android:id="@+id/icon_state"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:tint="?attr/colorOnBackground"
+        android:tint="@color/color_imperiya_on_background"
         tools:src="@drawable/ic_hearts"
         app:layout_constraintBottom_toTopOf="@+id/title_state"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +22,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/title_state"
         style="@style/Imperiya.Style.Text.Title"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="@color/color_imperiya_on_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -38,7 +38,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/body_state"
         style="@style/Imperiya.Style.Text.Paragraph"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="@color/color_imperiya_on_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
