@@ -13,3 +13,8 @@ fun Context.getAttrColor(value: Int) : Int = run {
     theme.resolveAttribute(value, typedValue, true);
     ContextCompat.getColor(this, typedValue.resourceId)
 }
+fun Context.getAttrColorResourceId(value: Int) : Int = run {
+    val typedValue = TypedValue();
+    theme.resolveAttribute(value, typedValue, true);
+    typedValue.resourceId
+}

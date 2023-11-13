@@ -17,7 +17,7 @@
             android:id="@+id/collapsing"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:contentScrim="@color/imperiya_color_primary"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
             app:toolbarId="@id/toolbar">
 
@@ -58,7 +58,6 @@
                     android:id="@+id/background_gradient"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginTop="?attr/actionBarSize"
                     android:background="@drawable/common_gradient_background_detail"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
@@ -85,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginEnd="16dp"
+                    android:textColor="?attr/colorOnBackground"
                     app:layout_constraintBottom_toBottomOf="@id/poster"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/poster"
@@ -101,6 +101,7 @@
                     android:layout_marginTop="8dp"
                     android:visibility="gone"
                     android:padding="8dp"
+                    android:textColor="?attr/colorOnPrimary"
                     android:background="@drawable/common_background_score"
                     tools:text="7.7"
                     style="@style/Imperiya.Style.Text.Subtitle.Bold"
@@ -114,6 +115,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginEnd="16dp"
                     android:visibility="gone"
+                    android:textColor="?attr/colorOnBackground"
                     tools:text="April/2018 - 2h49m"
                     app:layout_constraintTop_toTopOf="@id/score"
                     app:layout_constraintStart_toEndOf="@id/score"

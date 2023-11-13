@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="imperiya_backdground_color">@color/md_theme_dark_background</color>
+    <color name="imperiya_backdground_mid_color">#B5191C1E</color>
+    <color name="imperiya_backdground_end_color">#81191C1E</color>
     <color name="imperiya_title">#FFFFFF</color>
     <color name="imperiya_sub_title">#FFFFFF</color>
     <color name="imperiya_body">#FFFFFF</color>

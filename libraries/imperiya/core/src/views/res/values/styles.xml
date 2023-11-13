@@ -23,7 +23,7 @@
 
     <style name="Imperiya.Widget.TabLayout">
         <item name="android:background">@android:color/transparent</item>
-        <item name="tabTextColor">@color/imperiya_title</item>
+        <item name="tabTextColor">?attr/colorOnBackground</item>
         <item name="tabSelectedTextColor">@color/imperiya_color_link</item>
         <item name="tabIndicatorColor">@color/imperiya_color_link</item>
         <item name="tabIndicatorFullWidth">true</item>

@@ -65,6 +65,9 @@
     <color name="md_theme_dark_scrim">#000000</color>
 
     <!--  Others  -->
+    <color name="imperiya_backdground_color">@color/md_theme_light_background</color>
+    <color name="imperiya_backdground_mid_color">#B5FBFCFE</color>
+    <color name="imperiya_backdground_end_color">#4FFBFCFE</color>
     <color name="imperiya_color_primary">#3E6477</color>
     <color name="imperiya_color_secondary">#27374D</color>
     <color name="imperiya_color_background">#263238</color>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
@@ -15,6 +16,8 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.vlv.common.route.FINISH_AFTER_TRANSITION_EXTRA
 import com.vlv.common.route.DETAIL_OBJECT_EXTRA
+import com.vlv.extensions.getAttrColor
+import com.vlv.extensions.getAttrColorResourceId
 import com.vlv.ui.R
 import java.lang.ref.WeakReference
 import kotlin.math.abs
@@ -68,33 +71,41 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
             AppBarStateChangeListener(
                 WeakReference(toolbar)
             ) { _, state ->
-                val resource = when(state) {
+                val color = when(state) {
                     AppBarState.COLLAPSED -> {
-                        com.vlv.imperiya.core.R.color.imperiya_color_primary
+                        getAttrColor(org.koin.android.R.attr.colorPrimary)
                     }
                     AppBarState.FULL_COLLAPSED -> {
-                        com.vlv.imperiya.core.R.color.imperiya_color_background
+                        ContextCompat.getColor(
+                            this,
+                            com.vlv.imperiya.core.R.color.imperiya_color_background
+                        )
                     }
                     AppBarState.EXPANDED, AppBarState.IDLE, AppBarState.COLLAPSING -> {
-                        com.vlv.imperiya.core.R.color.imperiya_color_transparent
+                        ContextCompat.getColor(
+                            this,
+                            com.vlv.imperiya.core.R.color.imperiya_color_transparent
+                        )
                     }
                 }
 
                 when(state) {
                     AppBarState.EXPANDED, AppBarState.COLLAPSING -> showExpanded()
-                    AppBarState.COLLAPSED -> showCollapsed()
+                    AppBarState.COLLAPSED -> showCollapsed(fullCollapsed = false)
+                    AppBarState.FULL_COLLAPSED -> showCollapsed(fullCollapsed = true)
                     else -> Unit
                 }
 
-                appBar.setStatusBarForegroundResource(resource)
-                collapsing.setStatusBarScrimResource(resource)
+                appBar.setStatusBarForegroundColor(color)
+                collapsing.setContentScrimColor(color)
             })
     }
 
-    open fun showCollapsed() {
+    open fun showCollapsed(fullCollapsed: Boolean) {
         val obj = objDetail ?: return
         collapsing.title = obj.title
         expandedTitle.text = obj.title
+        collapsing.isInvisible = fullCollapsed
         expandedTitle.isInvisible = true
         expandedScore.isInvisible = true
         expandedDateAndTime.isInvisible = true
@@ -103,6 +114,7 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
     open fun showExpanded() {
         val obj = objDetail ?: return
         collapsing.title = null
+        collapsing.isInvisible = false
         expandedTitle.text = obj.title
         expandedTitle.isVisible = true
         expandedScore.isVisible = expandedScore.text.isNullOrBlank().not()

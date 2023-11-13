@@ -39,12 +39,12 @@
         <item name="colorSecondaryContainer">?attr/colorTertiaryContainer</item>
     </style>
 
-    <style name="Imperiya.Theme.Collapse">
+    <style name="Imperiya.Theme.Collapse" parent="Imperiya.Theme">
         <item name="colorPrimary">@color/imperiya_color_background</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="Imperiya.Theme.CollapseToolbar" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Imperiya.Theme.CollapseToolbar" parent="Imperiya.Theme">
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
