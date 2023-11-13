@@ -18,25 +18,24 @@
             android:id="@+id/collapsing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="@color/imperiya_color_background"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/imperiya_color_background"
                 android:orientation="vertical">
 
                 <com.vlv.imperiya.core.ui.search.ImperiyaSearchView
                     android:id="@+id/search"
-                    style="@style/Imperiya.Style.SearchView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginVertical="12dp"
+                    android:layout_marginVertical="24dp"
                     android:transitionName="@string/common_search_transition_name"
-                    app:searchIcon="@drawable/ic_back"
-                    tools:queryHint="Search for..." />
+                    style="@style/Imperiya.Style.SearchView"
+                    app:queryHint="Search for..."
+                    app:layout_constraintTop_toTopOf="parent"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

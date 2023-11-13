@@ -59,9 +59,6 @@
     </style>
 
     <style name="Imperiya.Widget.Chip" parent="Widget.Material3.Chip.Assist">
-        <item name="chipBackgroundColor">@color/imperiya_chip_background_color</item>
-        <item name="android:textColor">@color/imperiya_chip_text_color</item>
-        <item name="chipStrokeColor">@color/imperiya_chip_stroke_color</item>
         <item name="chipStrokeWidth">2dp</item>
         <item name="chipStartPadding">12dp</item>
         <item name="chipEndPadding">12dp</item>

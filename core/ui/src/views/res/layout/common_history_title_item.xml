@@ -6,5 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="16dp"
     android:layout_marginHorizontal="16dp"
+    android:textColor="?attr/colorOnBackground"
     tools:text="Recents:"
     style="@style/Imperiya.Style.Text.Title" />

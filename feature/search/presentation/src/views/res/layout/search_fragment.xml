@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:id="@+id/root"
-    tools:theme="@style/Imperiya.Theme">
+    tools:theme="@style/Imperiya.Theme.Collapse">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@id/app_bar_layout"
@@ -18,13 +18,12 @@
             android:id="@+id/collapsing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="@color/md_theme_light_background"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|snap">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/md_theme_light_background"
                 android:orientation="vertical">
 
                 <com.vlv.imperiya.core.ui.search.ImperiyaSearchView
@@ -55,7 +54,7 @@
                         android:checked="true"
                         android:tag="movie"
                         style="@style/Imperiya.Widget.Chip"
-                        android:text="Movie" />
+                        android:text="@string/search_movie_option" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/series_option"
@@ -64,7 +63,7 @@
                         android:checked="false"
                         android:tag="series"
                         style="@style/Imperiya.Widget.Chip"
-                        android:text="Tv Show" />
+                        android:text="@string/search_series_option" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/person_option"
@@ -73,7 +72,7 @@
                         android:checked="false"
                         android:tag="person"
                         style="@style/Imperiya.Widget.Chip"
-                        android:text="Person" />
+                        android:text="@string/search_people_option" />
 
                 </com.google.android.material.chip.ChipGroup>
 

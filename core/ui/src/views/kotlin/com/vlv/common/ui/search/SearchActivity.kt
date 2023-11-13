@@ -110,6 +110,7 @@ abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activit
 
     private fun setupSearchView() {
         searchView.apply {
+            setCloseIcon(com.vlv.imperiya.core.R.drawable.ic_close)
             setHint(searchHint)
             setup(onTextSubmit = {
                 addHistory(it)

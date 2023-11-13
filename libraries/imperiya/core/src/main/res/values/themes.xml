@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Imperiya"/>
 
-    <style name="Imperiya.Theme" parent="ThemeOverlay.Material3.DynamicColors.Light">
+    <style name="Imperiya.Theme" parent="Theme.Material3.DynamicColors.Light">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
