@@ -52,9 +52,9 @@
     <style name="Imperiya.Style"/>
 
     <style name="Imperiya.Style.BottomNavigation">
-        <item name="itemIconTint">@color/color_imperiya_on_secondary_container</item>
-        <item name="itemTextColor">@color/color_imperiya_on_secondary</item>
-        <item name="backgroundTint">@color/color_imperiya_secondary</item>
-        <item name="itemBackground">@color/color_imperiya_secondary</item>
+        <item name="itemIconTint">@color/color_imperiya_on_tertiary_container</item>
+        <item name="itemTextColor">@color/color_imperiya_on_secondary_container</item>
+        <item name="backgroundTint">@color/color_imperiya_secondary_container</item>
+        <item name="itemBackground">@color/color_imperiya_tertiary_container</item>
     </style>
 </resources>
