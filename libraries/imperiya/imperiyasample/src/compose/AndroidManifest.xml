@@ -15,6 +15,46 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.ColorsActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.DynamicColorsActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.search.SearchSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.state.StateComponentSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.texts.TextSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.topbar.TopBarSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.warningview.WarningsComponentSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.warningview.SmallWarningComponentActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.warningview.WarningListComponentActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.warningview.WarningItemComponentActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
     </application>
 
 </manifest>

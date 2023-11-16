@@ -68,6 +68,7 @@ dependencies {
 
     composeApi(libs.androidx.compose.activity)
     composeApi(libs.androidx.compose.livedata)
+    composeApi(libs.androidx.compose.constraintlayout)
     composeApi(libs.androidx.compose.tooling.preview)
     composeImplementation(libs.androidx.compose.tooling.debug)
 

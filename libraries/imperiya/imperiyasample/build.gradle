@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id "jacoco"
+    id 'kotlin-parcelize'
 }
 
 apply from: "$rootDir/gradle/coverage.gradle"

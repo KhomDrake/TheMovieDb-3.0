@@ -36,6 +36,7 @@
     <color name="imperiya_backdground_mid_color">#B5191C1E</color>
     <color name="imperiya_backdground_end_color">#81191C1E</color>
     <color name="imperiya_title">#FFFFFF</color>
+    <color name="color_imperiya_success">#59dbc1</color>
     <color name="imperiya_sub_title">#FFFFFF</color>
     <color name="imperiya_body">#FFFFFF</color>
     <color name="imperiya_hint">#80FFFFFF</color>

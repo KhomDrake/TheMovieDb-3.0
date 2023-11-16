@@ -1,5 +1,6 @@
 package com.vlv.imperiya.core.ui.components
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -46,7 +47,8 @@ fun StateView(
             Spacer(modifier = Modifier.size(16.dp))
             Text(
                 text = title,
-                style = TheMovieDbTypography.TitleStyle
+                style = TheMovieDbTypography.TitleStyle,
+                color = MaterialTheme.colorScheme.onBackground
             )
         }
 
@@ -54,13 +56,16 @@ fun StateView(
             Spacer(modifier = Modifier.size(12.dp))
             Text(
                 text = body,
-                style = TheMovieDbTypography.ParagraphStyle
+                style = TheMovieDbTypography.ParagraphStyle,
+                color = MaterialTheme.colorScheme.onBackground
             )
         }
     }
 }
 
-@Preview(backgroundColor = 0xFF526D82)
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES
+)
 @Composable
 fun StateViewPreview() {
     TheMovieDbAppTheme() {
@@ -72,7 +77,9 @@ fun StateViewPreview() {
     }
 }
 
-@Preview(backgroundColor = 0xFF526D82)
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES
+)
 @Composable
 fun StateViewWithoutTitlePreview() {
     TheMovieDbAppTheme {
@@ -83,7 +90,9 @@ fun StateViewWithoutTitlePreview() {
     }
 }
 
-@Preview(backgroundColor = 0xFF526D82)
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES
+)
 @Composable
 fun StateViewWithoutBodyPreview() {
     TheMovieDbAppTheme {

@@ -24,10 +24,6 @@ object TheMovieDbTypography {
             color = Paragraph_Color
         )
 
-    val ParagraphGrayStyle = ParagraphStyle.copy(
-        color = Sub_Title2_Color
-    )
-
     val ParagraphBoldStyle = ParagraphStyle.copy(
         fontWeight = FontWeight.Bold
     )
@@ -48,22 +44,18 @@ object TheMovieDbTypography {
         get() = TextStyle(
             fontFamily = FontFamily.Default,
             fontWeight = FontWeight.Normal,
-            fontSize = ParagraphSize,
-            color = Title_Color
-//            color = BackgroundPrimary
+            fontSize = ParagraphSize
         )
 
     val SubTitleStyle : TextStyle
         get() = TextStyle(
             fontFamily = FontFamily.Default,
             fontWeight = FontWeight.Normal,
-            fontSize = SubTitleSize,
-            color = Sub_Title_Color
+            fontSize = SubTitleSize
         )
 
     val SubTitleSmallStyle = SubTitleStyle.copy(
-        fontSize = SubTitleSmallSize,
-        color = Sub_Title2_Color
+        fontSize = SubTitleSmallSize
     )
 
     val SubTitleBigStyle = SubTitleStyle.copy(
@@ -80,14 +72,11 @@ object TheMovieDbTypography {
         get() = TextStyle(
             fontFamily = FontFamily.Default,
             fontWeight = FontWeight.Bold,
-            fontSize = TitleSize,
-            color = Title_Color
+            fontSize = TitleSize
         )
 
     val TitleBigStyle = TitleStyle.copy(
         fontSize = TitleBigSize
     )
-
-
 
 }

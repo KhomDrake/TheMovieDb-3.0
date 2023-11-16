@@ -77,7 +77,7 @@
     <color name="color_imperiya_dark_onTertiary">#003546</color>
     <color name="color_imperiya_dark_tertiaryContainer">#004D64</color>
     <color name="color_imperiya_dark_onTertiaryContainer">#BDE9FF</color>
-    <color name="color_imperiya_dark_error">#FFB4AB</color>
+    <color name="color_imperiya_dark_error">#FF6B6B</color>
     <color name="color_imperiya_dark_errorContainer">#93000A</color>
     <color name="color_imperiya_dark_onError">#690005</color>
     <color name="color_imperiya_dark_onErrorContainer">#FFDAD6</color>
@@ -107,7 +107,7 @@
     <color name="imperiya_color_background_tertiary">#526D82</color>
     <color name="imperiya_color_background_search">#40545E</color>
     <color name="imperiya_color_link">#46BFFE</color>
-    <color name="imperiya_color_success">#38B49D</color>
+    <color name="color_imperiya_success">#006b5b</color>
     <color name="imperiya_color_neutral">#FFFFFF</color>
     <color name="imperiya_color_error">#E34F4F</color>
     <color name="imperiya_color_ripple">#A7A7A8</color>
