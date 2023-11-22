@@ -23,6 +23,7 @@ android-lifecycle-livedata-version = "1.1.1"
 androidx-compose-bom-version = "2023.10.01"
 androidx-compose-activity-version = "1.7.2"
 androidx-compose-viewmodel-version = "2.6.1"
+androidx-compose-paging-version = "1.0.0-alpha16"
 androidx-compose-constraintlayout-version = "1.0.1"
 androidx-lifecycle-viewmodel-version = "2.6.1"
 androidx-startup-runtime-version = "1.1.1"
@@ -69,6 +70,7 @@ androidx-compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-t
 androidx-compose-tooling-debug = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-compose-activity-version" }
 androidx-compose-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-compose-paging = { group = "androidx.paging", name = "paging-compose", version.ref = "androidx-compose-paging-version" }
 androidx-compose-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidx-compose-viewmodel-version" }
 
 # Squareup
@@ -84,6 +86,7 @@ google-material = { group = "com.google.android.material", name = "material", ve
 # Toolkit
 toolkit-delegate = { group = "io.github.matheus-corregiari", name = "delegate", version.ref = 'toolkit-version' }
 toolkit-livedata = { group = "io.github.matheus-corregiari", name = "livedata", version.ref = 'toolkit-version' }
+toolkit-splinter = { group = "io.github.matheus-corregiari", name = "splinter", version.ref = 'toolkit-version' }
 toolkit-statemachine = { group = "io.github.matheus-corregiari", name = "statemachine", version.ref = 'toolkit-version' }
 
 # Facebook
@@ -91,8 +94,10 @@ shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = 'shi
 
 # Other
 pagerindicator = { group = "ru.tinkoff.scrollingpagerindicator", name = "scrollingpagerindicator", version.ref = 'scrolling-pager-indicator-version' }
-coil = { group = "io.coil-kt", name = "coil", version.ref = 'coil-version' }
+coil-core = { group = "io.coil-kt", name = "coil", version.ref = 'coil-version' }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = 'coil-version' }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 'koin-version' }
+koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = 'koin-version' }
 threetenabp = { group = "com.jakewharton.threetenabp", name = "threetenabp", version.ref = 'threetenabp-version' }
 org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "orgjacoco-core-version" }
 

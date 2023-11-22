@@ -1,5 +1,6 @@
 package com.vlv.themoviedb.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,9 +26,21 @@ import androidx.compose.ui.res.stringResource
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.themoviedb.R
+import com.vlv.themoviedb.ui.menu.MenuScreen
+import com.vlv.themoviedb.ui.movie.MovieScreen
+import com.vlv.themoviedb.ui.series.SeriesScreen
 import com.vlv.imperiya.core.R as RImperiya
 
+enum class MainScreens {
+    MOVIE,
+    SERIES,
+    SEARCH,
+    FAVORITES,
+    MENU
+}
+
 class BottomNavigationItems(
+    val mainScreens: MainScreens,
     val title: String,
     @DrawableRes
     val selectedIcon: Int,
@@ -41,7 +54,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TheMovieDbAppTheme {
-                MainScreen()
+                MainScreen {
+                    startActivity(it)
+                }
             }
         }
     }
@@ -49,29 +64,36 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    onIntent: (Intent) -> Unit
+) {
     val items = listOf(
         BottomNavigationItems(
+            mainScreens = MainScreens.MOVIE,
             title = stringResource(R.string.movie_title),
             selectedIcon = RImperiya.drawable.ic_movie_enable,
             unselectedIcon = RImperiya.drawable.ic_movie_disable
         ),
         BottomNavigationItems(
+            mainScreens = MainScreens.SERIES,
             title = stringResource(R.string.series_title),
             selectedIcon = RImperiya.drawable.ic_series_enable,
             unselectedIcon = RImperiya.drawable.ic_series_disable,
         ),
         BottomNavigationItems(
+            mainScreens = MainScreens.SEARCH,
             title = stringResource(R.string.search_title),
             selectedIcon = RImperiya.drawable.ic_search_enable,
             unselectedIcon = RImperiya.drawable.ic_search_disable,
         ),
         BottomNavigationItems(
+            mainScreens = MainScreens.FAVORITES,
             title = stringResource(R.string.favorites_title),
             selectedIcon = RImperiya.drawable.ic_heart_enable,
             unselectedIcon = RImperiya.drawable.ic_heart_disable,
         ),
         BottomNavigationItems(
+            mainScreens = MainScreens.MENU,
             title = stringResource(R.string.menu_title),
             selectedIcon = RImperiya.drawable.ic_options_enable,
             unselectedIcon = RImperiya.drawable.ic_options_enable,
@@ -95,7 +117,7 @@ fun MainScreen() {
                         NavigationBarItem(
                             selected = index == selectedIndex,
                             onClick = {
-                                selectedIndex = index
+                                selectedIndex = item.mainScreens.ordinal
                             },
                             icon = {
                                 Icon(
@@ -124,7 +146,25 @@ fun MainScreen() {
                 }
             }
         ) { paddingValues ->
-            paddingValues.calculateBottomPadding()
+            when(selectedIndex) {
+                MainScreens.MOVIE.ordinal -> {
+                    MovieScreen {
+                        onIntent.invoke(it)
+                    }
+                }
+                MainScreens.MENU.ordinal -> {
+                    MenuScreen(paddingValues) {
+                        onIntent.invoke(it)
+                    }
+                }
+                MainScreens.SERIES.ordinal -> {
+                    SeriesScreen {
+                        onIntent.invoke(it)
+                    }
+                }
+                else -> Unit
+            }
         }
     }
 }
+

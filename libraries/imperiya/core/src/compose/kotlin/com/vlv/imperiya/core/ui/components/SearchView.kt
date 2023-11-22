@@ -1,7 +1,6 @@
 package com.vlv.imperiya.core.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -10,7 +9,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarColors
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -22,9 +20,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
@@ -36,14 +34,21 @@ fun SearchComponent(
     query: String = "",
     onQueryChange: (String) -> Unit = {},
     onSearch: (String) -> Unit = {},
-    backgroundColor: Color = MaterialTheme.colorScheme.tertiaryContainer,
-    textColor: Color = MaterialTheme.colorScheme.onTertiaryContainer,
+    onFocus: (() -> Unit)? = null,
+    backgroundColor: Color = MaterialTheme.colorScheme.tertiary,
+    textColor: Color = MaterialTheme.colorScheme.onTertiary,
+    changeActive: Boolean = true,
     content: @Composable () -> Unit = {}
 ) {
     var active by remember { mutableStateOf(false) }
 
     SearchBar(
-        modifier = modifier,
+        modifier = modifier
+            .onFocusChanged {
+                if(it.isFocused) {
+                    onFocus?.invoke()
+                }
+            },
         query = query,
         onQueryChange = onQueryChange,
         onSearch = onSearch,
@@ -57,7 +62,7 @@ fun SearchComponent(
             )
         ),
         onActiveChange = {
-            active = it
+            if(changeActive) active = it
         },
         placeholder = {
             Text(
@@ -69,15 +74,11 @@ fun SearchComponent(
             )
         },
         leadingIcon = {
-            IconButton(
-                onClick = {}
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = "Search Icon",
-                    tint = textColor
-                )
-            }
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = "Search Icon",
+                tint = textColor
+            )
         },
         trailingIcon = {
             if(active) {
@@ -97,10 +98,29 @@ fun SearchComponent(
                     )
                 }
             }
-        }
+        },
     ) {
         content.invoke()
     }
+}
+
+@Composable
+fun SearchComponent(
+    hint: String,
+    modifier: Modifier = Modifier,
+    onFocus: () -> Unit = {},
+    backgroundColor: Color = MaterialTheme.colorScheme.tertiary,
+    textColor: Color = MaterialTheme.colorScheme.onTertiary
+) {
+    SearchComponent(
+        hint = hint,
+        modifier = modifier,
+        onFocus = onFocus,
+        backgroundColor = backgroundColor,
+        textColor = textColor,
+        content = { },
+        changeActive = false
+    )
 }
 
 @Preview

@@ -56,6 +56,12 @@ dependencies {
     implementation project(':tools:extensions')
     implementation project(':core:ui')
 
+    // Compose
+    composeImplementation(libs.androidx.compose.activity)
+    composeImplementation(libs.androidx.compose.livedata)
+    composeImplementation(libs.androidx.compose.tooling.preview)
+    composeImplementation(libs.koin.compose)
+
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')
 }

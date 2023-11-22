@@ -71,5 +71,15 @@ fun SearchSample(paddingValues: PaddingValues) {
                 language += "test"
             }
         )
+
+        SearchComponent(
+            hint = "Write a language",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            onSearch = {
+                language += "test2"
+            }
+        )
     }
 }

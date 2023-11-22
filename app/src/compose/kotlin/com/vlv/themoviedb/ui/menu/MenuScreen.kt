@@ -1,0 +1,135 @@
+package com.vlv.themoviedb.ui.menu
+
+import android.content.Intent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+import org.koin.androidx.compose.koinViewModel
+
+@Composable
+fun MenuScreen(
+    paddingValues: PaddingValues,
+    viewModel: MenuViewModel = koinViewModel(),
+    onIntent: (Intent) -> Unit
+) {
+    val menuItems by viewModel.state.collectAsState()
+
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = 2, block = {
+        viewModel.menuItems(context)
+    })
+
+    LazyVerticalGrid(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(
+                bottom = paddingValues.calculateBottomPadding()
+            ),
+        columns = GridCells.Fixed(3),
+        contentPadding = PaddingValues(
+            horizontal = 8.dp
+        ),
+        content = {
+            menuItems.forEach { menuItem ->
+                when(menuItem.type) {
+                    MenuItemType.ITEM -> {
+                        item(
+                            span = {GridItemSpan(1)}
+                        ) {
+                            MenuItem(menuItem = menuItem, onIntent = onIntent)
+                        }
+                    }
+                    MenuItemType.HEADER -> {
+                        item(
+                            span = {GridItemSpan(3)}
+                        ) {
+                            MenuHeaderTitle(menuItem = menuItem)
+                        }
+                    }
+                }
+            }
+        }
+    )
+
+}
+
+@Composable
+fun MenuItem(menuItem: MenuItem, onIntent: (Intent) -> Unit) {
+    Column(
+        modifier = Modifier
+            .padding(
+                8.dp
+            )
+            .background(
+                MaterialTheme.colorScheme.tertiary,
+                RoundedCornerShape(16.dp)
+            )
+            .clickable {
+                menuItem.action?.let(onIntent)
+            }
+    ) {
+        menuItem.icon?.let {
+            Icon(
+                painter = painterResource(id = menuItem.icon),
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(
+                        top = 16.dp,
+                        start = 16.dp
+                    )
+                    .background(
+                        MaterialTheme.colorScheme.tertiaryContainer,
+                        CircleShape
+                    )
+                    .padding(12.dp)
+                    .size(20.dp),
+                tint = MaterialTheme.colorScheme.onTertiaryContainer
+            )
+        }
+
+        Text(
+            modifier = Modifier
+                .padding(16.dp),
+            text = stringResource(id = menuItem.title),
+            style = TheMovieDbTypography.ParagraphBoldStyle,
+            color = MaterialTheme.colorScheme.onTertiary
+        )
+    }
+
+}
+
+@Composable
+fun MenuHeaderTitle(menuItem: MenuItem) {
+    Text(
+        modifier = Modifier
+            .padding(16.dp),
+        text = stringResource(id = menuItem.title),
+        style = TheMovieDbTypography.TitleBigStyle,
+        color = MaterialTheme.colorScheme.onBackground
+    )
+}

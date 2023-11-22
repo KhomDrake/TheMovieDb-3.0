@@ -169,6 +169,7 @@ fun WarningView(
 
 @Composable
 fun SmallWarningView(
+    modifier: Modifier = Modifier,
     title: String?,
     body: String?,
     linkActionText: String,
@@ -254,6 +255,7 @@ fun SmallWarningView(
 @Composable
 fun SmallWarningViewPreview() {
     SmallWarningView(
+        Modifier,
         "Failure title you put it here",
         "Failure body you pit here",
         "Text button"

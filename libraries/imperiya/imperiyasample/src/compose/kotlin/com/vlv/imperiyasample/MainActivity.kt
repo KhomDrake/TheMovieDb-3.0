@@ -33,6 +33,7 @@ import com.vlv.imperiyasample.ui.ColorsActivity
 import com.vlv.imperiyasample.ui.DynamicColorsActivity
 import com.vlv.imperiyasample.ui.search.SearchSampleActivity
 import com.vlv.imperiyasample.ui.state.StateComponentSampleActivity
+import com.vlv.imperiyasample.ui.tab.TabSampleActivity
 import com.vlv.imperiyasample.ui.texts.TextSampleActivity
 import com.vlv.imperiyasample.ui.topbar.TopBarSampleActivity
 import com.vlv.imperiyasample.ui.warningview.WarningsComponentSampleActivity
@@ -43,6 +44,20 @@ class Component(
     val activity: KClass<*>,
     val bundle: Bundle = bundleOf()
 )
+
+abstract class SampleActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            TheMovieDbAppTheme {
+                Content()
+            }
+        }
+    }
+
+    @Composable
+    abstract fun Content()
+}
 
 class MainActivity : ComponentActivity() {
 
@@ -87,6 +102,10 @@ class MainActivity : ComponentActivity() {
             Component(
                 "Warning View",
                 WarningsComponentSampleActivity::class
+            ),
+            Component(
+                "Tab Sample",
+                TabSampleActivity::class
             ),
         )
 

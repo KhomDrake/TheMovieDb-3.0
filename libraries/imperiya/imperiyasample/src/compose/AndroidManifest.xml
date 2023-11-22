@@ -48,6 +48,10 @@
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
         <activity
+            android:name=".ui.tab.TabSampleActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
             android:name=".ui.warningview.WarningListComponentActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
