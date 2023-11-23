@@ -1,6 +1,5 @@
 package com.vlv.themoviedb.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import com.vlv.common.route.RouteNavigation
+import com.vlv.common.route.handleRoute
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.themoviedb.R
@@ -54,8 +55,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TheMovieDbAppTheme {
-                MainScreen {
-                    startActivity(it)
+                MainScreen { route, data ->
+                    handleRoute(route, data)
                 }
             }
         }
@@ -65,7 +66,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(
-    onIntent: (Intent) -> Unit
+    onNavigate: RouteNavigation
 ) {
     val items = listOf(
         BottomNavigationItems(
@@ -148,19 +149,13 @@ fun MainScreen(
         ) { paddingValues ->
             when(selectedIndex) {
                 MainScreens.MOVIE.ordinal -> {
-                    MovieScreen {
-                        onIntent.invoke(it)
-                    }
+                    MovieScreen(paddingValues, onNavigate)
                 }
                 MainScreens.MENU.ordinal -> {
-                    MenuScreen(paddingValues) {
-                        onIntent.invoke(it)
-                    }
+                    MenuScreen(paddingValues, onNavigate = onNavigate)
                 }
                 MainScreens.SERIES.ordinal -> {
-                    SeriesScreen {
-                        onIntent.invoke(it)
-                    }
+                    SeriesScreen(paddingValues, onNavigate)
                 }
                 else -> Unit
             }

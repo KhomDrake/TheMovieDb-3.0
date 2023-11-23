@@ -3,7 +3,7 @@ package com.vlv.data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.vlv.data.network.database.data.CountryEntity
-import com.vlv.data.network.database.data.Favorite
+import com.vlv.data.database.data.Favorite
 import com.vlv.data.network.database.data.History
 import com.vlv.data.network.database.data.ImageEntity
 import com.vlv.data.network.database.data.LanguageEntity

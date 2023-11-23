@@ -1,4 +1,4 @@
-package com.vlv.themoviedb.ui.movie.widget
+package com.vlv.common.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -16,16 +16,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.vlv.common.data.movie.Movie
+import com.vlv.common.extension.toUrlMovieDb
+import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.components.StateView
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
-import com.vlv.themoviedb.ui.movie.toUrlMovieDb
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -40,7 +40,7 @@ fun MovieCarousel(
 
     if(movies.isEmpty()) {
         StateView(
-            icon = com.vlv.imperiya.core.R.drawable.ic_movie,
+            icon = R.drawable.ic_movie,
             title = emptyStateTitle,
             body = emptyStateBody
         )
@@ -84,7 +84,7 @@ fun MovieCarousel(
                     Text(
                         modifier = Modifier
                             .padding(top = 8.dp)
-                            .align(CenterHorizontally),
+                            .align(Alignment.CenterHorizontally),
                         text = movie.title,
                         style = TheMovieDbTypography.SubTitleBoldStyle,
                         color = MaterialTheme.colorScheme.onBackground

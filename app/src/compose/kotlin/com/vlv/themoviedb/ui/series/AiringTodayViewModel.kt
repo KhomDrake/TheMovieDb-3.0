@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
 import com.vlv.common.data.series.Series
-import com.vlv.data.common.model.TimeWindow
 import com.vlv.data.common.model.series.SeriesResponse
 import com.vlv.series.data.repository.SeriesRepository
 import kotlinx.coroutines.Dispatchers
@@ -18,12 +17,12 @@ class AiringTodayViewModel(
 ) : ViewModel() {
 
     init {
-        trending()
+        airingToday()
     }
 
     val state = MutableStateFlow<Response<List<Series>>>(Response())
 
-    private fun trending() {
+    fun airingToday() {
         viewModelScope.launch(Dispatchers.IO) {
             bondsmith<SeriesResponse>()
                 .request {

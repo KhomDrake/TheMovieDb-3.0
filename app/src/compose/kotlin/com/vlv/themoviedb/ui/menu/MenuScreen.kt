@@ -8,11 +8,9 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -27,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.vlv.common.route.RouteNavigation
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import org.koin.androidx.compose.koinViewModel
 
@@ -34,14 +33,12 @@ import org.koin.androidx.compose.koinViewModel
 fun MenuScreen(
     paddingValues: PaddingValues,
     viewModel: MenuViewModel = koinViewModel(),
-    onIntent: (Intent) -> Unit
+    onNavigate: RouteNavigation
 ) {
     val menuItems by viewModel.state.collectAsState()
 
-    val context = LocalContext.current
-
     LaunchedEffect(key1 = 2, block = {
-        viewModel.menuItems(context)
+        viewModel.menuItems()
     })
 
     LazyVerticalGrid(
@@ -61,7 +58,7 @@ fun MenuScreen(
                         item(
                             span = {GridItemSpan(1)}
                         ) {
-                            MenuItem(menuItem = menuItem, onIntent = onIntent)
+                            MenuItem(menuItem = menuItem, onNavigate = onNavigate)
                         }
                     }
                     MenuItemType.HEADER -> {
@@ -79,7 +76,7 @@ fun MenuScreen(
 }
 
 @Composable
-fun MenuItem(menuItem: MenuItem, onIntent: (Intent) -> Unit) {
+fun MenuItem(menuItem: MenuItem, onNavigate: RouteNavigation) {
     Column(
         modifier = Modifier
             .padding(
@@ -90,7 +87,9 @@ fun MenuItem(menuItem: MenuItem, onIntent: (Intent) -> Unit) {
                 RoundedCornerShape(16.dp)
             )
             .clickable {
-                menuItem.action?.let(onIntent)
+                menuItem.action?.let {
+                    onNavigate.invoke(it, null)
+                }
             }
     ) {
         menuItem.icon?.let {

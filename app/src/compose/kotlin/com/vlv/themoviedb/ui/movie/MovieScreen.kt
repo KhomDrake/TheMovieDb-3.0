@@ -1,9 +1,8 @@
 package com.vlv.themoviedb.ui.movie
 
-import android.content.Intent
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,23 +17,29 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.movie.Movie
+import com.vlv.common.route.RouteNavigation
+import com.vlv.common.route.ScreenRoute
 import com.vlv.common.route.toMovieSearch
-import com.vlv.data.local.datastore.DataVault
-import com.vlv.data.network.database.data.ImageType
+import com.vlv.common.ui.MovieCarousel
+import com.vlv.common.ui.shimmer.CarouselShimmer
+import com.vlv.favorite.presentation.ui.movie.MovieCarouselFavorite
 import com.vlv.imperiya.core.ui.components.SearchComponent
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import com.vlv.imperiya.core.ui.theme.Link
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.movie.widget.MovieCarousel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MovieScreen(onIntent: (Intent) -> Unit) {
+fun MovieScreen(
+    paddingValues: PaddingValues,
+    onNavigate: RouteNavigation
+) {
     val movieSearch = LocalContext.current.toMovieSearch()
 
     val scrollState = rememberScrollState()
@@ -42,6 +47,9 @@ fun MovieScreen(onIntent: (Intent) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .padding(
+                bottom = paddingValues.calculateBottomPadding()
+            )
             .verticalScroll(scrollState)
     ) {
         SearchComponent(
@@ -51,18 +59,25 @@ fun MovieScreen(onIntent: (Intent) -> Unit) {
                 .padding(horizontal = 16.dp),
             hint = "Search for movies",
             onFocus = {
-                onIntent.invoke(movieSearch)
+                onNavigate.invoke(ScreenRoute.MOVIE_SEARCH, null)
             }
         )
-        NowPlaying(
-            onIntent = {
-//            onIntent.invoke()
+        NowPlaying(onNavigate = onNavigate)
+        Trending(onNavigate = onNavigate)
+        SeeAll(
+            title = stringResource(id = R.string.favorites_title),
+            onClickSeeAll = {
+                onNavigate.invoke(ScreenRoute.FAVORITES_MOVIE, null)
             }
         )
-        Trending(
-            onIntent = {
-
-            }
+        MovieCarouselFavorite(
+            modifier = Modifier
+                .padding(bottom = 8.dp),
+            onClickMovie = onNavigate,
+            errorTitle = stringResource(id = R.string.error_movie_load_text_title_favorites),
+            errorBody = stringResource(id = com.vlv.ui.R.string.common_error_description),
+            errorLink = stringResource(id = com.vlv.ui.R.string.common_error_button),
+            emptyStateTitle = stringResource(id = R.string.empty_state_text_movie_favorite)
         )
     }
 }
@@ -70,7 +85,7 @@ fun MovieScreen(onIntent: (Intent) -> Unit) {
 @Composable
 fun NowPlaying(
     movieViewModel: NowPlayingViewModel = koinViewModel(),
-    onIntent: (Movie) -> Unit
+    onNavigate: RouteNavigation
 ) {
     val movieNowPlaying by movieViewModel.state.collectAsState()
 
@@ -78,31 +93,87 @@ fun NowPlaying(
         title = stringResource(id = R.string.now_playing_title),
         emptyStateTitle = stringResource(id = R.string.empty_state_text_movie_now_playing),
         data = movieNowPlaying,
-        onIntent = onIntent,
+        onNavigate = onNavigate,
         titleWarning = stringResource(id = R.string.error_movie_load_text_title_now_playing),
         bodyWarning = stringResource(id = com.vlv.ui.R.string.common_error_description),
-        linkTextWarning = stringResource(id = com.vlv.ui.R.string.common_error_button)
+        linkTextWarning = stringResource(id = com.vlv.ui.R.string.common_error_button),
+        onError = {
+            movieViewModel.nowPlaying()
+        },
+        onNavigateSeeAll = {
+            onNavigate.invoke(ScreenRoute.MOVIE_NOW_PLAYING, null)
+        }
     )
 }
 
 @Composable
 fun Trending(
     movieViewModel: TrendingViewModel = koinViewModel(),
-    onIntent: (Movie) -> Unit
+    onNavigate: RouteNavigation
 ) {
-    val movieNowPlaying by movieViewModel.state.collectAsState()
+    val movieTrending by movieViewModel.state.collectAsState()
 
     MovieInformation(
         title = stringResource(id = R.string.trending_title),
         emptyStateTitle = stringResource(id = R.string.empty_state_text_movie_trending),
-        data = movieNowPlaying,
-        onIntent = onIntent,
+        data = movieTrending,
+        onNavigate = onNavigate,
         titleWarning = stringResource(id = R.string.error_movie_load_text_title_trending),
         bodyWarning = stringResource(id = com.vlv.ui.R.string.common_error_description),
-        linkTextWarning = stringResource(id = com.vlv.ui.R.string.common_error_button)
+        linkTextWarning = stringResource(id = com.vlv.ui.R.string.common_error_button),
+        onError = {
+            movieViewModel.trending()
+        },
+        onNavigateSeeAll = {
+            onNavigate.invoke(ScreenRoute.MOVIE_TRENDING, null)
+        }
     )
 }
 
+@Composable
+fun Favorite(
+    onIntent: (Movie) -> Unit
+) {
+
+}
+
+@Composable
+fun SeeAll(
+    title: String,
+    onClickSeeAll: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                start = 16.dp,
+                end = 16.dp,
+                top = 20.dp
+            )
+    ) {
+        Text(
+            text = title,
+            style = TheMovieDbTypography.TitleStyle,
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier
+                .weight(1f)
+                .padding(end = 8.dp)
+        )
+
+        Text(
+            text = stringResource(id = R.string.see_all_text),
+            style = TheMovieDbTypography.LinkStyle,
+            color = Link,
+            modifier = Modifier
+                .weight(1f)
+                .clickable {
+                    onClickSeeAll.invoke()
+                }
+                .padding(start = 8.dp),
+            textAlign = TextAlign.End
+        )
+    }
+}
 
 @Composable
 fun MovieInformation(
@@ -112,33 +183,14 @@ fun MovieInformation(
     bodyWarning: String,
     linkTextWarning: String,
     data: Response<List<Movie>>,
-    onIntent: (Movie) -> Unit
+    onNavigate: RouteNavigation,
+    onNavigateSeeAll: () -> Unit,
+    onError: () -> Unit
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                start = 16.dp,
-                end = 16.dp,
-                top = 20.dp
-            ),
-        horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Text(
-            text = title,
-            style = TheMovieDbTypography.TitleStyle,
-            color = MaterialTheme.colorScheme.onBackground
-        )
-
-
-        Text(
-            text = stringResource(id = R.string.see_all_text),
-            style = TheMovieDbTypography.LinkStyle,
-            color = Link
-        )
-    }
-
-
+    SeeAll(
+        title = title,
+        onClickSeeAll = onNavigateSeeAll
+    )
     when(data.state) {
         ResponseStatus.SUCCESS -> {
             val movies = data.data ?: return
@@ -149,19 +201,12 @@ fun MovieInformation(
                 movies = movies,
                 emptyStateTitle = emptyStateTitle,
                 onClickMovie = {
-                    onIntent.invoke(it)
+                    onNavigate.invoke(ScreenRoute.MOVIE_DETAIL, it)
                 }
             )
         }
         ResponseStatus.LOADING -> {
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 12.dp),
-                text = "LOADING",
-                style = TheMovieDbTypography.TitleBigStyle,
-                color = Link
-            )
+            CarouselShimmer()
         }
         ResponseStatus.ERROR -> {
             SmallWarningView(
@@ -170,17 +215,10 @@ fun MovieInformation(
                     .padding(top = 12.dp),
                 title = titleWarning,
                 body = bodyWarning,
-                linkActionText = linkTextWarning
+                linkActionText = linkTextWarning,
+                onClickLink = onError
             )
         }
         else -> Unit
     }
 }
-
-fun String.toUrlMovieDb(imageType: ImageType = ImageType.POSTER) = runCatching {
-    "${DataVault.cachedDataString(ImageType.SECURE_BASE_URL.name)}${
-        DataVault.cachedDataString(
-            imageType.name
-        )
-    }$this"
-}.getOrNull()

@@ -23,7 +23,7 @@ class TrendingViewModel(
 
     val state = MutableStateFlow<Response<List<Movie>>>(Response())
 
-    private fun trending() {
+    fun trending() {
         viewModelScope.launch(Dispatchers.IO) {
             bondsmith<MoviesResponse>()
                 .request {

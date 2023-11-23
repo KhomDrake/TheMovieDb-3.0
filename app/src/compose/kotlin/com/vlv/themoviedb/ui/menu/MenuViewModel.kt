@@ -1,30 +1,10 @@
 package com.vlv.themoviedb.ui.menu
 
-import android.content.Context
-import android.content.Intent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vlv.bondsmith.bondsmith
-import com.vlv.common.route.toMovieGenre
-import com.vlv.common.route.toMovieNowPlaying
-import com.vlv.common.route.toMoviePopular
-import com.vlv.common.route.toMovieSearch
-import com.vlv.common.route.toMovieTopRated
-import com.vlv.common.route.toMovieTrending
-import com.vlv.common.route.toMovieUpcoming
-import com.vlv.common.route.toPeoplePopular
-import com.vlv.common.route.toPeopleSearch
-import com.vlv.common.route.toPeopleTrending
-import com.vlv.common.route.toSeriesAiringToday
-import com.vlv.common.route.toSeriesGenre
-import com.vlv.common.route.toSeriesOnTheAir
-import com.vlv.common.route.toSeriesPopular
-import com.vlv.common.route.toSeriesSearch
-import com.vlv.common.route.toSeriesTopRated
-import com.vlv.common.route.toSeriesTrendingNow
-import com.vlv.common.route.toSettings
+import com.vlv.common.route.ScreenRoute
 import com.vlv.themoviedb.R
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -43,18 +23,18 @@ class MenuItem(
     @DrawableRes
     val icon: Int? = null,
     val type: MenuItemType = MenuItemType.ITEM,
-    val action: Intent? = null,
+    val action: ScreenRoute? = null,
     val id: Int = Random.nextInt(Int.MIN_VALUE, Int.MAX_VALUE)
 )
 
-class MenuViewModel() : ViewModel() {
+class MenuViewModel : ViewModel() {
 
     private val _state = MutableStateFlow<List<MenuItem>>(listOf())
 
     val state: StateFlow<List<MenuItem>>
         get() = _state.asStateFlow()
 
-    private fun userItems(context: Context) = listOf<MenuItem>(
+    private fun userItems() = listOf<MenuItem>(
         MenuItem(
             R.string.menu_title_user,
             type = MenuItemType.HEADER
@@ -73,11 +53,11 @@ class MenuViewModel() : ViewModel() {
             R.string.menu_title_user_option_session,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_settings,
-            action = context.toSettings()
+            action = ScreenRoute.SETTINGS
         )
     )
 
-    private fun moviesItems(context: Context) = listOf<MenuItem>(
+    private fun moviesItems() = listOf<MenuItem>(
         MenuItem(
             R.string.menu_title_movie,
             type = MenuItemType.HEADER
@@ -86,43 +66,43 @@ class MenuViewModel() : ViewModel() {
             R.string.menu_title_movie_option_trending,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_movie,
-            action = context.toMovieTrending()
+            action = ScreenRoute.MOVIE_TRENDING
         ),
         MenuItem(
             R.string.menu_title_movie_option_top_rated,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_movie,
-            action = context.toMovieTopRated()
+            action = ScreenRoute.MOVIE_TOP_RATED
         ),
         MenuItem(
             R.string.menu_title_movie_option_now_playing,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_movie,
-            action = context.toMovieNowPlaying()
+            action = ScreenRoute.MOVIE_NOW_PLAYING
         ),
         MenuItem(
             R.string.menu_title_movie_option_upcoming,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_movie,
-            action = context.toMovieUpcoming()
+            action = ScreenRoute.MOVIE_UPCOMING
         ),
         MenuItem(
             R.string.menu_title_movie_option_popular,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_movie,
-            action = context.toMoviePopular()
+            action = ScreenRoute.MOVIE_POPULAR
         ),
         MenuItem(
             R.string.menu_title_movie_option_genres,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_movie,
-            action = context.toMovieGenre()
+            action = ScreenRoute.MOVIE_GENRE
         ),
         MenuItem(
             R.string.menu_title_movie_option_discover,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_search_enable,
-            action = context.toMovieSearch()
+            action = ScreenRoute.MOVIE_SEARCH
         ),
         MenuItem(
             R.string.menu_title_movie_option_certifications,
@@ -131,7 +111,7 @@ class MenuViewModel() : ViewModel() {
         ),
     )
 
-    private fun seriesItems(context: Context) = listOf<MenuItem>(
+    private fun seriesItems() = listOf<MenuItem>(
         MenuItem(
             R.string.menu_title_series,
             type = MenuItemType.HEADER
@@ -140,43 +120,43 @@ class MenuViewModel() : ViewModel() {
             R.string.menu_title_series_option_trending,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = context.toSeriesTrendingNow()
+            action = ScreenRoute.SERIES_TRENDING
         ),
         MenuItem(
             R.string.menu_title_series_option_top_rated,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = context.toSeriesTopRated()
+            action = ScreenRoute.SERIES_TOP_RATED
         ),
         MenuItem(
             R.string.menu_title_series_option_airing_today,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = context.toSeriesAiringToday()
+            action = ScreenRoute.SERIES_AIRING_TODAY
         ),
         MenuItem(
             R.string.menu_title_series_option_on_the_air,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = context.toSeriesOnTheAir()
+            action = ScreenRoute.SERIES_ON_THE_AIR
         ),
         MenuItem(
             R.string.menu_title_series_option_popular,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = context.toSeriesPopular()
+            action = ScreenRoute.SERIES_POPULAR
         ),
         MenuItem(
             R.string.menu_title_series_option_genres,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = context.toSeriesGenre()
+            action = ScreenRoute.SERIES_GENRE
         ),
         MenuItem(
             R.string.menu_title_series_option_discover,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_search_enable,
-            action = context.toSeriesSearch()
+            action = ScreenRoute.SERIES_SEARCH
         ),
         MenuItem(
             R.string.menu_title_series_option_certifications,
@@ -184,7 +164,7 @@ class MenuViewModel() : ViewModel() {
         ),
     )
 
-    private fun peopleItems(context: Context) = listOf(
+    private fun peopleItems() = listOf(
         MenuItem(
             R.string.menu_title_people,
             type = MenuItemType.HEADER,
@@ -193,20 +173,20 @@ class MenuViewModel() : ViewModel() {
         MenuItem(
             R.string.menu_title_people_option_popular,
             type = MenuItemType.ITEM,
-            action = context.toPeoplePopular(),
+            action = ScreenRoute.PEOPLE_POPULAR,
             icon = com.vlv.imperiya.core.R.drawable.ic_people
         ),
         MenuItem(
             R.string.menu_title_people_option_trending,
             type = MenuItemType.ITEM,
-            action = context.toPeopleTrending(),
+            action = ScreenRoute.PEOPLE_TRENDING,
             icon = com.vlv.imperiya.core.R.drawable.ic_people
         ),
         MenuItem(
             R.string.menu_title_people_option_search,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_search_enable,
-            action = context.toPeopleSearch()
+            action = ScreenRoute.PEOPLE_SEARCH
         ),
         MenuItem(
             R.string.menu_title_people_option_movie_credit,
@@ -220,16 +200,14 @@ class MenuViewModel() : ViewModel() {
         )
     )
 
-    fun menuItems(
-        context: Context
-    ) {
+    fun menuItems() {
         viewModelScope.launch {
             _state.emit(
                 mutableListOf<MenuItem>().apply {
-                    addAll(userItems(context))
-                    addAll(moviesItems(context))
-                    addAll(seriesItems(context))
-                    addAll(peopleItems(context))
+                    addAll(userItems())
+                    addAll(moviesItems())
+                    addAll(seriesItems())
+                    addAll(peopleItems())
                 }.filter { it.action != null || it.type == MenuItemType.HEADER }.toList()
             )
         }

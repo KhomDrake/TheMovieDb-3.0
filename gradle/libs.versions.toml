@@ -18,6 +18,7 @@ mockk-version = "1.12.2"
 guava-version = "27.0.1-android"
 objenesis-version = "3.1"
 core-testing-version = "2.2.0"
+compose-shimmer-verison = "1.2.0"
 
 android-lifecycle-livedata-version = "1.1.1"
 androidx-compose-bom-version = "2023.10.01"
@@ -89,8 +90,9 @@ toolkit-livedata = { group = "io.github.matheus-corregiari", name = "livedata", 
 toolkit-splinter = { group = "io.github.matheus-corregiari", name = "splinter", version.ref = 'toolkit-version' }
 toolkit-statemachine = { group = "io.github.matheus-corregiari", name = "statemachine", version.ref = 'toolkit-version' }
 
-# Facebook
+# Shimmer
 shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = 'shimmer-version' }
+compose-shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = 'compose-shimmer-verison' }
 
 # Other
 pagerindicator = { group = "ru.tinkoff.scrollingpagerindicator", name = "scrollingpagerindicator", version.ref = 'scrolling-pager-indicator-version' }

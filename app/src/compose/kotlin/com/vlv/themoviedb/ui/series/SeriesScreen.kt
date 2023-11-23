@@ -1,14 +1,10 @@
 package com.vlv.themoviedb.ui.series
 
-import android.content.Intent
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -19,24 +15,30 @@ import androidx.compose.ui.unit.dp
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.series.Series
+import com.vlv.common.route.RouteNavigation
+import com.vlv.common.route.ScreenRoute
 import com.vlv.common.route.toSeriesSearch
+import com.vlv.common.ui.SeriesCarousel
+import com.vlv.common.ui.shimmer.CarouselShimmer
 import com.vlv.imperiya.core.ui.components.SearchComponent
 import com.vlv.imperiya.core.ui.components.SmallWarningView
-import com.vlv.imperiya.core.ui.theme.Link
-import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.series.widget.SeriesCarousel
+import com.vlv.themoviedb.ui.movie.SeeAll
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SeriesScreen(
-    onIntent: (Intent) -> Unit
+    paddingValues: PaddingValues,
+    onNavigate: RouteNavigation
 ) {
     val seriesSearch = LocalContext.current.toSeriesSearch()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .padding(
+                bottom = paddingValues.calculateBottomPadding()
+            )
     ) {
         SearchComponent(
             modifier =
@@ -45,26 +47,18 @@ fun SeriesScreen(
                 .padding(horizontal = 16.dp),
             hint = "Search for series",
             onFocus = {
-                onIntent.invoke(seriesSearch)
+                onNavigate.invoke(ScreenRoute.SERIES_SEARCH, null)
             }
         )
-        SeriesTrending(
-            onIntent = {
-//            onIntent.invoke()
-            }
-        )
-        AiringToday(
-            onIntent = {
-
-            }
-        )
+        SeriesTrending(onNavigate = onNavigate)
+        AiringToday(onNavigate = onNavigate)
     }
 }
 
 @Composable
 fun AiringToday(
     viewModel: AiringTodayViewModel = koinViewModel(),
-    onIntent: (Series) -> Unit
+    onNavigate: RouteNavigation
 ) {
     val airingToday by viewModel.state.collectAsState()
 
@@ -72,10 +66,16 @@ fun AiringToday(
         title = stringResource(id = R.string.airing_today_title),
         emptyStateTitle = stringResource(id = R.string.empty_state_text_series_airing_today),
         data = airingToday,
-        onIntent = onIntent,
+        onNavigate = onNavigate,
         titleWarning = stringResource(id = R.string.error_series_load_text_title_airing_today),
         bodyWarning = stringResource(id = com.vlv.ui.R.string.common_error_description),
-        linkTextWarning = stringResource(id = com.vlv.ui.R.string.common_error_button)
+        linkTextWarning = stringResource(id = com.vlv.ui.R.string.common_error_button),
+        onError = {
+            viewModel.airingToday()
+        },
+        onSeeAll = {
+            onNavigate.invoke(ScreenRoute.SERIES_AIRING_TODAY, null)
+        }
     )
 
 }
@@ -83,7 +83,7 @@ fun AiringToday(
 @Composable
 fun SeriesTrending(
     viewModel: SeriesTrendingViewModel = koinViewModel(),
-    onIntent: (Series) -> Unit
+    onNavigate: RouteNavigation
 ) {
     val trending by viewModel.state.collectAsState()
 
@@ -91,10 +91,16 @@ fun SeriesTrending(
         title = stringResource(id = R.string.trending_title),
         emptyStateTitle = stringResource(id = R.string.empty_state_text_series_trending),
         data = trending,
-        onIntent = onIntent,
+        onNavigate = onNavigate,
         titleWarning = stringResource(id = R.string.error_series_load_text_title_trending),
         bodyWarning = stringResource(id = com.vlv.ui.R.string.common_error_description),
-        linkTextWarning = stringResource(id = com.vlv.ui.R.string.common_error_button)
+        linkTextWarning = stringResource(id = com.vlv.ui.R.string.common_error_button),
+        onError = {
+            viewModel.trending()
+        },
+        onSeeAll = {
+            onNavigate.invoke(ScreenRoute.SERIES_TRENDING, null)
+        }
     )
 }
 
@@ -106,32 +112,13 @@ fun SeriesInformation(
     bodyWarning: String,
     linkTextWarning: String,
     data: Response<List<Series>>,
-    onIntent: (Series) -> Unit
+    onNavigate: RouteNavigation,
+    onSeeAll: () -> Unit,
+    onError: () -> Unit
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                start = 16.dp,
-                end = 16.dp,
-                top = 20.dp
-            ),
-        horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Text(
-            text = title,
-            style = TheMovieDbTypography.TitleStyle,
-            color = MaterialTheme.colorScheme.onBackground
-        )
-
-
-        Text(
-            text = stringResource(id = R.string.see_all_text),
-            style = TheMovieDbTypography.LinkStyle,
-            color = Link
-        )
+    SeeAll(title = title) {
+        onSeeAll.invoke()
     }
-
 
     when(data.state) {
         ResponseStatus.SUCCESS -> {
@@ -143,19 +130,12 @@ fun SeriesInformation(
                 series = series,
                 emptyStateTitle = emptyStateTitle,
                 onClickSeries = {
-                    onIntent.invoke(it)
+                    onNavigate.invoke(ScreenRoute.SERIES_DETAIL, it)
                 }
             )
         }
         ResponseStatus.LOADING -> {
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 12.dp),
-                text = "LOADING",
-                style = TheMovieDbTypography.TitleBigStyle,
-                color = Link
-            )
+            CarouselShimmer()
         }
         ResponseStatus.ERROR -> {
             SmallWarningView(
@@ -164,7 +144,8 @@ fun SeriesInformation(
                     .padding(top = 12.dp),
                 title = titleWarning,
                 body = bodyWarning,
-                linkActionText = linkTextWarning
+                linkActionText = linkTextWarning,
+                onClickLink = onError
             )
         }
         else -> Unit
