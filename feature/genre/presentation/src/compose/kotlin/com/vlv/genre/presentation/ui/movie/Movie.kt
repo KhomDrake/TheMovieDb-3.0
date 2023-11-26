@@ -16,13 +16,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.itemsIndexed
 import com.vlv.data.common.model.genre.GenreResponse
 import com.vlv.data.common.model.movie.MovieResponse
-import com.vlv.extensions.fullyLoaded
-import com.vlv.extensions.notLoading
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -111,15 +107,15 @@ fun MoviesByGenre(
                 modifier = Modifier
                     .fillMaxSize(),
                 content = {
-                    itemsIndexed(movies) { index: Int, value: MovieResponse? ->
-                        value?.let {
-                            Text(
-                                text = it.title,
-                                style = TheMovieDbTypography.TitleStyle,
-                                color = MaterialTheme.colorScheme.onBackground
-                            )
-                        }
-                    }
+//                    itemsIndexed(movies) { index: Int, value: MovieResponse? ->
+//                        value?.let {
+//                            Text(
+//                                text = it.title,
+//                                style = TheMovieDbTypography.TitleStyle,
+//                                color = MaterialTheme.colorScheme.onBackground
+//                            )
+//                        }
+//                    }
                 }
             )
 //        }

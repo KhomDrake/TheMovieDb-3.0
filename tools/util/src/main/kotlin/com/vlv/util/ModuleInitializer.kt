@@ -16,7 +16,6 @@ abstract class ModuleInitializer : Initializer<Module> {
 
 
     override fun create(context: Context): Module {
-        Log.i("Vini", this::class.java.name)
         if(shouldStartKoin) {
             startKoin {
                 androidContext(context)

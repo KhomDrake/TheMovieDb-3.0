@@ -40,8 +40,6 @@ fun MovieScreen(
     paddingValues: PaddingValues,
     onNavigate: RouteNavigation
 ) {
-    val movieSearch = LocalContext.current.toMovieSearch()
-
     val scrollState = rememberScrollState()
 
     Column(
@@ -128,13 +126,6 @@ fun Trending(
             onNavigate.invoke(ScreenRoute.MOVIE_TRENDING, null)
         }
     )
-}
-
-@Composable
-fun Favorite(
-    onIntent: (Movie) -> Unit
-) {
-
 }
 
 @Composable
