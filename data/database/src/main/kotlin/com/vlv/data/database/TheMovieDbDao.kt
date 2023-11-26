@@ -2,13 +2,13 @@ package com.vlv.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.vlv.data.network.database.data.CountryEntity
+import com.vlv.data.database.data.CountryEntity
 import com.vlv.data.database.data.Favorite
 import com.vlv.data.database.data.FavoriteType
-import com.vlv.data.network.database.data.History
-import com.vlv.data.network.database.data.HistoryType
-import com.vlv.data.network.database.data.ImageEntity
-import com.vlv.data.network.database.data.LanguageEntity
+import com.vlv.data.database.data.History
+import com.vlv.data.database.data.HistoryType
+import com.vlv.data.database.data.ImageEntity
+import com.vlv.data.database.data.LanguageEntity
 
 @Dao
 interface TheMovieDbDao {

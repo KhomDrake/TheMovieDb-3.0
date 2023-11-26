@@ -3,10 +3,10 @@ package com.vlv.configuration.data
 import com.vlv.configuration.data.api.ConfigurationApi
 import com.vlv.configuration.data.model.ConfigurationData
 import com.vlv.data.database.TheMovieDbDao
-import com.vlv.data.network.database.data.CountryEntity
-import com.vlv.data.network.database.data.ImageEntity
-import com.vlv.data.network.database.data.ImageType
-import com.vlv.data.network.database.data.LanguageEntity
+import com.vlv.data.database.data.CountryEntity
+import com.vlv.data.database.data.ImageEntity
+import com.vlv.data.database.data.ImageType
+import com.vlv.data.database.data.LanguageEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

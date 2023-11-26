@@ -42,6 +42,7 @@ enum class ScreenRoute {
 fun Context.handleRoute(route: ScreenRoute, data: Any?) {
     val intent = runCatching {
         when(route) {
+            ScreenRoute.SETTINGS -> toSettings()
             ScreenRoute.FAVORITES_PEOPLE -> toFavorites(FavoriteType.PEOPLE)
             ScreenRoute.FAVORITES_SERIES -> toFavorites(FavoriteType.SERIES)
             ScreenRoute.FAVORITES_MOVIE -> toFavorites(FavoriteType.MOVIE)

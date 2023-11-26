@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="configuration_toolbar_title">Settings</string>
     <string name="configuration_button">Confirm</string>
 
     <string name="configuration_logo_title">Choose logo image resolution</string>

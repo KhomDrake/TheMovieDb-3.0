@@ -1,4 +1,4 @@
-package com.vlv.data.network.database.data
+package com.vlv.data.database.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

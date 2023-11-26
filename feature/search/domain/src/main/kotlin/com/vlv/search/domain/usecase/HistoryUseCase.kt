@@ -1,7 +1,7 @@
 package com.vlv.search.domain.usecase
 
-import com.vlv.data.network.database.data.History
-import com.vlv.data.network.database.data.HistoryType
+import com.vlv.data.database.data.History
+import com.vlv.data.database.data.HistoryType
 import com.vlv.search.data.repository.HistoryRepository
 
 class HistoryUseCase(

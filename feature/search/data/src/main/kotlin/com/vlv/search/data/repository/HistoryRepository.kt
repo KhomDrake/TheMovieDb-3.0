@@ -1,8 +1,8 @@
 package com.vlv.search.data.repository
 
 import com.vlv.data.database.TheMovieDbDao
-import com.vlv.data.network.database.data.History
-import com.vlv.data.network.database.data.HistoryType
+import com.vlv.data.database.data.History
+import com.vlv.data.database.data.HistoryType
 
 class HistoryRepository(
     private val dao: TheMovieDbDao

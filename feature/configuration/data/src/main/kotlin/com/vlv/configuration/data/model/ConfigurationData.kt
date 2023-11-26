@@ -1,8 +1,8 @@
 package com.vlv.configuration.data.model
 
-import com.vlv.data.network.database.data.CountryEntity
-import com.vlv.data.network.database.data.ImageEntity
-import com.vlv.data.network.database.data.LanguageEntity
+import com.vlv.data.database.data.CountryEntity
+import com.vlv.data.database.data.ImageEntity
+import com.vlv.data.database.data.LanguageEntity
 
 class ConfigurationData(
     val backdropSizes: List<ImageEntity>,
