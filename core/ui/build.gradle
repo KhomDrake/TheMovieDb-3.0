@@ -72,6 +72,7 @@ dependencies {
     composeImplementation(libs.androidx.compose.livedata)
     composeImplementation(libs.androidx.compose.tooling.preview)
     composeImplementation(libs.koin.compose)
+    composeImplementation(libs.androidx.compose.paging)
     composeApi(libs.compose.shimmer)
 
     // Views

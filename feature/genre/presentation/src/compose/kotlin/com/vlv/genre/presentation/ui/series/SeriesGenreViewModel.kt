@@ -1,4 +1,4 @@
-package com.vlv.genre.presentation.ui.movie
+package com.vlv.genre.presentation.ui.series
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,9 +9,9 @@ import androidx.paging.map
 import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
 import com.vlv.common.data.movie.Movie
+import com.vlv.common.data.series.Series
 import com.vlv.data.common.model.genre.GenresResponse
-import com.vlv.data.common.model.movie.MovieResponse
-import com.vlv.genre.domain.usecase.MovieGenreUseCase
+import com.vlv.genre.domain.usecase.SeriesGenreUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,13 +19,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MovieGenreViewModel(
-    private val genreUseCase: MovieGenreUseCase
+class SeriesGenreViewModel(
+    private val useCase: SeriesGenreUseCase
 ) : ViewModel() {
 
     init {
@@ -43,20 +42,20 @@ class MovieGenreViewModel(
         initialLoadSize = 20
     )
 
-    private val _flow: MutableStateFlow<PagingData<Movie>> =
+    private val _flow: MutableStateFlow<PagingData<Series>> =
         MutableStateFlow(PagingData.empty())
 
-    val flow: Flow<PagingData<Movie>>
+    val flow: Flow<PagingData<Series>>
         get() = _flow.asStateFlow()
 
     fun moviesByGenre(genreId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            genreUseCase.moviesByGenre(
+            useCase.seriesByGenre(
                 pagingConfig,
                 genreId
             )
                 .map {
-                    it.map(::Movie)
+                    it.map(::Series)
                 }
                 .cachedIn(viewModelScope)
                 .distinctUntilChanged()
@@ -71,7 +70,7 @@ class MovieGenreViewModel(
             withContext(Dispatchers.IO) {
                 bondsmith<GenresResponse>()
                     .request {
-                        genreUseCase.genres()
+                        useCase.genres()
                     }
                     .execute()
                     .responseStateFlow

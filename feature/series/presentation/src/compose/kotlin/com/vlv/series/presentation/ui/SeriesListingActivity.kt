@@ -25,6 +25,7 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.SERIES_LISTING_TYPE_EXTRA
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.SeriesPoster
+import com.vlv.common.ui.paging.SeriesPagingGrid
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.common.ui.shimmer.SinglePosterShimmer
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
@@ -84,58 +85,12 @@ fun SeriesContent(
 
     val seriesState = viewModel.state.collectAsLazyPagingItems()
 
-    if(seriesState.loadState.refresh is LoadState.Loading) {
-        GridPosterShimmer(
-            modifier = Modifier
-                .padding(top = paddingValues.calculateTopPadding()),
-            count = 4,
-            height = 200.dp
-        )
-    } else {
-        LazyVerticalGrid(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(
-                    top = paddingValues.calculateTopPadding()
-                ),
-            columns = GridCells.Fixed(2),
-            content = {
-                items(
-                    count = seriesState.itemCount,
-                    key = seriesState.itemKey { series -> series.id },
-                    contentType = seriesState.itemContentType { "Poster" }
-                ) { index ->
-                    seriesState[index]?.let { series ->
-                        SeriesPoster(
-                            series = series,
-                            height = 200.dp,
-                            onRouteNavigation = routeNavigation
-                        )
-                    }
-                }
-
-                item {
-                    when(seriesState.loadState.append) {
-                        is LoadState.Loading -> {
-                            SinglePosterShimmer(
-                                modifier = Modifier.fillMaxWidth(),
-                                height = 200.dp
-                            )
-                        }
-                        is LoadState.Error -> {
-                            // one item error
-                        }
-                        else -> Unit
-                    }
-                }
-            },
-            contentPadding = PaddingValues(
-                horizontal = 16.dp,
-                vertical = 16.dp
-            ),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-        )
-    }
+    SeriesPagingGrid(
+        seriesItems = seriesState,
+        routeNavigation = routeNavigation,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = paddingValues.calculateTopPadding())
+    )
 
 }

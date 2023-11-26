@@ -1,4 +1,4 @@
-package com.vlv.genre.presentation.ui.movie
+package com.vlv.genre.presentation.ui.series
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
@@ -14,7 +14,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.vlv.common.ui.paging.MoviesPagingGrid
+import com.vlv.common.ui.paging.SeriesPagingGrid
 import com.vlv.data.common.model.genre.GenreResponse
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
@@ -23,7 +23,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MovieGenreSuccess(
+fun SeriesGenreSuccess(
     paddingValues: PaddingValues,
     genres: List<GenreResponse>
 ) {
@@ -56,25 +56,25 @@ fun MovieGenreSuccess(
             modifier = Modifier.fillMaxWidth()
         ) {
             val item = genres[pagerState.currentPage]
-            MoviesByGenre(genre = item)
+            SeriesByGenre(genre = item)
         }
     }
 }
 
 @Composable
-fun MoviesByGenre(
+fun SeriesByGenre(
     genre: GenreResponse,
-    movieGenreViewModel: MovieGenreViewModel = koinViewModel()
+    seriesGenreViewModel: SeriesGenreViewModel = koinViewModel()
 ) {
 
     LaunchedEffect(key1 = genre.id, block = {
-        movieGenreViewModel.moviesByGenre(genre.id)
+        seriesGenreViewModel.moviesByGenre(genre.id)
     })
 
-    val movies = movieGenreViewModel.flow.collectAsLazyPagingItems()
+    val series = seriesGenreViewModel.flow.collectAsLazyPagingItems()
 
-    MoviesPagingGrid(
-        movies = movies,
+    SeriesPagingGrid(
+        seriesItems = series,
         routeNavigation = { _, _ -> },
         modifier = Modifier
             .fillMaxSize()
