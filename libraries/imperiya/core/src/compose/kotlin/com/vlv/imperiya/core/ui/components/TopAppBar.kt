@@ -1,5 +1,6 @@
 package com.vlv.imperiya.core.ui.components
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,6 +17,7 @@ import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 @Composable
 fun DefaultTopBar(
     title: String,
+    actions: @Composable RowScope.() -> Unit = {},
     onBackButton: () -> Unit
 ) {
     TopAppBar(
@@ -38,6 +40,7 @@ fun DefaultTopBar(
                     tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
-        }
+        },
+        actions = actions
     )
 }

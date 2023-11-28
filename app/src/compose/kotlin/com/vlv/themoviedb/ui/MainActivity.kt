@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -24,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.handleRoute
+import com.vlv.favorite.presentation.ui.FavoritesScreen
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.themoviedb.R
@@ -156,6 +158,14 @@ fun MainScreen(
                 }
                 MainScreens.SERIES.ordinal -> {
                     SeriesScreen(paddingValues, onNavigate)
+                }
+                MainScreens.FAVORITES.ordinal -> {
+                    FavoritesScreen(
+                        routeNavigation = onNavigate,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(bottom = paddingValues.calculateBottomPadding())
+                    )
                 }
                 else -> Unit
             }

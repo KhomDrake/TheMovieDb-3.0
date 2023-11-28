@@ -1,8 +1,10 @@
 package com.vlv.movie.presentation
 
 import androidx.startup.Initializer
-import com.vlv.data.network.NetworkInitializer
+import com.vlv.favorite.domain.FavoriteDomainInitializer
+import com.vlv.movie.data.MovieDataInitializer
 import com.vlv.movie.presentation.ui.MovieListingViewModel
+import com.vlv.movie.presentation.ui.detail.MovieDetailViewModel
 import com.vlv.util.ModuleInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -14,12 +16,14 @@ class MovieInitializer: ModuleInitializer() {
         get() = listOf(
             module {
                 viewModel { MovieListingViewModel(get()) }
+                viewModel { MovieDetailViewModel(get(), get()) }
             }
         )
 
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {
         return mutableListOf(
-            NetworkInitializer::class.java
+            MovieDataInitializer::class.java,
+            FavoriteDomainInitializer::class.java
         )
     }
 

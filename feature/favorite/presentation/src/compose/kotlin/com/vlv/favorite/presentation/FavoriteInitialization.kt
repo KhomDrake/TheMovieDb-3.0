@@ -1,6 +1,8 @@
 package com.vlv.favorite.presentation
 
 import androidx.startup.Initializer
+import com.vlv.favorite.domain.FavoriteDomainInitializer
+import com.vlv.favorite.presentation.ui.FavoritesViewModel
 import com.vlv.favorite.presentation.ui.movie.MovieFavoriteViewModel
 import com.vlv.util.ModuleInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -12,10 +14,13 @@ class FavoriteInitialization : ModuleInitializer() {
         get() = listOf(
             module {
                 viewModel { MovieFavoriteViewModel(get()) }
+                viewModel { FavoritesViewModel(get(), get(), get()) }
             }
         )
 
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {
-        return mutableListOf()
+        return mutableListOf(
+            FavoriteDomainInitializer::class.java
+        )
     }
 }
