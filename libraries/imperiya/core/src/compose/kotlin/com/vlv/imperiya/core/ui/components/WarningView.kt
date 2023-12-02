@@ -1,35 +1,30 @@
 package com.vlv.imperiya.core.ui.components
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import com.vlv.imperiya.core.R
+import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.Link
+import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @Composable
@@ -167,112 +162,63 @@ fun WarningView(
 
 }
 
+
+class WarningViewPreviewData(
+    val title: String,
+    val body: String,
+    val linkActionText: String? = null,
+)
+
+class WarningViewProvider : PreviewParameterProvider<WarningViewPreviewData> {
+
+    override val values: Sequence<WarningViewPreviewData>
+        get() = listOf(
+            WarningViewPreviewData(
+                "Error Title",
+                "Error Body",
+                "Try again button text"
+            ),
+            WarningViewPreviewData(
+                "Error Title",
+                "Error Body - Without button"
+            ),
+            WarningViewPreviewData(
+                "Error Title - big big big big big",
+                "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+                "Try again button text"
+            )
+        ).asSequence()
+
+}
+
+
+@PreviewLightDarkWithBackground
 @Composable
-fun SmallWarningView(
-    modifier: Modifier = Modifier,
-    title: String?,
-    body: String?,
-    linkActionText: String,
-    showIconInfo: Boolean = true,
-    onClickLink: (() -> Unit)? = null
+fun WarningViewPreview(
+    @PreviewParameter(WarningViewProvider::class) data: WarningViewPreviewData
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(
-                MaterialTheme.colorScheme.tertiaryContainer,
-                RoundedCornerShape(16.dp)
-            )
-    ) {
-        Spacer(modifier = Modifier.size(16.dp))
-        title?.let {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        start = 16.dp,
-                        end = 16.dp
-                    ),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if(showIconInfo) {
-                    Icon(
-                        painter = painterResource(
-                            id = R.drawable.ic_info
-                        ),
-                        contentDescription = null
-                    )
-                }
-
-                Text(
-                    text = title,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = if(showIconInfo) 8.dp else 0.dp),
-                    style = TheMovieDbTypography.SubTitleBoldStyle,
-                    color = MaterialTheme.colorScheme.onTertiaryContainer
-                )
-            }
-        }
-
-        body?.let {
-            Text(
-                text = body,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        start = 16.dp,
-                        end = 16.dp,
-                        top = if(title.isNullOrEmpty()) 0.dp else 12.dp
-                    ),
-                style = TheMovieDbTypography.ParagraphStyle,
-                color = MaterialTheme.colorScheme.onTertiaryContainer
-            )
-        }
-
-        Text(
-            text = linkActionText,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    start = 16.dp,
-                    end = 16.dp,
-                    top = 20.dp
-                )
-                .clickable {
-                    onClickLink?.invoke()
-                },
-            style = TheMovieDbTypography.LinkStyle
+    TheMovieDbAppTheme {
+        WarningView(
+            modifier = Modifier.fillMaxWidth(),
+            title = data.title,
+            body = data.body,
+            linkActionText = data.linkActionText
         )
-        Spacer(modifier = Modifier.size(16.dp))
     }
 }
 
-@Preview(
-    uiMode = UI_MODE_NIGHT_YES,
-    backgroundColor = 0xFFFFFFFF
-)
-@Composable
-fun SmallWarningViewPreview() {
-    SmallWarningView(
-        Modifier,
-        "Failure title you put it here",
-        "Failure body you pit here",
-        "Text button"
-    )
-}
 
-
-@Preview(
-    uiMode = UI_MODE_NIGHT_YES,
-    backgroundColor = 0xFFFFFFFF
-)
+@PreviewFontScale
 @Composable
-fun WarningViewPreview() {
-    WarningView(
-        modifier = Modifier.fillMaxWidth(),
-        title = "Error Title",
-        body = "Error body",
-        linkActionText = "Try again button text"
-    )
+fun WarningViewFontsPreview(
+    @PreviewParameter(WarningViewProvider::class) data: WarningViewPreviewData
+) {
+    TheMovieDbAppTheme(darkTheme = true) {
+        WarningView(
+            modifier = Modifier.fillMaxWidth(),
+            title = data.title,
+            body = data.body,
+            linkActionText = data.linkActionText
+        )
+    }
 }

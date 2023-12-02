@@ -1,6 +1,7 @@
 package com.vlv.imperiya.core.ui.components
 
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -11,25 +12,35 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.PreviewFontScale
+import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
+import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DefaultTopBar(
     title: String,
+    modifier: Modifier = Modifier,
+    containerColor: Color = MaterialTheme.colorScheme.primaryContainer,
+    titleContentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    iconBackColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
     actions: @Composable RowScope.() -> Unit = {},
     onBackButton: () -> Unit
 ) {
     TopAppBar(
+        modifier = modifier,
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            containerColor = containerColor,
+            titleContentColor = titleContentColor,
         ),
         title = {
             Text(
                 title,
                 style = TheMovieDbTypography.TitleStyle,
-                color = MaterialTheme.colorScheme.onPrimaryContainer
+                color = titleContentColor
             )
         },
         navigationIcon = {
@@ -37,10 +48,26 @@ fun DefaultTopBar(
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = "Close the app",
-                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                    tint = iconBackColor
                 )
             }
         },
         actions = actions
     )
+}
+
+@PreviewLightDarkWithBackground
+@PreviewFontScale
+@Composable
+fun TopBarPreview() {
+    TheMovieDbAppTheme {
+        DefaultTopBar(
+            title = "Text",
+            modifier = Modifier
+                .fillMaxWidth(),
+            onBackButton = {
+
+            }
+        )
+    }
 }

@@ -2,6 +2,7 @@ package com.vlv.configuration.presentation
 
 import androidx.startup.Initializer
 import com.vlv.configuration.presentation.ui.SettingsViewModel
+import com.vlv.data.network.NetworkInitializer
 import com.vlv.util.ModuleInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -17,7 +18,9 @@ class ConfigurationInitialization : ModuleInitializer() {
         )
 
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {
-        return mutableListOf()
+        return mutableListOf(
+            NetworkInitializer::class.java
+        )
     }
     
 }

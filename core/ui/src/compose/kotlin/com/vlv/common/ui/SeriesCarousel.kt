@@ -40,6 +40,8 @@ fun SeriesCarousel(
 
     if(series.isEmpty()) {
         StateView(
+            modifier = Modifier
+                .fillMaxWidth(),
             icon = R.drawable.ic_movie,
             title = emptyStateTitle,
             body = emptyStateBody

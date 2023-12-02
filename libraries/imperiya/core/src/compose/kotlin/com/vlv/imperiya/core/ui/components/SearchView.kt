@@ -23,6 +23,9 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
@@ -123,9 +126,33 @@ fun SearchComponent(
     )
 }
 
-@Preview
+@PreviewLightDark
+@PreviewFontScale
+@Preview(name = "Search")
 @Composable
 fun SearchViewPreview() {
+    TheMovieDbAppTheme {
+        var language by remember {
+            mutableStateOf("")
+        }
+
+        SearchComponent(
+            query = language,
+            hint = "Write a language",
+            modifier = Modifier,
+            onQueryChange = {
+                language = it
+            },
+            onSearch = {
+                language += "test"
+            }
+        )
+    }
+}
+
+@PreviewFontScale
+@Composable
+fun SearchViewWithTextPreview() {
     TheMovieDbAppTheme {
         var language by remember {
             mutableStateOf("kotlin")
@@ -134,8 +161,7 @@ fun SearchViewPreview() {
         SearchComponent(
             query = language,
             hint = "Write a language",
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier,
             onQueryChange = {
                 language = it
             },
