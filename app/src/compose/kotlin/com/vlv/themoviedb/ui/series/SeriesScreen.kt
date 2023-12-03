@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vlv.bondsmith.data.Response
@@ -17,7 +16,6 @@ import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.series.Series
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.route.toSeriesSearch
 import com.vlv.common.ui.SeriesCarousel
 import com.vlv.common.ui.shimmer.CarouselShimmer
 import com.vlv.imperiya.core.ui.components.SearchComponent
@@ -31,8 +29,6 @@ fun SeriesScreen(
     paddingValues: PaddingValues,
     onNavigate: RouteNavigation
 ) {
-    val seriesSearch = LocalContext.current.toSeriesSearch()
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -100,7 +96,8 @@ fun SeriesTrending(
         },
         onSeeAll = {
             onNavigate.invoke(ScreenRoute.SERIES_TRENDING, null)
-        }
+        },
+        percentage = 1f
     )
 }
 
@@ -113,6 +110,7 @@ fun SeriesInformation(
     linkTextWarning: String,
     data: Response<List<Series>>,
     onNavigate: RouteNavigation,
+    percentage: Float = .8f,
     onSeeAll: () -> Unit,
     onError: () -> Unit
 ) {
@@ -131,7 +129,8 @@ fun SeriesInformation(
                 emptyStateTitle = emptyStateTitle,
                 onClickSeries = {
                     onNavigate.invoke(ScreenRoute.SERIES_DETAIL, it)
-                }
+                },
+                percentage = percentage
             )
         }
         ResponseStatus.LOADING -> {

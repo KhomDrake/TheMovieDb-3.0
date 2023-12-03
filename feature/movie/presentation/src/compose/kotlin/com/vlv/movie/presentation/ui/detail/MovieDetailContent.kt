@@ -71,8 +71,3 @@ fun MovieDetailContent(
     }
 
 }
-
-@Composable
-fun () {
-    
-}

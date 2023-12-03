@@ -10,15 +10,20 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.rememberShimmer
 import com.valentinilk.shimmer.shimmer
+import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
+import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 
 @Composable
 fun CarouselShimmer(
     modifier: Modifier = Modifier,
-    quantity: Int = 2
+    quantity: Int = 2,
+    percentage: Float = .8f
 ) {
     val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.View)
 
@@ -30,7 +35,7 @@ fun CarouselShimmer(
         items(quantity) { index ->
             Box(
                 modifier = Modifier
-                    .fillParentMaxWidth(.8f)
+                    .fillParentMaxWidth(percentage)
                     .shimmer(shimmerInstance)
                     .height(150.dp)
                     .padding(
@@ -43,5 +48,26 @@ fun CarouselShimmer(
                     )
             )
         }
+    }
+}
+
+class CarouselShimmerProvider: PreviewParameterProvider<Float> {
+    override val values: Sequence<Float>
+        get() = listOf(
+            1f,
+            .8f
+        ).asSequence()
+}
+
+@PreviewLightDarkWithBackground
+@Composable
+fun CarouselShimmerPreview(
+    @PreviewParameter(CarouselShimmerProvider::class) data: Float
+) {
+    TheMovieDbAppTheme {
+        CarouselShimmer(
+            quantity = 2,
+            percentage = data
+        )
     }
 }

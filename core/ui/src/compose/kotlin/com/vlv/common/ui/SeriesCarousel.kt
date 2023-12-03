@@ -19,12 +19,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.vlv.common.data.series.Series
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.components.StateView
+import com.vlv.imperiya.core.ui.preview.BackgroundPreview
+import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -34,6 +40,7 @@ fun SeriesCarousel(
     series: List<Series>,
     emptyStateTitle: String? = null,
     emptyStateBody: String? = null,
+    percentage: Float = .8f,
     onClickSeries: (Series) -> Unit
 ) {
     val lazyListState = rememberLazyListState()
@@ -57,10 +64,10 @@ fun SeriesCarousel(
             itemsIndexed(series) { index, movie ->
                 Column(
                     modifier = Modifier
-                        .fillParentMaxWidth(.8f)
+                        .fillParentMaxWidth(percentage)
                         .padding(
-                            start = if(index == 0) 16.dp else 8.dp,
-                            end = if(index == series.size - 1) 16.dp else 8.dp,
+                            start = if (index == 0) 16.dp else 8.dp,
+                            end = if (index == series.size - 1) 16.dp else 8.dp,
                         ),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -97,4 +104,84 @@ fun SeriesCarousel(
         state = lazyListState,
         flingBehavior = rememberSnapFlingBehavior(lazyListState)
     )
+}
+
+class SeriesCarouselDataPreview(
+    val series: List<Series>,
+    val emptyStateTitle: String? = null,
+    val emptyStateBody: String? = null,
+    val percentage: Float = .8f
+)
+
+class SeriesCarouselProvider: PreviewParameterProvider<SeriesCarouselDataPreview> {
+
+    override val values: Sequence<SeriesCarouselDataPreview>
+        get() = listOf(
+            SeriesCarouselDataPreview(
+                listOf(),
+                emptyStateTitle = "Empty title",
+                emptyStateBody = "Empty body",
+            ),
+            SeriesCarouselDataPreview(
+                listOf(
+                    Series(
+                        false,
+                        2,
+                        "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                        "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                        "Duna"
+                    ),
+                    Series(
+                        false,
+                        3,
+                        "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                        "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                        "Duna 2"
+                    ),
+                ),
+                emptyStateTitle = "Empty title",
+                emptyStateBody = "Empty body",
+            ),
+            SeriesCarouselDataPreview(
+                listOf(
+                    Series(
+                        false,
+                        2,
+                        "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                        "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                        "Duna"
+                    ),
+                    Series(
+                        false,
+                        3,
+                        "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                        "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                        "Duna 2"
+                    ),
+                ),
+                emptyStateTitle = "Empty title",
+                emptyStateBody = "Empty body",
+                percentage = 1f
+            ),
+        ).asSequence()
+
+}
+
+@PreviewLightDark
+@PreviewFontScale
+@Composable
+fun SeriesCarouselPreview(
+    @PreviewParameter(SeriesCarouselProvider::class) data: SeriesCarouselDataPreview
+) {
+    TheMovieDbAppTheme {
+        BackgroundPreview {
+            SeriesCarousel(
+                series = data.series,
+                percentage = data.percentage,
+                emptyStateTitle = data.emptyStateTitle,
+                emptyStateBody = data.emptyStateBody,
+                onClickSeries = {}
+            )
+        }
+    }
 }

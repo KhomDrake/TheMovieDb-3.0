@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -21,6 +23,8 @@ import com.vlv.common.data.series.Series
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
+import com.vlv.imperiya.core.ui.preview.BackgroundPreview
+import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @Composable
@@ -58,5 +62,25 @@ fun SeriesPoster(
             color = MaterialTheme.colorScheme.onBackground,
             textAlign = TextAlign.Center
         )
+    }
+}
+
+@PreviewLightDark
+@PreviewFontScale
+@Composable
+fun SeriesPosterPreview() {
+    TheMovieDbAppTheme {
+        BackgroundPreview {
+            SeriesPoster(
+                series = Series(
+                    false,
+                    2,
+                    "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                    "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
+                    "Duna"
+                ),
+                onRouteNavigation = {_,_ ->}
+            )
+        }
     }
 }

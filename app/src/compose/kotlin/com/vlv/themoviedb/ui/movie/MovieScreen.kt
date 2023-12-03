@@ -60,8 +60,8 @@ fun MovieScreen(
                 onNavigate.invoke(ScreenRoute.MOVIE_SEARCH, null)
             }
         )
-        NowPlaying(onNavigate = onNavigate)
         Trending(onNavigate = onNavigate)
+        NowPlaying(onNavigate = onNavigate)
         SeeAll(
             title = stringResource(id = R.string.favorites_title),
             onClickSeeAll = {
@@ -124,7 +124,8 @@ fun Trending(
         },
         onNavigateSeeAll = {
             onNavigate.invoke(ScreenRoute.MOVIE_TRENDING, null)
-        }
+        },
+        percentage = 1f
     )
 }
 
@@ -176,6 +177,7 @@ fun MovieInformation(
     data: Response<List<Movie>>,
     onNavigate: RouteNavigation,
     onNavigateSeeAll: () -> Unit,
+    percentage: Float = .8f,
     onError: () -> Unit
 ) {
     SeeAll(
@@ -190,6 +192,7 @@ fun MovieInformation(
                     .fillMaxWidth()
                     .padding(top = 12.dp),
                 movies = movies,
+                percentage = percentage,
                 emptyStateTitle = emptyStateTitle,
                 onClickMovie = {
                     onNavigate.invoke(ScreenRoute.MOVIE_DETAIL, it)

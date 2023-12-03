@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.rememberShimmer
 import com.valentinilk.shimmer.shimmer
+import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 
 @Composable
@@ -108,7 +109,7 @@ fun SinglePosterShimmer(
     )
 }
 
-@Preview
+@PreviewLightDarkWithBackground
 @Composable
 private fun SinglePosterShimmerPrev() {
     TheMovieDbAppTheme {
@@ -121,7 +122,7 @@ private fun SinglePosterShimmerPrev() {
     }
 }
 
-@Preview
+@PreviewLightDarkWithBackground
 @Composable
 private fun GridPosterShimmerPrev() {
     TheMovieDbAppTheme {
@@ -136,7 +137,7 @@ private fun GridPosterShimmerPrev() {
     }
 }
 
-@Preview
+@PreviewLightDarkWithBackground
 @Composable
 private fun ColumnPosterShimmerPrev() {
     TheMovieDbAppTheme {
