@@ -15,10 +15,13 @@ class SetupConfigurationUseCase(
         val data = if(keysNotLoaded.isEmpty()) repository.getConfig()
             else repository.defaultConfigData()
 
-        if(keysNotLoaded.isNotEmpty()) repository.updateDatabase(data)
+        if(keysNotLoaded.isEmpty()) {
+            DataVault.loadCache()
+            return
+        }
 
-        DataVault.loadCache()
-        if(keysNotLoaded.isNotEmpty()) loadConfigDataToCache(resources, data)
+        repository.updateDatabase(data)
+        loadConfigDataToCache(resources, data)
     }
 
     private suspend fun loadConfigDataToCache(resources: Resources, data: ConfigurationData) {
@@ -33,8 +36,8 @@ class SetupConfigurationUseCase(
         DataVault.setValue(SettingsOption.ADULT_CONTENT.name, false)
 
         data.languages.find {
-            it.name == resources.getString(R.string.configuration_language_default)
-        }?.name?.let {
+            it.isoName == resources.getString(R.string.configuration_language_default)
+        }?.isoName?.let {
             DataVault.setValue(
                 SettingsOption.LANGUAGE.name, it
             )

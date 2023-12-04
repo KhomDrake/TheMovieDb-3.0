@@ -1,5 +1,6 @@
 package com.vlv.bondsmith
 
+import android.util.Log
 import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
 import br.com.arch.toolkit.livedata.response.ResponseLiveData
 import com.vlv.bondsmith.data.Response
@@ -10,6 +11,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 private val bondsmithScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -62,12 +64,7 @@ class Bondsmith<Data>(private val scope: CoroutineScope) {
                 )
             }.onFailure {
                 _responseLiveData.postError(it)
-                _mutableStateFlow.emit(
-                    _mutableStateFlow.value.copy(
-                        state = ResponseStatus.ERROR,
-                        error = it
-                    )
-                )
+                _mutableStateFlow.emitError(it)
             }
         }
     }
@@ -76,4 +73,25 @@ class Bondsmith<Data>(private val scope: CoroutineScope) {
 
 fun <T>bondsmith(scope: CoroutineScope = bondsmithScope) : Bondsmith<T> {
     return Bondsmith(scope)
+}
+
+inline fun <Data, NewData> StateFlow<Response<Data>>.mapData(
+    crossinline transform: suspend (Data?) -> NewData?
+) = map {
+    val newData = transform.invoke(value.data)
+    Response(
+        data = newData,
+        state = it.state,
+        error = it.error
+    )
+}
+
+suspend fun <Data> MutableStateFlow<Response<Data>>.emitError(throwable: Throwable) {
+    Log.e("Vini", throwable.stackTraceToString())
+    emit(
+        value.copy(
+            state = ResponseStatus.ERROR,
+            error = throwable
+        )
+    )
 }

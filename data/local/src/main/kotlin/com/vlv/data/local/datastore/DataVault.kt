@@ -41,6 +41,7 @@ object DataVault : KoinComponent {
             val newKey = stringPreferencesKey(key)
             dataStore?.edit { settings ->
                 settings[newKey] = value
+                cachedData[key] = value
             }
         }
     }
@@ -64,6 +65,7 @@ object DataVault : KoinComponent {
             val newKey = booleanPreferencesKey(key)
             dataStore?.edit { settings ->
                 settings[newKey] = value
+                cachedData[key] = value
             }
         }
     }

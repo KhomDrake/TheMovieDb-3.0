@@ -1,6 +1,5 @@
 package com.vlv.configuration.presentation.ui.widget
 
-import androidx.annotation.StringRes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,11 +12,10 @@ import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @Composable
 fun SettingHeader(
-    @StringRes
-    title: Int
+    title: String
 ) {
     Text(
-        text = stringResource(id = title),
+        text = title,
         style = TheMovieDbTypography.TitleStyle,
         color = MaterialTheme.colorScheme.onBackground
     )
@@ -25,10 +23,10 @@ fun SettingHeader(
 
 @PreviewLightDark
 @Composable
-fun SettingHeader() {
+fun SettingHeaderPreview() {
     TheMovieDbAppTheme {
         BackgroundPreview {
-            SettingHeader(title = R.string.configuration_language_title)
+            SettingHeader(title = stringResource(id = R.string.configuration_toolbar_title))
         }
     }
 }

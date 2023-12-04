@@ -1,14 +1,18 @@
 package com.vlv.configuration.presentation.ui.widget
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import com.vlv.bondsmith.data.ResponseStatus
+import com.vlv.common.ui.shimmer.CarouselShimmer
 import com.vlv.configuration.presentation.ui.SettingsViewModel
+import com.vlv.imperiya.core.ui.components.SmallWarningView
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -24,20 +28,34 @@ fun SettingsContent(
 
     when(data.state) {
         ResponseStatus.SUCCESS -> {
-            val settingsDataUI = data.data ?: return
+            val items = data.data ?: return
             SettingsItems(
-                settingsDataUI = settingsDataUI,
+                items = items,
                 paddingValues = paddingValues,
-                onConfirmChangeItem = { sectionData, item ->
-                    viewModel.setData(sectionData, item)
+                onConfirmChangeItem = { item ->
+                    viewModel.setData(item)
                 }
             )
         }
         ResponseStatus.ERROR -> {
-            Text(text = "Error", color = MaterialTheme.colorScheme.onBackground)
+            SmallWarningView(
+                modifier = Modifier
+                    .padding(top = paddingValues.calculateTopPadding()),
+                title = "Error",
+                body = data.error?.stackTraceToString() ?: "Not know",
+                linkActionText = "Try again",
+                onClickLink = {
+                    viewModel.settings()
+                }
+            )
         }
         ResponseStatus.LOADING -> {
-            Text(text = "Loading", color = MaterialTheme.colorScheme.onBackground)
+            CarouselShimmer(
+                modifier = Modifier
+                    .padding(top = paddingValues.calculateTopPadding()),
+                quantity = 3
+            )
+
         }
         else -> Unit
     }
