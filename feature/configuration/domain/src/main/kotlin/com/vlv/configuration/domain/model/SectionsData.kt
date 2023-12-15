@@ -60,26 +60,26 @@ enum class ProfileSizes(
 class SectionsData(
     val sections: List<Section>
 ) {
-    constructor(resources: Resources, settingsData: SettingsData) : this(
+    constructor(resources: Resources, settingsData: SettingsResponse) : this(
         listOf(
             Section(
                 resources.getString(R.string.configuration_options_header_general),
                 listOf(
                     SectionConfig(
-                        SettingsOption.ADULT_CONTENT,
+                        SettingOption.ADULT_CONTENT,
                         ConfigItemType.SWITCH,
                         null,
                         resources.getString(R.string.configuration_options_item_adult_content_title),
-                        DataVault.cachedDataBoolean(SettingsOption.ADULT_CONTENT.name)
+                        DataVault.cachedDataBoolean(SettingOption.ADULT_CONTENT.name)
                     ),
                     SectionConfig(
-                        SettingsOption.LANGUAGE,
+                        SettingOption.LANGUAGE,
                         ConfigItemType.LIST,
                         resources.getString(R.string.configuration_options_item_language_title),
                         resources.getString(R.string.configuration_options_item_language_body),
                         settingsData.run {
                             val selectedLanguageValue = DataVault.cachedDataString(
-                                SettingsOption.LANGUAGE.name
+                                SettingOption.LANGUAGE.name
                             )
 
                             val languages = this.languages.items.map {
@@ -102,13 +102,13 @@ class SectionsData(
                         }
                     ),
                     SectionConfig(
-                        SettingsOption.REGION,
+                        SettingOption.REGION,
                         ConfigItemType.LIST,
                         resources.getString(R.string.configuration_options_item_region_title),
                         resources.getString(R.string.configuration_options_item_region_body),
                         settingsData.run {
                             val selectedRegionValue = DataVault.cachedDataString(
-                                SettingsOption.REGION.name
+                                SettingOption.REGION.name
                             )
 
                             val regions = this.regions.items.map {
@@ -136,13 +136,13 @@ class SectionsData(
                 resources.getString(R.string.configuration_options_header_image_definition),
                 listOf(
                     SectionConfig(
-                        SettingsOption.LOGO,
+                        SettingOption.LOGO,
                         ConfigItemType.LIST,
                         resources.getString(R.string.configuration_options_item_logo_title),
                         resources.getString(R.string.configuration_options_item_logo_body),
                         settingsData.run {
                             val selectedLogoValue = DataVault.cachedDataString(
-                                SettingsOption.LOGO.name
+                                SettingOption.LOGO.name
                             )
 
                             val logos = LogoSizes.values().map {
@@ -163,6 +163,105 @@ class SectionsData(
                                 logos
                             )
                         }
+                    ),
+                    SectionConfig(
+                        SettingOption.BACKDROP,
+                        ConfigItemType.LIST,
+                        resources.getString(R.string.configuration_options_item_backdrop_title),
+                        resources.getString(R.string.configuration_options_item_backdrop_body),
+                        settingsData.run {
+                            val selectedBackdropValue = DataVault.cachedDataString(
+                                SettingOption.BACKDROP.name
+                            )
+
+                            val logos = BackdropSizes.values().map {
+                                ConfigDataItemList(
+                                    resources.getString(it.title),
+                                    it.name.lowercase()
+                                )
+                            }
+
+                            val selectedLogo = logos.first {
+                                it.value == selectedBackdropValue
+                            }
+
+                            ConfigDataList(
+                                resources.getString(
+                                    R.string.configuration_bottom_sheet_backdrop_title
+                                ),
+                                resources.getString(
+                                    R.string.configuration_bottom_sheet_backdrop_body
+                                ),
+                                selectedLogo,
+                                logos
+                            )
+                        }
+                    ),
+                    SectionConfig(
+                        SettingOption.POSTER,
+                        ConfigItemType.LIST,
+                        resources.getString(R.string.configuration_options_item_poster_title),
+                        resources.getString(R.string.configuration_options_item_poster_body),
+                        settingsData.run {
+                            val selectedLogoValue = DataVault.cachedDataString(
+                                SettingOption.POSTER.name
+                            )
+
+                            val logos = PosterSizes.values().map {
+                                ConfigDataItemList(
+                                    resources.getString(it.title),
+                                    it.name.lowercase()
+                                )
+                            }
+
+                            val selectedLogo = logos.first {
+                                it.value == selectedLogoValue
+                            }
+
+                            ConfigDataList(
+                                resources.getString(
+                                    R.string.configuration_bottom_sheet_poster_title
+                                ),
+                                resources.getString(
+                                    R.string.configuration_bottom_sheet_poster_body
+                                ),
+                                selectedLogo,
+                                logos
+                            )
+                        }
+                    ),
+                    SectionConfig(
+                        SettingOption.PROFILE,
+                        ConfigItemType.LIST,
+                        resources.getString(R.string.configuration_options_item_profile_title),
+                        resources.getString(R.string.configuration_options_item_profile_body),
+                        settingsData.run {
+                            val selectedLogoValue = DataVault.cachedDataString(
+                                SettingOption.PROFILE.name
+                            )
+
+                            val logos = ProfileSizes.values().map {
+                                ConfigDataItemList(
+                                    resources.getString(it.title),
+                                    it.name.lowercase()
+                                )
+                            }
+
+                            val selectedLogo = logos.first {
+                                it.value == selectedLogoValue
+                            }
+
+                            ConfigDataList(
+                                resources.getString(
+                                    R.string.configuration_bottom_sheet_profile_title
+                                ),
+                                resources.getString(
+                                    R.string.configuration_bottom_sheet_profile_body
+                                ),
+                                selectedLogo,
+                                logos
+                            )
+                        }
                     )
                 )
             )
@@ -177,7 +276,7 @@ data class Section(
 )
 
 data class SectionConfig(
-    val configOption: SettingsOption,
+    val configOption: SettingOption,
     val type: ConfigItemType,
     val title: String? = null,
     val description: String? = null,

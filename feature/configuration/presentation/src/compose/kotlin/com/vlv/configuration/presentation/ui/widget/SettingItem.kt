@@ -8,19 +8,28 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.vlv.configuration.data.SectionUIItem
+import com.vlv.configuration.data.SectionUIType
+import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
+import com.vlv.configuration.domain.model.SettingOption
+import com.vlv.extensions.idInt
+import com.vlv.imperiya.core.ui.preview.BackgroundPreview
+import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @Composable
 fun SettingItem(
     sectionData: SectionUIItem,
-    onClick: (SectionUIItem) -> Unit
+    onClick: (SectionUIItem) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
+        modifier = modifier
             .clickable {
                 onClick.invoke(sectionData)
             }
@@ -48,42 +57,51 @@ fun SettingItem(
     }
 }
 
-//class SettingItemProvider: PreviewParameterProvider<SettingsSectionItemsUI> {
-//
-//    private val default: SettingsSectionItemsUI
-//        get() = SettingsSectionItemsUI(
-//            SettingsOption.LANGUAGE,
-//            type = SectionItemType.LIST,
-//            items = listOf(),
-//            selectedItem = SettingsItemUI(
-//                "abc",
-//                R.string.configuration_options_item_backdrop_title
-//            ),
-//            title = R.string.configuration_options_item_backdrop_title,
-//            description = R.string.configuration_options_item_description
-//        )
-//
-//    override val values: Sequence<SettingsSectionItemsUI>
-//        get() = listOf<SettingsSectionItemsUI>(
-//            default,
-//            default.copy(
-//                title = -1
-//            ),
-//            default.copy(
-//                description = -1
-//            )
-//        ).asSequence()
-//
-//}
-//
-//@PreviewLightDark
-//@Composable
-//fun SettingItemPreview(
-//    @PreviewParameter(SettingItemProvider::class) data: SettingsSectionItemsUI
-//) {
-//    TheMovieDbAppTheme {
-//        BackgroundPreview {
-//            SettingItem(sectionData = data, onClick = {})
-//        }
-//    }
-//}
+class SettingItemProvider: PreviewParameterProvider<SectionUIItem> {
+
+    private val default: SectionUIItem
+        get() = SectionUIItem(
+            type = SectionUIType.HEADER,
+            id = idInt(),
+            data = ConfigDataList(
+                "a",
+                "b",
+                ConfigDataItemList(
+                    "Value",
+                    ""
+                ),
+                listOf()
+            ),
+            title = "Normal title",
+            description = "Normal description",
+            settingsOption = SettingOption.POSTER
+        )
+
+    override val values: Sequence<SectionUIItem>
+        get() = listOf(
+            default,
+            default.copy(
+                title = null
+            ),
+            default.copy(
+                description = null
+            )
+        ).asSequence()
+
+}
+
+@PreviewLightDark
+@Composable
+fun SettingItemPreview(
+    @PreviewParameter(SettingItemProvider::class) data: SectionUIItem
+) {
+    TheMovieDbAppTheme {
+        BackgroundPreview {
+            SettingItem(
+                sectionData = data,
+                onClick = {},
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    }
+}

@@ -25,13 +25,13 @@
     <string name="configuration_options_item_region_title">Region</string>
     <string name="configuration_options_item_region_body">Region chosen:</string>
     <string name="configuration_options_item_backdrop_title">Backdrop image definition</string>
-    <string name="configuration_options_item_backdrop_body">Definition chosen: %s</string>
+    <string name="configuration_options_item_backdrop_body">Definition chosen:</string>
     <string name="configuration_options_item_logo_title">Logo image definition</string>
-    <string name="configuration_options_item_logo_body">Definition chosen: %s</string>
+    <string name="configuration_options_item_logo_body">Definition chosen:</string>
     <string name="configuration_options_item_poster_title">Poster image definition</string>
-    <string name="configuration_options_item_poster_body">Definition chosen: %s</string>
+    <string name="configuration_options_item_poster_body">Definition chosen:</string>
     <string name="configuration_options_item_profile_title">Profile image definition</string>
-    <string name="configuration_options_item_profile_body">Definition chosen: %s</string>
+    <string name="configuration_options_item_profile_body">Definition chosen:</string>
 
     <!--  Backdrop  -->
     <string name="configuration_backdrop_low">Low</string>
@@ -72,5 +72,14 @@
 
     <string name="configuration_bottom_sheet_logo_title">Logo image quality</string>
     <string name="configuration_bottom_sheet_logo_body">Chosen logo image quality</string>
+
+    <string name="configuration_bottom_sheet_backdrop_title">Backdrop image quality</string>
+    <string name="configuration_bottom_sheet_backdrop_body">Chosen backdrop image quality</string>
+
+    <string name="configuration_bottom_sheet_poster_title">Poster image quality</string>
+    <string name="configuration_bottom_sheet_poster_body">Chosen poster image quality</string>
+
+    <string name="configuration_bottom_sheet_profile_title">Profile image quality</string>
+    <string name="configuration_bottom_sheet_profile_body">Chosen profile image quality</string>
 
 </resources>

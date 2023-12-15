@@ -2,7 +2,7 @@ package com.vlv.configuration.data
 
 import com.vlv.configuration.domain.model.ConfigItemType
 import com.vlv.configuration.domain.model.SectionsData
-import com.vlv.configuration.domain.model.SettingsOption
+import com.vlv.configuration.domain.model.SettingOption
 
 enum class SectionUIType {
     HEADER,
@@ -23,7 +23,7 @@ data class SectionUIItem(
     var data: Any? = null,
     val title: String? = null,
     val description: String? = null,
-    val settingsOption: SettingsOption? = null,
+    val settingsOption: SettingOption? = null,
 )
 
 suspend fun SectionsData.toSectionUIItems(): List<SectionUIItem> {

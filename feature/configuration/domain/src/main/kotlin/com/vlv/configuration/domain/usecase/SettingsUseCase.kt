@@ -5,18 +5,18 @@ import com.vlv.configuration.data.ConfigurationRepository
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.domain.model.ConfigItemType
 import com.vlv.configuration.domain.model.SectionsData
-import com.vlv.configuration.domain.model.SettingsData
-import com.vlv.configuration.domain.model.SettingsOption
+import com.vlv.configuration.domain.model.SettingsResponse
+import com.vlv.configuration.domain.model.SettingOption
 import com.vlv.data.local.datastore.DataVault
 
 class SettingsUseCase(
     private val repository: ConfigurationRepository
 ) {
 
-    suspend fun newConfig() : SettingsData {
+    suspend fun newConfig() : SettingsResponse {
         val config = repository.getConfig()
 
-        return SettingsData(config)
+        return SettingsResponse(config)
     }
 
     suspend fun configData(resources: Resources) : SectionsData {
@@ -24,7 +24,7 @@ class SettingsUseCase(
         return SectionsData(resources, settingsData)
     }
 
-    suspend fun setConfigValue(option: SettingsOption, value: Any, type: ConfigItemType) {
+    suspend fun setConfigValue(option: SettingOption, value: Any, type: ConfigItemType) {
         when(type) {
             ConfigItemType.LIST -> {
                 val data = value as ConfigDataList

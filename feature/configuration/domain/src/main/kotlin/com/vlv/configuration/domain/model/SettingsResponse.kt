@@ -3,7 +3,7 @@ package com.vlv.configuration.domain.model
 import com.vlv.configuration.data.model.ConfigurationData
 import com.vlv.data.local.datastore.DataVault
 
-enum class SettingsOption {
+enum class SettingOption {
     ADULT_CONTENT,
     LANGUAGE,
     REGION,
@@ -20,31 +20,31 @@ class SettingsItem(
     val name: String? = null
 )
 
-class SettingsSection(
-    val section: SettingsOption,
+class SettingsResponseSection(
+    val section: SettingOption,
     val items: List<SettingsItem>,
     val selectedItem: SettingsItem
 )
 
-class SettingsData(
-    val adultContent: SettingsSection,
-    val backdrop: SettingsSection,
-    val languages: SettingsSection,
-    val regions: SettingsSection
+class SettingsResponse(
+    val adultContent: SettingsResponseSection,
+    val backdrop: SettingsResponseSection,
+    val languages: SettingsResponseSection,
+    val regions: SettingsResponseSection
 ) {
     constructor(configData: ConfigurationData) : this(
-        adultContent = SettingsSection(
-            SettingsOption.ADULT_CONTENT,
+        adultContent = SettingsResponseSection(
+            SettingOption.ADULT_CONTENT,
             listOf(),
             SettingsItem(
-                DataVault.cachedDataBoolean(SettingsOption.ADULT_CONTENT.name)
+                DataVault.cachedDataBoolean(SettingOption.ADULT_CONTENT.name)
             )
         ),
         backdrop = configData.backdropSizes.run {
             val items = this.map { SettingsItem(it.data) }
-            val previousSelected = DataVault.cachedDataString(SettingsOption.BACKDROP.name)
-            SettingsSection(
-                SettingsOption.BACKDROP,
+            val previousSelected = DataVault.cachedDataString(SettingOption.BACKDROP.name)
+            SettingsResponseSection(
+                SettingOption.BACKDROP,
                 items,
                 items.first { it.value == previousSelected }
             )
@@ -56,9 +56,9 @@ class SettingsData(
                     it.englishName
                 )
             }
-            val previousSelected = DataVault.cachedDataString(SettingsOption.LANGUAGE.name)
-            SettingsSection(
-                SettingsOption.LANGUAGE,
+            val previousSelected = DataVault.cachedDataString(SettingOption.LANGUAGE.name)
+            SettingsResponseSection(
+                SettingOption.LANGUAGE,
                 items,
                 items.first { it.value == previousSelected }
             )
@@ -71,10 +71,10 @@ class SettingsData(
                 )
             }
 
-            val previousSelected = DataVault.cachedDataString(SettingsOption.REGION.name)
+            val previousSelected = DataVault.cachedDataString(SettingOption.REGION.name)
 
-            SettingsSection(
-                SettingsOption.REGION,
+            SettingsResponseSection(
+                SettingOption.REGION,
                 items,
                 items.first { it.value == previousSelected }
             )
