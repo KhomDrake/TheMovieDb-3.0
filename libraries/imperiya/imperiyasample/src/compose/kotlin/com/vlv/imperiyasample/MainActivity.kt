@@ -31,6 +31,7 @@ import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.imperiyasample.ui.ColorsActivity
 import com.vlv.imperiyasample.ui.DynamicColorsActivity
+import com.vlv.imperiyasample.ui.bottomsheet.BottomSheetActivity
 import com.vlv.imperiyasample.ui.search.SearchSampleActivity
 import com.vlv.imperiyasample.ui.state.StateComponentSampleActivity
 import com.vlv.imperiyasample.ui.tab.TabSampleActivity
@@ -107,6 +108,10 @@ class MainActivity : ComponentActivity() {
                 "Tab Sample",
                 TabSampleActivity::class
             ),
+            Component(
+                "Bottom Sheet",
+                BottomSheetActivity::class
+            ),
         )
 
         setContent {
@@ -164,7 +169,7 @@ fun ButtonList(
         modifier = Modifier
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            DefaultTopBar(title = title, onBackButton)
+            DefaultTopBar(title = title, onBackButton = onBackButton)
         }
     ) {
         Column(

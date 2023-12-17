@@ -23,7 +23,7 @@ class SettingsActivity : ComponentActivity() {
                         ) {
                            finish()
                         }
-                    }
+                    },
                 ) {
                     SettingsContent(paddingValues = it)
                 }

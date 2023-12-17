@@ -59,6 +59,10 @@
             android:name=".ui.warningview.WarningItemComponentActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
+        <activity
+            android:name=".ui.bottomsheet.BottomSheetActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
     </application>
 
 </manifest>

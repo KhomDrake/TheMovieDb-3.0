@@ -29,6 +29,7 @@
     <string name="movie_review_tab_title">Review</string>
     <string name="movie_recommendation_tab_title">Recommendation</string>
     <string name="movie_empty_state_recommendation">None recommendation found</string>
+    <string name="movie_empty_state_review">None review found</string>
 
     <string name="movie_added_to_favorite">Movie added to favorites</string>
     <string name="movie_add_favorite">add movie to favorites</string>

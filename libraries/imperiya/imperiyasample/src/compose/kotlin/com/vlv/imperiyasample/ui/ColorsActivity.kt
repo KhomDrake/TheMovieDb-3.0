@@ -262,7 +262,7 @@ fun Colors(colors: List<ColorItem>, finish: () -> Unit) {
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            DefaultTopBar(title = "Colors", finish)
+            DefaultTopBar(title = "Colors", onBackButton = finish)
         }
     ) {
         Column(

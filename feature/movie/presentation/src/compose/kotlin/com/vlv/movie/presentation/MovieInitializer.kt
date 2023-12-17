@@ -5,7 +5,10 @@ import com.vlv.favorite.domain.FavoriteDomainInitializer
 import com.vlv.movie.data.MovieDataInitializer
 import com.vlv.movie.presentation.ui.MovieListingViewModel
 import com.vlv.movie.presentation.ui.detail.MovieDetailViewModel
+import com.vlv.movie.presentation.ui.detail.cast.MovieCastViewModel
+import com.vlv.movie.presentation.ui.detail.review.MovieReviewViewModel
 import com.vlv.util.ModuleInitializer
+import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -16,7 +19,9 @@ class MovieInitializer: ModuleInitializer() {
         get() = listOf(
             module {
                 viewModel { MovieListingViewModel(get()) }
-                viewModel { MovieDetailViewModel(get(), get()) }
+                viewModel { MovieCastViewModel(get()) }
+                viewModel { MovieReviewViewModel(get()) }
+                viewModel { MovieDetailViewModel(androidApplication().resources, get(), get()) }
             }
         )
 

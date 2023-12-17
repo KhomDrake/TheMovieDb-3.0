@@ -1,5 +1,6 @@
 package com.vlv.movie.presentation.ui.detail
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,15 +11,32 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.DetailObject
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
+import com.vlv.movie.R
+import com.vlv.movie.presentation.ui.detail.about.MovieAbout
+import com.vlv.movie.presentation.ui.detail.cast.MovieCast
+import com.vlv.movie.presentation.ui.detail.review.MovieReview
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
+
+enum class MovieDetailPage(
+    @StringRes
+    val title: Int
+) {
+    ABOUT(R.string.movie_about_tab_title),
+    CAST(R.string.movie_cast_tab_title),
+    REVIEW(R.string.movie_review_tab_title),
+    RECOMMENDATION(R.string.movie_recommendation_tab_title)
+}
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -28,18 +46,16 @@ fun MovieDetailContent(
     paddingValues: PaddingValues,
     movieDetailViewModel: MovieDetailViewModel = koinViewModel()
 ) {
-    val scope = rememberCoroutineScope()
-    val tabs = listOf(
-        "About",
-        "Cast",
-        "Review",
-        "Recommendation"
-    )
-    val pagerState = rememberPagerState(pageCount = { tabs.size })
 
     LaunchedEffect(key1 = detailObject.id, block = {
         movieDetailViewModel.movieDetail(detailObject.id)
     })
+
+    val scope = rememberCoroutineScope()
+    val tabs = MovieDetailPage.values()
+    val pagerState = rememberPagerState(pageCount = { tabs.size })
+
+    val detailData by movieDetailViewModel.movieDetailState.collectAsState()
 
     Column(
         modifier = Modifier
@@ -58,15 +74,34 @@ fun MovieDetailContent(
             }
         ) { index, isSelected ->
             val item = tabs[index]
-            TabItem(name = item, isSelected = isSelected)
+            TabItem(name = stringResource(id = item.title), isSelected = isSelected)
         }
 
         HorizontalPager(
             state = pagerState,
             pageSpacing = 16.dp,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            
+            modifier = Modifier.fillMaxSize()
+        ) { index ->
+            when(tabs[index]) {
+                MovieDetailPage.ABOUT -> {
+                    MovieAbout(
+                        response = detailData,
+                        routeNavigation = routeNavigation
+                    )
+                }
+                MovieDetailPage.CAST -> {
+                    MovieCast(
+                        detailObject = detailObject,
+                        routeNavigation = routeNavigation
+                    )
+                }
+                MovieDetailPage.RECOMMENDATION -> {
+
+                }
+                MovieDetailPage.REVIEW -> {
+                    MovieReview(detailObject = detailObject)
+                }
+            }
         }
     }
 

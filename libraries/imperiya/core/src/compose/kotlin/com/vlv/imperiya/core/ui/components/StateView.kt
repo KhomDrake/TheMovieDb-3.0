@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.unit.dp
@@ -25,7 +26,8 @@ fun StateView(
     modifier: Modifier = Modifier,
     title: String? = null,
     body: String? = null,
-    contentDescriptionIcon: String? = null
+    contentDescriptionIcon: String? = null,
+    iconTint: Color = MaterialTheme.colorScheme.tertiary
 ) {
     Column(
         modifier = modifier
@@ -39,7 +41,7 @@ fun StateView(
             contentDescription = contentDescriptionIcon,
             modifier = Modifier
                 .size(96.dp),
-            tint = MaterialTheme.colorScheme.tertiary
+            tint = iconTint
         )
         title?.let {
             Spacer(modifier = Modifier.size(16.dp))

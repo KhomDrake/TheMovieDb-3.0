@@ -16,6 +16,9 @@ import androidx.paging.compose.itemKey
 import com.vlv.common.data.series.Series
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.SeriesPoster
+import com.vlv.common.ui.extension.isFullLoading
+import com.vlv.common.ui.extension.isSingleError
+import com.vlv.common.ui.extension.isSingleLoading
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.common.ui.shimmer.SinglePosterShimmer
 
@@ -28,7 +31,7 @@ fun SeriesPagingGrid(
     seriesItems: LazyPagingItems<Series>,
     routeNavigation: RouteNavigation
 ) {
-    if(seriesItems.loadState.refresh is LoadState.Loading) {
+    if(seriesItems.loadState.isFullLoading()) {
         GridPosterShimmer(
             modifier = modifier,
             count = itemCountInitialLoading,
@@ -54,14 +57,15 @@ fun SeriesPagingGrid(
                 }
 
                 item {
-                    when(seriesItems.loadState.append) {
-                        is LoadState.Loading -> {
+
+                    when {
+                        seriesItems.loadState.isSingleLoading() -> {
                             SinglePosterShimmer(
                                 modifier = Modifier.fillMaxWidth(),
                                 height = 200.dp
                             )
                         }
-                        is LoadState.Error -> {
+                        seriesItems.loadState.isSingleError() -> {
                             // one item error
                         }
                         else -> Unit

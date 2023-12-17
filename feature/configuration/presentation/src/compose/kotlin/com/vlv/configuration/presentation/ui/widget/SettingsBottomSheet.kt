@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
@@ -13,7 +14,6 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,10 +23,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
+import com.vlv.imperiya.core.ui.components.TheMovieDbModalBottomSheet
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,24 +39,26 @@ fun SettingsBottomSheet(
     onDismiss: () -> Unit,
     onClick: (ConfigDataList, ConfigDataItemList) -> Unit
 ) {
-    ModalBottomSheet(
+    TheMovieDbModalBottomSheet(
         modifier = Modifier,
         onDismissRequest = {
             onDismiss.invoke()
         },
         sheetState = sheetState,
-        containerColor = MaterialTheme.colorScheme.background,
-        // Temporary solution
-        windowInsets = WindowInsets(
-            top = 32.dp,
-            bottom = 32.dp
-        )
-    ) {
-        val configDataList = data.data as ConfigDataList
-        BottomSheetContent(data = configDataList, onClick = { configDataItemList ->
-            onClick.invoke(configDataList, configDataItemList)
-        })
-    }
+        content = {
+            val configDataList = data.data as ConfigDataList
+            Text(
+                text = WindowInsets.Companion.navigationBars.getBottom(LocalDensity.current)
+                    .toString(),
+                style = TheMovieDbTypography.SubTitleBoldStyle,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+
+            BottomSheetContent(data = configDataList, onClick = { configDataItemList ->
+                onClick.invoke(configDataList, configDataItemList)
+            })
+        }
+    )
 }
 
 @Composable
@@ -71,13 +75,6 @@ fun BottomSheetContent(
             .fillMaxWidth(),
         contentPadding = PaddingValues(vertical = 12.dp),
         content = {
-            item {
-                Text(
-                    text = data.title.toString(),
-                    style = TheMovieDbTypography.TitleStyle,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-            }
             data.items.forEach { item ->
                 item {
                     BottomSheetItem(
