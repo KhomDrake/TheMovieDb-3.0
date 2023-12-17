@@ -24,6 +24,7 @@ import com.vlv.imperiya.core.ui.components.TabRow
 import com.vlv.movie.R
 import com.vlv.movie.presentation.ui.detail.about.MovieAbout
 import com.vlv.movie.presentation.ui.detail.cast.MovieCast
+import com.vlv.movie.presentation.ui.detail.recommendation.MovieRecommendation
 import com.vlv.movie.presentation.ui.detail.review.MovieReview
 import kotlinx.coroutines.launch
 import org.koin.androidx.compose.koinViewModel
@@ -96,7 +97,10 @@ fun MovieDetailContent(
                     )
                 }
                 MovieDetailPage.RECOMMENDATION -> {
-
+                    MovieRecommendation(
+                        detailObject = detailObject,
+                        routeNavigation = routeNavigation
+                    )
                 }
                 MovieDetailPage.REVIEW -> {
                     MovieReview(detailObject = detailObject)
