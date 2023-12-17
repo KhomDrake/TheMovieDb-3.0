@@ -11,7 +11,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewFontScale
@@ -27,6 +29,15 @@ import com.vlv.imperiya.core.ui.theme.Link
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
+internal enum class WarningViewTags {
+    CLOSE_ICON,
+    PARENT,
+    TITLE,
+    BODY,
+    BUTTON_LINK,
+    WARNING_ICON
+}
+
 @Composable
 fun WarningView(
     modifier: Modifier = Modifier,
@@ -35,7 +46,7 @@ fun WarningView(
     @DrawableRes
     warningIcon: Int = R.drawable.ic_close_error,
     @ColorRes
-    warningIconTint: Int = R.color.color_imperiya_error,
+    warningIconTint: Color = MaterialTheme.colorScheme.error,
     warningIconDescription: String? = null,
     linkActionText: String? = null,
     showCloseIcon: Boolean = true,
@@ -103,6 +114,7 @@ fun WarningView(
     ConstraintLayout(
         constraintSet = constraints,
         modifier = modifier
+            .testTag(WarningViewTags.PARENT.name)
     ) {
         if(showCloseIcon) {
             Icon(
@@ -114,14 +126,16 @@ fun WarningView(
                         onCloseIcon?.invoke()
                     }
                     .padding(16.dp)
-                    .layoutId(closeIconId),
+                    .layoutId(closeIconId)
+                    .testTag(WarningViewTags.CLOSE_ICON.name),
                 tint = MaterialTheme.colorScheme.onBackground
             )
         }
 
         Text(
             modifier = Modifier
-                .layoutId(titleId),
+                .layoutId(titleId)
+                .testTag(WarningViewTags.TITLE.name),
             text = title,
             style = TheMovieDbTypography.TitleStyle,
             color = MaterialTheme.colorScheme.onBackground
@@ -129,7 +143,8 @@ fun WarningView(
 
         Text(
             modifier = Modifier
-                .layoutId(bodyId),
+                .layoutId(bodyId)
+                .testTag(WarningViewTags.BODY.name),
             text = body,
             style = TheMovieDbTypography.ParagraphStyle,
             color = MaterialTheme.colorScheme.onBackground
@@ -146,6 +161,7 @@ fun WarningView(
                         onClickLink?.invoke()
                     }
                     .padding(vertical = 12.dp)
+                    .testTag(WarningViewTags.BUTTON_LINK.name)
             )
         }
 
@@ -154,8 +170,9 @@ fun WarningView(
             contentDescription = warningIconDescription,
             modifier = Modifier
                 .layoutId(warningIconId)
-                .size(96.dp),
-            tint = colorResource(id = warningIconTint)
+                .size(96.dp)
+                .testTag(WarningViewTags.WARNING_ICON.name),
+            tint = warningIconTint
         )
     }
 

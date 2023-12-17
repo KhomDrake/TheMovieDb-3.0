@@ -124,6 +124,8 @@ tests-androidx-core-testing = { group = "androidx.arch.core", name = "core-testi
 tests-androidx-test-core = { group = "androidx.test", name = "core", version.ref = 'androidx-test-version'  }
 tests-androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = 'androidx-test-version'  }
 tests-androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = 'androidx-test-version'  }
+tests-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+tests-compose-ui-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.4" }
 
 [plugins]

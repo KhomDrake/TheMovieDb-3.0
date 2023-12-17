@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -24,6 +25,14 @@ import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+
+internal enum class SmallWarningViewTags {
+    PARENT,
+    TITLE,
+    ICON_INFO,
+    BODY,
+    ACTION_TEXT
+}
 
 @Composable
 fun SmallWarningView(
@@ -41,6 +50,7 @@ fun SmallWarningView(
                 MaterialTheme.colorScheme.tertiaryContainer,
                 RoundedCornerShape(16.dp)
             )
+            .testTag(SmallWarningViewTags.PARENT.name)
     ) {
         Spacer(modifier = Modifier.size(16.dp))
         title?.let {
@@ -59,7 +69,9 @@ fun SmallWarningView(
                             id = R.drawable.ic_info
                         ),
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onTertiaryContainer
+                        tint = MaterialTheme.colorScheme.onTertiaryContainer,
+                        modifier = Modifier
+                            .testTag(SmallWarningViewTags.ICON_INFO.name)
                     )
                 }
 
@@ -67,7 +79,8 @@ fun SmallWarningView(
                     text = title,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = if (showIconInfo) 8.dp else 0.dp),
+                        .padding(start = if (showIconInfo) 8.dp else 0.dp)
+                        .testTag(SmallWarningViewTags.TITLE.name),
                     style = TheMovieDbTypography.SubTitleBoldStyle,
                     color = MaterialTheme.colorScheme.onTertiaryContainer
                 )
@@ -83,7 +96,8 @@ fun SmallWarningView(
                         start = 16.dp,
                         end = 16.dp,
                         top = if (title.isNullOrEmpty()) 0.dp else 12.dp
-                    ),
+                    )
+                    .testTag(SmallWarningViewTags.BODY.name),
                 style = TheMovieDbTypography.ParagraphStyle,
                 color = MaterialTheme.colorScheme.onTertiaryContainer
             )
@@ -100,7 +114,8 @@ fun SmallWarningView(
                 )
                 .clickable {
                     onClickLink?.invoke()
-                },
+                }
+                .testTag(SmallWarningViewTags.ACTION_TEXT.name),
             style = TheMovieDbTypography.LinkStyle
         )
         Spacer(modifier = Modifier.size(16.dp))

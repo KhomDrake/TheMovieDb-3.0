@@ -72,6 +72,8 @@ dependencies {
     composeApi(libs.androidx.compose.tooling.preview)
     composeImplementation(libs.androidx.compose.tooling.debug)
 
+    debugImplementation(libs.tests.compose.ui.manifest)
+
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')
 
