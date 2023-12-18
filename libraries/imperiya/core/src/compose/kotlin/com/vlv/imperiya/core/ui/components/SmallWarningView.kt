@@ -26,7 +26,7 @@ import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
-internal enum class SmallWarningViewTags {
+enum class SmallWarningViewTags {
     PARENT,
     TITLE,
     ICON_INFO,

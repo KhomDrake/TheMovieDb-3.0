@@ -21,7 +21,7 @@ import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
-internal enum class StateViewTags {
+enum class StateViewTags {
     ICON,
     TITLE,
     BODY,

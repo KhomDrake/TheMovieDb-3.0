@@ -14,6 +14,8 @@ import com.vlv.configuration.domain.model.SectionsData
 import com.vlv.configuration.domain.usecase.SettingsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -23,7 +25,10 @@ class SettingsViewModel(
     private val useCase: SettingsUseCase
 ) : ViewModel() {
 
-    val state = MutableStateFlow<Response<List<SectionUIItem>>>(Response())
+    private val _state = MutableStateFlow<Response<List<SectionUIItem>>>(Response())
+
+    val state: StateFlow<Response<List<SectionUIItem>>>
+        get() = _state.asStateFlow()
 
     fun settings() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -34,13 +39,13 @@ class SettingsViewModel(
                 .execute()
                 .responseStateFlow
                 .mapData {
-                    it?.toSectionUIItems()
+                    it?.toSectionUIItems() ?: listOf()
                 }
                 .catch {
-                    state.emitError(it)
+                    _state.emitError(it)
                 }
                 .collectLatest {
-                    state.emit(it)
+                    _state.emit(it)
                 }
         }
     }
@@ -48,10 +53,10 @@ class SettingsViewModel(
     fun setData(sectionUIItem: SectionUIItem) {
         viewModelScope.launch(Dispatchers.IO) {
             runCatching {
-                val data = state.value.data ?: return@launch
+                val data = _state.value.data ?: return@launch
 
-                state.emit(
-                    state.value.copy(
+                _state.emit(
+                    _state.value.copy(
                         data = data.map {
                             if(it.id == sectionUIItem.id) {
                                 useCase.setConfigValue(

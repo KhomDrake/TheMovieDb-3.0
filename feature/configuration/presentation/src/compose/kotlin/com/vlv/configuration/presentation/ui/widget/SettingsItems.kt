@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -55,14 +56,15 @@ fun SettingsItems(
         ),
         verticalArrangement = Arrangement.spacedBy(12.dp),
         content = {
-            item {
-                Text(text = WindowInsets.navigationBars.getBottom(LocalDensity.current).toString(), style = TheMovieDbTypography.SubTitleBoldStyle, color = MaterialTheme.colorScheme.onBackground)
-            }
             items.forEach { section ->
                 item {
                     when(section.type) {
                         SectionUIType.HEADER -> {
-                            SettingHeader(title = section.title.toString())
+                            SettingHeader(
+                                title = section.title.toString(),
+                                modifier = Modifier
+                                    .testTag(section.id.toString())
+                            )
                         }
                         SectionUIType.SWITCH -> {
                             SettingsItemSwitch(
@@ -73,7 +75,9 @@ fun SettingsItems(
                                             data = value
                                         )
                                     )
-                                }
+                                },
+                                modifier = Modifier
+                                    .testTag(section.id.toString())
                             )
                         }
                         SectionUIType.LIST -> {
@@ -87,6 +91,7 @@ fun SettingsItems(
                                     .padding(
                                         top = 8.dp
                                     )
+                                    .testTag(section.id.toString())
                             )
                         }
                     }
@@ -113,7 +118,9 @@ fun SettingsItems(
                         )
                     )
                 )
-            }
+            },
+            modifier = Modifier
+                .testTag("SettingsBottomSheet")
         )
     }
 }

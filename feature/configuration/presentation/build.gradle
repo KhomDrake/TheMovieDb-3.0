@@ -70,6 +70,9 @@ dependencies {
     composeImplementation(libs.androidx.compose.tooling.preview)
     composeImplementation(libs.koin.compose)
 
+    debugImplementation(libs.tests.compose.ui.manifest)
+
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')
+    androidTestImplementation project(':core:test')
 }

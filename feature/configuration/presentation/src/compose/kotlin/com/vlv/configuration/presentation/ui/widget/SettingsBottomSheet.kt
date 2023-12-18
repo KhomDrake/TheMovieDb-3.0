@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.domain.model.ConfigDataItemList
@@ -37,10 +38,11 @@ fun SettingsBottomSheet(
     data: SectionUIItem,
     sheetState: SheetState,
     onDismiss: () -> Unit,
-    onClick: (ConfigDataList, ConfigDataItemList) -> Unit
+    onClick: (ConfigDataList, ConfigDataItemList) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     TheMovieDbModalBottomSheet(
-        modifier = Modifier,
+        modifier = modifier,
         onDismissRequest = {
             onDismiss.invoke()
         },
@@ -48,8 +50,7 @@ fun SettingsBottomSheet(
         content = {
             val configDataList = data.data as ConfigDataList
             Text(
-                text = WindowInsets.Companion.navigationBars.getBottom(LocalDensity.current)
-                    .toString(),
+                text = data.title.toString(),
                 style = TheMovieDbTypography.SubTitleBoldStyle,
                 color = MaterialTheme.colorScheme.onBackground
             )
@@ -82,7 +83,9 @@ fun BottomSheetContent(
                         item = item,
                         onCheckedChange = {
                             selectedItem = it
-                        }
+                        },
+                        modifier = Modifier
+                            .testTag(item.id.toString())
                     )
                 }
             }
@@ -103,7 +106,9 @@ fun BottomSheetContent(
                     Text(
                         text = "CONFIRM",
                         style = TheMovieDbTypography.SubTitleBoldStyle,
-                        color = MaterialTheme.colorScheme.onSecondary
+                        color = MaterialTheme.colorScheme.onSecondary,
+                        modifier = Modifier
+                            .testTag("BottomSheetButton")
                     )
                 }
             }
@@ -115,11 +120,12 @@ fun BottomSheetContent(
 fun BottomSheetItem(
     selectedItem: ConfigDataItemList,
     item: ConfigDataItemList,
-    onCheckedChange: (ConfigDataItemList) -> Unit
+    onCheckedChange: (ConfigDataItemList) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val text = item.title.toString()
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clickable {
                 onCheckedChange.invoke(item)

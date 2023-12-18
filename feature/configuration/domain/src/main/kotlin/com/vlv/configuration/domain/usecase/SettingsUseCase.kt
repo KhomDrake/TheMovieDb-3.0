@@ -13,7 +13,7 @@ class SettingsUseCase(
     private val repository: ConfigurationRepository
 ) {
 
-    suspend fun newConfig() : SettingsResponse {
+    private suspend fun newConfig() : SettingsResponse {
         val config = repository.getConfig()
 
         return SettingsResponse(config)

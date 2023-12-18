@@ -29,7 +29,7 @@ import com.vlv.imperiya.core.ui.theme.Link
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
-internal enum class WarningViewTags {
+enum class WarningViewTags {
     CLOSE_ICON,
     PARENT,
     TITLE,

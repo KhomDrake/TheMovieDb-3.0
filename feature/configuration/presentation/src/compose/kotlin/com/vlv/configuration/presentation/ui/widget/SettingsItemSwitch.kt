@@ -14,10 +14,11 @@ import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 @Composable
 fun SettingsItemSwitch(
     sectionData: SectionUIItem,
-    onClick: (SectionUIItem, Boolean) -> Unit
+    onClick: (SectionUIItem, Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {

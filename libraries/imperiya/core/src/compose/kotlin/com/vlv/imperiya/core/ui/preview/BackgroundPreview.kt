@@ -8,10 +8,11 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun BackgroundPreview(
-    content: @Composable () -> Unit
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit = {}
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .background(MaterialTheme.colorScheme.background)
     ) {
         content.invoke()
