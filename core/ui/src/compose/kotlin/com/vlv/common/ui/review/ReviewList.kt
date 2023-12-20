@@ -5,13 +5,20 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.vlv.common.data.review.Review
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
+import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+import com.vlv.ui.R
 
 @Composable
 fun ReviewList(
@@ -21,10 +28,20 @@ fun ReviewList(
         horizontal = 16.dp,
         vertical = 12.dp
     ),
-    verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(12.dp)
+    verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(12.dp),
+    titleColor: Color = MaterialTheme.colorScheme.onBackground,
+    titleTextStyle: TextStyle = TheMovieDbTypography.SubTitleBoldStyle
 ) {
     LazyColumn(
         content = {
+            item {
+                Text(
+                    text = stringResource(id = R.string.common_cast_title, reviews.size),
+                    style = titleTextStyle,
+                    color = titleColor
+                )
+            }
+
             items(reviews) { review ->
                 ReviewItem(
                     review = review,

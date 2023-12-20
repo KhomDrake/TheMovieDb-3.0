@@ -1,4 +1,4 @@
-package com.vlv.movie.presentation.ui.detail.about
+package com.vlv.common.ui.about
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row

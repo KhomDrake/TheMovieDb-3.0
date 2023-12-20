@@ -5,8 +5,13 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -16,6 +21,8 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
+import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+import com.vlv.ui.R
 
 @Composable
 fun CastList(
@@ -27,12 +34,22 @@ fun CastList(
         vertical = 12.dp
     ),
     avatarSize: Dp = 48.dp,
-    verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(12.dp)
+    verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(12.dp),
+    titleColor: Color = MaterialTheme.colorScheme.onBackground,
+    titleTextStyle: TextStyle = TheMovieDbTypography.SubTitleBoldStyle
 ) {
 
     LazyColumn(
         modifier = modifier,
         content = {
+            item {
+                Text(
+                    text = stringResource(id = R.string.common_cast_title, castItems.size),
+                    style = titleTextStyle,
+                    color = titleColor
+                )
+            }
+            
             items(castItems) { cast ->
                 CastItem(
                     cast = cast,

@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.vlv.common.ui.DetailObject
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.review.ReviewList
+import com.vlv.common.ui.review.ReviewShimmer
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import com.vlv.imperiya.core.ui.components.StateView
 import com.vlv.movie.R
@@ -69,7 +70,11 @@ fun MovieReview(
             )
         },
         loading = {
-
+            ReviewShimmer(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+            )
         }
     )
 }

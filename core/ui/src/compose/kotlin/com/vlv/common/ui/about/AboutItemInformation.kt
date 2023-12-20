@@ -1,4 +1,4 @@
-package com.vlv.movie.presentation.ui.detail.about
+package com.vlv.common.ui.about
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,9 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
-import com.vlv.movie.R
-import com.vlv.movie.presentation.data.AboutItem
-import com.vlv.movie.presentation.data.Information
+import com.vlv.ui.R
 
 @Composable
 fun AboutItemInformation(
@@ -55,7 +53,7 @@ fun AboutItemInformationPreview() {
             AboutItemInformation(
                 item = AboutItem.InformationItem(
                     Information(
-                        title = R.string.movie_text_companies,
+                        title = R.string.common_error_title,
                         data = "Municipal Pictures, Skydance"
                     )
                 )

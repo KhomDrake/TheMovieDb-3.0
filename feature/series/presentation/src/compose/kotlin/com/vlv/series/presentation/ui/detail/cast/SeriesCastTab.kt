@@ -1,4 +1,4 @@
-package com.vlv.movie.presentation.ui.detail.cast
+package com.vlv.series.presentation.ui.detail.cast
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,15 +16,15 @@ import com.vlv.common.ui.extension.handle
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MovieCast(
+fun SeriesCastTab(
     detailObject: DetailObject,
     routeNavigation: RouteNavigation,
-    viewModel: MovieCastViewModel = koinViewModel()
+    viewModel: SeriesCastViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsState()
 
     LaunchedEffect(key1 = detailObject.id, block = {
-        viewModel.movieCast(detailObject.id)
+        viewModel.cast(detailObject.id)
     })
 
     state.handle(
@@ -47,4 +47,5 @@ fun MovieCast(
             )
         }
     )
+
 }

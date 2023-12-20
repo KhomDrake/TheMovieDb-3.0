@@ -1,4 +1,4 @@
-package com.vlv.movie.presentation.ui.detail.about
+package com.vlv.common.ui.about
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
-import com.vlv.movie.presentation.data.PillItem
 
 @Composable
 fun AboutItemPills(
