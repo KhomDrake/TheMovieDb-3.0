@@ -42,6 +42,7 @@ androidx-test-version = "1.2.0"
 agp = "7.4.1"
 ksp-version = "1.5.31-1.0.0"
 org-jetbrains-kotlin-android = "1.8.0"
+lifecycle-runtime-ktx = "2.6.2"
 
 
 [libraries]
@@ -127,10 +128,14 @@ tests-androidx-test-runner = { group = "androidx.test", name = "runner", version
 tests-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 tests-compose-ui-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.4" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+ui = { group = "androidx.compose.ui", name = "ui" }
+ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 
 [plugins]
 com-android-library = { id = "com.android.library", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
 com-google-ksp-plugin = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
+com-android-application = { id = "com.android.application", version.ref = "agp" }
 
 [bundles]

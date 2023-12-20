@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id "jacoco"
+    id 'kotlin-parcelize'
+}
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
+
+
+android {
+    namespace 'com.vlv.libraries.sample'
+    compileSdk config.compileSdk
+
+    defaultConfig {
+        applicationId "com.vlv.libraries.sample"
+        minSdk config.minSdk
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions += "uitool"
+    productFlavors {
+        create("compose") {
+            dimension = "uitool"
+            applicationIdSuffix = ".compose"
+            versionNameSuffix = "-compose"
+        }
+        create("views") {
+            dimension = "uitool"
+            applicationIdSuffix = ".views"
+            versionNameSuffix = "-views"
+        }
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation project(':libraries:imperiya:core')
+    implementation project(':tools:util')
+    implementation project(':tools:extensions')
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.google.material)
+    implementation(libs.toolkit.delegate)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.startup)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
+
+    // Compose
+    composeImplementation(libs.androidx.compose.activity)
+    composeImplementation(libs.androidx.compose.livedata)
+    composeImplementation(libs.androidx.compose.tooling.preview)
+}
