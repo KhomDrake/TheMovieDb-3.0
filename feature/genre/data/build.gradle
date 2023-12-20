@@ -49,6 +49,5 @@ dependencies {
     testImplementation libs.tests.junit
 
     testImplementation project(':tools:test')
-    androidTestImplementation project(':feature:genre:data')
     androidTestImplementation project(':tools:test')
 }

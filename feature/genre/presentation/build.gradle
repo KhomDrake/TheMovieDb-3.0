@@ -28,6 +28,14 @@ android {
         }
     }
 
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -55,6 +63,15 @@ dependencies {
     implementation project(':feature:genre:domain')
     implementation project(':tools:extensions')
     implementation project(':core:ui')
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material3)
+
+    // Compose
+    composeImplementation(libs.androidx.compose.activity)
+    composeImplementation(libs.androidx.compose.livedata)
+    composeImplementation(libs.androidx.compose.tooling.preview)
+    composeImplementation(libs.koin.compose)
+    composeImplementation(libs.androidx.compose.paging)
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')

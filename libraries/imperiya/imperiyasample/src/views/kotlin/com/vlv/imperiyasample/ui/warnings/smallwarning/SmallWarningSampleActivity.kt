@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.imperiya.ui.warning.SmallWarningView
+import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.imperiyasample.R
 
 class SmallWarningSampleActivity : AppCompatActivity(R.layout.activity_small_warning_sample) {

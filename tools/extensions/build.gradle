@@ -51,7 +51,7 @@ dependencies {
     implementation(libs.toolkit.delegate)
     implementation(libs.toolkit.livedata)
     implementation(libs.toolkit.statemachine)
-    implementation(libs.coil)
+    implementation(libs.coil.core)
     implementation(libs.google.material)
     implementation(libs.threetenabp)
     implementation(libs.koin.android)

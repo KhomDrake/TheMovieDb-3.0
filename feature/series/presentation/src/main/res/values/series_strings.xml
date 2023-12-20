@@ -35,6 +35,7 @@
     <string name="series_recommendation_tab_title">Recommendation</string>
     <string name="series_empty_state_recommendation">None recommendation found</string>
     <string name="series_season_description">%1$d episodes - %2$s</string>
+    <string name="series_season_description_without_date">%1$d episodes</string>
     <string name="series_description">Description: %s</string>
     <string name="series_added_to_favorite">Tv show added to favorites</string>
     <string name="series_add_favorite">add tv show to favorites</string>

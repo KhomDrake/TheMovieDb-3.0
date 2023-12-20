@@ -59,7 +59,7 @@ data class SeriesDetailResponse(
     @Json(name = "production_countries")
     val productionCountries: List<ProductionCountry>,
     @Json(name = "seasons")
-    val seasons: List<Season>,
+    val seasons: List<SeasonResponse>,
     @Json(name = "spoken_languages")
     val spokenLanguages: List<SpokenLanguage>,
     @Json(name = "status")
@@ -183,7 +183,7 @@ data class ProductionCountry(
 )
 
 @JsonClass(generateAdapter = true)
-data class Season(
+data class SeasonResponse(
     @Json(name = "air_date")
     val airDate: LocalDate?,
     @Json(name = "episode_count")

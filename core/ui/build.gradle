@@ -28,6 +28,14 @@ android {
         }
     }
 
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -49,14 +57,25 @@ android {
 
 dependencies {
 
-    implementation project(':libraries:imperiya:core')
+    viewsImplementation project(':libraries:imperiya:core')
+    composeImplementation project(':libraries:imperiya:core')
     implementation project(':data:network')
+    implementation project(":libraries:bondsmith")
     implementation project(":tools:extensions")
     implementation project(':data:database')
     implementation project(':data:local')
     implementation project(':feature:search:domain')
     implementation project(':data:common')
 
+    // Compose
+    composeImplementation(libs.androidx.compose.activity)
+    composeImplementation(libs.androidx.compose.livedata)
+    composeImplementation(libs.androidx.compose.tooling.preview)
+    composeImplementation(libs.koin.compose)
+    composeImplementation(libs.androidx.compose.paging)
+    composeApi(libs.compose.shimmer)
+
+    // Views
     viewsApi(libs.shimmer)
 
     api(libs.androidx.navigation.fragment.ktx)
@@ -72,6 +91,7 @@ dependencies {
     api(libs.toolkit.delegate)
     api(libs.toolkit.livedata)
     api(libs.toolkit.statemachine)
-    api(libs.coil)
+    api(libs.coil.core)
+    api(libs.coil.compose)
     api(libs.google.material)
 }

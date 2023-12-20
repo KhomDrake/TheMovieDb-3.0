@@ -17,7 +17,7 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.ui.R
 import com.vlv.common.data.cast.toPeople
 import com.vlv.common.ui.cast.adapter.CastAdapter
-import com.vlv.common.ui.route.toPeopleDetail
+import com.vlv.common.route.toPeopleDetail
 import com.vlv.extensions.State
 import com.vlv.extensions.stateData
 import com.vlv.extensions.stateError

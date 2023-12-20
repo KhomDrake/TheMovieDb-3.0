@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import br.com.arch.toolkit.delegate.extraProvider
@@ -14,14 +15,14 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.ui.AppBarState
 import com.vlv.common.ui.AppBarStateChangeListener
-import com.vlv.common.ui.FINISH_AFTER_TRANSITION_EXTRA
+import com.vlv.common.route.FINISH_AFTER_TRANSITION_EXTRA
 import com.vlv.common.ui.extension.loadUrl
-import com.vlv.common.ui.route.EXTRA_PEOPLE
+import com.vlv.common.route.EXTRA_PEOPLE
 import com.vlv.data.network.database.data.ImageType
+import com.vlv.extensions.getAttrColor
 import com.vlv.people.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.ref.WeakReference
@@ -131,31 +132,39 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
             AppBarStateChangeListener(
                 WeakReference(toolbar)
             ) { _, state ->
-                val resource = when(state) {
+                val color = when(state) {
                     AppBarState.COLLAPSED -> {
-                        com.vlv.imperiya.core.R.color.imperiya_color_primary
+                        getAttrColor(org.koin.android.R.attr.colorPrimary)
                     }
                     AppBarState.FULL_COLLAPSED -> {
-                        com.vlv.imperiya.core.R.color.imperiya_color_background
+                        ContextCompat.getColor(
+                            this,
+                            com.vlv.imperiya.core.R.color.color_imperiya_background
+                        )
                     }
                     AppBarState.EXPANDED, AppBarState.IDLE, AppBarState.COLLAPSING -> {
-                        com.vlv.imperiya.core.R.color.imperiya_color_transparent
+                        ContextCompat.getColor(
+                            this,
+                            com.vlv.imperiya.core.R.color.imperiya_color_transparent
+                        )
                     }
                 }
 
                 when(state) {
                     AppBarState.EXPANDED, AppBarState.COLLAPSING -> showExpanded()
-                    AppBarState.COLLAPSED -> showCollapsed()
+                    AppBarState.COLLAPSED -> showCollapsed(fullCollapsed = false)
+                    AppBarState.FULL_COLLAPSED -> showCollapsed(fullCollapsed = true)
                     else -> Unit
                 }
 
-                appBar.setStatusBarForegroundResource(resource)
-                collapsing.setStatusBarScrimResource(resource)
+                appBar.setStatusBarForegroundColor(color)
+                collapsing.setContentScrimColor(color)
             })
     }
 
-    private fun showCollapsed() {
+    private fun showCollapsed(fullCollapsed: Boolean) {
         val people = people ?: return
+        collapsing.isInvisible = fullCollapsed
         collapsing.title = people.name
         title.text = people.name
         job.text = people.department

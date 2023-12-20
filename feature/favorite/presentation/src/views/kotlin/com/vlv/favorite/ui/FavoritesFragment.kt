@@ -8,7 +8,7 @@ import br.com.arch.toolkit.delegate.extraProvider
 import br.com.arch.toolkit.delegate.viewProvider
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.vlv.common.ui.route.FAVORITE_TYPE_EXTRA
+import com.vlv.common.route.FAVORITE_TYPE_EXTRA
 import com.vlv.data.network.database.data.FavoriteType
 import com.vlv.favorite.R
 import com.vlv.favorite.ui.adapter.FavoritesAdapter

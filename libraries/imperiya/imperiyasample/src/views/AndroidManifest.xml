@@ -51,6 +51,14 @@
             android:name=".ui.stateview.StateViewSampleActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false" />
+        <activity
+            android:name=".ui.ColorsActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ColorsDynamicActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false" />
     </application>
 
 </manifest>

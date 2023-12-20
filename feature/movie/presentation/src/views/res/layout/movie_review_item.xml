@@ -37,7 +37,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         tools:text="Domingo, 29 de novembro de 2020"
-        android:textColor="@color/imperiya_sub_title2"
+        android:textColor="@color/color_imperiya_on_background"
         style="@style/Imperiya.Style.Text.Subtitle"
         app:layout_constraintTop_toBottomOf="@id/person_name"
         app:layout_constraintStart_toEndOf="@id/avatar"/>
@@ -58,7 +58,7 @@
         android:maxLines="3"
         android:ellipsize="end"
         tools:text="dalskdjasoidjas lkdaslkdjaslkdjasldj aslkdjsa dklasd aslkdj aslkdjaslkd jaslkdjsalkdasjlk djsalkd salkdjsalk dasjlkdsaj dlkasjdlksajdslakdj aslkdjaslkdjaslkdadad asdas dasd asdsad..."
-        android:textColor="@color/imperiya_sub_title2"
+        android:textColor="@color/color_imperiya_on_background"
         style="@style/Imperiya.Style.Text.Paragraph.Big"
         app:layout_constraintTop_toBottomOf="@id/bottom"
         app:layout_constraintStart_toStartOf="parent"

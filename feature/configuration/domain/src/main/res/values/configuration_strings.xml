@@ -2,7 +2,9 @@
 <resources>
 
     <string name="configuration_language_default">en</string>
+    <string name="configuration_language_name_default">English</string>
     <string name="configuration_country_default">US</string>
+    <string name="configuration_country_name_default">United States</string>
 
     <string name="configuration_logo_title">Choose logo image resolution</string>
     <string name="configuration_backdrop_title">Choose backdrop image resolution</string>
@@ -10,7 +12,6 @@
     <string name="configuration_poster_title">Choose poster image resolution</string>
     <string name="configuration_language_title">Choose language</string>
     <string name="configuration_country_title">Choose country</string>
-
 
     <string name="configuration_options_header_general">General</string>
     <string name="configuration_options_header_image_definition">Image Definition</string>
@@ -20,17 +21,17 @@
     <string name="configuration_options_item_description">Open configuration change</string>
     <string name="configuration_options_item_adult_content_title">Show adult content</string>
     <string name="configuration_options_item_language_title">Languages</string>
-    <string name="configuration_options_item_language_body">Language chosen: %s</string>
+    <string name="configuration_options_item_language_body">Language chosen:</string>
     <string name="configuration_options_item_region_title">Region</string>
-    <string name="configuration_options_item_region_body">Region chosen: %s</string>
+    <string name="configuration_options_item_region_body">Region chosen:</string>
     <string name="configuration_options_item_backdrop_title">Backdrop image definition</string>
-    <string name="configuration_options_item_backdrop_body">Definition chosen: %s</string>
+    <string name="configuration_options_item_backdrop_body">Definition chosen:</string>
     <string name="configuration_options_item_logo_title">Logo image definition</string>
-    <string name="configuration_options_item_logo_body">Definition chosen: %s</string>
+    <string name="configuration_options_item_logo_body">Definition chosen:</string>
     <string name="configuration_options_item_poster_title">Poster image definition</string>
-    <string name="configuration_options_item_poster_body">Definition chosen: %s</string>
+    <string name="configuration_options_item_poster_body">Definition chosen:</string>
     <string name="configuration_options_item_profile_title">Profile image definition</string>
-    <string name="configuration_options_item_profile_body">Definition chosen: %s</string>
+    <string name="configuration_options_item_profile_body">Definition chosen:</string>
 
     <!--  Backdrop  -->
     <string name="configuration_backdrop_low">Low</string>
@@ -61,5 +62,24 @@
     <string name="configuration_profile_medium">medium</string>
     <string name="configuration_profile_high">High</string>
     <string name="configuration_profile_original">original</string>
+
+    <!-- Bottom Sheet -->
+    <string name="configuration_bottom_sheet_language_title">Languages</string>
+    <string name="configuration_bottom_sheet_language_body">Chosen language</string>
+
+    <string name="configuration_bottom_sheet_region_title">Regions</string>
+    <string name="configuration_bottom_sheet_region_body">Chosen region</string>
+
+    <string name="configuration_bottom_sheet_logo_title">Logo image quality</string>
+    <string name="configuration_bottom_sheet_logo_body">Chosen logo image quality</string>
+
+    <string name="configuration_bottom_sheet_backdrop_title">Backdrop image quality</string>
+    <string name="configuration_bottom_sheet_backdrop_body">Chosen backdrop image quality</string>
+
+    <string name="configuration_bottom_sheet_poster_title">Poster image quality</string>
+    <string name="configuration_bottom_sheet_poster_body">Chosen poster image quality</string>
+
+    <string name="configuration_bottom_sheet_profile_title">Profile image quality</string>
+    <string name="configuration_bottom_sheet_profile_body">Chosen profile image quality</string>
 
 </resources>

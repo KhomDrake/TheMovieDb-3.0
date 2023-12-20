@@ -14,6 +14,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/small_warning_title"
+            android:textColor="@color/color_imperiya_on_secondary"
             style="@style/Imperiya.Style.Text.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,6 +23,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/small_warning_body"
+            android:textColor="@color/color_imperiya_on_secondary"
             style="@style/Imperiya.Style.Text.Paragraph"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -9,9 +9,8 @@ import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.common.ui.adapter.movie.MovieLoaderAdapter
 import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
-import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.common.route.toMovieDetail
 import com.vlv.common.ui.search.SearchActivity
-import com.vlv.extensions.*
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.movie.R

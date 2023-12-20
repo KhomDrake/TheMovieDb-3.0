@@ -8,7 +8,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.MovieListType
-import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
+import com.vlv.common.route.MOVIES_LISTING_TYPE_EXTRA
 import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.themoviedb.R
 import com.vlv.movie.data.repository.MovieRepository

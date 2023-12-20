@@ -24,6 +24,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,6 +48,8 @@ dependencies {
     implementation(libs.toolkit.livedata)
     implementation(libs.androidx.startup)
     implementation(libs.squareup.moshi.kotlin)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material3)
 
     debugApi(libs.tests.androidx.fragment.testing)
 
@@ -60,4 +71,5 @@ dependencies {
     api(libs.tests.androidx.junit)
     api(libs.koin.android)
     api(libs.tests.junit)
+    api(libs.tests.compose.ui.test)
 }

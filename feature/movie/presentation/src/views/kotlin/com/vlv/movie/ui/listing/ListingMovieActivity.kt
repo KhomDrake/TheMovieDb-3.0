@@ -12,8 +12,8 @@ import com.vlv.common.ui.adapter.movie.MovieLoaderAdapter
 import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
 import com.vlv.common.ui.adapter.movie.VIEW_TYPE_MOVIE
 import com.vlv.common.ui.listing.ListingItemsActivity
-import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
-import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.common.route.MOVIES_LISTING_TYPE_EXTRA
+import com.vlv.common.route.toMovieDetail
 import com.vlv.movie.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged

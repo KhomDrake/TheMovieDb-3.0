@@ -35,6 +35,14 @@ android {
         }
     }
 
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -46,6 +54,7 @@ android {
 
 dependencies {
 
+    implementation(project(':tools:extensions'))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
@@ -54,6 +63,16 @@ dependencies {
     implementation(libs.toolkit.statemachine)
     implementation(libs.shimmer)
     implementation(libs.pagerindicator)
+    api(platform(libs.androidx.compose.bom))
+    api(libs.androidx.compose.material3)
+
+    composeApi(libs.androidx.compose.activity)
+    composeApi(libs.androidx.compose.livedata)
+    composeApi(libs.androidx.compose.constraintlayout)
+    composeApi(libs.androidx.compose.tooling.preview)
+    composeImplementation(libs.androidx.compose.tooling.debug)
+
+    debugImplementation(libs.tests.compose.ui.manifest)
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')

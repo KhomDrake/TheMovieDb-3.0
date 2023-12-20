@@ -1,5 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="color_imperiya_primary">@color/color_imperiya_light_primary</color>
+    <color name="color_imperiya_on_primary">@color/color_imperiya_light_onPrimary</color>
+    <color name="color_imperiya_primary_container">@color/color_imperiya_light_primaryContainer</color>
+    <color name="color_imperiya_on_primary_container">@color/color_imperiya_light_onPrimaryContainer</color>
+    <color name="color_imperiya_secondary">@color/color_imperiya_light_secondary</color>
+    <color name="color_imperiya_on_secondary">@color/color_imperiya_light_onSecondary</color>
+    <color name="color_imperiya_secondary_container">@color/color_imperiya_light_secondaryContainer</color>
+    <color name="color_imperiya_on_secondary_container">@color/color_imperiya_light_onSecondaryContainer</color>
+    <color name="color_imperiya_tertiary">@color/color_imperiya_light_tertiary</color>
+    <color name="color_imperiya_on_tertiary">@color/color_imperiya_light_onTertiary</color>
+    <color name="color_imperiya_tertiary_container">@color/color_imperiya_light_tertiaryContainer</color>
+    <color name="color_imperiya_on_tertiary_container">@color/color_imperiya_light_onTertiaryContainer</color>
+    <color name="color_imperiya_error">@color/color_imperiya_light_error</color>
+    <color name="color_imperiya_error_container">@color/color_imperiya_light_errorContainer</color>
+    <color name="color_imperiya_on_error">@color/color_imperiya_light_onError</color>
+    <color name="color_imperiya_on_error_container">@color/color_imperiya_light_onErrorContainer</color>
+    <color name="color_imperiya_background">@color/color_imperiya_light_background</color>
+    <color name="color_imperiya_on_background">@color/color_imperiya_light_onBackground</color>
+    <color name="color_imperiya_surface">@color/color_imperiya_light_surface</color>
+    <color name="color_imperiya_on_surface">@color/color_imperiya_light_onSurface</color>
+    <color name="color_imperiya_surface_variant">@color/color_imperiya_light_surfaceVariant</color>
+    <color name="color_imperiya_on_surface_variant">@color/color_imperiya_light_onSurfaceVariant</color>
+    <color name="color_imperiya_outline">@color/color_imperiya_light_outline</color>
+    <color name="color_imperiya_inverse_on_surface">@color/color_imperiya_light_inverseOnSurface</color>
+    <color name="color_imperiya_inverse_surface">@color/color_imperiya_light_inverseSurface</color>
+    <color name="color_imperiya_inverse_primary">@color/color_imperiya_light_inversePrimary</color>
+    <color name="color_imperiya_shadow">@color/color_imperiya_light_shadow</color>
+    <color name="color_imperiya_surface_tint">@color/color_imperiya_light_surfaceTint</color>
+    <color name="color_imperiya_outline_variant">@color/color_imperiya_light_outlineVariant</color>
+    <color name="color_imperiya_scrim">@color/color_imperiya_light_scrim</color>
+    <color name="color_imperiya_hint_tertiary">#CCFFFFFF</color>
+
+    <!--  Theme Light  -->
+    <color name="color_imperiya_light_primary">#006686</color>
+    <color name="color_imperiya_light_onPrimary">#FFFFFF</color>
+    <color name="color_imperiya_light_primaryContainer">#C0E8FF</color>
+    <color name="color_imperiya_light_onPrimaryContainer">#001E2B</color>
+    <color name="color_imperiya_light_secondary">#1D6FBF</color>
+    <color name="color_imperiya_light_onSecondary">#FFFFFF</color>
+    <color name="color_imperiya_light_secondaryContainer">#D3E3FF</color>
+    <color name="color_imperiya_light_onSecondaryContainer">#001C39</color>
+    <color name="color_imperiya_light_tertiary">#006684</color>
+    <color name="color_imperiya_light_onTertiary">#FFFFFF</color>
+    <color name="color_imperiya_light_tertiaryContainer">#BDE9FF</color>
+    <color name="color_imperiya_light_onTertiaryContainer">#001F2A</color>
+    <color name="color_imperiya_light_error">#BA1A1A</color>
+    <color name="color_imperiya_light_errorContainer">#FFDAD6</color>
+    <color name="color_imperiya_light_onError">#FFFFFF</color>
+    <color name="color_imperiya_light_onErrorContainer">#410002</color>
+    <color name="color_imperiya_light_background">#FBFCFE</color>
+    <color name="color_imperiya_light_onBackground">#191C1E</color>
+    <color name="color_imperiya_light_surface">#FBFCFE</color>
+    <color name="color_imperiya_light_onSurface">#191C1E</color>
+    <color name="color_imperiya_light_surfaceVariant">#DCE3E9</color>
+    <color name="color_imperiya_light_onSurfaceVariant">#40484C</color>
+    <color name="color_imperiya_light_outline">#71787D</color>
+    <color name="color_imperiya_light_inverseOnSurface">#F0F1F3</color>
+    <color name="color_imperiya_light_inverseSurface">#2E3133</color>
+    <color name="color_imperiya_light_inversePrimary">#71D2FF</color>
+    <color name="color_imperiya_light_shadow">#000000</color>
+    <color name="color_imperiya_light_surfaceTint">#006686</color>
+    <color name="color_imperiya_light_outlineVariant">#C0C7CD</color>
+    <color name="color_imperiya_light_scrim">#000000</color>
+
+    <!--  Theme Dark  -->
+    <color name="color_imperiya_dark_primary">#71D2FF</color>
+    <color name="color_imperiya_dark_onPrimary">#003547</color>
+    <color name="color_imperiya_dark_primaryContainer">#004D66</color>
+    <color name="color_imperiya_dark_onPrimaryContainer">#C0E8FF</color>
+    <color name="color_imperiya_dark_secondary">#96C2FF</color>
+    <color name="color_imperiya_dark_onSecondary">#00315D</color>
+    <color name="color_imperiya_dark_secondaryContainer">#004883</color>
+    <color name="color_imperiya_dark_onSecondaryContainer">#D3E3FF</color>
+    <color name="color_imperiya_dark_tertiary">#67D3FF</color>
+    <color name="color_imperiya_dark_onTertiary">#003546</color>
+    <color name="color_imperiya_dark_tertiaryContainer">#004D64</color>
+    <color name="color_imperiya_dark_onTertiaryContainer">#BDE9FF</color>
+    <color name="color_imperiya_dark_error">#FF6B6B</color>
+    <color name="color_imperiya_dark_errorContainer">#93000A</color>
+    <color name="color_imperiya_dark_onError">#690005</color>
+    <color name="color_imperiya_dark_onErrorContainer">#FFDAD6</color>
+    <color name="color_imperiya_dark_background">#191C1E</color>
+    <color name="color_imperiya_dark_onBackground">#E1E2E5</color>
+    <color name="color_imperiya_dark_surface">#191C1E</color>
+    <color name="color_imperiya_dark_onSurface">#E1E2E5</color>
+    <color name="color_imperiya_dark_surfaceVariant">#40484C</color>
+    <color name="color_imperiya_dark_onSurfaceVariant">#C0C7CD</color>
+    <color name="color_imperiya_dark_outline">#8A9297</color>
+    <color name="color_imperiya_dark_inverseOnSurface">#191C1E</color>
+    <color name="color_imperiya_dark_inverseSurface">#E1E2E5</color>
+    <color name="color_imperiya_dark_inversePrimary">#006686</color>
+    <color name="color_imperiya_dark_shadow">#000000</color>
+    <color name="color_imperiya_dark_surfaceTint">#71D2FF</color>
+    <color name="color_imperiya_dark_outlineVariant">#40484C</color>
+    <color name="color_imperiya_dark_scrim">#000000</color>
+
+    <!--  Others  -->
+    <color name="imperiya_backdground_color">@color/color_imperiya_light_background</color>
+    <color name="imperiya_backdground_mid_color">#B5FBFCFE</color>
+    <color name="imperiya_backdground_end_color">#4FFBFCFE</color>
     <color name="imperiya_color_primary">#3E6477</color>
     <color name="imperiya_color_secondary">#27374D</color>
     <color name="imperiya_color_background">#263238</color>
@@ -7,7 +107,7 @@
     <color name="imperiya_color_background_tertiary">#526D82</color>
     <color name="imperiya_color_background_search">#40545E</color>
     <color name="imperiya_color_link">#46BFFE</color>
-    <color name="imperiya_color_success">#38B49D</color>
+    <color name="color_imperiya_success">#006b5b</color>
     <color name="imperiya_color_neutral">#FFFFFF</color>
     <color name="imperiya_color_error">#E34F4F</color>
     <color name="imperiya_color_ripple">#A7A7A8</color>
@@ -15,15 +115,15 @@
     <color name="imperiya_color_on_primary">#FFFFFF</color>
     <color name="imperiya_color_transparent">@android:color/transparent</color>
 
-    <color name="imperiya_title">#FFFFFF</color>
-    <color name="imperiya_sub_title">#FFFFFF</color>
-    <color name="imperiya_body">#FFFFFF</color>
-    <color name="imperiya_hint">#80FFFFFF</color>
-    <color name="imperiya_sub_title2">#CCFFFFFF</color>
+    <color name="imperiya_title">#000000</color>
+    <color name="imperiya_sub_title">#000000</color>
+    <color name="imperiya_body">#000000</color>
+    <color name="imperiya_hint">#80000000</color>
+    <color name="imperiya_sub_title2">#CC000000</color>
 
     <color name="imperiya_color_icon">#FFFFFF</color>
     <color name="imperiya_color_icon_disable">#80FFFFFF</color>
 
-    <color name="imperiya_color_start_shimmer">#6AFFFFFF</color>
-    <color name="imperiya_color_end_shimmer">#A6FFFFFF</color>
+    <color name="imperiya_color_start_shimmer">#6A000000</color>
+    <color name="imperiya_color_end_shimmer">#A6000000</color>
 </resources>

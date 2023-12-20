@@ -9,9 +9,6 @@ import com.vlv.data.common.model.series.SeriesItemResponse
 import com.vlv.data.common.paging.MoviePagingSource
 import com.vlv.data.common.paging.PeoplePagingSource
 import com.vlv.data.common.paging.SeriesPagingSource
-import com.vlv.data.database.TheMovieDbDao
-import com.vlv.data.network.database.data.History
-import com.vlv.data.network.database.data.HistoryType
 import com.vlv.search.data.api.SearchApi
 import kotlinx.coroutines.flow.Flow
 

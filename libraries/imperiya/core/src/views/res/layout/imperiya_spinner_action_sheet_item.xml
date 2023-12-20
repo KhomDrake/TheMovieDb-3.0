@@ -12,6 +12,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/small_warning_title"
         style="@style/Imperiya.Style.Text.Subtitle.Bold"
+        android:textColor="@color/color_imperiya_on_secondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

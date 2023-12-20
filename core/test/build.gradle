@@ -1,0 +1,82 @@
+plugins {
+    alias(libs.plugins.com.android.library)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+}
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
+
+android {
+    namespace 'com.vlv.core.test'
+
+    compileSdk config.compileSdk
+
+    defaultConfig {
+        minSdk config.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    flavorDimensions += "uitool"
+    productFlavors {
+        create("compose") {
+            dimension = "uitool"
+        }
+        create("views") {
+            dimension = "uitool"
+        }
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.common.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.startup)
+    implementation(libs.android.lifecycle.livedata)
+    implementation(libs.toolkit.delegate)
+    implementation(libs.toolkit.livedata)
+    implementation(libs.toolkit.statemachine)
+    implementation(libs.coil.core)
+    implementation(libs.coil.compose)
+    implementation(libs.google.material)
+    implementation(libs.androidx.compose.activity)
+    implementation(libs.androidx.compose.livedata)
+    implementation(libs.androidx.compose.tooling.preview)
+    implementation(libs.koin.compose)
+    implementation(libs.androidx.compose.paging)
+    implementation(libs.compose.shimmer)
+    implementation(libs.tests.compose.ui.test)
+
+    implementation(project(":tools:test"))
+    implementation(project(":libraries:imperiya:core"))
+}

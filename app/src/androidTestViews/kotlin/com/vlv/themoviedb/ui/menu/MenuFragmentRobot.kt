@@ -6,8 +6,8 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.data.series.SeriesListType
-import com.vlv.common.ui.route.MOVIES_LISTING_TYPE_EXTRA
-import com.vlv.common.ui.route.SERIES_LISTING_TYPE_EXTRA
+import com.vlv.common.route.MOVIES_LISTING_TYPE_EXTRA
+import com.vlv.common.route.SERIES_LISTING_TYPE_EXTRA
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

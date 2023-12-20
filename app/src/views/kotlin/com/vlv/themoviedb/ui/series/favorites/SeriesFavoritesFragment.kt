@@ -1,7 +1,7 @@
 package com.vlv.themoviedb.ui.series.favorites
 
 
-import com.vlv.common.ui.route.toFavorites
+import com.vlv.common.route.toFavorites
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState

@@ -62,3 +62,5 @@ include ':tools:util'
 // Libraries
 include ':libraries:imperiya:core'
 include ':libraries:bondsmith'
+//include ':libraries:soulcasting'
+include ':core:test'

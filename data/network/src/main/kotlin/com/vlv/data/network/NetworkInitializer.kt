@@ -1,6 +1,7 @@
 package com.vlv.data.network
 
 import androidx.startup.Initializer
+import com.vlv.data.common.CommonInitializer
 import com.vlv.network.client.OkHttpFactory
 import com.vlv.data.network.interceptors.InterceptorFactory
 import com.vlv.data.network.moshi.MoshiFactory
@@ -10,9 +11,6 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 class NetworkInitializer : ModuleInitializer() {
-
-    override val shouldStartKoin: Boolean
-        get() = true
 
     override val modules: List<Module>
         get() = listOf(
@@ -39,7 +37,9 @@ class NetworkInitializer : ModuleInitializer() {
     }
 
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {
-        return mutableListOf()
+        return mutableListOf(
+            CommonInitializer::class.java
+        )
     }
 
 }

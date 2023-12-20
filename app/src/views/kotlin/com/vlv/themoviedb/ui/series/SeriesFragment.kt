@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.common.ui.route.toSeriesSearch
+import com.vlv.common.route.toSeriesSearch
 import com.vlv.extensions.addOrReplace
 import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
 import com.vlv.themoviedb.R

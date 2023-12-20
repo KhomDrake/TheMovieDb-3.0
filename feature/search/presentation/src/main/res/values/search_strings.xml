@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="search_movie_option">Movie</string>
+    <string name="search_series_option">Tv Show</string>
+    <string name="search_people_option">Person</string>
     <string name="search_movie_empty_title">No movie was found</string>
     <string name="search_series_empty_title">No tv show was found</string>
     <string name="search_people_empty_title">No person was found that match with this name</string>

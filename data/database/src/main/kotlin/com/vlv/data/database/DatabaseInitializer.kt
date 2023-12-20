@@ -2,6 +2,7 @@ package com.vlv.data.database
 
 import androidx.room.Room
 import androidx.startup.Initializer
+import com.vlv.data.common.CommonInitializer
 import com.vlv.util.ModuleInitializer
 import org.koin.android.ext.koin.androidApplication
 import org.koin.core.module.Module
@@ -23,7 +24,9 @@ class DatabaseInitializer : ModuleInitializer() {
     }
 
     override fun dependencies(): MutableList<Class<out Initializer<*>>> {
-        return mutableListOf()
+        return mutableListOf(
+            CommonInitializer::class.java
+        )
     }
 
 }

@@ -2,7 +2,7 @@ package com.vlv.themoviedb.ui.series.trending
 
 import android.os.Bundle
 import android.view.View
-import com.vlv.common.ui.route.toSeriesTrendingNow
+import com.vlv.common.route.toSeriesTrendingNow
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState

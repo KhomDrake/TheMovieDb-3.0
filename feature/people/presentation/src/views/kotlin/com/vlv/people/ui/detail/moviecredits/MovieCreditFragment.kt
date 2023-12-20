@@ -16,8 +16,8 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.data.people.People
 import com.vlv.common.ui.adapter.movie.MovieAdapter
-import com.vlv.common.ui.route.EXTRA_PEOPLE
-import com.vlv.common.ui.route.toMovieDetail
+import com.vlv.common.route.EXTRA_PEOPLE
+import com.vlv.common.route.toMovieDetail
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
 import com.vlv.extensions.emptyState

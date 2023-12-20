@@ -25,6 +25,7 @@
         android:layout_marginTop="12dp"
         android:textAlignment="center"
         tools:text="John Wick"
-        style="@style/Imperiya.Style.Text.Subtitle"/>
+        android:textColor="@color/color_imperiya_on_background"
+        style="@style/Imperiya.Style.Text.Subtitle.Bold"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

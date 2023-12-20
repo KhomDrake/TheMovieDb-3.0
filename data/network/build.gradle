@@ -45,7 +45,8 @@ android {
 dependencies {
 
     implementation project(":tools:extensions")
-    implementation project(":data:database")
+    implementation project(":data:common")
+    implementation project(":data:local")
     api project(":tools:util")
 
     implementation(libs.androidx.core.ktx)

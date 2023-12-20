@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vlv.common.ui.adapter.people.PeopleLoaderAdapter
 import com.vlv.common.ui.adapter.people.PeoplePagingAdapter
 import com.vlv.common.ui.listing.ListingItemsActivity
-import com.vlv.common.ui.route.toPeopleDetail
+import com.vlv.common.route.toPeopleDetail
 import com.vlv.people.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged

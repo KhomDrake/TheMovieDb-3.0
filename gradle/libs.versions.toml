@@ -18,21 +18,29 @@ mockk-version = "1.12.2"
 guava-version = "27.0.1-android"
 objenesis-version = "3.1"
 core-testing-version = "2.2.0"
+compose-shimmer-verison = "1.2.0"
 
 android-lifecycle-livedata-version = "1.1.1"
+androidx-compose-bom-version = "2023.10.01"
+androidx-compose-activity-version = "1.7.2"
+androidx-compose-viewmodel-version = "2.6.1"
+androidx-compose-paging-version = "3.3.0-alpha02"
+androidx-compose-constraintlayout-version = "1.0.1"
+androidx-compose-preview-version = "1.6.0-beta01"
 androidx-lifecycle-viewmodel-version = "2.6.1"
 androidx-startup-runtime-version = "1.1.1"
 androidx-room-version = "2.5.2"
 androidx-junit-version = "1.1.5"
 androidx-appcompat-version = "1.6.1"
 androidx-core-ktx-version = "1.12.0"
-androidx-paging-runtime-version = "3.1.0-alpha02"
+androidx-paging-runtime-version = "3.3.0-alpha02"
 androidx-navigation-version = "2.5.3"
 androidx-constraintLayout-version = "2.1.4"
 androidx-datastore-version = "1.0.0"
 androidx-fragment-version = "1.6.1"
 androidx-test-version = "1.2.0"
 agp = "7.4.1"
+ksp-version = "1.5.31-1.0.0"
 org-jetbrains-kotlin-android = "1.8.0"
 
 
@@ -56,6 +64,17 @@ androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", vers
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = 'androidx-datastore-version' }
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = 'androidx-fragment-version' }
 
+# Compose
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom-version" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3"  }
+androidx-compose-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "androidx-compose-constraintlayout-version"  }
+androidx-compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "androidx-compose-preview-version" }
+androidx-compose-tooling-debug = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-compose-activity-version" }
+androidx-compose-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-compose-paging = { group = "androidx.paging", name = "paging-compose", version.ref = "androidx-compose-paging-version" }
+androidx-compose-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidx-compose-viewmodel-version" }
+
 # Squareup
 squareup-okhttp3 = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = 'squareup-okhttp3-version' }
 squareup-moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = 'squareup-moshi-version' }
@@ -69,15 +88,19 @@ google-material = { group = "com.google.android.material", name = "material", ve
 # Toolkit
 toolkit-delegate = { group = "io.github.matheus-corregiari", name = "delegate", version.ref = 'toolkit-version' }
 toolkit-livedata = { group = "io.github.matheus-corregiari", name = "livedata", version.ref = 'toolkit-version' }
+toolkit-splinter = { group = "io.github.matheus-corregiari", name = "splinter", version.ref = 'toolkit-version' }
 toolkit-statemachine = { group = "io.github.matheus-corregiari", name = "statemachine", version.ref = 'toolkit-version' }
 
-# Facebook
+# Shimmer
 shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = 'shimmer-version' }
+compose-shimmer = { group = "com.valentinilk.shimmer", name = "compose-shimmer", version.ref = 'compose-shimmer-verison' }
 
 # Other
 pagerindicator = { group = "ru.tinkoff.scrollingpagerindicator", name = "scrollingpagerindicator", version.ref = 'scrolling-pager-indicator-version' }
-coil = { group = "io.coil-kt", name = "coil", version.ref = 'coil-version' }
+coil-core = { group = "io.coil-kt", name = "coil", version.ref = 'coil-version' }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = 'coil-version' }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 'koin-version' }
+koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = 'koin-version' }
 threetenabp = { group = "com.jakewharton.threetenabp", name = "threetenabp", version.ref = 'threetenabp-version' }
 org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "orgjacoco-core-version" }
 
@@ -101,10 +124,13 @@ tests-androidx-core-testing = { group = "androidx.arch.core", name = "core-testi
 tests-androidx-test-core = { group = "androidx.test", name = "core", version.ref = 'androidx-test-version'  }
 tests-androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = 'androidx-test-version'  }
 tests-androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = 'androidx-test-version'  }
+tests-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+tests-compose-ui-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.4" }
 
 [plugins]
 com-android-library = { id = "com.android.library", version.ref = "agp" }
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
-
+com-google-ksp-plugin = { id = "com.google.devtools.ksp", version.ref = "ksp-version" }
 
 [bundles]

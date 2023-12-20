@@ -1,5 +1,6 @@
 package com.vlv.data.network.interceptors
 
+import com.vlv.data.local.datastore.DataVault
 import okhttp3.Interceptor
 import okhttp3.Response
 import com.vlv.data.network.BuildConfig
@@ -23,7 +24,7 @@ class RequestInterceptor : Interceptor {
                         runCatching {
                             addQueryParameter(
                                 LANGUAGE_QUERY_PARAMETER,
-                                "en-US"
+                                DataVault.cachedDataString("LANGUAGE")
                             )
                         }
                     }

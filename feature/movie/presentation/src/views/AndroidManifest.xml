@@ -39,7 +39,7 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-            <meta-data  android:name="com.vlv.movie.MovieInitializer"
+            <meta-data  android:name="com.vlv.movie.presentation.MovieInitializer"
                 android:value="androidx.startup" />
         </provider>
 

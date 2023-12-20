@@ -5,17 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingVertical="16dp"
-    android:background="@drawable/imperiya_background_tertiary"
+    android:background="@drawable/imperiya_background_tertiary_container"
     android:orientation="vertical"
     tools:parentTag="androidx.appcompat.widget.LinearLayoutCompat">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/small_warning_title"
+        android:textColor="@color/color_imperiya_on_tertiary_container"
         style="@style/Imperiya.Style.Text.Subtitle.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="8dp"
+        android:drawableTint="@color/color_imperiya_on_tertiary_container"
         android:drawableStart="@drawable/ic_info"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
@@ -24,6 +26,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/small_warning_body"
         style="@style/Imperiya.Style.Text.Paragraph"
+        android:textColor="@color/color_imperiya_on_tertiary_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -33,6 +36,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/small_warning_try_again_button"
         style="@style/Imperiya.Style.Text.Link"
+        android:textColor="@color/imperiya_color_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"

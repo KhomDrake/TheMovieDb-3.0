@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.common.ui.adapter.people.PeopleLoaderAdapter
 import com.vlv.common.ui.adapter.people.PeoplePagingAdapter
-import com.vlv.common.ui.route.toPeopleDetail
+import com.vlv.common.route.toPeopleDetail
 import com.vlv.common.ui.search.SearchActivity
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
