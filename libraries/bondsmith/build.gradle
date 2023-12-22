@@ -40,6 +40,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.google.material)
     implementation(libs.toolkit.livedata)
+    implementation(libs.timber)
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')

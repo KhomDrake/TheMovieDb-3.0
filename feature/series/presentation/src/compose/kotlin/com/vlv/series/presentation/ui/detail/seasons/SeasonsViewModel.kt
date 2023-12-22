@@ -33,7 +33,7 @@ class SeasonsViewModel(
                     repository.seriesDetail(seriesId).seasons
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .mapData { data ->
                     data?.map { Season(resources, it) }
                 }

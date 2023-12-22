@@ -20,6 +20,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".bondsmith.BondsmithActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false"/>
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"

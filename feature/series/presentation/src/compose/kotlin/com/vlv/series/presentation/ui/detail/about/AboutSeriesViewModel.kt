@@ -33,7 +33,7 @@ class AboutSeriesViewModel(
                     repository.seriesDetail(seriesId)
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .mapData {
                     it?.let {
                         SeriesDetail(resources, it)

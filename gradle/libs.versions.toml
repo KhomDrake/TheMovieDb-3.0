@@ -11,6 +11,7 @@ squareup-okhttp3-version = "4.11.0"
 squareup-moshi-version = "1.14.0"
 threetenabp-version = "1.4.6"
 koin-version = "3.4.1"
+timber-version = "5.0.1"
 
 junit-version = "4.13.2"
 espresso-core-version = "3.5.1"
@@ -104,6 +105,7 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = 'koin-version' }
 threetenabp = { group = "com.jakewharton.threetenabp", name = "threetenabp", version.ref = 'threetenabp-version' }
 org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "orgjacoco-core-version" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber-version" }
 
 # Big Brother
 bigbrother-core = { group = "io.github.mrocigno", name = "big-brother-core", version.ref = 'bigbrother-version'  }

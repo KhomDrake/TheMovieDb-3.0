@@ -60,7 +60,7 @@ class MovieDetailViewModel(
                     movieDetailRepository.movieDetail(movieId)
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .mapData { data ->
                     data?.let {
                         MovieDetail(resources, it)

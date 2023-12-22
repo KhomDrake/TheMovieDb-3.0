@@ -29,7 +29,7 @@ class AiringTodayViewModel(
                     repository.airingToday()
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .collectLatest {
                     state.emit(
                         Response(

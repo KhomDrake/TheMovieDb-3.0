@@ -35,7 +35,7 @@ class MovieFavoriteViewModel(
                     useCase.favorites()
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .map {
                     Response(
                         state = it.state,

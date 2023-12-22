@@ -31,7 +31,7 @@ class MovieReviewViewModel(
                     repository.movieReviews(movieId)
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .mapData {
                     it?.resultResponses?.map(::Review) ?: listOf()
                 }

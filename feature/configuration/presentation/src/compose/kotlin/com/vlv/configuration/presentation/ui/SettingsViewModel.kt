@@ -37,7 +37,7 @@ class SettingsViewModel(
                     useCase.configData(resources)
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .mapData {
                     it?.toSectionUIItems() ?: listOf()
                 }

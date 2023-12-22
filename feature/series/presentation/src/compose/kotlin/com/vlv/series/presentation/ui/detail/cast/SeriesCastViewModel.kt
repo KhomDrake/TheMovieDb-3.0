@@ -30,7 +30,7 @@ class SeriesCastViewModel(
                     repository.seriesCast(seriesId).castResponse
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .mapData {
                     it?.map(::Cast)
                 }

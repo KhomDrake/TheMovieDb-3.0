@@ -30,7 +30,7 @@ class SeriesTrendingViewModel(
                     repository.trendingSeries(TimeWindow.WEEK)
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .collectLatest {
                     state.emit(
                         Response(

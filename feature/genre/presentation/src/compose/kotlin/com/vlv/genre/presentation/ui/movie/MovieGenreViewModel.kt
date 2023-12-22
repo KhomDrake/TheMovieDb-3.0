@@ -10,7 +10,6 @@ import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
 import com.vlv.common.data.movie.Movie
 import com.vlv.data.common.model.genre.GenresResponse
-import com.vlv.data.common.model.movie.MovieResponse
 import com.vlv.genre.domain.usecase.MovieGenreUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +18,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -74,7 +72,7 @@ class MovieGenreViewModel(
                         genreUseCase.genres()
                     }
                     .execute()
-                    .responseStateFlow
+                    .stateFlow
                     .collectLatest {
                         _state.emit(it)
                     }

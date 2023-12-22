@@ -1,97 +1,127 @@
 package com.vlv.bondsmith
 
-import android.util.Log
 import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
 import br.com.arch.toolkit.livedata.response.ResponseLiveData
 import com.vlv.bondsmith.data.Response
-import com.vlv.bondsmith.data.ResponseStatus
+import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
+import com.vlv.bondsmith.data.flow.ResponseStateFlow
+import com.vlv.bondsmith.data.responseLoading
+import com.vlv.bondsmith.data.toDataResult
+import com.vlv.bondsmith.log.LogHandler
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
+import kotlin.system.measureTimeMillis
+import kotlin.time.measureTime
 
 private val bondsmithScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
-class Bondsmith<Data>(private val scope: CoroutineScope) {
+class Bondsmith<Data>(
+    private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO),
+    private val tag: String = ""
+) {
 
-    private var execution: (suspend () -> Data)? = null
+    private val lock = object {}
+
+    private var config: Config<Data> = Config(tag)
 
     private val _responseLiveData = MutableResponseLiveData<Data>()
 
-    private val _mutableStateFlow = MutableStateFlow<Response<Data>>(Response<Data>())
+    private val _responseStateFlow = MutableResponseStateFlow<Data>(Response())
 
     val responseLiveData: ResponseLiveData<Data>
         get() = _responseLiveData
 
-    val responseStateFlow: StateFlow<Response<Data>>
-        get() = _mutableStateFlow.asStateFlow()
+    val stateFlow: StateFlow<Response<Data>>
+        get() = _responseStateFlow.asStateFlow()
 
-    fun request(func: suspend () -> Data) = apply {
-        execution = func
+    val responseStateFlow: ResponseStateFlow<Data>
+        get() = _responseStateFlow
+            .shareIn(
+                bondsmithScope,
+                SharingStarted.WhileSubscribed(),
+                replay = 0
+            )
+
+    fun config(func: Config<Data>.() -> Unit) = apply {
+        config = Config<Data>(tag).apply(func)
+    }
+
+    fun config(newConfig: Config<Data>) = apply {
+        config = newConfig
+    }
+
+    fun logInfo(info: String) {
+        LogHandler.logInfo(tag, info)
+    }
+
+    private suspend fun emitLoading() {
+        logInfo("Emit loading")
+        _responseLiveData.postLoading()
+        _responseStateFlow.emitLoading()
+    }
+
+    private suspend fun emitData(data: Data) {
+        logInfo("Emit data: $data")
+        _responseLiveData.postData(data)
+        _responseStateFlow.emitSuccess(data)
+    }
+
+    private suspend fun emitError(throwable: Throwable) {
+        logInfo("Emit error: $throwable")
+        _responseLiveData.postError(throwable)
+        _responseStateFlow.emitError(throwable)
     }
 
     fun execute() = apply {
-        scope.launch {
-            _responseLiveData.postLoading()
-            _mutableStateFlow.emit(
-                _mutableStateFlow.value.copy(
-                    state = ResponseStatus.LOADING
-                )
-            )
-            runCatching {
-                val data = execution?.invoke()
-                    ?: return@runCatching run {
-                        _responseLiveData.postError(Throwable())
-                        _mutableStateFlow.emit(
-                            _mutableStateFlow.value.copy(
-                                state = ResponseStatus.ERROR,
-                                error = Throwable()
-                            )
-                        )
 
-                    }
-                _responseLiveData.postData(data)
-                _mutableStateFlow.emit(
-                    _mutableStateFlow.value.copy(
-                        state = ResponseStatus.SUCCESS,
-                        data = data,
-                        error = null
-                    )
-                )
+    }
+
+    fun execute2() = synchronized(lock) {
+        scope.launch {
+            runCatching {
+                createExecution().start()
             }.onFailure {
-                _responseLiveData.postError(it)
-                _mutableStateFlow.emitError(it)
+                emitError(it)
             }
         }
+        return@synchronized this
+    }
+
+    private fun createExecution() = scope.launch(Dispatchers.IO) {
+        logInfo("[Execution] creating execution")
+        flow {
+            config.execute(
+                this,
+                this@Bondsmith
+            )
+        }
+            .onEach {
+                _responseLiveData.postValue(it.toDataResult())
+            }
+            .catch {
+                _responseStateFlow.emitError(it)
+            }
+            .collect {
+                _responseStateFlow.emit(it)
+            }
+
     }
 
 }
 
-fun <T>bondsmith(scope: CoroutineScope = bondsmithScope) : Bondsmith<T> {
-    return Bondsmith(scope)
-}
-
-inline fun <Data, NewData> StateFlow<Response<Data>>.mapData(
-    crossinline transform: suspend (Data?) -> NewData?
-) = map {
-    val newData = transform.invoke(value.data)
-    Response(
-        data = newData,
-        state = it.state,
-        error = it.error
-    )
-}
-
-suspend fun <Data> MutableStateFlow<Response<Data>>.emitError(throwable: Throwable) {
-    Log.e("Vini", throwable.stackTraceToString())
-    emit(
-        value.copy(
-            state = ResponseStatus.ERROR,
-            error = throwable
-        )
-    )
+fun <T>bondsmith(
+    tag: String = "",
+    scope: CoroutineScope = bondsmithScope
+) : Bondsmith<T> {
+    return Bondsmith(scope, tag)
 }

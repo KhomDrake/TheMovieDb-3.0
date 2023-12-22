@@ -6,7 +6,6 @@ import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.mapData
 import com.vlv.common.data.cast.Cast
-import com.vlv.data.common.model.credit.CastResponse
 import com.vlv.data.common.model.credit.CreditsResponse
 import com.vlv.movie.data.repository.MovieDetailRepository
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +32,7 @@ class MovieCastViewModel(
                     repository.movieCast(movieId)
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .mapData {
                     it?.castResponse?.map(::Cast) ?: listOf()
                 }

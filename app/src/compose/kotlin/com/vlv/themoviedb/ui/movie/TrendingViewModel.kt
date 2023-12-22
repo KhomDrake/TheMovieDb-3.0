@@ -30,7 +30,7 @@ class TrendingViewModel(
                     repository.trendingMovies(TimeWindow.WEEK)
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .collectLatest {
                     state.emit(
                         Response(

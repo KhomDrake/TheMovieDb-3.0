@@ -29,7 +29,7 @@ class NowPlayingViewModel(
                     repository.nowPlaying()
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .collectLatest {
                     state.emit(
                         Response(

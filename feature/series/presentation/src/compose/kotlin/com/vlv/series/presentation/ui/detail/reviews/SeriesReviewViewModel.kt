@@ -31,7 +31,7 @@ class SeriesReviewViewModel(
                     repository.seriesReview(seriesId).resultResponses
                 }
                 .execute()
-                .responseStateFlow
+                .stateFlow
                 .mapData {
                     it?.map(::Review)
                 }

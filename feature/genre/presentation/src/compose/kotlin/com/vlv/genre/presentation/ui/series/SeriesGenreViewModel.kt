@@ -8,7 +8,6 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
-import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.series.Series
 import com.vlv.data.common.model.genre.GenresResponse
 import com.vlv.genre.domain.usecase.SeriesGenreUseCase
@@ -73,7 +72,7 @@ class SeriesGenreViewModel(
                         useCase.genres()
                     }
                     .execute()
-                    .responseStateFlow
+                    .stateFlow
                     .collectLatest {
                         _state.emit(it)
                     }

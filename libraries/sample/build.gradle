@@ -64,6 +64,7 @@ android {
 dependencies {
 
     implementation project(':libraries:imperiya:core')
+    implementation project(':libraries:bondsmith')
     implementation project(':tools:util')
     implementation project(':tools:extensions')
     implementation(libs.androidx.core.ktx)
@@ -73,6 +74,12 @@ dependencies {
     implementation(libs.toolkit.delegate)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.startup)
+    implementation(libs.toolkit.delegate)
+    implementation(libs.toolkit.livedata)
+    implementation(libs.timber)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.compose.viewmodel)
+    implementation(libs.toolkit.statemachine)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)
     implementation(libs.koin.android)
