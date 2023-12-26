@@ -1,6 +1,7 @@
 package com.vlv.bondsmith.data.flow
 
 import com.vlv.bondsmith.data.Response
+import com.vlv.bondsmith.extension.emitError
 import com.vlv.bondsmith.extension.mapData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -8,6 +9,7 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 
@@ -19,6 +21,9 @@ open class ResponseStateFlow<Data>(previousData: Response<Data> = Response()) : 
         transform: suspend (Data?) -> NewData?
     ) = flowState
         .mapData(transform)
+        .catch {
+            flowState.emitError(it)
+        }
 
     override val replayCache: List<Response<Data>>
         get() = flowState.replayCache
@@ -29,7 +34,7 @@ open class ResponseStateFlow<Data>(previousData: Response<Data> = Response()) : 
         = flowState.collect(collector)
 
     init {
-        this.flowState = MutableStateFlow(previousData)
+        flowState = MutableStateFlow(previousData)
     }
 
     private constructor(
@@ -48,6 +53,6 @@ open class ResponseStateFlow<Data>(previousData: Response<Data> = Response()) : 
 
 }
 
-fun <Data> MutableResponseStateFlow<Data>.toResponseStateFlow() = ResponseStateFlow(
+fun <Data> MutableResponseStateFlow<Data>.asResponseStateFlow() = ResponseStateFlow(
     value
 )

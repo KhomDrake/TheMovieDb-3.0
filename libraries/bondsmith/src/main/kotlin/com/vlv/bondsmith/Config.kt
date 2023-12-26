@@ -15,7 +15,7 @@ class Config<Data>(private var id: String) {
     private var maxDuration = 5.minutes
     private var minDuration: Duration = 200.milliseconds
     private var cacheTimeout: Duration = 10.minutes
-    private var withCache: Boolean = true
+    private var withCache: Boolean = false
     private var execution: (suspend () -> Data)? = null
     private var cacheLookup: (suspend (String) -> Data?)? = null
     private var saveCache: (suspend (String, Data) -> Unit)? = null

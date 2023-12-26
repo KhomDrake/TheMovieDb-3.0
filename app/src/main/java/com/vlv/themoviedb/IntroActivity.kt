@@ -42,8 +42,7 @@ class IntroActivity : AppCompatActivity(R.layout.intro_activity) {
             data {
                 openMain(endAnimationText)
             }
-            error { e ->
-                Log.i("Vini", e.stackTraceToString())
+            error { _ ->
                 openMain(endAnimationText)
             }
         }

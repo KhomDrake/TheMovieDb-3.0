@@ -6,9 +6,9 @@ import com.vlv.bondsmith.data.ResponseStatus
 
 @Composable
 fun <Data> Response<Data>.handle(
-    success: @Composable (Data) -> Unit,
-    error: @Composable (Throwable?) -> Unit,
-    loading: @Composable () -> Unit
+    success: @Composable (Data) -> Unit = {},
+    error: @Composable (Throwable?) -> Unit = {},
+    loading: @Composable () -> Unit = {}
 ) {
     when(this.state) {
         ResponseStatus.SUCCESS -> {

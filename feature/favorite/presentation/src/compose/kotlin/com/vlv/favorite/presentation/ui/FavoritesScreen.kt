@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.MoviePoster
 import com.vlv.common.ui.SeriesPoster
+import com.vlv.common.ui.extension.handle
 import com.vlv.favorite.R
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
@@ -73,24 +74,36 @@ fun MovieFavorites(
     routeNavigation: RouteNavigation,
     favoritesViewModel: FavoritesViewModel = koinViewModel()
 ) {
-    val state by favoritesViewModel.movieState.collectAsState(listOf())
+    val state by favoritesViewModel.movieState.collectAsState()
 
     LaunchedEffect(key1 = 2, block = {
         favoritesViewModel.moviesFavorites()
     })
 
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        content = {
-            items(state) { movie ->
-                MoviePoster(
-                    movie = movie,
-                    height = 200.dp,
-                    onRouteNavigation = routeNavigation
-                )
-            }
+    state.handle(
+        success = { data ->
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                content = {
+                    items(data) { movie ->
+                        MoviePoster(
+                            movie = movie,
+                            height = 200.dp,
+                            onRouteNavigation = routeNavigation
+                        )
+                    }
+                }
+            )
+        },
+        error = {
+
+        },
+        loading = {
+
         }
     )
+
+
 }
 
 @Composable
@@ -98,22 +111,34 @@ fun SeriesFavorites(
     routeNavigation: RouteNavigation,
     favoritesViewModel: FavoritesViewModel = koinViewModel()
 ) {
-    val state by favoritesViewModel.seriesState.collectAsState(listOf())
+    val state by favoritesViewModel.seriesState.collectAsState()
 
     LaunchedEffect(key1 = 2, block = {
         favoritesViewModel.seriesFavorites()
     })
 
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        content = {
-            items(state) { series ->
-                SeriesPoster(
-                    series = series,
-                    height = 200.dp,
-                    onRouteNavigation = routeNavigation
-                )
-            }
+    state.handle(
+        success = { data ->
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                content = {
+                    items(data) { series ->
+                        SeriesPoster(
+                            series = series,
+                            height = 200.dp,
+                            onRouteNavigation = routeNavigation
+                        )
+                    }
+                }
+            )
+        },
+        error = {
+
+        },
+        loading = {
+
         }
     )
+
+
 }

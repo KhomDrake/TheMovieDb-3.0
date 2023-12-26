@@ -3,6 +3,7 @@ package com.vlv.movie.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.vlv.bondsmith.bondsmith
 import com.vlv.data.common.model.TimeWindow
 import com.vlv.data.common.model.movie.MovieResponse
 import com.vlv.data.common.model.movie.MoviesResponse
@@ -13,12 +14,16 @@ import kotlinx.coroutines.flow.Flow
 
 class MovieRepository(private val api: MovieApi) {
 
-    suspend fun trendingMovies(timeWindow: TimeWindow) : MoviesResponse {
-        return api.trending(
-            timeWindow.name.lowercase(),
-            1
-        )
-    }
+    suspend fun trendingMovies(timeWindow: TimeWindow) = bondsmith<MoviesResponse>()
+        .config {
+            request {
+                api.trending(
+                    timeWindow.name.lowercase(),
+                    1
+                )
+            }
+        }
+        .execute()
 
     private fun pagingDefault(
         config: PagingConfig,
@@ -72,8 +77,12 @@ class MovieRepository(private val api: MovieApi) {
         api.search( query, page)
     }
 
-    suspend fun nowPlaying() : MoviesResponse {
-        return api.nowPlaying(1)
-    }
+    suspend fun nowPlaying() = bondsmith<MoviesResponse>("MOVIE-NOW-PLAYING")
+        .config {
+            request {
+                api.nowPlaying(1)
+            }
+        }
+        .execute()
 
 }

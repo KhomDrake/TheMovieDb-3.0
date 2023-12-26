@@ -5,11 +5,9 @@ import br.com.arch.toolkit.livedata.response.ResponseLiveData
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
 import com.vlv.bondsmith.data.flow.ResponseStateFlow
-import com.vlv.bondsmith.data.responseLoading
 import com.vlv.bondsmith.data.toDataResult
 import com.vlv.bondsmith.log.LogHandler
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.SharingStarted
@@ -19,9 +17,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeout
-import kotlin.system.measureTimeMillis
-import kotlin.time.measureTime
 
 private val bondsmithScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
@@ -40,9 +35,6 @@ class Bondsmith<Data>(
 
     val responseLiveData: ResponseLiveData<Data>
         get() = _responseLiveData
-
-    val stateFlow: StateFlow<Response<Data>>
-        get() = _responseStateFlow.asStateFlow()
 
     val responseStateFlow: ResponseStateFlow<Data>
         get() = _responseStateFlow
@@ -82,16 +74,13 @@ class Bondsmith<Data>(
         _responseStateFlow.emitError(throwable)
     }
 
-    fun execute() = apply {
-
-    }
-
-    fun execute2() = synchronized(lock) {
+    fun execute() = synchronized(lock) {
         scope.launch {
             runCatching {
                 createExecution().start()
             }.onFailure {
-                emitError(it)
+                _responseStateFlow.emitError(it)
+                _responseLiveData.postError(it)
             }
         }
         return@synchronized this

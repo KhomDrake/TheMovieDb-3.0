@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vlv.bondsmith.data.ResponseStatus
+import com.vlv.common.ui.extension.handle
 import com.vlv.genre.R
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.imperiya.core.ui.components.TabItem
@@ -52,30 +53,25 @@ class MovieGenreActivity : ComponentActivity() {
 
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TabScreen(
     paddingValues: PaddingValues,
     viewModel: MovieGenreViewModel = koinViewModel()
 ) {
-    val data by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
 
-    when(data.state) {
-        ResponseStatus.SUCCESS -> {
-            val genres = data.data?.genres ?: return
+    state.handle(
+        success = { genres ->
             MovieGenreSuccess(
                 paddingValues = paddingValues,
                 genres = genres
             )
-        }
-        ResponseStatus.ERROR -> {
+        },
+        error = {
+
+        },
+        loading = {
 
         }
-        ResponseStatus.LOADING -> {
-
-        }
-        else -> {
-            Unit
-        }
-    }
+    )
 }

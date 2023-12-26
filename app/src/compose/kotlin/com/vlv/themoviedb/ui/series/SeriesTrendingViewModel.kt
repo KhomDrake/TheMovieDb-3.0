@@ -25,20 +25,13 @@ class SeriesTrendingViewModel(
 
     fun trending() {
         viewModelScope.launch(Dispatchers.IO) {
-            bondsmith<SeriesResponse>()
-                .request {
-                    repository.trendingSeries(TimeWindow.WEEK)
+            repository.trendingSeries(TimeWindow.WEEK)
+                .responseStateFlow
+                .mapData {
+                    it?.series?.map(::Series) ?: listOf()
                 }
-                .execute()
-                .stateFlow
                 .collectLatest {
-                    state.emit(
-                        Response(
-                            state = it.state,
-                            error = it.error,
-                            data = it.data?.series?.map(::Series) ?: listOf()
-                        )
-                    )
+                    state.emit(it)
                 }
         }
     }

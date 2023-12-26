@@ -8,7 +8,11 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
+import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
+import com.vlv.bondsmith.data.flow.ResponseStateFlow
+import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.data.series.Series
+import com.vlv.data.common.model.genre.GenreResponse
 import com.vlv.data.common.model.genre.GenresResponse
 import com.vlv.genre.domain.usecase.SeriesGenreUseCase
 import kotlinx.coroutines.Dispatchers
@@ -30,9 +34,9 @@ class SeriesGenreViewModel(
         loadGenres()
     }
 
-    private val _state = MutableStateFlow<Response<GenresResponse>>(Response())
-    val state: StateFlow<Response<GenresResponse>>
-        get() = _state.asStateFlow()
+    private val _state = MutableResponseStateFlow<List<GenreResponse>>(Response())
+    val state: ResponseStateFlow<List<GenreResponse>>
+        get() = _state.asResponseStateFlow()
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,
@@ -67,13 +71,9 @@ class SeriesGenreViewModel(
     private fun loadGenres() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                bondsmith<GenresResponse>()
-                    .request {
-                        useCase.genres()
-                    }
-                    .execute()
-                    .stateFlow
-                    .collectLatest {
+                useCase.genres()
+                    .responseStateFlow
+                    .collect {
                         _state.emit(it)
                     }
             }

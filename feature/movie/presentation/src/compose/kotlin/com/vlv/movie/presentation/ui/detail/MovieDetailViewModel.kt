@@ -3,20 +3,18 @@ package com.vlv.movie.presentation.ui.detail
 import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
-import com.vlv.bondsmith.mapData
+import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
+import com.vlv.bondsmith.data.flow.ResponseStateFlow
+import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.data.movie.toFavorite
 import com.vlv.common.data.movie.toMovie
 import com.vlv.common.ui.DetailObject
-import com.vlv.data.common.model.movie.MovieDetailResponse
 import com.vlv.favorite.domain.usecase.FavoriteUseCase
 import com.vlv.movie.data.repository.MovieDetailRepository
 import com.vlv.movie.presentation.data.MovieDetail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -26,10 +24,10 @@ class MovieDetailViewModel(
     private val movieDetailRepository: MovieDetailRepository
 ) : ViewModel() {
 
-    private val _movieDetailState = MutableStateFlow<Response<MovieDetail>>(Response())
+    private val _movieDetailState = MutableResponseStateFlow<MovieDetail>(Response())
 
-    val movieDetailState: StateFlow<Response<MovieDetail>>
-        get() = _movieDetailState.asStateFlow()
+    val movieDetailState: ResponseStateFlow<MovieDetail>
+        get() = _movieDetailState.asResponseStateFlow()
 
     val favoriteState = MutableStateFlow<Boolean>(false)
 
@@ -55,12 +53,8 @@ class MovieDetailViewModel(
 
     fun movieDetail(movieId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            bondsmith<MovieDetailResponse>()
-                .request {
-                    movieDetailRepository.movieDetail(movieId)
-                }
-                .execute()
-                .stateFlow
+            movieDetailRepository.movieDetail(movieId)
+                .responseStateFlow
                 .mapData { data ->
                     data?.let {
                         MovieDetail(resources, it)

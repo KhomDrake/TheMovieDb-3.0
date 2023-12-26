@@ -3,20 +3,14 @@ package com.vlv.configuration.presentation.ui
 import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vlv.bondsmith.bondsmith
-import com.vlv.bondsmith.data.Response
-import com.vlv.bondsmith.emitError
-import com.vlv.bondsmith.mapData
+import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
+import com.vlv.bondsmith.data.flow.ResponseStateFlow
+import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.data.toConfigItemType
 import com.vlv.configuration.data.toSectionUIItems
-import com.vlv.configuration.domain.model.SectionsData
 import com.vlv.configuration.domain.usecase.SettingsUseCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -25,24 +19,17 @@ class SettingsViewModel(
     private val useCase: SettingsUseCase
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<Response<List<SectionUIItem>>>(Response())
+    private val _state = MutableResponseStateFlow<List<SectionUIItem>>()
 
-    val state: StateFlow<Response<List<SectionUIItem>>>
-        get() = _state.asStateFlow()
+    val state: ResponseStateFlow<List<SectionUIItem>>
+        get() = _state.asResponseStateFlow()
 
     fun settings() {
         viewModelScope.launch(Dispatchers.IO) {
-            bondsmith<SectionsData>()
-                .request {
-                    useCase.configData(resources)
-                }
-                .execute()
-                .stateFlow
+            useCase.configData(resources)
+                .responseStateFlow
                 .mapData {
                     it?.toSectionUIItems() ?: listOf()
-                }
-                .catch {
-                    _state.emitError(it)
                 }
                 .collectLatest {
                     _state.emit(it)

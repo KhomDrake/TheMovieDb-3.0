@@ -7,7 +7,7 @@ class SeriesFavoriteUseCase(
     private val repository: FavoriteRepository
 ) {
 
-    suspend fun favorites() = repository.favoriteByType(
+    fun favorites() = repository.favoriteByType(
         FavoriteType.SERIES
     )
 

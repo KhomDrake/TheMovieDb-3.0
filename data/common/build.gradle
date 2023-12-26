@@ -37,6 +37,7 @@ android {
 dependencies {
 
     implementation project(":tools:util")
+    api(project(":libraries:bondsmith"))
 
     implementation(libs.squareup.retrofit.main)
     implementation(libs.squareup.moshi.codegen)

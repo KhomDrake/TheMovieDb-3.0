@@ -2,11 +2,8 @@ package com.vlv.movie.presentation.ui.detail.review
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
-import com.vlv.bondsmith.mapData
 import com.vlv.common.data.review.Review
-import com.vlv.data.common.model.review.ReviewsResponse
 import com.vlv.movie.data.repository.MovieDetailRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,12 +23,8 @@ class MovieReviewViewModel(
 
     fun movieReviews(movieId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            bondsmith<ReviewsResponse>()
-                .request {
-                    repository.movieReviews(movieId)
-                }
-                .execute()
-                .stateFlow
+            repository.movieReviews(movieId)
+                .responseStateFlow
                 .mapData {
                     it?.resultResponses?.map(::Review) ?: listOf()
                 }

@@ -10,6 +10,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import com.vlv.bondsmith.data.ResponseStatus
+import com.vlv.common.ui.extension.handle
 import com.vlv.genre.R
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
@@ -41,24 +42,14 @@ fun SeriesTabScreen(
     paddingValues: PaddingValues,
     viewModel: SeriesGenreViewModel = koinViewModel()
 ) {
-    val data by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
 
-    when(data.state) {
-        ResponseStatus.SUCCESS -> {
-            val genres = data.data?.genres ?: return
+    state.handle(
+        success = { genres ->
             SeriesGenreSuccess(
                 paddingValues = paddingValues,
                 genres = genres
             )
         }
-        ResponseStatus.ERROR -> {
-
-        }
-        ResponseStatus.LOADING -> {
-
-        }
-        else -> {
-            Unit
-        }
-    }
+    )
 }

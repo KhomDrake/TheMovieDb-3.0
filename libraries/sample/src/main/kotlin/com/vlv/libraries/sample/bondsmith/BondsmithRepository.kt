@@ -41,7 +41,7 @@ class BondsmithRepository {
                 }
                 .withCache(withCache)
         )
-        .execute2()
+        .execute()
 
     fun flow() = default()
         .responseStateFlow

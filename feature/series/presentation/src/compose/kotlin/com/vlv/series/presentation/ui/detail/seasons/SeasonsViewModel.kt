@@ -3,10 +3,7 @@ package com.vlv.series.presentation.ui.detail.seasons
 import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
-import com.vlv.bondsmith.mapData
-import com.vlv.data.common.model.series.SeasonResponse
 import com.vlv.series.data.repository.SeriesDetailRepository
 import com.vlv.series.presentation.model.Season
 import kotlinx.coroutines.Dispatchers
@@ -28,14 +25,10 @@ class SeasonsViewModel(
 
     fun seasons(seriesId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            bondsmith<List<SeasonResponse>>()
-                .request {
-                    repository.seriesDetail(seriesId).seasons
-                }
-                .execute()
-                .stateFlow
+            repository.seriesDetail(seriesId)
+                .responseStateFlow
                 .mapData { data ->
-                    data?.map { Season(resources, it) }
+                    data?.seasons?.map { Season(resources, it) }
                 }
                 .collectLatest {
                     _state.emit(it)

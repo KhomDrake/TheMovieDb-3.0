@@ -3,6 +3,7 @@ package com.vlv.series.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.vlv.bondsmith.bondsmith
 import com.vlv.data.common.model.TimeWindow
 import com.vlv.data.common.model.series.SeriesItemResponse
 import com.vlv.data.common.model.series.SeriesResponse
@@ -12,12 +13,18 @@ import kotlinx.coroutines.flow.Flow
 
 class SeriesRepository(private val api: SeriesApi) {
 
-    suspend fun trendingSeries(timeWindow: TimeWindow) : SeriesResponse {
-        return api.trending(
-            timeWindow.name.lowercase(),
-            1
-        )
-    }
+    suspend fun trendingSeries(timeWindow: TimeWindow) = bondsmith<SeriesResponse>(
+        "SERIES-TRENDING-${timeWindow.name.lowercase()}"
+    )
+        .config {
+            request {
+                api.trending(
+                    timeWindow.name.lowercase(),
+                    1
+                )
+            }
+        }
+        .execute()
 
     private fun pagingDefault(
         config: PagingConfig,
@@ -64,6 +71,14 @@ class SeriesRepository(private val api: SeriesApi) {
         api.trending(timeWindow.name.lowercase(), page)
     }
 
-    suspend fun airingToday() = api.airingToday(1)
+    suspend fun airingToday() = bondsmith<SeriesResponse>(
+        "SERIES-AIRING-TODAY"
+    )
+        .config {
+            request {
+                api.airingToday(1)
+            }
+        }
+        .execute()
 
 }
