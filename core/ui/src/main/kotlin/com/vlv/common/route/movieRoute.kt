@@ -8,7 +8,16 @@ import com.vlv.extensions.intentForAction
 const val DETAIL_OBJECT_EXTRA = "DETAIL_OBJECT_EXTRA"
 const val FINISH_AFTER_TRANSITION_EXTRA = "FINISH_AFTER_TRANSITION_EXTRA"
 
+enum class SearchType {
+    MOVIE,
+    SERIES,
+    PEOPLE
+}
+
+const val SEARCH_TYPE_EXTRA = "SEARCH_TYPE_EXTRA"
+
 fun Context.toMovieSearch() = intentForAction("MOVIE_SEARCH")
+    .putExtra(SEARCH_TYPE_EXTRA, SearchType.MOVIE.name)
 
 fun Context.toMovieDetail(
     detailObject: DetailObject,

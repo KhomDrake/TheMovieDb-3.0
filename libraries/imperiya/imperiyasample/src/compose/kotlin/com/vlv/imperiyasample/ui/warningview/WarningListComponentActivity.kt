@@ -122,7 +122,7 @@ class WarningItemComponentActivity: ComponentActivity() {
                         showCloseIcon = warningView.showIcon,
                         linkActionText = warningView.linkAction,
                         warningIcon = warningView.warningIcon,
-                        warningIconTint = warningView.warningColorIcon,
+//                        warningIconTint = warningView.warningColorIcon,
                         onClickLink = {
                             Toast.makeText(
                                 this,

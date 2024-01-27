@@ -121,6 +121,7 @@ dependencies {
     composeImplementation project(':feature:genre:presentation')
     composeImplementation project(':feature:favorite:presentation')
     composeImplementation project(':feature:configuration:presentation')
+    composeImplementation project(':feature:search:presentation')
     composeImplementation project(':feature:movie:data')
     composeImplementation project(':feature:series:data')
 //    composeDebugImplementation(libs.androidx.compose.tooling.debug)

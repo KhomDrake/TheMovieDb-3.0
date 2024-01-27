@@ -3,26 +3,24 @@ package com.vlv.imperiyasample.ui.search
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
-import com.vlv.imperiya.core.ui.components.SearchComponent
+import com.vlv.imperiya.core.ui.components.TabItem
+import com.vlv.imperiya.core.ui.components.TabRow
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
+import kotlinx.coroutines.launch
 
 class SearchSampleActivity : ComponentActivity() {
 
@@ -45,41 +43,62 @@ class SearchSampleActivity : ComponentActivity() {
 
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SearchSample(paddingValues: PaddingValues) {
+
+    val items = listOf("Material Default - No query", "Material Default", "Material Default - Close")
+
+    val pagerState = rememberPagerState(
+        pageCount = {items.size}
+    )
+
+    val coroutineScope = rememberCoroutineScope()
+
     Column(
         modifier = Modifier
-            .fillMaxSize()
             .padding(
                 top = paddingValues.calculateTopPadding()
             )
     ) {
-        var language by remember {
-            mutableStateOf("")
+        TabRow(
+            itemCount = items.size,
+            currentIndex = pagerState.currentPage,
+            onClick = { newIndex ->
+                coroutineScope.launch {
+                    pagerState.scrollToPage(newIndex)
+                }
+            }
+        ) { index, isSelected ->
+            TabItem(name = items[index], isSelected = isSelected)
         }
 
-        SearchComponent(
-            query = language,
-            hint = "Write a language",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            onQueryChange = {
-                language = it
-            },
-            onSearch = {
-                language += "test"
+        HorizontalPager(
+            state = pagerState,
+            pageSpacing = 16.dp,
+            contentPadding = PaddingValues(
+                start = 16.dp,
+                end = 16.dp,
+                top = 16.dp,
+            )
+        ) { index ->
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+            ) {
+                when(index) {
+                    0 -> {
+                        MaterialDefault()
+                    }
+                    1 -> {
+                        MaterialDefaultQuery()
+                    }
+                    else -> {
+                        MaterialDefaultClose()
+                    }
+                }
             }
-        )
-
-        SearchComponent(
-            hint = "Write a language",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            onSearch = {
-                language += "test2"
-            }
-        )
+        }
     }
+
 }

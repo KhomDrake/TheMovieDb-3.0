@@ -1,6 +1,7 @@
 package com.vlv.imperiya.core.ui.components
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,10 +40,17 @@ fun SearchComponent(
     backgroundColor: Color = MaterialTheme.colorScheme.tertiary,
     textColor: Color = MaterialTheme.colorScheme.onTertiary,
     changeActive: Boolean = true,
+    leadingIcon: @Composable () -> Unit = {
+        Icon(
+            imageVector = Icons.Default.Search,
+            contentDescription = "Search Icon",
+            tint = textColor
+        )
+    },
+    active: Boolean = false,
+    onActiveChange: (Boolean) -> Unit = {},
     content: @Composable () -> Unit = {}
 ) {
-    var active by remember { mutableStateOf(false) }
-
     SearchBar(
         modifier = modifier
             .onFocusChanged {
@@ -52,7 +60,9 @@ fun SearchComponent(
             },
         query = query,
         onQueryChange = onQueryChange,
-        onSearch = onSearch,
+        onSearch = {
+            onSearch.invoke(it)
+        },
         active = active,
         colors = SearchBarDefaults.colors(
             containerColor = backgroundColor,
@@ -63,7 +73,9 @@ fun SearchComponent(
             )
         ),
         onActiveChange = {
-            if(changeActive) active = it
+            if(changeActive) {
+                onActiveChange.invoke(it)
+            }
         },
         placeholder = {
             Text(
@@ -74,13 +86,7 @@ fun SearchComponent(
                 color = textColor
             )
         },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = "Search Icon",
-                tint = textColor
-            )
-        },
+        leadingIcon = leadingIcon,
         trailingIcon = {
             if(active) {
                 IconButton(
@@ -88,7 +94,7 @@ fun SearchComponent(
                         if(query.isNotEmpty()) {
                             onQueryChange.invoke("")
                         } else {
-                            active = false
+                            onActiveChange.invoke(false)
                         }
                     }
                 ) {
@@ -103,6 +109,51 @@ fun SearchComponent(
     ) {
         content.invoke()
     }
+}
+
+@Composable
+fun SearchCloseComponent(
+    hint: String,
+    modifier: Modifier = Modifier,
+    query: String = "",
+    onQueryChange: (String) -> Unit = {},
+    onSearch: (String) -> Unit = {},
+    onFocus: (() -> Unit)? = null,
+    backgroundColor: Color = MaterialTheme.colorScheme.tertiary,
+    textColor: Color = MaterialTheme.colorScheme.onTertiary,
+    changeActive: Boolean = true,
+    onClickClose: () -> Unit = {},
+    active: Boolean = false,
+    onActiveChange: (Boolean) -> Unit = {},
+    content: @Composable () -> Unit = {}
+) {
+    SearchComponent(
+        hint,
+        modifier,
+        query,
+        onQueryChange,
+        onSearch,
+        onFocus,
+        backgroundColor,
+        textColor,
+        changeActive,
+        active = active,
+        onActiveChange = onActiveChange,
+        content = content,
+        leadingIcon = {
+            IconButton(
+                onClick = {
+                    onClickClose.invoke()
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = "Close the app",
+                    tint = MaterialTheme.colorScheme.onTertiary
+                )
+            }
+        }
+    )
 }
 
 @Composable
