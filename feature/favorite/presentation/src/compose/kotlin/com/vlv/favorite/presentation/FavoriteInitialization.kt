@@ -4,6 +4,7 @@ import androidx.startup.Initializer
 import com.vlv.favorite.domain.FavoriteDomainInitializer
 import com.vlv.favorite.presentation.ui.FavoritesViewModel
 import com.vlv.favorite.presentation.ui.movie.MovieFavoriteViewModel
+import com.vlv.favorite.presentation.ui.series.SeriesFavoriteViewModel
 import com.vlv.util.ModuleInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -14,6 +15,7 @@ class FavoriteInitialization : ModuleInitializer() {
         get() = listOf(
             module {
                 viewModel { MovieFavoriteViewModel(get()) }
+                viewModel { SeriesFavoriteViewModel(get()) }
                 viewModel { FavoritesViewModel(get(), get(), get()) }
             }
         )

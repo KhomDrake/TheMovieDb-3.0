@@ -6,6 +6,7 @@ import com.vlv.series.presentation.ui.SeriesListingViewModel
 import com.vlv.series.presentation.ui.detail.SeriesDetailViewModel
 import com.vlv.series.presentation.ui.detail.about.AboutSeriesViewModel
 import com.vlv.series.presentation.ui.detail.cast.SeriesCastViewModel
+import com.vlv.series.presentation.ui.detail.recommendations.SeriesRecommendationViewModel
 import com.vlv.series.presentation.ui.detail.reviews.SeriesReviewViewModel
 import com.vlv.series.presentation.ui.detail.seasons.SeasonsViewModel
 import com.vlv.util.ModuleInitializer
@@ -23,6 +24,7 @@ class SeriesInitializer: ModuleInitializer() {
                 viewModel { SeriesDetailViewModel(get()) }
                 viewModel { SeriesCastViewModel(get()) }
                 viewModel { SeriesReviewViewModel(get()) }
+                viewModel { SeriesRecommendationViewModel(get()) }
                 viewModel { AboutSeriesViewModel(androidApplication().resources, get()) }
                 viewModel { SeasonsViewModel(androidApplication().resources, get()) }
             }

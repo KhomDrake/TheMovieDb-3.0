@@ -1,6 +1,7 @@
 package com.vlv.configuration.domain.usecase
 
 import android.content.res.Resources
+import com.vlv.bondsmith.bondsmith
 import com.vlv.configuration.data.ConfigurationRepository
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.domain.model.ConfigItemType
@@ -18,11 +19,15 @@ class SettingsUseCase(
 
         return SettingsResponse(config)
     }
-
-    suspend fun configData(resources: Resources) : SectionsData {
-        val settingsData = newConfig()
-        return SectionsData(resources, settingsData)
-    }
+    suspend fun configData(resources: Resources) = bondsmith<SectionsData>("CONFIG-DATA")
+        .config {
+            request {
+                withCache(with = false)
+                val settingsData = newConfig()
+                SectionsData(resources, settingsData)
+            }
+        }
+        .execute()
 
     suspend fun setConfigValue(option: SettingOption, value: Any, type: ConfigItemType) {
         when(type) {

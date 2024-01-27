@@ -2,15 +2,17 @@ package com.vlv.favorite.presentation.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
+import com.vlv.bondsmith.data.flow.ResponseStateFlow
+import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.data.movie.Movie
+import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
 import com.vlv.favorite.domain.usecase.MovieFavoriteUseCase
 import com.vlv.favorite.domain.usecase.PeopleFavoriteUseCase
 import com.vlv.favorite.domain.usecase.SeriesFavoriteUseCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class FavoritesViewModel(
@@ -19,34 +21,63 @@ class FavoritesViewModel(
     private val peopleFavoriteUseCase: PeopleFavoriteUseCase
 ) : ViewModel() {
 
-    private val _movieState: MutableStateFlow<List<Movie>> =
-        MutableStateFlow(listOf())
+    private val _movieState: MutableResponseStateFlow<List<Movie>> =
+        MutableResponseStateFlow()
 
-    val movieState: Flow<List<Movie>>
-        get() = _movieState.asStateFlow()
+    val movieState: ResponseStateFlow<List<Movie>>
+        get() = _movieState.asResponseStateFlow()
 
     fun moviesFavorites() {
         viewModelScope.launch(Dispatchers.IO) {
-            val data = movieFavoriteUseCase.favorites()
-                .map(::Movie)
-            _movieState.emit(data)
-
+            movieFavoriteUseCase.favorites()
+                .responseStateFlow
+                .mapData {
+                    it?.map(::Movie) ?: listOf()
+                }
+                .collectLatest {
+                    _movieState.emit(it)
+                }
         }
     }
 
-    private val _seriesState: MutableStateFlow<List<Series>> =
-        MutableStateFlow(listOf())
+    private val _seriesState: MutableResponseStateFlow<List<Series>> =
+        MutableResponseStateFlow()
 
-    val seriesState: Flow<List<Series>>
-        get() = _seriesState.asStateFlow()
+    val seriesState: ResponseStateFlow<List<Series>>
+        get() = _seriesState.asResponseStateFlow()
 
     fun seriesFavorites() {
         viewModelScope.launch(Dispatchers.IO) {
-            val data = seriesFavoriteUseCase.favorites()
-                .map(::Series)
-
-            _seriesState.emit(data)
+            seriesFavoriteUseCase.favorites()
+                .responseStateFlow
+                .mapData {
+                    it?.map(::Series) ?: listOf()
+                }
+                .collectLatest {
+                    _seriesState.emit(it)
+                }
         }
     }
+
+    private val _peopleState: MutableResponseStateFlow<List<People>> =
+        MutableResponseStateFlow()
+
+    val peopleState: ResponseStateFlow<List<People>>
+        get() = _peopleState.asResponseStateFlow()
+
+    fun peopleFavorites() {
+        viewModelScope.launch(Dispatchers.IO) {
+            peopleFavoriteUseCase.favorites()
+                .responseStateFlow
+                .mapData {
+                    it?.map(::People) ?: listOf()
+                }
+                .collectLatest {
+                    _peopleState.emit(it)
+                }
+        }
+    }
+
+
 
 }

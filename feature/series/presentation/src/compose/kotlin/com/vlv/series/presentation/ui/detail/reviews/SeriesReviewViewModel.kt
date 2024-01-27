@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
-import com.vlv.bondsmith.mapData
 import com.vlv.common.data.review.Review
 import com.vlv.data.common.model.review.ReviewResponse
 import com.vlv.series.data.repository.SeriesDetailRepository
@@ -26,14 +25,10 @@ class SeriesReviewViewModel(
 
     fun seriesReview(seriesId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            bondsmith<List<ReviewResponse>>()
-                .request {
-                    repository.seriesReview(seriesId).resultResponses
-                }
-                .execute()
+            repository.seriesReview(seriesId)
                 .responseStateFlow
                 .mapData {
-                    it?.map(::Review)
+                    it?.resultResponses?.map(::Review)
                 }
                 .collectLatest {
                     _state.emit(it)

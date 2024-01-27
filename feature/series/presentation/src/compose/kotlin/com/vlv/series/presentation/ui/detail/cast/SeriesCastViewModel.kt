@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
-import com.vlv.bondsmith.mapData
 import com.vlv.common.data.cast.Cast
 import com.vlv.data.common.model.credit.CastResponse
 import com.vlv.series.data.repository.SeriesDetailRepository
@@ -25,14 +24,10 @@ class SeriesCastViewModel(
 
     fun cast(seriesId: Int) {
         viewModelScope.launch {
-            bondsmith<List<CastResponse>>()
-                .request {
-                    repository.seriesCast(seriesId).castResponse
-                }
-                .execute()
+            repository.seriesCast(seriesId)
                 .responseStateFlow
                 .mapData {
-                    it?.map(::Cast)
+                    it?.castResponse?.map(::Cast)
                 }
                 .collectLatest {
                     _state.emit(it)

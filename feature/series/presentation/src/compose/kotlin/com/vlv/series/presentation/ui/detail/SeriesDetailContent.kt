@@ -23,6 +23,7 @@ import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.series.R
 import com.vlv.series.presentation.ui.detail.about.AboutSeriesTab
 import com.vlv.series.presentation.ui.detail.cast.SeriesCastTab
+import com.vlv.series.presentation.ui.detail.recommendations.SeriesRecommendationTab
 import com.vlv.series.presentation.ui.detail.reviews.SeriesReviewTab
 import com.vlv.series.presentation.ui.detail.seasons.SeasonsTab
 import kotlinx.coroutines.launch
@@ -98,7 +99,10 @@ fun SeriesDetailContent(
                     SeriesReviewTab(detailObject = detailObject)
                 }
                 else -> {
-
+                    SeriesRecommendationTab(
+                        detailObject = detailObject,
+                        routeNavigation = routeNavigation
+                    )
                 }
             }
         }

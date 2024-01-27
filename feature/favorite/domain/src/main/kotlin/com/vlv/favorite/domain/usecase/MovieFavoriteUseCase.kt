@@ -6,7 +6,7 @@ import com.vlv.favorite.data.FavoriteRepository
 class MovieFavoriteUseCase(
     private val repository: FavoriteRepository
 ) {
-    suspend fun favorites() = repository.favoriteByType(
+    fun favorites() = repository.favoriteByType(
         FavoriteType.MOVIE
     )
 

@@ -4,11 +4,16 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.vlv.bondsmith.bondsmith
+import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
+import com.vlv.bondsmith.data.flow.ResponseStateFlow
+import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.route.ScreenRoute
 import com.vlv.themoviedb.R
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -29,12 +34,12 @@ class MenuItem(
 
 class MenuViewModel : ViewModel() {
 
-    private val _state = MutableStateFlow<List<MenuItem>>(listOf())
+    private val _state = MutableResponseStateFlow<List<MenuItem>>()
 
-    val state: StateFlow<List<MenuItem>>
-        get() = _state.asStateFlow()
+    val state: ResponseStateFlow<List<MenuItem>>
+        get() = _state.asResponseStateFlow()
 
-    private fun userItems() = listOf<MenuItem>(
+    private fun userItems() = listOf(
         MenuItem(
             R.string.menu_title_user,
             type = MenuItemType.HEADER
@@ -202,14 +207,22 @@ class MenuViewModel : ViewModel() {
 
     fun menuItems() {
         viewModelScope.launch {
-            _state.emit(
-                mutableListOf<MenuItem>().apply {
-                    addAll(userItems())
-                    addAll(moviesItems())
-                    addAll(seriesItems())
-                    addAll(peopleItems())
-                }.filter { it.action != null || it.type == MenuItemType.HEADER }.toList()
-            )
+            bondsmith<List<MenuItem>>("MENU")
+                .config {
+                    request {
+                        mutableListOf<MenuItem>().apply {
+                            addAll(userItems())
+                            addAll(moviesItems())
+                            addAll(seriesItems())
+                            addAll(peopleItems())
+                        }.filter { it.action != null || it.type == MenuItemType.HEADER }.toList()
+                    }
+                }
+                .execute()
+                .responseStateFlow
+                .collectLatest {
+                    _state.emit(it)
+                }
         }
 
     }

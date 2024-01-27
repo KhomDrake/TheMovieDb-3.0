@@ -11,8 +11,11 @@ class IntroViewModel(
 ) : ViewModel() {
 
     fun loadConfig() = bondsmith<Unit>()
-        .request {
-            useCase.loadConfig(resources)
+        .config {
+            withCache(false)
+            request {
+                useCase.loadConfig(resources)
+            }
         }
         .execute()
         .responseLiveData

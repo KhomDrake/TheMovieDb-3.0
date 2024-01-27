@@ -9,4 +9,6 @@
     <string name="favorite_movie_empty_state">None movie favorite found</string>
     <string name="favorite_series_empty_state">None tv show favorite found</string>
     <string name="favorite_people_empty_state">None person favorite found</string>
+
+    <string name="favorite_error_state_title">Failed to load favorites</string>
 </resources>

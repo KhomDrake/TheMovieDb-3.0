@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_tmdb_sample"
+        android:label="Libraries Sample"
+        android:roundIcon="@drawable/ic_tmdb_sample"
+        android:supportsRtl="true"
+        android:theme="@style/Imperiya.Theme">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Imperiya.Theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".bondsmith.BondsmithActivity"
+            android:theme="@style/Imperiya.Theme"
+            android:exported="false"/>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data  android:name="com.vlv.libraries.sample.SampleInitialization"
+                android:value="androidx.startup" />
+        </provider>
+    </application>
+
+</manifest>

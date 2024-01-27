@@ -70,7 +70,7 @@ fun MovieScreen(
         )
         MovieCarouselFavorite(
             modifier = Modifier
-                .padding(bottom = 8.dp),
+                .padding(16.dp),
             onClickMovie = onNavigate,
             errorTitle = stringResource(id = R.string.error_movie_load_text_title_favorites),
             errorBody = stringResource(id = com.vlv.ui.R.string.common_error_description),

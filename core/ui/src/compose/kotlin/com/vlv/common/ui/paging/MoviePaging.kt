@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
@@ -21,7 +20,6 @@ import com.vlv.common.ui.extension.isSingleError
 import com.vlv.common.ui.extension.isSingleLoading
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.common.ui.shimmer.SinglePosterShimmer
-import com.vlv.imperiya.core.ui.components.StateView
 
 @Composable
 fun MoviesPagingGrid(
