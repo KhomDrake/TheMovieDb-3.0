@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -18,6 +20,8 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
 import com.vlv.common.ui.SeriesCarousel
 import com.vlv.common.ui.shimmer.CarouselShimmer
+import com.vlv.favorite.presentation.ui.movie.MovieCarouselFavorite
+import com.vlv.favorite.presentation.ui.series.SeriesCarouselFavorite
 import com.vlv.imperiya.core.ui.components.SearchComponent
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import com.vlv.themoviedb.R
@@ -29,12 +33,15 @@ fun SeriesScreen(
     paddingValues: PaddingValues,
     onNavigate: RouteNavigation
 ) {
+    val scrollState = rememberScrollState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(
                 bottom = paddingValues.calculateBottomPadding()
             )
+            .verticalScroll(scrollState)
     ) {
         SearchComponent(
             modifier =
@@ -48,6 +55,21 @@ fun SeriesScreen(
         )
         SeriesTrending(onNavigate = onNavigate)
         AiringToday(onNavigate = onNavigate)
+        SeeAll(
+            title = stringResource(id = R.string.favorites_title),
+            onClickSeeAll = {
+                onNavigate.invoke(ScreenRoute.FAVORITES_SERIES, null)
+            }
+        )
+        SeriesCarouselFavorite(
+            modifier = Modifier
+                .padding(16.dp),
+            routeNavigation = onNavigate,
+            errorTitle = stringResource(id = R.string.error_series_load_text_title_favorites),
+            errorBody = stringResource(id = com.vlv.ui.R.string.common_error_description),
+            errorLink = stringResource(id = com.vlv.ui.R.string.common_error_button),
+            emptyStateTitle = stringResource(id = R.string.empty_state_text_series_favorite)
+        )
     }
 }
 

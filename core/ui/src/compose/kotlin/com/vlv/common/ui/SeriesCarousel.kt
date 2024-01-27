@@ -51,7 +51,8 @@ fun SeriesCarousel(
                 .fillMaxWidth(),
             icon = R.drawable.ic_movie,
             title = emptyStateTitle,
-            body = emptyStateBody
+            body = emptyStateBody,
+            iconTint = MaterialTheme.colorScheme.onBackground
         )
         return
     }

@@ -1,6 +1,5 @@
 package com.vlv.favorite.data
 
-import android.content.res.Resources.NotFoundException
 import com.vlv.bondsmith.bondsmith
 import com.vlv.data.database.TheMovieDbDao
 import com.vlv.data.database.data.Favorite
@@ -22,7 +21,6 @@ class FavoriteRepository(private val dao: TheMovieDbDao) {
         .config {
             withCache(with = false)
             request {
-                throw NotFoundException()
                 dao.favoriteByType(type)
             }
         }

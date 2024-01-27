@@ -1,6 +1,7 @@
 package com.vlv.favorite.presentation.ui.movie
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -8,6 +9,7 @@ import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
 import com.vlv.common.ui.MovieCarousel
+import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.shimmer.CarouselShimmer
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import org.koin.androidx.compose.koinViewModel
@@ -22,11 +24,14 @@ fun MovieCarouselFavorite(
     errorLink: String,
     emptyStateTitle: String
 ) {
-    val data by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
 
-    when(data.state) {
-        ResponseStatus.SUCCESS -> {
-            val movies = data.data ?: return
+    LaunchedEffect(key1 = errorTitle, block = {
+        viewModel.moviesFavorite()
+    })
+
+    state.handle(
+        success = { movies ->
             MovieCarousel(
                 modifier,
                 movies = movies,
@@ -35,11 +40,11 @@ fun MovieCarouselFavorite(
                 },
                 emptyStateTitle = emptyStateTitle
             )
-        }
-        ResponseStatus.LOADING -> {
+        },
+        loading = {
             CarouselShimmer(modifier)
-        }
-        ResponseStatus.ERROR -> {
+        },
+        error = {
             SmallWarningView(
                 modifier,
                 title = errorTitle,
@@ -50,6 +55,5 @@ fun MovieCarouselFavorite(
                 }
             )
         }
-        else -> Unit
-    }
+    )
 }
