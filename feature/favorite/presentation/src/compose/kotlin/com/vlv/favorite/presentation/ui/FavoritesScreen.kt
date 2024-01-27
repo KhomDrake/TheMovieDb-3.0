@@ -53,8 +53,8 @@ fun FavoritesScreen(
         ) {
             when(items[pagerState.currentPage]) {
                 R.string.favorite_movie_title -> MovieFavorites(routeNavigation)
-                R.string.favorite_series_title -> PeopleFavorites(routeNavigation)
-                else -> SeriesFavorites(routeNavigation)
+                R.string.favorite_series_title -> SeriesFavorites(routeNavigation)
+                else -> PeopleFavorites(routeNavigation)
             }
         }
     }
