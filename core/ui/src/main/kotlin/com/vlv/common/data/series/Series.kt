@@ -6,15 +6,17 @@ import com.vlv.data.common.model.people.SeriesCreditResponse
 import com.vlv.data.common.model.series.SeriesItemResponse
 import com.vlv.data.database.data.Favorite
 import com.vlv.data.database.data.FavoriteType
+import com.vlv.extensions.idInt
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class Series(
     val adult: Boolean,
-    val id: Int,
+    val apiId: Int,
     val backdropPath: String?,
     val posterPath: String?,
-    val title: String
+    val title: String,
+    val id: Int = idInt()
 ) : Parcelable {
     constructor(response: SeriesItemResponse): this(
         response.adult,
@@ -46,12 +48,12 @@ fun DetailObject.toSeries() = Series(
 )
 
 fun Series.toDetailObject() = DetailObject(
-    id, posterPath, backdropPath, title, overview = ""
+    apiId, posterPath, backdropPath, title, overview = ""
 )
 
 fun Series.toFavorite() = Favorite(
-    id,
-    id,
+    apiId,
+    apiId,
     title,
     posterPath,
     backdropPath,

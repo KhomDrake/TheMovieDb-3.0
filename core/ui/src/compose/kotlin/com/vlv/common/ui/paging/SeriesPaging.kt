@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
@@ -28,6 +27,7 @@ fun SeriesPagingGrid(
     heightItem: Dp = 200.dp,
     itemCountInitialLoading: Int = 4,
     columns: Int = 2,
+    emptyState: @Composable () -> Unit = {},
     seriesItems: LazyPagingItems<Series>,
     routeNavigation: RouteNavigation
 ) {
@@ -38,6 +38,11 @@ fun SeriesPagingGrid(
             height = heightItem
         )
     } else {
+        if(seriesItems.itemCount == 0) {
+            emptyState.invoke()
+            return
+        }
+
         LazyVerticalGrid(
             modifier = modifier,
             columns = GridCells.Fixed(columns),
