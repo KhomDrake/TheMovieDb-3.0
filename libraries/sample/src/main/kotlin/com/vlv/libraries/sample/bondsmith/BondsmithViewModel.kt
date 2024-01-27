@@ -2,17 +2,19 @@ package com.vlv.libraries.sample.bondsmith
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
 import br.com.arch.toolkit.livedata.response.SwapResponseLiveData
 import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
-import kotlinx.coroutines.flow.collect
+import com.vlv.bondsmith.data.flow.ResponseStateFlow
+import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import kotlinx.coroutines.launch
 
 class BondsmithViewModel(
     private val repository: BondsmithRepository
 ) : ViewModel() {
 
-    val state = MutableResponseStateFlow<String>()
+    val responseStateFlow: ResponseStateFlow<String>
+        get() = mutableResponseState.asResponseStateFlow()
+    val mutableResponseState = MutableResponseStateFlow<String>()
     val liveData = SwapResponseLiveData<String>()
 
     fun responseLiveData(
@@ -45,7 +47,7 @@ class BondsmithViewModel(
                     "Next Int ${it.toString()}"
                 }
                 .collect {
-                    state.emit(it)
+                    mutableResponseState.emit(it)
                 }
         }
     }

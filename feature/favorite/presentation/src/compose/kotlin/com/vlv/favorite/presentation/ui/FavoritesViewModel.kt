@@ -6,14 +6,12 @@ import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
 import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.data.movie.Movie
+import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
 import com.vlv.favorite.domain.usecase.MovieFavoriteUseCase
 import com.vlv.favorite.domain.usecase.PeopleFavoriteUseCase
 import com.vlv.favorite.domain.usecase.SeriesFavoriteUseCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -50,7 +48,7 @@ class FavoritesViewModel(
 
     fun seriesFavorites() {
         viewModelScope.launch(Dispatchers.IO) {
-            val data = seriesFavoriteUseCase.favorites()
+            seriesFavoriteUseCase.favorites()
                 .responseStateFlow
                 .mapData {
                     it?.map(::Series) ?: listOf()
@@ -60,5 +58,26 @@ class FavoritesViewModel(
                 }
         }
     }
+
+    private val _peopleState: MutableResponseStateFlow<List<People>> =
+        MutableResponseStateFlow()
+
+    val peopleState: ResponseStateFlow<List<People>>
+        get() = _peopleState.asResponseStateFlow()
+
+    fun peopleFavorites() {
+        viewModelScope.launch(Dispatchers.IO) {
+            peopleFavoriteUseCase.favorites()
+                .responseStateFlow
+                .mapData {
+                    it?.map(::People) ?: listOf()
+                }
+                .collectLatest {
+                    _peopleState.emit(it)
+                }
+        }
+    }
+
+
 
 }

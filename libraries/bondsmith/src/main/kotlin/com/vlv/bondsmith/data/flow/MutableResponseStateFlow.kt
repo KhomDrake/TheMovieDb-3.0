@@ -2,14 +2,18 @@ package com.vlv.bondsmith.data.flow
 
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.ResponseStatus
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class MutableResponseStateFlow<Data>(
-    previous: Response<Data> = Response()
-) : MutableStateFlow<Response<Data>>, ResponseStateFlow<Data>(previous) {
+    previous: Response<Data> = Response(),
+    scope: CoroutineScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+) : MutableStateFlow<Response<Data>>, ResponseStateFlow<Data>(previous, scope) {
 
     suspend fun emitSuccess(data: Data?) {
         flowState.emit(

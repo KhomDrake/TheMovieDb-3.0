@@ -20,6 +20,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import br.com.arch.toolkit.common.DataResultStatus
+import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.imperiya.core.ui.components.SmallWarningView
@@ -197,7 +198,7 @@ fun FlowScreen(
     withCache: Boolean = true,
     viewModel: BondsmithViewModel = koinViewModel()
 ) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.responseStateFlow.collectAsState()
 
     LaunchedEffect(key1 = 2, block = {
         viewModel.flow(

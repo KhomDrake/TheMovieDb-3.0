@@ -6,19 +6,16 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.vlv.bondsmith.bondsmith
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
 import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.data.movie.Movie
 import com.vlv.data.common.model.genre.GenreResponse
-import com.vlv.data.common.model.genre.GenresResponse
 import com.vlv.genre.domain.usecase.MovieGenreUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -72,7 +69,6 @@ class MovieGenreViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 genreUseCase.genres()
-                    .execute()
                     .responseStateFlow
                     .collectLatest {
                         _state.emit(it)

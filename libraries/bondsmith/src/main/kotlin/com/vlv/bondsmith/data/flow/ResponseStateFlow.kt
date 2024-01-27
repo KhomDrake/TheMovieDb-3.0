@@ -13,9 +13,13 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 
-open class ResponseStateFlow<Data>(previousData: Response<Data> = Response()) : StateFlow<Response<Data>> {
+open class ResponseStateFlow<Data>(
+    previousData: Response<Data> = Response(),
+    newScope: CoroutineScope
+) : StateFlow<Response<Data>> {
 
-    protected val flowState: MutableStateFlow<Response<Data>>
+    internal val flowState: MutableStateFlow<Response<Data>>
+    internal val scope: CoroutineScope = newScope
 
     fun <NewData> mapData(
         transform: suspend (Data?) -> NewData?
@@ -37,11 +41,11 @@ open class ResponseStateFlow<Data>(previousData: Response<Data> = Response()) : 
         flowState = MutableStateFlow(previousData)
     }
 
-    private constructor(
+    internal constructor(
         value: Response<Data>,
         scope: CoroutineScope,
         mirror: Flow<Response<Data>>
-    ) : this(value) {
+    ) : this(value, scope) {
         scope.launch { mirror.collect(flowState::tryEmit) }
     }
 
@@ -54,5 +58,7 @@ open class ResponseStateFlow<Data>(previousData: Response<Data> = Response()) : 
 }
 
 fun <Data> MutableResponseStateFlow<Data>.asResponseStateFlow() = ResponseStateFlow(
-    value
+    value,
+    scope,
+    flowState
 )
