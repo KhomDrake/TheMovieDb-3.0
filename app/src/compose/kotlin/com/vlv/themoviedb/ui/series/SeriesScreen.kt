@@ -20,7 +20,6 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
 import com.vlv.common.ui.SeriesCarousel
 import com.vlv.common.ui.shimmer.CarouselShimmer
-import com.vlv.favorite.presentation.ui.movie.MovieCarouselFavorite
 import com.vlv.favorite.presentation.ui.series.SeriesCarouselFavorite
 import com.vlv.imperiya.core.ui.components.SearchComponent
 import com.vlv.imperiya.core.ui.components.SmallWarningView
@@ -49,7 +48,7 @@ fun SeriesScreen(
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             hint = "Search for series",
-            onFocus = {
+            onClick = {
                 onNavigate.invoke(ScreenRoute.SERIES_SEARCH, null)
             }
         )

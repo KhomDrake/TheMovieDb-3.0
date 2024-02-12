@@ -24,6 +24,11 @@ interface TheMovieDbDao {
         type: HistoryType
     ) : LiveData<List<History>>
 
+    @Query("SELECT * FROM history WHERE type = :type")
+    suspend fun historyByTypeAsync(
+        type: HistoryType
+    ) : List<History>
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(favorite: Favorite)

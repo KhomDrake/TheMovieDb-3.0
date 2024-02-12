@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 
@@ -39,6 +40,34 @@ open class ResponseStateFlow<Data>(
 
     init {
         flowState = MutableStateFlow(previousData)
+    }
+
+    suspend fun collect(
+        dataCollector: FlowCollector<Data>,
+        errorCollector: FlowCollector<Throwable>
+    ) {
+        flowState.collect {
+            it.data?.let { data ->
+                dataCollector.emit(data)
+            }
+            it.error?.let { error ->
+                errorCollector.emit(error)
+            }
+        }
+    }
+
+    suspend fun collectLatestData(
+        dataCollector: FlowCollector<Data>,
+        errorCollector: FlowCollector<Throwable>
+    ) {
+        flowState.collectLatest {
+            it.data?.let { data ->
+                dataCollector.emit(data)
+            }
+            it.error?.let { error ->
+                errorCollector.emit(error)
+            }
+        }
     }
 
     internal constructor(

@@ -47,7 +47,12 @@ class SearchSampleActivity : ComponentActivity() {
 @Composable
 fun SearchSample(paddingValues: PaddingValues) {
 
-    val items = listOf("Material Default - No query", "Material Default", "Material Default - Close")
+    val items = listOf(
+        "Material Default - No query",
+        "Material Default",
+        "Material Default - Close",
+        "Material Default - No Interaction"
+    )
 
     val pagerState = rememberPagerState(
         pageCount = {items.size}
@@ -93,8 +98,11 @@ fun SearchSample(paddingValues: PaddingValues) {
                     1 -> {
                         MaterialDefaultQuery()
                     }
-                    else -> {
+                    2 -> {
                         MaterialDefaultClose()
+                    }
+                    else -> {
+                        MaterialDefaultNoInteraction()
                     }
                 }
             }

@@ -28,6 +28,7 @@ import com.vlv.common.route.handleRoute
 import com.vlv.favorite.presentation.ui.FavoritesScreen
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+import com.vlv.search.ui.SearchScreen
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.menu.MenuScreen
 import com.vlv.themoviedb.ui.movie.MovieScreen
@@ -167,7 +168,14 @@ fun MainScreen(
                             .padding(bottom = paddingValues.calculateBottomPadding())
                     )
                 }
-                else -> Unit
+                MainScreens.SEARCH.ordinal -> {
+                    SearchScreen(
+                        routeNavigation = onNavigate,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(bottom = paddingValues.calculateBottomPadding())
+                    )
+                }
             }
         }
     }

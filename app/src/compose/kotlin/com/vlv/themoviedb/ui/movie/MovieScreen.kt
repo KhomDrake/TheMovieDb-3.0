@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -24,7 +23,6 @@ import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.route.toMovieSearch
 import com.vlv.common.ui.MovieCarousel
 import com.vlv.common.ui.shimmer.CarouselShimmer
 import com.vlv.favorite.presentation.ui.movie.MovieCarouselFavorite
@@ -51,14 +49,14 @@ fun MovieScreen(
             .verticalScroll(scrollState)
     ) {
         SearchComponent(
-            modifier =
-            Modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             hint = "Search for movies",
-            onFocus = {
+            onClick = {
                 onNavigate.invoke(ScreenRoute.MOVIE_SEARCH, null)
-            }
+            },
+            enable = false
         )
         Trending(onNavigate = onNavigate)
         NowPlaying(onNavigate = onNavigate)

@@ -1,5 +1,6 @@
 package com.vlv.imperiya.core.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
@@ -20,7 +21,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewFontScale
@@ -36,7 +36,7 @@ fun SearchComponent(
     query: String = "",
     onQueryChange: (String) -> Unit = {},
     onSearch: (String) -> Unit = {},
-    onFocus: (() -> Unit)? = null,
+    onClick: (() -> Unit)? = null,
     backgroundColor: Color = MaterialTheme.colorScheme.tertiary,
     textColor: Color = MaterialTheme.colorScheme.onTertiary,
     changeActive: Boolean = true,
@@ -49,13 +49,16 @@ fun SearchComponent(
     },
     active: Boolean = false,
     onActiveChange: (Boolean) -> Unit = {},
+    enable: Boolean = true,
     content: @Composable () -> Unit = {}
 ) {
     SearchBar(
         modifier = modifier
-            .onFocusChanged {
-                if(it.isFocused) {
-                    onFocus?.invoke()
+            .apply {
+                if(onClick != null) {
+                    clickable {
+                        onClick.invoke()
+                    }
                 }
             },
         query = query,
@@ -63,6 +66,7 @@ fun SearchComponent(
         onSearch = {
             onSearch.invoke(it)
         },
+        enabled = enable,
         active = active,
         colors = SearchBarDefaults.colors(
             containerColor = backgroundColor,
@@ -160,18 +164,20 @@ fun SearchCloseComponent(
 fun SearchComponent(
     hint: String,
     modifier: Modifier = Modifier,
-    onFocus: () -> Unit = {},
+    onClick: () -> Unit = {},
+    enable: Boolean = true,
     backgroundColor: Color = MaterialTheme.colorScheme.tertiary,
     textColor: Color = MaterialTheme.colorScheme.onTertiary
 ) {
     SearchComponent(
         hint = hint,
         modifier = modifier,
-        onFocus = onFocus,
+        onClick = onClick,
         backgroundColor = backgroundColor,
         textColor = textColor,
         content = { },
-        changeActive = false
+        changeActive = false,
+        enable = enable
     )
 }
 

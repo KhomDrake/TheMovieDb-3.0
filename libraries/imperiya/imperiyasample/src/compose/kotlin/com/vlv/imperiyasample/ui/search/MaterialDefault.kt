@@ -1,6 +1,8 @@
 package com.vlv.imperiyasample.ui.search
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -26,41 +28,49 @@ fun MaterialDefault() {
         mutableStateOf(false)
     }
 
-    SearchComponent(
-        query = language,
-        hint = "Write a language",
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp),
-        onSearch = {
-            isActive = false
-        },
-        onActiveChange = {
-            isActive = it
-        },
-        active = isActive,
-        onQueryChange = {
-            language = it
-        },
-        content = {
-            LazyColumn(
-                content = {
-                    items(3) {
-                        Text(
-                            text = it.toString(),
-                            style = TheMovieDbTypography.ParagraphBoldStyle,
-                            color = MaterialTheme.colorScheme.onBackground,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                                .clickable {
-                                    isActive = false
-                                }
-                        )
+    Column {
+        SearchComponent(
+            query = language,
+            hint = "Write a language",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp),
+            onSearch = {
+                isActive = false
+            },
+            onActiveChange = {
+                isActive = it
+            },
+            active = isActive,
+            onQueryChange = {
+                language = it
+            },
+            content = {
+                LazyColumn(
+                    content = {
+                        items(3) {
+                            Text(
+                                text = it.toString(),
+                                style = TheMovieDbTypography.ParagraphBoldStyle,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp)
+                                    .clickable {
+                                        isActive = false
+                                    }
+                            )
+                        }
                     }
-                }
-            )
-        },
+                )
+            }
+        )
 
-    )
+        if(!isActive)
+            Text(text = "Text", style = TheMovieDbTypography.SubTitleBoldStyle, color = MaterialTheme.colorScheme.onBackground)
+    }
+
+
+
+
 }
