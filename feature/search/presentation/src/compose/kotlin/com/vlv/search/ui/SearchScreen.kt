@@ -22,14 +22,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.vlv.common.route.RouteNavigation
+import com.vlv.common.route.SearchType
 import com.vlv.common.ui.paging.MoviesPagingGrid
+import com.vlv.common.ui.paging.SeriesPagingGrid
 import com.vlv.data.database.data.History
 import com.vlv.data.database.data.HistoryType
+import com.vlv.imperiya.core.ui.components.FilterGroup
+import com.vlv.imperiya.core.ui.components.FilterItemData
 import com.vlv.imperiya.core.ui.components.SearchComponent
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+import com.vlv.search.R
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -42,18 +48,28 @@ fun SearchScreen(
     var active by remember {
         mutableStateOf(false)
     }
-    var query by remember {
-        mutableStateOf("")
-    }
-    var search by remember {
+    var searchingMode by remember {
         mutableStateOf(false)
     }
 
-    val history by viewModel.historyState.collectAsState()
-    val movies = viewModel.movieState.collectAsLazyPagingItems()
+    val filters = listOf(
+        FilterItemData(
+            stringResource(id = R.string.search_movie_option), SearchType.MOVIE.name
+        ),
+        FilterItemData(
+            stringResource(id = R.string.search_series_option), SearchType.SERIES.name
+        ),
+        FilterItemData(
+            stringResource(id = R.string.search_people_option), SearchType.PEOPLE.name
+        ),
+    )
 
-    LaunchedEffect(key1 = Unit, block = {
-        viewModel.loadHistory(historyType = HistoryType.MOVIE)
+    val history by viewModel.historyState.collectAsState()
+    val searchType by viewModel.searchType.collectAsState()
+    val query by viewModel.query.collectAsState()
+
+    LaunchedEffect(key1 = searchType, block = {
+        viewModel.loadHistory()
     })
 
     Column(
@@ -63,7 +79,9 @@ fun SearchScreen(
                 orientation = Orientation.Vertical
             )
             .padding(
-                top = 16.dp
+                top = 16.dp,
+                start = 16.dp,
+                end = 16.dp
             )
     ) {
         Search(
@@ -73,27 +91,60 @@ fun SearchScreen(
                 active = it
             },
             onQueryChange = {
-                query = it
+                viewModel.setQuery(it)
             },
             onSearch = {
-                viewModel.addHistory(
-                    History(it, HistoryType.MOVIE)
-                )
-                viewModel.movies(it)
-                search = true
+                viewModel.addHistory(it)
+                viewModel.search(it)
+                searchingMode = true
                 active = false
             },
             searchHistory = history
         )
 
-        if(search) {
-            MoviesPagingGrid(
-                movies = movies,
-                routeNavigation = routeNavigation,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(top = 16.dp)
-            )
+        FilterGroup(
+            filters = filters,
+            onClickFilter = { index, _ ->
+                viewModel.setSearchType(index)
+                viewModel.setQuery("")
+                searchingMode = false
+            },
+            selectedFilterItem = searchType.ordinal,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    top = 8.dp
+                )
+        )
+
+        if(searchingMode) {
+            when(searchType) {
+                HistoryType.MOVIE -> {
+                    val movies = viewModel.movieState.collectAsLazyPagingItems()
+
+                    MoviesPagingGrid(
+                        movies = movies,
+                        routeNavigation = routeNavigation,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 16.dp)
+                    )
+                }
+                HistoryType.PEOPLE -> {
+
+                }
+                HistoryType.SERIES -> {
+                    val series = viewModel.seriesState.collectAsLazyPagingItems()
+
+                    SeriesPagingGrid(
+                        seriesItems = series,
+                        routeNavigation = routeNavigation,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 16.dp)
+                    )
+                }
+            }
         }
     }
 }
@@ -108,7 +159,7 @@ fun Search(
     searchHistory: List<History>
 ) {
     SearchComponent(
-        "Search for",
+        stringResource(id = R.string.search_hint_text),
         query = queryValue,
         active = active,
         onActiveChange = onActiveChange,
@@ -120,17 +171,15 @@ fun Search(
         content = {
             LazyColumn(
                 content = {
-                    items(searchHistory) {
-                        Text(
-                            text = it.text,
-                            color = MaterialTheme.colorScheme.onError,
-                            style = TheMovieDbTypography.SubTitleBoldStyle,
-                            modifier = Modifier
-                                .clickable {
-                                    onSearch.invoke(it.text)
-                                }
-                                .padding(12.dp)
-                                .fillMaxWidth()
+                    items(searchHistory) { history ->
+                        HistoryItem(
+                            history = history,
+                            onClickHistory = {
+                                 onSearch.invoke(it.text)
+                            },
+                            onRemoveHistory = {
+
+                            }
                         )
                     }
                 },

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -29,21 +30,21 @@ data class FilterItemData(
 @Composable
 fun FilterGroup(
     filters: List<FilterItemData>,
-    onClickFilter: (FilterItemData) -> Unit,
+    onClickFilter: (Int, FilterItemData) -> Unit,
     modifier: Modifier = Modifier,
-    selectedFilterItem: FilterItemData? = null,
+    selectedFilterItem: Int? = null,
     contentPaddingValues: PaddingValues = PaddingValues(),
     horizontalArrangement: Arrangement.Horizontal = Arrangement.spacedBy(8.dp)
 ) {
     LazyRow(
         modifier = modifier,
         content = {
-            items(filters) { filter ->
-                val selected = selectedFilterItem == filter
+            itemsIndexed(filters) {index, filter ->
+                val selected = selectedFilterItem == index
                 FilterItem(
                     selected = selected,
                     onClickFilter = {
-                        if(it != selectedFilterItem) onClickFilter.invoke(filter)
+                        if(index != selectedFilterItem) onClickFilter.invoke(index, filter)
                     },
                     filter = filter
                 )
@@ -101,9 +102,9 @@ fun FilterGroupPrev() {
                     FilterItemData("Test 33", "asdas"),
                     FilterItemData("Test 44", "asdas"),
                 ),
-                selectedFilterItem = FilterItemData("Test 33", "asdas"),
+                selectedFilterItem = 2,
                 modifier = Modifier.fillMaxWidth(),
-                onClickFilter = {
+                onClickFilter = { _, _ ->
 
                 }
             )

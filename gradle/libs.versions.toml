@@ -28,6 +28,7 @@ androidx-compose-viewmodel-version = "2.6.1"
 androidx-compose-paging-version = "3.3.0-alpha02"
 androidx-compose-constraintlayout-version = "1.0.1"
 androidx-compose-preview-version = "1.6.0-beta01"
+androidx-compose-icons-version = "1.6.1"
 androidx-lifecycle-viewmodel-version = "2.6.1"
 androidx-startup-runtime-version = "1.1.1"
 androidx-room-version = "2.5.2"
@@ -76,6 +77,7 @@ androidx-compose-activity = { group = "androidx.activity", name = "activity-comp
 androidx-compose-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
 androidx-compose-paging = { group = "androidx.paging", name = "paging-compose", version.ref = "androidx-compose-paging-version" }
 androidx-compose-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidx-compose-viewmodel-version" }
+androidx-compose-extended-icons = { group = "androidx.compose.material", name = "material-icons-extended-android", version.ref = "androidx-compose-icons-version" }
 
 # Squareup
 squareup-okhttp3 = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = 'squareup-okhttp3-version' }

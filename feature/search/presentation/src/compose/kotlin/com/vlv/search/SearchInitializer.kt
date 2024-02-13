@@ -13,7 +13,7 @@ class SearchInitializer : ModuleInitializer() {
     override val modules: List<Module>
         get() = listOf(
             module {
-                viewModel { SearchViewModel(get(), get()) }
+                viewModel { SearchViewModel(get(), get(), get(), get()) }
             }
         )
 

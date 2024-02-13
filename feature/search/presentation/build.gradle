@@ -71,6 +71,7 @@ dependencies {
     composeImplementation(libs.androidx.compose.activity)
     composeImplementation(libs.androidx.compose.livedata)
     composeImplementation(libs.androidx.compose.tooling.preview)
+    composeImplementation(libs.androidx.compose.extended.icons)
     composeImplementation(libs.koin.compose)
     composeImplementation(libs.androidx.compose.paging)
 

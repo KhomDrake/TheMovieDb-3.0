@@ -38,7 +38,7 @@ class ChipsSampleActivity : SampleActivity() {
                 }
             }
         ) {
-            var selectedFilter: FilterItemData? by remember {
+            var selectedFilter: Int? by remember {
                 mutableStateOf(null)
             }
 
@@ -46,8 +46,8 @@ class ChipsSampleActivity : SampleActivity() {
                 FilterGroup(
                     filters = filters,
                     selectedFilterItem = selectedFilter,
-                    onClickFilter = { new ->
-                        selectedFilter = new
+                    onClickFilter = { index, new ->
+                        selectedFilter = index
                     },
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -58,11 +58,10 @@ class ChipsSampleActivity : SampleActivity() {
                     )
                 )
 
-
                 if(selectedFilter != null) {
                     val filter = selectedFilter ?: return@Column
                     Text(
-                        text = filter.value,
+                        text = filters[filter].value,
                         style = TheMovieDbTypography.SubTitleBoldStyle,
                         color = MaterialTheme.colorScheme.onBackground
                     )
