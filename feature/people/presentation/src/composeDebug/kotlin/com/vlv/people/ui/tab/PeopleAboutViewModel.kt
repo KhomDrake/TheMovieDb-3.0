@@ -23,7 +23,7 @@ class PeopleAboutViewModel(
 
     fun detail(people: People) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.peopleDetail2(people.id)
+            repository.peopleDetail(people.id)
                 .responseStateFlow
                 .mapData {
                     it?.run {

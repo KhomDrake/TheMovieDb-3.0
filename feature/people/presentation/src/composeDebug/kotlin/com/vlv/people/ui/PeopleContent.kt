@@ -18,6 +18,8 @@ import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
 import com.vlv.people.R
 import com.vlv.people.ui.tab.AboutContent
+import com.vlv.people.ui.tab.MoviesCreditContent
+import com.vlv.people.ui.tab.SeriesCreditContent
 import kotlinx.coroutines.launch
 
 enum class PeopleDetailPage(@StringRes val pageTitle: Int) {
@@ -67,10 +69,20 @@ fun PeopleContent(
                     )
                 }
                 PeopleDetailPage.MOVIES_CREDIT -> {
-
+                    MoviesCreditContent(
+                        people = people,
+                        routeNavigation = routeNavigation,
+                        modifier = Modifier
+                            .fillMaxSize()
+                    )
                 }
                 PeopleDetailPage.SERIES_CREDIT -> {
-
+                    SeriesCreditContent(
+                        people = people,
+                        routeNavigation = routeNavigation,
+                        modifier = Modifier
+                            .fillMaxSize()
+                    )
                 }
             }
         }
