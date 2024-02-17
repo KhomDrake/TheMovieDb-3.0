@@ -22,11 +22,22 @@ class HistoryUseCase(
             .responseStateFlow
     }
 
-    fun addHistory2(history: History) = bondsmith<List<History>>()
+    fun addHistoryAsync(history: History) = bondsmith<List<History>>()
         .config {
             withCache(with = false)
             request {
                 repository.addHistory(history)
+                repository.historyAsync(history.type)
+            }
+        }
+        .execute()
+        .responseStateFlow
+
+    fun deleteHistoryAsync(history: History) = bondsmith<List<History>>()
+        .config {
+            withCache(with = false)
+            request {
+                repository.deleteHistory(history)
                 repository.historyAsync(history.type)
             }
         }

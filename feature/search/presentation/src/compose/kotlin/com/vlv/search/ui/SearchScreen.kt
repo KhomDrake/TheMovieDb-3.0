@@ -99,7 +99,10 @@ fun SearchScreen(
                 searchingMode = true
                 active = false
             },
-            searchHistory = history
+            searchHistory = history,
+            onRemove = {
+                viewModel.deleteHistory(it)
+            }
         )
 
         FilterGroup(
@@ -156,6 +159,7 @@ fun Search(
     onActiveChange: (Boolean) -> Unit,
     onQueryChange: (String) -> Unit,
     onSearch: (String) -> Unit,
+    onRemove: (History) -> Unit,
     searchHistory: List<History>
 ) {
     SearchComponent(
@@ -177,9 +181,7 @@ fun Search(
                             onClickHistory = {
                                  onSearch.invoke(it.text)
                             },
-                            onRemoveHistory = {
-
-                            }
+                            onRemoveHistory = onRemove
                         )
                     }
                 },

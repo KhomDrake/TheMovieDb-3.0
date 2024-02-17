@@ -10,7 +10,6 @@ import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
-import com.vlv.common.route.SearchType
 import com.vlv.data.database.data.History
 import com.vlv.data.database.data.HistoryType
 import com.vlv.search.domain.usecase.HistoryUseCase
@@ -149,7 +148,13 @@ class SearchViewModel(
 
     fun addHistory(query: String) {
         viewModelScope.launch {
-            updateHistory(historyUseCase.addHistory2(History(query, searchType.value)))
+            updateHistory(historyUseCase.addHistoryAsync(History(query, searchType.value)))
+        }
+    }
+
+    fun deleteHistory(history: History) {
+        viewModelScope.launch {
+            updateHistory(historyUseCase.deleteHistoryAsync(history))
         }
     }
 
