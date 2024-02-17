@@ -43,14 +43,14 @@ fun SeriesScreen(
             .verticalScroll(scrollState)
     ) {
         SearchComponent(
-            modifier =
-            Modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
             hint = "Search for series",
             onClick = {
                 onNavigate.invoke(ScreenRoute.SERIES_SEARCH, null)
-            }
+            },
+            enable = false
         )
         SeriesTrending(onNavigate = onNavigate)
         AiringToday(onNavigate = onNavigate)

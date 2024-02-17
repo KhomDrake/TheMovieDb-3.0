@@ -28,7 +28,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
-@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchComponent(
     hint: String,
@@ -54,12 +54,8 @@ fun SearchComponent(
 ) {
     SearchBar(
         modifier = modifier
-            .apply {
-                if(onClick != null) {
-                    clickable {
-                        onClick.invoke()
-                    }
-                }
+            .clickable {
+                onClick?.invoke()
             },
         query = query,
         onQueryChange = onQueryChange,
@@ -164,7 +160,7 @@ fun SearchCloseComponent(
 fun SearchComponent(
     hint: String,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {},
+    onClick: (() -> Unit)? = null,
     enable: Boolean = true,
     backgroundColor: Color = MaterialTheme.colorScheme.tertiary,
     textColor: Color = MaterialTheme.colorScheme.onTertiary

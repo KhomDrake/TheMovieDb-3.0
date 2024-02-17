@@ -1,6 +1,5 @@
 package com.vlv.search.ui
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,8 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -24,7 +21,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.vlv.common.data.movie.Movie
+import com.vlv.common.data.series.Series
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.SearchType
 import com.vlv.common.ui.paging.MoviesPagingGrid
@@ -34,8 +34,8 @@ import com.vlv.data.database.data.HistoryType
 import com.vlv.imperiya.core.ui.components.FilterGroup
 import com.vlv.imperiya.core.ui.components.FilterItemData
 import com.vlv.imperiya.core.ui.components.SearchComponent
-import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.search.R
+import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -84,7 +84,7 @@ fun SearchScreen(
                 end = 16.dp
             )
     ) {
-        Search(
+        SearchWithHistory(
             queryValue = query,
             active = active,
             onActiveChange = {
@@ -121,49 +121,65 @@ fun SearchScreen(
         )
 
         if(searchingMode) {
-            when(searchType) {
-                HistoryType.MOVIE -> {
-                    val movies = viewModel.movieState.collectAsLazyPagingItems()
-
-                    MoviesPagingGrid(
-                        movies = movies,
-                        routeNavigation = routeNavigation,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(top = 16.dp)
-                    )
-                }
-                HistoryType.PEOPLE -> {
-
-                }
-                HistoryType.SERIES -> {
-                    val series = viewModel.seriesState.collectAsLazyPagingItems()
-
-                    SeriesPagingGrid(
-                        seriesItems = series,
-                        routeNavigation = routeNavigation,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(top = 16.dp)
-                    )
-                }
-            }
+            SearchByType(
+                historyType = searchType,
+                movieState = viewModel.movieState,
+                seriesState = viewModel.seriesState,
+                routeNavigation = routeNavigation
+            )
         }
     }
 }
 
 @Composable
-fun Search(
+fun SearchByType(
+    historyType: HistoryType,
+    movieState: Flow<PagingData<Movie>>,
+    seriesState: Flow<PagingData<Series>>,
+    routeNavigation: RouteNavigation
+) {
+    when(historyType) {
+        HistoryType.MOVIE -> {
+            val movies = movieState.collectAsLazyPagingItems()
+
+            MoviesPagingGrid(
+                movies = movies,
+                routeNavigation = routeNavigation,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 16.dp)
+            )
+        }
+        HistoryType.PEOPLE -> {
+
+        }
+        HistoryType.SERIES -> {
+            val series = seriesState.collectAsLazyPagingItems()
+
+            SeriesPagingGrid(
+                seriesItems = series,
+                routeNavigation = routeNavigation,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 16.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun SearchWithHistory(
     queryValue: String,
     active: Boolean,
     onActiveChange: (Boolean) -> Unit,
     onQueryChange: (String) -> Unit,
     onSearch: (String) -> Unit,
     onRemove: (History) -> Unit,
-    searchHistory: List<History>
+    searchHistory: List<History>,
+    hint: String = stringResource(id = R.string.search_hint_text)
 ) {
     SearchComponent(
-        stringResource(id = R.string.search_hint_text),
+        hint = hint,
         query = queryValue,
         active = active,
         onActiveChange = onActiveChange,
