@@ -118,6 +118,7 @@ dependencies {
     composeImplementation(libs.compose.shimmer)
     composeImplementation project(':feature:movie:presentation')
     composeImplementation project(':feature:series:presentation')
+    composeImplementation project(':feature:people:presentation')
     composeImplementation project(':feature:genre:presentation')
     composeImplementation project(':feature:favorite:presentation')
     composeImplementation project(':feature:configuration:presentation')

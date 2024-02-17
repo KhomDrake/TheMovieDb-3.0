@@ -1,9 +1,9 @@
 package com.vlv.series.presentation.model
 
 import android.content.res.Resources
-import com.vlv.common.ui.about.AboutItem
-import com.vlv.common.ui.about.Information
-import com.vlv.common.ui.about.PillItem
+import com.vlv.common.data.about.AboutItem
+import com.vlv.common.data.about.Information
+import com.vlv.common.data.about.PillItem
 import com.vlv.data.common.model.series.LastEpisodeToAir
 import com.vlv.data.common.model.series.NextEpisodeToAir
 import com.vlv.data.common.model.series.SeriesDetailResponse
@@ -28,7 +28,8 @@ class SeriesDetail(
         },
         aboutItems = response.run {
             val items = mutableListOf<AboutItem>()
-            items.add(AboutItem.BigText(
+            items.add(
+                AboutItem.BigText(
                 resources.getString(R.string.series_description, overview),
                 response.overview
             ))

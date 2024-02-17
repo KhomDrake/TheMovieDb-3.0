@@ -1,13 +1,41 @@
 package com.vlv.people.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import com.vlv.bondsmith.bondsmith
+import com.vlv.data.common.model.movie.MovieResponse
+import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.data.common.model.people.PeopleDetailResponse
+import com.vlv.data.common.model.people.PeopleMovieCreditResponse
+import com.vlv.data.common.model.people.PeopleSeriesCreditResponse
+import com.vlv.data.common.paging.MoviePagingSource
 import com.vlv.people.data.api.PeopleApi
 
 class PeopleDetailRepository(private val api: PeopleApi) {
 
-    suspend fun peopleDetail(peopleId: Int) = api.peopleDetail(peopleId)
+    fun peopleDetail(peopleId: Int) = bondsmith<PeopleDetailResponse>()
+        .config {
+            request {
+                api.peopleDetail(peopleId)
+            }
+            withCache(false)
+        }
+        .execute()
 
-    suspend fun movieCredit(peopleId: Int) = api.peopleMovieCredits(peopleId)
+    fun movieCredit(peopleId: Int) = bondsmith<PeopleMovieCreditResponse>()
+        .config {
+            request {
+                api.peopleMovieCredits(peopleId)
+            }
+        }
+        .execute()
 
-    suspend fun seriesCredit(peopleId: Int) = api.peopleTvCredits(peopleId)
+    fun seriesCredit(peopleId: Int) = bondsmith<PeopleSeriesCreditResponse>()
+        .config {
+            request {
+                api.peopleTvCredits(peopleId)
+            }
+        }
+        .execute()
 
 }
