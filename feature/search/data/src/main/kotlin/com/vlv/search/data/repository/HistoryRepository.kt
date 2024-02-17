@@ -10,6 +10,8 @@ class HistoryRepository(
 
     fun history(type: HistoryType) = dao.historyByType(type)
 
+    suspend fun historyAsync(type: HistoryType) = dao.historyByTypeAsync(type)
+
     suspend fun addHistory(history: History) = dao.insertHistory(history)
 
     suspend fun deleteHistory(history: History) = dao.deleteHistory(history)

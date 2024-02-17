@@ -32,6 +32,7 @@ import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.imperiyasample.ui.ColorsActivity
 import com.vlv.imperiyasample.ui.DynamicColorsActivity
 import com.vlv.imperiyasample.ui.bottomsheet.BottomSheetActivity
+import com.vlv.imperiyasample.ui.chips.ChipsSampleActivity
 import com.vlv.imperiyasample.ui.search.SearchSampleActivity
 import com.vlv.imperiyasample.ui.state.StateComponentSampleActivity
 import com.vlv.imperiyasample.ui.tab.TabSampleActivity
@@ -83,6 +84,10 @@ class MainActivity : ComponentActivity() {
                 bundleOf(
                     "DARK_MODE" to false
                 )
+            ),
+            Component(
+                "Chips",
+                ChipsSampleActivity::class
             ),
             Component(
                 "Search",

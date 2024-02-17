@@ -55,6 +55,7 @@ fun Context.handleRoute(route: ScreenRoute, data: Any?) {
             ScreenRoute.MOVIE_UPCOMING -> toMovieUpcoming()
             ScreenRoute.MOVIE_TRENDING -> toMovieTrending()
             ScreenRoute.SERIES_GENRE -> toSeriesGenre()
+            ScreenRoute.SERIES_SEARCH -> toSeriesSearch()
             ScreenRoute.SERIES_TRENDING -> toSeriesTrendingNow()
             ScreenRoute.SERIES_AIRING_TODAY -> toSeriesAiringToday()
             ScreenRoute.SERIES_ON_THE_AIR -> toSeriesOnTheAir()

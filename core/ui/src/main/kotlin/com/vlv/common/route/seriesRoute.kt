@@ -15,6 +15,7 @@ fun Context.toSeriesDetail(
     }
 
 fun Context.toSeriesSearch() = intentForAction("SERIES_SEARCH")
+    .putExtra(SEARCH_TYPE_EXTRA, SearchType.SERIES.name)
 
 const val SERIES_LISTING_TYPE_EXTRA = "SERIES_LISTING_TYPE_EXTRA"
 

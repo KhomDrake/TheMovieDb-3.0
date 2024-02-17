@@ -6,7 +6,7 @@ class DebugApplication : TheMovieDb() {
 
     override fun onCreate() {
         super.onCreate()
-        BigBrother.watch(this, isBubbleEnabled = true)
+//        BigBrother.watch(this, isBubbleEnabled = true)
     }
 
 }

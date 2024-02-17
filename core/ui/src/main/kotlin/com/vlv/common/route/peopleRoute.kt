@@ -11,6 +11,7 @@ fun Context.toPeopleTrending() = intentForAction("PEOPLE_TRENDING")
 const val EXTRA_PEOPLE = "EXTRA_PEOPLE"
 
 fun Context.toPeopleSearch() = intentForAction("PEOPLE_SEARCH")
+    .putExtra(SEARCH_TYPE_EXTRA, SearchType.PEOPLE.name)
 
 fun Context.toPeopleDetail(
     people: People,
