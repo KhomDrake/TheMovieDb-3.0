@@ -1,4 +1,4 @@
-package com.vlv.common.ui.about
+package com.vlv.common.data.about
 
 import androidx.annotation.StringRes
 import kotlin.random.Random

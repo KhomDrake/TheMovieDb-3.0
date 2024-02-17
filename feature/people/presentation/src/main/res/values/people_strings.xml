@@ -12,6 +12,7 @@
     <string name="people_tab_series_credit">Tv shows</string>
 
     <string name="people_information_item_date_of_birth">Date of birth</string>
+    <string name="people_information_item_date_of_death">Date of Death</string>
     <string name="people_information_item_place_of_birth">Place of birth</string>
 
     <string name="people_detail_empty_state_movie_title">None movie found</string>

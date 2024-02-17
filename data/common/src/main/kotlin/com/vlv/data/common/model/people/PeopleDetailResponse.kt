@@ -16,7 +16,7 @@ data class PeopleDetailResponse(
     @Json(name = "birthday")
     val birthday: LocalDate?,
     @Json(name = "deathday")
-    val deathday: Any?,
+    val deathday: LocalDate?,
     @Json(name = "gender")
     val gender: Int,
     @Json(name = "homepage")

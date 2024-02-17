@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.vlv.common.data.about.PillItem
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography

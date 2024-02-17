@@ -1,10 +1,9 @@
 package com.vlv.movie.presentation.data
 
 import android.content.res.Resources
-import androidx.annotation.StringRes
-import com.vlv.common.ui.about.AboutItem
-import com.vlv.common.ui.about.Information
-import com.vlv.common.ui.about.PillItem
+import com.vlv.common.data.about.AboutItem
+import com.vlv.common.data.about.Information
+import com.vlv.common.data.about.PillItem
 import com.vlv.data.common.model.movie.MovieDetailResponse
 import com.vlv.extensions.PATTERN_MONTH_AND_YEAR
 import com.vlv.extensions.capitalizeCustom
@@ -14,7 +13,6 @@ import com.vlv.extensions.toFormattedString
 import com.vlv.extensions.toHoursAndMinutes
 import com.vlv.extensions.toMillionsAndThousands
 import com.vlv.movie.R
-import kotlin.random.Random
 
 class MovieDetail(
     val id: Int,
@@ -27,7 +25,8 @@ class MovieDetail(
         response.run {
             val items = mutableListOf<AboutItem>()
 
-            items.add(AboutItem.BigText(
+            items.add(
+                AboutItem.BigText(
                 resources.getString(R.string.movie_description, overview),
                 response.overview
             ))

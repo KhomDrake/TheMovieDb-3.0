@@ -83,6 +83,9 @@ fun CastItem(
                 MaterialTheme.colorScheme.tertiary,
                 RoundedCornerShape(16.dp)
             )
+            .clickable {
+                onClickCast.invoke(cast)
+            }
             .padding(
                 vertical = 12.dp
             )
@@ -94,9 +97,6 @@ fun CastItem(
                 contentDescription = "Cast: ${cast.name}",
                 modifier = Modifier
                     .layoutId(avatarId)
-                    .clickable {
-                        onClickCast.invoke(cast)
-                    }
                     .size(avatarSize)
             )
         } else {
@@ -111,9 +111,6 @@ fun CastItem(
                         MaterialTheme.colorScheme.secondary,
                         RoundedCornerShape(avatarSize / 2)
                     )
-                    .clickable {
-                        onClickCast.invoke(cast)
-                    }
                     .size(avatarSize),
                 model = cast.profilePath.toUrlMovieDb(),
                 contentDescription = "Cast: ${cast.name}"
