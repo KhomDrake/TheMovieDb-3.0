@@ -5,10 +5,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.ui.MovieCarousel
+import com.vlv.common.ui.carousel.MovieCarousel
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.shimmer.CarouselShimmer
 import com.vlv.imperiya.core.ui.components.SmallWarningView
@@ -35,9 +34,7 @@ fun MovieCarouselFavorite(
             MovieCarousel(
                 modifier,
                 movies = movies,
-                onClickMovie = {
-                    onClickMovie.invoke(ScreenRoute.MOVIE_DETAIL, it)
-                },
+                onClickMovie = onClickMovie,
                 emptyStateTitle = emptyStateTitle
             )
         },

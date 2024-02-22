@@ -14,10 +14,10 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.MoviePoster
 import com.vlv.common.ui.extension.isFullLoading
 import com.vlv.common.ui.extension.isSingleError
 import com.vlv.common.ui.extension.isSingleLoading
+import com.vlv.common.ui.poster.MoviePoster
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.common.ui.shimmer.SinglePosterShimmer
 

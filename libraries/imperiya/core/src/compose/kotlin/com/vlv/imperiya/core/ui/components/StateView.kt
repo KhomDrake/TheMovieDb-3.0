@@ -3,7 +3,6 @@ package com.vlv.imperiya.core.ui.components
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -39,9 +38,6 @@ fun StateView(
 ) {
     Column(
         modifier = modifier
-            .padding(
-                horizontal = 16.dp
-            )
             .testTag(StateViewTags.PARENT.name),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

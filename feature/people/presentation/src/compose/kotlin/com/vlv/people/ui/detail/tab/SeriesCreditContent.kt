@@ -18,8 +18,8 @@ import com.vlv.bondsmith.data.responseLoading
 import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.SeriesList
 import com.vlv.common.ui.extension.handle
+import com.vlv.common.ui.grid.SeriesGrid
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import com.vlv.imperiya.core.ui.components.StateView
@@ -68,7 +68,7 @@ fun SeriesCreditContentStates(
                     modifier = modifier
                 )
             } else {
-                SeriesList(
+                SeriesGrid(
                     series = it,
                     routeNavigation = routeNavigation,
                     modifier = modifier

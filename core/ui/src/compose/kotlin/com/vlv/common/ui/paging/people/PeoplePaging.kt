@@ -19,7 +19,6 @@ import androidx.paging.CombinedLoadStates
 import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.people.People
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.PeoplePoster
 import com.vlv.common.ui.extension.isFullLoading
 import com.vlv.common.ui.extension.isSingleError
 import com.vlv.common.ui.extension.isSingleLoading
@@ -27,6 +26,7 @@ import com.vlv.common.ui.extension.stateData
 import com.vlv.common.ui.extension.stateFullLoading
 import com.vlv.common.ui.extension.stateSingleError
 import com.vlv.common.ui.extension.stateSingleLoading
+import com.vlv.common.ui.poster.PeoplePoster
 import com.vlv.common.ui.shimmer.GridPersonShimmer
 import com.vlv.common.ui.shimmer.SinglePersonShimmer
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
@@ -49,6 +49,7 @@ fun PeoplePagingGrid(
         PeopleEmptyState(
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(horizontal = 16.dp)
         )
     },
     onRetry: () -> Unit = {},
@@ -244,7 +245,8 @@ fun PeoplePagingPreview(
                 emptyState = {
                     PeopleEmptyState(
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
                         title = "No people was found"
                     )
                 }

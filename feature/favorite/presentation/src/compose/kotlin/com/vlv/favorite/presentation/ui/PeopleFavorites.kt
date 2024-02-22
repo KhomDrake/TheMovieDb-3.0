@@ -26,10 +26,10 @@ import com.vlv.bondsmith.data.responseError
 import com.vlv.bondsmith.data.responseLoading
 import com.vlv.common.data.people.People
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.PeoplePoster
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.paging.people.PeopleEmptyState
 import com.vlv.common.ui.paging.people.PeopleErrorState
+import com.vlv.common.ui.poster.PeoplePoster
 import com.vlv.common.ui.shimmer.GridPersonShimmer
 import com.vlv.favorite.R
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
