@@ -1,6 +1,5 @@
 package com.vlv.common.ui.paging.people
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +9,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -54,13 +52,6 @@ fun PeoplePagingGrid(
     },
     onRetry: () -> Unit = {}
 ) {
-    LaunchedEffect(key1 = loadState, block = {
-        Log.i("Vini", "\nAppend:${loadState.append}\nPrepend:${loadState.prepend}\n" +
-                "source:${loadState.source}\n" +
-                "refresh:${loadState.refresh}\n" +
-                "mediator:${loadState.mediator}")
-    })
-
     if(loadState.isFullLoading()) {
         GridPersonShimmer(
             modifier = modifier,
