@@ -27,6 +27,7 @@ import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.series.Series
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.SearchType
+import com.vlv.common.ui.extension.isSingleLoading
 import com.vlv.common.ui.paging.MoviesPagingGrid
 import com.vlv.common.ui.paging.SeriesPagingGrid
 import com.vlv.data.database.data.History

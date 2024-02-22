@@ -12,11 +12,26 @@
         </provider>
 
         <activity
-            android:name=".ui.PeopleDetailActivity"
+            android:name=".ui.detail.PeopleDetailActivity"
             android:exported="false"
             android:theme="@style/Imperiya.Theme">
             <intent-filter>
                 <action android:name="${applicationId}.PEOPLE_DETAIL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.listing.PeopleListingActivity"
+            android:exported="false"
+            android:theme="@style/Imperiya.Theme">
+            <intent-filter>
+                <action android:name="${applicationId}.PEOPLE_POPULAR" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="${applicationId}.PEOPLE_TRENDING" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

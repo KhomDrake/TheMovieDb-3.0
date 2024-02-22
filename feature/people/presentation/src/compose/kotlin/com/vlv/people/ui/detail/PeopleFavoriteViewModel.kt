@@ -1,4 +1,4 @@
-package com.vlv.people.ui
+package com.vlv.people.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

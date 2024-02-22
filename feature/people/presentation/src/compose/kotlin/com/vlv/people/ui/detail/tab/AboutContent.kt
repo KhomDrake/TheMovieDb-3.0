@@ -1,4 +1,4 @@
-package com.vlv.people.ui.tab
+package com.vlv.people.ui.detail.tab
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable

@@ -1,4 +1,4 @@
-package com.vlv.people.ui.tab
+package com.vlv.people.ui.detail.tab
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
@@ -8,7 +8,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
@@ -16,10 +15,10 @@ import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.responseData
 import com.vlv.bondsmith.data.responseError
 import com.vlv.bondsmith.data.responseLoading
+import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.Series
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.SeriesList
+import com.vlv.common.ui.MovieList
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.imperiya.core.ui.components.SmallWarningView
@@ -30,31 +29,31 @@ import com.vlv.people.R
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun SeriesCreditContent(
+fun MoviesCreditContent(
     people: People,
     routeNavigation: RouteNavigation,
     modifier: Modifier = Modifier,
     viewModel: PeopleCreditViewModel = koinViewModel()
 ) {
     LaunchedEffect(key1 = people, block = {
-        viewModel.seriesCredit(people)
+        viewModel.moviesCredit(people)
     })
-
-    val state by viewModel.seriesCreditState.collectAsState()
-
-    SeriesCreditContentStates(
+    
+    val state by viewModel.movieCreditState.collectAsState()
+    
+    MoviesCreditContentStates(
         state = state,
         routeNavigation = routeNavigation,
         modifier = modifier,
         onTryAgain = {
-            viewModel.seriesCredit(people)
+            viewModel.moviesCredit(people)
         }
     )
 }
 
 @Composable
-fun SeriesCreditContentStates(
-    state: Response<List<Series>>,
+fun MoviesCreditContentStates(
+    state: Response<List<Movie>>,
     routeNavigation: RouteNavigation,
     modifier: Modifier = Modifier,
     onTryAgain: () -> Unit = {}
@@ -69,8 +68,8 @@ fun SeriesCreditContentStates(
                     modifier = modifier
                 )
             } else {
-                SeriesList(
-                    series = it,
+                MovieList(
+                    movies = it,
                     routeNavigation = routeNavigation,
                     modifier = modifier
                 )
@@ -96,30 +95,32 @@ fun SeriesCreditContentStates(
     )
 }
 
-class SeriesCreditContentStatesProvider: PreviewParameterProvider<Response<List<Series>>> {
+class MoviesCreditContentStatesProvier: PreviewParameterProvider<Response<List<Movie>>> {
 
-    override val values: Sequence<Response<List<Series>>>
-        get() = listOf<Response<List<Series>>>(
+    override val values: Sequence<Response<List<Movie>>>
+        get() = listOf<Response<List<Movie>>>(
             responseLoading(),
-            responseError(null),
-            responseData(listOf()),
+            responseError(throwable = null),
+            responseData(
+                listOf()
+            ),
             responseData(
                 listOf(
-                    Series(
+                    Movie(
                         false,
+                        null,
+                        null,
                         2,
-                        null,
-                        null,
-                        "Naruto",
-                        2
+                        "Avengers 1",
+                        "alsdkjalkjdsal"
                     ),
-                    Series(
+                    Movie(
                         false,
-                        2,
                         null,
                         null,
-                        "Bleach",
-                        2
+                        3,
+                        "Avengers 2",
+                        "alsdkjalkjdsal"
                     )
                 )
             )
@@ -129,18 +130,18 @@ class SeriesCreditContentStatesProvider: PreviewParameterProvider<Response<List<
 
 @PreviewLightDark
 @Composable
-fun SeriesCreditContentStatesPrev(
-    @PreviewParameter(SeriesCreditContentStatesProvider::class) state: Response<List<Series>>
+fun MoviesCreditContentStatesPrev(
+    @PreviewParameter(MoviesCreditContentStatesProvier::class) state: Response<List<Movie>>
 ) {
     TheMovieDbAppTheme {
         BackgroundPreview {
-            SeriesCreditContentStates(
+            MoviesCreditContentStates(
                 state = state,
+                modifier = Modifier
+                    .fillMaxWidth(),
                 routeNavigation = { _, _ ->
 
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
+                }
             )
         }
     }

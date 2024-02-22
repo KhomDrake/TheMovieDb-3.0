@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.vlv.common.data.people.People
@@ -30,7 +31,8 @@ import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 fun PeoplePoster(
     people: People,
     onRouteNavigation: RouteNavigation,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    size: Dp = 64.dp
 ) {
     Column(
         modifier = modifier
@@ -39,13 +41,13 @@ fun PeoplePoster(
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .size(64.dp)
+                .size(size)
                 .clip(
-                    RoundedCornerShape(32.dp)
+                    RoundedCornerShape(size / 2)
                 )
                 .background(
                     MaterialTheme.colorScheme.tertiary,
-                    RoundedCornerShape(32.dp)
+                    RoundedCornerShape(size / 2)
                 )
                 .clickable {
                     onRouteNavigation.invoke(ScreenRoute.PEOPLE_DETAIL, people)
@@ -57,7 +59,7 @@ fun PeoplePoster(
         Text(
             text = people.name,
             color = MaterialTheme.colorScheme.onBackground,
-            style = TheMovieDbTypography.ParagraphBoldStyle,
+            style = TheMovieDbTypography.SubTitleBoldStyle,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()

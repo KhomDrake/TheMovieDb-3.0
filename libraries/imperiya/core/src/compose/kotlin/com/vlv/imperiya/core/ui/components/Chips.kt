@@ -4,10 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.MaterialTheme
@@ -55,7 +53,6 @@ fun FilterGroup(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FilterItem(
     selected: Boolean,
@@ -84,7 +81,9 @@ fun FilterItem(
         border = FilterChipDefaults.filterChipBorder(
             borderColor = MaterialTheme.colorScheme.outlineVariant,
             selectedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-            selectedBorderWidth = 1.dp
+            selectedBorderWidth = 1.dp,
+            enabled = true,
+            selected = selected
         ),
         shape = RoundedCornerShape(16.dp)
     )

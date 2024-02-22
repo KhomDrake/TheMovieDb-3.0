@@ -1,10 +1,9 @@
-package com.vlv.people.ui
+package com.vlv.people.ui.detail
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
@@ -17,9 +16,9 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
 import com.vlv.people.R
-import com.vlv.people.ui.tab.AboutContent
-import com.vlv.people.ui.tab.MoviesCreditContent
-import com.vlv.people.ui.tab.SeriesCreditContent
+import com.vlv.people.ui.detail.tab.AboutContent
+import com.vlv.people.ui.detail.tab.MoviesCreditContent
+import com.vlv.people.ui.detail.tab.SeriesCreditContent
 import kotlinx.coroutines.launch
 
 enum class PeopleDetailPage(@StringRes val pageTitle: Int) {
