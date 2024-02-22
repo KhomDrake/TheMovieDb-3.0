@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.rememberShimmer
@@ -27,6 +28,7 @@ fun GridPersonShimmer(
     modifier: Modifier = Modifier,
     count: Int = 6,
     columns: Int = 3,
+    size: Dp = 64.dp
 ) {
     val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.View)
 
@@ -38,12 +40,12 @@ fun GridPersonShimmer(
                 Column {
                     Box(
                         modifier = Modifier
-                            .size(64.dp)
+                            .size(size)
                             .align(Alignment.CenterHorizontally)
                             .shimmer(shimmerInstance)
                             .background(
                                 MaterialTheme.colorScheme.outline,
-                                RoundedCornerShape(32.dp)
+                                RoundedCornerShape(size / 2)
                             )
                     )
                 }
@@ -60,7 +62,8 @@ fun GridPersonShimmer(
 
 @Composable
 fun SinglePersonShimmer(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    size: Dp = 64.dp
 ) {
     val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.View)
 
@@ -69,12 +72,12 @@ fun SinglePersonShimmer(
     ) {
         Box(
             modifier = Modifier
-                .size(64.dp)
+                .size(size)
                 .align(Alignment.CenterHorizontally)
                 .shimmer(shimmerInstance)
                 .background(
                     MaterialTheme.colorScheme.outline,
-                    RoundedCornerShape(32.dp)
+                    RoundedCornerShape(size / 2)
                 )
         )
     }

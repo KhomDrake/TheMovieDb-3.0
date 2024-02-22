@@ -33,6 +33,7 @@ fun PeopleListingContent(
         modifier = modifier,
         itemKey = state.itemKey { people -> people.id },
         itemContentType = state.itemContentType { PERSON_CONTENT_TYPE },
-        onRetry = { state.retry() }
+        onRetry = { state.retry() },
+        columns = 2
     )
 }

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.paging.CombinedLoadStates
 import com.vlv.bondsmith.data.ResponseStatus
@@ -50,12 +51,15 @@ fun PeoplePagingGrid(
                 .fillMaxWidth()
         )
     },
-    onRetry: () -> Unit = {}
+    onRetry: () -> Unit = {},
+    itemSize: Dp = 128.dp
 ) {
     if(loadState.isFullLoading()) {
         GridPersonShimmer(
             modifier = modifier,
-            count = itemCountInitialLoading
+            count = itemCountInitialLoading,
+            columns = columns,
+            size = itemSize
         )
     } else {
         if(itemCount == 0) {
@@ -75,7 +79,8 @@ fun PeoplePagingGrid(
                     item.invoke(index)?.let { people ->
                         PeoplePoster(
                             people = people,
-                            onRouteNavigation = routeNavigation
+                            onRouteNavigation = routeNavigation,
+                            size = itemSize
                         )
                     }
                 }
@@ -89,7 +94,8 @@ fun PeoplePagingGrid(
                             SinglePersonShimmer(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(top = 8.dp)
+                                    .padding(top = 8.dp),
+                                size = itemSize
                             )
                         }
                     }
