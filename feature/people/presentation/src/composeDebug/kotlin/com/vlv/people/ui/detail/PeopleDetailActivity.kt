@@ -1,4 +1,4 @@
-package com.vlv.people.ui
+package com.vlv.people.ui.detail
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

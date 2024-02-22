@@ -3,9 +3,10 @@ package com.vlv.people
 import androidx.startup.Initializer
 import com.vlv.favorite.domain.FavoriteDomainInitializer
 import com.vlv.people.data.PeopleDataInitializer
-import com.vlv.people.ui.PeopleFavoriteViewModel
-import com.vlv.people.ui.tab.PeopleAboutViewModel
-import com.vlv.people.ui.tab.PeopleCreditViewModel
+import com.vlv.people.ui.detail.PeopleFavoriteViewModel
+import com.vlv.people.ui.detail.tab.PeopleAboutViewModel
+import com.vlv.people.ui.detail.tab.PeopleCreditViewModel
+import com.vlv.people.ui.listing.PeopleListingViewModel
 import com.vlv.util.ModuleInitializer
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -18,6 +19,7 @@ class PeopleInitializer : ModuleInitializer() {
             module {
                 viewModel { PeopleFavoriteViewModel(get()) }
                 viewModel { PeopleAboutViewModel(get()) }
+                viewModel { PeopleListingViewModel(get()) }
                 viewModel { PeopleCreditViewModel(get()) }
             }
         )

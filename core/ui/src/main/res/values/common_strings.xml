@@ -37,4 +37,8 @@
     <string name="common_error_cast_title">Failed to load cast</string>
     <string name="common_error_review_title">Failed to load reviews</string>
     <string name="common_review_empty_state_title">None review found</string>
+
+    <!-- PEOPLE REGION -->
+    <string name="common_people_empty_view_title_default">No people was found</string>
+
 </resources>

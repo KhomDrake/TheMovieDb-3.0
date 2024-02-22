@@ -1,4 +1,4 @@
-package com.vlv.people.ui.tab
+package com.vlv.people.ui.detail.tab
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

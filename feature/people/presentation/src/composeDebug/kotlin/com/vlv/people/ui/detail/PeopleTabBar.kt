@@ -1,4 +1,4 @@
-package com.vlv.people.ui
+package com.vlv.people.ui.detail
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
