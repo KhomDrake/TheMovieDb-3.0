@@ -1,5 +1,6 @@
 package com.vlv.search.ui
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
@@ -27,11 +28,15 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.launch
 
+private const val QUERY_KEY = "QUERY"
+private const val SEARCH_TYPE_KEY = "SEARCH_TYPE"
+
 class SearchViewModel(
+    private val handle: SavedStateHandle,
     private val historyUseCase: HistoryUseCase,
     private val movieUseCase: SearchMovieUseCase,
     private val seriesUseCase: SearchSeriesUseCase,
-    private val peopleUseCase: SearchPeopleUseCase
+    private val peopleUseCase: SearchPeopleUseCase,
 ) : ViewModel() {
 
     private val _historyState: MutableStateFlow<List<History>> = MutableStateFlow(listOf())
@@ -56,15 +61,11 @@ class SearchViewModel(
     val peopleState: Flow<PagingData<People>>
         get() = _peopleState.asStateFlow()
 
-    private val _searchType: MutableStateFlow<HistoryType> = MutableStateFlow(HistoryType.MOVIE)
-
     val searchType: StateFlow<HistoryType>
-        get() = _searchType.asStateFlow()
-
-    private val _query: MutableStateFlow<String> = MutableStateFlow("")
+        get() = handle.getStateFlow(SEARCH_TYPE_KEY, HistoryType.MOVIE)
 
     val query: StateFlow<String>
-        get() = _query.asStateFlow()
+        get() = handle.getStateFlow(QUERY_KEY, "")
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,
@@ -73,17 +74,21 @@ class SearchViewModel(
         initialLoadSize = 20
     )
 
-    fun search(query: String) {
+    fun search(newQuery: String = query.value) {
         viewModelScope.launch(Dispatchers.IO) {
+            if(newQuery.isEmpty()) return@launch
+
+            addHistory(newQuery)
+            setQuery(newQuery)
             when(searchType.value) {
                 HistoryType.MOVIE -> {
-                    searchMovie(query)
+                    searchMovie(newQuery)
                 }
                 HistoryType.SERIES -> {
-                    searchSeries(query)
+                    searchSeries(newQuery)
                 }
                 HistoryType.PEOPLE -> {
-                    searchPeople(query)
+                    searchPeople(newQuery)
                 }
             }
         }
@@ -162,14 +167,22 @@ class SearchViewModel(
         viewModelScope.launch {
             runCatching {
                 val item = HistoryType.values().get(index = type)
-                _searchType.emit(item)
+                handle[SEARCH_TYPE_KEY] = item
+            }
+        }
+    }
+
+    fun setSearchType(type: HistoryType) {
+        viewModelScope.launch {
+            runCatching {
+                handle[SEARCH_TYPE_KEY] = type
             }
         }
     }
 
     fun setQuery(query: String) {
         viewModelScope.launch {
-            _query.emit(query)
+            handle[QUERY_KEY] = query
         }
     }
 
