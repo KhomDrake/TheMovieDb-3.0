@@ -33,8 +33,9 @@ import com.vlv.ui.R
 fun MoviePoster(
     movie: Movie,
     onRouteNavigation: RouteNavigation,
+    modifier: Modifier = Modifier,
     height: Dp = 150.dp,
-    modifier: Modifier = Modifier
+    loadPoster: Boolean = true
 ) {
     Column(
         modifier = modifier
@@ -54,9 +55,13 @@ fun MoviePoster(
                 .clickable {
                     onRouteNavigation.invoke(ScreenRoute.MOVIE_DETAIL, movie)
                 },
-            model = movie.posterPath?.toUrlMovieDb(),
+            model = (if(loadPoster) movie.posterPath else movie.backdropPath)
+                ?.toUrlMovieDb(),
             contentDescription = stringResource(
-                id = R.string.common_movie_poster_content_description
+                id = if(loadPoster)
+                    R.string.common_movie_poster_content_description
+                else
+                    R.string.common_movie_backdrop_content_description
             )
         )
 

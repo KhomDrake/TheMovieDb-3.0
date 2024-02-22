@@ -40,8 +40,5 @@ fun MenuScreen(
             )
         }
     )
-
-
-
 }
 

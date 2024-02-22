@@ -61,6 +61,7 @@ fun MovieCarousel(
                             .fillParentMaxWidth(
                                 if(movies.size == 1) oneItemPercentage else percentage
                             ),
+                        loadPoster = false
                     )
                 }
             },

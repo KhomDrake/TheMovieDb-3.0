@@ -1,5 +1,6 @@
 package com.vlv.themoviedb.ui.menu
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.vlv.common.route.RouteNavigation
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MenuScreenSuccess(
     paddingValues: PaddingValues,
@@ -44,16 +46,27 @@ fun MenuScreenSuccess(
                 when(menuItem.type) {
                     MenuItemType.ITEM -> {
                         item(
-                            span = { GridItemSpan(1) }
+                            span = { GridItemSpan(1) },
+                            key = menuItem.id
                         ) {
-                            MenuItem(menuItem = menuItem, onNavigate = onNavigate)
+                            MenuItem(
+                                menuItem = menuItem,
+                                onNavigate = onNavigate,
+                                modifier = Modifier
+                                    .animateItemPlacement()
+                            )
                         }
                     }
                     MenuItemType.HEADER -> {
                         item(
-                            span = { GridItemSpan(3) }
+                            span = { GridItemSpan(3) },
+                            key = menuItem.id
                         ) {
-                            MenuHeaderTitle(menuItem = menuItem)
+                            MenuHeaderTitle(
+                                menuItem = menuItem,
+                                modifier = Modifier
+                                    .animateItemPlacement()
+                            )
                         }
                     }
                 }
@@ -63,9 +76,13 @@ fun MenuScreenSuccess(
 }
 
 @Composable
-fun MenuItem(menuItem: MenuItem, onNavigate: RouteNavigation) {
+fun MenuItem(
+    menuItem: MenuItem,
+    onNavigate: RouteNavigation,
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(
                 8.dp
             )
@@ -110,9 +127,12 @@ fun MenuItem(menuItem: MenuItem, onNavigate: RouteNavigation) {
 }
 
 @Composable
-fun MenuHeaderTitle(menuItem: MenuItem) {
+fun MenuHeaderTitle(
+    menuItem: MenuItem,
+    modifier: Modifier = Modifier
+) {
     Text(
-        modifier = Modifier
+        modifier = modifier
             .padding(16.dp),
         text = stringResource(id = menuItem.title),
         style = TheMovieDbTypography.TitleBigStyle,
