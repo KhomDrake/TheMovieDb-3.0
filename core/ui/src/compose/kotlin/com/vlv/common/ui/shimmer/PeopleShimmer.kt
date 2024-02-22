@@ -28,7 +28,11 @@ fun GridPersonShimmer(
     modifier: Modifier = Modifier,
     count: Int = 6,
     columns: Int = 3,
-    size: Dp = 64.dp
+    size: Dp = 64.dp,
+    contentPaddingValues: PaddingValues = PaddingValues(
+        horizontal = 16.dp,
+        vertical = 16.dp
+    )
 ) {
     val shimmerInstance = rememberShimmer(shimmerBounds = ShimmerBounds.View)
 
@@ -51,10 +55,7 @@ fun GridPersonShimmer(
                 }
             }
         },
-        contentPadding = PaddingValues(
-            horizontal = 16.dp,
-            vertical = 16.dp
-        ),
+        contentPadding = contentPaddingValues,
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     )

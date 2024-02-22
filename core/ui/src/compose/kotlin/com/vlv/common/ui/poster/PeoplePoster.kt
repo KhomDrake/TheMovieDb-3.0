@@ -1,85 +1,93 @@
-package com.vlv.common.ui
+package com.vlv.common.ui.poster
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.PreviewFontScale
-import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.people.People
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+import com.vlv.ui.R
 
 @Composable
-fun SeriesPoster(
-    series: Series,
+fun PeoplePoster(
+    people: People,
     onRouteNavigation: RouteNavigation,
-    height: Dp = 150.dp,
+    modifier: Modifier = Modifier,
+    size: Dp = 64.dp
 ) {
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         AsyncImage(
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(height)
+                .align(Alignment.CenterHorizontally)
+                .size(size)
                 .clip(
-                    RoundedCornerShape(16.dp)
+                    RoundedCornerShape(size / 2)
                 )
                 .background(
                     MaterialTheme.colorScheme.tertiary,
-                    RoundedCornerShape(16.dp)
+                    RoundedCornerShape(size / 2)
                 )
                 .clickable {
-                    onRouteNavigation.invoke(ScreenRoute.SERIES_DETAIL, series)
+                    onRouteNavigation.invoke(ScreenRoute.PEOPLE_DETAIL, people)
                 },
-            model = series.posterPath?.toUrlMovieDb(),
-            contentDescription = "Movie: ${series.title}"
+            model = people.profilePath?.toUrlMovieDb(),
+            contentDescription = stringResource(
+                id = R.string.common_people_avatar_content_description
+            )
         )
 
         Text(
-            modifier = Modifier
-                .padding(top = 8.dp)
-                .fillMaxWidth(),
-            text = series.title,
-            style = TheMovieDbTypography.SubTitleBoldStyle,
+            text = people.name,
             color = MaterialTheme.colorScheme.onBackground,
-            textAlign = TextAlign.Center
+            style = TheMovieDbTypography.SubTitleBoldStyle,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 12.dp)
         )
     }
+
 }
 
-@PreviewLightDark
-@PreviewFontScale
+@Preview
 @Composable
-fun SeriesPosterPreview() {
+fun PeoplePosterPreview() {
     TheMovieDbAppTheme {
         BackgroundPreview {
-            SeriesPoster(
-                series = Series(
-                    false,
+            PeoplePoster(
+                people = People(
                     2,
-                    "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
-                    "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
-                    "Duna"
+                    "Walter White",
+                    "",
+                    ""
                 ),
-                onRouteNavigation = {_,_ ->}
+                modifier = Modifier
+                    .fillMaxWidth(.8f),
+                onRouteNavigation = { _, _ -> }
             )
         }
     }

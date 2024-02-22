@@ -11,8 +11,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
@@ -54,24 +52,6 @@ class Bondsmith<Data>(
 
     fun logInfo(info: String) {
         LogHandler.logInfo(tag, info)
-    }
-
-    private suspend fun emitLoading() {
-        logInfo("Emit loading")
-        _responseLiveData.postLoading()
-        _responseStateFlow.emitLoading()
-    }
-
-    private suspend fun emitData(data: Data) {
-        logInfo("Emit data: $data")
-        _responseLiveData.postData(data)
-        _responseStateFlow.emitSuccess(data)
-    }
-
-    private suspend fun emitError(throwable: Throwable) {
-        logInfo("Emit error: $throwable")
-        _responseLiveData.postError(throwable)
-        _responseStateFlow.emitError(throwable)
     }
 
     fun execute() = synchronized(lock) {

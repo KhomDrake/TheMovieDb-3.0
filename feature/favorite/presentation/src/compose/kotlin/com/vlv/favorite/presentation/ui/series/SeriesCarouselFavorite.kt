@@ -7,7 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.ui.SeriesCarousel
+import com.vlv.common.ui.carousel.SeriesCarousel
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.shimmer.CarouselShimmer
 import com.vlv.imperiya.core.ui.components.SmallWarningView

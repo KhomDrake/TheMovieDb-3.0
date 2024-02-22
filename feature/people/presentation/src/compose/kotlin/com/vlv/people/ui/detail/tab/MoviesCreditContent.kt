@@ -18,8 +18,8 @@ import com.vlv.bondsmith.data.responseLoading
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.MovieList
 import com.vlv.common.ui.extension.handle
+import com.vlv.common.ui.grid.MovieGrid
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import com.vlv.imperiya.core.ui.components.StateView
@@ -68,7 +68,7 @@ fun MoviesCreditContentStates(
                     modifier = modifier
                 )
             } else {
-                MovieList(
+                MovieGrid(
                     movies = it,
                     routeNavigation = routeNavigation,
                     modifier = modifier

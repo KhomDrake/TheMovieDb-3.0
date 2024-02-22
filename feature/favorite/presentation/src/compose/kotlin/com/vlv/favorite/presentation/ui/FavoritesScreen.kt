@@ -12,6 +12,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vlv.common.route.RouteNavigation
 import com.vlv.favorite.R
+import com.vlv.favorite.presentation.ui.movie.MovieFavorites
+import com.vlv.favorite.presentation.ui.people.PeopleFavorites
+import com.vlv.favorite.presentation.ui.series.SeriesFavorites
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
 import kotlinx.coroutines.launch
@@ -40,18 +43,22 @@ fun FavoritesScreen(
                 scope.launch {
                     pagerState.scrollToPage(newIndex)
                 }
+            },
+            item = { index, isSelected ->
+                TabItem(
+                    name = stringResource(id = items[index]),
+                    isSelected = isSelected
+                )
             }
-        ) { index, isSelected ->
-            val item = stringResource(id = items[index])
-            TabItem(name = item, isSelected = isSelected)
-        }
+        )
 
         HorizontalPager(
             state = pagerState,
             pageSpacing = 16.dp,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            beyondBoundsPageCount = 1
         ) {
-            when(items[pagerState.currentPage]) {
+            when(items[it]) {
                 R.string.favorite_movie_title -> MovieFavorites(routeNavigation)
                 R.string.favorite_series_title -> SeriesFavorites(routeNavigation)
                 else -> PeopleFavorites(routeNavigation)

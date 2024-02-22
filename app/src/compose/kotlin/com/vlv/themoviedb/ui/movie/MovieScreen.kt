@@ -23,7 +23,7 @@ import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.ui.MovieCarousel
+import com.vlv.common.ui.carousel.MovieCarousel
 import com.vlv.common.ui.shimmer.CarouselShimmer
 import com.vlv.favorite.presentation.ui.movie.MovieCarouselFavorite
 import com.vlv.imperiya.core.ui.components.SearchComponent
@@ -192,9 +192,7 @@ fun MovieInformation(
                 movies = movies,
                 percentage = percentage,
                 emptyStateTitle = emptyStateTitle,
-                onClickMovie = {
-                    onNavigate.invoke(ScreenRoute.MOVIE_DETAIL, it)
-                }
+                onClickMovie = onNavigate
             )
         }
         ResponseStatus.LOADING -> {

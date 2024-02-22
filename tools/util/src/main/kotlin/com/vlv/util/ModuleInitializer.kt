@@ -1,7 +1,6 @@
 package com.vlv.util
 
 import android.content.Context
-import android.util.Log
 import androidx.startup.Initializer
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules

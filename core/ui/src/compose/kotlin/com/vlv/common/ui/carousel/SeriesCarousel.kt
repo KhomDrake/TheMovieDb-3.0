@@ -1,4 +1,4 @@
-package com.vlv.common.ui
+package com.vlv.common.ui.carousel
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -48,7 +48,8 @@ fun SeriesCarousel(
     if(series.isEmpty()) {
         StateView(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(16.dp),
             icon = R.drawable.ic_movie,
             title = emptyStateTitle,
             body = emptyStateBody,

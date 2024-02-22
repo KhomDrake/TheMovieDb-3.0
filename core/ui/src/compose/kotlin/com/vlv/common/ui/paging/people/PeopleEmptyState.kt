@@ -18,7 +18,7 @@ fun PeopleEmptyState(
     title: String? = stringResource(id = R.string.common_people_empty_view_title_default),
     body: String? = null,
     @DrawableRes
-    iconRes: Int = com.vlv.imperiya.core.R.drawable.ic_tv,
+    iconRes: Int = com.vlv.imperiya.core.R.drawable.ic_people,
     contentDescription: String? = null,
 
 ) {

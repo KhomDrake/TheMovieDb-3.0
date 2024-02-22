@@ -2,7 +2,6 @@ package com.vlv.themoviedb
 
 import android.animation.ValueAnimator
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.animation.doOnEnd

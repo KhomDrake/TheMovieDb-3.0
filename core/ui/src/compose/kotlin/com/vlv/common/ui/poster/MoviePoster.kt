@@ -1,8 +1,7 @@
-package com.vlv.common.ui
+package com.vlv.common.ui.poster
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -15,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.unit.Dp
@@ -27,14 +27,18 @@ import com.vlv.common.route.ScreenRoute
 import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+import com.vlv.ui.R
 
 @Composable
 fun MoviePoster(
     movie: Movie,
     onRouteNavigation: RouteNavigation,
     height: Dp = 150.dp,
+    modifier: Modifier = Modifier
 ) {
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         AsyncImage(
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -51,7 +55,9 @@ fun MoviePoster(
                     onRouteNavigation.invoke(ScreenRoute.MOVIE_DETAIL, movie)
                 },
             model = movie.posterPath?.toUrlMovieDb(),
-            contentDescription = "Movie: ${movie.title}"
+            contentDescription = stringResource(
+                id = R.string.common_movie_poster_content_description
+            )
         )
 
         Text(
