@@ -1,5 +1,6 @@
 package com.vlv.common.ui.paging.people
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,11 +10,11 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.paging.CombinedLoadStates
 import com.vlv.bondsmith.data.ResponseStatus
@@ -27,10 +28,12 @@ import com.vlv.common.ui.extension.stateData
 import com.vlv.common.ui.extension.stateFullLoading
 import com.vlv.common.ui.extension.stateSingleError
 import com.vlv.common.ui.extension.stateSingleLoading
-import com.vlv.common.ui.shimmer.GridPosterShimmer
+import com.vlv.common.ui.shimmer.GridPersonShimmer
 import com.vlv.common.ui.shimmer.SinglePersonShimmer
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
+
+const val PERSON_CONTENT_TYPE = "PERSON"
 
 @Composable
 fun PeoplePagingGrid(
@@ -41,8 +44,7 @@ fun PeoplePagingGrid(
     modifier: Modifier = Modifier,
     itemKey: ((index: Int) -> Any)? = null,
     itemContentType: (index: Int) -> Any? = { null },
-    heightItem: Dp = 200.dp,
-    itemCountInitialLoading: Int = 4,
+    itemCountInitialLoading: Int = 9,
     columns: Int = 3,
     emptyState: @Composable () -> Unit = {
         PeopleEmptyState(
@@ -52,11 +54,17 @@ fun PeoplePagingGrid(
     },
     onRetry: () -> Unit = {}
 ) {
+    LaunchedEffect(key1 = loadState, block = {
+        Log.i("Vini", "\nAppend:${loadState.append}\nPrepend:${loadState.prepend}\n" +
+                "source:${loadState.source}\n" +
+                "refresh:${loadState.refresh}\n" +
+                "mediator:${loadState.mediator}")
+    })
+
     if(loadState.isFullLoading()) {
-        GridPosterShimmer(
+        GridPersonShimmer(
             modifier = modifier,
-            count = itemCountInitialLoading,
-            height = heightItem
+            count = itemCountInitialLoading
         )
     } else {
         if(itemCount == 0) {
@@ -83,21 +91,24 @@ fun PeoplePagingGrid(
 
                 when {
                     loadState.isSingleLoading() -> {
-                        item(key = ResponseStatus.LOADING) {
+                        item(
+                            key = ResponseStatus.LOADING,
+                            contentType = ResponseStatus.LOADING
+                        ) {
                             SinglePersonShimmer(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(top = 8.dp)
                             )
                         }
-
                     }
                     loadState.isSingleError() -> {
                        item(
                            key = ResponseStatus.ERROR,
                            span = {
                                GridItemSpan(maxLineSpan)
-                           }
+                           },
+                           contentType = ResponseStatus.ERROR
                        ) {
                            PeopleErrorState(
                                modifier = Modifier
@@ -219,7 +230,7 @@ class PeoplePagingPreviewProvider: PreviewParameterProvider<PeoplePagingPreviewD
 
 @PreviewLightDark
 @Composable
-fun PeoplePaging(
+fun PeoplePagingPreview(
     @PreviewParameter(PeoplePagingPreviewProvider::class) data: PeoplePagingPreviewData
 ) {
     TheMovieDbAppTheme {

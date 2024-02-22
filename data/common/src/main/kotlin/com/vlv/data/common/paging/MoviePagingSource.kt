@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.vlv.data.common.model.movie.MovieResponse
 import com.vlv.data.common.model.movie.MoviesResponse
 
-const val MAX_PAGE = 500
+const val MAX_PAGE = 50
 
 class MoviePagingSource(
     private val api: suspend (Int) -> MoviesResponse

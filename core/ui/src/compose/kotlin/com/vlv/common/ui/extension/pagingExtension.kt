@@ -30,7 +30,7 @@ fun stateData() = CombinedLoadStates(
     mediator = null,
 )
 
-fun CombinedLoadStates.isSingleLoading() = append is LoadState.Loading
+fun CombinedLoadStates.isSingleLoading(loadState: LoadState = append) = loadState is LoadState.Loading
 
 fun stateSingleLoading() = CombinedLoadStates(
     refresh = LoadState.NotLoading(endOfPaginationReached = false),

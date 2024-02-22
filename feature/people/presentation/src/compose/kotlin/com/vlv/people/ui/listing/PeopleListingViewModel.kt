@@ -41,8 +41,8 @@ class PeopleListingViewModel(
                 .map {
                     it.map(::People)
                 }
-                .cachedIn(viewModelScope)
                 .distinctUntilChanged()
+                .cachedIn(viewModelScope)
                 .collectLatest {
                     _state.emit(it)
                 }
