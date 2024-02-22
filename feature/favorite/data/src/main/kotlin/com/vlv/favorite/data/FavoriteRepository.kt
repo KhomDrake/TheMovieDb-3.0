@@ -19,7 +19,6 @@ class FavoriteRepository(private val dao: TheMovieDbDao) {
 
     fun favoriteByType(type: FavoriteType) = bondsmith<List<Favorite>>(type.name)
         .config {
-            withCache(with = false)
             request {
                 dao.favoriteByType(type)
             }

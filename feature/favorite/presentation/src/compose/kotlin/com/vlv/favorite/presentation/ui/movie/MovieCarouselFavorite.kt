@@ -6,7 +6,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.route.ScreenRoute
 import com.vlv.common.ui.carousel.MovieCarousel
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.shimmer.CarouselShimmer
@@ -26,7 +25,7 @@ fun MovieCarouselFavorite(
     val state by viewModel.state.collectAsState()
 
     LaunchedEffect(key1 = errorTitle, block = {
-        viewModel.moviesFavorite()
+        viewModel.moviesFavorites()
     })
 
     state.handle(
@@ -48,7 +47,7 @@ fun MovieCarouselFavorite(
                 body = errorBody,
                 linkActionText = errorLink,
                 onClickLink = {
-                    viewModel.moviesFavorite()
+                    viewModel.moviesFavorites()
                 }
             )
         }

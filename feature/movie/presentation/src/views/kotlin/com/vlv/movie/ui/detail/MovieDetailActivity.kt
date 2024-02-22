@@ -1,7 +1,6 @@
 package com.vlv.movie.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayoutMediator

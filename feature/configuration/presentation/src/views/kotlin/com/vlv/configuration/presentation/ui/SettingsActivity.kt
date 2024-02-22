@@ -2,7 +2,6 @@ package com.vlv.configuration.presentation.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +39,6 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
                 updateOptions()
             }
             error { e ->
-                Log.i("Vini", e.stackTraceToString())
             }
         }
     }

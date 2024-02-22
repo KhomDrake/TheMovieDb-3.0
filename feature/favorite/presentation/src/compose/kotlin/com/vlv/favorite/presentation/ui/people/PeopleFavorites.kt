@@ -1,17 +1,13 @@
-package com.vlv.favorite.presentation.ui
+package com.vlv.favorite.presentation.ui.people
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -20,16 +16,17 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.responseData
 import com.vlv.bondsmith.data.responseError
 import com.vlv.bondsmith.data.responseLoading
 import com.vlv.common.data.people.People
 import com.vlv.common.route.RouteNavigation
+import com.vlv.common.ui.extension.LaunchEffectLifecycle
 import com.vlv.common.ui.extension.handle
-import com.vlv.common.ui.paging.people.PeopleEmptyState
+import com.vlv.common.ui.grid.PeopleGrid
 import com.vlv.common.ui.paging.people.PeopleErrorState
-import com.vlv.common.ui.poster.PeoplePoster
 import com.vlv.common.ui.shimmer.GridPersonShimmer
 import com.vlv.favorite.R
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
@@ -39,13 +36,13 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun PeopleFavorites(
     routeNavigation: RouteNavigation,
-    favoritesViewModel: FavoritesViewModel = koinViewModel()
+    favoritesViewModel: PeopleFavoriteViewModel = koinViewModel()
 ) {
     val state by favoritesViewModel.peopleState.collectAsState()
 
-    LaunchedEffect(
-        key1 = Unit,
-        block = {
+    LaunchEffectLifecycle(
+        event = Lifecycle.Event.ON_START,
+        onEvent = {
             favoritesViewModel.peopleFavorites()
         }
     )
@@ -61,6 +58,7 @@ fun PeopleFavorites(
     )
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PeopleFavoritesContent(
     state: Response<List<People>>,
@@ -76,31 +74,11 @@ fun PeopleFavoritesContent(
     ) {
         state.handle(
             success = { data ->
-                if(data.isEmpty()) {
-                    PeopleEmptyState(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        title = stringResource(id = R.string.favorite_people_empty_state)
-                    )
-                } else {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(columns),
-                        content = {
-                            items(data) { people ->
-                                PeoplePoster(
-                                    people = people,
-                                    size = 128.dp,
-                                    modifier = Modifier
-                                        .fillMaxWidth(),
-                                    onRouteNavigation = routeNavigation
-                                )
-                            }
-                        },
-                        verticalArrangement = Arrangement.spacedBy(16.dp),
-                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                        state = lazyGridState
-                    )
-                }
+                PeopleGrid(
+                    data = data,
+                    routeNavigation = routeNavigation,
+                    emptyStateTitle = stringResource(id = R.string.favorite_people_empty_state)
+                )
             },
             error = {
                 PeopleErrorState(

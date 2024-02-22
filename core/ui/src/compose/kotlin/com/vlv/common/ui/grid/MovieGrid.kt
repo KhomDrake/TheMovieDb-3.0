@@ -1,5 +1,6 @@
 package com.vlv.common.ui.grid
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -16,6 +17,7 @@ import com.vlv.common.ui.poster.MoviePoster
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MovieGrid(
     movies: List<Movie>,
@@ -28,11 +30,16 @@ fun MovieGrid(
         modifier = modifier,
         columns = GridCells.Fixed(columns),
         content = {
-            items(movies) { movie ->
+            items(
+                movies,
+                key = { movie -> movie.id }
+            ) { movie ->
                 MoviePoster(
                     movie = movie,
                     height = heightItem,
-                    onRouteNavigation = routeNavigation
+                    onRouteNavigation = routeNavigation,
+                    modifier = Modifier
+                        .animateItemPlacement()
                 )
             }
         },

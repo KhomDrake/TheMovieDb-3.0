@@ -192,9 +192,7 @@ fun MovieInformation(
                 movies = movies,
                 percentage = percentage,
                 emptyStateTitle = emptyStateTitle,
-                onClickMovie = {
-                    onNavigate.invoke(ScreenRoute.MOVIE_DETAIL, it)
-                }
+                onClickMovie = onNavigate
             )
         }
         ResponseStatus.LOADING -> {

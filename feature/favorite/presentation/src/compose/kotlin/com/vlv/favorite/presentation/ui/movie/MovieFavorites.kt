@@ -1,4 +1,4 @@
-package com.vlv.favorite.presentation.ui
+package com.vlv.favorite.presentation.ui.movie
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -15,12 +14,14 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.responseData
 import com.vlv.bondsmith.data.responseError
 import com.vlv.bondsmith.data.responseLoading
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.route.RouteNavigation
+import com.vlv.common.ui.extension.LaunchEffectLifecycle
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.grid.MovieGrid
 import com.vlv.common.ui.shimmer.GridPosterShimmer
@@ -34,13 +35,20 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun MovieFavorites(
     routeNavigation: RouteNavigation,
-    favoritesViewModel: FavoritesViewModel = koinViewModel()
+    favoritesViewModel: MovieFavoriteViewModel = koinViewModel()
 ) {
-    val state by favoritesViewModel.movieState.collectAsState()
+    val state by favoritesViewModel.state.collectAsState()
 
-    LaunchedEffect(key1 = Unit, block = {
-        favoritesViewModel.moviesFavorites()
-    })
+    LaunchEffectLifecycle(
+        event = Lifecycle.Event.ON_START,
+        onEvent = {
+            favoritesViewModel.moviesFavorites()
+        }
+    )
+
+//    LaunchedEffect(key1 = Unit, block = {
+//        favoritesViewModel.moviesFavorites()
+//    })
 
     MovieFavoritesContent(
         state = state,

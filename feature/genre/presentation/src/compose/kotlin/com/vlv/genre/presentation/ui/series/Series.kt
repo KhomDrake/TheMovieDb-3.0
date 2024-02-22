@@ -55,7 +55,7 @@ fun SeriesGenreSuccess(
             pageSpacing = 16.dp,
             modifier = Modifier.fillMaxWidth()
         ) {
-            val item = genres[pagerState.currentPage]
+            val item = genres[it]
             SeriesByGenre(genre = item)
         }
     }

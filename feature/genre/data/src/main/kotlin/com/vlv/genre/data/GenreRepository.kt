@@ -1,6 +1,5 @@
 package com.vlv.genre.data
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.vlv.data.common.paging.MoviePagingSource
@@ -24,7 +23,6 @@ class GenreRepository(
         config = config,
         pagingSourceFactory = {
             MoviePagingSource { page ->
-                Log.i("Vini", "GenreId: $genreId, Page: $page")
                 discoverApi.discoverMovieByGenres(genreId, page)
             }
         }

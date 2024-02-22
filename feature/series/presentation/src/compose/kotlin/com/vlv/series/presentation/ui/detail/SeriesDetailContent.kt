@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -19,7 +17,6 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.DetailObject
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
-import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.series.R
 import com.vlv.series.presentation.ui.detail.about.AboutSeriesTab
 import com.vlv.series.presentation.ui.detail.cast.SeriesCastTab
@@ -75,9 +72,7 @@ fun SeriesDetailContent(
             modifier = Modifier
                 .fillMaxSize()
         ) { index ->
-            val tab = tabs[index]
-
-            when(tab) {
+            when(tabs[index]) {
                 SeriesDetailTab.ABOUT -> {
                     AboutSeriesTab(paddingValues = PaddingValues(), detailObject = detailObject)
                 }
