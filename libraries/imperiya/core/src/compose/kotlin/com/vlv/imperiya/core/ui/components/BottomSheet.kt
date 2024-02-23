@@ -1,7 +1,6 @@
 package com.vlv.imperiya.core.ui.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -28,12 +27,11 @@ fun TheMovieDbModalBottomSheet(
         windowInsets = WindowInsets.Companion.navigationBars,
         modifier = modifier,
     ) {
-        Column {
-            Spacer(modifier = Modifier
-                .navigationBarsPadding())
+        Box(
+            modifier = Modifier
+                .navigationBarsPadding()
+        ) {
             content.invoke()
-            Spacer(modifier = Modifier
-                .navigationBarsPadding())
         }
     }
 }
