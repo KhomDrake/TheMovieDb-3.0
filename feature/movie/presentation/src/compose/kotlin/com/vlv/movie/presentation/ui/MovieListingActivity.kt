@@ -12,14 +12,16 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemContentType
+import androidx.paging.compose.itemKey
 import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.route.MOVIES_LISTING_TYPE_EXTRA
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
-import com.vlv.common.ui.paging.MoviesPagingGrid
+import com.vlv.common.ui.paging.movie.MOVIE_CONTENT_TYPE
+import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.movie.R
 import org.koin.androidx.compose.koinViewModel
 
@@ -74,11 +76,15 @@ fun MovieListing(
     val movies = viewModel.state.collectAsLazyPagingItems()
 
     MoviesPagingGrid(
-        movies = movies,
         routeNavigation = onRouteNavigation,
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = paddingValues.calculateTopPadding())
+            .padding(top = paddingValues.calculateTopPadding()),
+        itemCount = movies.itemCount,
+        item = { index -> movies[index] },
+        itemKey = movies.itemKey { movie -> movie.apiId },
+        itemContentType = movies.itemContentType { MOVIE_CONTENT_TYPE },
+        loadStates = movies.loadState,
     )
 
 }

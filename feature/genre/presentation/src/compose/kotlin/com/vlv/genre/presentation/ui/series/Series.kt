@@ -14,7 +14,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.vlv.common.ui.paging.SeriesPagingGrid
+import androidx.paging.compose.itemContentType
+import androidx.paging.compose.itemKey
+import com.vlv.common.route.RouteNavigation
+import com.vlv.common.ui.paging.series.SERIES_CONTENT_TYPE
+import com.vlv.common.ui.paging.series.SeriesPagingGrid
 import com.vlv.data.common.model.genre.GenreResponse
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
@@ -25,6 +29,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun SeriesGenreSuccess(
     paddingValues: PaddingValues,
+    routeNavigation: RouteNavigation,
     genres: List<GenreResponse>
 ) {
     val scope = rememberCoroutineScope()
@@ -56,7 +61,10 @@ fun SeriesGenreSuccess(
             modifier = Modifier.fillMaxWidth()
         ) {
             val item = genres[it]
-            SeriesByGenre(genre = item)
+            SeriesByGenre(
+                genre = item,
+                routeNavigation = routeNavigation
+            )
         }
     }
 }
@@ -64,6 +72,7 @@ fun SeriesGenreSuccess(
 @Composable
 fun SeriesByGenre(
     genre: GenreResponse,
+    routeNavigation: RouteNavigation,
     seriesGenreViewModel: SeriesGenreViewModel = koinViewModel()
 ) {
 
@@ -74,9 +83,16 @@ fun SeriesByGenre(
     val series = seriesGenreViewModel.flow.collectAsLazyPagingItems()
 
     SeriesPagingGrid(
-        seriesItems = series,
-        routeNavigation = { _, _ -> },
+        routeNavigation = routeNavigation,
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxSize(),
+        loadStates = series.loadState,
+        itemCount = series.itemCount,
+        itemKey = series.itemKey { item -> item.id },
+        itemContentType = series.itemContentType { item -> SERIES_CONTENT_TYPE },
+        item = { index -> series[index] },
+        onRetry = {
+            series.retry()
+        }
     )
 }

@@ -19,11 +19,12 @@ import androidx.paging.CombinedLoadStates
 import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.people.People
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
+import com.vlv.common.ui.extension.isFullError
 import com.vlv.common.ui.extension.isFullLoading
 import com.vlv.common.ui.extension.isSingleError
 import com.vlv.common.ui.extension.isSingleLoading
 import com.vlv.common.ui.extension.stateData
+import com.vlv.common.ui.extension.stateFullError
 import com.vlv.common.ui.extension.stateFullLoading
 import com.vlv.common.ui.extension.stateSingleError
 import com.vlv.common.ui.extension.stateSingleLoading
@@ -50,85 +51,99 @@ fun PeoplePagingGrid(
         PeopleEmptyState(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
+                .padding(16.dp)
         )
     },
     onRetry: () -> Unit = {},
     itemSize: Dp = 128.dp
 ) {
-    if(loadState.isFullLoading()) {
-        GridPersonShimmer(
-            modifier = modifier,
-            count = itemCountInitialLoading,
-            columns = columns,
-            size = itemSize
-        )
-    } else {
-        if(itemCount == 0) {
-            emptyState.invoke()
-            return
+    when {
+        loadState.isFullLoading() -> {
+            GridPersonShimmer(
+                modifier = modifier,
+                count = itemCountInitialLoading,
+                columns = columns,
+                size = itemSize
+            )
         }
-
-        LazyVerticalGrid(
-            modifier = modifier,
-            columns = GridCells.Fixed(columns),
-            content = {
-                items(
-                    count = itemCount,
-                    key = itemKey,
-                    contentType = itemContentType
-                ) { index ->
-                    item.invoke(index)?.let { people ->
-                        PeoplePoster(
-                            people = people,
-                            onRouteNavigation = routeNavigation,
-                            size = itemSize
-                        )
-                    }
+        loadState.isFullError() -> {
+            PeopleErrorState(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                onClickLink = {
+                    onRetry.invoke()
                 }
-
-                when {
-                    loadState.isSingleLoading() -> {
-                        item(
-                            key = ResponseStatus.LOADING,
-                            contentType = ResponseStatus.LOADING
-                        ) {
-                            SinglePersonShimmer(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(top = 8.dp),
-                                size = itemSize
-                            )
+            )
+        }
+        else -> {
+            if(itemCount == 0) {
+                emptyState.invoke()
+            } else {
+                LazyVerticalGrid(
+                    modifier = modifier,
+                    columns = GridCells.Fixed(columns),
+                    content = {
+                        items(
+                            count = itemCount,
+                            key = itemKey,
+                            contentType = itemContentType
+                        ) { index ->
+                            item.invoke(index)?.let { people ->
+                                PeoplePoster(
+                                    people = people,
+                                    onRouteNavigation = routeNavigation,
+                                    size = itemSize
+                                )
+                            }
                         }
-                    }
-                    loadState.isSingleError() -> {
-                       item(
-                           key = ResponseStatus.ERROR,
-                           span = {
-                               GridItemSpan(maxLineSpan)
-                           },
-                           contentType = ResponseStatus.ERROR
-                       ) {
-                           PeopleErrorState(
-                               modifier = Modifier
-                                   .fillMaxWidth()
-                                   .padding(top = 8.dp),
-                               onClickLink = {
-                                    onRetry.invoke()
-                               }
-                           )
-                       }
-                    }
-                    else -> Unit
-                }
-            },
-            contentPadding = PaddingValues(
-                horizontal = 16.dp,
-                vertical = 16.dp
-            ),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-        )
+
+                        when {
+                            loadState.isSingleLoading() -> {
+                                item(
+                                    key = ResponseStatus.LOADING,
+                                    contentType = ResponseStatus.LOADING
+                                ) {
+                                    SinglePersonShimmer(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(top = 8.dp),
+                                        size = itemSize
+                                    )
+                                }
+                            }
+
+                            loadState.isSingleError() -> {
+                                item(
+                                    key = ResponseStatus.ERROR,
+                                    span = {
+                                        GridItemSpan(maxLineSpan)
+                                    },
+                                    contentType = ResponseStatus.ERROR
+                                ) {
+                                    PeopleErrorState(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(top = 8.dp),
+                                        onClickLink = {
+                                            onRetry.invoke()
+                                        }
+                                    )
+                                }
+                            }
+
+                            else -> Unit
+                        }
+                    },
+                    contentPadding = PaddingValues(
+                        horizontal = 16.dp,
+                        vertical = 16.dp
+                    ),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                )
+            }
+        }
     }
 }
 
@@ -144,6 +159,9 @@ class PeoplePagingPreviewProvider: PreviewParameterProvider<PeoplePagingPreviewD
         get() = listOf<PeoplePagingPreviewData>(
             PeoplePagingPreviewData(
                 loadState = stateFullLoading()
+            ),
+            PeoplePagingPreviewData(
+                loadState = stateFullError()
             ),
             PeoplePagingPreviewData(
                 loadState = stateData(),
@@ -247,7 +265,7 @@ fun PeoplePagingPreview(
                     PeopleEmptyState(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 16.dp),
+                            .padding(16.dp),
                         title = "No people was found"
                     )
                 }

@@ -6,7 +6,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.route.ScreenRoute
 import com.vlv.common.ui.carousel.SeriesCarousel
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.shimmer.CarouselShimmer
@@ -34,9 +33,7 @@ fun SeriesCarouselFavorite(
         success = { series ->
             SeriesCarousel(
                 series = series,
-                onClickSeries = {
-                    routeNavigation.invoke(ScreenRoute.SERIES_DETAIL, it)
-                },
+                onClickSeries = routeNavigation,
                 emptyStateTitle = emptyStateTitle
             )
         },

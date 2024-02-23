@@ -1,48 +1,41 @@
-package com.vlv.common.ui.about
+package com.vlv.common.ui.paging.movie
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.vlv.imperiya.core.R
+import com.vlv.imperiya.core.ui.components.StateView
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 
 @Composable
-fun AboutItemLine(
+fun MovieEmptyState(
+    title: String,
     modifier: Modifier = Modifier
 ) {
-    Row(
+    StateView(
+        icon = R.drawable.ic_movie_enable,
+        iconTint = MaterialTheme.colorScheme.onBackground,
+        title = title,
         modifier = modifier
-            .height(2.dp)
-            .background(
-                MaterialTheme.colorScheme.outline
-            )
-    ) {
-
-    }
+    )
 }
 
 @PreviewLightDark
 @Composable
-fun AboutItemLinePreview() {
+fun MovieEmptyStatePreview() {
     TheMovieDbAppTheme {
         BackgroundPreview {
-            Row(
+            MovieEmptyState(
+                title = "None movie was found",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 16.dp)
-            ) {
-                AboutItemLine(
-                    modifier =
-                        Modifier.fillMaxWidth()
-                )
-            }
+                    .padding(16.dp)
+            )
         }
     }
 }

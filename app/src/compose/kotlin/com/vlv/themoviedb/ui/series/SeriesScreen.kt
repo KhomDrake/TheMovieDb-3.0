@@ -148,9 +148,7 @@ fun SeriesInformation(
                     .padding(top = 12.dp),
                 series = series,
                 emptyStateTitle = emptyStateTitle,
-                onClickSeries = {
-                    onNavigate.invoke(ScreenRoute.SERIES_DETAIL, it)
-                },
+                onClickSeries = onNavigate,
                 percentage = percentage
             )
         }

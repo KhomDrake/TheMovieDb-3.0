@@ -1,7 +1,7 @@
 package com.vlv.people.ui.detail.tab
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.unit.dp
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.responseData
 import com.vlv.bondsmith.data.responseError
@@ -20,9 +21,8 @@ import com.vlv.common.data.series.Series
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.grid.SeriesGrid
+import com.vlv.common.ui.paging.series.SeriesErrorState
 import com.vlv.common.ui.shimmer.GridPosterShimmer
-import com.vlv.imperiya.core.ui.components.SmallWarningView
-import com.vlv.imperiya.core.ui.components.StateView
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.people.R
@@ -60,20 +60,12 @@ fun SeriesCreditContentStates(
 ) {
     state.handle(
         success = {
-            if(it.isEmpty()) {
-                StateView(
-                    icon = com.vlv.imperiya.core.R.drawable.ic_movie,
-                    title = stringResource(id = R.string.people_credit_empty_title),
-                    iconTint = MaterialTheme.colorScheme.onBackground,
-                    modifier = modifier
-                )
-            } else {
-                SeriesGrid(
-                    series = it,
-                    routeNavigation = routeNavigation,
-                    modifier = modifier
-                )
-            }
+            SeriesGrid(
+                series = it,
+                routeNavigation = routeNavigation,
+                modifier = modifier,
+                emptyStateTitle = stringResource(id = R.string.people_credit_empty_title),
+            )
         },
         loading = {
             GridPosterShimmer(
@@ -82,14 +74,12 @@ fun SeriesCreditContentStates(
             )
         },
         error = {
-            SmallWarningView(
+            SeriesErrorState(
                 title = stringResource(id = com.vlv.ui.R.string.common_error_title),
-                body = stringResource(id = com.vlv.ui.R.string.common_error_description),
-                linkActionText = stringResource(id = com.vlv.ui.R.string.common_error_button),
-                onClickLink = {
-                    onTryAgain.invoke()
-                },
-                modifier = modifier
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                onTryAgain = onTryAgain
             )
         }
     )
@@ -98,7 +88,7 @@ fun SeriesCreditContentStates(
 class SeriesCreditContentStatesProvider: PreviewParameterProvider<Response<List<Series>>> {
 
     override val values: Sequence<Response<List<Series>>>
-        get() = listOf<Response<List<Series>>>(
+        get() = listOf(
             responseLoading(),
             responseError(null),
             responseData(listOf()),
@@ -114,11 +104,11 @@ class SeriesCreditContentStatesProvider: PreviewParameterProvider<Response<List<
                     ),
                     Series(
                         false,
-                        2,
+                        3,
                         null,
                         null,
                         "Bleach",
-                        2
+                        3
                     )
                 )
             )

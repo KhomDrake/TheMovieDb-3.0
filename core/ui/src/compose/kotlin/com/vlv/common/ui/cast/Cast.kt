@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,7 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
@@ -27,8 +26,6 @@ import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
 import com.vlv.common.data.cast.Cast
 import com.vlv.common.extension.toUrlMovieDb
-import com.vlv.common.route.ScreenRoute
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -95,7 +92,9 @@ fun CastItem(
             Image(
                 contentScale = ContentScale.Crop,
                 painter = painterResource(id = R.drawable.image_default),
-                contentDescription = "Cast: ${cast.name}",
+                contentDescription = stringResource(
+                    id = R.string.common_cast_avatar_content_description
+                ),
                 modifier = Modifier
                     .layoutId(avatarId)
                     .size(avatarSize)
@@ -114,7 +113,9 @@ fun CastItem(
                     )
                     .size(avatarSize),
                 model = cast.profilePath.toUrlMovieDb(),
-                contentDescription = "Cast: ${cast.name}"
+                contentDescription = stringResource(
+                    id = R.string.common_cast_avatar_content_description
+                )
             )
         }
 

@@ -14,7 +14,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.vlv.common.ui.paging.MoviesPagingGrid
+import androidx.paging.compose.itemContentType
+import androidx.paging.compose.itemKey
+import com.vlv.common.route.RouteNavigation
+import com.vlv.common.ui.paging.movie.MOVIE_CONTENT_TYPE
+import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.data.common.model.genre.GenreResponse
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
@@ -25,6 +29,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun MovieGenreSuccess(
     paddingValues: PaddingValues,
+    routeNavigation: RouteNavigation,
     genres: List<GenreResponse>
 ) {
     val scope = rememberCoroutineScope()
@@ -56,7 +61,10 @@ fun MovieGenreSuccess(
             modifier = Modifier.fillMaxWidth()
         ) {
             val item = genres[it]
-            MoviesByGenre(genre = item)
+            MoviesByGenre(
+                genre = item,
+                routeNavigation = routeNavigation
+            )
         }
     }
 }
@@ -64,19 +72,23 @@ fun MovieGenreSuccess(
 @Composable
 fun MoviesByGenre(
     genre: GenreResponse,
+    routeNavigation: RouteNavigation,
     movieGenreViewModel: MovieGenreViewModel = koinViewModel()
 ) {
-
     LaunchedEffect(key1 = genre.id, block = {
         movieGenreViewModel.moviesByGenre(genre.id)
     })
 
-    val movies = movieGenreViewModel.flow.collectAsLazyPagingItems()
+    val movies = movieGenreViewModel.movieState.collectAsLazyPagingItems()
 
     MoviesPagingGrid(
-        movies = movies,
-        routeNavigation = { _, _ -> },
+        routeNavigation = routeNavigation,
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxSize(),
+        itemCount = movies.itemCount,
+        item = { index -> movies[index] },
+        itemKey = movies.itemKey { movie -> movie.apiId },
+        itemContentType = movies.itemContentType { MOVIE_CONTENT_TYPE },
+        loadStates = movies.loadState
     )
 }

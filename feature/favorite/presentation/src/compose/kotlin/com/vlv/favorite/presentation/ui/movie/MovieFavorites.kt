@@ -1,10 +1,8 @@
 package com.vlv.favorite.presentation.ui.movie
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -24,10 +22,9 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.LaunchEffectLifecycle
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.grid.MovieGrid
+import com.vlv.common.ui.paging.movie.MovieErrorState
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.favorite.R
-import com.vlv.imperiya.core.ui.components.SmallWarningView
-import com.vlv.imperiya.core.ui.components.StateView
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import org.koin.androidx.compose.koinViewModel
@@ -45,10 +42,6 @@ fun MovieFavorites(
             favoritesViewModel.moviesFavorites()
         }
     )
-
-//    LaunchedEffect(key1 = Unit, block = {
-//        favoritesViewModel.moviesFavorites()
-//    })
 
     MovieFavoritesContent(
         state = state,
@@ -69,51 +62,32 @@ fun MovieFavoritesContent(
     modifier: Modifier = Modifier,
     columns: Int = 2
 ) {
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        state.handle(
-            success = { data ->
-                if(data.isEmpty()) {
-                    StateView(
-                        icon = com.vlv.imperiya.core.R.drawable.ic_movie_enable,
-                        iconTint = MaterialTheme.colorScheme.onBackground,
-                        title = stringResource(id = R.string.favorite_movie_empty_state),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                    )
-                } else {
-                    MovieGrid(
-                        movies = data,
-                        routeNavigation = routeNavigation
-                    )
-                }
-            },
-            error = {
-                SmallWarningView(
-                    title = stringResource(id = R.string.favorite_error_state_title),
-                    body = stringResource(id = com.vlv.ui.R.string.common_error_description),
-                    linkActionText = stringResource(id = com.vlv.ui.R.string.common_error_button),
-                    onClickLink = onTryAgain,
-                    modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .padding(
-                            top = 16.dp,
-                            start = 16.dp,
-                            end = 16.dp
-                        )
-                )
-            },
-            loading = {
-                GridPosterShimmer(
-                    modifier,
-                    columns = columns,
-                    count = 4
-                )
-            }
-        )
-    }
+    state.handle(
+        success = { data ->
+            MovieGrid(
+                movies = data,
+                routeNavigation = routeNavigation,
+                emptyStateTitle = stringResource(id = R.string.favorite_movie_empty_state),
+                modifier = modifier
+            )
+        },
+        error = {
+            MovieErrorState(
+                title = stringResource(id = R.string.favorite_error_state_title),
+                onTryAgain = onTryAgain,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            )
+        },
+        loading = {
+            GridPosterShimmer(
+                modifier,
+                columns = columns,
+                count = 4
+            )
+        }
+    )
 }
 
 class MovieFavoritesContentPreviewProvider: PreviewParameterProvider<Response<List<Movie>>> {

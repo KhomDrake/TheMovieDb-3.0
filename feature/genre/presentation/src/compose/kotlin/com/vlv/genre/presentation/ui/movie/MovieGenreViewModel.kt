@@ -42,11 +42,11 @@ class MovieGenreViewModel(
         initialLoadSize = 20
     )
 
-    private val _flow: MutableStateFlow<PagingData<Movie>> =
+    private val _movieState: MutableStateFlow<PagingData<Movie>> =
         MutableStateFlow(PagingData.empty())
 
-    val flow: Flow<PagingData<Movie>>
-        get() = _flow.asStateFlow()
+    val movieState: Flow<PagingData<Movie>>
+        get() = _movieState.asStateFlow()
 
     fun moviesByGenre(genreId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -60,7 +60,7 @@ class MovieGenreViewModel(
                 .cachedIn(viewModelScope)
                 .distinctUntilChanged()
                 .collectLatest {
-                    _flow.emit(it)
+                    _movieState.emit(it)
                 }
         }
     }

@@ -13,7 +13,6 @@ fun LaunchEffectLifecycle(
     onEvent: () -> Unit,
     lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
 ) {
-
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, newEvent ->
             if(event == newEvent) {

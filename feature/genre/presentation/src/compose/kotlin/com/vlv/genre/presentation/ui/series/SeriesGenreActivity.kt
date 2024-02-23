@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
+import com.vlv.common.route.RouteNavigation
+import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.common.ui.extension.handle
 import com.vlv.genre.R
@@ -28,7 +30,12 @@ class SeriesGenreActivity : ComponentActivity() {
                         }
                     }
                 ) {
-                    SeriesTabScreen(paddingValues = it)
+                    SeriesTabScreen(
+                        paddingValues = it,
+                        routeNavigation = { route, data ->
+                            handleRoute(route, data)
+                        }
+                    )
                 }
             }
         }
@@ -39,6 +46,7 @@ class SeriesGenreActivity : ComponentActivity() {
 @Composable
 fun SeriesTabScreen(
     paddingValues: PaddingValues,
+    routeNavigation: RouteNavigation,
     viewModel: SeriesGenreViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -47,7 +55,8 @@ fun SeriesTabScreen(
         success = { genres ->
             SeriesGenreSuccess(
                 paddingValues = paddingValues,
-                genres = genres
+                genres = genres,
+                routeNavigation = routeNavigation
             )
         }
     )

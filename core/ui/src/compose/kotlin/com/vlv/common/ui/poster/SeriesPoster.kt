@@ -24,7 +24,6 @@ import com.vlv.common.data.series.Series
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -34,9 +33,13 @@ import com.vlv.ui.R
 fun SeriesPoster(
     series: Series,
     onRouteNavigation: RouteNavigation,
+    modifier: Modifier = Modifier,
     height: Dp = 150.dp,
+    loadPoster: Boolean = true
 ) {
-    Column {
+    Column(
+        modifier = modifier
+    ) {
         AsyncImage(
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -52,9 +55,13 @@ fun SeriesPoster(
                 .clickable {
                     onRouteNavigation.invoke(ScreenRoute.SERIES_DETAIL, series)
                 },
-            model = series.posterPath?.toUrlMovieDb(),
+            model = (if(loadPoster) series.posterPath else series.backdropPath)
+                ?.toUrlMovieDb(),
             contentDescription = stringResource(
-                id = R.string.common_series_poster_content_description
+                id = if(loadPoster)
+                    R.string.common_series_poster_content_description
+                else
+                    R.string.common_series_backdrop_content_description
             )
         )
 

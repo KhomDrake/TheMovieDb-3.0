@@ -1,5 +1,6 @@
 package com.vlv.common.ui.cast
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,12 +20,14 @@ import com.vlv.common.data.cast.Cast
 import com.vlv.common.data.cast.toPeople
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.ui.R
 
+private const val CAST_TITLE_KEY = "CAST_TITLE_KEY"
+
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CastList(
     castItems: List<Cast>,
@@ -43,19 +46,25 @@ fun CastList(
     LazyColumn(
         modifier = modifier,
         content = {
-            item {
+            item(key = CAST_TITLE_KEY) {
                 Text(
                     text = stringResource(id = R.string.common_cast_title, castItems.size),
                     style = titleTextStyle,
-                    color = titleColor
+                    color = titleColor,
+                    modifier = Modifier
+                        .animateItemPlacement()
                 )
             }
             
-            items(castItems) { cast ->
+            items(
+                castItems,
+                key = { item -> item.castId }
+            ) { cast ->
                 CastItem(
                     cast = cast,
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .animateItemPlacement(),
                     onClickCast = { castClicked ->
                         routeNavigation.invoke(
                             ScreenRoute.PEOPLE_DETAIL,

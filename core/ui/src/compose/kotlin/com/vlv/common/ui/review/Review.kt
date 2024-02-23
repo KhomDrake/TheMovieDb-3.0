@@ -14,6 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -23,7 +24,6 @@ import androidx.constraintlayout.compose.Dimension
 import coil.compose.AsyncImage
 import com.vlv.common.data.review.Review
 import com.vlv.common.extension.toUrlMovieDb
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -99,7 +99,9 @@ fun ReviewItem(
             Image(
                 contentScale = ContentScale.Crop,
                 painter = painterResource(id = R.drawable.image_default),
-                contentDescription = "Review: ${review.author}",
+                contentDescription = stringResource(
+                    id = R.string.common_review_avatar_content_description
+                ),
                 modifier = Modifier
                     .layoutId(avatarId)
                     .size(avatarSize)
@@ -117,8 +119,10 @@ fun ReviewItem(
                         RoundedCornerShape(avatarSize / 2)
                     )
                     .size(avatarSize),
-                model = review.url?.toUrlMovieDb(),
-                contentDescription = "Review: ${review.author}"
+                model = review.url.toUrlMovieDb(),
+                contentDescription = stringResource(
+                    id = R.string.common_review_avatar_content_description
+                )
             )
         }
 

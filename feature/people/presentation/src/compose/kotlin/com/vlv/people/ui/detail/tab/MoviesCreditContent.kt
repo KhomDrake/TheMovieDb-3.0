@@ -1,7 +1,7 @@
 package com.vlv.people.ui.detail.tab
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.unit.dp
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.responseData
 import com.vlv.bondsmith.data.responseError
@@ -20,9 +21,8 @@ import com.vlv.common.data.people.People
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.grid.MovieGrid
+import com.vlv.common.ui.paging.movie.MovieErrorState
 import com.vlv.common.ui.shimmer.GridPosterShimmer
-import com.vlv.imperiya.core.ui.components.SmallWarningView
-import com.vlv.imperiya.core.ui.components.StateView
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.people.R
@@ -60,20 +60,12 @@ fun MoviesCreditContentStates(
 ) {
     state.handle(
         success = {
-            if(it.isEmpty()) {
-                StateView(
-                    icon = com.vlv.imperiya.core.R.drawable.ic_movie,
-                    title = stringResource(id = R.string.people_credit_empty_title),
-                    iconTint = MaterialTheme.colorScheme.onBackground,
-                    modifier = modifier
-                )
-            } else {
-                MovieGrid(
-                    movies = it,
-                    routeNavigation = routeNavigation,
-                    modifier = modifier
-                )
-            }
+            MovieGrid(
+                movies = it,
+                routeNavigation = routeNavigation,
+                modifier = modifier,
+                emptyStateTitle = stringResource(id = R.string.people_credit_empty_title)
+            )
         },
         loading = {
             GridPosterShimmer(
@@ -82,23 +74,20 @@ fun MoviesCreditContentStates(
             )
         },
         error = {
-            SmallWarningView(
-                title = stringResource(id = com.vlv.ui.R.string.common_error_title),
-                body = stringResource(id = com.vlv.ui.R.string.common_error_description),
-                linkActionText = stringResource(id = com.vlv.ui.R.string.common_error_button),
-                onClickLink = {
-                    onTryAgain.invoke()
-                },
-                modifier = modifier
+            MovieErrorState(
+                onTryAgain = onTryAgain,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
             )
         }
     )
 }
 
-class MoviesCreditContentStatesProvier: PreviewParameterProvider<Response<List<Movie>>> {
+class MoviesCreditContentStatesProvider: PreviewParameterProvider<Response<List<Movie>>> {
 
     override val values: Sequence<Response<List<Movie>>>
-        get() = listOf<Response<List<Movie>>>(
+        get() = listOf(
             responseLoading(),
             responseError(throwable = null),
             responseData(
@@ -131,7 +120,7 @@ class MoviesCreditContentStatesProvier: PreviewParameterProvider<Response<List<M
 @PreviewLightDark
 @Composable
 fun MoviesCreditContentStatesPrev(
-    @PreviewParameter(MoviesCreditContentStatesProvier::class) state: Response<List<Movie>>
+    @PreviewParameter(MoviesCreditContentStatesProvider::class) state: Response<List<Movie>>
 ) {
     TheMovieDbAppTheme {
         BackgroundPreview {

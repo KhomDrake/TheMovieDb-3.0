@@ -3,7 +3,6 @@ package com.vlv.search.ui.bytype
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -15,13 +14,16 @@ import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.paging.MoviesPagingGrid
-import com.vlv.common.ui.paging.SeriesPagingGrid
+import com.vlv.common.ui.paging.movie.MOVIE_CONTENT_TYPE
+import com.vlv.common.ui.paging.movie.MovieEmptyState
+import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.common.ui.paging.people.PERSON_CONTENT_TYPE
 import com.vlv.common.ui.paging.people.PeopleEmptyState
 import com.vlv.common.ui.paging.people.PeoplePagingGrid
+import com.vlv.common.ui.paging.series.SERIES_CONTENT_TYPE
+import com.vlv.common.ui.paging.series.SeriesEmptyState
+import com.vlv.common.ui.paging.series.SeriesPagingGrid
 import com.vlv.data.database.data.HistoryType
-import com.vlv.imperiya.core.ui.components.StateView
 import com.vlv.search.R
 
 @Composable
@@ -35,18 +37,21 @@ fun SearchByType(
     when(historyType) {
         HistoryType.MOVIE -> {
             MoviesPagingGrid(
-                movies = movieState,
+                itemCount = movieState.itemCount,
+                item = { index -> movieState[index] },
+                itemKey = movieState.itemKey { movie -> movie.apiId },
+                itemContentType = movieState.itemContentType { MOVIE_CONTENT_TYPE },
+                loadStates = movieState.loadState,
                 routeNavigation = routeNavigation,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 16.dp),
                 emptyState = {
-                    StateView(
-                        icon = com.vlv.imperiya.core.R.drawable.ic_movie,
+                    MovieEmptyState(
                         title = stringResource(id = R.string.search_movie_empty_title),
-                        iconTint = MaterialTheme.colorScheme.onBackground,
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(16.dp)
                     )
                 }
             )
@@ -76,18 +81,24 @@ fun SearchByType(
         }
         HistoryType.SERIES -> {
             SeriesPagingGrid(
-                seriesItems = seriesState,
                 routeNavigation = routeNavigation,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 16.dp),
+                loadStates = seriesState.loadState,
+                itemCount = seriesState.itemCount,
+                itemKey = seriesState.itemKey { item -> item.id },
+                itemContentType = seriesState.itemContentType { item -> SERIES_CONTENT_TYPE },
+                item = { index -> seriesState[index] },
+                onRetry = {
+                    seriesState.retry()
+                },
                 emptyState = {
-                    StateView(
-                        icon = com.vlv.imperiya.core.R.drawable.ic_tv,
+                    SeriesEmptyState(
                         title = stringResource(id = R.string.search_series_empty_title),
-                        iconTint = MaterialTheme.colorScheme.onBackground,
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(16.dp)
                     )
                 }
             )
