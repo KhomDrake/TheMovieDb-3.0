@@ -9,11 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
-import com.vlv.bondsmith.data.ResponseStatus
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.common.ui.extension.handle
 import com.vlv.genre.R
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import org.koin.androidx.compose.koinViewModel
 
 class SeriesGenreActivity : ComponentActivity() {
@@ -21,7 +20,7 @@ class SeriesGenreActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TheMovieDbAppTheme {
+            TheMovieDbThemeWithDynamicColors {
                 Scaffold(
                     topBar = {
                         DefaultTopBar(title = stringResource(id = R.string.genre_series_toolbar_title)) {

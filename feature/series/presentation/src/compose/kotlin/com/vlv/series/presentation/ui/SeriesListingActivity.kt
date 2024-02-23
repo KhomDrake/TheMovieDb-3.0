@@ -16,6 +16,7 @@ import com.vlv.common.data.series.SeriesListType
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.SERIES_LISTING_TYPE_EXTRA
 import com.vlv.common.route.handleRoute
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.common.ui.paging.SeriesPagingGrid
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
@@ -32,7 +33,7 @@ class SeriesListingActivity : ComponentActivity() {
             ) ?: SeriesListType.TRENDING
 
         setContent {
-            TheMovieDbAppTheme {
+            TheMovieDbThemeWithDynamicColors {
                 Scaffold(
                     topBar = {
                         val name = when(type) {

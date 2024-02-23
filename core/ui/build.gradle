@@ -68,6 +68,7 @@ dependencies {
     implementation project(':data:common')
 
     // Compose
+    composeImplementation project(':feature:configuration:domain')
     composeImplementation(libs.androidx.compose.activity)
     composeImplementation(libs.androidx.compose.livedata)
     composeImplementation(libs.androidx.compose.tooling.preview)

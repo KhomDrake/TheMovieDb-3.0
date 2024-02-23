@@ -19,6 +19,7 @@ import com.vlv.common.data.cast.Cast
 import com.vlv.common.data.cast.toPeople
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography

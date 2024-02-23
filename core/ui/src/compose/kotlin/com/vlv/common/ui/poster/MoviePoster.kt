@@ -24,6 +24,7 @@ import com.vlv.common.data.movie.Movie
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -33,8 +34,9 @@ import com.vlv.ui.R
 fun MoviePoster(
     movie: Movie,
     onRouteNavigation: RouteNavigation,
+    modifier: Modifier = Modifier,
     height: Dp = 150.dp,
-    modifier: Modifier = Modifier
+    loadPoster: Boolean = true
 ) {
     Column(
         modifier = modifier
@@ -54,9 +56,13 @@ fun MoviePoster(
                 .clickable {
                     onRouteNavigation.invoke(ScreenRoute.MOVIE_DETAIL, movie)
                 },
-            model = movie.posterPath?.toUrlMovieDb(),
+            model = (if(loadPoster) movie.posterPath else movie.backdropPath)
+                ?.toUrlMovieDb(),
             contentDescription = stringResource(
-                id = R.string.common_movie_poster_content_description
+                id = if(loadPoster)
+                    R.string.common_movie_poster_content_description
+                else
+                    R.string.common_movie_backdrop_content_description
             )
         )
 

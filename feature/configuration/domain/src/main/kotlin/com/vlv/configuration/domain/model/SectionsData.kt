@@ -70,7 +70,14 @@ class SectionsData(
                         ConfigItemType.SWITCH,
                         null,
                         resources.getString(R.string.configuration_options_item_adult_content_title),
-                        DataVault.cachedDataBoolean(SettingOption.ADULT_CONTENT.name)
+                        settingsData.adultContent.selectedItem.value as Boolean
+                    ),
+                    SectionConfig(
+                        SettingOption.DYNAMIC_COLORS,
+                        ConfigItemType.SWITCH,
+                        null,
+                        resources.getString(R.string.configuration_options_item_dynamic_colors_title),
+                        settingsData.dynamicColors.selectedItem.value as Boolean
                     ),
                     SectionConfig(
                         SettingOption.LANGUAGE,
@@ -98,35 +105,6 @@ class SectionsData(
                                 resources.getString(R.string.configuration_bottom_sheet_language_body),
                                 selectedLanguage,
                                 languages
-                            )
-                        }
-                    ),
-                    SectionConfig(
-                        SettingOption.REGION,
-                        ConfigItemType.LIST,
-                        resources.getString(R.string.configuration_options_item_region_title),
-                        resources.getString(R.string.configuration_options_item_region_body),
-                        settingsData.run {
-                            val selectedRegionValue = DataVault.cachedDataString(
-                                SettingOption.REGION.name
-                            )
-
-                            val regions = this.regions.items.map {
-                                ConfigDataItemList(
-                                    it.name,
-                                    it.value as String
-                                )
-                            }
-
-                            val selectedRegion = regions.first {
-                                it.value == selectedRegionValue
-                            }
-
-                            ConfigDataList(
-                                resources.getString(R.string.configuration_bottom_sheet_region_title),
-                                resources.getString(R.string.configuration_bottom_sheet_region_body),
-                                selectedRegion,
-                                regions
                             )
                         }
                     )

@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import com.vlv.common.data.people.People
 import com.vlv.common.route.EXTRA_PEOPLE
 import com.vlv.common.route.handleRoute
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 
 class PeopleDetailActivity : ComponentActivity() {
@@ -20,7 +21,7 @@ class PeopleDetailActivity : ComponentActivity() {
             EXTRA_PEOPLE, People::class.java
         ) ?: return finish()
         setContent {
-            TheMovieDbAppTheme {
+            TheMovieDbThemeWithDynamicColors {
                 Scaffold(
                     topBar = {
                         PeopleTabBar(

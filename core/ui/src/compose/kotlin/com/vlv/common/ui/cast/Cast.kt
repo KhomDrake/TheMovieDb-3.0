@@ -28,6 +28,7 @@ import coil.compose.AsyncImage
 import com.vlv.common.data.cast.Cast
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.ScreenRoute
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography

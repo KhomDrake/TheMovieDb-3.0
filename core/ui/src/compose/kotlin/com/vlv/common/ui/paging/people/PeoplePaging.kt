@@ -19,6 +19,7 @@ import androidx.paging.CombinedLoadStates
 import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.people.People
 import com.vlv.common.route.RouteNavigation
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.common.ui.extension.isFullLoading
 import com.vlv.common.ui.extension.isSingleError
 import com.vlv.common.ui.extension.isSingleLoading

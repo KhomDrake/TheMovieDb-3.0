@@ -34,6 +34,7 @@ class SetupConfigurationUseCase(
         DataVault.setValue(SettingOption.PROFILE.name, data.profileSizes.last().data)
 
         DataVault.setValue(SettingOption.ADULT_CONTENT.name, false)
+        DataVault.setValue(SettingOption.DYNAMIC_COLORS.name, false)
 
         data.languages.find {
             it.isoName == resources.getString(R.string.configuration_language_default)
