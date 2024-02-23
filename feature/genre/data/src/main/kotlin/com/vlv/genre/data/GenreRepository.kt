@@ -3,7 +3,7 @@ package com.vlv.genre.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.vlv.data.common.paging.MoviePagingSource
-import com.vlv.data.common.paging.SeriesPagingSource
+import com.vlv.data.common.paging.TvShowPagingSource
 import com.vlv.genre.data.api.DiscoverApi
 import com.vlv.genre.data.api.GenresApi
 
@@ -14,7 +14,7 @@ class GenreRepository(
 
     suspend fun moviesGenre() = api.moviesGenres()
 
-    suspend fun seriesGenre() = api.seriesGenres()
+    suspend fun tvShowGenre() = api.tvShowGenres()
 
     fun movieByGenre(
         config: PagingConfig,
@@ -28,14 +28,14 @@ class GenreRepository(
         }
     ).flow
 
-    fun seriesByGenre(
+    fun tvShowByGenre(
         config: PagingConfig,
         genreId: Int
     ) = Pager(
         config = config,
         pagingSourceFactory = {
-            SeriesPagingSource { page ->
-                discoverApi.discoverSeries(genreId, page)
+            TvShowPagingSource { page ->
+                discoverApi.discoverTvShow(genreId, page)
             }
         }
     ).flow

@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.paging.CombinedLoadStates
 import com.vlv.bondsmith.data.ResponseStatus
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.series.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.isFullError
 import com.vlv.common.ui.extension.isFullLoading
@@ -38,8 +38,8 @@ import com.vlv.ui.R
 const val SERIES_CONTENT_TYPE = "SERIES_CONTENT_TYPE"
 
 @Composable
-fun SeriesPagingGrid(
-    item: (Int) -> Series?,
+fun TvShowsPagingGrid(
+    item: (Int) -> TvShow?,
     loadStates: CombinedLoadStates,
     itemCount: Int,
     routeNavigation: RouteNavigation,
@@ -94,7 +94,7 @@ fun SeriesPagingGrid(
                         ) { index ->
                             item.invoke(index)?.let { series ->
                                 SeriesPoster(
-                                    series = series,
+                                    tvShow = series,
                                     height = heightItem,
                                     onRouteNavigation = routeNavigation
                                 )
@@ -149,7 +149,7 @@ fun SeriesPagingGrid(
 data class SeriesPagingPreviewData(
     val loadState: CombinedLoadStates = stateData(),
     val itemCount: Int = 0,
-    val items: List<Series> = listOf()
+    val items: List<TvShow> = listOf()
 )
 
 class SeriesPagingPreviewProvider: PreviewParameterProvider<SeriesPagingPreviewData> {
@@ -170,35 +170,35 @@ class SeriesPagingPreviewProvider: PreviewParameterProvider<SeriesPagingPreviewD
                 loadState = stateData(),
                 itemCount = 5,
                 items = listOf(
-                    Series(
+                    TvShow(
                         false,
                         2,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "Duna"
                     ),
-                    Series(
+                    TvShow(
                         false,
                         3,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "Duna 2"
                     ),
-                    Series(
+                    TvShow(
                         false,
                         4,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "Duna 3"
                     ),
-                    Series(
+                    TvShow(
                         false,
                         5,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "Duna 4"
                     ),
-                    Series(
+                    TvShow(
                         false,
                         6,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
@@ -211,21 +211,21 @@ class SeriesPagingPreviewProvider: PreviewParameterProvider<SeriesPagingPreviewD
                 loadState = stateSingleLoading(),
                 itemCount = 3,
                 items = listOf(
-                    Series(
+                    TvShow(
                         false,
                         2,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "Duna"
                     ),
-                    Series(
+                    TvShow(
                         false,
                         3,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "Duna 2"
                     ),
-                    Series(
+                    TvShow(
                         false,
                         4,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
@@ -238,21 +238,21 @@ class SeriesPagingPreviewProvider: PreviewParameterProvider<SeriesPagingPreviewD
                 loadState = stateSingleError(),
                 itemCount = 3,
                 items = listOf(
-                    Series(
+                    TvShow(
                         false,
                         2,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "Duna"
                     ),
-                    Series(
+                    TvShow(
                         false,
                         3,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "Duna 2"
                     ),
-                    Series(
+                    TvShow(
                         false,
                         4,
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
@@ -272,7 +272,7 @@ fun SeriesPagingPreview(
 ) {
     TheMovieDbAppTheme {
         BackgroundPreview {
-            SeriesPagingGrid(
+            TvShowsPagingGrid(
                 routeNavigation = { _, _ ->},
                 item = { index ->
                     data.items[index]

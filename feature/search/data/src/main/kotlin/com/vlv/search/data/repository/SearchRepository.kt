@@ -5,10 +5,10 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.vlv.data.common.model.movie.MovieResponse
 import com.vlv.data.common.model.people.PeopleResponse
-import com.vlv.data.common.model.series.SeriesItemResponse
+import com.vlv.data.common.model.tvshow.TvShowResponse
 import com.vlv.data.common.paging.MoviePagingSource
 import com.vlv.data.common.paging.PeoplePagingSource
-import com.vlv.data.common.paging.SeriesPagingSource
+import com.vlv.data.common.paging.TvShowPagingSource
 import com.vlv.search.data.api.SearchApi
 import kotlinx.coroutines.flow.Flow
 
@@ -44,15 +44,15 @@ class SearchRepository(
         ).flow
     }
 
-    fun searchSeries(
+    fun searchTvShows(
         pagingConfig: PagingConfig,
         query: String
-    ): Flow<PagingData<SeriesItemResponse>> {
+    ): Flow<PagingData<TvShowResponse>> {
         return Pager(
             config = pagingConfig,
             pagingSourceFactory = {
-                SeriesPagingSource { page ->
-                    searchApi.searchSeries(query, page)
+                TvShowPagingSource { page ->
+                    searchApi.searchTvShows(query, page)
                 }
             }
         ).flow

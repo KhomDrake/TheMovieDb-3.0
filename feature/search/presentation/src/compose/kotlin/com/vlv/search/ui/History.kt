@@ -2,12 +2,10 @@ package com.vlv.search.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.History
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.vlv.data.database.data.History
-import com.vlv.data.database.data.HistoryType
+import com.vlv.data.database.data.ItemType
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -75,7 +73,7 @@ fun HistoryItemPreview() {
     TheMovieDbAppTheme {
         BackgroundPreview(background = MaterialTheme.colorScheme.tertiary) {
             HistoryItem(
-                history = History("Text", HistoryType.MOVIE),
+                history = History("Text", ItemType.MOVIE),
                 onClickHistory = {
 
                 },

@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.series.TvShow
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
@@ -31,7 +31,7 @@ import com.vlv.ui.R
 
 @Composable
 fun SeriesPoster(
-    series: Series,
+    tvShow: TvShow,
     onRouteNavigation: RouteNavigation,
     modifier: Modifier = Modifier,
     height: Dp = 150.dp,
@@ -53,9 +53,9 @@ fun SeriesPoster(
                     RoundedCornerShape(16.dp)
                 )
                 .clickable {
-                    onRouteNavigation.invoke(ScreenRoute.SERIES_DETAIL, series)
+                    onRouteNavigation.invoke(ScreenRoute.TV_SHOW_DETAIL, tvShow)
                 },
-            model = (if(loadPoster) series.posterPath else series.backdropPath)
+            model = (if(loadPoster) tvShow.posterPath else tvShow.backdropPath)
                 ?.toUrlMovieDb(),
             contentDescription = stringResource(
                 id = if(loadPoster)
@@ -69,7 +69,7 @@ fun SeriesPoster(
             modifier = Modifier
                 .padding(top = 8.dp)
                 .fillMaxWidth(),
-            text = series.title,
+            text = tvShow.title,
             style = TheMovieDbTypography.SubTitleBoldStyle,
             color = MaterialTheme.colorScheme.onBackground,
             textAlign = TextAlign.Center
@@ -84,7 +84,7 @@ fun SeriesPosterPreview() {
     TheMovieDbAppTheme {
         BackgroundPreview {
             SeriesPoster(
-                series = Series(
+                tvShow = TvShow(
                     false,
                     2,
                     "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",

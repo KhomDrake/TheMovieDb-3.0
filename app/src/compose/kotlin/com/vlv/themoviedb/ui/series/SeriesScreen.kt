@@ -15,12 +15,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.ResponseStatus
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.series.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.ui.carousel.SeriesCarousel
+import com.vlv.common.ui.carousel.TvShowCarousel
 import com.vlv.common.ui.shimmer.CarouselShimmer
-import com.vlv.favorite.presentation.ui.series.SeriesCarouselFavorite
+import com.vlv.favorite.presentation.ui.tvshow.TvShowCarouselFavorite
 import com.vlv.imperiya.core.ui.components.SearchComponent
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import com.vlv.themoviedb.R
@@ -48,7 +48,7 @@ fun SeriesScreen(
                 .padding(horizontal = 16.dp),
             hint = "Search for series",
             onClick = {
-                onNavigate.invoke(ScreenRoute.SERIES_SEARCH, null)
+                onNavigate.invoke(ScreenRoute.TV_SHOW_SEARCH, null)
             },
             enable = false
         )
@@ -57,10 +57,10 @@ fun SeriesScreen(
         SeeAll(
             title = stringResource(id = R.string.favorites_title),
             onClickSeeAll = {
-                onNavigate.invoke(ScreenRoute.FAVORITES_SERIES, null)
+                onNavigate.invoke(ScreenRoute.FAVORITES_TV_SHOW, null)
             }
         )
-        SeriesCarouselFavorite(
+        TvShowCarouselFavorite(
             modifier = Modifier
                 .padding(16.dp),
             routeNavigation = onNavigate,
@@ -91,7 +91,7 @@ fun AiringToday(
             viewModel.airingToday()
         },
         onSeeAll = {
-            onNavigate.invoke(ScreenRoute.SERIES_AIRING_TODAY, null)
+            onNavigate.invoke(ScreenRoute.TV_SHOW_AIRING_TODAY, null)
         }
     )
 
@@ -116,7 +116,7 @@ fun SeriesTrending(
             viewModel.trending()
         },
         onSeeAll = {
-            onNavigate.invoke(ScreenRoute.SERIES_TRENDING, null)
+            onNavigate.invoke(ScreenRoute.TV_SHOW_TRENDING, null)
         },
         percentage = 1f
     )
@@ -129,7 +129,7 @@ fun SeriesInformation(
     titleWarning: String,
     bodyWarning: String,
     linkTextWarning: String,
-    data: Response<List<Series>>,
+    data: Response<List<TvShow>>,
     onNavigate: RouteNavigation,
     percentage: Float = .8f,
     onSeeAll: () -> Unit,
@@ -142,11 +142,11 @@ fun SeriesInformation(
     when(data.state) {
         ResponseStatus.SUCCESS -> {
             val series = data.data ?: return
-            SeriesCarousel(
+            TvShowCarousel(
                 Modifier
                     .fillMaxWidth()
                     .padding(top = 12.dp),
-                series = series,
+                tvShows = series,
                 emptyStateTitle = emptyStateTitle,
                 onClickSeries = onNavigate,
                 percentage = percentage

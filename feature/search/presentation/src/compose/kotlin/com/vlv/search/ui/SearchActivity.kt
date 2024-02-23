@@ -24,8 +24,7 @@ import com.vlv.common.route.SEARCH_TYPE_EXTRA
 import com.vlv.common.route.ScreenRoute
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
-import com.vlv.data.database.data.HistoryType
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
+import com.vlv.data.database.data.ItemType
 import com.vlv.search.R
 import com.vlv.search.ui.bytype.SearchByType
 import org.koin.androidx.compose.koinViewModel
@@ -36,9 +35,9 @@ class SearchActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val type = intent.extras?.getString(SEARCH_TYPE_EXTRA)
-            val searchType = HistoryType.values().find {
+            val searchType = ItemType.values().find {
                 it.name == type
-            } ?: HistoryType.MOVIE
+            } ?: ItemType.MOVIE
             TheMovieDbThemeWithDynamicColors {
                 SearchScreen(
                     defaultSearchType = searchType,
@@ -50,13 +49,13 @@ class SearchActivity : ComponentActivity() {
                         .fillMaxSize(),
                     hint = {
                         when(it) {
-                            HistoryType.MOVIE -> {
+                            ItemType.MOVIE -> {
                                 stringResource(id = R.string.search_movie_hint_text)
                             }
-                            HistoryType.SERIES -> {
-                                stringResource(id = R.string.search_series_hint_text)
+                            ItemType.TV_SHOW -> {
+                                stringResource(id = R.string.search_tv_show_hint_text)
                             }
-                            HistoryType.PEOPLE -> {
+                            ItemType.PEOPLE -> {
                                 stringResource(id = R.string.search_people_hint_text)
                             }
                         }
@@ -70,7 +69,7 @@ class SearchActivity : ComponentActivity() {
 
 @Composable
 fun SearchContentType(
-    searchType: HistoryType,
+    searchType: ItemType,
     routeNavigation: RouteNavigation,
     modifier: Modifier = Modifier,
     viewModel: SearchViewModel = koinViewModel()
@@ -104,13 +103,13 @@ fun SearchContentType(
     ) {
         SearchWithHistory(
             hint = when(searchType) {
-                HistoryType.MOVIE -> {
+                ItemType.MOVIE -> {
                     stringResource(id = R.string.search_movie_hint_text)
                 }
-                HistoryType.SERIES -> {
-                    stringResource(id = R.string.search_series_hint_text)
+                ItemType.TV_SHOW -> {
+                    stringResource(id = R.string.search_tv_show_hint_text)
                 }
-                HistoryType.PEOPLE -> {
+                ItemType.PEOPLE -> {
                     stringResource(id = R.string.search_people_hint_text)
                 }
             },
@@ -140,7 +139,7 @@ fun SearchContentType(
             SearchByType(
                 historyType = searchType,
                 movieState = viewModel.movieState.collectAsLazyPagingItems(),
-                seriesState = viewModel.seriesState.collectAsLazyPagingItems(),
+                tvShowState = viewModel.tvShowState.collectAsLazyPagingItems(),
                 personState = viewModel.peopleState.collectAsLazyPagingItems(),
                 routeNavigation = routeNavigation
             )

@@ -12,11 +12,5 @@ data class Favorite(
     val poster: String?,
     val backdrop: String?,
     val overview: String,
-    val type: FavoriteType
+    val type: ItemType
 )
-
-enum class FavoriteType {
-    MOVIE,
-    SERIES,
-    PEOPLE
-}

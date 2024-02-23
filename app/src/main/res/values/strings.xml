@@ -6,7 +6,7 @@
 
     <!--  Bottom Navigation  -->
     <string name="movie_title">Movie</string>
-    <string name="series_title">Series</string>
+    <string name="tv_show_title">Series</string>
     <string name="search_title">Search</string>
     <string name="favorites_title">Favorites</string>
     <string name="menu_title">Menu</string>

@@ -12,6 +12,6 @@
     <string name="search_hint_text">Search for…</string>
     <string name="search_people_hint_text">Search for people</string>
     <string name="search_movie_hint_text">Search for movie</string>
-    <string name="search_series_hint_text">Search for tv show</string>
+    <string name="search_tv_show_hint_text">Search for tv show</string>
     <string name="search_history_item_removed_description">Item removed</string>
 </resources>

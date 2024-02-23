@@ -5,7 +5,7 @@ import com.vlv.common.ui.DetailObject
 import com.vlv.data.common.model.movie.MovieResponse
 import com.vlv.data.common.model.people.MovieCreditResponse
 import com.vlv.data.database.data.Favorite
-import com.vlv.data.database.data.FavoriteType
+import com.vlv.data.database.data.ItemType
 import com.vlv.extensions.idInt
 import kotlinx.parcelize.Parcelize
 
@@ -62,5 +62,5 @@ fun Movie.toFavorite() = Favorite(
     posterPath,
     backdropPath,
     overview,
-    FavoriteType.MOVIE
+    ItemType.MOVIE
 )

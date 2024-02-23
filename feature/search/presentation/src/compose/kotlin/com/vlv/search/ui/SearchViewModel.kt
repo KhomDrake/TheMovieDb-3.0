@@ -10,13 +10,13 @@ import androidx.paging.map
 import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.series.TvShow
 import com.vlv.data.database.data.History
-import com.vlv.data.database.data.HistoryType
+import com.vlv.data.database.data.ItemType
 import com.vlv.search.domain.usecase.HistoryUseCase
 import com.vlv.search.domain.usecase.SearchMovieUseCase
 import com.vlv.search.domain.usecase.SearchPeopleUseCase
-import com.vlv.search.domain.usecase.SearchSeriesUseCase
+import com.vlv.search.domain.usecase.SearchTvShowsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -35,7 +35,7 @@ class SearchViewModel(
     private val handle: SavedStateHandle,
     private val historyUseCase: HistoryUseCase,
     private val movieUseCase: SearchMovieUseCase,
-    private val seriesUseCase: SearchSeriesUseCase,
+    private val seriesUseCase: SearchTvShowsUseCase,
     private val peopleUseCase: SearchPeopleUseCase,
 ) : ViewModel() {
 
@@ -49,11 +49,11 @@ class SearchViewModel(
     val movieState: Flow<PagingData<Movie>>
         get() = _movieState.asStateFlow()
 
-    private val _seriesState: MutableStateFlow<PagingData<Series>> =
+    private val _tvShowState: MutableStateFlow<PagingData<TvShow>> =
         MutableStateFlow(PagingData.empty())
 
-    val seriesState: Flow<PagingData<Series>>
-        get() = _seriesState.asStateFlow()
+    val tvShowState: Flow<PagingData<TvShow>>
+        get() = _tvShowState.asStateFlow()
 
     private val _peopleState: MutableStateFlow<PagingData<People>> =
         MutableStateFlow(PagingData.empty())
@@ -61,8 +61,8 @@ class SearchViewModel(
     val peopleState: Flow<PagingData<People>>
         get() = _peopleState.asStateFlow()
 
-    val searchType: StateFlow<HistoryType>
-        get() = handle.getStateFlow(SEARCH_TYPE_KEY, HistoryType.MOVIE)
+    val searchType: StateFlow<ItemType>
+        get() = handle.getStateFlow(SEARCH_TYPE_KEY, ItemType.MOVIE)
 
     val query: StateFlow<String>
         get() = handle.getStateFlow(QUERY_KEY, "")
@@ -81,13 +81,13 @@ class SearchViewModel(
             addHistory(newQuery)
             setQuery(newQuery)
             when(searchType.value) {
-                HistoryType.MOVIE -> {
+                ItemType.MOVIE -> {
                     searchMovie(newQuery)
                 }
-                HistoryType.SERIES -> {
-                    searchSeries(newQuery)
+                ItemType.TV_SHOW -> {
+                    searchTvShows(newQuery)
                 }
-                HistoryType.PEOPLE -> {
+                ItemType.PEOPLE -> {
                     searchPeople(newQuery)
                 }
             }
@@ -108,15 +108,15 @@ class SearchViewModel(
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    private suspend fun searchSeries(query: String) {
-        seriesUseCase.searchSeries(pagingConfig, query)
+    private suspend fun searchTvShows(query: String) {
+        seriesUseCase.searchTvShows(pagingConfig, query)
             .mapLatest {
-                it.map(::Series)
+                it.map(::TvShow)
             }
             .cachedIn(viewModelScope)
             .distinctUntilChanged()
             .collectLatest {
-                _seriesState.emit(it)
+                _tvShowState.emit(it)
             }
     }
 
@@ -166,13 +166,13 @@ class SearchViewModel(
     fun setSearchType(type: Int) {
         viewModelScope.launch {
             runCatching {
-                val item = HistoryType.values().get(index = type)
+                val item = ItemType.values().get(index = type)
                 handle[SEARCH_TYPE_KEY] = item
             }
         }
     }
 
-    fun setSearchType(type: HistoryType) {
+    fun setSearchType(type: ItemType) {
         viewModelScope.launch {
             runCatching {
                 handle[SEARCH_TYPE_KEY] = type

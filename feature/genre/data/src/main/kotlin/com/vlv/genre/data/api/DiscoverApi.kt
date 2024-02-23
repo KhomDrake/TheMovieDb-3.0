@@ -1,7 +1,7 @@
 package com.vlv.genre.data.api
 
 import com.vlv.data.common.model.movie.MoviesResponse
-import com.vlv.data.common.model.series.SeriesResponse
+import com.vlv.data.common.model.tvshow.TvShowsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -16,11 +16,11 @@ interface DiscoverApi {
     ) : MoviesResponse
 
     @GET("discover/tv")
-    suspend fun discoverSeries(
+    suspend fun discoverTvShow(
         @Query("with_genres")
         genre: Int,
         @Query("page")
         page: Int
-    ) : SeriesResponse
+    ) : TvShowsResponse
 
 }

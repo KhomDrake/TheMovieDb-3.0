@@ -10,9 +10,6 @@ import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.route.ScreenRoute
 import com.vlv.themoviedb.R
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.random.Random
@@ -125,43 +122,43 @@ class MenuViewModel : ViewModel() {
             R.string.menu_title_series_option_trending,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = ScreenRoute.SERIES_TRENDING
+            action = ScreenRoute.TV_SHOW_TRENDING
         ),
         MenuItem(
             R.string.menu_title_series_option_top_rated,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = ScreenRoute.SERIES_TOP_RATED
+            action = ScreenRoute.TV_SHOW_TOP_RATED
         ),
         MenuItem(
             R.string.menu_title_series_option_airing_today,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = ScreenRoute.SERIES_AIRING_TODAY
+            action = ScreenRoute.TV_SHOW_AIRING_TODAY
         ),
         MenuItem(
             R.string.menu_title_series_option_on_the_air,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = ScreenRoute.SERIES_ON_THE_AIR
+            action = ScreenRoute.TV_SHOW_ON_THE_AIR
         ),
         MenuItem(
             R.string.menu_title_series_option_popular,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = ScreenRoute.SERIES_POPULAR
+            action = ScreenRoute.TV_SHOW_POPULAR
         ),
         MenuItem(
             R.string.menu_title_series_option_genres,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_tv,
-            action = ScreenRoute.SERIES_GENRE
+            action = ScreenRoute.TV_SHOW_GENRE
         ),
         MenuItem(
             R.string.menu_title_series_option_discover,
             type = MenuItemType.ITEM,
             icon = com.vlv.imperiya.core.R.drawable.ic_search_enable,
-            action = ScreenRoute.SERIES_SEARCH
+            action = ScreenRoute.TV_SHOW_SEARCH
         ),
         MenuItem(
             R.string.menu_title_series_option_certifications,

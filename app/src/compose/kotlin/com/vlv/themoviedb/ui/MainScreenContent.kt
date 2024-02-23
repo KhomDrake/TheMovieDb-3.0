@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.route.SearchType
+import com.vlv.data.database.data.ItemType
 import com.vlv.favorite.presentation.ui.FavoritesScreen
 import com.vlv.imperiya.core.ui.components.FilterItemData
 import com.vlv.search.R
@@ -29,7 +29,7 @@ fun MainScreenContent(
         MainScreens.MENU -> {
             MenuScreen(paddingValues, onNavigate = onNavigate)
         }
-        MainScreens.SERIES -> {
+        MainScreens.TV_SHOW -> {
             SeriesScreen(paddingValues, onNavigate)
         }
         MainScreens.FAVORITES -> {
@@ -48,19 +48,19 @@ fun MainScreenContent(
                     .padding(bottom = paddingValues.calculateBottomPadding()),
                 filters = listOf(
                     FilterItemData(
-                        SearchType.MOVIE.ordinal,
+                        ItemType.MOVIE.ordinal,
                         stringResource(id = R.string.search_movie_option),
-                        SearchType.MOVIE.name
+                        ItemType.MOVIE.name
                     ),
                     FilterItemData(
-                        SearchType.SERIES.ordinal,
+                        ItemType.TV_SHOW.ordinal,
                         stringResource(id = R.string.search_series_option),
-                        SearchType.SERIES.name
+                        ItemType.TV_SHOW.name
                     ),
                     FilterItemData(
-                        SearchType.PEOPLE.ordinal,
+                        ItemType.PEOPLE.ordinal,
                         stringResource(id = R.string.search_people_option),
-                        SearchType.PEOPLE.name
+                        ItemType.PEOPLE.name
                     ),
                 )
             )

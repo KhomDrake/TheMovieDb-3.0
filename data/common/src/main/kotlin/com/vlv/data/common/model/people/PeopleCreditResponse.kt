@@ -9,6 +9,6 @@ class PeopleMovieCreditResponse(
 
 @JsonClass(generateAdapter = true)
 class PeopleSeriesCreditResponse(
-    val cast: List<SeriesCreditResponse>
+    val cast: List<TvShowCreditResponse>
 )
 

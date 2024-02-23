@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.series.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.paging.series.SeriesEmptyState
 import com.vlv.common.ui.poster.SeriesPoster
@@ -26,14 +26,14 @@ import com.vlv.ui.R
 
 @Composable
 fun SeriesGrid(
-    series: List<Series>,
+    tvShows: List<TvShow>,
     routeNavigation: RouteNavigation,
     modifier: Modifier = Modifier,
     heightItem: Dp = 200.dp,
     columns: Int = 2,
     emptyStateTitle: String = stringResource(id = R.string.common_empty_view_title_default)
 ) {
-    if(series.isEmpty()) {
+    if(tvShows.isEmpty()) {
         SeriesEmptyState(
             title = emptyStateTitle,
             modifier = Modifier
@@ -46,11 +46,11 @@ fun SeriesGrid(
             columns = GridCells.Fixed(columns),
             content = {
                 items(
-                    series,
+                    tvShows,
                     key = { item -> item.id }
                 ) { series ->
                     SeriesPoster(
-                        series = series,
+                        tvShow = series,
                         height = heightItem,
                         onRouteNavigation = routeNavigation
                     )
@@ -66,34 +66,34 @@ fun SeriesGrid(
     }
 }
 
-class SeriesGridPreviewProvider: PreviewParameterProvider<List<Series>> {
+class SeriesGridPreviewProvider: PreviewParameterProvider<List<TvShow>> {
 
-    override val values: Sequence<List<Series>>
+    override val values: Sequence<List<TvShow>>
         get() = listOf(
             listOf(),
             listOf(
-                Series(
+                TvShow(
                     false,
                     2,
                     "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                     "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                     "Duna"
                 ),
-                Series(
+                TvShow(
                     false,
                     3,
                     "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                     "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                     "Duna 2"
                 ),
-                Series(
+                TvShow(
                     false,
                     4,
                     "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                     "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                     "Duna 3"
                 ),
-                Series(
+                TvShow(
                     false,
                     5,
                     "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
@@ -108,12 +108,12 @@ class SeriesGridPreviewProvider: PreviewParameterProvider<List<Series>> {
 @PreviewLightDark
 @Composable
 fun SeriesGridPreview(
-    @PreviewParameter(SeriesGridPreviewProvider::class) data: List<Series>
+    @PreviewParameter(SeriesGridPreviewProvider::class) data: List<TvShow>
 ) {
     TheMovieDbAppTheme {
         BackgroundPreview {
             SeriesGrid(
-                series = data,
+                tvShows = data,
                 routeNavigation = {_, _ ->},
                 modifier = Modifier
                     .fillMaxSize(),

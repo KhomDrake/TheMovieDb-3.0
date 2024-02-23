@@ -23,7 +23,7 @@ include ':libraries:imperiya:imperiyasample'
 // Features Presentation
 include ':feature:configuration:presentation'
 include ':feature:movie:presentation'
-include ':feature:series:presentation'
+include ':feature:tv_show:presentation'
 include ':feature:people:presentation'
 include ':feature:favorite:presentation'
 include ':feature:search:presentation'
@@ -43,7 +43,7 @@ include ':feature:favorite:data'
 include ':feature:movie:data'
 include ':feature:people:data'
 include ':feature:search:data'
-include ':feature:series:data'
+include ':feature:tv_show:data'
 
 // Data
 include ':data:network'

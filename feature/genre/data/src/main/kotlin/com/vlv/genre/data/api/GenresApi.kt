@@ -9,6 +9,6 @@ interface GenresApi {
     suspend fun moviesGenres() : GenresResponse
 
     @GET("genre/tv/list")
-    suspend fun seriesGenres() : GenresResponse
+    suspend fun tvShowGenres() : GenresResponse
 
 }

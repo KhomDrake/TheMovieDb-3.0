@@ -12,7 +12,7 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.series.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.paging.movie.MOVIE_CONTENT_TYPE
 import com.vlv.common.ui.paging.movie.MovieEmptyState
@@ -22,20 +22,20 @@ import com.vlv.common.ui.paging.people.PeopleEmptyState
 import com.vlv.common.ui.paging.people.PeoplePagingGrid
 import com.vlv.common.ui.paging.series.SERIES_CONTENT_TYPE
 import com.vlv.common.ui.paging.series.SeriesEmptyState
-import com.vlv.common.ui.paging.series.SeriesPagingGrid
-import com.vlv.data.database.data.HistoryType
+import com.vlv.common.ui.paging.series.TvShowsPagingGrid
+import com.vlv.data.database.data.ItemType
 import com.vlv.search.R
 
 @Composable
 fun SearchByType(
-    historyType: HistoryType,
+    historyType: ItemType,
     movieState: LazyPagingItems<Movie>,
-    seriesState: LazyPagingItems<Series>,
+    tvShowState: LazyPagingItems<TvShow>,
     personState: LazyPagingItems<People>,
     routeNavigation: RouteNavigation
 ) {
     when(historyType) {
-        HistoryType.MOVIE -> {
+        ItemType.MOVIE -> {
             MoviesPagingGrid(
                 itemCount = movieState.itemCount,
                 item = { index -> movieState[index] },
@@ -56,7 +56,7 @@ fun SearchByType(
                 }
             )
         }
-        HistoryType.PEOPLE -> {
+        ItemType.PEOPLE -> {
             PeoplePagingGrid(
                 routeNavigation = routeNavigation,
                 item = { personState[it] },
@@ -79,19 +79,19 @@ fun SearchByType(
                 }
             )
         }
-        HistoryType.SERIES -> {
-            SeriesPagingGrid(
+        ItemType.TV_SHOW -> {
+            TvShowsPagingGrid(
                 routeNavigation = routeNavigation,
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 16.dp),
-                loadStates = seriesState.loadState,
-                itemCount = seriesState.itemCount,
-                itemKey = seriesState.itemKey { item -> item.id },
-                itemContentType = seriesState.itemContentType { item -> SERIES_CONTENT_TYPE },
-                item = { index -> seriesState[index] },
+                loadStates = tvShowState.loadState,
+                itemCount = tvShowState.itemCount,
+                itemKey = tvShowState.itemKey { item -> item.id },
+                itemContentType = tvShowState.itemContentType { item -> SERIES_CONTENT_TYPE },
+                item = { index -> tvShowState[index] },
                 onRetry = {
-                    seriesState.retry()
+                    tvShowState.retry()
                 },
                 emptyState = {
                     SeriesEmptyState(
