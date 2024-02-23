@@ -14,10 +14,13 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.ResponseStatus
+import com.vlv.common.route.RouteNavigation
+import com.vlv.common.route.ScreenRoute
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.data.SectionUIType
 import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
+import com.vlv.configuration.domain.model.SettingOption
 import com.vlv.configuration.presentation.ui.SettingsViewModel
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
@@ -27,6 +30,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun SettingsContent(
     paddingValues: PaddingValues,
+    routeNavigation: RouteNavigation,
     viewModel: SettingsViewModel = koinViewModel()
 ) {
     val data by viewModel.state.collectAsState()
@@ -40,6 +44,9 @@ fun SettingsContent(
         paddingValues = paddingValues,
         onConfirmChangeItem = { item ->
             viewModel.setData(item)
+            if(item.settingsOption == SettingOption.DYNAMIC_COLORS) {
+                routeNavigation.invoke(ScreenRoute.RESTART_THE_APP, null)
+            }
         },
         onTryAgain = {
             viewModel.settings()

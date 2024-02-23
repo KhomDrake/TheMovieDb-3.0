@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.vlv.common.data.about.AboutItem
 import com.vlv.common.data.about.Information
 import com.vlv.common.data.about.PillItem
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.ui.R

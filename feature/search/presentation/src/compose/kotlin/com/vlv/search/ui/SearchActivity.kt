@@ -23,6 +23,7 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.SEARCH_TYPE_EXTRA
 import com.vlv.common.route.ScreenRoute
 import com.vlv.common.route.handleRoute
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.data.database.data.HistoryType
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.search.R
@@ -38,7 +39,7 @@ class SearchActivity : ComponentActivity() {
             val searchType = HistoryType.values().find {
                 it.name == type
             } ?: HistoryType.MOVIE
-            TheMovieDbAppTheme {
+            TheMovieDbThemeWithDynamicColors {
                 SearchScreen(
                     defaultSearchType = searchType,
                     routeNavigation = { route: ScreenRoute, data: Any? ->

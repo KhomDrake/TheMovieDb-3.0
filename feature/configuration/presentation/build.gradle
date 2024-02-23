@@ -63,6 +63,7 @@ dependencies {
     implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
     implementation project(':core:ui')
+    testImplementation project(path: ':data:common')
 
     // Compose
     composeImplementation(libs.androidx.compose.activity)

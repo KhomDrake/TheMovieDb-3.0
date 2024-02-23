@@ -20,6 +20,7 @@
 
     <string name="configuration_options_item_description">Open configuration change</string>
     <string name="configuration_options_item_adult_content_title">Show adult content</string>
+    <string name="configuration_options_item_dynamic_colors_title">Use dynamic colors</string>
     <string name="configuration_options_item_language_title">Languages</string>
     <string name="configuration_options_item_language_body">Language chosen:</string>
     <string name="configuration_options_item_region_title">Region</string>

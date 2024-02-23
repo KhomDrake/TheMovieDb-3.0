@@ -24,6 +24,7 @@ import com.vlv.common.data.movie.Movie
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography

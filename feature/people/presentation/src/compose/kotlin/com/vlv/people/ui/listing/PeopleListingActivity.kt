@@ -11,8 +11,8 @@ import androidx.compose.ui.res.stringResource
 import com.vlv.common.data.people.PeopleListType
 import com.vlv.common.route.EXTRA_PEOPLE_LIST_TYPE
 import com.vlv.common.route.handleRoute
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.people.R
 
 class PeopleListingActivity : ComponentActivity() {
@@ -22,7 +22,7 @@ class PeopleListingActivity : ComponentActivity() {
         val typeName = intent.getStringExtra(EXTRA_PEOPLE_LIST_TYPE)
         val type = PeopleListType.values().find { it.name == typeName } ?: PeopleListType.POPULAR
         setContent {
-            TheMovieDbAppTheme {
+            TheMovieDbThemeWithDynamicColors {
                 Scaffold(
                     topBar = {
                         DefaultTopBar(

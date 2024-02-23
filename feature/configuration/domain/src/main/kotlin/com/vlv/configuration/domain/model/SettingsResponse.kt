@@ -5,6 +5,7 @@ import com.vlv.data.local.datastore.DataVault
 
 enum class SettingOption {
     ADULT_CONTENT,
+    DYNAMIC_COLORS,
     LANGUAGE,
     REGION,
     BACKDROP,
@@ -28,6 +29,7 @@ class SettingsResponseSection(
 
 class SettingsResponse(
     val adultContent: SettingsResponseSection,
+    val dynamicColors: SettingsResponseSection,
     val backdrop: SettingsResponseSection,
     val languages: SettingsResponseSection,
     val regions: SettingsResponseSection
@@ -38,6 +40,13 @@ class SettingsResponse(
             listOf(),
             SettingsItem(
                 DataVault.cachedDataBoolean(SettingOption.ADULT_CONTENT.name)
+            )
+        ),
+        dynamicColors = SettingsResponseSection(
+            SettingOption.DYNAMIC_COLORS,
+            listOf(),
+            SettingsItem(
+                DataVault.cachedDataBoolean(SettingOption.DYNAMIC_COLORS.name)
             )
         ),
         backdrop = configData.backdropSizes.run {

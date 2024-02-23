@@ -1,13 +1,13 @@
 package com.vlv.common.route
 
 import android.content.Context
+import android.content.Intent
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.data.people.People
 import com.vlv.common.data.series.Series
 import com.vlv.common.data.series.toDetailObject
 import com.vlv.data.database.data.FavoriteType
-import okhttp3.Route
 
 typealias RouteNavigation = (route: ScreenRoute, data: Any?) -> Unit
 
@@ -36,7 +36,8 @@ enum class ScreenRoute {
     SERIES_AIRING_TODAY,
     SERIES_ON_THE_AIR,
     SERIES_POPULAR,
-    SERIES_TOP_RATED
+    SERIES_TOP_RATED,
+    RESTART_THE_APP
 }
 
 fun Context.handleRoute(route: ScreenRoute, data: Any?) {
@@ -66,6 +67,10 @@ fun Context.handleRoute(route: ScreenRoute, data: Any?) {
             ScreenRoute.PEOPLE_POPULAR -> toPeoplePopular()
             ScreenRoute.PEOPLE_TRENDING -> toPeopleTrending()
             ScreenRoute.PEOPLE_DETAIL -> toPeopleDetail(data as People)
+            ScreenRoute.RESTART_THE_APP -> toMain()
+                .apply {
+                    this.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                }
             else -> toMain()
         }
     }.getOrDefault(toMain())

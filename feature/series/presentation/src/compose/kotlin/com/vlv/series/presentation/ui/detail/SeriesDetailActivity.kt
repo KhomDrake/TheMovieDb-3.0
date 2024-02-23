@@ -17,6 +17,7 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.DetailObject
+import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
@@ -27,10 +28,10 @@ class SeriesDetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TheMovieDbAppTheme {
+            TheMovieDbThemeWithDynamicColors {
                 val series = intent.extras?.getParcelable(
                     DETAIL_OBJECT_EXTRA, DetailObject::class.java
-                ) ?: return@TheMovieDbAppTheme finish()
+                ) ?: return@TheMovieDbThemeWithDynamicColors finish()
                 SeriesDetailScreen(
                     series = series,
                     onBackButton = {
