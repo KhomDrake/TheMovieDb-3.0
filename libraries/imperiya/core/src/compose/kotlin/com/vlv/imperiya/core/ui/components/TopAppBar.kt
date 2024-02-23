@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.PreviewFontScale
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
@@ -56,7 +56,7 @@ fun DefaultTopBar(
     )
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @PreviewFontScale
 @Composable
 fun TopBarPreview() {

@@ -2,9 +2,7 @@ package com.vlv.imperiyasample.ui.chips
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,9 +22,9 @@ import com.vlv.imperiyasample.SampleActivity
 class ChipsSampleActivity : SampleActivity() {
 
     private val filters = listOf(
-        FilterItemData("Movie", "Movie"),
-        FilterItemData("Tv Show", "Tv Show"),
-        FilterItemData("People", "People"),
+        FilterItemData(1, "Movie", "Movie"),
+        FilterItemData(2, "Tv Show", "Tv Show"),
+        FilterItemData(3, "People", "People"),
     )
 
     @Composable

@@ -48,14 +48,17 @@ fun MainScreenContent(
                     .padding(bottom = paddingValues.calculateBottomPadding()),
                 filters = listOf(
                     FilterItemData(
+                        SearchType.MOVIE.ordinal,
                         stringResource(id = R.string.search_movie_option),
                         SearchType.MOVIE.name
                     ),
                     FilterItemData(
+                        SearchType.SERIES.ordinal,
                         stringResource(id = R.string.search_series_option),
                         SearchType.SERIES.name
                     ),
                     FilterItemData(
+                        SearchType.PEOPLE.ordinal,
                         stringResource(id = R.string.search_people_option),
                         SearchType.PEOPLE.name
                     ),

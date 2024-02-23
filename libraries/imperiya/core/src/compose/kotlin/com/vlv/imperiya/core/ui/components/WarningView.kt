@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
@@ -24,7 +24,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import com.vlv.imperiya.core.R
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.Link
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -209,7 +208,7 @@ class WarningViewProvider : PreviewParameterProvider<WarningViewPreviewData> {
 }
 
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @Composable
 fun WarningViewPreview(
     @PreviewParameter(WarningViewProvider::class) data: WarningViewPreviewData

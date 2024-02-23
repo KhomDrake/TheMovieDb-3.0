@@ -9,10 +9,9 @@ import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.Link
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -67,7 +66,7 @@ fun TabItem(
     )
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @PreviewFontScale
 @Composable
 fun TabPreview() {

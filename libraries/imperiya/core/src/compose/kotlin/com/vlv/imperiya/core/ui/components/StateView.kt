@@ -14,9 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.vlv.imperiya.core.R
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
@@ -73,7 +73,7 @@ fun StateView(
     }
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @Composable
 fun StateViewPreview() {
     TheMovieDbAppTheme {
@@ -99,7 +99,7 @@ fun StateViewFontScalePreview() {
     }
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @Composable
 fun StateViewWithoutTitlePreview() {
     TheMovieDbAppTheme {
@@ -111,7 +111,7 @@ fun StateViewWithoutTitlePreview() {
     }
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @Composable
 fun StateViewWithoutBodyPreview() {
     TheMovieDbAppTheme {
