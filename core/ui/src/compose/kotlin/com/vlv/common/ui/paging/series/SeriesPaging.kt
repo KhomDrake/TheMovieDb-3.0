@@ -35,7 +35,7 @@ import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.ui.R
 
-const val SERIES_CONTENT_TYPE = "SERIES_CONTENT_TYPE"
+const val TV_SHOW_CONTENT_TYPE = "SERIES_CONTENT_TYPE"
 
 @Composable
 fun TvShowsPagingGrid(

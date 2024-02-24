@@ -8,6 +8,8 @@ fun CombinedLoadStates.isFullLoading() = refresh is LoadState.Loading
 
 fun CombinedLoadStates.isFullError() = refresh is LoadState.Error
 
+fun CombinedLoadStates.firstLoadingFinished() = refresh is LoadState.NotLoading
+
 fun stateFullLoading() = CombinedLoadStates(
     refresh = LoadState.Loading,
     LoadState.NotLoading(endOfPaginationReached = false),

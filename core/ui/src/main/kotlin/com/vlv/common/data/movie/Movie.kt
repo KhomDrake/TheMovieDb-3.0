@@ -6,7 +6,6 @@ import com.vlv.data.common.model.movie.MovieResponse
 import com.vlv.data.common.model.people.MovieCreditResponse
 import com.vlv.data.database.data.Favorite
 import com.vlv.data.database.data.ItemType
-import com.vlv.extensions.idInt
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -16,8 +15,7 @@ class Movie(
     val posterPath: String?,
     val apiId: Int,
     val title: String,
-    val overview: String,
-    val id: Int = idInt()
+    val overview: String
 ) : Parcelable {
     constructor(movieResponse: MovieResponse) : this(
         movieResponse.adult,

@@ -20,7 +20,7 @@ import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.common.ui.paging.people.PERSON_CONTENT_TYPE
 import com.vlv.common.ui.paging.people.PeopleEmptyState
 import com.vlv.common.ui.paging.people.PeoplePagingGrid
-import com.vlv.common.ui.paging.series.SERIES_CONTENT_TYPE
+import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
 import com.vlv.common.ui.paging.series.SeriesEmptyState
 import com.vlv.common.ui.paging.series.TvShowsPagingGrid
 import com.vlv.data.database.data.ItemType
@@ -88,7 +88,7 @@ fun SearchByType(
                 loadStates = tvShowState.loadState,
                 itemCount = tvShowState.itemCount,
                 itemKey = tvShowState.itemKey { item -> item.id },
-                itemContentType = tvShowState.itemContentType { item -> SERIES_CONTENT_TYPE },
+                itemContentType = tvShowState.itemContentType { item -> TV_SHOW_CONTENT_TYPE },
                 item = { index -> tvShowState[index] },
                 onRetry = {
                     tvShowState.retry()

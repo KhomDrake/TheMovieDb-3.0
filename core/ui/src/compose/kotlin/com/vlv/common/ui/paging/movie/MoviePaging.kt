@@ -19,6 +19,7 @@ import androidx.paging.CombinedLoadStates
 import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.route.RouteNavigation
+import com.vlv.common.ui.extension.firstLoadingFinished
 import com.vlv.common.ui.extension.isFullError
 import com.vlv.common.ui.extension.isFullLoading
 import com.vlv.common.ui.extension.isSingleError
@@ -79,7 +80,7 @@ fun MoviesPagingGrid(
                 }
             )
         }
-        else -> {
+        loadStates.firstLoadingFinished() -> {
             if(itemCount == 0) {
                 emptyState.invoke()
             } else {
@@ -142,6 +143,7 @@ fun MoviesPagingGrid(
                 )
             }
         }
+        else -> Unit
     }
 }
 
