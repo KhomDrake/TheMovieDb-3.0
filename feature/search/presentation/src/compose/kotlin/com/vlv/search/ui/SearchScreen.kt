@@ -164,8 +164,10 @@ fun SearchWithHistory(
                     }
                 },
                 contentPadding = PaddingValues(
-                    horizontal = 16.dp,
-                    vertical = 16.dp
+                    start = 16.dp,
+                    end = 4.dp,
+                    top = 16.dp,
+                    bottom = 16.dp
                 ),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             )
