@@ -28,7 +28,7 @@ import com.vlv.common.ui.extension.stateFullError
 import com.vlv.common.ui.extension.stateFullLoading
 import com.vlv.common.ui.extension.stateSingleError
 import com.vlv.common.ui.extension.stateSingleLoading
-import com.vlv.common.ui.poster.SeriesPoster
+import com.vlv.common.ui.poster.TvShowsPoster
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.common.ui.shimmer.SinglePosterShimmer
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
@@ -51,7 +51,7 @@ fun TvShowsPagingGrid(
     itemContentType: (index: Int) -> Any? = { null },
     columns: Int = 2,
     emptyState: @Composable () -> Unit = {
-         SeriesEmptyState(
+         TvShowsEmptyState(
              title = stringResource(
                  id = R.string.common_series_empty_view_title_default
              ),
@@ -70,7 +70,7 @@ fun TvShowsPagingGrid(
             )
         }
         loadStates.isFullError() -> {
-            SeriesErrorState(
+            TvShowsErrorState(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
@@ -93,7 +93,7 @@ fun TvShowsPagingGrid(
                             contentType = itemContentType
                         ) { index ->
                             item.invoke(index)?.let { series ->
-                                SeriesPoster(
+                                TvShowsPoster(
                                     tvShow = series,
                                     height = heightItem,
                                     onRouteNavigation = routeNavigation
@@ -121,7 +121,7 @@ fun TvShowsPagingGrid(
                                         GridItemSpan(maxLineSpan)
                                     }
                                 ) {
-                                    SeriesErrorState(
+                                    TvShowsErrorState(
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .padding(top = 8.dp),
@@ -267,7 +267,7 @@ class SeriesPagingPreviewProvider: PreviewParameterProvider<SeriesPagingPreviewD
 
 @PreviewLightDark
 @Composable
-fun SeriesPagingPreview(
+fun TvShowsPagingPreview(
     @PreviewParameter(SeriesPagingPreviewProvider::class) data: SeriesPagingPreviewData
 ) {
     TheMovieDbAppTheme {
@@ -280,7 +280,7 @@ fun SeriesPagingPreview(
                 loadStates = data.loadState,
                 itemCount = data.itemCount,
                 emptyState = {
-                    SeriesEmptyState(
+                    TvShowsEmptyState(
                         title = "None movie was found",
                         modifier = Modifier
                             .fillMaxWidth()

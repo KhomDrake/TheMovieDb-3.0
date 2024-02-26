@@ -18,14 +18,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.vlv.common.data.series.TvShow
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.paging.series.SeriesEmptyState
-import com.vlv.common.ui.poster.SeriesPoster
+import com.vlv.common.ui.paging.series.TvShowsEmptyState
+import com.vlv.common.ui.poster.TvShowsPoster
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.ui.R
 
 @Composable
-fun SeriesGrid(
+fun TvShowsGrid(
     tvShows: List<TvShow>,
     routeNavigation: RouteNavigation,
     modifier: Modifier = Modifier,
@@ -34,7 +34,7 @@ fun SeriesGrid(
     emptyStateTitle: String = stringResource(id = R.string.common_empty_view_title_default)
 ) {
     if(tvShows.isEmpty()) {
-        SeriesEmptyState(
+        TvShowsEmptyState(
             title = emptyStateTitle,
             modifier = Modifier
                 .fillMaxWidth()
@@ -49,7 +49,7 @@ fun SeriesGrid(
                     tvShows,
                     key = { item -> item.id }
                 ) { series ->
-                    SeriesPoster(
+                    TvShowsPoster(
                         tvShow = series,
                         height = heightItem,
                         onRouteNavigation = routeNavigation
@@ -107,12 +107,12 @@ class SeriesGridPreviewProvider: PreviewParameterProvider<List<TvShow>> {
 
 @PreviewLightDark
 @Composable
-fun SeriesGridPreview(
+fun TvShowsGridPreview(
     @PreviewParameter(SeriesGridPreviewProvider::class) data: List<TvShow>
 ) {
     TheMovieDbAppTheme {
         BackgroundPreview {
-            SeriesGrid(
+            TvShowsGrid(
                 tvShows = data,
                 routeNavigation = {_, _ ->},
                 modifier = Modifier

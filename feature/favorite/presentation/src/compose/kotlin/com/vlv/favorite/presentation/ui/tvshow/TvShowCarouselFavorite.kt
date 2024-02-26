@@ -16,7 +16,7 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.carousel.TvShowCarousel
 import com.vlv.common.ui.extension.LaunchEffectLifecycle
 import com.vlv.common.ui.extension.handle
-import com.vlv.common.ui.paging.series.SeriesErrorState
+import com.vlv.common.ui.paging.series.TvShowsErrorState
 import com.vlv.common.ui.shimmer.CarouselShimmer
 import org.koin.androidx.compose.koinViewModel
 
@@ -76,7 +76,7 @@ fun TvShowCarouselFavoriteContent(
             CarouselShimmer(modifier)
         },
         error = {
-            SeriesErrorState(
+            TvShowsErrorState(
                 title = errorTitle,
                 body = errorBody,
                 linkActionText = errorLink,

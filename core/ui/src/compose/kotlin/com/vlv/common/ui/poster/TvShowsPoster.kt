@@ -30,7 +30,7 @@ import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.ui.R
 
 @Composable
-fun SeriesPoster(
+fun TvShowsPoster(
     tvShow: TvShow,
     onRouteNavigation: RouteNavigation,
     modifier: Modifier = Modifier,
@@ -80,10 +80,10 @@ fun SeriesPoster(
 @PreviewLightDark
 @PreviewFontScale
 @Composable
-fun SeriesPosterPreview() {
+fun TvShowsPosterPreview() {
     TheMovieDbAppTheme {
         BackgroundPreview {
-            SeriesPoster(
+            TvShowsPoster(
                 tvShow = TvShow(
                     false,
                     2,

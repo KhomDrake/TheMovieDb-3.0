@@ -3,7 +3,7 @@ package com.vlv.tv_show.presentation
 import androidx.startup.Initializer
 import com.vlv.tv_show.data.TvShowDataInitializer
 import com.vlv.tv_show.presentation.ui.TvShowListingViewModel
-import com.vlv.tv_show.presentation.ui.detail.SeriesDetailViewModel
+import com.vlv.tv_show.presentation.ui.detail.TvShowsDetailViewModel
 import com.vlv.tv_show.presentation.ui.detail.about.AboutTvShowViewModel
 import com.vlv.tv_show.presentation.ui.detail.cast.TvShowCastViewModel
 import com.vlv.tv_show.presentation.ui.detail.recommendations.TvShowsRecommendationViewModel
@@ -21,7 +21,7 @@ class TvShowsInitializer: ModuleInitializer() {
         get() = listOf(
             module {
                 viewModel { TvShowListingViewModel(get()) }
-                viewModel { SeriesDetailViewModel(get()) }
+                viewModel { TvShowsDetailViewModel(get()) }
                 viewModel { TvShowCastViewModel(get()) }
                 viewModel { TvShowReviewViewModel(get()) }
                 viewModel { TvShowsRecommendationViewModel(get()) }

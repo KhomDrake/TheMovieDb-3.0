@@ -68,7 +68,8 @@ fun MovieDetailContent(
             state = pagerState,
             pageSpacing = 16.dp,
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxSize(),
+            beyondBoundsPageCount = 2
         ) { index ->
             when(tabs[index]) {
                 MovieDetailPage.ABOUT -> {

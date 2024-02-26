@@ -20,8 +20,8 @@ import com.vlv.common.data.people.People
 import com.vlv.common.data.series.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.handle
-import com.vlv.common.ui.grid.SeriesGrid
-import com.vlv.common.ui.paging.series.SeriesErrorState
+import com.vlv.common.ui.grid.TvShowsGrid
+import com.vlv.common.ui.paging.series.TvShowsErrorState
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
@@ -60,7 +60,7 @@ fun TvShowsCreditContentStates(
 ) {
     state.handle(
         success = {
-            SeriesGrid(
+            TvShowsGrid(
                 tvShows = it,
                 routeNavigation = routeNavigation,
                 modifier = modifier,
@@ -74,7 +74,7 @@ fun TvShowsCreditContentStates(
             )
         },
         error = {
-            SeriesErrorState(
+            TvShowsErrorState(
                 title = stringResource(id = com.vlv.ui.R.string.common_error_title),
                 modifier = Modifier
                     .fillMaxWidth()

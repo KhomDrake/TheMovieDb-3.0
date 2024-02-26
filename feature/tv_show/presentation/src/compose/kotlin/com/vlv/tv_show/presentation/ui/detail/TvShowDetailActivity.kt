@@ -12,6 +12,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import com.vlv.common.route.DETAIL_OBJECT_EXTRA
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
@@ -56,7 +57,7 @@ fun TvShowDetailScreen(
             TopBar(series = series, onBackButton = onBackButton)
         }
     ) {
-        SeriesDetailContent(
+        TvShowsDetailContent(
             detailObject = series,
             paddingValues = it,
             routeNavigation = routeNavigation
@@ -68,7 +69,7 @@ fun TvShowDetailScreen(
 fun TopBar(
     series: DetailObject,
     onBackButton: () -> Unit,
-    viewModel: SeriesDetailViewModel = koinViewModel()
+    viewModel: TvShowsDetailViewModel = koinViewModel()
 ) {
     LaunchedEffect(key1 = series.id, block = {
         viewModel.isFavorite(series)
@@ -86,7 +87,10 @@ fun TopBar(
                     painter = painterResource(
                         id = if(isFavorite) R.drawable.ic_heart_filled else R.drawable.ic_heart_enable
                     ),
-                    contentDescription = "Favorite",
+                    contentDescription = stringResource(
+                        id = if(isFavorite) com.vlv.tv_show.R.string.tv_show_is_favorite
+                        else com.vlv.tv_show.R.string.tv_show_is_not_favorite
+                    ),
                     tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }

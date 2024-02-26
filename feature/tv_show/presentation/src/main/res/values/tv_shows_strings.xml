@@ -5,14 +5,17 @@
     <string name="tv_show_top_rated_title">Top rated</string>
     <string name="tv_show_on_the_air_title">On the air</string>
     <string name="tv_show_popular_title">Popular</string>
-    <string name="tv_show_error_detail_title">Failed to load information</string>
+    <string name="tv_show_error_detail_title">Failed to load tv show information</string>
+    <string name="tv_show_error_cast_title">Failed to load cast</string>
+    <string name="tv_show_error_season_title">Failed to load seasons</string>
+    <string name="tv_show_empty_season_title">No season was found</string>
 
-    <!-- Series Search -->
+    <!-- Tv Show Search -->
     <string name="tv_show_search_hint">Search tv show…</string>
     <string name="tv_show_search_history_title">Tv shows searched recently:</string>
     <string name="tv_show_search_empty_title">No tv show was found</string>
 
-    <!-- Series Detail -->
+    <!-- Tv Show Detail -->
     <string name="tv_show_information_original_title">Original title</string>
     <string name="tv_show_information_first_on_air">First time on the air</string>
     <string name="tv_show_information_status">Status</string>

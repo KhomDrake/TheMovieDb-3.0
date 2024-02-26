@@ -14,7 +14,7 @@ import androidx.paging.compose.itemKey
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.DetailObject
 import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
-import com.vlv.common.ui.paging.series.SeriesEmptyState
+import com.vlv.common.ui.paging.series.TvShowsEmptyState
 import com.vlv.common.ui.paging.series.TvShowsPagingGrid
 import com.vlv.extensions.idInt
 import com.vlv.tv_show.R
@@ -39,13 +39,13 @@ fun TvShowRecommendationTab(
         loadStates = series.loadState,
         itemCount = series.itemCount,
         itemKey = series.itemKey { item -> "${item.id}-${idInt()}" },
-        itemContentType = series.itemContentType { item -> TV_SHOW_CONTENT_TYPE },
+        itemContentType = series.itemContentType { TV_SHOW_CONTENT_TYPE },
         item = { index -> series[index] },
         onRetry = {
             series.retry()
         },
         emptyState = {
-            SeriesEmptyState(
+            TvShowsEmptyState(
                 title = stringResource(id = R.string.tv_show_empty_state_recommendation),
                 modifier = Modifier
                     .fillMaxWidth()

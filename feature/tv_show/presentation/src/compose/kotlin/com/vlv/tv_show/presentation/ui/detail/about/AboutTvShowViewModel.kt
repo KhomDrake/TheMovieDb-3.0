@@ -4,6 +4,7 @@ import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vlv.bondsmith.data.Response
+import com.vlv.bondsmith.extension.mapData
 import com.vlv.tv_show.data.repository.TvShowDetailRepository
 import com.vlv.tv_show.presentation.model.TvShowDetail
 import kotlinx.coroutines.Dispatchers
@@ -31,6 +32,10 @@ class AboutTvShowViewModel(
                     it?.let {
                         TvShowDetail(resources, it)
                     }
+                }
+                .mapData {
+                    if(it?.aboutItems?.isEmpty() == true) null
+                    else it
                 }
                 .collectLatest {
                     _state.emit(it)

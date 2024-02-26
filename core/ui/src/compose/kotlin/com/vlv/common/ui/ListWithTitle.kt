@@ -18,6 +18,8 @@ import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
+private const val TITLE_KEY = "TITLE_KEY"
+
 @Composable
 fun HorizontalList(
     itemCount: Int,
@@ -27,12 +29,13 @@ fun HorizontalList(
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(12.dp),
     titleColor: Color = MaterialTheme.colorScheme.onBackground,
     titleTextStyle: TextStyle = TheMovieDbTypography.SubTitleBoldStyle,
-    title: String? = null
+    title: String? = null,
+    key: ((Int) -> Int)? = null
 ) {
     LazyColumn(
         content = {
             title?.let {
-                item {
+                item(key = TITLE_KEY) {
                     Text(
                         text = title,
                         style = titleTextStyle,
@@ -41,7 +44,10 @@ fun HorizontalList(
                 }
             }
 
-            items(itemCount) { index ->
+            items(
+                itemCount,
+                key = key
+            ) { index ->
                 content.invoke(index)
             }
         },

@@ -21,8 +21,8 @@ import com.vlv.common.data.series.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.LaunchEffectLifecycle
 import com.vlv.common.ui.extension.handle
-import com.vlv.common.ui.grid.SeriesGrid
-import com.vlv.common.ui.paging.series.SeriesErrorState
+import com.vlv.common.ui.grid.TvShowsGrid
+import com.vlv.common.ui.paging.series.TvShowsErrorState
 import com.vlv.common.ui.shimmer.GridPosterShimmer
 import com.vlv.favorite.R
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
@@ -61,7 +61,7 @@ fun TvShowFavoriteContent(
 ) {
     state.handle(
         success = { data ->
-            SeriesGrid(
+            TvShowsGrid(
                 tvShows = data,
                 routeNavigation = routeNavigation,
                 emptyStateTitle = stringResource(id = R.string.favorite_tv_show_empty_state),
@@ -69,7 +69,7 @@ fun TvShowFavoriteContent(
             )
         },
         error = {
-            SeriesErrorState(
+            TvShowsErrorState(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),

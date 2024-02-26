@@ -20,7 +20,7 @@ import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.common.ui.paging.people.PERSON_CONTENT_TYPE
 import com.vlv.common.ui.paging.people.PeopleEmptyState
 import com.vlv.common.ui.paging.people.PeoplePagingGrid
-import com.vlv.common.ui.paging.series.SeriesEmptyState
+import com.vlv.common.ui.paging.series.TvShowsEmptyState
 import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
 import com.vlv.common.ui.paging.series.TvShowsPagingGrid
 import com.vlv.data.database.data.ItemType
@@ -95,7 +95,7 @@ fun SearchByType(
                     tvShowState.retry()
                 },
                 emptyState = {
-                    SeriesEmptyState(
+                    TvShowsEmptyState(
                         title = stringResource(id = R.string.search_series_empty_title),
                         modifier = Modifier
                             .fillMaxWidth()

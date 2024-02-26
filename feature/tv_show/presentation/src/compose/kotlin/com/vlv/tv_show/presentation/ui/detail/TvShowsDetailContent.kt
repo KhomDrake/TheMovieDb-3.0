@@ -25,7 +25,7 @@ import com.vlv.tv_show.presentation.ui.detail.reviews.TvShowReviewTab
 import com.vlv.tv_show.presentation.ui.detail.seasons.SeasonsTab
 import kotlinx.coroutines.launch
 
-enum class SeriesDetailTab(
+enum class TvShowsDetailTab(
     @StringRes
     val title: Int
 ) {
@@ -38,14 +38,14 @@ enum class SeriesDetailTab(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun SeriesDetailContent(
+fun TvShowsDetailContent(
     detailObject: DetailObject,
     paddingValues: PaddingValues,
     routeNavigation: RouteNavigation
 ) {
 
     val scope = rememberCoroutineScope()
-    val tabs = SeriesDetailTab.values()
+    val tabs = TvShowsDetailTab.values()
     val pagerState = rememberPagerState(pageCount = { tabs.size })
 
     Column(
@@ -70,27 +70,27 @@ fun SeriesDetailContent(
             state = pagerState,
             pageSpacing = 16.dp,
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxSize(),
+            beyondBoundsPageCount = 2
         ) { index ->
             when(tabs[index]) {
-                SeriesDetailTab.ABOUT -> {
-                    AboutTvShowTab(paddingValues = PaddingValues(), detailObject = detailObject)
-                }
-                SeriesDetailTab.SEASONS -> {
-                    SeasonsTab(
-                        detailObject = detailObject,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(16.dp)
+                TvShowsDetailTab.ABOUT -> {
+                    AboutTvShowTab(
+                        detailObject = detailObject
                     )
                 }
-                SeriesDetailTab.CAST -> {
+                TvShowsDetailTab.SEASONS -> {
+                    SeasonsTab(
+                        detailObject = detailObject
+                    )
+                }
+                TvShowsDetailTab.CAST -> {
                     TvShowCastTab(
                         detailObject = detailObject,
                         routeNavigation = routeNavigation
                     )
                 }
-                SeriesDetailTab.REVIEWS -> {
+                TvShowsDetailTab.REVIEWS -> {
                     TvShowReviewTab(detailObject = detailObject)
                 }
                 else -> {
