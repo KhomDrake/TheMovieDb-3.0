@@ -16,6 +16,7 @@ import com.vlv.common.ui.DetailObject
 import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
 import com.vlv.common.ui.paging.series.SeriesEmptyState
 import com.vlv.common.ui.paging.series.TvShowsPagingGrid
+import com.vlv.extensions.idInt
 import com.vlv.tv_show.R
 import org.koin.androidx.compose.koinViewModel
 
@@ -37,7 +38,7 @@ fun TvShowRecommendationTab(
             .fillMaxSize(),
         loadStates = series.loadState,
         itemCount = series.itemCount,
-        itemKey = series.itemKey { item -> item.id },
+        itemKey = series.itemKey { item -> "${item.id}-${idInt()}" },
         itemContentType = series.itemContentType { item -> TV_SHOW_CONTENT_TYPE },
         item = { index -> series[index] },
         onRetry = {

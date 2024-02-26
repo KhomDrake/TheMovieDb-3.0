@@ -1,7 +1,6 @@
 package com.vlv.movie.presentation.ui.detail.cast
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,10 +18,10 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.cast.CastList
 import com.vlv.common.ui.cast.CastShimmer
 import com.vlv.common.ui.extension.handle
-import com.vlv.common.ui.paging.movie.MovieErrorState
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.movie.R
+import com.vlv.movie.presentation.ui.detail.MovieScreenError
 
 @Composable
 fun MovieCastContent(
@@ -40,10 +39,10 @@ fun MovieCastContent(
             )
         },
         error = {
-            MovieErrorState(
+            MovieScreenError(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
+                    .fillMaxSize()
+                    .padding(top = 16.dp),
                 title = stringResource(id = R.string.movie_error_cast_title),
                 onTryAgain = tryAgain
             )

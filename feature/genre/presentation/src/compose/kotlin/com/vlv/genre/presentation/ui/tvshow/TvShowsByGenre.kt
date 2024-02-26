@@ -11,6 +11,7 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.LaunchEffectLifecycle
 import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
 import com.vlv.common.ui.paging.series.TvShowsPagingGrid
+import com.vlv.extensions.idInt
 import com.vlv.genre.presentation.data.Genre
 import org.koin.androidx.compose.getViewModel
 
@@ -34,7 +35,7 @@ fun TvShowsByGenre(
             .fillMaxSize(),
         loadStates = tvShows.loadState,
         itemCount = tvShows.itemCount,
-        itemKey = tvShows.itemKey { item -> item.id },
+        itemKey = tvShows.itemKey { item -> "${item.id}-${idInt()}" },
         itemContentType = tvShows.itemContentType { TV_SHOW_CONTENT_TYPE },
         item = { index -> tvShows[index] },
         onRetry = {

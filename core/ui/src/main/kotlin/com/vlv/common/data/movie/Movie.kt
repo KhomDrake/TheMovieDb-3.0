@@ -9,11 +9,11 @@ import com.vlv.data.database.data.ItemType
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class Movie(
+data class Movie(
     val adult: Boolean,
     val backdropPath: String?,
     val posterPath: String?,
-    val apiId: Int,
+    val id: Int,
     val title: String,
     val overview: String
 ) : Parcelable {
@@ -50,12 +50,12 @@ fun DetailObject.toMovie() = Movie(
 )
 
 fun Movie.toDetailObject() = DetailObject(
-    apiId, posterPath, backdropPath, title, overview, adult
+    id, posterPath, backdropPath, title, overview, adult
 )
 
 fun Movie.toFavorite() = Favorite(
-    apiId,
-    apiId,
+    id,
+    id,
     title,
     posterPath,
     backdropPath,

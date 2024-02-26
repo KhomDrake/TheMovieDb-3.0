@@ -85,7 +85,5 @@ fun Int.toBillionsAndMillions(resources: Resources) = run {
 var previousId = Int.MIN_VALUE
 
 fun idInt(): Int {
-    val nextId = previousId + 1
-    previousId = nextId
-    return nextId
+    return previousId++
 }

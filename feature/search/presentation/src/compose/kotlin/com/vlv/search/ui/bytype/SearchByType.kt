@@ -20,10 +20,11 @@ import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.common.ui.paging.people.PERSON_CONTENT_TYPE
 import com.vlv.common.ui.paging.people.PeopleEmptyState
 import com.vlv.common.ui.paging.people.PeoplePagingGrid
-import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
 import com.vlv.common.ui.paging.series.SeriesEmptyState
+import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
 import com.vlv.common.ui.paging.series.TvShowsPagingGrid
 import com.vlv.data.database.data.ItemType
+import com.vlv.extensions.idInt
 import com.vlv.search.R
 
 @Composable
@@ -39,7 +40,7 @@ fun SearchByType(
             MoviesPagingGrid(
                 itemCount = movieState.itemCount,
                 item = { index -> movieState[index] },
-                itemKey = movieState.itemKey { movie -> movie.apiId },
+                itemKey = movieState.itemKey { movie -> "${movie.id}-${idInt()}" },
                 itemContentType = movieState.itemContentType { MOVIE_CONTENT_TYPE },
                 loadStates = movieState.loadState,
                 routeNavigation = routeNavigation,
@@ -65,7 +66,7 @@ fun SearchByType(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(top = 16.dp),
-                itemKey = personState.itemKey { people -> people.id },
+                itemKey = personState.itemKey { people -> "${people.id}-${idInt()}" },
                 itemContentType = personState.itemContentType { PERSON_CONTENT_TYPE },
                 onRetry = { personState.retry() },
                 columns = 2,
@@ -87,7 +88,7 @@ fun SearchByType(
                     .padding(top = 16.dp),
                 loadStates = tvShowState.loadState,
                 itemCount = tvShowState.itemCount,
-                itemKey = tvShowState.itemKey { item -> item.id },
+                itemKey = tvShowState.itemKey { item -> "${item.id}-${idInt()}" },
                 itemContentType = tvShowState.itemContentType { item -> TV_SHOW_CONTENT_TYPE },
                 item = { index -> tvShowState[index] },
                 onRetry = {

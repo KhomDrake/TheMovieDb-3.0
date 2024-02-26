@@ -7,6 +7,7 @@ import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
 import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.bondsmith.data.flow.asResponseStateFlow
+import com.vlv.bondsmith.extension.mapData
 import com.vlv.movie.data.repository.MovieDetailRepository
 import com.vlv.movie.presentation.data.MovieDetail
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +33,10 @@ class MovieAboutViewModel(
                     data?.let {
                         MovieDetail(resources, it)
                     }
+                }
+                .mapData {
+                    if(it?.items?.isEmpty() == true) null
+                    else it
                 }
                 .collectLatest {
                     _movieDetailState.emit(it)

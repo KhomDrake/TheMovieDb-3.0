@@ -1,7 +1,6 @@
 package com.vlv.movie.presentation.ui.detail.about
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,11 +24,11 @@ import com.vlv.common.ui.DetailObject
 import com.vlv.common.ui.about.AboutList
 import com.vlv.common.ui.about.AboutListShimmer
 import com.vlv.common.ui.extension.handle
-import com.vlv.common.ui.paging.movie.MovieErrorState
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.movie.R
 import com.vlv.movie.presentation.data.MovieDetail
+import com.vlv.movie.presentation.ui.detail.MovieScreenError
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -67,10 +66,10 @@ fun MovieAboutContent(
             )
         },
         error = {
-            MovieErrorState(
+            MovieScreenError(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
+                    .fillMaxSize()
+                    .padding(top = 16.dp),
                 title = stringResource(id = R.string.movie_error_detail_title),
                 onTryAgain = onTryAgain
             )
@@ -126,7 +125,9 @@ fun MovieAboutContentPreview(
     @PreviewParameter(MovieAboutContentPreviewProvider::class) data: Response<MovieDetail>
 ) {
     TheMovieDbAppTheme {
-        BackgroundPreview {
+        BackgroundPreview(
+            modifier = Modifier.fillMaxSize()
+        ) {
             MovieAboutContent(
                 state = data,
                 onTryAgain = {}

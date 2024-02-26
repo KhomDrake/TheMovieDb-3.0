@@ -18,11 +18,11 @@ import com.vlv.common.data.review.Review
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.handle
 import com.vlv.common.ui.paging.movie.MovieEmptyState
-import com.vlv.common.ui.paging.movie.MovieErrorState
 import com.vlv.common.ui.review.ReviewList
 import com.vlv.common.ui.review.ReviewShimmer
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
+import com.vlv.movie.presentation.ui.detail.MovieScreenError
 
 @Composable
 fun MovieReviewContent(
@@ -48,11 +48,12 @@ fun MovieReviewContent(
             }
         },
         error = {
-            MovieErrorState(
+            MovieScreenError(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                onTryAgain = onTryAgain
+                    .fillMaxSize()
+                    .padding(top = 16.dp),
+                onTryAgain = onTryAgain,
+                title = stringResource(id = com.vlv.ui.R.string.common_error_review_title)
             )
         },
         loading = {

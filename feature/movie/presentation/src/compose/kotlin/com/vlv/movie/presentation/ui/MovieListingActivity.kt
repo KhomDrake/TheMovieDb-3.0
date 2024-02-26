@@ -21,6 +21,7 @@ import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.common.ui.paging.movie.MOVIE_CONTENT_TYPE
 import com.vlv.common.ui.paging.movie.MoviesPagingGrid
+import com.vlv.extensions.idInt
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.movie.R
 import org.koin.androidx.compose.koinViewModel
@@ -82,7 +83,7 @@ fun MovieListing(
             .padding(top = paddingValues.calculateTopPadding()),
         itemCount = movies.itemCount,
         item = { index -> movies[index] },
-        itemKey = movies.itemKey { movie -> movie.apiId },
+        itemKey = movies.itemKey { movie -> "${movie.id}-${idInt()}" },
         itemContentType = movies.itemContentType { MOVIE_CONTENT_TYPE },
         loadStates = movies.loadState,
     )

@@ -53,7 +53,7 @@ fun MovieCarousel(
             content = {
                 items(
                     movies,
-                    key = { movie -> movie.apiId }
+                    key = { movie -> movie.id }
                 ) { movie ->
                     MoviePoster(
                         movie = movie,

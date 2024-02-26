@@ -47,7 +47,6 @@ fun MovieDetailContent(
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
             .padding(
                 top = paddingValues.calculateTopPadding()
             )
@@ -68,7 +67,8 @@ fun MovieDetailContent(
         HorizontalPager(
             state = pagerState,
             pageSpacing = 16.dp,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
         ) { index ->
             when(tabs[index]) {
                 MovieDetailPage.ABOUT -> {
