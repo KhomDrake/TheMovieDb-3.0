@@ -10,11 +10,11 @@ class MovieDetailResponse(
     val id: Int,
     @Json(name = "imdb_id")
     val imdbId: String,
-    val budget: Int,
+    val budget: Double,
     @Json(name = "homepage")
     val homePage: String,
     val overview: String,
-    val revenue: Int,
+    val revenue: Double,
     val runtime: Int,
     val genres: List<GenreResponse>,
     val video: Boolean,

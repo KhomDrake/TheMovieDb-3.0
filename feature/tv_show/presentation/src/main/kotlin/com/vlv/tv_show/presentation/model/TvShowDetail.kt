@@ -23,7 +23,11 @@ class TvShowDetail(
         dateAndTime = response.run {
             val episodeRunTime = response.episodeRunTime.firstOrNull()
             episodeRunTime?.let {
-                "${response.firstAirDate.toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${episodeRunTime.toHoursAndMinutes(resources)}"
+                resources.getString(
+                    com.vlv.ui.R.string.common_text_runtime,
+                    response.firstAirDate.toFormattedString(PATTERN_MONTH_AND_YEAR),
+                    episodeRunTime.toHoursAndMinutes(resources)
+                )
             }?: response.firstAirDate.toFormattedString(PATTERN_MONTH_AND_YEAR)
         },
         aboutItems = response.run {

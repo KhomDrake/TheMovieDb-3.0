@@ -32,6 +32,11 @@ fun Int.toMillions(resources: Resources) = run {
     resources.getQuantityString(R.plurals.extensions_million, millions)
 }
 
+fun Double.toMillions(resources: Resources) = run {
+    val millions = this / MILLION
+    resources.getQuantityString(R.plurals.extensions_million, millions.toInt())
+}
+
 fun List<Int>.toHoursAndMinutes(resources: Resources) = run {
     if(isEmpty()) return@run "Not available"
 
@@ -59,9 +64,52 @@ fun Int.toMillionsAndThousands(resources: Resources) = run {
     }
 }
 
+fun Double.toMillionsAndThousands(resources: Resources) = run {
+    val millions = (this / MILLION).toInt()
+    val thousands = ((this % MILLION) / THOUSAND).toInt()
+    if(thousands == 0)
+        resources.getQuantityString(R.plurals.extensions_million, millions, millions)
+    else {
+        val millionsText = resources.getQuantityString(
+            R.plurals.extensions_million, millions, millions
+        )
+        val thousandsText = resources.getQuantityString(
+            R.plurals.extensions_thousand, thousands, thousands
+        )
+        resources.getString(
+            R.string.extensions_millions_and_thousands,
+            millionsText,
+            thousandsText
+        )
+    }
+}
+
 fun Int.toBillionsAndMillions(resources: Resources) = run {
     val billions = this / BILLION
     val millions = (this % BILLION) / MILLION
+
+    when (billions) {
+        0 -> toMillionsAndThousands(resources)
+        else -> {
+            val billionsText = resources.getQuantityString(
+                R.plurals.extensions_billion, billions, billions
+            )
+            val millionsText = resources.getQuantityString(
+                R.plurals.extensions_million, millions, millions
+            )
+            resources.getString(
+                R.string.extensions_billions_and_millions,
+                billionsText,
+                millionsText
+            )
+        }
+    }
+
+}
+
+fun Double.toBillionsAndMillions(resources: Resources) = run {
+    val billions = (this / BILLION).toInt()
+    val millions = ((this % BILLION) / MILLION).toInt()
 
     when (billions) {
         0 -> toMillionsAndThousands(resources)

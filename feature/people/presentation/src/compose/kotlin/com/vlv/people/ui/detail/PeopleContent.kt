@@ -57,7 +57,8 @@ fun PeopleContent(
         HorizontalPager(
             state = pagerState,
             pageSpacing = 16.dp,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            beyondBoundsPageCount = 2
         ) { index ->
             when(tabs[index]) {
                 PeopleDetailPage.ABOUT -> {
