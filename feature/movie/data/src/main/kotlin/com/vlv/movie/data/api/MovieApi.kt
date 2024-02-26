@@ -65,14 +65,4 @@ interface MovieApi {
         page: Int
     ) : MoviesResponse
 
-    @GET("search/movie")
-    suspend fun search(
-        @Query("query")
-        text: String,
-        @Query("page")
-        page: Int,
-        @Query("include_adult")
-        includeAdult: Boolean = false
-    ) : MoviesResponse
-
 }

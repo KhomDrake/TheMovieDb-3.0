@@ -5,6 +5,7 @@ import com.vlv.favorite.domain.FavoriteDomainInitializer
 import com.vlv.movie.data.MovieDataInitializer
 import com.vlv.movie.presentation.ui.MovieListingViewModel
 import com.vlv.movie.presentation.ui.detail.MovieDetailViewModel
+import com.vlv.movie.presentation.ui.detail.about.MovieAboutViewModel
 import com.vlv.movie.presentation.ui.detail.cast.MovieCastViewModel
 import com.vlv.movie.presentation.ui.detail.recommendation.MovieRecommendationViewModel
 import com.vlv.movie.presentation.ui.detail.review.MovieReviewViewModel
@@ -23,7 +24,8 @@ class MovieInitializer: ModuleInitializer() {
                 viewModel { MovieCastViewModel(get()) }
                 viewModel { MovieReviewViewModel(get()) }
                 viewModel { MovieRecommendationViewModel(get()) }
-                viewModel { MovieDetailViewModel(androidApplication().resources, get(), get()) }
+                viewModel { MovieAboutViewModel(androidApplication().resources, get()) }
+                viewModel { MovieDetailViewModel(get()) }
             }
         )
 

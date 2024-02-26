@@ -86,5 +86,4 @@ fun MovieListing(
         itemContentType = movies.itemContentType { MOVIE_CONTENT_TYPE },
         loadStates = movies.loadState,
     )
-
 }

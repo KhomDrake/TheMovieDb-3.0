@@ -15,6 +15,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -148,12 +150,14 @@ fun ReviewItem(
             text = review.content,
             style = TheMovieDbTypography.ParagraphStyle,
             color = MaterialTheme.colorScheme.onTertiary,
-            maxLines = 3
+            maxLines = 3,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }
 
 @PreviewLightDark
+@PreviewFontScale
 @Composable
 fun ReviewItemPreview() {
     TheMovieDbAppTheme {
@@ -166,7 +170,9 @@ fun ReviewItemPreview() {
                     createdAt = "Thursday, 20 of july of 2023",
                     url = null
                 ),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
             )
         }
     }

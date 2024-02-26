@@ -5,14 +5,10 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -27,7 +23,6 @@ import com.vlv.movie.presentation.ui.detail.cast.MovieCast
 import com.vlv.movie.presentation.ui.detail.recommendation.MovieRecommendation
 import com.vlv.movie.presentation.ui.detail.review.MovieReview
 import kotlinx.coroutines.launch
-import org.koin.androidx.compose.koinViewModel
 
 enum class MovieDetailPage(
     @StringRes
@@ -44,19 +39,11 @@ enum class MovieDetailPage(
 fun MovieDetailContent(
     detailObject: DetailObject,
     routeNavigation: RouteNavigation,
-    paddingValues: PaddingValues,
-    movieDetailViewModel: MovieDetailViewModel = koinViewModel()
+    paddingValues: PaddingValues
 ) {
-
-    LaunchedEffect(key1 = detailObject.id, block = {
-        movieDetailViewModel.movieDetail(detailObject.id)
-    })
-
     val scope = rememberCoroutineScope()
     val tabs = MovieDetailPage.values()
     val pagerState = rememberPagerState(pageCount = { tabs.size })
-
-    val detailData by movieDetailViewModel.movieDetailState.collectAsState()
 
     Column(
         modifier = Modifier
@@ -86,7 +73,7 @@ fun MovieDetailContent(
             when(tabs[index]) {
                 MovieDetailPage.ABOUT -> {
                     MovieAbout(
-                        response = detailData,
+                        detailObject = detailObject,
                         routeNavigation = routeNavigation
                     )
                 }
@@ -103,7 +90,10 @@ fun MovieDetailContent(
                     )
                 }
                 MovieDetailPage.REVIEW -> {
-                    MovieReview(detailObject = detailObject)
+                    MovieReview(
+                        detailObject = detailObject,
+                        routeNavigation = routeNavigation
+                    )
                 }
             }
         }
