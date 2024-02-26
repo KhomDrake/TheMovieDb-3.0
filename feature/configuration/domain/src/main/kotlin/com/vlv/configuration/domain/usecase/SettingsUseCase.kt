@@ -6,18 +6,19 @@ import com.vlv.configuration.data.ConfigurationRepository
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.domain.model.ConfigItemType
 import com.vlv.configuration.domain.model.SectionsData
-import com.vlv.configuration.domain.model.SettingsResponse
 import com.vlv.configuration.domain.model.SettingOption
+import com.vlv.configuration.domain.model.SettingsResponse
 import com.vlv.data.local.datastore.DataVault
 
 class SettingsUseCase(
+    private val resources: Resources,
     private val repository: ConfigurationRepository
 ) {
 
     private suspend fun newConfig() : SettingsResponse {
         val config = repository.getConfig()
 
-        return SettingsResponse(config)
+        return SettingsResponse(resources, config)
     }
     suspend fun configData(resources: Resources) = bondsmith<SectionsData>("CONFIG-DATA")
         .config {

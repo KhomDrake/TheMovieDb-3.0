@@ -5,13 +5,14 @@ import com.vlv.configuration.data.ConfigurationDataInitializer
 import com.vlv.configuration.domain.usecase.SettingsUseCase
 import com.vlv.configuration.domain.usecase.SetupConfigurationUseCase
 import com.vlv.util.ModuleInitializer
+import org.koin.android.ext.koin.androidApplication
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
 class ConfigurationDomainInitializer : ModuleInitializer() {
     override val modules: List<Module>
         get() = listOf(module {
-            factory { SettingsUseCase(get()) }
+            factory { SettingsUseCase(androidApplication().resources, get()) }
             factory { SetupConfigurationUseCase(get()) }
         })
 

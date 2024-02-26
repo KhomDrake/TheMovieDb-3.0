@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="configuration_language_default">en</string>
-    <string name="configuration_language_name_default">English</string>
-    <string name="configuration_country_default">US</string>
-    <string name="configuration_country_name_default">United States</string>
-
     <string name="configuration_logo_title">Choose logo image resolution</string>
     <string name="configuration_backdrop_title">Choose backdrop image resolution</string>
     <string name="configuration_profile_title">Choose profile image resolution</string>
@@ -82,5 +77,29 @@
 
     <string name="configuration_bottom_sheet_profile_title">Profile image quality</string>
     <string name="configuration_bottom_sheet_profile_body">Chosen profile image quality</string>
+
+    <!--  LANGUAGES REGION  -->
+    <string name="configuration_language_default">en</string>
+    <string name="configuration_language_name_default">English</string>
+    <string name="configuration_country_default">US</string>
+    <string name="configuration_country_name_default">United States</string>
+    <string-array name="configuration_permitted_languages">
+        <item>cy</item>
+        <item>de</item>
+        <item>et</item>
+        <item>fr</item>
+        <item>ga</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>ko</item>
+        <item>ku</item>
+        <item>nl</item>
+        <item>pt</item>
+        <item>ru</item>
+        <item>es</item>
+        <item>zh</item>
+        <item>en</item>
+        <item>th</item>
+    </string-array>
 
 </resources>
