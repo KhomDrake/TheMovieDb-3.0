@@ -9,25 +9,25 @@ import androidx.paging.map
 import br.com.arch.toolkit.livedata.extention.mapList
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.ui.adapter.searchhistory.HistoryItems
-import com.vlv.data.network.database.data.History
-import com.vlv.data.network.database.data.HistoryType
+import com.vlv.data.database.data.History
+import com.vlv.data.database.data.ItemType
 import com.vlv.search.domain.usecase.HistoryUseCase
 import com.vlv.search.domain.usecase.SearchMovieUseCase
 import com.vlv.search.domain.usecase.SearchPeopleUseCase
-import com.vlv.search.domain.usecase.SearchSeriesUseCase
+import com.vlv.search.domain.usecase.SearchTvShowsUseCase
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 abstract class BaseSearchViewModel(
     private val movieUseCase: SearchMovieUseCase,
-    private val seriesUseCase: SearchSeriesUseCase,
+    private val seriesUseCase: SearchTvShowsUseCase,
     private val peopleUseCase: SearchPeopleUseCase,
     private val historyUseCase: HistoryUseCase
 ) : ViewModel() {
 
-    abstract val historyType: HistoryType
+    abstract val historyType: ItemType
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,
@@ -44,9 +44,9 @@ abstract class BaseSearchViewModel(
         .cachedIn(viewModelScope)
 
     fun searchSeries(query: String) = seriesUseCase
-        .searchSeries(pagingConfig, query)
+        .searchTvShows(pagingConfig, query)
         .map {
-            it.map { seriesItem -> Series(seriesItem) }
+            it.map { seriesItem -> TvShow(seriesItem) }
         }
         .cachedIn(viewModelScope)
 

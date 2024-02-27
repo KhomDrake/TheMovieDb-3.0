@@ -1,18 +1,13 @@
-package com.vlv.series.ui.detail.cast
+package com.vlv.tv_show.ui.detail.cast
 
 import androidx.lifecycle.ViewModel
-import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.cast.Cast
-import com.vlv.data.common.model.credit.CreditsResponse
-import com.vlv.series.data.repository.SeriesDetailRepository
+import com.vlv.tv_show.data.repository.TvShowDetailRepository
 
-class SeriesCastViewModel(private val repository: SeriesDetailRepository) : ViewModel() {
+class SeriesCastViewModel(private val repository: TvShowDetailRepository) : ViewModel() {
 
-    fun cast(seriesId: Int) = bondsmith<CreditsResponse>()
-        .request {
-            repository.seriesCast(seriesId)
-        }
-        .execute()
+    fun cast(seriesId: Int) = repository
+        .tvShowCast(seriesId)
         .responseLiveData
         .map {
             it.castResponse.map(::Cast)

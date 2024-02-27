@@ -1,18 +1,18 @@
-package com.vlv.series.ui.detail.adapter
+package com.vlv.tv_show.ui.detail.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.vlv.common.data.series.Series
-import com.vlv.series.ui.detail.about.AboutFragment
-import com.vlv.series.ui.detail.cast.SeriesCastFragment
-import com.vlv.series.ui.detail.recommendation.RecommendationFragment
-import com.vlv.series.ui.detail.review.SeriesReviewFragment
-import com.vlv.series.ui.detail.season.SeasonsFragment
+import com.vlv.common.data.tv_show.TvShow
+import com.vlv.tv_show.ui.detail.cast.SeriesCastFragment
+import com.vlv.tv_show.ui.detail.recommendation.RecommendationFragment
+import com.vlv.tv_show.ui.detail.review.SeriesReviewFragment
+import com.vlv.tv_show.ui.detail.season.SeasonsFragment
+import com.vlv.tv_show.ui.detail.about.AboutFragment
 
 class DetailAdapter(
     private val titles: List<String>,
-    private val series: Series,
+    private val series: TvShow,
     fragmentActivity: FragmentActivity
 ) : FragmentStateAdapter(fragmentActivity) {
 

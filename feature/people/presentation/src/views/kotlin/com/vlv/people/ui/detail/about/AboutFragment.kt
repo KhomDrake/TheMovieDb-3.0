@@ -83,7 +83,7 @@ class AboutFragment : Fragment(R.layout.people_about_fragment) {
     private fun loadSeriesDetail() {
         val people = people ?: return
 
-        viewModel.peopleDetail(resources, people.id).observe(viewLifecycleOwner) {
+        viewModel.peopleDetail(people.id).observe(viewLifecycleOwner) {
             data { items ->
                 (content.adapter as? AboutAdapter)?.submitList(items)
                 viewStateMachine.dataState()

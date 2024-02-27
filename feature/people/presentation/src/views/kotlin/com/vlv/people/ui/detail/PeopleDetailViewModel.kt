@@ -11,21 +11,25 @@ class PeopleDetailViewModel(
 ) : ViewModel() {
 
     fun getFavorite(peopleId: Int) = bondsmith<Boolean>()
-        .request {
-            useCase.getFavorite(peopleId) != null
+        .config {
+            request {
+                useCase.getFavorite(peopleId) != null
+            }
         }
         .execute()
         .responseLiveData
 
     fun changeFavorite(people: People) = bondsmith<Boolean>()
-        .request {
-            val favorite = useCase.getFavorite(people.id)
-            if(favorite != null) {
-                useCase.removeFavorite(favorite)
-                false
-            } else {
-                useCase.addFavorite(people.toFavorite())
-                true
+        .config {
+            request {
+                val favorite = useCase.getFavorite(people.id)
+                if(favorite != null) {
+                    useCase.removeFavorite(favorite)
+                    false
+                } else {
+                    useCase.addFavorite(people.toFavorite())
+                    true
+                }
             }
         }
         .execute()

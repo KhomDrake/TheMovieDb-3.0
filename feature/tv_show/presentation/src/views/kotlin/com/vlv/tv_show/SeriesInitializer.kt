@@ -1,16 +1,16 @@
-package com.vlv.series
+package com.vlv.tv_show
 
 import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.series.ui.detail.SeriesDetailViewModel
-import com.vlv.series.ui.detail.about.AboutViewModel
-import com.vlv.series.ui.detail.cast.SeriesCastViewModel
-import com.vlv.series.ui.detail.recommendation.RecommendationViewModel
-import com.vlv.series.ui.detail.review.SeriesReviewViewModel
-import com.vlv.series.ui.detail.season.SeasonsViewModel
-import com.vlv.series.ui.listing.ListingSeriesViewModel
-import com.vlv.series.ui.search.SearchViewModel
+import com.vlv.tv_show.ui.search.SearchViewModel
+import com.vlv.tv_show.ui.detail.SeriesDetailViewModel
+import com.vlv.tv_show.ui.detail.about.AboutViewModel
+import com.vlv.tv_show.ui.detail.cast.SeriesCastViewModel
+import com.vlv.tv_show.ui.detail.recommendation.RecommendationViewModel
+import com.vlv.tv_show.ui.detail.review.SeriesReviewViewModel
+import com.vlv.tv_show.ui.detail.season.SeasonsViewModel
+import com.vlv.tv_show.ui.listing.ListingSeriesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module

@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.ui.R
+import com.vlv.data.database.data.History
 import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
-import com.vlv.data.network.database.data.History
+import com.vlv.ui.R
 
 class HistoryDiffItem: DiffUtil.ItemCallback<HistoryItems>() {
 

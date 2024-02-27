@@ -2,7 +2,7 @@ package com.vlv.movie.ui.search
 
 import com.vlv.data.database.TheMovieDbDao
 import com.vlv.data.network.NetworkInitializer
-import com.vlv.movie.MovieInitializer
+import com.vlv.movie.presentation.MovieInitializer
 import com.vlv.movie.data.api.MovieApi
 import com.vlv.movie.data.repository.MovieDetailRepository
 import com.vlv.movie.data.repository.MovieRepository

@@ -17,8 +17,8 @@ class SpinnerBottomSheet(
     override val layoutRes: Int
         get() = R.layout.imperiya_spinner_action_sheet
 
-    private val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
-    private val body: AppCompatTextView by viewProvider(R.id.small_warning_body)
+    private val title: AppCompatTextView by viewProvider(R.id.action_sheet_title)
+    private val body: AppCompatTextView by viewProvider(R.id.action_sheet_body)
     private val button: AppCompatButton by viewProvider(R.id.confirm_button)
     private val items: RecyclerView by viewProvider(R.id.items)
 
@@ -32,10 +32,9 @@ class SpinnerBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         title.text = titleText
-        body.text = titleText
+        body.text = bodyText
         button.text = buttonText
-        title.text = titleText
-        body.isVisible = titleText != null
+        body.isVisible = bodyText != null
 
         items.layoutManager = LinearLayoutManager(requireContext())
         val adapter = SpinnerAdapter(onItemSelected) {
@@ -48,6 +47,7 @@ class SpinnerBottomSheet(
         button.setOnClickListener {
             onClickConfirm?.invoke(adapter.selectedItem)
         }
+        allowEnterTransitionOverlap = true
     }
 
     fun setItems(items: List<Item>) = apply {

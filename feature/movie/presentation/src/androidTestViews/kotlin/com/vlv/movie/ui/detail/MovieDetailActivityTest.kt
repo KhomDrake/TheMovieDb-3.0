@@ -2,7 +2,7 @@ package com.vlv.movie.ui.detail
 
 import com.vlv.data.network.NetworkInitializer
 import com.vlv.favorite.data.FavoriteRepository
-import com.vlv.movie.MovieInitializer
+import com.vlv.movie.presentation.MovieInitializer
 import com.vlv.movie.data.repository.MovieDetailRepository
 import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.test.KoinRule

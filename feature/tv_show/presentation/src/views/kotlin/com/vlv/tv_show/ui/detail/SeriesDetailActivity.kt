@@ -1,18 +1,18 @@
-package com.vlv.series.ui.detail
+package com.vlv.tv_show.ui.detail
 
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vlv.common.data.movie.toMovie
-import com.vlv.common.data.series.Series
-import com.vlv.common.data.series.toSeries
+import com.vlv.common.data.tv_show.TvShow
+import com.vlv.common.data.tv_show.toSeries
 import com.vlv.common.ui.DetailActivity
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.data.database.data.ImageType
 import com.vlv.extensions.addAccessibilityDelegate
-import com.vlv.data.network.database.data.ImageType
 import com.vlv.tv_show.R
-import com.vlv.series.ui.detail.adapter.DetailAdapter
+import com.vlv.tv_show.ui.detail.adapter.DetailAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SeriesDetailActivity : DetailActivity() {
@@ -87,7 +87,7 @@ class SeriesDetailActivity : DetailActivity() {
         }
     }
 
-    private fun changeFavorite(series: Series) {
+    private fun changeFavorite(series: TvShow) {
         viewModel.changeFavorite(series).observe(this) {
             data { isFavorite ->
                 toolbar.announceForAccessibility(

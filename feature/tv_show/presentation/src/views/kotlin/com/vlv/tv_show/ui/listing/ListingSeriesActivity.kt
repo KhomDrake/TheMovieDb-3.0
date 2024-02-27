@@ -1,4 +1,4 @@
-package com.vlv.series.ui.listing
+package com.vlv.tv_show.ui.listing
 
 import android.os.Bundle
 import androidx.core.app.ActivityOptionsCompat
@@ -6,14 +6,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
-import com.vlv.common.data.series.SeriesListType
-import com.vlv.common.data.series.toDetailObject
+import com.vlv.common.data.tv_show.TvShowListType
+import com.vlv.common.data.tv_show.toDetailObject
+import com.vlv.common.route.TV_SHOW_LISTING_TYPE_EXTRA
+import com.vlv.common.route.toTvShowsDetail
 import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
 import com.vlv.common.ui.adapter.series.VIEW_TYPE_SERIES
 import com.vlv.common.ui.listing.ListingItemsActivity
-import com.vlv.common.route.SERIES_LISTING_TYPE_EXTRA
-import com.vlv.common.route.toSeriesDetail
 import com.vlv.tv_show.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -22,8 +22,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ListingSeriesActivity : ListingItemsActivity() {
 
-    private val type: SeriesListType by extraProvider(
-        SERIES_LISTING_TYPE_EXTRA, default = SeriesListType.TRENDING
+    private val type: TvShowListType by extraProvider(
+        TV_SHOW_LISTING_TYPE_EXTRA, default = TvShowListType.TRENDING
     )
 
     private val viewModel: ListingSeriesViewModel by viewModel()
@@ -33,7 +33,7 @@ class ListingSeriesActivity : ListingItemsActivity() {
 
     private val pagingAdapter = SeriesPaginationAdapter { series, view ->
         startActivity(
-            toSeriesDetail(series.toDetailObject()),
+            toTvShowsDetail(series.toDetailObject()),
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this,
                 view,
@@ -47,11 +47,11 @@ class ListingSeriesActivity : ListingItemsActivity() {
 
     override val title: Int
         get() = when(type) {
-            SeriesListType.POPULAR -> R.string.tv_show_popular_title
-            SeriesListType.TRENDING -> R.string.tv_show_trending_title
-            SeriesListType.AIRING_TODAY -> R.string.tv_show_airing_today_title
-            SeriesListType.TOP_RATED -> R.string.tv_show_top_rated_title
-            SeriesListType.ON_THE_AIR -> R.string.tv_show_on_the_air_title
+            TvShowListType.POPULAR -> R.string.tv_show_popular_title
+            TvShowListType.TRENDING -> R.string.tv_show_trending_title
+            TvShowListType.AIRING_TODAY -> R.string.tv_show_airing_today_title
+            TvShowListType.TOP_RATED -> R.string.tv_show_top_rated_title
+            TvShowListType.ON_THE_AIR -> R.string.tv_show_on_the_air_title
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {

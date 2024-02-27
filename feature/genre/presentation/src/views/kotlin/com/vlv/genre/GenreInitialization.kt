@@ -3,8 +3,8 @@ package com.vlv.genre
 import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.genre.domain.GenreDomainInitializer
-import com.vlv.genre.ui.movie.MovieGenreViewModel
-import com.vlv.genre.ui.series.SeriesGenreViewModel
+import com.vlv.genre.presentation.ui.movie.MovieGenreViewModel
+import com.vlv.genre.presentation.ui.series.SeriesGenreViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module

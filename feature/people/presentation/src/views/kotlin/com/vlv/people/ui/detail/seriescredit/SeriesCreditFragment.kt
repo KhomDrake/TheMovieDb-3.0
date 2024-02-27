@@ -14,10 +14,10 @@ import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.toDetailObject
-import com.vlv.common.ui.adapter.series.SeriesAdapter
+import com.vlv.common.data.tv_show.toDetailObject
 import com.vlv.common.route.EXTRA_PEOPLE
-import com.vlv.common.route.toSeriesDetail
+import com.vlv.common.route.toTvShowsDetail
+import com.vlv.common.ui.adapter.series.SeriesAdapter
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
 import com.vlv.extensions.emptyState
@@ -67,7 +67,7 @@ class SeriesCreditFragment : Fragment(R.layout.people_credit_listing) {
     private fun setupRecyclerView() {
         items.layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         items.adapter = SeriesAdapter { series, view ->
-            val intent = requireContext().toSeriesDetail(series.toDetailObject())
+            val intent = requireContext().toTvShowsDetail(series.toDetailObject())
             startActivity(
                 intent,
                 ActivityOptionsCompat.makeSceneTransitionAnimation(

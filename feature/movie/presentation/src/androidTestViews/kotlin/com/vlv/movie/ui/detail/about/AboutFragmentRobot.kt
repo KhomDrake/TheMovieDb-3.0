@@ -10,8 +10,9 @@ import com.squareup.moshi.Moshi
 import com.vlv.common.data.movie.Movie
 import com.vlv.data.common.model.movie.MovieDetailResponse
 import com.vlv.movie.R
-import com.vlv.movie.ui.detail.cast.EXTRA_MOVIE
+import com.vlv.movie.presentation.ui.detail.cast.EXTRA_MOVIE
 import com.vlv.movie.data.repository.MovieDetailRepository
+import com.vlv.movie.presentation.ui.detail.about.AboutFragment
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

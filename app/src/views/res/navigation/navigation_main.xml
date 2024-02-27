@@ -22,6 +22,6 @@
         android:label="SearchFragment" />
     <fragment
         android:id="@+id/series"
-        android:name="com.vlv.themoviedb.ui.series.SeriesFragment"
+        android:name="com.vlv.themoviedb.ui.tv_show.SeriesFragment"
         android:label="SeriesFragment" />
 </navigation>

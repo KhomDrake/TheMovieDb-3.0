@@ -51,7 +51,7 @@ class SpinnerAdapter(
 
         val onCheckedChange: (Boolean) -> Unit = { checked ->
             if (checked) {
-                if (selectedPosition != -1 && selectedPosition != holder.adapterPosition) {
+                if (selectedPosition != -1 && selectedPosition != holder.absoluteAdapterPosition) {
                     currentList[selectedPosition]?.checked = false
                     notifyItemChanged(selectedPosition)
                 }
@@ -59,7 +59,7 @@ class SpinnerAdapter(
                 onItemSelected.invoke(item)
 
                 item.checked = false
-                selectedPosition = holder.adapterPosition
+                selectedPosition = holder.absoluteAdapterPosition
             }
         }
 

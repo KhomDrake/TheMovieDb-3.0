@@ -6,8 +6,8 @@ import com.vlv.data.network.NetworkInitializer
 import com.vlv.themoviedb.ui.menu.MenuViewModel
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingViewModel
 import com.vlv.themoviedb.ui.movie.trending.TrendingNowViewModel
-import com.vlv.themoviedb.ui.series.airingtoday.AiringTodayViewModel
-import com.vlv.themoviedb.ui.series.trending.TrendingSeriesViewModel
+import com.vlv.themoviedb.ui.tv_show.airingtoday.AiringTodayViewModel
+import com.vlv.themoviedb.ui.tv_show.trending.TrendingSeriesViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module

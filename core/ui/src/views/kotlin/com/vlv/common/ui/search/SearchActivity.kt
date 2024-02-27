@@ -12,10 +12,10 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.vlv.ui.R
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.common.ui.adapter.searchhistory.HistoryAdapter
 import com.vlv.common.ui.adapter.searchhistory.HistoryItems
+import com.vlv.data.database.data.History
 import com.vlv.extensions.State
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
@@ -30,11 +30,10 @@ import com.vlv.extensions.stateEmpty
 import com.vlv.extensions.stateError
 import com.vlv.extensions.stateInitial
 import com.vlv.extensions.stateLoading
-import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
+import com.vlv.imperiya.core.ui.search.ImperiyaToolbarView
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
-import com.vlv.data.network.database.data.History
-import com.vlv.imperiya.core.ui.search.ImperiyaToolbarView
+import com.vlv.ui.R
 
 abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activity) {
 

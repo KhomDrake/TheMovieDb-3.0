@@ -2,8 +2,8 @@ package com.vlv.search.data
 
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
-import com.vlv.ui.R as RCommon
 import com.vlv.search.R
+import com.vlv.ui.R as RCommon
 
 enum class SearchType(
     @LayoutRes
@@ -17,7 +17,7 @@ enum class SearchType(
     ),
     SERIES(
         RCommon.layout.common_listing_series_loading,
-        R.string.search_series_hint_text
+        R.string.search_tv_show_hint_text
     ),
     PERSON(
         RCommon.layout.common_people_listing_loading,

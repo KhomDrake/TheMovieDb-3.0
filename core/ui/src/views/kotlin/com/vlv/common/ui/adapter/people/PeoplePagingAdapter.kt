@@ -8,12 +8,12 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.ui.R
 import com.vlv.common.data.people.People
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.data.database.data.ImageType
 import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.extensions.inflate
-import com.vlv.data.network.database.data.ImageType
+import com.vlv.ui.R
 
 class PeopleDiffUtil: ItemCallback<People>() {
 

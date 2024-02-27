@@ -9,7 +9,7 @@ class MovieGenreUseCase(
     private val repository: GenreRepository
 ) {
 
-    suspend fun genres() = bondsmith<List<GenreResponse>>("MOVIES-GENRE")
+    fun genres() = bondsmith<List<GenreResponse>>("MOVIES-GENRE")
         .config {
             request {
                 repository.moviesGenre().genres

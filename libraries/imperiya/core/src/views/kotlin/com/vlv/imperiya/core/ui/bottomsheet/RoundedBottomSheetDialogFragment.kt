@@ -22,12 +22,16 @@ abstract class RoundedBottomSheetDialogFragment(
         super.onCreate(savedInstanceState)
         setStyle(DialogFragment.STYLE_NORMAL, R.style.Imperiya_ActionSheet_Rounded)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.attributes?.windowAnimations =
+            R.style.Imperiya_ActionSheet_Animation
         dialog?.setCanceledOnTouchOutside(canDismiss)
         dialog?.setCancelable(canDismiss)
     }
 
     override fun setupDialog(dialog: Dialog, style: Int) {
         super.setupDialog(dialog, style)
+        dialog.window?.attributes?.windowAnimations =
+            R.style.Imperiya_ActionSheet_Animation
         dialog.setCanceledOnTouchOutside(canDismiss)
         dialog.setCancelable(canDismiss)
     }

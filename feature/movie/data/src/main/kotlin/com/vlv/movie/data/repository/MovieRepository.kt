@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 
 class MovieRepository(private val api: MovieApi) {
 
-    suspend fun trendingMovies(timeWindow: TimeWindow) = bondsmith<MoviesResponse>()
+    fun trendingMovies(timeWindow: TimeWindow) = bondsmith<MoviesResponse>()
         .config {
             request {
                 api.trending(
@@ -70,7 +70,7 @@ class MovieRepository(private val api: MovieApi) {
         api.upcoming(page)
     }
 
-    suspend fun nowPlaying() = bondsmith<MoviesResponse>("MOVIE-NOW-PLAYING")
+    fun nowPlaying() = bondsmith<MoviesResponse>("MOVIE-NOW-PLAYING")
         .config {
             request {
                 api.nowPlaying(1)

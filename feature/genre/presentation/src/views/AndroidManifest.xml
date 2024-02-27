@@ -5,7 +5,7 @@
 
         <activity
             android:theme="@style/Imperiya.Theme"
-            android:name=".ui.movie.MovieGenreActivity"
+            android:name=".presentation.ui.movie.MovieGenreActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="${applicationId}.MOVIE_GENRE" />
@@ -15,7 +15,7 @@
 
         <activity
             android:theme="@style/Imperiya.Theme"
-            android:name=".ui.series.SeriesGenreActivity"
+            android:name=".presentation.ui.series.SeriesGenreActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="${applicationId}.SERIES_GENRE" />

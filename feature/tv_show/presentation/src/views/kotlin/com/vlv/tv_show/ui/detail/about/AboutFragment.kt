@@ -1,4 +1,4 @@
-package com.vlv.series.ui.detail.about
+package com.vlv.tv_show.ui.detail.about
 
 import android.os.Bundle
 import android.view.View
@@ -12,7 +12,7 @@ import br.com.arch.toolkit.delegate.viewProvider
 import br.com.arch.toolkit.statemachine.ViewStateMachine
 import br.com.arch.toolkit.statemachine.setup
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.ui.DetailActivity
 import com.vlv.extensions.dataState
 import com.vlv.extensions.defaultConfig
@@ -25,11 +25,11 @@ import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.tv_show.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val EXTRA_SERIES = "EXTRA_SERIES"
+const val EXTRA_TV_SHOW = "EXTRA_TV_SHOW"
 class AboutFragment : Fragment(R.layout.series_fragment_about) {
 
     private val viewModel: AboutViewModel by viewModel()
-    private val series: Series? by extraProvider(EXTRA_SERIES, null)
+    private val series: TvShow? by extraProvider(EXTRA_TV_SHOW, null)
 
     private val root: ViewGroup by viewProvider(R.id.root)
     private val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer_about)
@@ -109,9 +109,9 @@ class AboutFragment : Fragment(R.layout.series_fragment_about) {
 
 
     companion object {
-        fun instance(series: Series) = AboutFragment().apply {
+        fun instance(series: TvShow) = AboutFragment().apply {
             arguments = bundleOf(
-                EXTRA_SERIES to series
+                EXTRA_TV_SHOW to series
             )
         }
     }

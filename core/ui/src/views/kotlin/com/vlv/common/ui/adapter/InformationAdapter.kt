@@ -2,23 +2,15 @@ package com.vlv.common.ui.adapter
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.ui.R
+import com.vlv.common.data.about.Information
 import com.vlv.extensions.inflate
-import kotlin.random.Random
+import com.vlv.ui.R
 
-
-class Information(
-    val id: Int = Random.nextInt(Int.MIN_VALUE, Int.MAX_VALUE),
-    @StringRes
-    val title: Int,
-    val data: String
-)
 
 class InformationDiffUtil: DiffUtil.ItemCallback<Information>() {
 

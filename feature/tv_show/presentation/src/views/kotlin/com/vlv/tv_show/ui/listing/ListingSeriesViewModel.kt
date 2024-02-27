@@ -1,17 +1,17 @@
-package com.vlv.series.ui.listing
+package com.vlv.tv_show.ui.listing
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.vlv.common.data.series.Series
-import com.vlv.common.data.series.SeriesListType
+import com.vlv.common.data.tv_show.TvShow
+import com.vlv.common.data.tv_show.TvShowListType
 import com.vlv.data.common.model.TimeWindow
-import com.vlv.series.data.repository.SeriesRepository
+import com.vlv.tv_show.data.repository.TvShowRepository
 import kotlinx.coroutines.flow.map
 
-class ListingSeriesViewModel(private val repository: SeriesRepository) : ViewModel() {
+class ListingSeriesViewModel(private val repository: TvShowRepository) : ViewModel() {
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,
@@ -20,20 +20,20 @@ class ListingSeriesViewModel(private val repository: SeriesRepository) : ViewMod
         initialLoadSize = 20
     )
 
-    fun loadingType(type: SeriesListType) =
+    fun loadingType(type: TvShowListType) =
         loadByType(type).map {
             it.map { item ->
-                Series(item)
+                TvShow(item)
             }
         }
         .cachedIn(viewModelScope)
 
-    private fun loadByType(type: SeriesListType) = when(type) {
-        SeriesListType.TRENDING -> repository.trendingNowPaging(pagingConfig, TimeWindow.DAY)
-        SeriesListType.AIRING_TODAY -> repository.airingTodayPaging(pagingConfig)
-        SeriesListType.ON_THE_AIR -> repository.onTheAirPaging(pagingConfig)
-        SeriesListType.TOP_RATED -> repository.topRatedPaging(pagingConfig)
-        SeriesListType.POPULAR -> repository.popularPaging(pagingConfig)
+    private fun loadByType(type: TvShowListType) = when(type) {
+        TvShowListType.TRENDING -> repository.trendingNowPaging(pagingConfig, TimeWindow.DAY)
+        TvShowListType.AIRING_TODAY -> repository.airingTodayPaging(pagingConfig)
+        TvShowListType.ON_THE_AIR -> repository.onTheAirPaging(pagingConfig)
+        TvShowListType.TOP_RATED -> repository.topRatedPaging(pagingConfig)
+        TvShowListType.POPULAR -> repository.popularPaging(pagingConfig)
     }
 
 

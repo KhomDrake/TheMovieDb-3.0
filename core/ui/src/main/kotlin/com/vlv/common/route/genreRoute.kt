@@ -5,4 +5,4 @@ import com.vlv.extensions.intentForAction
 
 fun Context.toMovieGenre() = intentForAction("MOVIE_GENRE")
 
-fun Context.toSeriesGenre() = intentForAction("SERIES_GENRE")
+fun Context.toTvShowGenre() = intentForAction("SERIES_GENRE")

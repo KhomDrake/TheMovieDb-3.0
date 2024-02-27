@@ -5,8 +5,8 @@ import android.content.Intent
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.TvShow
-import com.vlv.common.data.series.toDetailObject
+import com.vlv.common.data.tv_show.TvShow
+import com.vlv.common.data.tv_show.toDetailObject
 import com.vlv.data.database.data.ItemType
 
 typealias RouteNavigation = (route: ScreenRoute, data: Any?) -> Unit
@@ -55,7 +55,7 @@ fun Context.handleRoute(route: ScreenRoute, data: Any?) {
             ScreenRoute.MOVIE_TOP_RATED -> toMovieTopRated()
             ScreenRoute.MOVIE_UPCOMING -> toMovieUpcoming()
             ScreenRoute.MOVIE_TRENDING -> toMovieTrending()
-            ScreenRoute.TV_SHOW_GENRE -> toSeriesGenre()
+            ScreenRoute.TV_SHOW_GENRE -> toTvShowGenre()
             ScreenRoute.TV_SHOW_SEARCH -> toTvShowsSearch()
             ScreenRoute.TV_SHOW_TRENDING -> toTvShowTrendingNow()
             ScreenRoute.TV_SHOW_AIRING_TODAY -> toTvShowAiringToday()

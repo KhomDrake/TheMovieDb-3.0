@@ -1,6 +1,6 @@
 package com.vlv.movie.ui.detail.cast
 
-import com.vlv.movie.MovieInitializer
+import com.vlv.movie.presentation.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
 import com.vlv.movie.data.repository.MovieDetailRepository
 import com.vlv.test.IntentsRule

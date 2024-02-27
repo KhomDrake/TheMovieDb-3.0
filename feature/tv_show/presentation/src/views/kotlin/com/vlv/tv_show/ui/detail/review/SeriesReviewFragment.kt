@@ -1,20 +1,20 @@
-package com.vlv.series.ui.detail.review
+package com.vlv.tv_show.ui.detail.review
 
 import androidx.core.os.bundleOf
 import br.com.arch.toolkit.delegate.extraProvider
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.ui.review.ReviewFragment
 import com.vlv.common.ui.review.adapter.ReviewAdapter
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
-import com.vlv.series.ui.detail.about.EXTRA_SERIES
+import com.vlv.tv_show.ui.detail.about.EXTRA_TV_SHOW
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SeriesReviewFragment : ReviewFragment() {
 
-    private val series: Series? by extraProvider(EXTRA_SERIES, null)
+    private val series: TvShow? by extraProvider(EXTRA_TV_SHOW, null)
 
     private val viewModel: SeriesReviewViewModel by viewModel()
 
@@ -39,9 +39,9 @@ class SeriesReviewFragment : ReviewFragment() {
     }
 
     companion object {
-        fun instance(series: Series) = SeriesReviewFragment().apply {
+        fun instance(series: TvShow) = SeriesReviewFragment().apply {
             arguments = bundleOf(
-                EXTRA_SERIES to series
+                EXTRA_TV_SHOW to series
             )
         }
     }

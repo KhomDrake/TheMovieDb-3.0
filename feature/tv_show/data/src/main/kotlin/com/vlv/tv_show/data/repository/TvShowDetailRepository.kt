@@ -11,7 +11,7 @@ import com.vlv.tv_show.data.api.TvShowApi
 
 class TvShowDetailRepository(private val api: TvShowApi) {
 
-    suspend fun tvShowDetail(seriesId: Int) = bondsmith<TvShowDetailResponse>(
+    fun tvShowDetail(seriesId: Int) = bondsmith<TvShowDetailResponse>(
         "TV-SHOW-DETAIL-$seriesId"
     )
         .config {
@@ -22,7 +22,7 @@ class TvShowDetailRepository(private val api: TvShowApi) {
         .execute()
 
 
-    suspend fun tvShowCast(seriesId: Int) = bondsmith<CreditsResponse>(
+    fun tvShowCast(seriesId: Int) = bondsmith<CreditsResponse>(
         "TV-SHOW-CAST-$seriesId"
     )
         .config {
@@ -33,7 +33,7 @@ class TvShowDetailRepository(private val api: TvShowApi) {
         .execute()
 
 
-    suspend fun tvShowReview(seriesId: Int) = bondsmith<ReviewsResponse>(
+    fun tvShowReview(seriesId: Int) = bondsmith<ReviewsResponse>(
         "TV-SHOW-REVIEWS-$seriesId"
     )
         .config {

@@ -2,9 +2,9 @@ package com.vlv.favorite.ui.series
 
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import com.vlv.common.data.series.toDetailObject
+import com.vlv.common.data.tv_show.toDetailObject
+import com.vlv.common.route.toTvShowsDetail
 import com.vlv.common.ui.adapter.series.SeriesAdapter
-import com.vlv.common.route.toSeriesDetail
 import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
@@ -22,13 +22,13 @@ class SeriesFavoritesFragment : BaseFavoriteFragment() {
 
     override fun setupStateView() {
         emptyState.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv)
-        emptyState.setTitle(R.string.favorite_series_empty_state)
+        emptyState.setTitle(R.string.favorite_people_empty_state)
     }
 
     override fun setupRecyclerView() {
         items.layoutManager = GridLayoutManager(requireContext(), 2)
         items.adapter = SeriesAdapter { series, view ->
-            val intent = requireContext().toSeriesDetail(
+            val intent = requireContext().toTvShowsDetail(
                 series.toDetailObject(),
                 finishAfterTransition = false
             )

@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 
 class TvShowRepository(private val api: TvShowApi) {
 
-    suspend fun tvShowsTrending(timeWindow: TimeWindow) = bondsmith<TvShowsResponse>(
+    fun tvShowsTrending(timeWindow: TimeWindow) = bondsmith<TvShowsResponse>(
         "TV-SHOW-TRENDING-${timeWindow.name.lowercase()}"
     )
         .config {
@@ -71,7 +71,7 @@ class TvShowRepository(private val api: TvShowApi) {
         api.trending(timeWindow.name.lowercase(), page)
     }
 
-    suspend fun airingToday() = bondsmith<TvShowsResponse>(
+    fun airingToday() = bondsmith<TvShowsResponse>(
         "TV-SHOW-AIRING-TODAY"
     )
         .config {

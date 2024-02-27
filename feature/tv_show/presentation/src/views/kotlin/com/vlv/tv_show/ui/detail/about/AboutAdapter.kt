@@ -1,8 +1,7 @@
-package com.vlv.series.ui.detail.about
+package com.vlv.tv_show.ui.detail.about
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
@@ -10,57 +9,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import coil.load
-import com.vlv.common.ui.adapter.Information
+import com.vlv.common.data.about.AboutItem
+import com.vlv.common.data.about.AboutItemType
 import com.vlv.common.ui.adapter.InformationViewHolder
 import com.vlv.common.ui.adapter.PillAdapter
-import com.vlv.common.ui.adapter.PillItem
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.data.database.data.ImageType
 import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
 import com.vlv.extensions.setMargins
-import com.vlv.data.network.database.data.ImageType
 import com.vlv.tv_show.R
 import com.vlv.ui.R as RCommon
-import com.vlv.series.data.Episode
-import kotlin.random.Random
-
-enum class AboutItemType {
-    LINE,
-    TITLE,
-    BIG_TEXT,
-    EPISODE,
-    INFORMATION,
-    GENRES
-}
-
-sealed class AboutItem(
-    val id: Int = Random.nextInt(Int.MIN_VALUE, Int.MAX_VALUE),
-    val type: AboutItemType
-) {
-
-    class Line: AboutItem(type = AboutItemType.LINE)
-
-    class Title(@StringRes val text: Int) : AboutItem(type = AboutItemType.TITLE)
-
-    class BigText(
-        val description: String?,
-        val text: String
-    ) : AboutItem(type = AboutItemType.BIG_TEXT)
-
-    class EpisodeItem(
-        val episode: Episode
-    ) : AboutItem(type = AboutItemType.EPISODE)
-
-    class InformationItem(
-        val information: Information
-    ) : AboutItem(type = AboutItemType.INFORMATION)
-
-    class Genres(
-        val pillItems: List<PillItem>
-    ) : AboutItem(type = AboutItemType.GENRES)
-
-}
 
 class AboutItemDiffUtil: ItemCallback<AboutItem>() {
 
@@ -94,7 +53,7 @@ class AboutAdapter : ListAdapter<AboutItem, RecyclerView.ViewHolder>(AboutItemDi
             is AboutItem.BigText -> {
                 (holder as? BigTextViewHolder)?.bind(item)
             }
-            is AboutItem.EpisodeItem -> {
+            is AboutItem.Episode -> {
                 (holder as? EpisodeViewHolder)?.bind(item)
             }
             is AboutItem.Genres -> {
@@ -169,12 +128,12 @@ class EpisodeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val episodeTitle: AppCompatTextView by viewProvider(R.id.episode_title)
     private val episodeNumberAndDate: AppCompatTextView by viewProvider(R.id.episode_number_and_date)
 
-    fun bind(episodeItem: AboutItem.EpisodeItem) {
+    fun bind(episodeItem: AboutItem.Episode) {
         poster.clipToOutline = true
 
-        episodeItem.episode.stillPath.loadUrl(poster, ImageType.POSTER)
-        episodeTitle.text = episodeItem.episode.name
-        episodeNumberAndDate.text = episodeItem.episode.episodeNumberAndDate
+        episodeItem.poster.loadUrl(poster, ImageType.POSTER)
+        episodeTitle.text = episodeItem.title
+        episodeNumberAndDate.text = episodeItem.description
     }
 
 }

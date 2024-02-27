@@ -80,16 +80,21 @@
 
     <style name="Imperiya.ActionSheet"/>
 
-    <style name="Imperiya.ActionSheet.Rounded">
+    <style name="Imperiya.ActionSheet.Rounded" parent="Theme.Design.BottomSheetDialog">>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsFloating">true</item>
         <item name="bottomSheetStyle">@style/Imperiya.ActionSheet.BottomSheetRounded</item>
     </style>
 
-    <style name="Imperiya.ActionSheet.BottomSheetRounded">
+    <style name="Imperiya.ActionSheet.BottomSheetRounded" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/imperiya_rounded_background_bottom_sheet</item>
+    </style>
+
+    <style name="Imperiya.ActionSheet.Animation">
+        <item name="android:windowEnterAnimation">@anim/imperiya_bottom_sheet_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/imperiya_bottom_sheet_anim_out</item>
     </style>
 
 </resources>

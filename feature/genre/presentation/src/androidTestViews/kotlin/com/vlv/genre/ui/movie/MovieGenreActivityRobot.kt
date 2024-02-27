@@ -15,6 +15,7 @@ import com.vlv.test.loadObjectFromJson
 import com.vlv.genre.R
 import com.vlv.genre.data.api.DiscoverApi
 import com.vlv.genre.data.api.GenresApi
+import com.vlv.genre.presentation.ui.movie.MovieGenreActivity
 import com.vlv.test.checkTextTabLayoutPosition
 import com.vlv.test.hasText
 import com.vlv.test.isDisplayed

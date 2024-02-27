@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.ui.R
 import com.vlv.common.data.cast.Cast
 import com.vlv.common.ui.extension.loadUrl
+import com.vlv.data.database.data.ImageType
 import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.extensions.addHeadingAccessibilityDelegate
 import com.vlv.extensions.inflate
-import com.vlv.data.network.database.data.ImageType
+import com.vlv.ui.R
 
 class CastDiffUtil: DiffUtil.ItemCallback<Cast>() {
     override fun areContentsTheSame(oldItem: Cast, newItem: Cast): Boolean {

@@ -7,8 +7,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.configuration.data.SectionUIItem
+import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.presentation.R
-import com.vlv.configuration.domain.model.SettingsOption
+import com.vlv.imperiya.core.ui.bottomsheet.Item
 import com.vlv.imperiya.core.ui.bottomsheet.SpinnerBottomSheet
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,10 +37,11 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
         loadConfig()
 
         viewModel.config.observe(this) {
-            data {
-                updateOptions()
+            data { options ->
+                updateOptions(options)
             }
-            error { e ->
+            error { _ ->
+
             }
         }
     }
@@ -47,8 +50,8 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
         viewModel.config().observe(this) {}
     }
 
-    private fun updateOptions() {
-        adapter.submitList(viewModel.options())
+    private fun updateOptions(options: List<SectionUIItem>) {
+        adapter.submitList(options)
     }
 
     private fun setupRecyclerView() {
@@ -56,56 +59,41 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
         items.adapter = adapter
     }
 
-    private fun onClickItem(settingsItem: SettingsItem) {
-        val data = viewModel.config.data ?: return
+    private fun onClickItem(settingsItem: SectionUIItem) {
+        val data = (settingsItem.data as? ConfigDataList) ?: return
 
         val context: Context = this
 
-        SpinnerBottomSheet().apply {
-            when(settingsItem.id) {
-                SettingsOption.POSTER.name -> {
-                    setTitleText(context.getString(R.string.configuration_poster_title))
-                    setItems(data.posterSizes)
-                }
-                SettingsOption.REGION.name -> {
-                    setTitleText(context.getString(R.string.configuration_country_title))
-                    setItems(data.countries)
-                }
-                SettingsOption.LANGUAGE.name -> {
-                    setTitleText(context.getString(R.string.configuration_language_title))
-                    setItems(data.languages)
-                }
-                SettingsOption.PROFILE.name -> {
-                    setTitleText(context.getString(R.string.configuration_profile_title))
-                    setItems(data.profileSizes)
-                }
-                SettingsOption.BACKDROP.name -> {
-                    setTitleText(context.getString(R.string.configuration_backdrop_title))
-                    setItems(data.backdropSizes)
-                }
-                SettingsOption.LOGO.name -> {
-                    setTitleText(context.getString(R.string.configuration_logo_title))
-                    setItems(data.logoSizes)
-                }
-                else -> Unit
-            }
+        SpinnerBottomSheet(canDismiss = true).apply {
+            setTitleText(data.title.toString())
+            setItems(data.items.map {
+                Item(it.title.toString(), it.value, it == data.selectedItem, it.id)
+            })
 
-            setOnClickConfirm {
-                val item = it ?: return@setOnClickConfirm
-                viewModel.setConfigValue(item.name, settingsItem.id, item.value)
-                items.announceForAccessibility(
-                    getString(R.string.configuration_options_change_configuration)
+            setOnClickConfirm { item ->
+                val newItem = data.items.find { item?.id == it.id } ?: return@setOnClickConfirm
+                viewModel.setData(
+                    settingsItem.copy(
+                        data = data.copy(
+                            selectedItem = newItem
+                        )
+                    )
                 )
-                updateOptions()
+                items.announceForAccessibility(getString(
+                        com.vlv.configuration.domain.R.string.configuration_options_change_configuration
+                    ))
                 dismiss()
             }
             setButtonText(context.getString(R.string.configuration_button))
         }.show(supportFragmentManager, SettingsActivity::class.java.name)
     }
 
-    private fun onClickSwitch(settingsItem: SettingsItem, checkbox: Boolean) {
-        viewModel.setConfigValue(settingsItem.id, checkbox)
-        updateOptions()
+    private fun onClickSwitch(settingsItem: SectionUIItem, checkbox: Boolean) {
+        viewModel.setData(
+            settingsItem.copy(
+                data = checkbox
+            )
+        )
     }
 
 }

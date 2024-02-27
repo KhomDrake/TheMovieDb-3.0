@@ -1,19 +1,19 @@
-package com.vlv.series.ui.search
+package com.vlv.tv_show.ui.search
 
 import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vlv.common.data.series.toDetailObject
+import com.vlv.common.data.tv_show.toDetailObject
+import com.vlv.common.route.toTvShowsDetail
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
-import com.vlv.common.route.toSeriesDetail
 import com.vlv.common.ui.search.SearchActivity
+import com.vlv.data.database.data.History
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
-import com.vlv.data.network.database.data.History
 import com.vlv.tv_show.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -29,7 +29,7 @@ class SearchSeriesActivity : SearchActivity() {
 
     private val pagingAdapter = SeriesPaginationAdapter { series, view ->
         startActivity(
-            toSeriesDetail(series.toDetailObject()),
+            toTvShowsDetail(series.toDetailObject()),
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 this,
                 view,

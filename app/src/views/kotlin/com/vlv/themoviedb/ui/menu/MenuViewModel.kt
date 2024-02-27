@@ -13,14 +13,14 @@ import com.vlv.common.route.toMovieUpcoming
 import com.vlv.common.route.toPeoplePopular
 import com.vlv.common.route.toPeopleSearch
 import com.vlv.common.route.toPeopleTrending
-import com.vlv.common.route.toSeriesAiringToday
-import com.vlv.common.route.toSeriesGenre
-import com.vlv.common.route.toSeriesOnTheAir
-import com.vlv.common.route.toSeriesPopular
-import com.vlv.common.route.toSeriesSearch
-import com.vlv.common.route.toSeriesTopRated
-import com.vlv.common.route.toSeriesTrendingNow
 import com.vlv.common.route.toSettings
+import com.vlv.common.route.toTvShowAiringToday
+import com.vlv.common.route.toTvShowGenre
+import com.vlv.common.route.toTvShowOnTheAir
+import com.vlv.common.route.toTvShowPopular
+import com.vlv.common.route.toTvShowTopRated
+import com.vlv.common.route.toTvShowTrendingNow
+import com.vlv.common.route.toTvShowsSearch
 import com.vlv.themoviedb.R
 import com.vlv.imperiya.core.R as RCommon
 
@@ -112,43 +112,43 @@ class MenuViewModel : ViewModel() {
             R.string.menu_title_series_option_trending,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_tv,
-            action = context.toSeriesTrendingNow()
+            action = context.toTvShowTrendingNow()
         ),
         MenuItem(
             R.string.menu_title_series_option_top_rated,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_tv,
-            action = context.toSeriesTopRated()
+            action = context.toTvShowTopRated()
         ),
         MenuItem(
             R.string.menu_title_series_option_airing_today,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_tv,
-            action = context.toSeriesAiringToday()
+            action = context.toTvShowAiringToday()
         ),
         MenuItem(
             R.string.menu_title_series_option_on_the_air,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_tv,
-            action = context.toSeriesOnTheAir()
+            action = context.toTvShowOnTheAir()
         ),
         MenuItem(
             R.string.menu_title_series_option_popular,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_tv,
-            action = context.toSeriesPopular()
+            action = context.toTvShowPopular()
         ),
         MenuItem(
             R.string.menu_title_series_option_genres,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_tv,
-            action = context.toSeriesGenre()
+            action = context.toTvShowGenre()
         ),
         MenuItem(
             R.string.menu_title_series_option_discover,
             type = MenuItemType.ITEM,
             icon = RCommon.drawable.ic_search,
-            action = context.toSeriesSearch()
+            action = context.toTvShowsSearch()
         ),
         MenuItem(
             R.string.menu_title_series_option_certifications,
@@ -195,13 +195,15 @@ class MenuViewModel : ViewModel() {
     fun menuItems(
         context: Context
     ) = bondsmith<List<MenuItem>>()
-        .request {
-            mutableListOf<MenuItem>().apply {
-                addAll(userItems(context))
-                addAll(moviesItems(context))
-                addAll(seriesItems(context))
-                addAll(peopleItems(context))
-            }.filter { it.action != null || it.type == MenuItemType.HEADER }
+        .config {
+            request {
+                mutableListOf<MenuItem>().apply {
+                    addAll(userItems(context))
+                    addAll(moviesItems(context))
+                    addAll(seriesItems(context))
+                    addAll(peopleItems(context))
+                }.filter { it.action != null || it.type == MenuItemType.HEADER }
+            }
         }
         .execute()
         .responseLiveData

@@ -11,7 +11,7 @@ import com.vlv.movie.data.api.MovieApi
 
 class MovieDetailRepository(private val api: MovieApi) {
 
-    suspend fun movieDetail(movieId: Int) = bondsmith<MovieDetailResponse>(
+    fun movieDetail(movieId: Int) = bondsmith<MovieDetailResponse>(
         "MOVIE-DETAIL-$movieId"
     )
         .config {
@@ -21,7 +21,7 @@ class MovieDetailRepository(private val api: MovieApi) {
         }
         .execute()
 
-    suspend fun movieCast(movieId: Int) = bondsmith<CreditsResponse>(
+    fun movieCast(movieId: Int) = bondsmith<CreditsResponse>(
         "MOVIE-CAST-$movieId"
     )
         .config {
@@ -31,7 +31,7 @@ class MovieDetailRepository(private val api: MovieApi) {
         }
         .execute()
 
-    suspend fun movieReviews(movieId: Int) = bondsmith<ReviewsResponse>()
+    fun movieReviews(movieId: Int) = bondsmith<ReviewsResponse>()
         .config {
             request {
                 api.movieReviews(movieId, page = 1)

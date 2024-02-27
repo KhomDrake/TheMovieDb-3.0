@@ -1,24 +1,18 @@
-package com.vlv.series.ui.detail.about
+package com.vlv.tv_show.ui.detail.about
 
 import android.content.res.Resources
 import androidx.lifecycle.ViewModel
-import com.vlv.bondsmith.bondsmith
-import com.vlv.data.common.model.series.SeriesDetailResponse
-import com.vlv.series.data.SeriesDetail
-import com.vlv.series.data.repository.SeriesDetailRepository
+import com.vlv.tv_show.data.repository.TvShowDetailRepository
+import com.vlv.tv_show.presentation.model.TvShowDetail
 
-class AboutViewModel(private val repository: SeriesDetailRepository) : ViewModel() {
+class AboutViewModel(private val repository: TvShowDetailRepository) : ViewModel() {
 
     fun seriesDetail(
         resources: Resources,
         seriesId: Int
-    ) = bondsmith<SeriesDetailResponse>()
-        .request {
-            repository.seriesDetail(seriesId)
-        }
-        .execute()
+    ) = repository.tvShowDetail(seriesId)
         .responseLiveData
         .map {
-            SeriesDetail(resources, it)
+            TvShowDetail(resources, it)
         }
 }

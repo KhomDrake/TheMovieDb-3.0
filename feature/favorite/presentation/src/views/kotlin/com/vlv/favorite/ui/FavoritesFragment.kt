@@ -9,13 +9,13 @@ import br.com.arch.toolkit.delegate.viewProvider
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vlv.common.route.FAVORITE_TYPE_EXTRA
-import com.vlv.data.network.database.data.FavoriteType
+import com.vlv.data.database.data.ItemType
 import com.vlv.favorite.R
 import com.vlv.favorite.ui.adapter.FavoritesAdapter
 
 class FavoritesFragment : Fragment(R.layout.favorite_favorites_fragment) {
 
-    private val favoriteType: FavoriteType by extraProvider(FAVORITE_TYPE_EXTRA, FavoriteType.MOVIE)
+    private val favoriteType: ItemType by extraProvider(FAVORITE_TYPE_EXTRA, ItemType.MOVIE)
     private val tabs: TabLayout by viewProvider(R.id.tabs)
     private val content: ViewPager2 by viewProvider(R.id.layout)
 
@@ -24,7 +24,7 @@ class FavoritesFragment : Fragment(R.layout.favorite_favorites_fragment) {
 
         val items = listOf(
             R.string.favorite_movie_title,
-            R.string.favorite_series_title,
+            R.string.favorite_tv_show_title,
             R.string.favorite_people_title
         ).map { getString(it) }
         items.forEach { title ->

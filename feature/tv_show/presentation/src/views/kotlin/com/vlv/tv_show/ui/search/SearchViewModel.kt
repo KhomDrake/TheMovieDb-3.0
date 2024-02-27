@@ -1,20 +1,20 @@
-package com.vlv.series.ui.search
+package com.vlv.tv_show.ui.search
 
 import com.vlv.common.ui.search.BaseSearchViewModel
-import com.vlv.data.network.database.data.HistoryType
+import com.vlv.data.database.data.ItemType
 import com.vlv.search.domain.usecase.HistoryUseCase
 import com.vlv.search.domain.usecase.SearchMovieUseCase
 import com.vlv.search.domain.usecase.SearchPeopleUseCase
-import com.vlv.search.domain.usecase.SearchSeriesUseCase
+import com.vlv.search.domain.usecase.SearchTvShowsUseCase
 
 class SearchViewModel(
     movieUseCase: SearchMovieUseCase,
-    seriesUseCase: SearchSeriesUseCase,
+    seriesUseCase: SearchTvShowsUseCase,
     peopleUseCase: SearchPeopleUseCase,
     historyUseCase: HistoryUseCase
 ) : BaseSearchViewModel(movieUseCase, seriesUseCase, peopleUseCase, historyUseCase) {
 
-    override val historyType: HistoryType
-        get() = HistoryType.SERIES
+    override val historyType: ItemType
+        get() = ItemType.TV_SHOW
 
 }

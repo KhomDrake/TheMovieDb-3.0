@@ -19,10 +19,10 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.vlv.common.data.movie.toDetailObject
-import com.vlv.common.data.series.toDetailObject
+import com.vlv.common.data.tv_show.toDetailObject
 import com.vlv.common.route.toMovieDetail
 import com.vlv.common.route.toPeopleDetail
-import com.vlv.common.route.toSeriesDetail
+import com.vlv.common.route.toTvShowsDetail
 import com.vlv.common.ui.adapter.movie.MovieLoaderAdapter
 import com.vlv.common.ui.adapter.movie.MoviePaginationAdapter
 import com.vlv.common.ui.adapter.people.PeopleLoaderAdapter
@@ -259,7 +259,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
                 items.layoutManager = GridLayoutManager(requireContext(), 2)
                 val pagingAdapter = SeriesPaginationAdapter { series, view ->
                     startActivity(
-                        requireContext().toSeriesDetail(series.toDetailObject()),
+                        requireContext().toTvShowsDetail(series.toDetailObject()),
                         ActivityOptionsCompat.makeSceneTransitionAnimation(
                             requireActivity(),
                             view,

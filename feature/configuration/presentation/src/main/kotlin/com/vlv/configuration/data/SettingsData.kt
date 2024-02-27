@@ -1,8 +1,11 @@
 package com.vlv.configuration.data
 
+import android.os.Build
+import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.domain.model.ConfigItemType
 import com.vlv.configuration.domain.model.SectionsData
 import com.vlv.configuration.domain.model.SettingOption
+import com.vlv.configuration.presentation.BuildConfig
 
 enum class SectionUIType {
     HEADER,
@@ -24,12 +27,20 @@ data class SectionUIItem(
     val title: String? = null,
     val description: String? = null,
     val settingsOption: SettingOption? = null,
-)
+) {
 
-suspend fun SectionsData.toSectionUIItems(): List<SectionUIItem> {
+    val descriptionWithSelectedValue: String
+        get() = "$description ${(data as? ConfigDataList)?.selectedItem?.title.toString()}"
+
+}
+
+fun SectionsData.toSectionUIItems(): List<SectionUIItem> {
     val items = mutableListOf<SectionUIItem>()
 
     val types = SectionUIType.values()
+
+    val shouldShowDynamicColors = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
+        BuildConfig.IS_COMPOSE
 
     this.sections.forEach { section ->
         items.add(
@@ -41,16 +52,20 @@ suspend fun SectionsData.toSectionUIItems(): List<SectionUIItem> {
             )
         )
         section.configs.forEach { configs ->
-            items.add(
-                SectionUIItem(
-                    types.first { it.name == configs.type.name },
-                    configs.id,
-                    configs.data,
-                    configs.title,
-                    configs.description,
-                    configs.configOption
-                )
+            val sectionUIItem = SectionUIItem(
+                types.first { it.name == configs.type.name },
+                configs.id,
+                configs.data,
+                configs.title,
+                configs.description,
+                configs.configOption
             )
+
+            if(
+                configs.configOption != SettingOption.DYNAMIC_COLORS || shouldShowDynamicColors
+            ) {
+                items.add(sectionUIItem)
+            }
         }
     }
 

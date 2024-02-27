@@ -5,7 +5,7 @@
 
         <activity
             android:theme="@style/Imperiya.Theme"
-            android:name=".ui.listing.ListingMovieActivity"
+            android:name=".presentation.ui.listing.ListingMovieActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="${applicationId}.MOVIE_LISTING" />
@@ -15,7 +15,7 @@
 
         <activity
             android:theme="@style/Imperiya.Theme"
-            android:name=".ui.search.SearchMovieActivity"
+            android:name=".presentation.ui.search.SearchMovieActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="${applicationId}.MOVIE_SEARCH" />
@@ -25,7 +25,7 @@
 
         <activity
             android:theme="@style/Imperiya.Theme.Collapse"
-            android:name=".ui.detail.MovieDetailActivity"
+            android:name=".presentation.ui.detail.MovieDetailActivity"
             android:label=""
             android:exported="false">
             <intent-filter>

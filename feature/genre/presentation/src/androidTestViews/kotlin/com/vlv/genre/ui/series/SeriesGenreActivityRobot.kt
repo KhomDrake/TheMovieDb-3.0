@@ -4,12 +4,13 @@ import android.content.res.Resources.NotFoundException
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
-import com.vlv.common.route.toSeriesGenre
+import com.vlv.common.route.toTvShowGenre
 import com.vlv.data.common.model.genre.GenresResponse
 import com.vlv.data.common.model.series.SeriesResponse
 import com.vlv.genre.R
 import com.vlv.genre.data.api.DiscoverApi
 import com.vlv.genre.data.api.GenresApi
+import com.vlv.genre.presentation.ui.series.SeriesGenreActivity
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -44,7 +45,7 @@ class SeriesGenreActivitySetup :
 
     override fun setupLaunch() {
         ActivityScenario.launch<SeriesGenreActivity>(
-            InstrumentationRegistry.getInstrumentation().context.toSeriesGenre()
+            InstrumentationRegistry.getInstrumentation().context.toTvShowGenre()
         )
     }
 

@@ -34,7 +34,6 @@ fun SettingItem(
                 onClick.invoke(sectionData)
             }
     ) {
-        val data = sectionData.data as ConfigDataList
         var topMargin = 0.dp
         if(sectionData.title != null) {
             topMargin = 8.dp
@@ -49,7 +48,7 @@ fun SettingItem(
             Text(
                 modifier = Modifier
                     .padding(top = topMargin),
-                text = "${sectionData.description} ${data.selectedItem.title.toString()}",
+                text = sectionData.descriptionWithSelectedValue,
                 style = TheMovieDbTypography.ParagraphStyle,
                 color = MaterialTheme.colorScheme.onBackground
             )

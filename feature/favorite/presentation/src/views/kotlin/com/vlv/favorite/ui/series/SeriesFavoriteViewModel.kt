@@ -1,24 +1,20 @@
 package com.vlv.favorite.ui.series
 
 import androidx.lifecycle.ViewModel
-import com.vlv.bondsmith.bondsmith
-import com.vlv.common.data.series.Series
-import com.vlv.data.network.database.data.Favorite
-import com.vlv.favorite.domain.usecase.SeriesFavoriteUseCase
+import com.vlv.common.data.tv_show.TvShow
+import com.vlv.favorite.domain.usecase.TvShowFavoriteUseCase
 
 class SeriesFavoriteViewModel(
-    private val useCase: SeriesFavoriteUseCase
+    private val useCase: TvShowFavoriteUseCase
 ) : ViewModel() {
 
-    fun seriesFavorites(shouldTake: Boolean = false) = bondsmith<List<Favorite>>()
-        .request {
-            val data = useCase.favorites()
-            if(shouldTake) data.take(20) else data
-        }
-        .execute()
+    fun seriesFavorites(shouldTake: Boolean = false) = useCase.favorites()
         .responseLiveData
         .map {
-            it.map(::Series)
+            val items = if(shouldTake) {
+                it.take(20)
+            } else it
+            items.map(::TvShow)
         }
 
 }

@@ -12,6 +12,7 @@ import com.vlv.data.database.TheMovieDbDao
 import com.vlv.data.network.database.data.History
 import com.vlv.data.network.database.data.HistoryType
 import com.vlv.movie.data.api.MovieApi
+import com.vlv.movie.presentation.ui.search.SearchMovieActivity
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

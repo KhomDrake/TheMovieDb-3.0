@@ -16,6 +16,7 @@ import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.data.common.model.review.ReviewsResponse
 import com.vlv.favorite.data.FavoriteRepository
 import com.vlv.movie.data.repository.MovieDetailRepository
+import com.vlv.movie.presentation.ui.detail.MovieDetailActivity
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
