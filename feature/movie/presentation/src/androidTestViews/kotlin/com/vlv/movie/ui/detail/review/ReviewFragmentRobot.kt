@@ -6,10 +6,11 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
 import com.vlv.data.common.model.review.ReviewsResponse
-import com.vlv.movie.presentation.ui.detail.cast.EXTRA_MOVIE
 import com.vlv.movie.data.repository.MovieDetailRepository
+import com.vlv.movie.presentation.ui.detail.cast.EXTRA_MOVIE
 import com.vlv.movie.presentation.ui.detail.review.MovieReviewFragment
 import com.vlv.test.Check
 import com.vlv.test.Launch
@@ -20,8 +21,8 @@ import com.vlv.test.hasText
 import com.vlv.test.isDisplayed
 import com.vlv.test.isNotDisplayed
 import com.vlv.test.loadObjectFromJson
-import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -74,15 +75,21 @@ class ReviewFragmentSetup : Setup<ReviewFragmentLaunch, ReviewFragmentCheck>, Ko
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             repository.movieReviews(2)
-        } returns data
+        } returns bondsmith<ReviewsResponse>()
+            .apply {
+                setData(data)
+            }
     }
 
     fun withMoviesReviewsFailed() {
-        coEvery {
+        every {
             repository.movieReviews(2)
-        } throws NotFoundException()
+        } returns bondsmith<ReviewsResponse>()
+            .apply {
+                setError(NotFoundException())
+            }
     }
 
     fun withMoviesReviewsEmpty() {
@@ -92,9 +99,12 @@ class ReviewFragmentSetup : Setup<ReviewFragmentLaunch, ReviewFragmentCheck>, Ko
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             repository.movieReviews(2)
-        } returns data
+        } returns bondsmith<ReviewsResponse>()
+            .apply {
+                setData(data)
+            }
     }
 
 }

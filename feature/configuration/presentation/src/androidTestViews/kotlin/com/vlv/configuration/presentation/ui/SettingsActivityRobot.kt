@@ -3,7 +3,7 @@ package com.vlv.configuration.presentation.ui
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
-import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.route.toSettings
 import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
@@ -52,28 +52,28 @@ class SettingsActivitySetup : Setup<SettingsActivityLaunch, SettingsActivityChec
 
     fun withLoading() {
         every {
-            useCase.configDataLiveData()
-        } returns MutableResponseLiveData<SectionsData>()
+            useCase.configData()
+        } returns bondsmith<SectionsData>()
             .apply {
-                postLoading()
+                setLoading()
             }
     }
 
     fun withError() {
         every {
-            useCase.configDataLiveData()
-        } returns MutableResponseLiveData<SectionsData>()
+            useCase.configData()
+        } returns bondsmith<SectionsData>()
             .apply {
-                postError(Throwable())
+                setError(Throwable())
             }
     }
 
     fun withDataEmpty() {
         every {
-            useCase.configDataLiveData()
-        } returns MutableResponseLiveData<SectionsData>()
+            useCase.configData()
+        } returns bondsmith<SectionsData>()
             .apply {
-                postData(
+                setData(
                     SectionsData(
                         listOf()
                     )
@@ -83,10 +83,10 @@ class SettingsActivitySetup : Setup<SettingsActivityLaunch, SettingsActivityChec
 
     fun withDataDefault(adultContentEnabled: Boolean = false) {
         every {
-            useCase.configDataLiveData()
-        } returns MutableResponseLiveData<SectionsData>()
+            useCase.configData()
+        } returns bondsmith<SectionsData>()
             .apply {
-                postData(
+                setData(
                     SectionsData(
                         listOf(
                             Section(
@@ -222,7 +222,7 @@ class SettingsActivityCheck : Check, KoinComponent {
 
     fun configLoaded(quantity: Int) {
         verify(exactly = quantity) {
-            useCase.configDataLiveData()
+            useCase.configData()
         }
     }
 

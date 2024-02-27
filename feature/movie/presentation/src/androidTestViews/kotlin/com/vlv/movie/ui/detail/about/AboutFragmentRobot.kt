@@ -7,12 +7,13 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
 import com.vlv.data.common.model.movie.MovieDetailResponse
 import com.vlv.movie.R
-import com.vlv.movie.presentation.ui.detail.cast.EXTRA_MOVIE
 import com.vlv.movie.data.repository.MovieDetailRepository
 import com.vlv.movie.presentation.ui.detail.about.AboutFragment
+import com.vlv.movie.presentation.ui.detail.cast.EXTRA_MOVIE
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -23,6 +24,7 @@ import com.vlv.test.isNotDisplayed
 import com.vlv.test.loadObjectFromJson
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -76,13 +78,19 @@ class AboutFragmentSetup : Setup<AboutFragmentLaunch, AboutFragmentCheck>, KoinC
         ) ?: return
         coEvery {
             repository.movieDetail(2)
-        } returns data
+        } returns bondsmith<MovieDetailResponse>()
+            .apply {
+                setData(data)
+            }
     }
 
     fun withLoadMovieDetailFails() {
-        coEvery {
+        every {
             repository.movieDetail(2)
-        } throws NotFoundException()
+        } returns bondsmith<MovieDetailResponse>()
+            .apply {
+                setError(NotFoundException())
+            }
     }
 }
 

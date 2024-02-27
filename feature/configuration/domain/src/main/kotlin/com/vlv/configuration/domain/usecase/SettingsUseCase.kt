@@ -30,8 +30,6 @@ class SettingsUseCase(
         }
         .execute()
 
-    fun configDataLiveData() = configData().responseLiveData
-
     suspend fun setConfigValue(option: SettingOption, value: Any, type: ConfigItemType) {
         when(type) {
             ConfigItemType.LIST -> {

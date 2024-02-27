@@ -4,8 +4,10 @@ import android.content.res.Resources.NotFoundException
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.route.toMovieGenre
 import com.vlv.data.common.model.genre.GenresResponse
+import com.vlv.data.common.model.movie.MovieDetailResponse
 import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.test.Check
 import com.vlv.test.Launch
@@ -22,6 +24,7 @@ import com.vlv.test.isDisplayed
 import com.vlv.test.isNotDisplayed
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -62,9 +65,12 @@ class MovieGenreActivitySetup :
     }
 
     fun withGenreError() {
-        coEvery {
+        every {
             genreApi.moviesGenres()
-        } throws NotFoundException()
+        } returns bondsmith()
+            .apply {
+                setError(NotFoundException())
+            }
     }
 
     fun withMoviesByGenreSuccess() {

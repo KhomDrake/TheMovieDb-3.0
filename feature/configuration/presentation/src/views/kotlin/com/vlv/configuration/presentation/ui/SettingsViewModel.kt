@@ -21,10 +21,11 @@ class SettingsViewModel(
         get() = _config
 
     fun config() = useCase
+        .configData()
+        .responseLiveData
         .apply {
             _config.postLoading()
         }
-        .configDataLiveData()
         .map {
             it.toSectionUIItems()
         }
