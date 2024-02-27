@@ -10,7 +10,7 @@ import androidx.paging.map
 import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.TvShow
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.data.database.data.History
 import com.vlv.data.database.data.ItemType
 import com.vlv.search.domain.usecase.HistoryUseCase

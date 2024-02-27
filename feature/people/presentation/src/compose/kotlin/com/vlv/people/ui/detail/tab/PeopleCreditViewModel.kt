@@ -7,7 +7,7 @@ import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.TvShow
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.people.data.repository.PeopleDetailRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest

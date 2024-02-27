@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import com.vlv.common.data.series.TvShow
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.poster.TvShowsPoster
 import com.vlv.imperiya.core.R
@@ -54,7 +54,7 @@ fun TvShowCarousel(
             content = {
                 items(
                     tvShows,
-                    key = { item -> item.apiId }
+                    key = { item -> item }
                 ) { item ->
                     TvShowsPoster(
                         tvShow = item,

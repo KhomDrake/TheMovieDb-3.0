@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.vlv.common.data.series.TvShow
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute

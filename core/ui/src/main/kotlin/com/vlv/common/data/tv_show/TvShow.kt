@@ -43,7 +43,7 @@ class TvShow(
     )
 }
 
-fun DetailObject.toSeries() = TvShow(
+fun DetailObject.toTvShow() = TvShow(
     adult, id, backdropPath, posterPath, title
 )
 

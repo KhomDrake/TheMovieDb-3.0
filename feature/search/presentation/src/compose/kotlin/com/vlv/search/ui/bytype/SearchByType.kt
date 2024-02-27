@@ -12,7 +12,7 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.TvShow
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.paging.movie.MOVIE_CONTENT_TYPE
 import com.vlv.common.ui.paging.movie.MovieEmptyState
@@ -20,8 +20,8 @@ import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.common.ui.paging.people.PERSON_CONTENT_TYPE
 import com.vlv.common.ui.paging.people.PeopleEmptyState
 import com.vlv.common.ui.paging.people.PeoplePagingGrid
-import com.vlv.common.ui.paging.series.TvShowsEmptyState
 import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
+import com.vlv.common.ui.paging.series.TvShowsEmptyState
 import com.vlv.common.ui.paging.series.TvShowsPagingGrid
 import com.vlv.data.database.data.ItemType
 import com.vlv.extensions.idInt

@@ -2,8 +2,8 @@ package com.vlv.tv_show.presentation.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vlv.common.data.series.toFavorite
-import com.vlv.common.data.series.toSeries
+import com.vlv.common.data.tv_show.toFavorite
+import com.vlv.common.data.tv_show.toTvShow
 import com.vlv.common.ui.DetailObject
 import com.vlv.favorite.domain.usecase.FavoriteUseCase
 import kotlinx.coroutines.Dispatchers
@@ -27,7 +27,7 @@ class TvShowsDetailViewModel(private val favoriteUseCase: FavoriteUseCase) : Vie
 
     fun changeFavorite(detailObject: DetailObject, remove: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            val favorite = detailObject.toSeries().toFavorite()
+            val favorite = detailObject.toTvShow().toFavorite()
             if(remove) {
                 favoriteUseCase.removeFavorite(favorite)
             } else {

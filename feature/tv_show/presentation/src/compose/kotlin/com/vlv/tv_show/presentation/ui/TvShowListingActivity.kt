@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.vlv.common.data.series.TvShowListType
+import com.vlv.common.data.tv_show.TvShowListType
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.TV_SHOW_LISTING_TYPE_EXTRA
 import com.vlv.common.route.handleRoute

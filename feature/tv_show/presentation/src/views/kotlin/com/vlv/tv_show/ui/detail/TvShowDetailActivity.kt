@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vlv.common.data.movie.toMovie
 import com.vlv.common.data.tv_show.TvShow
-import com.vlv.common.data.tv_show.toSeries
+import com.vlv.common.data.tv_show.toTvShow
 import com.vlv.common.ui.DetailActivity
 import com.vlv.common.ui.extension.loadUrl
 import com.vlv.data.database.data.ImageType
@@ -30,7 +30,7 @@ class TvShowDetailActivity : DetailActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val series = objDetail?.toSeries() ?: return
+        val series = objDetail?.toTvShow() ?: return
         series.backdropPath?.let {
             it.loadUrl(backdrop, ImageType.BACKDROP)
         }
