@@ -102,7 +102,7 @@ fun Int.checkTextTabLayoutPosition(text: String, position: Int) {
     onView(withId(this)).check(matches(TabLayoutTextMatcher(position, text)))
 }
 
-fun Int.scrollToPosition(position: Int) {
+fun Int.scrollToPosition(position: Int) = apply {
     onView(withId(this)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(position))
 }
 
