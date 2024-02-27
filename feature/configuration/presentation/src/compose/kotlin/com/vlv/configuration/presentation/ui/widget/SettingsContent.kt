@@ -20,7 +20,7 @@ import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.data.SectionUIType
 import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
-import com.vlv.configuration.domain.model.SettingOption
+import com.vlv.configuration.domain.model.SettingsAction
 import com.vlv.configuration.presentation.ui.SettingsViewModel
 import com.vlv.imperiya.core.ui.components.SmallWarningView
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
@@ -44,8 +44,11 @@ fun SettingsContent(
         paddingValues = paddingValues,
         onConfirmChangeItem = { item ->
             viewModel.setData(item)
-            if(item.settingsOption == SettingOption.DYNAMIC_COLORS) {
-                routeNavigation.invoke(ScreenRoute.RESTART_THE_APP, null)
+            when(item.settingsOption?.action) {
+                SettingsAction.RE_LAUNCH_APP -> {
+                    routeNavigation.invoke(ScreenRoute.RESTART_THE_APP, null)
+                }
+                else -> Unit
             }
         },
         onTryAgain = {

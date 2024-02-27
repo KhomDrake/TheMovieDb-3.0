@@ -69,7 +69,9 @@ fun Context.handleRoute(route: ScreenRoute, data: Any?) {
             ScreenRoute.PEOPLE_DETAIL -> toPeopleDetail(data as People)
             ScreenRoute.RESTART_THE_APP -> toMain()
                 .apply {
-                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    )
                 }
             else -> toMain()
         }

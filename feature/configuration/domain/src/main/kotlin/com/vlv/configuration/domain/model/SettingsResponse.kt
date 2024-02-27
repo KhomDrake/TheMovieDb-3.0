@@ -5,9 +5,15 @@ import com.vlv.configuration.data.model.ConfigurationData
 import com.vlv.configuration.domain.R
 import com.vlv.data.local.datastore.DataVault
 
-enum class SettingOption {
+enum class SettingsAction {
+    RE_LAUNCH_APP
+}
+
+enum class SettingOption(
+    val action: SettingsAction? = null
+) {
     ADULT_CONTENT,
-    DYNAMIC_COLORS,
+    DYNAMIC_COLORS(SettingsAction.RE_LAUNCH_APP),
     LANGUAGE,
     REGION,
     BACKDROP,
