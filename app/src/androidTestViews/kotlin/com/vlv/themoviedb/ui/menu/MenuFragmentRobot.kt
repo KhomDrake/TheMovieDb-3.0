@@ -72,7 +72,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
     fun clickSettings() {
         mockIntent("SETTINGS", targetContext = true)
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SETTINGS.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.SETTINGS.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.SETTINGS.ordinal)
     }
 
     fun clickMovieTrending() {
@@ -83,7 +85,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(MovieListType.TRENDING)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.MOVIES_TRENDING.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.MOVIES_TRENDING.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.MOVIES_TRENDING.ordinal)
     }
 
     fun clickMovieTopRated() {
@@ -94,7 +98,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(MovieListType.TOP_RATED)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.MOVIES_TOP_RATED.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.MOVIES_TOP_RATED.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.MOVIES_TOP_RATED.ordinal)
     }
 
     fun clickMovieNowPlaying() {
@@ -105,7 +111,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(MovieListType.NOW_PLAYING)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.MOVIES_NOW_PLAYING.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.MOVIES_NOW_PLAYING.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.MOVIES_NOW_PLAYING.ordinal)
     }
 
     fun clickMovieUpcoming() {
@@ -116,7 +124,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(MovieListType.UPCOMING)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.MOVIES_UPCOMING.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.MOVIES_UPCOMING.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.MOVIES_UPCOMING.ordinal)
     }
 
     fun clickMoviePopular() {
@@ -127,19 +137,25 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(MovieListType.POPULAR)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.MOVIES_POPULAR.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.MOVIES_POPULAR.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.MOVIES_POPULAR.ordinal)
     }
 
     fun clickMovieGenre() {
         mockIntent("MOVIE_GENRE", targetContext = true)
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.MOVIES_GENRE.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.MOVIES_GENRE.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.MOVIES_GENRE.ordinal)
     }
 
     fun clickMovieSearch() {
         mockIntent("MOVIE_SEARCH", targetContext = true)
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.MOVIES_SEARCH.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.MOVIES_SEARCH.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.MOVIES_SEARCH.ordinal)
     }
 
     fun clickSeriesTrending() {
@@ -150,7 +166,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.TRENDING)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_TRENDING_NOW.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.SERIES_TRENDING_NOW.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.SERIES_TRENDING_NOW.ordinal)
     }
 
     fun clickSeriesTopRated() {
@@ -161,7 +179,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.TOP_RATED)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_TOP_RATED.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.SERIES_TOP_RATED.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.SERIES_TOP_RATED.ordinal)
     }
 
     fun clickSeriesAiringToday() {
@@ -172,7 +192,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.AIRING_TODAY)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_AIRING_TODAY.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.SERIES_AIRING_TODAY.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.SERIES_AIRING_TODAY.ordinal)
     }
 
     fun clickSeriesOnTheAir() {
@@ -183,7 +205,9 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.ON_THE_AIR)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_ON_THE_AIR.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.SERIES_ON_THE_AIR.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.SERIES_ON_THE_AIR.ordinal)
     }
 
     fun clickSeriesPopular() {
@@ -194,32 +218,44 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
             IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.POPULAR)),
         )
 
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_POPULAR.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.SERIES_POPULAR.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.SERIES_POPULAR.ordinal)
     }
 
     fun clickSeriesGenre() {
         mockIntent("SERIES_GENRE", targetContext = true)
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_GENRE.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.SERIES_GENRE.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.SERIES_GENRE.ordinal)
     }
 
     fun clickSeriesSearch() {
         mockIntent("SERIES_SEARCH", targetContext = true)
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_SEARCH.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.SERIES_SEARCH.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.SERIES_SEARCH.ordinal)
     }
 
     fun clickPeoplePopular() {
         mockIntent("PEOPLE_POPULAR", targetContext = true)
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.PEOPLE_POPULAR.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.PEOPLE_POPULAR.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.PEOPLE_POPULAR.ordinal)
     }
 
     fun clickPeopleTrending() {
         mockIntent("PEOPLE_TRENDING", targetContext = true)
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.PEOPLE_TRENDING.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.PEOPLE_TRENDING.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.PEOPLE_TRENDING.ordinal)
     }
 
     fun clickPeopleSearch() {
         mockIntent("PEOPLE_SEARCH", targetContext = true)
-        R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.PEOPLE_SEARCH.ordinal)
+        R.id.menu_items
+            .scrollToPosition(position = MenuItems.PEOPLE_SEARCH.ordinal)
+            .clickOnRecyclerViewItem(position = MenuItems.PEOPLE_SEARCH.ordinal)
     }
 }
 
