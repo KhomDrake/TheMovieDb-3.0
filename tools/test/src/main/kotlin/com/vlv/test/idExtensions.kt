@@ -144,6 +144,7 @@ fun Int.clickOnRecyclerViewItem(position: Int) {
                 position, ViewActions.click()
             )
         )
+        Thread.sleep(300)
     }
 }
 

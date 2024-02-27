@@ -21,11 +21,10 @@ class SettingsViewModel(
         get() = _config
 
     fun config() = useCase
-        .configData()
         .apply {
             _config.postLoading()
         }
-        .responseLiveData
+        .configDataLiveData()
         .map {
             it.toSectionUIItems()
         }
@@ -33,7 +32,8 @@ class SettingsViewModel(
             _config.postError(it)
         }
         .onNext {
-            _config.postData(it)
+            if(it.isEmpty()) _config.postError(Throwable())
+            else _config.postData(it)
         }
 
     fun setData(sectionUIItem: SectionUIItem) {
@@ -55,14 +55,6 @@ class SettingsViewModel(
                     }
                 )
             }
-        }
-    }
-
-    private fun getConfigValue(key: String) = useCase.getConfigValue(key)
-
-    fun setConfigValue(key: String, value: Boolean) {
-        viewModelScope.launch {
-            useCase.setConfigValue(key, value)
         }
     }
 

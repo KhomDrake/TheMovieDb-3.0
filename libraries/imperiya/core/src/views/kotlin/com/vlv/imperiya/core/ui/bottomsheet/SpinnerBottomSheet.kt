@@ -20,7 +20,7 @@ class SpinnerBottomSheet(
     private val title: AppCompatTextView by viewProvider(R.id.action_sheet_title)
     private val body: AppCompatTextView by viewProvider(R.id.action_sheet_body)
     private val button: AppCompatButton by viewProvider(R.id.confirm_button)
-    private val items: RecyclerView by viewProvider(R.id.items)
+    private val items: RecyclerView by viewProvider(R.id.action_sheet_items)
 
     private var titleText: String? = null
     private var bodyText: String? = null

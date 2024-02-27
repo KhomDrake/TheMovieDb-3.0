@@ -32,7 +32,7 @@
             tools:text="Body ahsuahsuah" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/items"
+            android:id="@+id/action_sheet_items"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

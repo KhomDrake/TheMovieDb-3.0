@@ -86,9 +86,7 @@ class SettingsActivity : AppCompatActivity(R.layout.configuration_settings_activ
     private fun setupConfig() {
         viewModel.config.observe(this) {
             data { options ->
-                if(options.isEmpty()) viewStateMachine.errorState()
-                else viewStateMachine.dataState()
-
+                viewStateMachine.dataState()
                 updateOptions(options)
             }
             showLoading {
