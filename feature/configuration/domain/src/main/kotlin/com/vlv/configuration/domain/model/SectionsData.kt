@@ -68,15 +68,15 @@ class SectionsData(
                     SectionConfig(
                         SettingOption.ADULT_CONTENT,
                         ConfigItemType.SWITCH,
-                        null,
                         resources.getString(R.string.configuration_options_item_adult_content_title),
+                        resources.getString(R.string.configuration_options_item_adult_content_body),
                         settingsData.adultContent.selectedItem.value as Boolean
                     ),
                     SectionConfig(
                         SettingOption.DYNAMIC_COLORS,
                         ConfigItemType.SWITCH,
-                        null,
                         resources.getString(R.string.configuration_options_item_dynamic_colors_title),
+                        resources.getString(R.string.configuration_options_item_dynamic_colors_body),
                         settingsData.dynamicColors.selectedItem.value as Boolean
                     ),
                     SectionConfig(

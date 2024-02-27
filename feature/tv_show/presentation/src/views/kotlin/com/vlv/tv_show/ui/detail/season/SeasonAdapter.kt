@@ -1,4 +1,4 @@
-package com.vlv.series.ui.detail.season
+package com.vlv.tv_show.ui.detail.season
 
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +9,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.common.ui.extension.loadUrl
-import com.vlv.data.common.model.series.Season
 import com.vlv.extensions.inflate
-import com.vlv.extensions.patternDate2
-import com.vlv.extensions.toFormattedString
 import com.vlv.tv_show.R
+import com.vlv.tv_show.presentation.model.Season
 
 class SeasonDiffUtil: ItemCallback<Season>() {
     override fun areContentsTheSame(oldItem: Season, newItem: Season): Boolean {
-        return oldItem.name == newItem.name
+        return oldItem.title == newItem.title
     }
 
     override fun areItemsTheSame(oldItem: Season, newItem: Season): Boolean {
@@ -32,7 +30,7 @@ class SeasonAdapter : ListAdapter<Season, SeasonViewHolder>(SeasonDiffUtil()) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeasonViewHolder {
-        return SeasonViewHolder(parent.inflate(R.layout.series_season_item))
+        return SeasonViewHolder(parent.inflate(R.layout.tv_show_season_item))
     }
 
 }
@@ -47,16 +45,12 @@ class SeasonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(season: Season) {
         itemView.clipToOutline = true
-        title.text = season.name
+        title.text = season.title
 
         poster.clipToOutline = true
 
-        season.posterPath.loadUrl(poster)
-        numberAndDate.text = numberAndDate.context.getString(
-            R.string.tv_show_season_description,
-            season.episodeCount,
-            season.airDate?.toFormattedString(patternDate2())
-        )
+        season.poster.loadUrl(poster)
+        numberAndDate.text = season.description
     }
 
 }

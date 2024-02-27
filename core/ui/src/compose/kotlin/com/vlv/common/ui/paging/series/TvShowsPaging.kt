@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.paging.CombinedLoadStates
 import com.vlv.bondsmith.data.ResponseStatus
-import com.vlv.common.data.series.TvShow
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.extension.isFullError
 import com.vlv.common.ui.extension.isFullLoading

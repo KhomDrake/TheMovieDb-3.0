@@ -21,7 +21,7 @@ import com.vlv.common.ui.AppBarStateChangeListener
 import com.vlv.common.route.FINISH_AFTER_TRANSITION_EXTRA
 import com.vlv.common.ui.extension.loadUrl
 import com.vlv.common.route.EXTRA_PEOPLE
-import com.vlv.data.network.database.data.ImageType
+import com.vlv.data.database.data.ImageType
 import com.vlv.extensions.getAttrColor
 import com.vlv.people.R
 import org.koin.androidx.viewmodel.ext.android.viewModel

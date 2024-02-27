@@ -2,7 +2,7 @@ package com.vlv.movie.ui.detail.about
 
 import androidx.test.core.app.ApplicationProvider
 import com.vlv.data.local.datastore.DataVault
-import com.vlv.movie.MovieInitializer
+import com.vlv.movie.presentation.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
 import com.vlv.favorite.domain.FavoriteDomainInitializer
 import com.vlv.movie.data.MovieDataInitializer

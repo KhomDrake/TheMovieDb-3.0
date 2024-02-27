@@ -9,9 +9,10 @@ import com.squareup.moshi.Moshi
 import com.vlv.common.route.toMovieSearch
 import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.data.database.TheMovieDbDao
-import com.vlv.data.network.database.data.History
-import com.vlv.data.network.database.data.HistoryType
-import com.vlv.movie.data.api.MovieApi
+import com.vlv.data.database.data.History
+import com.vlv.data.database.data.ItemType
+import com.vlv.movie.presentation.ui.search.SearchMovieActivity
+import com.vlv.search.data.api.SearchApi
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -36,7 +37,7 @@ fun SearchMovieActivityTest.searchMovieActivity(func: SearchMovieActivitySetup.(
 class SearchMovieActivitySetup : Setup<SearchMovieActivityLaunch, SearchMovieActivityCheck>, KoinComponent {
 
     private val dao: TheMovieDbDao by inject()
-    private val movieApi: MovieApi by inject()
+    private val movieApi: SearchApi by inject()
     private val moshi: Moshi by inject()
 
     override fun createCheck(): SearchMovieActivityCheck {
@@ -63,7 +64,7 @@ class SearchMovieActivitySetup : Setup<SearchMovieActivityLaunch, SearchMovieAct
 
     fun withSearchHistoryEmpty() {
         every {
-            dao.historyByType(HistoryType.MOVIE)
+            dao.historyByType(ItemType.MOVIE)
         } returns MutableLiveData<List<History>>().apply {
             postValue(listOf())
         }
@@ -71,12 +72,12 @@ class SearchMovieActivitySetup : Setup<SearchMovieActivityLaunch, SearchMovieAct
 
     fun withSearchHistory() {
         every {
-            dao.historyByType(HistoryType.MOVIE)
+            dao.historyByType(ItemType.MOVIE)
         } returns MutableLiveData<List<History>>().apply {
             postValue(listOf(
-                History("Spiderman", HistoryType.MOVIE),
-                History("Superman", HistoryType.MOVIE),
-                History("Bacate", HistoryType.MOVIE)
+                History("Spiderman", ItemType.MOVIE),
+                History("Superman", ItemType.MOVIE),
+                History("Bacate", ItemType.MOVIE)
             ))
         }
     }
@@ -89,13 +90,13 @@ class SearchMovieActivitySetup : Setup<SearchMovieActivityLaunch, SearchMovieAct
         ) ?: return
 
         coEvery {
-            movieApi.search(any(), 1)
+            movieApi.searchMovie(any(), 1)
         } returns data
     }
 
     fun withSearchFailure() {
         coEvery {
-            movieApi.search(any(), 1)
+            movieApi.searchMovie(any(), 1)
         } throws HttpException("Error Test", null)
     }
 
@@ -107,7 +108,7 @@ class SearchMovieActivitySetup : Setup<SearchMovieActivityLaunch, SearchMovieAct
         ) ?: return
 
         coEvery {
-            movieApi.search(any(), 1)
+            movieApi.searchMovie(any(), 1)
         } returns data
     }
 
@@ -140,7 +141,7 @@ class SearchMovieActivityLaunch : Launch<SearchMovieActivityCheck> {
 
 class SearchMovieActivityCheck : Check, KoinComponent {
 
-    private val movieApi: MovieApi by inject()
+    private val movieApi: SearchApi by inject()
     private val dao: TheMovieDbDao by inject()
 
     fun initialStateDisplayed() {
@@ -175,7 +176,7 @@ class SearchMovieActivityCheck : Check, KoinComponent {
 
     fun searchedUsingHistory() {
         coVerify {
-            movieApi.search(
+            movieApi.searchMovie(
                 "Spiderman", 1
             )
         }
@@ -183,7 +184,7 @@ class SearchMovieActivityCheck : Check, KoinComponent {
 
     fun searchCalled(text: String, times: Int) {
         coVerify(exactly = times) {
-            movieApi.search(
+            movieApi.searchMovie(
                 text, 1
             )
         }

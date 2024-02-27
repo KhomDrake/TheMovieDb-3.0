@@ -11,7 +11,7 @@ import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.responseData
 import com.vlv.bondsmith.data.responseError
 import com.vlv.bondsmith.data.responseLoading
-import com.vlv.common.data.series.TvShow
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.carousel.TvShowCarousel
 import com.vlv.common.ui.extension.LaunchEffectLifecycle

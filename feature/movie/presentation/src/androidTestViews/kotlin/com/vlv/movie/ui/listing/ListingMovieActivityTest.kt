@@ -1,6 +1,6 @@
 package com.vlv.movie.ui.listing
 
-import com.vlv.movie.MovieInitializer
+import com.vlv.movie.presentation.MovieInitializer
 import com.vlv.data.network.NetworkInitializer
 import com.vlv.favorite.domain.FavoriteDomainInitializer
 import com.vlv.movie.data.MovieDataInitializer

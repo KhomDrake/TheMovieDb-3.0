@@ -1,10 +1,14 @@
 package com.vlv.bondsmith
 
+import androidx.annotation.VisibleForTesting
 import br.com.arch.toolkit.livedata.response.MutableResponseLiveData
 import br.com.arch.toolkit.livedata.response.ResponseLiveData
 import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
 import com.vlv.bondsmith.data.flow.ResponseStateFlow
+import com.vlv.bondsmith.data.responseData
+import com.vlv.bondsmith.data.responseError
+import com.vlv.bondsmith.data.responseLoading
 import com.vlv.bondsmith.data.toDataResult
 import com.vlv.bondsmith.log.LogHandler
 import kotlinx.coroutines.CoroutineScope
@@ -64,6 +68,30 @@ class Bondsmith<Data>(
             }
         }
         return@synchronized this
+    }
+
+    @VisibleForTesting
+    fun setData(data: Data) = apply {
+        bondsmithScope.launch {
+            _responseLiveData.postData(data)
+            _responseStateFlow.emit(responseData(data))
+        }
+    }
+
+    @VisibleForTesting
+    fun setLoading() {
+        bondsmithScope.launch {
+            _responseLiveData.postLoading()
+            _responseStateFlow.emit(responseLoading())
+        }
+    }
+
+    @VisibleForTesting
+    fun setError(throwable: Throwable = Throwable()) {
+        bondsmithScope.launch {
+            _responseLiveData.postError(throwable)
+            _responseStateFlow.emit(responseError(throwable))
+        }
     }
 
     private fun createExecution() = scope.launch(Dispatchers.IO) {

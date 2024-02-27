@@ -51,7 +51,7 @@ class SpinnerAdapter(
 
         val onCheckedChange: (Boolean) -> Unit = { checked ->
             if (checked) {
-                if (selectedPosition != -1 && selectedPosition != holder.adapterPosition) {
+                if (selectedPosition != -1 && selectedPosition != holder.absoluteAdapterPosition) {
                     currentList[selectedPosition]?.checked = false
                     notifyItemChanged(selectedPosition)
                 }
@@ -59,7 +59,7 @@ class SpinnerAdapter(
                 onItemSelected.invoke(item)
 
                 item.checked = false
-                selectedPosition = holder.adapterPosition
+                selectedPosition = holder.absoluteAdapterPosition
             }
         }
 
@@ -86,8 +86,8 @@ class SpinnerAdapter(
 
 class ItemViewHolder(view: View): ViewHolder(view) {
 
-    val title: AppCompatTextView by viewProvider(R.id.small_warning_title)
-    val checkbox: AppCompatCheckBox by viewProvider(R.id.checkbox)
+    val title: AppCompatTextView by viewProvider(R.id.action_sheet_item_title)
+    val checkbox: AppCompatCheckBox by viewProvider(R.id.action_sheet_item_checkbox)
 
     fun bind(item: Item) {
         checkbox.isChecked = item.checked

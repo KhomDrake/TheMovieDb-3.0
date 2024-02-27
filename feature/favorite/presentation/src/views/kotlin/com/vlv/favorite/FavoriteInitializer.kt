@@ -5,7 +5,7 @@ import androidx.startup.Initializer
 import com.vlv.favorite.domain.FavoriteDomainInitializer
 import com.vlv.favorite.ui.movie.MovieFavoritesViewModel
 import com.vlv.favorite.ui.people.PeopleFavoritesViewModel
-import com.vlv.favorite.ui.series.SeriesFavoriteViewModel
+import com.vlv.favorite.ui.tv_show.TvShowFavoriteViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -16,7 +16,7 @@ class FavoriteInitializer : Initializer<Module> {
     override fun create(context: Context): Module {
         val module = module {
             viewModel { MovieFavoritesViewModel(get()) }
-            viewModel { SeriesFavoriteViewModel(get()) }
+            viewModel { TvShowFavoriteViewModel(get()) }
             viewModel { PeopleFavoritesViewModel(get()) }
         }
         loadKoinModules(module)

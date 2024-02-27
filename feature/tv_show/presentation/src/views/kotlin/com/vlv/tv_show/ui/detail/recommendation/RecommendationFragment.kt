@@ -1,4 +1,4 @@
-package com.vlv.series.ui.detail.recommendation
+package com.vlv.tv_show.ui.detail.recommendation
 
 import android.os.Bundle
 import android.view.View
@@ -8,15 +8,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.arch.toolkit.delegate.extraProvider
-import com.vlv.ui.R
-import com.vlv.common.data.series.Series
-import com.vlv.common.data.series.toDetailObject
+import com.vlv.common.data.tv_show.TvShow
+import com.vlv.common.data.tv_show.toDetailObject
+import com.vlv.common.route.toTvShowsDetail
 import com.vlv.common.ui.adapter.series.SeriesLoaderAdapter
 import com.vlv.common.ui.adapter.series.SeriesPaginationAdapter
 import com.vlv.common.ui.adapter.series.VIEW_TYPE_SERIES
 import com.vlv.common.ui.listing.ListingItemsFragment
-import com.vlv.common.route.toSeriesDetail
-import com.vlv.series.ui.detail.about.EXTRA_SERIES
+import com.vlv.tv_show.ui.detail.about.EXTRA_TV_SHOW
+import com.vlv.ui.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecommendationFragment : ListingItemsFragment() {
 
-    private val series: Series? by extraProvider(EXTRA_SERIES, null)
+    private val series: TvShow? by extraProvider(EXTRA_TV_SHOW, null)
 
     private val viewModel: RecommendationViewModel by viewModel()
 
@@ -33,7 +33,7 @@ class RecommendationFragment : ListingItemsFragment() {
 
     private val pagingAdapter = SeriesPaginationAdapter { series, view ->
         startActivity(
-            requireContext().toSeriesDetail(series.toDetailObject()),
+            requireContext().toTvShowsDetail(series.toDetailObject()),
             ActivityOptionsCompat.makeSceneTransitionAnimation(
                 requireActivity(),
                 view,
@@ -86,9 +86,9 @@ class RecommendationFragment : ListingItemsFragment() {
     }
 
     companion object {
-        fun instance(series: Series) = RecommendationFragment().apply {
+        fun instance(series: TvShow) = RecommendationFragment().apply {
             arguments = bundleOf(
-                EXTRA_SERIES to series
+                EXTRA_TV_SHOW to series
             )
         }
     }

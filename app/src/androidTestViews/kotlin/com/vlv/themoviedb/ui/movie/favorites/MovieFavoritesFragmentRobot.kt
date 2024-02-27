@@ -7,11 +7,13 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toFavorite
 import com.vlv.common.route.FAVORITE_TYPE_EXTRA
 import com.vlv.data.common.model.movie.MoviesResponse
-import com.vlv.data.network.database.data.FavoriteType
+import com.vlv.data.database.data.Favorite
+import com.vlv.data.database.data.ItemType
 import com.vlv.favorite.domain.usecase.MovieFavoriteUseCase
 import com.vlv.test.Check
 import com.vlv.test.Launch
@@ -28,6 +30,7 @@ import com.vlv.test.mockIntent
 import com.vlv.themoviedb.R
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -61,21 +64,34 @@ class MovieFavoritesFragmentSetup :
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             useCase.favorites()
-        } returns data.movies.map { Movie(it).toFavorite() }
+        } returns bondsmith<List<Favorite>>()
+            .apply {
+                setData(
+                    data.movies.map { Movie(it).toFavorite() }
+                )
+            }
     }
 
     fun withFavoritesError() {
-        coEvery {
+        every {
             useCase.favorites()
-        } throws NotFoundException()
+        } returns bondsmith<List<Favorite>>()
+            .apply {
+                setError(NotFoundException())
+            }
     }
 
     fun withFavoritesEmpty() {
         coEvery {
             useCase.favorites()
-        } returns listOf()
+        } returns bondsmith<List<Favorite>>()
+            .apply {
+                setData(
+                    listOf()
+                )
+            }
     }
 
 }
@@ -99,7 +115,7 @@ class MovieFavoritesFragmentLaunch : Launch<MovieFavoritesFragmentCheck> {
             "FAVORITES_LISTING",
             true,
             IntentMatchers.hasExtras(BundleMatchers.hasKey(FAVORITE_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(FavoriteType.MOVIE)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(ItemType.MOVIE)),
         )
 
         R.id.see_all.clickIgnoreConstraint()
@@ -177,7 +193,7 @@ class MovieFavoritesFragmentCheck : Check, KoinComponent {
             "FAVORITES_LISTING",
             true,
             IntentMatchers.hasExtras(BundleMatchers.hasKey(FAVORITE_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(FavoriteType.MOVIE)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(ItemType.MOVIE)),
         )
     }
 

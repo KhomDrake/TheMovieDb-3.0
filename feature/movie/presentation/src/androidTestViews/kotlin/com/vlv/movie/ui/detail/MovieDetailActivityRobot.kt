@@ -1,11 +1,11 @@
 package com.vlv.movie.ui.detail
 
 import android.content.Intent
-import android.content.res.Resources.NotFoundException
 import androidx.paging.PagingData
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toDetailObject
 import com.vlv.common.data.movie.toFavorite
@@ -16,6 +16,7 @@ import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.data.common.model.review.ReviewsResponse
 import com.vlv.favorite.data.FavoriteRepository
 import com.vlv.movie.data.repository.MovieDetailRepository
+import com.vlv.movie.presentation.ui.detail.MovieDetailActivity
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -27,6 +28,7 @@ import com.vlv.test.loadObjectFromJson
 import com.vlv.test.withDrawable
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import kotlinx.coroutines.flow.flow
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -72,7 +74,10 @@ class MovieDetailActivitySetup : Setup<MovieDetailActivityLaunch, MovieDetailAct
 
         coEvery {
             repository.movieCast(2)
-        } returns data
+        } returns bondsmith<CreditsResponse>()
+            .apply {
+                setData(data)
+            }
 
         val dataRecommendation = loadObjectFromJson<MoviesResponse>(
             InstrumentationRegistry.getInstrumentation().context,
@@ -96,7 +101,10 @@ class MovieDetailActivitySetup : Setup<MovieDetailActivityLaunch, MovieDetailAct
 
         coEvery {
             repository.movieReviews(2)
-        } returns dataReview
+        } returns bondsmith<ReviewsResponse>()
+            .apply {
+                setData(dataReview)
+            }
     }
 
     override fun setupLaunch() {
@@ -124,15 +132,21 @@ class MovieDetailActivitySetup : Setup<MovieDetailActivityLaunch, MovieDetailAct
             "movie_detail.json",
             moshi
         ) ?: return
-        coEvery {
+        every {
             repository.movieDetail(2)
-        } returns data
+        } returns bondsmith<MovieDetailResponse>()
+            .apply {
+                setData(data)
+            }
     }
 
     fun withMovieDetailFails() {
-        coEvery {
+        every {
             repository.movieDetail(2)
-        } throws NotFoundException()
+        } returns bondsmith<MovieDetailResponse>()
+            .apply {
+                setError(Throwable())
+            }
     }
 
     fun withMovieFavorite() {

@@ -8,12 +8,12 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-            <meta-data  android:name="com.vlv.series.SeriesInitializer"
+            <meta-data  android:name="com.vlv.tv_show.TvShowInitializer"
                 android:value="androidx.startup" />
         </provider>
 
         <activity
-            android:name=".ui.detail.SeriesDetailActivity"
+            android:name=".ui.detail.TvShowDetailActivity"
             android:theme="@style/Imperiya.Theme.Collapse"
             android:label=""
             android:exported="false"
@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".ui.listing.ListingSeriesActivity"
+            android:name=".ui.listing.ListingTvShowActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false"
             android:screenOrientation="portrait">
@@ -40,7 +40,7 @@
         </activity>
 
         <activity
-            android:name=".ui.search.SearchSeriesActivity"
+            android:name=".ui.search.SearchTvShowActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false"
             android:screenOrientation="portrait">

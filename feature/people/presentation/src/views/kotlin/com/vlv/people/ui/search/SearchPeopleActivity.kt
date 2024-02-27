@@ -5,14 +5,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.vlv.common.route.toPeopleDetail
 import com.vlv.common.ui.adapter.LoaderAdapter
 import com.vlv.common.ui.adapter.people.PeopleLoaderAdapter
 import com.vlv.common.ui.adapter.people.PeoplePagingAdapter
-import com.vlv.common.route.toPeopleDetail
 import com.vlv.common.ui.search.SearchActivity
+import com.vlv.data.database.data.History
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
-import com.vlv.data.network.database.data.History
 import com.vlv.people.R
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged

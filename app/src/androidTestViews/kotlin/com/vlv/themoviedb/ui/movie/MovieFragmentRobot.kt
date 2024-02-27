@@ -3,17 +3,19 @@ package com.vlv.themoviedb.ui.movie
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.movie.toFavorite
 import com.vlv.data.common.model.movie.MoviesResponse
+import com.vlv.data.database.data.Favorite
 import com.vlv.favorite.domain.usecase.MovieFavoriteUseCase
 import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
 import com.vlv.test.loadObjectFromJson
-import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -47,9 +49,12 @@ class MovieFragmentSetup : Setup<MovieFragmentLaunch, MovieFragmentCheck>, KoinC
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             useCase.favorites()
-        } returns data.movies.map { Movie(it).toFavorite() }
+        } returns bondsmith<List<Favorite>>()
+            .setData(
+                data.movies.map { Movie(it).toFavorite() }
+            )
     }
 
     fun withMovieTrending() {
@@ -59,9 +64,10 @@ class MovieFragmentSetup : Setup<MovieFragmentLaunch, MovieFragmentCheck>, KoinC
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             repository.trendingMovies(any())
-        } returns data
+        } returns bondsmith<MoviesResponse>()
+            .setData(data)
     }
 
     fun withMoviePlayingNow() {
@@ -71,9 +77,10 @@ class MovieFragmentSetup : Setup<MovieFragmentLaunch, MovieFragmentCheck>, KoinC
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             repository.nowPlaying()
-        } returns data
+        } returns bondsmith<MoviesResponse>()
+            .setData(data)
     }
 
 }

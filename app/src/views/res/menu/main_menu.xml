@@ -5,9 +5,9 @@
         android:title="@string/movie_title"
         android:icon="@drawable/ic_movie_enable"/>
     <item
-        android:id="@+id/series"
-        android:title="@string/series_title"
-        android:icon="@drawable/ic_series"/>
+        android:id="@+id/tv_shows"
+        android:title="@string/tv_show_title"
+        android:icon="@drawable/ic_tv_shows"/>
     <item
         android:id="@+id/search"
         android:title="@string/search_title"

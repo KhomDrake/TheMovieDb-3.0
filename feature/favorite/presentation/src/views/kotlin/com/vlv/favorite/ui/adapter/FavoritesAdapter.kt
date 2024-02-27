@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.vlv.favorite.ui.movie.MovieFavoritesFragment
 import com.vlv.favorite.ui.people.PeopleFavoritesFragment
-import com.vlv.favorite.ui.series.SeriesFavoritesFragment
+import com.vlv.favorite.ui.tv_show.TvShowFavoritesFragment
 
 class FavoritesAdapter(
     private val itemCount: Int,
@@ -15,7 +15,7 @@ class FavoritesAdapter(
     override fun createFragment(position: Int): Fragment {
         return when(position) {
             0 -> MovieFavoritesFragment()
-            1 -> SeriesFavoritesFragment()
+            1 -> TvShowFavoritesFragment()
             else -> PeopleFavoritesFragment()
         }
     }

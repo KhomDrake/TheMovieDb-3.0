@@ -6,8 +6,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.vlv.common.data.series.TvShow
-import com.vlv.common.data.series.TvShowListType
+import com.vlv.common.data.tv_show.TvShow
+import com.vlv.common.data.tv_show.TvShowListType
 import com.vlv.data.common.model.TimeWindow
 import com.vlv.tv_show.data.repository.TvShowRepository
 import kotlinx.coroutines.Dispatchers

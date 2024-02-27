@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.startup.Initializer
 import com.vlv.configuration.presentation.ui.SettingsViewModel
 import com.vlv.data.network.NetworkInitializer
-import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -14,7 +13,7 @@ class ConfigurationInitializer : Initializer<Module> {
 
     override fun create(context: Context): Module {
         val module = module {
-            viewModel { SettingsViewModel(androidApplication().resources, get()) }
+            viewModel { SettingsViewModel(get()) }
         }
 
         loadKoinModules(module)

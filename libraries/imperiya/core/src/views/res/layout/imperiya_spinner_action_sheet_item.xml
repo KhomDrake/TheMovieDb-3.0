@@ -10,25 +10,26 @@
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/small_warning_title"
+        android:id="@+id/action_sheet_item_title"
         style="@style/Imperiya.Style.Text.Subtitle.Bold"
-        android:textColor="@color/color_imperiya_on_secondary"
+        android:textColor="@color/color_imperiya_tertiary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/checkbox"
+        app:layout_constraintEnd_toStartOf="@+id/action_sheet_item_checkbox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="klsadjalsdjkal" />
 
     <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/checkbox"
+        android:id="@+id/action_sheet_item_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingEnd="0dp"
         android:minHeight="0dp"
         android:minWidth="0dp"
+        tools:checked="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

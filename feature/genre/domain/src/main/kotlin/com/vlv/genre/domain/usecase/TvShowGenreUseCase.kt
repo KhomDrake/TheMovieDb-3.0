@@ -9,7 +9,7 @@ class TvShowGenreUseCase(
     private val repository: GenreRepository
 ) {
 
-    suspend fun genres() = bondsmith<List<GenreResponse>>("TV-SHOW-GENRE")
+    fun genres() = bondsmith<List<GenreResponse>>("TV-SHOW-GENRE")
         .config {
             request {
                 repository.tvShowGenre().genres

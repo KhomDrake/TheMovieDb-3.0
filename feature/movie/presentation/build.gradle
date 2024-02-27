@@ -79,4 +79,5 @@ dependencies {
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')
     androidTestImplementation project(path: ':feature:favorite:data')
+    androidTestImplementation project(path: ':feature:search:data')
 }

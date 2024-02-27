@@ -20,7 +20,7 @@ class SettingsUseCase(
 
         return SettingsResponse(resources, config)
     }
-    suspend fun configData() = bondsmith<SectionsData>("CONFIG-DATA")
+    fun configData() = bondsmith<SectionsData>("CONFIG-DATA")
         .config {
             request {
                 withCache(with = false)

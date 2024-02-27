@@ -6,9 +6,12 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.Movie
 import com.vlv.data.common.model.credit.CreditsResponse
 import com.vlv.movie.data.repository.MovieDetailRepository
+import com.vlv.movie.presentation.ui.detail.cast.EXTRA_MOVIE
+import com.vlv.movie.presentation.ui.detail.cast.MovieCastFragment
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -22,6 +25,7 @@ import com.vlv.test.loadObjectFromJson
 import com.vlv.test.mockIntent
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -76,13 +80,19 @@ class MovieCastFragmentSetup : Setup<MovieCastFragmentLaunch, MovieCastFragmentC
 
         coEvery {
             repository.movieCast(2)
-        } returns data
+        } returns bondsmith<CreditsResponse>()
+            .apply {
+                setData(data)
+            }
     }
 
     fun castInformationFailure() {
-        coEvery {
+        every {
             repository.movieCast(2)
-        } throws NotFoundException()
+        } returns bondsmith<CreditsResponse>()
+            .apply {
+                setError(NotFoundException())
+            }
     }
 
 }

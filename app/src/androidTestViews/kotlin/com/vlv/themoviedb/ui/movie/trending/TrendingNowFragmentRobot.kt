@@ -7,10 +7,10 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
+import com.vlv.bondsmith.bondsmith
 import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.route.MOVIES_LISTING_TYPE_EXTRA
 import com.vlv.data.common.model.movie.MoviesResponse
-import com.vlv.themoviedb.R
 import com.vlv.movie.data.repository.MovieRepository
 import com.vlv.test.Check
 import com.vlv.test.Launch
@@ -24,8 +24,10 @@ import com.vlv.test.isDisplayed
 import com.vlv.test.isNotDisplayed
 import com.vlv.test.loadObjectFromJson
 import com.vlv.test.mockIntent
+import com.vlv.themoviedb.R
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -58,26 +60,37 @@ class TrendingNowFragmentSetup : Setup<TrendingNowFragmentLaunch, TrendingNowFra
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             repository.trendingMovies(any())
-        } returns data
+        } returns bondsmith<MoviesResponse>()
+            .apply {
+                setData(data)
+            }
     }
 
     fun withTrendingNowEmpty() {
         coEvery {
             repository.trendingMovies(any())
-        } returns MoviesResponse(
-            1,
-            1,
-            1,
-            listOf()
-        )
+        } returns bondsmith<MoviesResponse>()
+            .apply {
+                setData(
+                    MoviesResponse(
+                        1,
+                        1,
+                        1,
+                        listOf()
+                    )
+                )
+            }
     }
 
     fun withTrendingNowFails() {
         coEvery {
             repository.trendingMovies(any())
-        } throws Resources.NotFoundException()
+        } returns bondsmith<MoviesResponse>()
+            .apply {
+                setError(Resources.NotFoundException())
+            }
     }
 
 }

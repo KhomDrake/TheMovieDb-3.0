@@ -15,19 +15,21 @@
 
     <string name="configuration_options_item_description">Open configuration change</string>
     <string name="configuration_options_item_adult_content_title">Show adult content</string>
+    <string name="configuration_options_item_adult_content_body">If enabled, adult content will show up in search or lists</string>
     <string name="configuration_options_item_dynamic_colors_title">Use dynamic colors</string>
+    <string name="configuration_options_item_dynamic_colors_body">If enabled, the app will use the colors defined by the user\'s device</string>
     <string name="configuration_options_item_language_title">Languages</string>
-    <string name="configuration_options_item_language_body">Language chosen:</string>
+    <string name="configuration_options_item_language_body">Chosen language:</string>
     <string name="configuration_options_item_region_title">Region</string>
-    <string name="configuration_options_item_region_body">Region chosen:</string>
+    <string name="configuration_options_item_region_body">Chosen region:</string>
     <string name="configuration_options_item_backdrop_title">Backdrop image definition</string>
-    <string name="configuration_options_item_backdrop_body">Definition chosen:</string>
+    <string name="configuration_options_item_backdrop_body">chosen definition:</string>
     <string name="configuration_options_item_logo_title">Logo image definition</string>
-    <string name="configuration_options_item_logo_body">Definition chosen:</string>
+    <string name="configuration_options_item_logo_body">Chosen definition:</string>
     <string name="configuration_options_item_poster_title">Poster image definition</string>
-    <string name="configuration_options_item_poster_body">Definition chosen:</string>
+    <string name="configuration_options_item_poster_body">Chosen definition:</string>
     <string name="configuration_options_item_profile_title">Profile image definition</string>
-    <string name="configuration_options_item_profile_body">Definition chosen:</string>
+    <string name="configuration_options_item_profile_body">Chosen definition:</string>
 
     <!--  Backdrop  -->
     <string name="configuration_backdrop_low">Low</string>

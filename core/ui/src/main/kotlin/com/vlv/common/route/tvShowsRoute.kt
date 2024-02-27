@@ -1,7 +1,7 @@
 package com.vlv.common.route
 
 import android.content.Context
-import com.vlv.common.data.series.TvShowListType
+import com.vlv.common.data.tv_show.TvShowListType
 import com.vlv.common.ui.DetailObject
 import com.vlv.data.database.data.ItemType
 import com.vlv.extensions.intentForAction

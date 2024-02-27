@@ -1,15 +1,15 @@
-package com.vlv.series.ui.detail.recommendation
+package com.vlv.tv_show.ui.detail.recommendation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.vlv.common.data.series.Series
-import com.vlv.series.data.repository.SeriesDetailRepository
+import com.vlv.common.data.tv_show.TvShow
+import com.vlv.tv_show.data.repository.TvShowDetailRepository
 import kotlinx.coroutines.flow.map
 
-class RecommendationViewModel(private val repository: SeriesDetailRepository) : ViewModel() {
+class RecommendationViewModel(private val repository: TvShowDetailRepository) : ViewModel() {
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,
@@ -18,10 +18,11 @@ class RecommendationViewModel(private val repository: SeriesDetailRepository) : 
         initialLoadSize = 20
     )
 
-    fun recommendations(seriesId: Int) = repository.seriesRecommendation(seriesId, pagingConfig)
+    fun recommendations(seriesId: Int) = repository
+        .tvShowRecommendation(seriesId, pagingConfig)
         .map {
             it.map { seriesResponse ->
-                Series(seriesResponse)
+                TvShow(seriesResponse)
             }
         }
         .cachedIn(viewModelScope)

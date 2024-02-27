@@ -16,16 +16,21 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "boolean", "IS_COMPOSE", "false"
     }
 
     flavorDimensions += "uitool"
     productFlavors {
         create("compose") {
             dimension = "uitool"
+            buildConfigField "boolean", "IS_COMPOSE", "true"
         }
         create("views") {
             dimension = "uitool"
+            buildConfigField "boolean", "IS_COMPOSE", "false"
         }
+
     }
 
     buildFeatures {

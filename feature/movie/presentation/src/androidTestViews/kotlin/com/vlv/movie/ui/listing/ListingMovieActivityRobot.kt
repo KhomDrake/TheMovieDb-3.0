@@ -12,6 +12,7 @@ import com.vlv.common.route.toMovieTrending
 import com.vlv.common.route.toMovieUpcoming
 import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.movie.data.api.MovieApi
+import com.vlv.movie.presentation.ui.listing.ListingMovieActivity
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup

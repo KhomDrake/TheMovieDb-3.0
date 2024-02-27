@@ -9,18 +9,18 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
-import com.vlv.ui.R
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.ui.extension.loadUrl
 import com.vlv.extensions.addAccessibilityDelegate
+import com.vlv.ui.R
 
-class SeriesDiffUtil: ItemCallback<Series>() {
+class SeriesDiffUtil: ItemCallback<TvShow>() {
 
-    override fun areContentsTheSame(oldItem: Series, newItem: Series): Boolean {
+    override fun areContentsTheSame(oldItem: TvShow, newItem: TvShow): Boolean {
         return oldItem.title == newItem.title
     }
 
-    override fun areItemsTheSame(oldItem: Series, newItem: Series): Boolean {
+    override fun areItemsTheSame(oldItem: TvShow, newItem: TvShow): Boolean {
         return oldItem.id == newItem.id
     }
 
@@ -29,8 +29,8 @@ class SeriesDiffUtil: ItemCallback<Series>() {
 const val VIEW_TYPE_SERIES = 43
 
 class SeriesPaginationAdapter(
-    private val onClick: (Series, View) -> Unit
-): PagingDataAdapter<Series, RecyclerView.ViewHolder>(SeriesDiffUtil()) {
+    private val onClick: (TvShow, View) -> Unit
+): PagingDataAdapter<TvShow, RecyclerView.ViewHolder>(SeriesDiffUtil()) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is SeriesViewHolder -> {
@@ -61,7 +61,7 @@ class SeriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val backdrop: AppCompatImageView by viewProvider(R.id.backdrop)
     private val title: AppCompatTextView by viewProvider(R.id.series_title)
 
-    fun bind(data: Series) {
+    fun bind(data: TvShow) {
         backdrop.clipToOutline = true
         title.text = data.title
         backdrop.contentDescription =
