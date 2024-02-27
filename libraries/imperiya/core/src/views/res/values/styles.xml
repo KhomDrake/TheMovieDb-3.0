@@ -52,6 +52,11 @@
         <item name="android:textColor">@color/color_imperiya_on_tertiary</item>
     </style>
 
+    <style name="Imperiya.Widget.WarningView">
+        <item name="warning_status_icon">@drawable/ic_close_error</item>
+        <item name="warning_show_close_icon">true</item>
+    </style>
+
     <style name="Imperiya.Widget.Button.Neutral">
         <item name="android:background">@drawable/imperiya_button_background_neutral</item>
         <item name="background">@drawable/imperiya_button_background_neutral</item>
