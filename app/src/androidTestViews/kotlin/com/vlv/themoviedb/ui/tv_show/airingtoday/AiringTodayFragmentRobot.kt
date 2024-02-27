@@ -7,10 +7,10 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
-import com.vlv.common.data.tv_show.SeriesListType
-import com.vlv.common.route.SERIES_LISTING_TYPE_EXTRA
-import com.vlv.data.common.model.series.SeriesResponse
-import com.vlv.series.data.repository.SeriesRepository
+import com.vlv.bondsmith.bondsmith
+import com.vlv.common.data.tv_show.TvShowListType
+import com.vlv.common.route.TV_SHOW_LISTING_TYPE_EXTRA
+import com.vlv.data.common.model.tvshow.TvShowsResponse
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -24,8 +24,9 @@ import com.vlv.test.isNotDisplayed
 import com.vlv.test.loadObjectFromJson
 import com.vlv.test.mockIntent
 import com.vlv.themoviedb.R
-import io.mockk.coEvery
+import com.vlv.tv_show.data.repository.TvShowRepository
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -35,7 +36,7 @@ fun AiringTodayFragmentTest.airingTodayFragment(func: AiringTodayFragmentSetup.(
 class AiringTodayFragmentSetup :
     Setup<AiringTodayFragmentLaunch, AiringTodayFragmentCheck>, KoinComponent {
 
-    private val repository: SeriesRepository by inject()
+    private val repository: TvShowRepository by inject()
     private val moshi: Moshi by inject()
 
     override fun createCheck(): AiringTodayFragmentCheck {
@@ -53,32 +54,43 @@ class AiringTodayFragmentSetup :
     }
 
     fun withAiringTodaySuccess() {
-        val data = loadObjectFromJson<SeriesResponse>(
+        val data = loadObjectFromJson<TvShowsResponse>(
             InstrumentationRegistry.getInstrumentation().context,
             "series_list.json",
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             repository.airingToday()
-        } returns data
+        } returns bondsmith<TvShowsResponse>()
+            .apply {
+                setData(data)
+            }
     }
 
     fun withAiringTodayEmpty() {
-        coEvery {
+        every {
             repository.airingToday()
-        } returns SeriesResponse(
-            1,
-            1,
-            1,
-            listOf()
-        )
+        } returns bondsmith<TvShowsResponse>()
+            .apply {
+                setData(
+                    TvShowsResponse(
+                        1,
+                        1,
+                        1,
+                        listOf()
+                    )
+                )
+            }
     }
 
     fun withAiringTodayFails() {
-        coEvery {
+        every {
             repository.airingToday()
-        } throws NotFoundException()
+        } returns bondsmith<TvShowsResponse>()
+            .apply {
+                setError(NotFoundException())
+            }
     }
 }
 
@@ -96,8 +108,8 @@ class AiringTodayFragmentLaunch : Launch<AiringTodayFragmentCheck> {
         mockIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.AIRING_TODAY)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.AIRING_TODAY)),
         )
 
         R.id.see_all.clickIgnoreConstraint()
@@ -110,7 +122,7 @@ class AiringTodayFragmentLaunch : Launch<AiringTodayFragmentCheck> {
 
 class AiringTodayFragmentCheck : Check, KoinComponent {
 
-    private val repository: SeriesRepository by inject()
+    private val repository: TvShowRepository by inject()
 
     fun seriesDisplayed() {
         R.id.list_title.hasText("Airing Today")
@@ -143,8 +155,8 @@ class AiringTodayFragmentCheck : Check, KoinComponent {
         checkIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.AIRING_TODAY)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.AIRING_TODAY)),
         )
     }
 

@@ -1,16 +1,16 @@
 package com.vlv.themoviedb.ui.tv_show.trending
 
-import android.content.res.Resources
+import android.content.res.Resources.NotFoundException
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.intent.matcher.BundleMatchers
 import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
-import com.vlv.common.data.tv_show.SeriesListType
-import com.vlv.common.route.SERIES_LISTING_TYPE_EXTRA
-import com.vlv.data.common.model.series.SeriesResponse
-import com.vlv.series.data.repository.SeriesRepository
+import com.vlv.bondsmith.bondsmith
+import com.vlv.common.data.tv_show.TvShowListType
+import com.vlv.common.route.TV_SHOW_LISTING_TYPE_EXTRA
+import com.vlv.data.common.model.tvshow.TvShowsResponse
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -24,8 +24,9 @@ import com.vlv.test.isNotDisplayed
 import com.vlv.test.loadObjectFromJson
 import com.vlv.test.mockIntent
 import com.vlv.themoviedb.R
-import io.mockk.coEvery
+import com.vlv.tv_show.data.repository.TvShowRepository
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -35,7 +36,7 @@ fun TrendingFragmentTest.trendingFragment(func: TrendingFragmentSetup.() -> Unit
 class TrendingFragmentSetup :
     Setup<TrendingFragmentLaunch, TrendingFragmentCheck>, KoinComponent {
 
-    private val repository: SeriesRepository by inject()
+    private val repository: TvShowRepository by inject()
     private val moshi: Moshi by inject()
 
     override fun createCheck(): TrendingFragmentCheck {
@@ -53,32 +54,43 @@ class TrendingFragmentSetup :
     }
 
     fun withTrendingSuccess() {
-        val data = loadObjectFromJson<SeriesResponse>(
+        val data = loadObjectFromJson<TvShowsResponse>(
             InstrumentationRegistry.getInstrumentation().context,
             "series_list.json",
             moshi
         ) ?: return
 
-        coEvery {
-            repository.trendingSeries(any())
-        } returns data
+        every {
+            repository.tvShowsTrending(any())
+        } returns bondsmith<TvShowsResponse>()
+            .apply {
+                setData(data)
+            }
     }
 
     fun withTrendingEmpty() {
-        coEvery {
-            repository.trendingSeries(any())
-        } returns SeriesResponse(
-            1,
-            1,
-            1,
-            listOf()
-        )
+        every {
+            repository.tvShowsTrending(any())
+        } returns bondsmith<TvShowsResponse>()
+            .apply {
+                setData(
+                    TvShowsResponse(
+                        1,
+                        1,
+                        1,
+                        listOf()
+                    )
+                )
+            }
     }
 
     fun withTrendingFails() {
-        coEvery {
-            repository.trendingSeries(any())
-        } throws Resources.NotFoundException()
+        every {
+            repository.tvShowsTrending(any())
+        } returns bondsmith<TvShowsResponse>()
+            .apply {
+                setError(NotFoundException())
+            }
     }
 
 }
@@ -97,8 +109,8 @@ class TrendingFragmentLaunch : Launch<TrendingFragmentCheck> {
         mockIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.TRENDING)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.TRENDING)),
         )
 
         R.id.see_all.clickIgnoreConstraint()
@@ -111,7 +123,7 @@ class TrendingFragmentLaunch : Launch<TrendingFragmentCheck> {
 
 class TrendingFragmentCheck : Check, KoinComponent {
 
-    private val repository: SeriesRepository by inject()
+    private val repository: TvShowRepository by inject()
 
     fun seriesDisplayed() {
         R.id.list_title.hasText("Trending now")
@@ -144,8 +156,8 @@ class TrendingFragmentCheck : Check, KoinComponent {
         checkIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.TRENDING)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.TRENDING)),
         )
     }
 
@@ -180,7 +192,7 @@ class TrendingFragmentCheck : Check, KoinComponent {
 
     fun seriesTrendingLoaded(times: Int) {
         coVerify(exactly = times) {
-            repository.trendingSeries(any())
+            repository.tvShowsTrending(any())
         }
     }
 

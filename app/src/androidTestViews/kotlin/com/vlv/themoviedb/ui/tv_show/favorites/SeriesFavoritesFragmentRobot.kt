@@ -7,12 +7,14 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
-import com.vlv.common.data.tv_show.Series
+import com.vlv.bondsmith.bondsmith
+import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.data.tv_show.toFavorite
 import com.vlv.common.route.FAVORITE_TYPE_EXTRA
-import com.vlv.data.common.model.series.SeriesResponse
-import com.vlv.data.network.database.data.FavoriteType
-import com.vlv.favorite.domain.usecase.SeriesFavoriteUseCase
+import com.vlv.data.common.model.tvshow.TvShowsResponse
+import com.vlv.data.database.data.Favorite
+import com.vlv.data.database.data.ItemType
+import com.vlv.favorite.domain.usecase.TvShowFavoriteUseCase
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -26,8 +28,8 @@ import com.vlv.test.isNotDisplayed
 import com.vlv.test.loadObjectFromJson
 import com.vlv.test.mockIntent
 import com.vlv.themoviedb.R
-import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -37,7 +39,7 @@ fun SeriesFavoritesFragmentTest.seriesFavoritesFragment(func: SeriesFavoritesFra
 class SeriesFavoritesFragmentSetup
     : Setup<SeriesFavoritesFragmentLaunch, SeriesFavoritesFragmentCheck>, KoinComponent {
 
-    private val useCase: SeriesFavoriteUseCase by inject()
+    private val useCase: TvShowFavoriteUseCase by inject()
     private val moshi: Moshi by inject()
 
     override fun createCheck(): SeriesFavoritesFragmentCheck {
@@ -55,27 +57,40 @@ class SeriesFavoritesFragmentSetup
     }
 
     fun withFavoritesSuccess() {
-        val data = loadObjectFromJson<SeriesResponse>(
+        val data = loadObjectFromJson<TvShowsResponse>(
             InstrumentationRegistry.getInstrumentation().context,
             "series_list.json",
             moshi
         ) ?: return
 
-        coEvery {
+        every {
             useCase.favorites()
-        } returns data.series.map { Series(it).toFavorite() }
+        } returns bondsmith<List<Favorite>>()
+            .apply {
+                setData(
+                    data.tvShows.map { TvShow(it).toFavorite() }
+                )
+            }
     }
 
     fun withFavoritesEmpty() {
-        coEvery {
+        every {
             useCase.favorites()
-        } returns listOf()
+        } returns bondsmith<List<Favorite>>()
+            .apply {
+                setData(
+                    listOf()
+                )
+            }
     }
 
     fun withFavoritesError() {
-        coEvery {
+        every {
             useCase.favorites()
-        } throws NotFoundException()
+        } returns bondsmith<List<Favorite>>()
+            .apply {
+                setError(NotFoundException())
+            }
     }
 }
 
@@ -99,7 +114,7 @@ class SeriesFavoritesFragmentLaunch : Launch<SeriesFavoritesFragmentCheck> {
             "FAVORITES_LISTING",
             true,
             IntentMatchers.hasExtras(BundleMatchers.hasKey(FAVORITE_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(FavoriteType.SERIES)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(ItemType.TV_SHOW)),
         )
 
         R.id.see_all.clickIgnoreConstraint()
@@ -109,7 +124,7 @@ class SeriesFavoritesFragmentLaunch : Launch<SeriesFavoritesFragmentCheck> {
 
 class SeriesFavoritesFragmentCheck : Check, KoinComponent {
 
-    private val useCase: SeriesFavoriteUseCase by inject()
+    private val useCase: TvShowFavoriteUseCase by inject()
 
     fun favoritesDisplayed() {
         R.id.list_title.hasText("Favorites")
@@ -178,7 +193,7 @@ class SeriesFavoritesFragmentCheck : Check, KoinComponent {
             "FAVORITES_LISTING",
             true,
             IntentMatchers.hasExtras(BundleMatchers.hasKey(FAVORITE_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(FavoriteType.SERIES)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(ItemType.TV_SHOW)),
         )
     }
 

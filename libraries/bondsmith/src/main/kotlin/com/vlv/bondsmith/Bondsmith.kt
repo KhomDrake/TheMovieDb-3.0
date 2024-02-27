@@ -71,7 +71,7 @@ class Bondsmith<Data>(
     }
 
     @VisibleForTesting
-    fun setData(data: Data) {
+    fun setData(data: Data) = apply {
         bondsmithScope.launch {
             _responseLiveData.postData(data)
             _responseStateFlow.emit(responseData(data))

@@ -5,9 +5,9 @@ import androidx.test.espresso.intent.matcher.BundleMatchers
 import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import com.vlv.common.data.movie.MovieListType
-import com.vlv.common.data.tv_show.SeriesListType
+import com.vlv.common.data.tv_show.TvShowListType
 import com.vlv.common.route.MOVIES_LISTING_TYPE_EXTRA
-import com.vlv.common.route.SERIES_LISTING_TYPE_EXTRA
+import com.vlv.common.route.TV_SHOW_LISTING_TYPE_EXTRA
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -146,8 +146,8 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
         mockIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.TRENDING)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.TRENDING)),
         )
 
         R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_TRENDING_NOW.ordinal)
@@ -157,8 +157,8 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
         mockIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.TOP_RATED)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.TOP_RATED)),
         )
 
         R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_TOP_RATED.ordinal)
@@ -168,8 +168,8 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
         mockIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.AIRING_TODAY)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.AIRING_TODAY)),
         )
 
         R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_AIRING_TODAY.ordinal)
@@ -179,8 +179,8 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
         mockIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.ON_THE_AIR)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.ON_THE_AIR)),
         )
 
         R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_ON_THE_AIR.ordinal)
@@ -190,8 +190,8 @@ class MenuFragmentLaunch : Launch<MenuFragmentCheck> {
         mockIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.POPULAR)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.POPULAR)),
         )
 
         R.id.menu_items.clickOnRecyclerViewItem(position = MenuItems.SERIES_POPULAR.ordinal)
@@ -316,8 +316,8 @@ class MenuFragmentCheck : Check {
         checkIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.TRENDING)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.TRENDING)),
         )
     }
 
@@ -325,8 +325,8 @@ class MenuFragmentCheck : Check {
         checkIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.TOP_RATED)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.TOP_RATED)),
         )
     }
 
@@ -334,8 +334,8 @@ class MenuFragmentCheck : Check {
         checkIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.AIRING_TODAY)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.AIRING_TODAY)),
         )
     }
 
@@ -343,8 +343,8 @@ class MenuFragmentCheck : Check {
         checkIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.ON_THE_AIR)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.ON_THE_AIR)),
         )
     }
 
@@ -352,8 +352,8 @@ class MenuFragmentCheck : Check {
         checkIntent(
             "SERIES_LISTING",
             true,
-            IntentMatchers.hasExtras(BundleMatchers.hasKey(SERIES_LISTING_TYPE_EXTRA)),
-            IntentMatchers.hasExtras(BundleMatchers.hasValue(SeriesListType.POPULAR)),
+            IntentMatchers.hasExtras(BundleMatchers.hasKey(TV_SHOW_LISTING_TYPE_EXTRA)),
+            IntentMatchers.hasExtras(BundleMatchers.hasValue(TvShowListType.POPULAR)),
         )
     }
 
