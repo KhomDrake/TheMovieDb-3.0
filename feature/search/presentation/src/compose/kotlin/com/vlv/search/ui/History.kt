@@ -2,25 +2,26 @@ package com.vlv.search.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.History
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.vlv.data.database.data.History
-import com.vlv.data.database.data.HistoryType
+import com.vlv.data.database.data.ItemType
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
+import com.vlv.search.R
 
 @Composable
 fun HistoryItem(
@@ -54,16 +55,16 @@ fun HistoryItem(
             modifier = Modifier
                 .weight(2f)
         )
-        Icon(
-            imageVector = Icons.Filled.Close,
-            contentDescription = "Remove",
-            tint = MaterialTheme.colorScheme.onTertiary,
-            modifier = Modifier
-                .clickable {
-                    onRemoveHistory.invoke(history)
-                }
-                .padding(8.dp)
-        )
+        IconButton(onClick = { onRemoveHistory.invoke(history) }) {
+            Icon(
+                imageVector = Icons.Filled.Close,
+                contentDescription = stringResource(
+                    id = R.string.search_remove_search_icon_description
+                ),
+                tint = MaterialTheme.colorScheme.onTertiary
+            )
+        }
+
 
     }
 
@@ -75,7 +76,7 @@ fun HistoryItemPreview() {
     TheMovieDbAppTheme {
         BackgroundPreview(background = MaterialTheme.colorScheme.tertiary) {
             HistoryItem(
-                history = History("Text", HistoryType.MOVIE),
+                history = History("Text", ItemType.MOVIE),
                 onClickHistory = {
 
                 },

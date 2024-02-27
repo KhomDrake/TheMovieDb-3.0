@@ -38,7 +38,7 @@ class MovieListingViewModel(
 
     fun movies(movieListType: MovieListType){
         viewModelScope.launch(Dispatchers.IO) {
-            this@MovieListingViewModel.moviesByListType(movieListType)
+            moviesByListType(movieListType)
                 .map {
                     it.map(::Movie)
                 }
@@ -50,9 +50,12 @@ class MovieListingViewModel(
         }
     }
 
-    private suspend fun moviesByListType(movieListType: MovieListType) =
+    private fun moviesByListType(movieListType: MovieListType) =
         when(movieListType) {
-            MovieListType.TRENDING -> repository.trendingMoviesPaging(pagingConfig, TimeWindow.WEEK)
+            MovieListType.TRENDING -> repository.trendingMoviesPaging(
+                pagingConfig,
+                TimeWindow.WEEK
+            )
             MovieListType.NOW_PLAYING -> repository.nowPlayingPaging(pagingConfig)
             MovieListType.POPULAR -> repository.popularPaging(pagingConfig)
             MovieListType.TOP_RATED -> repository.topRatedPaging(pagingConfig)

@@ -2,6 +2,7 @@ package com.vlv.common.ui.about
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -34,9 +35,13 @@ fun AboutItemLinePreview() {
         BackgroundPreview {
             Row(
                 modifier = Modifier
-                    .padding(vertical = 4.dp)
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp)
             ) {
-                AboutItemLine()
+                AboutItemLine(
+                    modifier =
+                        Modifier.fillMaxWidth()
+                )
             }
         }
     }

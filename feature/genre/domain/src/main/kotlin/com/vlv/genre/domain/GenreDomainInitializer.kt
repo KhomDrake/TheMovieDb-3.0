@@ -3,7 +3,7 @@ package com.vlv.genre.domain
 import androidx.startup.Initializer
 import com.vlv.genre.data.GenreDataInitializer
 import com.vlv.genre.domain.usecase.MovieGenreUseCase
-import com.vlv.genre.domain.usecase.SeriesGenreUseCase
+import com.vlv.genre.domain.usecase.TvShowGenreUseCase
 import com.vlv.util.ModuleInitializer
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -14,7 +14,7 @@ class GenreDomainInitializer : ModuleInitializer() {
         get() = listOf(
             module {
                 factory { MovieGenreUseCase(get()) }
-                factory { SeriesGenreUseCase(get()) }
+                factory { TvShowGenreUseCase(get()) }
             }
         )
 

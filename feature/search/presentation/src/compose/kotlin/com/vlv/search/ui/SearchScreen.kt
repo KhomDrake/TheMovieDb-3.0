@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.vlv.common.route.RouteNavigation
 import com.vlv.data.database.data.History
-import com.vlv.data.database.data.HistoryType
+import com.vlv.data.database.data.ItemType
 import com.vlv.imperiya.core.ui.components.FilterGroup
 import com.vlv.imperiya.core.ui.components.FilterItemData
 import com.vlv.imperiya.core.ui.components.SearchComponent
@@ -34,8 +34,8 @@ fun SearchScreen(
     routeNavigation: RouteNavigation,
     modifier: Modifier = Modifier,
     filters: List<FilterItemData>,
-    hint: @Composable (HistoryType) -> String = {stringResource(id = R.string.search_hint_text)},
-    defaultSearchType: HistoryType? = null,
+    hint: @Composable (ItemType) -> String = {stringResource(id = R.string.search_hint_text)},
+    defaultSearchType: ItemType? = null,
     viewModel: SearchViewModel = koinViewModel()
 ) {
     var active by rememberSaveable {
@@ -115,7 +115,7 @@ fun SearchScreen(
                 historyType = searchType,
                 routeNavigation = routeNavigation,
                 movieState = viewModel.movieState.collectAsLazyPagingItems(),
-                seriesState = viewModel.seriesState.collectAsLazyPagingItems(),
+                tvShowState = viewModel.tvShowState.collectAsLazyPagingItems(),
                 personState = viewModel.peopleState.collectAsLazyPagingItems(),
             )
         }
@@ -164,8 +164,10 @@ fun SearchWithHistory(
                     }
                 },
                 contentPadding = PaddingValues(
-                    horizontal = 16.dp,
-                    vertical = 16.dp
+                    start = 16.dp,
+                    end = 4.dp,
+                    top = 16.dp,
+                    bottom = 16.dp
                 ),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             )

@@ -3,21 +3,17 @@ package com.vlv.common.route
 import android.content.Context
 import com.vlv.common.data.movie.MovieListType
 import com.vlv.common.ui.DetailObject
+import com.vlv.data.database.data.ItemType
 import com.vlv.extensions.intentForAction
 
 const val DETAIL_OBJECT_EXTRA = "DETAIL_OBJECT_EXTRA"
 const val FINISH_AFTER_TRANSITION_EXTRA = "FINISH_AFTER_TRANSITION_EXTRA"
 
-enum class SearchType {
-    MOVIE,
-    SERIES,
-    PEOPLE
-}
 
 const val SEARCH_TYPE_EXTRA = "SEARCH_TYPE_EXTRA"
 
 fun Context.toMovieSearch() = intentForAction("MOVIE_SEARCH")
-    .putExtra(SEARCH_TYPE_EXTRA, SearchType.MOVIE.name)
+    .putExtra(SEARCH_TYPE_EXTRA, ItemType.MOVIE.name)
 
 fun Context.toMovieDetail(
     detailObject: DetailObject,

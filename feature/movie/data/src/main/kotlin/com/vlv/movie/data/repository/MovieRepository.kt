@@ -70,13 +70,6 @@ class MovieRepository(private val api: MovieApi) {
         api.upcoming(page)
     }
 
-    fun search(
-        config: PagingConfig,
-        query: String
-    ) = pagingDefault(config) { page ->
-        api.search( query, page)
-    }
-
     suspend fun nowPlaying() = bondsmith<MoviesResponse>("MOVIE-NOW-PLAYING")
         .config {
             request {

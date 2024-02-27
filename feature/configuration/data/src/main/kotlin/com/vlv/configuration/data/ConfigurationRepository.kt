@@ -48,17 +48,7 @@ class ConfigurationRepository(
 
     suspend fun updateDatabase(configurationData: ConfigurationData) {
         dao.apply {
-            removeLanguages()
-            removeCountries()
             removeImages()
-
-            newScope.async {
-                insertLanguages(configurationData.languages)
-            }.await()
-
-            newScope.async {
-                insertCountries(configurationData.countries)
-            }.await()
 
             newScope.async {
                 insertImages(

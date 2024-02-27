@@ -21,7 +21,13 @@
     <string name="common_review_date_description">On date: %s</string>
     <string name="common_review_text_description">Review: %s</string>
 
+    <string name="common_text_runtime">%1$s - %2$s</string>
+    <string name="common_empty_view_title_default">None was found</string>
+    <string name="common_movie_empty_view_title_default">None movie was found</string>
+    <string name="common_series_empty_view_title_default">None tv show was found</string>
     <string name="common_cast_title">%d People</string>
+    <string name="common_cast_avatar_content_description">Cast image</string>
+    <string name="common_review_avatar_content_description">Avatar image</string>
     <string name="common_reviews_title">%d Reviews</string>
     <string name="common_cast_character_description">Character: %s</string>
     <string name="common_movie_poster_content_description">Movie Poster</string>

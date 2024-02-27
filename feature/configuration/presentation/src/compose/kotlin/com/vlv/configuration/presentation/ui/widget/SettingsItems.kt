@@ -101,6 +101,9 @@ fun SettingsItemList(
                             SettingHeader(
                                 title = section.title.toString(),
                                 modifier = Modifier
+                                    .padding(
+                                        top = 8.dp
+                                    )
                                     .testTag(section.id.toString())
                             )
                         }
@@ -198,6 +201,34 @@ class SettingsItemsListProvider : PreviewParameterProvider<SettingsItemsDataPrev
                     SectionUIItem(
                         type = SectionUIType.HEADER,
                         id = 23,
+                        data = null,
+                        title = "General"
+                    ),
+                    SectionUIItem(
+                        type = SectionUIType.SWITCH,
+                        id = 20,
+                        data = true,
+                        title = null,
+                        description = "Show adult content"
+                    ),
+                    SectionUIItem(
+                        type = SectionUIType.LIST,
+                        id = 19,
+                        data = ConfigDataList(
+                            title = "Lan",
+                            description = "Dlaskd",
+                            selectedItem = ConfigDataItemList(
+                                "us",
+                                "klsjda"
+                            ),
+                            listOf()
+                        ),
+                        title = "Languages",
+                        description = "Language chosen:"
+                    ),
+                    SectionUIItem(
+                        type = SectionUIType.HEADER,
+                        id = 21,
                         data = null,
                         title = "Image Definition"
                     ),

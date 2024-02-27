@@ -1,6 +1,5 @@
 package com.vlv.configuration.presentation.ui
 
-import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
@@ -15,7 +14,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
-    private val resources: Resources,
     private val useCase: SettingsUseCase
 ) : ViewModel() {
 
@@ -26,7 +24,7 @@ class SettingsViewModel(
 
     fun settings() {
         viewModelScope.launch(Dispatchers.IO) {
-            useCase.configData(resources)
+            useCase.configData()
                 .responseStateFlow
                 .mapData {
                     it?.toSectionUIItems() ?: listOf()

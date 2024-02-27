@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import com.vlv.common.data.about.AboutItem
 import com.vlv.common.data.about.Information
 import com.vlv.common.data.about.PillItem
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.ui.R
@@ -26,7 +25,10 @@ fun AboutList(
     LazyColumn(
         modifier = modifier,
         content = {
-            items(items) { item: AboutItem ->
+            items(
+                items,
+                key = { item -> item.id }
+            ) { item: AboutItem ->
                 when(item) {
                     is AboutItem.Title -> {
                         AboutItemTitle(
@@ -41,7 +43,16 @@ fun AboutList(
                         )
                     }
                     is AboutItem.Episode -> {
-
+                        AboutItemEpisode(
+                            episode = item,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    top = 8.dp,
+                                    start = 16.dp,
+                                    end = 16.dp
+                                )
+                        )
                     }
                     is AboutItem.InformationItem -> {
                         AboutItemInformation(
@@ -115,6 +126,18 @@ fun AboutListPreview() {
                                 4, "Historia"
                             ),
                         )
+                    ),
+                    AboutItem.Title(R.string.common_open_movie_detail),
+                    AboutItem.Episode(
+                        title = "Picture Says a Thousand Words",
+                        description = "S2E4 - Dec/21/2023",
+                        poster = null
+                    ),
+                    AboutItem.Title(R.string.common_open_movie_detail),
+                    AboutItem.Episode(
+                        title = "Picture Says a Thousand Words",
+                        description = "S2E4 - Dec/21/2023",
+                        poster = null
                     ),
                     AboutItem.Line(),
                     AboutItem.Title(R.string.common_error_button_load),

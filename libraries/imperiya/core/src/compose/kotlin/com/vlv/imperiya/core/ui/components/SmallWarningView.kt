@@ -18,11 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.vlv.imperiya.core.R
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
@@ -161,7 +161,7 @@ class SmallWarningViewProvider : PreviewParameterProvider<SmallWarningViewPrevie
         ).asSequence()
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @Composable
 fun SmallWarningViewPreview(
     @PreviewParameter(SmallWarningViewProvider::class) data: SmallWarningViewPreviewData

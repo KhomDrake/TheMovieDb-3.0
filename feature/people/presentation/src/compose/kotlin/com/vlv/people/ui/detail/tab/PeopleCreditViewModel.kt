@@ -7,7 +7,7 @@ import com.vlv.bondsmith.data.flow.ResponseStateFlow
 import com.vlv.bondsmith.data.flow.asResponseStateFlow
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.data.people.People
-import com.vlv.common.data.series.Series
+import com.vlv.common.data.series.TvShow
 import com.vlv.people.data.repository.PeopleDetailRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -22,10 +22,10 @@ class PeopleCreditViewModel(
     val movieCreditState: ResponseStateFlow<List<Movie>>
         get() = _movieState.asResponseStateFlow()
 
-    private val _seriesState = MutableResponseStateFlow<List<Series>>()
+    private val _tvShowState = MutableResponseStateFlow<List<TvShow>>()
 
-    val seriesCreditState: ResponseStateFlow<List<Series>>
-        get() = _seriesState.asResponseStateFlow()
+    val tvShowsCreditState: ResponseStateFlow<List<TvShow>>
+        get() = _tvShowState.asResponseStateFlow()
 
     fun moviesCredit(people: People) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -45,10 +45,10 @@ class PeopleCreditViewModel(
             repository.seriesCredit(people.id)
                 .responseStateFlow
                 .mapData {
-                    it?.cast?.map(::Series) ?: listOf()
+                    it?.cast?.map(::TvShow) ?: listOf()
                 }
                 .collectLatest {
-                    _seriesState.emit(it)
+                    _tvShowState.emit(it)
                 }
         }
     }

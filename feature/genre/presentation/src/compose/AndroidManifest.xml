@@ -4,7 +4,7 @@
     <application>
 
         <activity
-            android:name=".presentation.ui.series.SeriesGenreActivity"
+            android:name=".presentation.ui.tvshow.TvShowsGenreActivity"
             android:theme="@style/Imperiya.Theme"
             android:exported="false">
             <intent-filter>

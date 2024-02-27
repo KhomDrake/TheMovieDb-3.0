@@ -5,7 +5,7 @@ import com.vlv.search.data.SearchDataInitializer
 import com.vlv.search.domain.usecase.HistoryUseCase
 import com.vlv.search.domain.usecase.SearchMovieUseCase
 import com.vlv.search.domain.usecase.SearchPeopleUseCase
-import com.vlv.search.domain.usecase.SearchSeriesUseCase
+import com.vlv.search.domain.usecase.SearchTvShowsUseCase
 import com.vlv.util.ModuleInitializer
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -17,7 +17,7 @@ class SearchDomainInitializer : ModuleInitializer() {
             module {
                 factory { HistoryUseCase(get()) }
                 factory { SearchPeopleUseCase(get()) }
-                factory { SearchSeriesUseCase(get()) }
+                factory { SearchTvShowsUseCase(get()) }
                 factory { SearchMovieUseCase(get()) }
             }
         )

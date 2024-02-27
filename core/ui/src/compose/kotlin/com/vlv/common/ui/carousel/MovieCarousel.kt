@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -17,7 +18,6 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.vlv.common.data.movie.Movie
 import com.vlv.common.route.RouteNavigation
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.common.ui.poster.MoviePoster
 import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.components.StateView
@@ -32,7 +32,6 @@ fun MovieCarousel(
     emptyStateTitle: String? = null,
     emptyStateBody: String? = null,
     percentage: Float = .8f,
-    oneItemPercentage: Float = 1f,
     onClickMovie: RouteNavigation
 ) {
     val lazyListState = rememberLazyListState()
@@ -44,7 +43,8 @@ fun MovieCarousel(
                 .padding(16.dp),
             icon = R.drawable.ic_movie,
             title = emptyStateTitle,
-            body = emptyStateBody
+            body = emptyStateBody,
+            iconTint = MaterialTheme.colorScheme.onBackground
         )
     } else {
         LazyRow(
@@ -59,9 +59,7 @@ fun MovieCarousel(
                         movie = movie,
                         onRouteNavigation = onClickMovie,
                         modifier = Modifier
-                            .fillParentMaxWidth(
-                                if(movies.size == 1) oneItemPercentage else percentage
-                            ),
+                            .fillParentMaxWidth(percentage),
                         loadPoster = false
                     )
                 }
@@ -122,7 +120,7 @@ class MovieCarouselProvider: PreviewParameterProvider<MovieCarouselDataPreview> 
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         "/nbrqj9q8WubD3QkYm7n3GhjN7kE.jpg",
                         2,
-                        "Duna",
+                        "Duna Alone",
                         "asda"
                     )
                 ),

@@ -34,7 +34,7 @@ sealed class AboutItem(
     class Title(@StringRes val text: Int) : AboutItem(type = AboutItemType.TITLE)
 
     class BigText(
-        val description: String?,
+        val description: String? = null,
         val text: String
     ) : AboutItem(type = AboutItemType.BIG_TEXT)
 

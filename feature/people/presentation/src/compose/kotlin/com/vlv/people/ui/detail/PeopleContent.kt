@@ -18,13 +18,13 @@ import com.vlv.imperiya.core.ui.components.TabRow
 import com.vlv.people.R
 import com.vlv.people.ui.detail.tab.AboutContent
 import com.vlv.people.ui.detail.tab.MoviesCreditContent
-import com.vlv.people.ui.detail.tab.SeriesCreditContent
+import com.vlv.people.ui.detail.tab.TvShowsCreditContent
 import kotlinx.coroutines.launch
 
 enum class PeopleDetailPage(@StringRes val pageTitle: Int) {
     ABOUT(R.string.people_tab_about),
     MOVIES_CREDIT(R.string.people_tab_movie_credit),
-    SERIES_CREDIT(R.string.people_tab_series_credit)
+    TV_SHOWS_CREDIT(R.string.people_tab_series_credit)
 }
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -57,7 +57,8 @@ fun PeopleContent(
         HorizontalPager(
             state = pagerState,
             pageSpacing = 16.dp,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            beyondBoundsPageCount = 2
         ) { index ->
             when(tabs[index]) {
                 PeopleDetailPage.ABOUT -> {
@@ -75,8 +76,8 @@ fun PeopleContent(
                             .fillMaxSize()
                     )
                 }
-                PeopleDetailPage.SERIES_CREDIT -> {
-                    SeriesCreditContent(
+                PeopleDetailPage.TV_SHOWS_CREDIT -> {
+                    TvShowsCreditContent(
                         people = people,
                         routeNavigation = routeNavigation,
                         modifier = Modifier

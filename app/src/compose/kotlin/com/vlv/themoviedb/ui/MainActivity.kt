@@ -19,7 +19,7 @@ import com.vlv.imperiya.core.R as RImperiya
 
 enum class MainScreens {
     MOVIE,
-    SERIES,
+    TV_SHOW,
     SEARCH,
     FAVORITES,
     MENU
@@ -63,8 +63,8 @@ fun MainScreen(
             unselectedIcon = RImperiya.drawable.ic_movie_disable
         ),
         BottomNavigationItems(
-            mainScreens = MainScreens.SERIES,
-            title = stringResource(R.string.series_title),
+            mainScreens = MainScreens.TV_SHOW,
+            title = stringResource(R.string.tv_show_title),
             selectedIcon = RImperiya.drawable.ic_series_enable,
             unselectedIcon = RImperiya.drawable.ic_series_disable,
         ),

@@ -1,11 +1,19 @@
 package com.vlv.configuration.domain.model
 
+import android.content.res.Resources
 import com.vlv.configuration.data.model.ConfigurationData
+import com.vlv.configuration.domain.R
 import com.vlv.data.local.datastore.DataVault
 
-enum class SettingOption {
+enum class SettingsAction {
+    RE_LAUNCH_APP
+}
+
+enum class SettingOption(
+    val action: SettingsAction? = null
+) {
     ADULT_CONTENT,
-    DYNAMIC_COLORS,
+    DYNAMIC_COLORS(SettingsAction.RE_LAUNCH_APP),
     LANGUAGE,
     REGION,
     BACKDROP,
@@ -31,10 +39,12 @@ class SettingsResponse(
     val adultContent: SettingsResponseSection,
     val dynamicColors: SettingsResponseSection,
     val backdrop: SettingsResponseSection,
-    val languages: SettingsResponseSection,
-    val regions: SettingsResponseSection
+    val languages: SettingsResponseSection
 ) {
-    constructor(configData: ConfigurationData) : this(
+    constructor(
+        resources: Resources,
+        configData: ConfigurationData
+    ) : this(
         adultContent = SettingsResponseSection(
             SettingOption.ADULT_CONTENT,
             listOf(),
@@ -59,7 +69,9 @@ class SettingsResponse(
             )
         },
         languages = configData.languages.run {
-            val items = this.map {
+            val permitted = resources.getStringArray(R.array.configuration_permitted_languages)
+                .toSet()
+            val items = this.filter { permitted.contains(it.isoName) } .map {
                 SettingsItem(
                     it.isoName,
                     it.englishName
@@ -68,22 +80,6 @@ class SettingsResponse(
             val previousSelected = DataVault.cachedDataString(SettingOption.LANGUAGE.name)
             SettingsResponseSection(
                 SettingOption.LANGUAGE,
-                items,
-                items.first { it.value == previousSelected }
-            )
-        },
-        regions = configData.countries.run {
-            val items = this.map {
-                SettingsItem(
-                    it.isoName,
-                    it.nativeName.ifEmpty { it.englishName }
-                )
-            }
-
-            val previousSelected = DataVault.cachedDataString(SettingOption.REGION.name)
-
-            SettingsResponseSection(
-                SettingOption.REGION,
                 items,
                 items.first { it.value == previousSelected }
             )

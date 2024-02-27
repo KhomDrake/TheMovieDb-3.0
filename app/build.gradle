@@ -117,19 +117,19 @@ dependencies {
     composeImplementation(libs.koin.compose)
     composeImplementation(libs.compose.shimmer)
     composeImplementation project(':feature:movie:presentation')
-    composeImplementation project(':feature:series:presentation')
+    composeImplementation project(':feature:tv_show:presentation')
     composeImplementation project(':feature:people:presentation')
     composeImplementation project(':feature:genre:presentation')
     composeImplementation project(':feature:favorite:presentation')
     composeImplementation project(':feature:configuration:presentation')
     composeImplementation project(':feature:search:presentation')
     composeImplementation project(':feature:movie:data')
-    composeImplementation project(':feature:series:data')
+    composeImplementation project(':feature:tv_show:data')
 //    composeDebugImplementation(libs.androidx.compose.tooling.debug)
 
     // Views
     viewsImplementation project(':feature:movie:presentation')
-    viewsImplementation project(':feature:series:presentation')
+    viewsImplementation project(':feature:tv_show:presentation')
     viewsImplementation project(':feature:people:presentation')
     viewsImplementation project(':feature:search:presentation')
     viewsImplementation project(':feature:favorite:presentation')
@@ -139,7 +139,7 @@ dependencies {
     viewsImplementation project(':feature:configuration:domain')
 
     viewsImplementation project(':feature:movie:data')
-    viewsImplementation project(':feature:series:data')
+    viewsImplementation project(':feature:tv_show:data')
 
     viewsImplementation(libs.google.material)
     viewsImplementation(libs.shimmer)

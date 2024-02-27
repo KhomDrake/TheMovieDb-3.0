@@ -72,22 +72,22 @@ fun PeopleGridPreview() {
                         ""
                     ),
                     People(
-                        1,
+                        2,
                         "Person 2",
                         ""
                     ),
                     People(
-                        1,
+                        3,
                         "Person 3",
                         ""
                     ),
                     People(
-                        1,
+                        4,
                         "Person 4",
                         ""
                     ),
                     People(
-                        1,
+                        5,
                         "Person 5",
                         ""
                     )

@@ -77,6 +77,10 @@ class MovieDetail(
             items
         },
         String.format("%.1f", response.voteAverage),
-        "${response.releaseData.toFormattedString(PATTERN_MONTH_AND_YEAR)} - ${response.runtime.toHoursAndMinutes(resources)}"
+        resources.getString(
+            com.vlv.ui.R.string.common_text_runtime,
+            response.releaseData.toFormattedString(PATTERN_MONTH_AND_YEAR),
+            response.runtime.toHoursAndMinutes(resources)
+        )
     )
 }

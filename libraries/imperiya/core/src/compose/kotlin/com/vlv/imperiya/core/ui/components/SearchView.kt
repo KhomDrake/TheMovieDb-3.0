@@ -2,7 +2,7 @@ package com.vlv.imperiya.core.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,13 +18,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
@@ -100,15 +101,18 @@ fun SearchComponent(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Close,
-                        contentDescription = "Close Icon",
+                        contentDescription = stringResource(
+                            id = R.string.imperiya_search_view_close_description
+                        ),
                         tint = textColor
                     )
                 }
             }
         },
-    ) {
-        content.invoke()
-    }
+        content = {
+            content.invoke()
+        }
+    )
 }
 
 @Composable
@@ -147,8 +151,10 @@ fun SearchCloseComponent(
                 }
             ) {
                 Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Close the app",
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = stringResource(
+                        id = R.string.imperiya_search_view_back_description
+                    ),
                     tint = MaterialTheme.colorScheme.onTertiary
                 )
             }

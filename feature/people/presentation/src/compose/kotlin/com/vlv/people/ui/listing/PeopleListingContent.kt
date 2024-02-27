@@ -10,6 +10,7 @@ import com.vlv.common.data.people.PeopleListType
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.ui.paging.people.PERSON_CONTENT_TYPE
 import com.vlv.common.ui.paging.people.PeoplePagingGrid
+import com.vlv.extensions.idInt
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -31,7 +32,7 @@ fun PeopleListingContent(
         loadState = state.loadState,
         itemCount = state.itemCount,
         modifier = modifier,
-        itemKey = state.itemKey { people -> people.id },
+        itemKey = state.itemKey { people -> "${people.id}-${idInt()}" },
         itemContentType = state.itemContentType { PERSON_CONTENT_TYPE },
         onRetry = { state.retry() },
         columns = 2

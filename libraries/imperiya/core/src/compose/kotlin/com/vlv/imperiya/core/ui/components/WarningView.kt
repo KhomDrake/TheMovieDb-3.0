@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -14,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
@@ -24,7 +25,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import com.vlv.imperiya.core.R
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
+import com.vlv.imperiya.core.ui.preview.BackgroundPreview
 import com.vlv.imperiya.core.ui.theme.Link
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
@@ -117,19 +118,19 @@ fun WarningView(
             .testTag(WarningViewTags.PARENT.name)
     ) {
         if(showCloseIcon) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_close),
-                contentDescription = "Close icon",
-                modifier = Modifier
-                    .size(48.dp)
-                    .clickable {
-                        onCloseIcon?.invoke()
-                    }
-                    .padding(16.dp)
-                    .layoutId(closeIconId)
-                    .testTag(WarningViewTags.CLOSE_ICON.name),
-                tint = MaterialTheme.colorScheme.onBackground
-            )
+            IconButton(
+                onClick = { onCloseIcon?.invoke() }
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_close),
+                    contentDescription = "Close icon",
+                    modifier = Modifier
+                        .size(48.dp)
+                        .layoutId(closeIconId)
+                        .testTag(WarningViewTags.CLOSE_ICON.name),
+                    tint = MaterialTheme.colorScheme.onBackground
+                )
+            }
         }
 
         Text(
@@ -184,6 +185,7 @@ class WarningViewPreviewData(
     val title: String,
     val body: String,
     val linkActionText: String? = null,
+    val showCloseIcon: Boolean = true
 )
 
 class WarningViewProvider : PreviewParameterProvider<WarningViewPreviewData> {
@@ -194,6 +196,12 @@ class WarningViewProvider : PreviewParameterProvider<WarningViewPreviewData> {
                 "Error Title",
                 "Error Body",
                 "Try again button text"
+            ),
+            WarningViewPreviewData(
+                "Error Title",
+                "Error Body",
+                "Try again button text",
+                showCloseIcon = false
             ),
             WarningViewPreviewData(
                 "Error Title",
@@ -209,33 +217,21 @@ class WarningViewProvider : PreviewParameterProvider<WarningViewPreviewData> {
 }
 
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
+@PreviewFontScale
 @Composable
 fun WarningViewPreview(
     @PreviewParameter(WarningViewProvider::class) data: WarningViewPreviewData
 ) {
     TheMovieDbAppTheme {
-        WarningView(
-            modifier = Modifier.fillMaxWidth(),
-            title = data.title,
-            body = data.body,
-            linkActionText = data.linkActionText
-        )
-    }
-}
-
-
-@PreviewFontScale
-@Composable
-fun WarningViewFontsPreview(
-    @PreviewParameter(WarningViewProvider::class) data: WarningViewPreviewData
-) {
-    TheMovieDbAppTheme(darkTheme = true) {
-        WarningView(
-            modifier = Modifier.fillMaxWidth(),
-            title = data.title,
-            body = data.body,
-            linkActionText = data.linkActionText
-        )
+        BackgroundPreview {
+            WarningView(
+                modifier = Modifier.fillMaxWidth(),
+                title = data.title,
+                body = data.body,
+                linkActionText = data.linkActionText,
+                showCloseIcon = data.showCloseIcon
+            )
+        }
     }
 }

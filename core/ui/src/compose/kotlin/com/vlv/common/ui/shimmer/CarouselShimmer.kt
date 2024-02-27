@@ -10,13 +10,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.rememberShimmer
 import com.valentinilk.shimmer.shimmer
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 
 @Composable
@@ -59,7 +59,7 @@ class CarouselShimmerProvider: PreviewParameterProvider<Float> {
         ).asSequence()
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @Composable
 fun CarouselShimmerPreview(
     @PreviewParameter(CarouselShimmerProvider::class) data: Float

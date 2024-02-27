@@ -5,19 +5,17 @@ import com.vlv.common.ui.DetailObject
 import com.vlv.data.common.model.movie.MovieResponse
 import com.vlv.data.common.model.people.MovieCreditResponse
 import com.vlv.data.database.data.Favorite
-import com.vlv.data.database.data.FavoriteType
-import com.vlv.extensions.idInt
+import com.vlv.data.database.data.ItemType
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class Movie(
+data class Movie(
     val adult: Boolean,
     val backdropPath: String?,
     val posterPath: String?,
-    val apiId: Int,
+    val id: Int,
     val title: String,
-    val overview: String,
-    val id: Int = idInt()
+    val overview: String
 ) : Parcelable {
     constructor(movieResponse: MovieResponse) : this(
         movieResponse.adult,
@@ -52,15 +50,15 @@ fun DetailObject.toMovie() = Movie(
 )
 
 fun Movie.toDetailObject() = DetailObject(
-    apiId, posterPath, backdropPath, title, overview, adult
+    id, posterPath, backdropPath, title, overview, adult
 )
 
 fun Movie.toFavorite() = Favorite(
-    apiId,
-    apiId,
+    id,
+    id,
     title,
     posterPath,
     backdropPath,
     overview,
-    FavoriteType.MOVIE
+    ItemType.MOVIE
 )

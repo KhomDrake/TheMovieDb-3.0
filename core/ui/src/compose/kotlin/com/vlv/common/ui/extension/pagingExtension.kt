@@ -6,8 +6,24 @@ import androidx.paging.LoadStates
 
 fun CombinedLoadStates.isFullLoading() = refresh is LoadState.Loading
 
+fun CombinedLoadStates.isFullError() = refresh is LoadState.Error
+
+fun CombinedLoadStates.firstLoadingFinished() = refresh is LoadState.NotLoading
+
 fun stateFullLoading() = CombinedLoadStates(
     refresh = LoadState.Loading,
+    LoadState.NotLoading(endOfPaginationReached = false),
+    LoadState.NotLoading(endOfPaginationReached = false),
+    LoadStates(
+        LoadState.NotLoading(endOfPaginationReached = false),
+        LoadState.NotLoading(endOfPaginationReached = false),
+        LoadState.NotLoading(endOfPaginationReached = false)
+    ),
+    null,
+)
+
+fun stateFullError() = CombinedLoadStates(
+    refresh = LoadState.Error(Throwable()),
     LoadState.NotLoading(endOfPaginationReached = false),
     LoadState.NotLoading(endOfPaginationReached = false),
     LoadStates(

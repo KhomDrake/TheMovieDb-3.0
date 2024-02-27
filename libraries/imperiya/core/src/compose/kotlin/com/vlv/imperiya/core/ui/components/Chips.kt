@@ -13,14 +13,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.vlv.imperiya.core.ui.preview.BackgroundPreview
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @Stable
 data class FilterItemData(
+    val id: Int,
     val name: String,
     val value: String
 )
@@ -37,7 +38,10 @@ fun FilterGroup(
     LazyRow(
         modifier = modifier,
         content = {
-            itemsIndexed(filters) {index, filter ->
+            itemsIndexed(
+                filters,
+                key = { _, item -> item.id }
+            ) {index, filter ->
                 val selected = selectedFilterItem == index
                 FilterItem(
                     selected = selected,
@@ -71,7 +75,7 @@ fun FilterItem(
                 text = filter.name,
                 style = TheMovieDbTypography.ParagraphBoldStyle,
                 color = if(selected) MaterialTheme.colorScheme.onSecondary
-                else MaterialTheme.colorScheme.onBackground
+                    else MaterialTheme.colorScheme.onBackground
             )
         },
         colors = FilterChipDefaults.filterChipColors(
@@ -89,17 +93,17 @@ fun FilterItem(
     )
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @Composable
 fun FilterGroupPrev() {
     TheMovieDbAppTheme {
         BackgroundPreview {
             FilterGroup(
                 filters = listOf(
-                    FilterItemData("Test 11", "asdas"),
-                    FilterItemData("Test 22", "asdas"),
-                    FilterItemData("Test 33", "asdas"),
-                    FilterItemData("Test 44", "asdas"),
+                    FilterItemData(1, "Test 11", "asdas"),
+                    FilterItemData(2, "Test 22", "asdas"),
+                    FilterItemData(3, "Test 33", "asdas"),
+                    FilterItemData(4, "Test 44", "asdas"),
                 ),
                 selectedFilterItem = 2,
                 modifier = Modifier.fillMaxWidth(),

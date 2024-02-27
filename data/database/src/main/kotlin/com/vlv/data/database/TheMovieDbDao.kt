@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.vlv.data.database.data.CountryEntity
 import com.vlv.data.database.data.Favorite
-import com.vlv.data.database.data.FavoriteType
 import com.vlv.data.database.data.History
-import com.vlv.data.database.data.HistoryType
 import com.vlv.data.database.data.ImageEntity
+import com.vlv.data.database.data.ItemType
 import com.vlv.data.database.data.LanguageEntity
 
 @Dao
@@ -21,12 +20,12 @@ interface TheMovieDbDao {
 
     @Query("SELECT * FROM history WHERE type = :type")
     fun historyByType(
-        type: HistoryType
+        type: ItemType
     ) : LiveData<List<History>>
 
     @Query("SELECT * FROM history WHERE type = :type")
     suspend fun historyByTypeAsync(
-        type: HistoryType
+        type: ItemType
     ) : List<History>
 
 
@@ -38,7 +37,7 @@ interface TheMovieDbDao {
 
     @Query("SELECT * FROM favorite WHERE type = :type order by id asc")
     suspend fun favoriteByType(
-        type: FavoriteType
+        type: ItemType
     ) : List<Favorite>
 
     @Query("SELECT * FROM favorite WHERE itemId = :itemId")

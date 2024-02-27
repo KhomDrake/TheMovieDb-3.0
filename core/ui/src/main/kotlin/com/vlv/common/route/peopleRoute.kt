@@ -3,6 +3,7 @@ package com.vlv.common.route
 import android.content.Context
 import com.vlv.common.data.people.People
 import com.vlv.common.data.people.PeopleListType
+import com.vlv.data.database.data.ItemType
 import com.vlv.extensions.intentForAction
 
 const val EXTRA_PEOPLE_LIST_TYPE = "EXTRA_PEOPLE_LIST_TYPE"
@@ -16,7 +17,7 @@ fun Context.toPeopleTrending() = intentForAction("PEOPLE_TRENDING")
 const val EXTRA_PEOPLE = "EXTRA_PEOPLE"
 
 fun Context.toPeopleSearch() = intentForAction("PEOPLE_SEARCH")
-    .putExtra(SEARCH_TYPE_EXTRA, SearchType.PEOPLE.name)
+    .putExtra(SEARCH_TYPE_EXTRA, ItemType.PEOPLE.name)
 
 fun Context.toPeopleDetail(
     people: People,

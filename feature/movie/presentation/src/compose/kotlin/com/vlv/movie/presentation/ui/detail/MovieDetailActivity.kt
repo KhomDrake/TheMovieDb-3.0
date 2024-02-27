@@ -12,6 +12,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import com.vlv.common.route.DETAIL_OBJECT_EXTRA
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.DetailObject
@@ -74,7 +75,10 @@ fun TopBar(
                     painter = painterResource(
                         id = if(isFavorite) R.drawable.ic_heart_filled else R.drawable.ic_heart_enable
                     ),
-                    contentDescription = "Favorite",
+                    contentDescription = stringResource(
+                        id = if(isFavorite) com.vlv.movie.R.string.movie_is_favorite
+                            else com.vlv.movie.R.string.movie_is_not_favorite
+                    ),
                     tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }

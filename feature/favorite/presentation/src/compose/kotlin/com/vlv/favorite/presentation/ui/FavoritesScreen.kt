@@ -14,7 +14,7 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.favorite.R
 import com.vlv.favorite.presentation.ui.movie.MovieFavorites
 import com.vlv.favorite.presentation.ui.people.PeopleFavorites
-import com.vlv.favorite.presentation.ui.series.SeriesFavorites
+import com.vlv.favorite.presentation.ui.tvshow.TvShowFavorites
 import com.vlv.imperiya.core.ui.components.TabItem
 import com.vlv.imperiya.core.ui.components.TabRow
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ fun FavoritesScreen(
 ) {
     val items = listOf(
         R.string.favorite_movie_title,
-        R.string.favorite_series_title,
+        R.string.favorite_tv_show_title,
         R.string.favorite_people_title
     )
     val pagerState = rememberPagerState(pageCount = { items.size })
@@ -60,7 +60,7 @@ fun FavoritesScreen(
         ) {
             when(items[it]) {
                 R.string.favorite_movie_title -> MovieFavorites(routeNavigation)
-                R.string.favorite_series_title -> SeriesFavorites(routeNavigation)
+                R.string.favorite_tv_show_title -> TvShowFavorites(routeNavigation)
                 else -> PeopleFavorites(routeNavigation)
             }
         }

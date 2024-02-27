@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewFontScale
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -24,8 +25,6 @@ import com.vlv.common.data.movie.Movie
 import com.vlv.common.extension.toUrlMovieDb
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
-import com.vlv.imperiya.core.ui.preview.PreviewLightDarkWithBackground
 import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 import com.vlv.ui.R
@@ -78,7 +77,7 @@ fun MoviePoster(
     }
 }
 
-@PreviewLightDarkWithBackground
+@PreviewLightDark
 @PreviewFontScale
 @Composable
 fun MoviePosterPreview() {

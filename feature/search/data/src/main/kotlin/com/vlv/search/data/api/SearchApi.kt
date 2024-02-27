@@ -2,7 +2,7 @@ package com.vlv.search.data.api
 
 import com.vlv.data.common.model.movie.MoviesResponse
 import com.vlv.data.common.model.people.PeoplesResponse
-import com.vlv.data.common.model.series.SeriesResponse
+import com.vlv.data.common.model.tvshow.TvShowsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,14 +17,14 @@ interface SearchApi {
     ) : MoviesResponse
 
     @GET("search/tv")
-    suspend fun searchSeries(
+    suspend fun searchTvShows(
         @Query("query")
         query: String,
         @Query("page")
         page: Int = 1,
         @Query("include_adult")
     includeAdult: Boolean = false
-    ) : SeriesResponse
+    ) : TvShowsResponse
 
     @GET("search/person")
     suspend fun searchPeople(
