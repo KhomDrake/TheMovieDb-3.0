@@ -6,10 +6,10 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
-import com.vlv.data.common.model.series.SeriesResponse
+import com.vlv.data.common.model.tvshow.TvShowsResponse
 import com.vlv.genre.R
-import com.vlv.genre.presentation.ui.movie.GENRE_ID_EXTRA
 import com.vlv.genre.data.api.DiscoverApi
+import com.vlv.genre.presentation.ui.movie.GENRE_ID_EXTRA
 import com.vlv.genre.presentation.ui.series.SeriesByGenreFragment
 import com.vlv.test.Check
 import com.vlv.test.Launch
@@ -65,14 +65,14 @@ class SeriesByGenreFragmentSetup :
     }
 
     fun withSeriesByGenreSuccess() {
-        val data = loadObjectFromJson<SeriesResponse>(
+        val data = loadObjectFromJson<TvShowsResponse>(
             InstrumentationRegistry.getInstrumentation().context,
             "series_by_genre.json",
             moshi
         ) ?: return
 
         coEvery {
-            discoverApi.discoverSeries(
+            discoverApi.discoverTvShow(
                 42,
                 1
             )
@@ -80,14 +80,14 @@ class SeriesByGenreFragmentSetup :
     }
 
     fun withSeriesByGenreEmpty() {
-        val data = loadObjectFromJson<SeriesResponse>(
+        val data = loadObjectFromJson<TvShowsResponse>(
             InstrumentationRegistry.getInstrumentation().context,
             "series_by_genre_empty.json",
             moshi
         ) ?: return
 
         coEvery {
-            discoverApi.discoverSeries(
+            discoverApi.discoverTvShow(
                 42,
                 1
             )
@@ -96,7 +96,7 @@ class SeriesByGenreFragmentSetup :
 
     fun withSeriesByGenreError() {
         coEvery {
-            discoverApi.discoverSeries(
+            discoverApi.discoverTvShow(
                 42,
                 1
             )
@@ -127,7 +127,7 @@ class SeriesByGenreFragmentCheck : Check, KoinComponent {
 
     fun seriesByGenreLoaded(times: Int) {
         coVerify(exactly = times) {
-            discoverApi.discoverSeries(42, 1)
+            discoverApi.discoverTvShow(42, 1)
         }
     }
 

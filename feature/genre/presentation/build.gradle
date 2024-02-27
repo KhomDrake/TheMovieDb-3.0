@@ -75,5 +75,5 @@ dependencies {
 
     testImplementation project(':tools:test')
     androidTestImplementation project(':tools:test')
-//    androidTestImplementation project(path: ':feature:genre:data')
+    androidTestImplementation project(path: ':feature:genre:data')
 }

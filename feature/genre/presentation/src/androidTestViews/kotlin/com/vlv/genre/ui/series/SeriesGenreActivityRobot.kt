@@ -6,7 +6,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.squareup.moshi.Moshi
 import com.vlv.common.route.toTvShowGenre
 import com.vlv.data.common.model.genre.GenresResponse
-import com.vlv.data.common.model.series.SeriesResponse
+import com.vlv.data.common.model.tvshow.TvShowsResponse
 import com.vlv.genre.R
 import com.vlv.genre.data.api.DiscoverApi
 import com.vlv.genre.data.api.GenresApi
@@ -56,25 +56,25 @@ class SeriesGenreActivitySetup :
             moshi
         ) ?: return
         coEvery {
-            genreApi.seriesGenres()
+            genreApi.tvShowGenres()
         } returns data
     }
 
     fun withGenreError() {
         coEvery {
-            genreApi.seriesGenres()
+            genreApi.tvShowGenres()
         } throws NotFoundException()
     }
 
     fun withSeriesByGenreSuccess() {
-        val data = loadObjectFromJson<SeriesResponse>(
+        val data = loadObjectFromJson<TvShowsResponse>(
             InstrumentationRegistry.getInstrumentation().context,
             "series_by_genre.json",
             moshi
         ) ?: return
 
         coEvery {
-            discoverApi.discoverSeries(
+            discoverApi.discoverTvShow(
                 42,
                 1
             )
@@ -125,7 +125,7 @@ class SeriesGenreActivityCheck : Check, KoinComponent {
 
     fun genresLoaded(times: Int) {
         coVerify(exactly = times) {
-            genresApi.seriesGenres()
+            genresApi.tvShowGenres()
         }
     }
 }
