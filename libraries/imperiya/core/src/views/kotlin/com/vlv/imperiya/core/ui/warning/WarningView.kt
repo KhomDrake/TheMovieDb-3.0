@@ -20,7 +20,7 @@ class WarningView : ConstraintLayout {
     private val body: AppCompatTextView by viewProvider(R.id.small_warning_body)
     private val statusIcon: AppCompatImageView by viewProvider(R.id.status_icon)
     private val tryAgainButton: AppCompatTextView by viewProvider(R.id.small_warning_try_again_button)
-    val closeIcon: AppCompatImageView by viewProvider(R.id.close_icon)
+    private val closeIcon: AppCompatImageView by viewProvider(R.id.close_icon)
 
     constructor(context: Context) : this(context, null)
 
@@ -41,7 +41,6 @@ class WarningView : ConstraintLayout {
         setButtonText(attrs.getString(R.styleable.WarningView_warning_button_try_again))
         setStatusIcon(attrs.getResourceId(R.styleable.WarningView_warning_status_icon, R.drawable.ic_close_error))
         setVisibilityIcon(attrs.getBoolean(R.styleable.WarningView_warning_show_close_icon, true))
-
 
         attrs.recycle()
     }

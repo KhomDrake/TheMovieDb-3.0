@@ -8,6 +8,7 @@
         android:id="@+id/warning_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:warning_show_close_icon="true"
         app:warning_title="Default title"
         app:warning_body="Default body"
         app:warning_button_try_again="default try again"/>
