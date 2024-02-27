@@ -20,13 +20,13 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ListingSeriesActivity : ListingItemsActivity() {
+class ListingTvShowActivity : ListingItemsActivity() {
 
     private val type: TvShowListType by extraProvider(
         TV_SHOW_LISTING_TYPE_EXTRA, default = TvShowListType.TRENDING
     )
 
-    private val viewModel: ListingSeriesViewModel by viewModel()
+    private val viewModel: ListingTvShowViewModel by viewModel()
 
     override val adapter: PagingDataAdapter<*, *>
         get() = pagingAdapter

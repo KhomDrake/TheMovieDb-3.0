@@ -9,7 +9,7 @@ import com.vlv.test.KoinRule
 import org.junit.Rule
 import org.junit.Test
 
-class SeriesGenreActivityTest {
+class TvShowGenreActivityTest {
 
     @JvmField
     @Rule

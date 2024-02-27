@@ -10,7 +10,7 @@ import com.vlv.data.common.model.tvshow.TvShowsResponse
 import com.vlv.genre.R
 import com.vlv.genre.data.api.DiscoverApi
 import com.vlv.genre.presentation.ui.movie.GENRE_ID_EXTRA
-import com.vlv.genre.presentation.ui.series.SeriesByGenreFragment
+import com.vlv.genre.presentation.ui.tv_show.TvShowByGenreFragment
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -28,7 +28,7 @@ import io.mockk.coVerify
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-fun SeriesByGenreFragmentTest.seriesByGenreFragment(func: SeriesByGenreFragmentSetup.() -> Unit) =
+fun TvShowByGenreFragmentTest.seriesByGenreFragment(func: SeriesByGenreFragmentSetup.() -> Unit) =
     SeriesByGenreFragmentSetup().apply(func)
 
 class SeriesByGenreFragmentSetup :
@@ -48,7 +48,7 @@ class SeriesByGenreFragmentSetup :
     }
 
     override fun setupLaunch() {
-        launchFragmentInContainer<SeriesByGenreFragment>(
+        launchFragmentInContainer<TvShowByGenreFragment>(
             fragmentArgs = arguments,
             themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )

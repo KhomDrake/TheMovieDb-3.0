@@ -24,14 +24,14 @@ import com.vlv.imperiya.core.ui.CarouselDecorator
 import com.vlv.imperiya.core.ui.stateview.StateView
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.tv_show.adapter.SeriesCarouselAdapter
+import com.vlv.themoviedb.ui.tv_show.adapter.TvShowCarouselAdapter
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
 import com.vlv.ui.R as RCommon
 
-abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) {
+abstract class TvShowCarouselFragment : Fragment(R.layout.tv_show_list_fragment) {
 
     protected val title: AppCompatTextView by viewProvider(R.id.list_title)
-    protected val recyclerView: RecyclerView by viewProvider(R.id.series)
+    protected val recyclerView: RecyclerView by viewProvider(R.id.tv_shows)
     protected val shimmer: ShimmerFrameLayout by viewProvider(R.id.shimmer)
     protected val errorView: SmallWarningView by viewProvider(R.id.error_state)
     protected val emptyView: StateView by viewProvider(R.id.empty_state)
@@ -65,7 +65,7 @@ abstract class SeriesCarouselFragment : Fragment(R.layout.series_list_fragment) 
         recyclerView.layoutManager = LinearLayoutManager(
             requireContext(), LinearLayoutManager.HORIZONTAL, false
         )
-        recyclerView.adapter = SeriesCarouselAdapter { view, series ->
+        recyclerView.adapter = TvShowCarouselAdapter { view, series ->
             requireContext().startActivity(
                 requireContext().toTvShowsDetail(series.toDetailObject()),
                 ActivityOptionsCompat.makeSceneTransitionAnimation(

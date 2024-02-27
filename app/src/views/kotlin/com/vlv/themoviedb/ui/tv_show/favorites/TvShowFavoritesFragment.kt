@@ -7,15 +7,15 @@ import com.vlv.extensions.dataState
 import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
-import com.vlv.favorite.ui.series.SeriesFavoriteViewModel
+import com.vlv.favorite.ui.tv_show.TvShowFavoriteViewModel
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.tv_show.SeriesCarouselFragment
-import com.vlv.themoviedb.ui.tv_show.adapter.SeriesCarouselAdapter
+import com.vlv.themoviedb.ui.tv_show.TvShowCarouselFragment
+import com.vlv.themoviedb.ui.tv_show.adapter.TvShowCarouselAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SeriesFavoritesFragment : SeriesCarouselFragment() {
+class TvShowFavoritesFragment : TvShowCarouselFragment() {
 
-    private val viewModel: SeriesFavoriteViewModel by viewModel()
+    private val viewModel: TvShowFavoriteViewModel by viewModel()
 
     override val titleRes: Int
         get() = R.string.favorites_title
@@ -43,7 +43,7 @@ class SeriesFavoritesFragment : SeriesCarouselFragment() {
             data {
                 if(it.isEmpty()) viewStateMachine.emptyState()
                 else viewStateMachine.dataState()
-                (recyclerView.adapter as? SeriesCarouselAdapter)?.submitList(it)
+                (recyclerView.adapter as? TvShowCarouselAdapter)?.submitList(it)
             }
             showLoading {
                 viewStateMachine.loadingState()

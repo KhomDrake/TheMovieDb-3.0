@@ -1,4 +1,4 @@
-package com.vlv.genre.presentation.ui.series
+package com.vlv.genre.presentation.ui.tv_show
 
 import android.os.Bundle
 import android.view.View
@@ -37,9 +37,9 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SeriesByGenreFragment : Fragment(R.layout.genre_fragment_by_genre) {
+class TvShowByGenreFragment : Fragment(R.layout.genre_fragment_by_genre) {
 
-    private val viewModel: SeriesGenreViewModel by viewModel()
+    private val viewModel: TvShowGenreViewModel by viewModel()
 
     private val genreId: Int? by extraProvider(GENRE_ID_EXTRA, null)
 
@@ -148,7 +148,7 @@ class SeriesByGenreFragment : Fragment(R.layout.genre_fragment_by_genre) {
     }
 
     companion object {
-        fun instance(genreId: Int) = SeriesByGenreFragment().apply {
+        fun instance(genreId: Int) = TvShowByGenreFragment().apply {
             arguments = bundleOf(
                 GENRE_ID_EXTRA to genreId
             )

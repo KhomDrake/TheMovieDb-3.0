@@ -1,4 +1,4 @@
-package com.vlv.genre.presentation.ui.series
+package com.vlv.genre.presentation.ui.tv_show
 
 import android.os.Bundle
 import android.view.ViewGroup
@@ -22,9 +22,9 @@ import com.vlv.genre.R
 import com.vlv.imperiya.core.ui.warning.SmallWarningView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SeriesGenreActivity : AppCompatActivity(R.layout.genre_items_genre_activity) {
+class TvShowGenreActivity : AppCompatActivity(R.layout.genre_items_genre_activity) {
 
-    private val viewModel: SeriesGenreViewModel by viewModel()
+    private val viewModel: TvShowGenreViewModel by viewModel()
 
     private val root: ViewGroup by viewProvider(R.id.root)
     private val toolbar: Toolbar by viewProvider(R.id.toolbar)
@@ -52,7 +52,7 @@ class SeriesGenreActivity : AppCompatActivity(R.layout.genre_items_genre_activit
     private fun loadGenres() {
         viewModel.genres().observe(this) {
             data {
-                val adapter = SeriesByGenreAdapter(it, this@SeriesGenreActivity)
+                val adapter = TvShowByGenreAdapter(it, this@TvShowGenreActivity)
                 layout.adapter = adapter
                 TabLayoutMediator(tabs, layout) { tab, position ->
                     tab.text = it[position].name

@@ -8,11 +8,11 @@ import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.tv_show.SeriesCarouselFragment
-import com.vlv.themoviedb.ui.tv_show.adapter.SeriesCarouselAdapter
+import com.vlv.themoviedb.ui.tv_show.TvShowCarouselFragment
+import com.vlv.themoviedb.ui.tv_show.adapter.TvShowCarouselAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AiringTodayFragment : SeriesCarouselFragment() {
+class AiringTodayFragment : TvShowCarouselFragment() {
 
     private val viewModel: AiringTodayViewModel by viewModel()
 
@@ -42,7 +42,7 @@ class AiringTodayFragment : SeriesCarouselFragment() {
             data {
                 if(it.isEmpty()) viewStateMachine.emptyState()
                 else viewStateMachine.dataState()
-                (recyclerView.adapter as? SeriesCarouselAdapter)?.submitList(it)
+                (recyclerView.adapter as? TvShowCarouselAdapter)?.submitList(it)
             }
             showLoading {
                 viewStateMachine.loadingState()

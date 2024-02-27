@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/series"
+        android:id="@+id/tv_shows"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -52,7 +52,7 @@
         style="@style/Imperiya.Widget.PageIndicator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/series"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_shows"/>
 
     <com.vlv.imperiya.core.ui.stateview.StateView
         android:id="@+id/empty_state"

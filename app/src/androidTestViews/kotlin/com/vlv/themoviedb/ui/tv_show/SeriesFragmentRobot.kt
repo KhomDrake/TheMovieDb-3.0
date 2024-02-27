@@ -19,7 +19,7 @@ import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-fun SeriesFragmentTest.seriesFragment(func: SeriesFragmentSetup.() -> Unit) =
+fun TvShowFragmentTest.seriesFragment(func: SeriesFragmentSetup.() -> Unit) =
     SeriesFragmentSetup().apply(func)
 
 class SeriesFragmentSetup : Setup<SeriesFragmentLaunch, SeriesFragmentCheck>, KoinComponent {
@@ -37,7 +37,7 @@ class SeriesFragmentSetup : Setup<SeriesFragmentLaunch, SeriesFragmentCheck>, Ko
     }
 
     override fun setupLaunch() {
-        launchFragmentInContainer<SeriesFragment>(
+        launchFragmentInContainer<TvShowFragment>(
             themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }

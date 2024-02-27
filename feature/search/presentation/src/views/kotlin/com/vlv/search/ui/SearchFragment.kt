@@ -143,7 +143,7 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         when(searchType) {
             SearchType.SERIES -> {
                 state.setTitle(R.string.search_series_empty_title)
-                state.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_series)
+                state.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv_shows)
             }
             SearchType.MOVIE -> {
                 state.setTitle(R.string.search_movie_empty_title)

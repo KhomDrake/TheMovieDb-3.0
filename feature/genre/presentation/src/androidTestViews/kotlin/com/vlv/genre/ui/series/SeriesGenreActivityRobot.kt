@@ -10,7 +10,7 @@ import com.vlv.data.common.model.tvshow.TvShowsResponse
 import com.vlv.genre.R
 import com.vlv.genre.data.api.DiscoverApi
 import com.vlv.genre.data.api.GenresApi
-import com.vlv.genre.presentation.ui.series.SeriesGenreActivity
+import com.vlv.genre.presentation.ui.tv_show.TvShowGenreActivity
 import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
@@ -25,7 +25,7 @@ import io.mockk.coVerify
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-fun SeriesGenreActivityTest.seriesGenreActivity(func: SeriesGenreActivitySetup.() -> Unit) =
+fun TvShowGenreActivityTest.seriesGenreActivity(func: SeriesGenreActivitySetup.() -> Unit) =
     SeriesGenreActivitySetup().apply(func)
 
 class SeriesGenreActivitySetup :
@@ -44,7 +44,7 @@ class SeriesGenreActivitySetup :
     }
 
     override fun setupLaunch() {
-        ActivityScenario.launch<SeriesGenreActivity>(
+        ActivityScenario.launch<TvShowGenreActivity>(
             InstrumentationRegistry.getInstrumentation().context.toTvShowGenre()
         )
     }

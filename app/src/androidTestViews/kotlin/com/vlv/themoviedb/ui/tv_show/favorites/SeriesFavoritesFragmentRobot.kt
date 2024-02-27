@@ -33,7 +33,7 @@ import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-fun SeriesFavoritesFragmentTest.seriesFavoritesFragment(func: SeriesFavoritesFragmentSetup.() -> Unit) =
+fun TvShowFavoritesFragmentTest.seriesFavoritesFragment(func: SeriesFavoritesFragmentSetup.() -> Unit) =
     SeriesFavoritesFragmentSetup().apply(func)
 
 class SeriesFavoritesFragmentSetup
@@ -51,7 +51,7 @@ class SeriesFavoritesFragmentSetup
     }
 
     override fun setupLaunch() {
-        launchFragmentInContainer<SeriesFavoritesFragment>(
+        launchFragmentInContainer<TvShowFavoritesFragment>(
             themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
         )
     }
@@ -106,7 +106,7 @@ class SeriesFavoritesFragmentLaunch : Launch<SeriesFavoritesFragmentCheck> {
 
     fun clickFavorite(position: Int) {
         mockIntent("SERIES_DETAIL", targetContext = true)
-        R.id.series.clickOnRecyclerViewItem(position)
+        R.id.tv_shows.clickOnRecyclerViewItem(position)
     }
 
     fun clickSeeAll() {
@@ -135,7 +135,7 @@ class SeriesFavoritesFragmentCheck : Check, KoinComponent {
         R.id.error_state.isNotDisplayed()
         R.id.empty_state.isNotDisplayed()
 
-        R.id.series.apply {
+        R.id.tv_shows.apply {
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.withText("Tagesschau"),
@@ -154,7 +154,7 @@ class SeriesFavoritesFragmentCheck : Check, KoinComponent {
         R.id.see_all.hasText("See All")
 
         R.id.indicator.isNotDisplayed()
-        R.id.series.isNotDisplayed()
+        R.id.tv_shows.isNotDisplayed()
         R.id.shimmer.isNotDisplayed()
         R.id.error_state.isNotDisplayed()
 
@@ -168,7 +168,7 @@ class SeriesFavoritesFragmentCheck : Check, KoinComponent {
         R.id.see_all.hasText("See All")
 
         R.id.indicator.isNotDisplayed()
-        R.id.series.isNotDisplayed()
+        R.id.tv_shows.isNotDisplayed()
         R.id.shimmer.isNotDisplayed()
         R.id.empty_state.isNotDisplayed()
 

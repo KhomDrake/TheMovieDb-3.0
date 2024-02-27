@@ -26,7 +26,7 @@ import com.vlv.tv_show.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 const val EXTRA_TV_SHOW = "EXTRA_TV_SHOW"
-class AboutFragment : Fragment(R.layout.series_fragment_about) {
+class AboutFragment : Fragment(R.layout.tv_show_fragment_about) {
 
     private val viewModel: AboutViewModel by viewModel()
     private val series: TvShow? by extraProvider(EXTRA_TV_SHOW, null)

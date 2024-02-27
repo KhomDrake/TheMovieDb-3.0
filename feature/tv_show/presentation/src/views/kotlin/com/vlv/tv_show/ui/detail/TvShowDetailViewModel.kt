@@ -6,7 +6,7 @@ import com.vlv.common.data.tv_show.TvShow
 import com.vlv.common.data.tv_show.toFavorite
 import com.vlv.favorite.domain.usecase.FavoriteUseCase
 
-class SeriesDetailViewModel(private val useCase: FavoriteUseCase) : ViewModel() {
+class TvShowDetailViewModel(private val useCase: FavoriteUseCase) : ViewModel() {
 
     fun changeFavorite(series: TvShow) = bondsmith<Boolean>()
         .config {

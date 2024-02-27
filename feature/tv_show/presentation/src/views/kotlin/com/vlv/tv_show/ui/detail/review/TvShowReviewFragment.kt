@@ -1,28 +1,33 @@
-package com.vlv.tv_show.ui.detail.cast
+package com.vlv.tv_show.ui.detail.review
 
 import androidx.core.os.bundleOf
 import br.com.arch.toolkit.delegate.extraProvider
 import com.vlv.common.data.tv_show.TvShow
-import com.vlv.common.ui.cast.CastFragment
-import com.vlv.common.ui.cast.adapter.CastAdapter
+import com.vlv.common.ui.review.ReviewFragment
+import com.vlv.common.ui.review.adapter.ReviewAdapter
 import com.vlv.extensions.dataState
+import com.vlv.extensions.emptyState
 import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.tv_show.ui.detail.about.EXTRA_TV_SHOW
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SeriesCastFragment : CastFragment() {
+class TvShowReviewFragment : ReviewFragment() {
 
     private val series: TvShow? by extraProvider(EXTRA_TV_SHOW, null)
 
-    private val viewModel: SeriesCastViewModel by viewModel()
+    private val viewModel: TvShowReviewViewModel by viewModel()
 
-    override fun loadCast() {
+    override fun loadReviews() {
         val series = series ?: return
-        viewModel.cast(series.id).observe(viewLifecycleOwner) {
-            data { castList ->
-                viewStateMachine.dataState()
-                (cast.adapter as? CastAdapter)?.submitList(castList)
+        viewModel.reviews(series.id).observe(viewLifecycleOwner) {
+            data { reviewsList ->
+                if(reviewsList.isEmpty()) {
+                    viewStateMachine.emptyState()
+                } else {
+                    viewStateMachine.dataState()
+                }
+                (reviews.adapter as? ReviewAdapter)?.submitList(reviewsList)
             }
             showLoading {
                 viewStateMachine.loadingState()
@@ -34,7 +39,7 @@ class SeriesCastFragment : CastFragment() {
     }
 
     companion object {
-        fun instance(series: TvShow) = SeriesCastFragment().apply {
+        fun instance(series: TvShow) = TvShowReviewFragment().apply {
             arguments = bundleOf(
                 EXTRA_TV_SHOW to series
             )

@@ -9,13 +9,13 @@ import com.vlv.extensions.errorState
 import com.vlv.extensions.loadingState
 import com.vlv.imperiya.core.ui.CarouselDecorator
 import com.vlv.themoviedb.R
-import com.vlv.themoviedb.ui.tv_show.SeriesCarouselFragment
-import com.vlv.themoviedb.ui.tv_show.adapter.SeriesCarouselAdapter
+import com.vlv.themoviedb.ui.tv_show.TvShowCarouselFragment
+import com.vlv.themoviedb.ui.tv_show.adapter.TvShowCarouselAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TrendingFragment : SeriesCarouselFragment() {
+class TrendingFragment : TvShowCarouselFragment() {
 
-    private val viewModel: TrendingSeriesViewModel by viewModel()
+    private val viewModel: TrendingTvShowViewModel by viewModel()
 
     override val titleRes: Int
         get() = R.string.trending_title
@@ -46,7 +46,7 @@ class TrendingFragment : SeriesCarouselFragment() {
             data {
                 if(it.isEmpty()) viewStateMachine.emptyState()
                 else viewStateMachine.dataState()
-                (recyclerView.adapter as? SeriesCarouselAdapter)?.submitList(it)
+                (recyclerView.adapter as? TvShowCarouselAdapter)?.submitList(it)
             }
             showLoading {
                 viewStateMachine.loadingState()

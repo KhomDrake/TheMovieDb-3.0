@@ -30,7 +30,7 @@ class SeasonAdapter : ListAdapter<Season, SeasonViewHolder>(SeasonDiffUtil()) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeasonViewHolder {
-        return SeasonViewHolder(parent.inflate(R.layout.series_season_item))
+        return SeasonViewHolder(parent.inflate(R.layout.tv_show_season_item))
     }
 
 }

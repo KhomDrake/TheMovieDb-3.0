@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginVertical="8dp"
     android:padding="12dp"
-    android:background="@drawable/series_background_seasons"
+    android:background="@drawable/tv_show_background_seasons"
     android:outlineProvider="background">
 
     <androidx.appcompat.widget.AppCompatImageView

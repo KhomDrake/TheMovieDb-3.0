@@ -11,7 +11,7 @@ import com.vlv.data.common.model.TimeWindow
 import com.vlv.tv_show.data.repository.TvShowRepository
 import kotlinx.coroutines.flow.map
 
-class ListingSeriesViewModel(private val repository: TvShowRepository) : ViewModel() {
+class ListingTvShowViewModel(private val repository: TvShowRepository) : ViewModel() {
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,

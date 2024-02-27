@@ -1,4 +1,4 @@
-package com.vlv.favorite.ui.series
+package com.vlv.favorite.ui.tv_show
 
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,9 +13,9 @@ import com.vlv.favorite.R
 import com.vlv.favorite.ui.BaseFavoriteFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SeriesFavoritesFragment : BaseFavoriteFragment() {
+class TvShowFavoritesFragment : BaseFavoriteFragment() {
 
-    private val viewModel: SeriesFavoriteViewModel by viewModel()
+    private val viewModel: TvShowFavoriteViewModel by viewModel()
 
     override val loadingLayout: Int
         get() = com.vlv.ui.R.layout.common_listing_series_loading

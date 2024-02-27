@@ -6,7 +6,7 @@ import com.vlv.movie.presentation.MovieInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
 import com.vlv.themoviedb.ui.MainInitializer
-import com.vlv.tv_show.SeriesInitializer
+import com.vlv.tv_show.TvShowInitializer
 import org.junit.Rule
 import org.junit.Test
 
@@ -21,7 +21,7 @@ class MenuFragmentTest {
         listOf(),
         NetworkInitializer::class.java,
         MovieInitializer::class.java,
-        SeriesInitializer::class.java,
+        TvShowInitializer::class.java,
         FavoriteInitializer::class.java,
         MainInitializer::class.java
     )

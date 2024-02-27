@@ -16,7 +16,7 @@ import com.vlv.extensions.addAccessibilityDelegate
 import com.vlv.themoviedb.R
 import com.vlv.ui.R as RCommon
 
-class SeriesItemDiff: ItemCallback<TvShow>() {
+class TvShowItemDiff: ItemCallback<TvShow>() {
     override fun areItemsTheSame(oldItem: TvShow, newItem: TvShow): Boolean {
         return oldItem.id == newItem.id
     }
@@ -26,11 +26,11 @@ class SeriesItemDiff: ItemCallback<TvShow>() {
     }
 }
 
-class SeriesCarouselAdapter(
+class TvShowCarouselAdapter(
     private val onClick: (View, TvShow) -> Unit
-) : ListAdapter<TvShow, SeriesViewHolder>(SeriesItemDiff()) {
+) : ListAdapter<TvShow, TvShowViewHolder>(TvShowItemDiff()) {
 
-    override fun onBindViewHolder(holder: SeriesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
         val series = currentList[position]
         holder.bind(series)
         holder.poster.setOnClickListener {
@@ -38,10 +38,10 @@ class SeriesCarouselAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeriesViewHolder {
-        return SeriesViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
+        return TvShowViewHolder(
             view = LayoutInflater.from(parent.context).inflate(
-                R.layout.series_item,
+                R.layout.tv_show_item,
                 parent,
                 false
             )
@@ -50,7 +50,7 @@ class SeriesCarouselAdapter(
 
 }
 
-class SeriesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class TvShowViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val poster: AppCompatImageView by viewProvider(R.id.poster)
     private val title: AppCompatTextView by viewProvider(R.id.series_title)

@@ -102,7 +102,7 @@ class TrendingFragmentLaunch : Launch<TrendingFragmentCheck> {
 
     fun clickSeries(position: Int) {
         mockIntent("SERIES_DETAIL", targetContext = true)
-        R.id.series.clickOnRecyclerViewItem(position)
+        R.id.tv_shows.clickOnRecyclerViewItem(position)
     }
 
     fun clickSeeAll() {
@@ -134,7 +134,7 @@ class TrendingFragmentCheck : Check, KoinComponent {
         R.id.error_state.isNotDisplayed()
         R.id.empty_state.isNotDisplayed()
 
-        R.id.series.apply {
+        R.id.tv_shows.apply {
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.withText("Tagesschau"),
@@ -166,7 +166,7 @@ class TrendingFragmentCheck : Check, KoinComponent {
         R.id.see_all.hasText("See All")
 
         R.id.indicator.isNotDisplayed()
-        R.id.series.isNotDisplayed()
+        R.id.tv_shows.isNotDisplayed()
         R.id.shimmer.isNotDisplayed()
         R.id.error_state.isNotDisplayed()
 
@@ -180,7 +180,7 @@ class TrendingFragmentCheck : Check, KoinComponent {
         R.id.see_all.hasText("See All")
 
         R.id.indicator.isNotDisplayed()
-        R.id.series.isNotDisplayed()
+        R.id.tv_shows.isNotDisplayed()
         R.id.shimmer.isNotDisplayed()
         R.id.empty_state.isNotDisplayed()
 

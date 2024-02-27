@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchSeriesActivity : SearchActivity() {
+class SearchTvShowActivity : SearchActivity() {
 
     private val viewModel: SearchViewModel by viewModel()
 
@@ -81,7 +81,7 @@ class SearchSeriesActivity : SearchActivity() {
 
     override fun configStateView(stateView: StateView) {
         stateView.setTitle(R.string.tv_show_search_empty_title)
-        stateView.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_series)
+        stateView.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv_shows)
     }
 
     override fun configWarningView(smallWarningView: SmallWarningView) {

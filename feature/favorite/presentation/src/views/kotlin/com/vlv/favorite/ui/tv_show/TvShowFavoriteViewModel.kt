@@ -1,10 +1,10 @@
-package com.vlv.favorite.ui.series
+package com.vlv.favorite.ui.tv_show
 
 import androidx.lifecycle.ViewModel
 import com.vlv.common.data.tv_show.TvShow
 import com.vlv.favorite.domain.usecase.TvShowFavoriteUseCase
 
-class SeriesFavoriteViewModel(
+class TvShowFavoriteViewModel(
     private val useCase: TvShowFavoriteUseCase
 ) : ViewModel() {
 

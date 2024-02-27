@@ -1,4 +1,4 @@
-package com.vlv.genre.presentation.ui.series
+package com.vlv.genre.presentation.ui.tv_show
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,7 @@ import com.vlv.genre.domain.usecase.TvShowGenreUseCase
 import com.vlv.genre.presentation.data.Genre
 import kotlinx.coroutines.flow.map
 
-class SeriesGenreViewModel(
+class TvShowGenreViewModel(
     private val genreUseCase: TvShowGenreUseCase
 ) : ViewModel() {
 

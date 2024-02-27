@@ -10,7 +10,7 @@ import com.vlv.test.KoinRule
 import org.junit.Rule
 import org.junit.Test
 
-class SeriesByGenreFragmentTest {
+class TvShowByGenreFragmentTest {
 
     @get:Rule
     val intentsRule = IntentsRule()

@@ -10,10 +10,10 @@ import com.vlv.extensions.addOrReplace
 import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
 import com.vlv.themoviedb.R
 import com.vlv.themoviedb.ui.tv_show.airingtoday.AiringTodayFragment
-import com.vlv.themoviedb.ui.tv_show.favorites.SeriesFavoritesFragment
+import com.vlv.themoviedb.ui.tv_show.favorites.TvShowFavoritesFragment
 import com.vlv.themoviedb.ui.tv_show.trending.TrendingFragment
 
-class SeriesFragment : Fragment(R.layout.series_fragment) {
+class TvShowFragment : Fragment(R.layout.tv_show_fragment) {
 
     private val search: ImperiyaSearchView by viewProvider(R.id.search)
 
@@ -35,8 +35,8 @@ class SeriesFragment : Fragment(R.layout.series_fragment) {
             addOrReplace(
                 childFragmentManager,
                 R.id.content,
-                SeriesFavoritesFragment(),
-                SeriesFavoritesFragment::class.java.name
+                TvShowFavoritesFragment(),
+                TvShowFavoritesFragment::class.java.name
             )
         }.commit()
 

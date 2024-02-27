@@ -15,7 +15,7 @@
 
         <activity
             android:theme="@style/Imperiya.Theme"
-            android:name=".presentation.ui.series.SeriesGenreActivity"
+            android:name=".presentation.ui.tv_show.TvShowGenreActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="${applicationId}.SERIES_GENRE" />

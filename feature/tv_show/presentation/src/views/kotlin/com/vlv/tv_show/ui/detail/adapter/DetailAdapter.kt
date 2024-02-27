@@ -4,15 +4,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.vlv.common.data.tv_show.TvShow
-import com.vlv.tv_show.ui.detail.cast.SeriesCastFragment
-import com.vlv.tv_show.ui.detail.recommendation.RecommendationFragment
-import com.vlv.tv_show.ui.detail.review.SeriesReviewFragment
-import com.vlv.tv_show.ui.detail.season.SeasonsFragment
 import com.vlv.tv_show.ui.detail.about.AboutFragment
+import com.vlv.tv_show.ui.detail.cast.TvShowCastFragment
+import com.vlv.tv_show.ui.detail.recommendation.RecommendationFragment
+import com.vlv.tv_show.ui.detail.review.TvShowReviewFragment
+import com.vlv.tv_show.ui.detail.season.SeasonsFragment
 
 class DetailAdapter(
     private val titles: List<String>,
-    private val series: TvShow,
+    private val tvShow: TvShow,
     fragmentActivity: FragmentActivity
 ) : FragmentStateAdapter(fragmentActivity) {
 
@@ -21,19 +21,19 @@ class DetailAdapter(
     override fun createFragment(position: Int): Fragment {
         return when(position) {
             0 -> {
-                AboutFragment.instance(series)
+                AboutFragment.instance(tvShow)
             }
             1 -> {
-                SeasonsFragment.instance(series)
+                SeasonsFragment.instance(tvShow)
             }
             2 -> {
-                SeriesCastFragment.instance(series)
+                TvShowCastFragment.instance(tvShow)
             }
             3 -> {
-                SeriesReviewFragment.instance(series)
+                TvShowReviewFragment.instance(tvShow)
             }
             else -> {
-                RecommendationFragment.instance(series)
+                RecommendationFragment.instance(tvShow)
             }
         }
     }

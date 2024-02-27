@@ -7,7 +7,7 @@ import com.vlv.themoviedb.ui.menu.MenuViewModel
 import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingViewModel
 import com.vlv.themoviedb.ui.movie.trending.TrendingNowViewModel
 import com.vlv.themoviedb.ui.tv_show.airingtoday.AiringTodayViewModel
-import com.vlv.themoviedb.ui.tv_show.trending.TrendingSeriesViewModel
+import com.vlv.themoviedb.ui.tv_show.trending.TrendingTvShowViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -19,7 +19,7 @@ class MainInitializer : Initializer<Module> {
         val module = module {
             viewModel { NowPlayingViewModel(get()) }
             viewModel { TrendingNowViewModel(get()) }
-            viewModel { TrendingSeriesViewModel(get()) }
+            viewModel { TrendingTvShowViewModel(get()) }
             viewModel { AiringTodayViewModel(get()) }
             viewModel { MenuViewModel() }
         }

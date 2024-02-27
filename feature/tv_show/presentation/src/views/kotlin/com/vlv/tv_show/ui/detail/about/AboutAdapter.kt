@@ -70,7 +70,7 @@ class AboutAdapter : ListAdapter<AboutItem, RecyclerView.ViewHolder>(AboutItemDi
             AboutItemType.BIG_TEXT.ordinal ->
                 BigTextViewHolder(parent.inflate(RCommon.layout.common_big_text_item))
             AboutItemType.EPISODE.ordinal ->
-                EpisodeViewHolder(parent.inflate(R.layout.series_episode_item))
+                EpisodeViewHolder(parent.inflate(R.layout.tv_show_episode_item))
             AboutItemType.GENRES.ordinal ->
                 GenresViewHolder(parent.inflate(RCommon.layout.common_genres_item))
             AboutItemType.INFORMATION.ordinal ->

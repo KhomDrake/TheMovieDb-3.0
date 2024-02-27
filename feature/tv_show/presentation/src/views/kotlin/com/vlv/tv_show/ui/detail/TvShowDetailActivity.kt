@@ -15,9 +15,9 @@ import com.vlv.tv_show.R
 import com.vlv.tv_show.ui.detail.adapter.DetailAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SeriesDetailActivity : DetailActivity() {
+class TvShowDetailActivity : DetailActivity() {
 
-    private val viewModel: SeriesDetailViewModel by viewModel()
+    private val viewModel: TvShowDetailViewModel by viewModel()
 
     override val texts: List<String>
         get() = listOf(
@@ -80,7 +80,7 @@ class SeriesDetailActivity : DetailActivity() {
                 else R.string.tv_show_add_favorite
             )
             menuHeart.icon = ContextCompat.getDrawable(
-                this@SeriesDetailActivity,
+                this@TvShowDetailActivity,
                 if(isFavorite) com.vlv.imperiya.core.R.drawable.ic_heart_filled
                 else com.vlv.imperiya.core.R.drawable.ic_heart_enable
             )

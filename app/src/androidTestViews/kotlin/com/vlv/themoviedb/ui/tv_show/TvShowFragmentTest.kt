@@ -7,7 +7,7 @@ import com.vlv.movie.presentation.MovieInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
 import com.vlv.themoviedb.ui.MainInitializer
-import com.vlv.tv_show.SeriesInitializer
+import com.vlv.tv_show.TvShowInitializer
 import com.vlv.tv_show.data.repository.TvShowRepository
 import io.mockk.mockk
 import org.junit.Ignore
@@ -20,7 +20,7 @@ private val myModule = module {
     single { mockk<TvShowFavoriteUseCase>(relaxed = true) }
 }
 
-class SeriesFragmentTest {
+class TvShowFragmentTest {
 
     @get:Rule
     val intentsRule = IntentsRule()
@@ -31,7 +31,7 @@ class SeriesFragmentTest {
         listOf(myModule),
         NetworkInitializer::class.java,
         MovieInitializer::class.java,
-        SeriesInitializer::class.java,
+        TvShowInitializer::class.java,
         FavoriteInitializer::class.java,
         MainInitializer::class.java
     )

@@ -13,7 +13,7 @@ import com.vlv.tv_show.R
 import com.vlv.tv_show.ui.detail.about.EXTRA_TV_SHOW
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SeasonsFragment : Fragment(R.layout.series_fragment_seasons) {
+class SeasonsFragment : Fragment(R.layout.tv_show_fragment_seasons) {
 
     private val viewModel: SeasonsViewModel by viewModel()
 

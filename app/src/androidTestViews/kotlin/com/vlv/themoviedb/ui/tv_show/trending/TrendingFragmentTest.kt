@@ -5,7 +5,7 @@ import com.vlv.favorite.FavoriteInitializer
 import com.vlv.test.IntentsRule
 import com.vlv.test.KoinRule
 import com.vlv.themoviedb.ui.MainInitializer
-import com.vlv.tv_show.SeriesInitializer
+import com.vlv.tv_show.TvShowInitializer
 import com.vlv.tv_show.data.repository.TvShowRepository
 import io.mockk.mockk
 import org.junit.Rule
@@ -26,7 +26,7 @@ class TrendingFragmentTest {
     val koinRule = KoinRule(
         listOf(myModule),
         NetworkInitializer::class.java,
-        SeriesInitializer::class.java,
+        TvShowInitializer::class.java,
         FavoriteInitializer::class.java,
         MainInitializer::class.java
     )
