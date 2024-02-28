@@ -65,13 +65,14 @@ class SectionsData(
             Section(
                 resources.getString(R.string.configuration_options_header_general),
                 listOf(
-                    SectionConfig(
-                        SettingOption.ADULT_CONTENT,
-                        ConfigItemType.SWITCH,
-                        resources.getString(R.string.configuration_options_item_adult_content_title),
-                        resources.getString(R.string.configuration_options_item_adult_content_body),
-                        settingsData.adultContent.selectedItem.value as Boolean
-                    ),
+                    // removing for now
+//                    SectionConfig(
+//                        SettingOption.ADULT_CONTENT,
+//                        ConfigItemType.SWITCH,
+//                        resources.getString(R.string.configuration_options_item_adult_content_title),
+//                        resources.getString(R.string.configuration_options_item_adult_content_body),
+//                        settingsData.adultContent.selectedItem.value as Boolean
+//                    ),
                     SectionConfig(
                         SettingOption.DYNAMIC_COLORS,
                         ConfigItemType.SWITCH,
