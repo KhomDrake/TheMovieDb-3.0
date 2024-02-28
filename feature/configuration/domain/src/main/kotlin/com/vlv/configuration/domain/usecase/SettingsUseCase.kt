@@ -9,6 +9,7 @@ import com.vlv.configuration.domain.model.SectionsData
 import com.vlv.configuration.domain.model.SettingOption
 import com.vlv.configuration.domain.model.SettingsResponse
 import com.vlv.data.local.datastore.DataVault
+import kotlin.time.Duration.Companion.milliseconds
 
 class SettingsUseCase(
     private val resources: Resources,
@@ -22,6 +23,7 @@ class SettingsUseCase(
     }
     fun configData() = bondsmith<SectionsData>("CONFIG-DATA")
         .config {
+            minDuration(600.milliseconds)
             request {
                 withCache(with = false)
                 val settingsData = newConfig()

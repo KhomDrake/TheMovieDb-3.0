@@ -16,6 +16,7 @@ import com.vlv.bondsmith.data.Response
 import com.vlv.bondsmith.data.ResponseStatus
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
+import com.vlv.common.ui.extension.handle
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.data.SectionUIType
 import com.vlv.configuration.domain.model.ConfigDataItemList
@@ -33,14 +34,14 @@ fun SettingsContent(
     routeNavigation: RouteNavigation,
     viewModel: SettingsViewModel = koinViewModel()
 ) {
-    val data by viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
 
     LaunchedEffect(key1 = null, block = {
         viewModel.settings()
     })
 
     SettingsState(
-        data = data,
+        data = state,
         paddingValues = paddingValues,
         onConfirmChangeItem = { item ->
             viewModel.setData(item)
@@ -64,10 +65,9 @@ fun SettingsState(
     onConfirmChangeItem: (SectionUIItem) -> Unit,
     onTryAgain: () -> Unit
 ) {
-    when(data.state) {
-        ResponseStatus.SUCCESS -> {
-            val settingsData = data.data
-            if(!settingsData.isNullOrEmpty()) {
+    data.handle(
+        success = { settingsData ->
+            if(settingsData.isNotEmpty()) {
                 SettingsItems(
                     items = settingsData,
                     paddingValues = paddingValues,
@@ -76,11 +76,8 @@ fun SettingsState(
             } else {
                 SettingsError(paddingValues, onTryAgain)
             }
-        }
-        ResponseStatus.ERROR -> {
-            SettingsError(paddingValues, onTryAgain)
-        }
-        ResponseStatus.LOADING -> {
+        },
+        loading = {
             SettingsShimmer(
                 modifier = Modifier
                     .padding(
@@ -89,9 +86,11 @@ fun SettingsState(
                         end = 16.dp
                     )
             )
+        },
+        error = {
+            SettingsError(paddingValues, onTryAgain)
         }
-        else -> Unit
-    }
+    )
 }
 
 @Composable
