@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Imperiya.Theme" parent="Theme.Material3.DynamicColors.Dark">
+        <item name="colorPrimary">@color/color_imperiya_dark_primary</item>
+        <item name="colorOnPrimary">@color/color_imperiya_dark_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/color_imperiya_dark_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/color_imperiya_dark_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/color_imperiya_dark_secondary</item>
+        <item name="colorOnSecondary">@color/color_imperiya_dark_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/color_imperiya_dark_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/color_imperiya_dark_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/color_imperiya_dark_tertiary</item>
+        <item name="colorOnTertiary">@color/color_imperiya_dark_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/color_imperiya_dark_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/color_imperiya_dark_onTertiaryContainer</item>
+        <item name="colorError">@color/color_imperiya_dark_error</item>
+        <item name="colorErrorContainer">@color/color_imperiya_dark_errorContainer</item>
+        <item name="colorOnError">@color/color_imperiya_dark_onError</item>
+        <item name="colorOnErrorContainer">@color/color_imperiya_dark_onErrorContainer</item>
+        <item name="android:colorBackground">@color/color_imperiya_dark_background</item>
+        <item name="colorOnBackground">@color/color_imperiya_dark_onBackground</item>
+        <item name="colorSurface">@color/color_imperiya_dark_surface</item>
+        <item name="colorOnSurface">@color/color_imperiya_dark_onSurface</item>
+        <item name="colorSurfaceVariant">@color/color_imperiya_dark_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/color_imperiya_dark_onSurfaceVariant</item>
+        <item name="colorOutline">@color/color_imperiya_dark_outline</item>
+        <item name="colorOnSurfaceInverse">@color/color_imperiya_dark_inverseOnSurface</item>
+        <item name="colorSurfaceInverse">@color/color_imperiya_dark_inverseSurface</item>
+        <item name="colorPrimaryInverse">@color/color_imperiya_dark_inversePrimary</item>
+        <item name="android:statusBarColor">@color/color_imperiya_dark_background</item>
+        <item name="android:windowBackground">@color/color_imperiya_dark_background</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

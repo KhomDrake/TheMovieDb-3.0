@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application>
+
+        <activity
+            android:theme="@style/Imperiya.Theme"
+            android:name=".presentation.ui.movie.MovieGenreActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.MOVIE_GENRE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:theme="@style/Imperiya.Theme"
+            android:name=".presentation.ui.tv_show.TvShowGenreActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.SERIES_GENRE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data  android:name="com.vlv.genre.GenreInitialization"
+                android:value="androidx.startup" />
+        </provider>
+    </application>
+</manifest>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Imperiya.Widget.Toolbar"
+        app:title="Small Warning Sample"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.vlv.imperiya.core.ui.stateview.StateView
+        android:id="@+id/state_view_default"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:state_title="Failure title you put it here"
+        app:state_body="Failure body you put it here"/>
+
+    <com.vlv.imperiya.core.ui.stateview.StateView
+        android:id="@+id/state_view_custom_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:state_title="Failure title you put it here"
+        app:state_body="Failure body you put it here"
+        app:state_icon="@drawable/ic_heart_enable"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

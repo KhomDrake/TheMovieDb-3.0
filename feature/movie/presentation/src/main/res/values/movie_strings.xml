@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_text_original_title">Original title</string>
+    <string name="movie_text_original_language">Original language</string>
+    <string name="movie_text_state">State</string>
+    <string name="movie_text_duration">Screen Time</string>
+    <string name="movie_text_revenue">Revenue</string>
+    <string name="movie_text_budget">Budget</string>
+    <string name="movie_text_companies">Companies</string>
+    <string name="movie_text_countries">Countries</string>
+    <string name="movie_text_spoken_languages">Spoken languages</string>
+    <string name="movie_text_release_status">Release status</string>
+
+    <string name="movie_search_hint">Search for movies</string>
+    <string name="movie_search_empty_state">No movie was found</string>
+    <string name="movie_search_history_title">Movies searched recently:</string>
+
+    <string name="movie_title_trending_now">Trending now</string>
+    <string name="movie_title_now_playing">Now playing</string>
+    <string name="movie_title_top_rated">Top rated</string>
+    <string name="movie_title_popular">Popular</string>
+    <string name="movie_title_upcoming">Upcoming</string>
+    <string name="movie_title_genres">Genres:</string>
+    <string name="movie_description">Description: %s</string>
+    <string name="movie_title_information">Information:</string>
+    <string name="movie_error_detail_title">Failed to load movie information</string>
+    <string name="movie_error_cast_title">Failed to load cast</string>
+    <string name="movie_about_tab_title">About</string>
+    <string name="movie_cast_tab_title">Cast</string>
+    <string name="movie_review_tab_title">Review</string>
+    <string name="movie_recommendation_tab_title">Recommendation</string>
+    <string name="movie_empty_state_recommendation">None recommendation found</string>
+    <string name="movie_empty_state_review">None review found</string>
+
+    <string name="movie_added_to_favorite">Movie added to favorites</string>
+    <string name="movie_add_favorite">add movie to favorites</string>
+    <string name="movie_removed_from_favorite">Movie removed from favorites</string>
+    <string name="movie_remove_favorite">remove movie from favorites</string>
+    <string name="movie_is_favorite">Favorite Movie</string>
+    <string name="movie_is_not_favorite">Not favorite Movie</string>
+
+    <!--  MOVIE LISTING  -->
+    <string name="movie_listing_error_title">Failed to load</string>
+    <string name="movie_listing_error_body">Check your internet connection, wait a few moments and click in load again button</string>
+    <string name="movie_listing_error_button">Load again</string>
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/close_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_close"
+        android:tint="@color/color_imperiya_on_background"
+        android:foreground="@drawable/imperiya_ripple_oval"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/small_warning_title"
+        style="@style/Imperiya.Style.Text.Title"
+        android:textColor="@color/color_imperiya_on_background"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toStartOf="@id/status_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/close_icon"
+        tools:text="Failure ocurred" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/small_warning_body"
+        style="@style/Imperiya.Style.Text.Paragraph"
+        android:textColor="@color/color_imperiya_on_background"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@id/status_icon"
+        app:layout_constraintTop_toBottomOf="@id/small_warning_title"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Unable to load data. Please try again." />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/small_warning_try_again_button"
+        style="@style/Imperiya.Style.Text.Link"
+        android:textColor="@color/imperiya_color_link"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:paddingVertical="4dp"
+        android:layout_marginTop="12dp"
+        android:foreground="@drawable/imperiya_ripple_rounded"
+        app:layout_constraintEnd_toStartOf="@id/status_icon"
+        app:layout_constraintTop_toBottomOf="@id/small_warning_body"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Try Again" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/status_icon"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_close_error"
+        app:layout_constraintTop_toBottomOf="@id/close_icon"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</merge>

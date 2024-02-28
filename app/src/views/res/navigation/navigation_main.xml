@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/favorites"
-        android:name="com.vlv.themoviedb.ui.favorites.FavoritesFragment"
+        android:name="com.vlv.favorite.ui.FavoritesFragment"
         android:label="FavoritesFragment" />
     <fragment
         android:id="@+id/movie"
@@ -14,14 +14,14 @@
         android:label="MovieFragment" />
     <fragment
         android:id="@+id/options"
-        android:name="com.vlv.themoviedb.ui.options.OptionsFragment"
+        android:name="com.vlv.themoviedb.ui.menu.MenuFragment"
         android:label="OptionsFragment" />
     <fragment
         android:id="@+id/search"
-        android:name="com.vlv.themoviedb.ui.search.SearchFragment"
+        android:name="com.vlv.search.ui.SearchFragment"
         android:label="SearchFragment" />
     <fragment
-        android:id="@+id/series"
-        android:name="com.vlv.themoviedb.ui.series.SeriesFragment"
+        android:id="@+id/tv_shows"
+        android:name="com.vlv.themoviedb.ui.tv_show.TvShowFragment"
         android:label="SeriesFragment" />
 </navigation>

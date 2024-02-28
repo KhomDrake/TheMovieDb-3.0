@@ -1,18 +1,56 @@
 package com.vlv.themoviedb
 
-import android.content.Intent
+import android.animation.ValueAnimator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.animation.doOnEnd
+import androidx.core.animation.doOnStart
+import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.common.route.toMain
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : AppCompatActivity(R.layout.intro_activity) {
+
+    private val viewModel: IntroViewModel by viewModel()
+
+    private val icon: AppCompatImageView by viewProvider(R.id.icon)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        startActivity(
-            Intent(
-                "$packageName.MAIN"
-            )
-        )
+
+        val startAnimationText = getString(R.string.logo_animation_start)
+        val endAnimationText = getString(R.string.logo_animation_ending)
+
+        ValueAnimator.ofFloat(0f, 1f).apply {
+            duration = 1000L
+            interpolator = FastOutLinearInInterpolator()
+            doOnStart {
+                icon.announceForAccessibility(startAnimationText)
+            }
+            doOnEnd {
+                icon.announceForAccessibility(endAnimationText)
+            }
+            addUpdateListener {
+                icon.alpha = it.animatedValue as Float
+            }
+        }.start()
+
+        viewModel.loadConfig().observe(this) {
+            data {
+                openMain(endAnimationText)
+            }
+            error { _ ->
+                openMain(endAnimationText)
+            }
+        }
+
+    }
+
+    private fun openMain(endAnimationText: String) {
+        startActivity(toMain())
+        icon.announceForAccessibility(endAnimationText)
     }
 
 }

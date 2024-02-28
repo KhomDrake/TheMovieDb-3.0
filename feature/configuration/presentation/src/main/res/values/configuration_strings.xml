@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="configuration_toolbar_title">Settings</string>
+    <string name="configuration_button">Confirm</string>
+
+    <string name="configuration_error_state_title">Failed to load settings</string>
+</resources>

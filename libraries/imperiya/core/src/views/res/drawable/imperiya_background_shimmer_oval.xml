@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="oval" xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:endColor="@color/imperiya_color_end_shimmer"
+        android:startColor="@color/imperiya_color_start_shimmer" />
+</shape>

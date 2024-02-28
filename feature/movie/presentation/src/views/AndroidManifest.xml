@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application>
+
+        <activity
+            android:theme="@style/Imperiya.Theme"
+            android:name=".presentation.ui.listing.ListingMovieActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.MOVIE_LISTING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:theme="@style/Imperiya.Theme"
+            android:name=".presentation.ui.search.SearchMovieActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.MOVIE_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:theme="@style/Imperiya.Theme.Collapse"
+            android:name=".presentation.ui.detail.MovieDetailActivity"
+            android:label=""
+            android:exported="false">
+            <intent-filter>
+                <action android:name="${applicationId}.MOVIE_DETAIL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data  android:name="com.vlv.movie.presentation.MovieInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+    </application>
+</manifest>

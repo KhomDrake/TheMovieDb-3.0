@@ -10,6 +10,10 @@
 .DS_Store
 /build
 /captures
+/app/views
+/distribution/key_store_release
 .externalNativeBuild
 .cxx
 local.properties
+signing.properties
+env.properties

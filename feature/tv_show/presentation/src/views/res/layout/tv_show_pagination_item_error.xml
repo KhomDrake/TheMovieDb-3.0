@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vlv.imperiya.core.ui.warning.SmallWarningView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="16dp"
+    app:small_warning_title="Failed to load more"
+    app:small_warning_body="Wait a few moments and click try again"
+    app:small_warning_button_try_again="Try again"
+    app:small_warning_with_icon="false" />

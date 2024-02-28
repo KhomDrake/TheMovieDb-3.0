@@ -1,22 +1,53 @@
 package com.vlv.themoviedb.ui.movie
 
+import android.app.ActivityOptions
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import br.com.arch.toolkit.delegate.viewProvider
+import com.vlv.common.route.toMovieSearch
+import com.vlv.extensions.addOrReplace
+import com.vlv.imperiya.core.ui.search.ImperiyaSearchView
 import com.vlv.themoviedb.R
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.vlv.themoviedb.ui.movie.favorites.MovieFavoritesFragment
+import com.vlv.themoviedb.ui.movie.nowplaying.NowPlayingFragment
+import com.vlv.themoviedb.ui.movie.trending.TrendingNowFragment
 
 class MovieFragment : Fragment(R.layout.movie_fragment) {
 
-    private val viewModel: MovieViewModel by viewModel()
+    private val search: ImperiyaSearchView by viewProvider(R.id.search)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.liveData().observe(viewLifecycleOwner) {
-            data {
-
-            }
-
+        childFragmentManager.beginTransaction().apply {
+            addOrReplace(
+                childFragmentManager,
+                R.id.content,
+                TrendingNowFragment(),
+                TrendingNowFragment::class.java.name
+            )
+            addOrReplace(
+                childFragmentManager,
+                R.id.content,
+                NowPlayingFragment(),
+                NowPlayingFragment::class.java.name
+            )
+            addOrReplace(
+                childFragmentManager,
+                R.id.content,
+                MovieFavoritesFragment(),
+                MovieFavoritesFragment::class.java.name
+            )
+        }.commit()
+        search.onCLickListener {
+            startActivity(
+                requireContext().toMovieSearch(),
+                ActivityOptions.makeSceneTransitionAnimation(
+                    requireActivity(),
+                    search,
+                    getString(com.vlv.ui.R.string.common_search_transition_name)
+                ).toBundle()
+            )
         }
     }
 

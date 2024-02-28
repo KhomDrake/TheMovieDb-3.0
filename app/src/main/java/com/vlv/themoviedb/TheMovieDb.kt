@@ -1,33 +1,15 @@
 package com.vlv.themoviedb
 
 import android.app.Application
-import com.vlv.network.networkModule
-import com.vlv.themoviedb.ui.movie.MovieViewModel
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.context.startKoin
-import org.koin.dsl.module
+import com.jakewharton.threetenabp.AndroidThreeTen
+import com.vlv.data.local.datastore.DataVault
 
-val appModule = module {
-    viewModel { MovieViewModel(get()) }
-}
-
-class TheMovieDb : Application() {
+open class TheMovieDb : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        configKoin()
+        DataVault.init(this)
+//        DynamicColors.applyToActivitiesIfAvailable()
+        AndroidThreeTen.init(this)
     }
-
-    private fun configKoin() {
-        startKoin {
-            androidLogger()
-            androidContext(this@TheMovieDb)
-            modules(
-                networkModule + appModule
-            )
-        }
-    }
-
 }

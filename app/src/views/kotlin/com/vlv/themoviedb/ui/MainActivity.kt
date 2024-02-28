@@ -3,9 +3,9 @@ package com.vlv.themoviedb.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import br.com.arch.toolkit.delegate.viewProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.navigation.ui.setupWithNavController
 import com.vlv.themoviedb.R
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {

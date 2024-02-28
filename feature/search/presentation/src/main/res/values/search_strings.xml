@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_movie_option">Movie</string>
+    <string name="search_series_option">Tv Show</string>
+    <string name="search_people_option">Person</string>
+    <string name="search_movie_empty_title">No movie was found</string>
+    <string name="search_series_empty_title">No tv show was found</string>
+    <string name="search_people_empty_title">No person was found that match with this name</string>
+
+    <string name="search_history_title">Recent search:</string>
+
+    <string name="search_hint_text">Search for…</string>
+    <string name="search_people_hint_text">Search for people</string>
+    <string name="search_movie_hint_text">Search for movie</string>
+    <string name="search_tv_show_hint_text">Search for tv show</string>
+    <string name="search_history_item_removed_description">Item removed</string>
+    <string name="search_remove_search_icon_description">Remove search history</string>
+</resources>

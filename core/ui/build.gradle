@@ -1,0 +1,98 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id "jacoco"
+}
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
+
+android {
+    namespace 'com.vlv.ui'
+
+    compileSdk config.compileSdk
+
+    defaultConfig {
+        minSdk config.minSdk
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions += "uitool"
+    productFlavors {
+        create("compose") {
+            dimension = "uitool"
+        }
+        create("views") {
+            dimension = "uitool"
+        }
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+
+dependencies {
+
+    viewsImplementation project(':libraries:imperiya:core')
+    composeImplementation project(':libraries:imperiya:core')
+    implementation project(':data:network')
+    implementation project(":libraries:bondsmith")
+    implementation project(":tools:extensions")
+    implementation project(':data:database')
+    implementation project(':data:local')
+    implementation project(':feature:search:domain')
+    implementation project(':data:common')
+
+    // Compose
+    composeImplementation project(':feature:configuration:domain')
+    composeImplementation(libs.androidx.compose.activity)
+    composeImplementation(libs.androidx.compose.livedata)
+    composeImplementation(libs.androidx.compose.tooling.preview)
+    composeImplementation(libs.koin.compose)
+    composeImplementation(libs.androidx.compose.paging)
+    composeApi(libs.compose.shimmer)
+
+    // Views
+    viewsApi(libs.shimmer)
+
+    api(libs.androidx.navigation.fragment.ktx)
+    api(libs.androidx.navigation.common.ktx)
+    api(libs.androidx.navigation.ui.ktx)
+    api(libs.androidx.core.ktx)
+    api(libs.androidx.appcompat)
+    api(libs.androidx.lifecycle.viewmodel.ktx)
+    api(libs.androidx.paging)
+    api(libs.androidx.constraintlayout)
+    api(libs.androidx.startup)
+    api(libs.android.lifecycle.livedata)
+    api(libs.toolkit.delegate)
+    api(libs.toolkit.livedata)
+    api(libs.toolkit.statemachine)
+    api(libs.coil.core)
+    api(libs.coil.compose)
+    api(libs.google.material)
+}

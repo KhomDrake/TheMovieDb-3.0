@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favorite_title">Favorites</string>
+
+    <string name="favorite_movie_title">Movie</string>
+    <string name="favorite_tv_show_title">Tv Show</string>
+    <string name="favorite_people_title">People</string>
+
+    <string name="favorite_movie_empty_state">None movie favorite found</string>
+    <string name="favorite_tv_show_empty_state">None tv show favorite found</string>
+    <string name="favorite_people_empty_state">None person favorite found</string>
+
+    <string name="favorite_error_state_title">Failed to load favorites</string>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="extensions_date_zone_id">America/Phoenix</string>
+    <string name="extensions_date_offset_hours">-4</string>
+    <string name="extensions_date_language">en-US</string>
+    <string name="extensions_date_preposition">of</string>
+    <string name="extensions_update_now">Updated now</string>
+    <string name="extensions_when_is_not_possible_to_know_the_difference">Unable to calculate how long ago it was posted</string>
+    <string name="extensions_hours">%dh</string>
+    <string name="extensions_minutes">%dmin</string>
+    <string name="extensions_hours_and_minutes">%1$dh %2$dmin</string>
+    <string name="extensions_millions_and_thousands">%1$s %2$s</string>
+    <string name="extensions_billions_and_millions">%1$s %2$s</string>
+
+    <plurals name="extensions_million">
+        <item quantity="one">%d million</item>
+        <item quantity="other">%d millions</item>
+    </plurals>
+
+    <plurals name="extensions_thousand">
+        <item quantity="one">%d thousand</item>
+        <item quantity="other">%d thousands</item>
+    </plurals>
+
+    <plurals name="extensions_billion">
+        <item quantity="one">%d billion</item>
+        <item quantity="other">%d billions</item>
+    </plurals>
+
+    <plurals name="extensions_update_seconds">
+        <item quantity="one">Updated %d second ago</item>
+        <item quantity="other">Updated %d seconds ago</item>
+    </plurals>
+    <plurals name="extensions_update_minutes">
+        <item quantity="one">Updated %d minute ago</item>
+        <item quantity="other">Updated %d minutes ago</item>
+    </plurals>
+    <plurals name="extensions_update_hours">
+        <item quantity="one">Updated %d hour ago</item>
+        <item quantity="other">Updated %d hours ago</item>
+    </plurals>
+    <plurals name="extensions_update_days">
+        <item quantity="one">Updated %d day ago</item>
+        <item quantity="other">Updated %d days ago</item>
+    </plurals>
+    <plurals name="extensions_update_months">
+        <item quantity="one">Updated %d month ago</item>
+        <item quantity="other">Updated %d months ago</item>
+    </plurals>
+    <plurals name="extensions_update_years">
+        <item quantity="one">Updated %d year ago</item>
+        <item quantity="other">Updated %d years ago</item>
+    </plurals>
+</resources>

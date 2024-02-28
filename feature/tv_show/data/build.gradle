@@ -1,0 +1,54 @@
+plugins {
+    alias(libs.plugins.com.android.library)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    id "jacoco"
+}
+
+apply from: "$rootDir/gradle/coverage.gradle"
+apply from: "$rootDir/gradle/config.gradle"
+
+android {
+    namespace 'com.vlv.tv_show.data'
+    compileSdk config.compileSdk
+
+    defaultConfig {
+        minSdk config.minSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    api project(":data:network")
+    api project(":data:database")
+    api project(":data:local")
+    api project(":data:common")
+    implementation project(":tools:util")
+
+    implementation libs.androidx.core.ktx
+    implementation libs.squareup.retrofit.converter.moshi
+    implementation libs.squareup.retrofit.main
+    implementation libs.androidx.appcompat
+    implementation(libs.androidx.paging)
+    testImplementation libs.tests.junit
+
+    testImplementation project(':tools:test')
+    androidTestImplementation project(':tools:test')
+
+}
