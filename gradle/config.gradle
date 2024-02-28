@@ -1,5 +1,6 @@
 ext.config = [
     compileSdk: 34,
     targetSdkVersion: 34,
-    minSdk: 26
+    minSdk: 26,
+    versionCode: 10,
 ]

@@ -18,8 +18,8 @@ android {
         minSdk config.minSdk
         targetSdkVersion config.targetSdkVersion
 
-        versionCode 2
-        versionName "0.2"
+        versionCode config.versionCode
+        versionName "0.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -52,11 +52,13 @@ android {
             dimension = "uitool"
             applicationIdSuffix = ".compose"
             versionNameSuffix = "-compose"
+            versionCode = config.versionCode * 3
         }
         create("views") {
             dimension = "uitool"
             applicationIdSuffix = ".views"
             versionNameSuffix = "-views"
+            versionCode = config.versionCode * 2
         }
     }
 
