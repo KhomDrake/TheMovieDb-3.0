@@ -115,7 +115,7 @@ I made a Figma Design for the App to use as footprint to develop the App: <a hre
   <source src="./videos/compose/compose_3.mp4" type="video/mp4">
 </video>
 
-## Tasks
+## Tasks 
 
 - [ ] UI Tests
   - [ ] Module App
