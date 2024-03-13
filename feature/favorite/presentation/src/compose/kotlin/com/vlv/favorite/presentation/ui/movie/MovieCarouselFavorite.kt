@@ -31,7 +31,6 @@ fun MovieCarouselFavorite(
     state.handle(
         success = { movies ->
             MovieCarousel(
-                modifier,
                 movies = movies,
                 onClickMovie = onClickMovie,
                 emptyStateTitle = emptyStateTitle

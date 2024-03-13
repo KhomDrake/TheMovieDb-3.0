@@ -65,7 +65,7 @@ class SectionsData(
             Section(
                 resources.getString(R.string.configuration_options_header_general),
                 listOf(
-                    // removing for now
+//                     removing for now
 //                    SectionConfig(
 //                        SettingOption.ADULT_CONTENT,
 //                        ConfigItemType.SWITCH,
