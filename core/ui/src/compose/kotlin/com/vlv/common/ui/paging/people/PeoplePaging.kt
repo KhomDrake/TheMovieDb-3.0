@@ -54,6 +54,7 @@ fun PeoplePagingGrid(
                 .padding(16.dp)
         )
     },
+    errorPaddingValues: PaddingValues = PaddingValues(16.dp),
     onRetry: () -> Unit = {},
     itemSize: Dp = 128.dp
 ) {
@@ -70,7 +71,7 @@ fun PeoplePagingGrid(
             PeopleErrorState(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(errorPaddingValues),
                 onClickLink = {
                     onRetry.invoke()
                 }

@@ -50,6 +50,7 @@ fun TvShowsPagingGrid(
     itemKey: ((index: Int) -> Any)? = null,
     itemContentType: (index: Int) -> Any? = { null },
     columns: Int = 2,
+    errorPaddingValues: PaddingValues = PaddingValues(16.dp),
     emptyState: @Composable () -> Unit = {
          TvShowsEmptyState(
              title = stringResource(
@@ -73,7 +74,7 @@ fun TvShowsPagingGrid(
             TvShowsErrorState(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(errorPaddingValues),
                 onTryAgain = {
                     onRetry.invoke()
                 }

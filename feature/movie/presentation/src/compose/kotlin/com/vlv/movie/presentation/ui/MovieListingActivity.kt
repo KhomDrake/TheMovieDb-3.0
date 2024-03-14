@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
@@ -85,5 +86,10 @@ fun MovieListing(
         itemKey = movies.itemKey { movie -> "${movie.id}-${idInt()}" },
         itemContentType = movies.itemContentType { MOVIE_CONTENT_TYPE },
         loadStates = movies.loadState,
+        errorPaddingValues = PaddingValues(
+            top = paddingValues.calculateTopPadding() + 16.dp,
+            start = 16.dp,
+            end = 16.dp
+        )
     )
 }

@@ -4,16 +4,25 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemContentType
+import androidx.paging.compose.itemKey
 import com.vlv.common.data.tv_show.TvShowListType
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.TV_SHOW_LISTING_TYPE_EXTRA
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
+import com.vlv.common.ui.paging.series.TV_SHOW_CONTENT_TYPE
+import com.vlv.common.ui.paging.series.TvShowsPagingGrid
+import com.vlv.extensions.idInt
 import com.vlv.extensions.serializable
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.tv_show.R
@@ -67,14 +76,26 @@ fun TvShowsContent(
         viewModel.series(tvShowListType)
     })
 
-    val seriesState = viewModel.state.collectAsLazyPagingItems()
+    val tvShows = viewModel.state.collectAsLazyPagingItems()
 
-//    TvShowsPagingGrid(
-//        seriesItems = seriesState,
-//        routeNavigation = routeNavigation,
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .padding(top = paddingValues.calculateTopPadding())
-//    )
+    TvShowsPagingGrid(
+        routeNavigation = routeNavigation,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = paddingValues.calculateTopPadding()),
+        loadStates = tvShows.loadState,
+        itemCount = tvShows.itemCount,
+        itemKey = tvShows.itemKey { item -> "${item.id}-${idInt()}" },
+        itemContentType = tvShows.itemContentType { TV_SHOW_CONTENT_TYPE },
+        item = { index -> tvShows[index] },
+        onRetry = {
+            tvShows.retry()
+        },
+        errorPaddingValues = PaddingValues(
+            top = paddingValues.calculateTopPadding() + 16.dp,
+            start = 16.dp,
+            end = 16.dp
+        )
+    )
 
 }

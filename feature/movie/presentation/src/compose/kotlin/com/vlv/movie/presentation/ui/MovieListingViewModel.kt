@@ -13,7 +13,6 @@ import com.vlv.movie.data.repository.MovieRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -27,7 +26,7 @@ class MovieListingViewModel(
         MutableStateFlow(PagingData.empty())
 
     val state: Flow<PagingData<Movie>>
-        get() = _state.asStateFlow()
+        get() = _state
 
     private val pagingConfig = PagingConfig(
         pageSize = 20,
