@@ -49,6 +49,7 @@ fun MoviesPagingGrid(
     itemContentType: (index: Int) -> Any? = { null },
     itemCountInitialLoading: Int = 4,
     heightItem: Dp = 200.dp,
+    errorPaddingValues: PaddingValues = PaddingValues(16.dp),
     columns: Int = 2,
     emptyState: @Composable () -> Unit = {
          MovieEmptyState(
@@ -74,7 +75,7 @@ fun MoviesPagingGrid(
             MovieErrorState(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(errorPaddingValues),
                 onTryAgain = {
                     onRetry.invoke()
                 }

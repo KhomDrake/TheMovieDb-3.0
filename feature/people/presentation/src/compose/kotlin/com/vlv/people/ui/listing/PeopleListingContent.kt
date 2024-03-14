@@ -1,8 +1,10 @@
 package com.vlv.people.ui.listing
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
@@ -15,6 +17,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun PeopleListingContent(
+    paddingValues: PaddingValues,
     routeNavigation: RouteNavigation,
     type: PeopleListType,
     modifier: Modifier = Modifier,
@@ -35,6 +38,11 @@ fun PeopleListingContent(
         itemKey = state.itemKey { people -> "${people.id}-${idInt()}" },
         itemContentType = state.itemContentType { PERSON_CONTENT_TYPE },
         onRetry = { state.retry() },
-        columns = 2
+        columns = 2,
+        errorPaddingValues = PaddingValues(
+            top = paddingValues.calculateTopPadding() + 16.dp,
+            start = 16.dp,
+            end = 16.dp
+        )
     )
 }

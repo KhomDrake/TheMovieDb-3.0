@@ -11,7 +11,6 @@ import com.vlv.genre.domain.usecase.TvShowGenreUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -32,7 +31,7 @@ class TvShowsByGenreViewModel(
         MutableStateFlow(PagingData.empty())
 
     val tvShowByGenreState: Flow<PagingData<TvShow>>
-        get() = _tvShowByGenreState.asStateFlow()
+        get() = _tvShowByGenreState
 
     fun tvShowsByGenre(genreId: Int) {
         viewModelScope.launch(Dispatchers.IO) {

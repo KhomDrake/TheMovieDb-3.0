@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
@@ -22,6 +23,7 @@ import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.common.ui.paging.movie.MOVIE_CONTENT_TYPE
 import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.extensions.idInt
+import com.vlv.extensions.serializable
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.movie.R
 import org.koin.androidx.compose.koinViewModel
@@ -30,10 +32,8 @@ class MovieListingActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val type: MovieListType = intent.extras
-            ?.getSerializable(
-                MOVIES_LISTING_TYPE_EXTRA, MovieListType::class.java
-        ) ?: MovieListType.TRENDING
+        val type: MovieListType = intent.extras?.serializable(MOVIES_LISTING_TYPE_EXTRA)
+            ?: MovieListType.TRENDING
         setContent {
             TheMovieDbThemeWithDynamicColors {
                 Scaffold(
@@ -86,5 +86,10 @@ fun MovieListing(
         itemKey = movies.itemKey { movie -> "${movie.id}-${idInt()}" },
         itemContentType = movies.itemContentType { MOVIE_CONTENT_TYPE },
         loadStates = movies.loadState,
+        errorPaddingValues = PaddingValues(
+            top = paddingValues.calculateTopPadding() + 16.dp,
+            start = 16.dp,
+            end = 16.dp
+        )
     )
 }

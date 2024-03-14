@@ -38,6 +38,7 @@ class PeopleListingActivity : ComponentActivity() {
                     }
                 ) {
                     PeopleListingContent(
+                        paddingValues = it,
                         routeNavigation = { route, data ->
                             handleRoute(route, data)
                         },

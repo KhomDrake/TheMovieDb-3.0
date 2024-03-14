@@ -47,19 +47,19 @@ class SearchViewModel(
         MutableStateFlow(PagingData.empty())
 
     val movieState: Flow<PagingData<Movie>>
-        get() = _movieState.asStateFlow()
+        get() = _movieState
 
     private val _tvShowState: MutableStateFlow<PagingData<TvShow>> =
         MutableStateFlow(PagingData.empty())
 
     val tvShowState: Flow<PagingData<TvShow>>
-        get() = _tvShowState.asStateFlow()
+        get() = _tvShowState
 
     private val _peopleState: MutableStateFlow<PagingData<People>> =
         MutableStateFlow(PagingData.empty())
 
     val peopleState: Flow<PagingData<People>>
-        get() = _peopleState.asStateFlow()
+        get() = _peopleState
 
     val searchType: StateFlow<ItemType>
         get() = handle.getStateFlow(SEARCH_TYPE_KEY, ItemType.MOVIE)

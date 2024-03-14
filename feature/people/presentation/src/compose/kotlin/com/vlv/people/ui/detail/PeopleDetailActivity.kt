@@ -11,15 +11,13 @@ import com.vlv.common.data.people.People
 import com.vlv.common.route.EXTRA_PEOPLE
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
+import com.vlv.extensions.parcelable
 
 class PeopleDetailActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val people = intent.extras?.getParcelable(
-            EXTRA_PEOPLE, People::class.java
-        ) ?: return finish()
+        val people = intent.extras?.parcelable<People>(EXTRA_PEOPLE) ?: return finish()
         setContent {
             TheMovieDbThemeWithDynamicColors {
                 Scaffold(

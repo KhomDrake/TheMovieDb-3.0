@@ -11,7 +11,6 @@ import com.vlv.genre.domain.usecase.MovieGenreUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -32,7 +31,7 @@ class MoviesByGenreViewModel(
         MutableStateFlow(PagingData.empty())
 
     val movieState: Flow<PagingData<Movie>>
-        get() = _movieState.asStateFlow()
+        get() = _movieState
 
     fun moviesByGenre(genreId: Int) {
         viewModelScope.launch(Dispatchers.IO) {

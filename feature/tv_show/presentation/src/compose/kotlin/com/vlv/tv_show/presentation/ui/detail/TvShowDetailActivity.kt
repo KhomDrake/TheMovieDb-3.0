@@ -19,6 +19,7 @@ import com.vlv.common.route.ScreenRoute
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.DetailObject
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
+import com.vlv.extensions.parcelable
 import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import org.koin.androidx.compose.koinViewModel
@@ -29,9 +30,8 @@ class TvShowDetailActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TheMovieDbThemeWithDynamicColors {
-                val series = intent.extras?.getParcelable(
-                    DETAIL_OBJECT_EXTRA, DetailObject::class.java
-                ) ?: return@TheMovieDbThemeWithDynamicColors finish()
+                val series = intent.extras?.parcelable<DetailObject>(DETAIL_OBJECT_EXTRA)
+                    ?: return@TheMovieDbThemeWithDynamicColors finish()
                 TvShowDetailScreen(
                     series = series,
                     onBackButton = {
