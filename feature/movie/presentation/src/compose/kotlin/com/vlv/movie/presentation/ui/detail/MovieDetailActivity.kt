@@ -17,9 +17,9 @@ import com.vlv.common.route.DETAIL_OBJECT_EXTRA
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.DetailObject
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
+import com.vlv.extensions.parcelable
 import com.vlv.imperiya.core.R
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import org.koin.androidx.compose.koinViewModel
 
 class MovieDetailActivity : ComponentActivity() {
@@ -28,9 +28,8 @@ class MovieDetailActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TheMovieDbThemeWithDynamicColors {
-                val movie = intent.extras?.getParcelable(
-                    DETAIL_OBJECT_EXTRA, DetailObject::class.java
-                ) ?: return@TheMovieDbThemeWithDynamicColors finish()
+                val movie = intent.extras?.parcelable<DetailObject>(DETAIL_OBJECT_EXTRA)
+                    ?: return@TheMovieDbThemeWithDynamicColors finish()
                 Scaffold(
                     topBar = {
                         TopBar(

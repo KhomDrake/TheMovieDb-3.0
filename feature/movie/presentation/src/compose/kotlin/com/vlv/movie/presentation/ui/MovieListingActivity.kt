@@ -22,6 +22,7 @@ import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.common.ui.paging.movie.MOVIE_CONTENT_TYPE
 import com.vlv.common.ui.paging.movie.MoviesPagingGrid
 import com.vlv.extensions.idInt
+import com.vlv.extensions.serializable
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.movie.R
 import org.koin.androidx.compose.koinViewModel
@@ -30,10 +31,8 @@ class MovieListingActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val type: MovieListType = intent.extras
-            ?.getSerializable(
-                MOVIES_LISTING_TYPE_EXTRA, MovieListType::class.java
-        ) ?: MovieListType.TRENDING
+        val type: MovieListType = intent.extras?.serializable(MOVIES_LISTING_TYPE_EXTRA)
+            ?: MovieListType.TRENDING
         setContent {
             TheMovieDbThemeWithDynamicColors {
                 Scaffold(

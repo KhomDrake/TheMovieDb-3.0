@@ -14,6 +14,7 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.TV_SHOW_LISTING_TYPE_EXTRA
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
+import com.vlv.extensions.serializable
 import com.vlv.imperiya.core.ui.components.DefaultTopBar
 import com.vlv.tv_show.R
 import org.koin.androidx.compose.koinViewModel
@@ -23,9 +24,7 @@ class TvShowListingActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val type: TvShowListType = intent.extras
-            ?.getSerializable(
-                TV_SHOW_LISTING_TYPE_EXTRA, TvShowListType::class.java
-            ) ?: TvShowListType.TRENDING
+            ?.serializable(TV_SHOW_LISTING_TYPE_EXTRA) ?: TvShowListType.TRENDING
 
         setContent {
             TheMovieDbThemeWithDynamicColors {
