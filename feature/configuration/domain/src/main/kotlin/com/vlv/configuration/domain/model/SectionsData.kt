@@ -3,6 +3,7 @@ package com.vlv.configuration.domain.model
 import android.content.res.Resources
 import androidx.annotation.StringRes
 import com.vlv.configuration.domain.R
+import com.vlv.data.database.data.ImageEntity
 import com.vlv.data.local.datastore.DataVault
 import com.vlv.extensions.idInt
 
@@ -10,6 +11,9 @@ enum class ConfigItemType {
     SWITCH,
     LIST
 }
+
+fun List<ImageEntity>.findDefinition(name: String) = this.find { it.data == name.lowercase() }
+    ?: this.last()
 
 enum class BackdropSizes(
     @StringRes

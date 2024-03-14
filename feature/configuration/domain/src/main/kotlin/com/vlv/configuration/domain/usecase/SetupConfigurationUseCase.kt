@@ -4,7 +4,12 @@ import android.content.res.Resources
 import com.vlv.configuration.data.ConfigurationRepository
 import com.vlv.configuration.data.model.ConfigurationData
 import com.vlv.configuration.domain.R
+import com.vlv.configuration.domain.model.BackdropSizes
+import com.vlv.configuration.domain.model.LogoSizes
+import com.vlv.configuration.domain.model.PosterSizes
+import com.vlv.configuration.domain.model.ProfileSizes
 import com.vlv.configuration.domain.model.SettingOption
+import com.vlv.configuration.domain.model.findDefinition
 import com.vlv.data.local.datastore.DataVault
 class SetupConfigurationUseCase(
     private val repository: ConfigurationRepository
@@ -28,10 +33,22 @@ class SetupConfigurationUseCase(
         DataVault.setValue(SettingOption.BASE_URL.name, data.baseUrl.data)
         DataVault.setValue(SettingOption.SECURE_BASE_URL.name, data.baseSecureUrl.data)
 
-        DataVault.setValue(SettingOption.BACKDROP.name, data.backdropSizes.last().data)
-        DataVault.setValue(SettingOption.LOGO.name, data.logoSizes.last().data)
-        DataVault.setValue(SettingOption.POSTER.name, data.posterSizes.last().data)
-        DataVault.setValue(SettingOption.PROFILE.name, data.profileSizes.last().data)
+        DataVault.setValue(
+            SettingOption.BACKDROP.name,
+            data.backdropSizes.findDefinition(BackdropSizes.W780.name).data
+        )
+        DataVault.setValue(
+            SettingOption.LOGO.name,
+            data.logoSizes.findDefinition(LogoSizes.W185.name).data
+        )
+        DataVault.setValue(
+            SettingOption.POSTER.name,
+            data.posterSizes.findDefinition(PosterSizes.W342.name).data
+        )
+        DataVault.setValue(
+            SettingOption.PROFILE.name,
+            data.profileSizes.findDefinition(ProfileSizes.W185.name).data
+        )
 
         DataVault.setValue(SettingOption.ADULT_CONTENT.name, false)
         DataVault.setValue(SettingOption.DYNAMIC_COLORS.name, false)
