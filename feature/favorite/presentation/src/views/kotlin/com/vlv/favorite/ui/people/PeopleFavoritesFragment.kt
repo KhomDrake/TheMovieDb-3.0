@@ -20,7 +20,7 @@ class PeopleFavoritesFragment : BaseFavoriteFragment() {
         get() = com.vlv.ui.R.layout.common_people_listing_loading
 
     override fun setupStateView() {
-        emptyState.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_review)
+        emptyState.setStateIcon(R.drawable.ic_review)
         emptyState.setTitle(R.string.favorite_people_empty_state)
     }
 

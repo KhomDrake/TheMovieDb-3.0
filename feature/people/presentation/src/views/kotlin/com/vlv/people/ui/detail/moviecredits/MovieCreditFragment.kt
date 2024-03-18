@@ -59,7 +59,7 @@ class MovieCreditFragment : Fragment(R.layout.people_credit_listing) {
 
     private fun setupStateView() {
         emptyState.apply {
-            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
+            setStateIcon(R.drawable.ic_movie)
             setTitle(R.string.people_detail_empty_state_movie_title)
         }
     }

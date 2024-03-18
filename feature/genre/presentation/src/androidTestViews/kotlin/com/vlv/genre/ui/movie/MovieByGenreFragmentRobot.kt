@@ -50,7 +50,7 @@ class MovieByGenreFragmentSetup :
     override fun setupLaunch() {
         launchFragmentInContainer<MovieByGenreFragment>(
             fragmentArgs = arguments,
-            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
+            themeResId = R.style.Imperiya_Theme
         )
     }
 
@@ -110,7 +110,7 @@ class MovieByGenreFragmentLaunch : Launch<MovieByGenreFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickMovie(position: Int) {
@@ -138,9 +138,9 @@ class MovieByGenreFragmentCheck : Check, KoinComponent {
         R.id.empty_state.isNotDisplayed()
         R.id.shimmer.isNotDisplayed()
 
-        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load")
-        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
+        R.id.small_warning_title.hasText("Failed to load")
+        R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun moviesDisplayed() {
@@ -164,7 +164,7 @@ class MovieByGenreFragmentCheck : Check, KoinComponent {
         R.id.empty_state.isDisplayed()
         R.id.shimmer.isNotDisplayed()
 
-        com.vlv.imperiya.core.R.id.title_state.hasText("No movie found")
+        R.id.title_state.hasText("No movie found")
     }
 
     fun movieDetailOpened() {

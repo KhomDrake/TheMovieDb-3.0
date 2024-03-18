@@ -177,7 +177,7 @@ class SettingsActivityLaunch : Launch<SettingsActivityCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickAdultContentOption() {
@@ -196,8 +196,8 @@ class SettingsActivityLaunch : Launch<SettingsActivityCheck> {
     }
 
     fun selectLanguageDutchOption() {
-        com.vlv.imperiya.core.R.id.action_sheet_items.clickOnRecyclerViewItem(0)
-        com.vlv.imperiya.core.R.id.confirm_button.clickIgnoreConstraint()
+        R.id.action_sheet_items.clickOnRecyclerViewItem(0)
+        R.id.confirm_button.clickIgnoreConstraint()
     }
 
 }
@@ -283,31 +283,31 @@ class SettingsActivityCheck : Check, KoinComponent {
     }
 
     fun actionSheetLanguagesDisplayed() {
-        com.vlv.imperiya.core.R.id.action_sheet_title.isDisplayed()
-        com.vlv.imperiya.core.R.id.action_sheet_title.hasText("Languages")
+        R.id.action_sheet_title.isDisplayed()
+        R.id.action_sheet_title.hasText("Languages")
 
-        com.vlv.imperiya.core.R.id.action_sheet_items.apply {
+        R.id.action_sheet_items.apply {
             isDisplayed()
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.withText("Dutch"),
-                com.vlv.imperiya.core.R.id.action_sheet_item_title
+                R.id.action_sheet_item_title
             )
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.isNotChecked(),
-                com.vlv.imperiya.core.R.id.action_sheet_item_checkbox
+                R.id.action_sheet_item_checkbox
             )
 
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.withText("English"),
-                com.vlv.imperiya.core.R.id.action_sheet_item_title
+                R.id.action_sheet_item_title
             )
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.isChecked(),
-                com.vlv.imperiya.core.R.id.action_sheet_item_checkbox
+                R.id.action_sheet_item_checkbox
             )
         }
     }
@@ -328,31 +328,31 @@ class SettingsActivityCheck : Check, KoinComponent {
     }
 
     fun actionSheetLogoDisplayed() {
-        com.vlv.imperiya.core.R.id.action_sheet_title.isDisplayed()
-        com.vlv.imperiya.core.R.id.action_sheet_title.hasText("Images quality")
+        R.id.action_sheet_title.isDisplayed()
+        R.id.action_sheet_title.hasText("Images quality")
 
-        com.vlv.imperiya.core.R.id.action_sheet_items.apply {
+        R.id.action_sheet_items.apply {
             isDisplayed()
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.withText("Low"),
-                com.vlv.imperiya.core.R.id.action_sheet_item_title
+                R.id.action_sheet_item_title
             )
             checkViewOnRecyclerViewPosition(
                 0,
                 ViewMatchers.isNotChecked(),
-                com.vlv.imperiya.core.R.id.action_sheet_item_checkbox
+                R.id.action_sheet_item_checkbox
             )
 
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.withText("Medium low"),
-                com.vlv.imperiya.core.R.id.action_sheet_item_title
+                R.id.action_sheet_item_title
             )
             checkViewOnRecyclerViewPosition(
                 1,
                 ViewMatchers.isChecked(),
-                com.vlv.imperiya.core.R.id.action_sheet_item_checkbox
+                R.id.action_sheet_item_checkbox
             )
         }
     }

@@ -19,7 +19,7 @@ fun TvShowsEmptyState(
     title: String = stringResource(id = R.string.common_empty_view_title_default)
 ) {
     StateView(
-        icon = com.vlv.imperiya.core.R.drawable.ic_tv,
+        icon = R.drawable.ic_tv,
         iconTint = MaterialTheme.colorScheme.onBackground,
         title = title,
         modifier = modifier

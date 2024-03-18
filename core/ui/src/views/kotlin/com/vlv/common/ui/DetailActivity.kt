@@ -78,13 +78,13 @@ abstract class DetailActivity : AppCompatActivity(R.layout.common_detail_activit
                     AppBarState.FULL_COLLAPSED -> {
                         ContextCompat.getColor(
                             this,
-                            com.vlv.imperiya.core.R.color.color_imperiya_background
+                            R.color.color_imperiya_background
                         )
                     }
                     AppBarState.EXPANDED, AppBarState.IDLE, AppBarState.COLLAPSING -> {
                         ContextCompat.getColor(
                             this,
-                            com.vlv.imperiya.core.R.color.imperiya_color_transparent
+                            R.color.imperiya_color_transparent
                         )
                     }
                 }

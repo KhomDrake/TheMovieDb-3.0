@@ -84,8 +84,8 @@ class MovieDetailActivity : DetailActivity() {
             )
             menuHeart.icon = ContextCompat.getDrawable(
                 this@MovieDetailActivity,
-                if(isFavorite) com.vlv.imperiya.core.R.drawable.ic_heart_filled
-                else com.vlv.imperiya.core.R.drawable.ic_heart_enable
+                if(isFavorite) R.drawable.ic_heart_filled
+                else R.drawable.ic_heart_enable
             )
         }
     }

@@ -21,7 +21,7 @@ class MovieFavoritesFragment : BaseFavoriteFragment() {
         get() = com.vlv.ui.R.layout.common_listing_movie_loading
 
     override fun setupStateView() {
-        emptyState.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
+        emptyState.setStateIcon(R.drawable.ic_movie)
         emptyState.setTitle(R.string.favorite_movie_empty_state)
     }
 

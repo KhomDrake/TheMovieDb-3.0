@@ -18,6 +18,7 @@ import io.mockk.coVerify
 import io.mockk.every
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import com.vlv.themoviedb.R
 
 fun MovieFragmentTest.movieFragment(func: MovieFragmentSetup.() -> Unit) =
     MovieFragmentSetup().apply(func)
@@ -38,7 +39,7 @@ class MovieFragmentSetup : Setup<MovieFragmentLaunch, MovieFragmentCheck>, KoinC
 
     override fun setupLaunch() {
         launchFragmentInContainer<MovieFragment>(
-            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
+            themeResId = R.style.Imperiya_Theme
         )
     }
 

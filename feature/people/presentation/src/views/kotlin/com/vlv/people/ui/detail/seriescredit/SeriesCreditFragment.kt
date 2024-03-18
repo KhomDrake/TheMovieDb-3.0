@@ -59,7 +59,7 @@ class SeriesCreditFragment : Fragment(R.layout.people_credit_listing) {
 
     private fun setupStateView() {
         emptyState.apply {
-            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv)
+            setStateIcon(R.drawable.ic_tv)
             setTitle(R.string.people_detail_empty_state_series_title)
         }
     }

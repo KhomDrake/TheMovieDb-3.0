@@ -23,7 +23,7 @@ class TvShowFavoritesFragment : TvShowCarouselFragment() {
     override fun configEmptyView() {
         emptyView.apply {
             setTitle(R.string.empty_state_text_series_favorite)
-            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_hearts)
+            setStateIcon(R.drawable.ic_hearts)
         }
     }
 

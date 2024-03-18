@@ -15,7 +15,6 @@ import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.handleRoute
 import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
 import com.vlv.themoviedb.R
-import com.vlv.imperiya.core.R as RImperiya
 
 enum class MainScreens {
     MOVIE,
@@ -59,32 +58,32 @@ fun MainScreen(
         BottomNavigationItems(
             mainScreens = MainScreens.MOVIE,
             title = stringResource(R.string.movie_title),
-            selectedIcon = RImperiya.drawable.ic_movie_enable,
-            unselectedIcon = RImperiya.drawable.ic_movie_disable
+            selectedIcon = R.drawable.ic_movie_enable,
+            unselectedIcon = R.drawable.ic_movie_disable
         ),
         BottomNavigationItems(
             mainScreens = MainScreens.TV_SHOW,
             title = stringResource(R.string.tv_show_title),
-            selectedIcon = RImperiya.drawable.ic_series_enable,
-            unselectedIcon = RImperiya.drawable.ic_series_disable,
+            selectedIcon = R.drawable.ic_series_enable,
+            unselectedIcon = R.drawable.ic_series_disable,
         ),
         BottomNavigationItems(
             mainScreens = MainScreens.SEARCH,
             title = stringResource(R.string.search_title),
-            selectedIcon = RImperiya.drawable.ic_search_enable,
-            unselectedIcon = RImperiya.drawable.ic_search_disable,
+            selectedIcon = R.drawable.ic_search_enable,
+            unselectedIcon = R.drawable.ic_search_disable,
         ),
         BottomNavigationItems(
             mainScreens = MainScreens.FAVORITES,
             title = stringResource(R.string.favorites_title),
-            selectedIcon = RImperiya.drawable.ic_heart_enable,
-            unselectedIcon = RImperiya.drawable.ic_heart_disable,
+            selectedIcon = R.drawable.ic_heart_enable,
+            unselectedIcon = R.drawable.ic_heart_disable,
         ),
         BottomNavigationItems(
             mainScreens = MainScreens.MENU,
             title = stringResource(R.string.menu_title),
-            selectedIcon = RImperiya.drawable.ic_options_enable,
-            unselectedIcon = RImperiya.drawable.ic_options_enable,
+            selectedIcon = R.drawable.ic_options_enable,
+            unselectedIcon = R.drawable.ic_options_enable,
         ),
     )
 

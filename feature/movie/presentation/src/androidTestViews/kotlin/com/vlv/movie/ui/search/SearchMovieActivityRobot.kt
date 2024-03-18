@@ -134,7 +134,7 @@ class SearchMovieActivityLaunch : Launch<SearchMovieActivityCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }
@@ -200,8 +200,8 @@ class SearchMovieActivityCheck : Check, KoinComponent {
         com.vlv.ui.R.id.search.isDisplayed()
         com.vlv.ui.R.id.state_view.isDisplayed()
 
-        com.vlv.imperiya.core.R.id.title_state.hasText("No movie was found")
-        com.vlv.imperiya.core.R.id.body_state.isNotDisplayed()
+        R.id.title_state.hasText("No movie was found")
+        R.id.body_state.isNotDisplayed()
 
         com.vlv.ui.R.id.items.isNotDisplayed()
         com.vlv.ui.R.id.warning_view.isNotDisplayed()
@@ -212,8 +212,8 @@ class SearchMovieActivityCheck : Check, KoinComponent {
         com.vlv.ui.R.id.search.isDisplayed()
         com.vlv.ui.R.id.warning_view.isDisplayed()
 
-        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load")
-        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        R.id.small_warning_title.hasText("Failed to load")
+        R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
 
         com.vlv.ui.R.id.state_view.isNotDisplayed()
         com.vlv.ui.R.id.items.isNotDisplayed()

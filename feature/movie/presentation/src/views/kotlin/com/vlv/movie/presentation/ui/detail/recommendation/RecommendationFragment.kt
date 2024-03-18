@@ -63,7 +63,7 @@ class RecommendationFragment : ListingItemsFragment() {
 
     override fun configEmptyState() {
         emptyState.apply {
-            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
+            setStateIcon(R.drawable.ic_movie)
             setTitle(R.string.movie_empty_state_recommendation)
         }
     }

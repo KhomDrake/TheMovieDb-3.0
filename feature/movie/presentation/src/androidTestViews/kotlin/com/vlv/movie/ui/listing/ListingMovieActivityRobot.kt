@@ -23,7 +23,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import com.vlv.imperiya.core.R as ImperiyaR
+import com.vlv.movie.R
 
 fun ListingMovieActivityTest.listingMovie(func: ListingMovieActivitySetup.() -> Unit) =
     ListingMovieActivitySetup().apply(func)

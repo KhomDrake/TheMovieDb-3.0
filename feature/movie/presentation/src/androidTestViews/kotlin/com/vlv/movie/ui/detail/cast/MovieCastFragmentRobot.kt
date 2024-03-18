@@ -50,7 +50,7 @@ class MovieCastFragmentSetup : Setup<MovieCastFragmentLaunch, MovieCastFragmentC
     override fun setupLaunch() {
         launchFragmentInContainer<MovieCastFragment>(
             arguments,
-            com.vlv.imperiya.core.R.style.Imperiya_Theme
+            R.style.Imperiya_Theme
         )
     }
 
@@ -104,7 +104,7 @@ class MovieCastFragmentLaunch : Launch<MovieCastFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
     fun clickCast(position: Int) {
@@ -127,9 +127,9 @@ class MovieCastFragmentCheck : Check, KoinComponent {
 
     fun errorStateDisplayed() {
         com.vlv.ui.R.id.warning_view_cast.isDisplayed()
-        com.vlv.imperiya.core.R.id.small_warning_title.hasText("Failed to load cast")
-        com.vlv.imperiya.core.R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
-        com.vlv.imperiya.core.R.id.small_warning_try_again_button.hasText("Try again")
+        R.id.small_warning_title.hasText("Failed to load cast")
+        R.id.small_warning_body.hasText("Check your internet connection, wait a few moments and click in try again")
+        R.id.small_warning_try_again_button.hasText("Try again")
     }
 
     fun castInformationDisplayed() {

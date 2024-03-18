@@ -124,7 +124,7 @@ fun ByGenreContentPreview(
                 state = data,
                 tabContent = {
                     StateView(
-                        icon = com.vlv.imperiya.core.R.drawable.ic_hearts,
+                        icon = R.drawable.ic_hearts,
                         title = it.name,
                         modifier = Modifier
                             .fillMaxWidth()

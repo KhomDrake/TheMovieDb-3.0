@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 private val myModule = module {
     single { mockk<SettingsUseCase>(relaxed = true) }
-    viewModel { SettingsViewModel(mockk(relaxed = true), get()) }
+    viewModel { SettingsViewModel(mockk(relaxed = true)) }
 }
 
 class SettingsActivityTest : ComposeBaseTest() {

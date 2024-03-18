@@ -22,7 +22,6 @@ import com.vlv.common.route.toTvShowTopRated
 import com.vlv.common.route.toTvShowTrendingNow
 import com.vlv.common.route.toTvShowsSearch
 import com.vlv.themoviedb.R
-import com.vlv.imperiya.core.R as RCommon
 
 class MenuViewModel : ViewModel() {
 
@@ -34,17 +33,17 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_user_option_favorite,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv_off
+            icon = R.drawable.ic_tv_off
         ),
         MenuItem(
             R.string.menu_title_user_option_review,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv_off
+            icon = R.drawable.ic_tv_off
         ),
         MenuItem(
             R.string.menu_title_user_option_session,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_settings,
+            icon = R.drawable.ic_settings,
             action = context.toSettings()
         )
     )
@@ -57,49 +56,49 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_movie_option_trending,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie,
+            icon = R.drawable.ic_movie,
             action = context.toMovieTrending()
         ),
         MenuItem(
             R.string.menu_title_movie_option_top_rated,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie,
+            icon = R.drawable.ic_movie,
             action = context.toMovieTopRated()
         ),
         MenuItem(
             R.string.menu_title_movie_option_now_playing,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie,
+            icon = R.drawable.ic_movie,
             action = context.toMovieNowPlaying()
         ),
         MenuItem(
             R.string.menu_title_movie_option_upcoming,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie,
+            icon = R.drawable.ic_movie,
             action = context.toMovieUpcoming()
         ),
         MenuItem(
             R.string.menu_title_movie_option_popular,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie,
+            icon = R.drawable.ic_movie,
             action = context.toMoviePopular()
         ),
         MenuItem(
             R.string.menu_title_movie_option_genres,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie,
+            icon = R.drawable.ic_movie,
             action = context.toMovieGenre()
         ),
         MenuItem(
             R.string.menu_title_movie_option_discover,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_search,
+            icon = R.drawable.ic_search,
             action = context.toMovieSearch()
         ),
         MenuItem(
             R.string.menu_title_movie_option_certifications,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie
+            icon = R.drawable.ic_movie
         ),
     )
 
@@ -111,43 +110,43 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_series_option_trending,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv,
+            icon = R.drawable.ic_tv,
             action = context.toTvShowTrendingNow()
         ),
         MenuItem(
             R.string.menu_title_series_option_top_rated,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv,
+            icon = R.drawable.ic_tv,
             action = context.toTvShowTopRated()
         ),
         MenuItem(
             R.string.menu_title_series_option_airing_today,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv,
+            icon = R.drawable.ic_tv,
             action = context.toTvShowAiringToday()
         ),
         MenuItem(
             R.string.menu_title_series_option_on_the_air,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv,
+            icon = R.drawable.ic_tv,
             action = context.toTvShowOnTheAir()
         ),
         MenuItem(
             R.string.menu_title_series_option_popular,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv,
+            icon = R.drawable.ic_tv,
             action = context.toTvShowPopular()
         ),
         MenuItem(
             R.string.menu_title_series_option_genres,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv,
+            icon = R.drawable.ic_tv,
             action = context.toTvShowGenre()
         ),
         MenuItem(
             R.string.menu_title_series_option_discover,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_search,
+            icon = R.drawable.ic_search,
             action = context.toTvShowsSearch()
         ),
         MenuItem(
@@ -160,35 +159,35 @@ class MenuViewModel : ViewModel() {
         MenuItem(
             R.string.menu_title_people,
             type = MenuItemType.HEADER,
-            icon = RCommon.drawable.ic_people
+            icon = R.drawable.ic_people
         ),
         MenuItem(
             R.string.menu_title_people_option_popular,
             type = MenuItemType.ITEM,
             action = context.toPeoplePopular(),
-            icon = RCommon.drawable.ic_people
+            icon = R.drawable.ic_people
         ),
         MenuItem(
             R.string.menu_title_people_option_trending,
             type = MenuItemType.ITEM,
             action = context.toPeopleTrending(),
-            icon = RCommon.drawable.ic_people
+            icon = R.drawable.ic_people
         ),
         MenuItem(
             R.string.menu_title_people_option_search,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_search,
+            icon = R.drawable.ic_search,
             action = context.toPeopleSearch()
         ),
         MenuItem(
             R.string.menu_title_people_option_movie_credit,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_movie
+            icon = R.drawable.ic_movie
         ),
         MenuItem(
             R.string.menu_title_people_option_tv_credit,
             type = MenuItemType.ITEM,
-            icon = RCommon.drawable.ic_tv
+            icon = R.drawable.ic_tv
         )
     )
 

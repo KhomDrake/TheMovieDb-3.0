@@ -82,7 +82,7 @@ class SearchPeopleActivity : SearchActivity() {
 
     override fun configStateView(stateView: StateView) {
         stateView
-            .setStateIcon(com.vlv.imperiya.core.R.drawable.ic_people)
+            .setStateIcon(R.drawable.ic_people)
             .setTitle(R.string.people_search_empty_title)
 
     }

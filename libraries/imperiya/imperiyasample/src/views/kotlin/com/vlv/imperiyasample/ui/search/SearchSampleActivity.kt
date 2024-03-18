@@ -24,7 +24,7 @@ class SearchSampleActivity : AppCompatActivity(R.layout.activity_search_sample) 
             finish()
         }
 
-        search.setCloseIcon(com.vlv.imperiya.core.R.drawable.ic_close)
+        search.setCloseIcon(R.drawable.ic_close)
         search.setHint("Input Text")
         search.setup(
             onTextChanged = {

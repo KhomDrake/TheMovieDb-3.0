@@ -113,7 +113,7 @@ abstract class SearchActivity : AppCompatActivity(R.layout.common_search_activit
             finishAfterTransition()
         }
         toolbarView.searchView.apply {
-            setCloseIcon(com.vlv.imperiya.core.R.drawable.ic_close)
+            setCloseIcon(R.drawable.ic_close)
             setHint(searchHint)
             setup(onTextSubmit = {
                 addHistory(it)

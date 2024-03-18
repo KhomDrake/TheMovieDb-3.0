@@ -49,7 +49,7 @@ class AboutFragmentSetup : Setup<AboutFragmentLaunch, AboutFragmentCheck>, KoinC
     override fun setupLaunch() {
         launchFragmentInContainer<AboutFragment>(
             fragmentArgs = args,
-            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
+            themeResId = R.style.Imperiya_Theme
         )
     }
 
@@ -100,7 +100,7 @@ class AboutFragmentLaunch : Launch<AboutFragmentCheck> {
     }
 
     fun clickTryAgain() {
-        com.vlv.imperiya.core.R.id.small_warning_try_again_button.clickIgnoreConstraint()
+        R.id.small_warning_try_again_button.clickIgnoreConstraint()
     }
 
 }

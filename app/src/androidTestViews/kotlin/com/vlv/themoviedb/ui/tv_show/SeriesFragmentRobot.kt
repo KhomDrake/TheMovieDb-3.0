@@ -13,6 +13,7 @@ import com.vlv.test.Check
 import com.vlv.test.Launch
 import com.vlv.test.Setup
 import com.vlv.test.loadObjectFromJson
+import com.vlv.themoviedb.R
 import com.vlv.tv_show.data.repository.TvShowRepository
 import io.mockk.coVerify
 import io.mockk.every
@@ -38,7 +39,7 @@ class SeriesFragmentSetup : Setup<SeriesFragmentLaunch, SeriesFragmentCheck>, Ko
 
     override fun setupLaunch() {
         launchFragmentInContainer<TvShowFragment>(
-            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme
+            themeResId = R.style.Imperiya_Theme
         )
     }
 
