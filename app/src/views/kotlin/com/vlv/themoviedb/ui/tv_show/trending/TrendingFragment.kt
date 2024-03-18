@@ -26,7 +26,7 @@ class TrendingFragment : TvShowCarouselFragment() {
     override fun configEmptyView() {
         emptyView.apply {
             setTitle(R.string.empty_state_text_series_trending)
-            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv_off)
+            setStateIcon(R.drawable.ic_tv_off)
         }
     }
 

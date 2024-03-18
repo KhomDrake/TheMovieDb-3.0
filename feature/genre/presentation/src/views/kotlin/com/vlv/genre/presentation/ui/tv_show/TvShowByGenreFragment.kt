@@ -75,7 +75,7 @@ class TvShowByGenreFragment : Fragment(R.layout.genre_fragment_by_genre) {
         loadMovies()
         emptyState.apply {
             setTitle(R.string.genre_no_tv_show_found)
-            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv)
+            setStateIcon(R.drawable.ic_tv)
         }
         error.setOnClickLink {
             adapter.retry()

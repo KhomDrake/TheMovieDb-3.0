@@ -102,8 +102,8 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
             val menuHeart = toolbar.menu?.getItem(0) ?: return@runCatching
             menuHeart.icon = ContextCompat.getDrawable(
                 this@PeopleDetailActivity,
-                if(isFavorite) com.vlv.imperiya.core.R.drawable.ic_heart_filled
-                else com.vlv.imperiya.core.R.drawable.ic_heart_enable
+                if(isFavorite) R.drawable.ic_heart_filled
+                else R.drawable.ic_heart_enable
             )
         }
     }
@@ -139,13 +139,13 @@ class PeopleDetailActivity : AppCompatActivity(R.layout.people_detail_activity) 
                     AppBarState.FULL_COLLAPSED -> {
                         ContextCompat.getColor(
                             this,
-                            com.vlv.imperiya.core.R.color.color_imperiya_background
+                            R.color.color_imperiya_background
                         )
                     }
                     AppBarState.EXPANDED, AppBarState.IDLE, AppBarState.COLLAPSING -> {
                         ContextCompat.getColor(
                             this,
-                            com.vlv.imperiya.core.R.color.imperiya_color_transparent
+                            R.color.imperiya_color_transparent
                         )
                     }
                 }

@@ -204,13 +204,13 @@ class MovieDetailActivityCheck : Check, KoinComponent {
 
     fun iconFavoriteDisplayed() {
         com.vlv.ui.R.id.heart.withDrawable(
-            com.vlv.imperiya.core.R.drawable.ic_heart_filled
+            R.drawable.ic_heart_filled
         )
     }
 
     fun iconNotFavoriteDisplayed() {
         com.vlv.ui.R.id.heart.withDrawable(
-            com.vlv.imperiya.core.R.drawable.ic_heart_enable
+            R.drawable.ic_heart_enable
         )
     }
 

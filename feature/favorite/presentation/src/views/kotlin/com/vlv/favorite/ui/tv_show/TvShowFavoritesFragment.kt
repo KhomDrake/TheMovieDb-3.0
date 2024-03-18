@@ -21,7 +21,7 @@ class TvShowFavoritesFragment : BaseFavoriteFragment() {
         get() = com.vlv.ui.R.layout.common_listing_series_loading
 
     override fun setupStateView() {
-        emptyState.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv)
+        emptyState.setStateIcon(R.drawable.ic_tv)
         emptyState.setTitle(R.string.favorite_people_empty_state)
     }
 

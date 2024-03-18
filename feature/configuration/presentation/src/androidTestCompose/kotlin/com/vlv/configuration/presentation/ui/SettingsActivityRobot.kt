@@ -10,7 +10,7 @@ import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.onChildren
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
-import com.vlv.common.ui.extension.TheMovieDbThemeWithDynamicColors
+import com.vlv.bondsmith.bondsmith
 import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.domain.model.ConfigItemType
@@ -52,115 +52,127 @@ class SettingsActivitySetup(
 
     fun withError() {
         coEvery {
-            useCase.configData(any())
+            useCase.configData()
         } throws Exception()
     }
 
     fun withDataEmpty() {
         coEvery {
-            useCase.configData(any())
-        } returns SectionsData(
-            listOf()
-        )
+            useCase.configData()
+        } returns bondsmith<SectionsData>()
+            .apply {
+                setData(
+                    SectionsData(
+                        listOf()
+                    )
+                )
+            }
+
+
     }
 
     fun withData(switch: Boolean = false) {
         coEvery {
-            useCase.configData(any())
-        } returns SectionsData(
-            listOf(
-                Section(
-                    "General",
-                    listOf(
-                        SectionConfig(
-                            SettingOption.ADULT_CONTENT,
-                            ConfigItemType.SWITCH,
-                            title = "Test",
-                            description = "Show adult content",
-                            data = switch,
-                            id = 2
-                        ),
-                        SectionConfig(
-                            SettingOption.LANGUAGE,
-                            ConfigItemType.LIST,
-                            title = "Languages",
-                            description = "Language chosen:",
-                            data = ConfigDataList(
-                                "kajsdka",
-                                "ldkasjlka",
-                                selectedItem = ConfigDataItemList(
-                                    title = "English",
-                                    value = "en",
-                                    id = 4
+            useCase.configData()
+        } returns bondsmith<SectionsData>()
+            .apply {
+                setData(
+                    SectionsData(
+                        listOf(
+                            Section(
+                                "General",
+                                listOf(
+                                    SectionConfig(
+                                        SettingOption.ADULT_CONTENT,
+                                        ConfigItemType.SWITCH,
+                                        title = "Test",
+                                        description = "Show adult content",
+                                        data = switch,
+                                        id = 2
+                                    ),
+                                    SectionConfig(
+                                        SettingOption.LANGUAGE,
+                                        ConfigItemType.LIST,
+                                        title = "Languages",
+                                        description = "Language chosen:",
+                                        data = ConfigDataList(
+                                            "kajsdka",
+                                            "ldkasjlka",
+                                            selectedItem = ConfigDataItemList(
+                                                title = "English",
+                                                value = "en",
+                                                id = 4
+                                            ),
+                                            items = listOf(
+                                                ConfigDataItemList(
+                                                    title = "English",
+                                                    value = "en",
+                                                    id = 4
+                                                ),
+                                                ConfigDataItemList(
+                                                    title = "Portuguese Br",
+                                                    value = "pt-br",
+                                                    id = 5
+                                                ),
+                                                ConfigDataItemList(
+                                                    title = "Portuguese Portugual",
+                                                    value = "pt",
+                                                    id = 6
+                                                ),
+                                                ConfigDataItemList(
+                                                    title = "English Australia",
+                                                    value = "en-AU",
+                                                    id = 7
+                                                ),
+                                            )
+                                        ),
+                                        id = 3
+                                    ),
+                                    SectionConfig(
+                                        SettingOption.REGION,
+                                        ConfigItemType.LIST,
+                                        title = "Region",
+                                        description = "Region chosen:",
+                                        data = ConfigDataList(
+                                            "kajsdka",
+                                            "ldkasjlka",
+                                            selectedItem = ConfigDataItemList(
+                                                title = "Angola",
+                                                value = "en",
+                                                id = 11
+                                            ),
+                                            items = listOf(
+                                                ConfigDataItemList(
+                                                    title = "Angola",
+                                                    value = "an",
+                                                    id = 11
+                                                ),
+                                                ConfigDataItemList(
+                                                    title = "Argentina",
+                                                    value = "ar",
+                                                    id = 12
+                                                ),
+                                                ConfigDataItemList(
+                                                    title = "Australia",
+                                                    value = "au",
+                                                    id = 13
+                                                ),
+                                                ConfigDataItemList(
+                                                    title = "Austria",
+                                                    value = "aus",
+                                                    id = 14
+                                                ),
+                                            )
+                                        ),
+                                        id = 10
+                                    )
                                 ),
-                                items = listOf(
-                                    ConfigDataItemList(
-                                        title = "English",
-                                        value = "en",
-                                        id = 4
-                                    ),
-                                    ConfigDataItemList(
-                                        title = "Portuguese Br",
-                                        value = "pt-br",
-                                        id = 5
-                                    ),
-                                    ConfigDataItemList(
-                                        title = "Portuguese Portugual",
-                                        value = "pt",
-                                        id = 6
-                                    ),
-                                    ConfigDataItemList(
-                                        title = "English Australia",
-                                        value = "en-AU",
-                                        id = 7
-                                    ),
-                                )
-                            ),
-                            id = 3
-                        ),
-                        SectionConfig(
-                            SettingOption.REGION,
-                            ConfigItemType.LIST,
-                            title = "Region",
-                            description = "Region chosen:",
-                            data = ConfigDataList(
-                                "kajsdka",
-                                "ldkasjlka",
-                                selectedItem = ConfigDataItemList(
-                                    title = "Angola",
-                                    value = "en",
-                                    id = 11
-                                ),
-                                items = listOf(
-                                    ConfigDataItemList(
-                                        title = "Angola",
-                                        value = "an",
-                                        id = 11
-                                    ),
-                                    ConfigDataItemList(
-                                        title = "Argentina",
-                                        value = "ar",
-                                        id = 12
-                                    ),
-                                    ConfigDataItemList(
-                                        title = "Australia",
-                                        value = "au",
-                                        id = 13
-                                    ),
-                                    ConfigDataItemList(
-                                        title = "Austria",
-                                        value = "aus",
-                                        id = 14
-                                    ),
-                                )
-                            ),
-                            id = 10
+                                id = 1
+                            )
                         )
-                    ),
-                    id = 1
+                    )
                 )
-            )
-        )
+            }
     }
 
     override fun setupLaunch() {
@@ -191,9 +203,10 @@ class SettingsActivitySetup(
         composeRule.setContent {
             TheMovieDbAppTheme {
                 BackgroundPreview(modifier = Modifier.fillMaxSize()) {
-                    SettingsScreen {
-
-                    }
+                    SettingsScreen(
+                        onBackButton = {},
+                        routeNavigation = { _, _ ->}
+                    )
                 }
             }
         }
@@ -305,7 +318,7 @@ class SettingsActivityCheck(
 
     fun requestSettingsTwice() {
         coVerify(exactly = 2) {
-            useCase.configData(any())
+            useCase.configData()
         }
     }
 

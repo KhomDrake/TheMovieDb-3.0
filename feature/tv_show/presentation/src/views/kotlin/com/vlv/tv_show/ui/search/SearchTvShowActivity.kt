@@ -81,7 +81,7 @@ class SearchTvShowActivity : SearchActivity() {
 
     override fun configStateView(stateView: StateView) {
         stateView.setTitle(R.string.tv_show_search_empty_title)
-        stateView.setStateIcon(com.vlv.imperiya.core.R.drawable.ic_tv_shows)
+        stateView.setStateIcon(R.drawable.ic_tv_shows)
     }
 
     override fun configWarningView(smallWarningView: SmallWarningView) {

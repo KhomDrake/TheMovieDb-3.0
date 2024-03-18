@@ -25,7 +25,7 @@ class NowPlayingFragment : MovieCarouselFragment() {
     override fun configEmptyView() {
         emptyView.apply {
             setTitle(R.string.empty_state_text_movie_now_playing)
-            setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
+            setStateIcon(R.drawable.ic_movie)
         }
     }
 

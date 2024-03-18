@@ -83,7 +83,7 @@ class SearchMovieActivity : SearchActivity() {
 
     override fun configStateView(stateView: StateView) {
         stateView
-            .setStateIcon(com.vlv.imperiya.core.R.drawable.ic_movie)
+            .setStateIcon(R.drawable.ic_movie)
             .setTitle(R.string.movie_search_empty_state)
     }
 

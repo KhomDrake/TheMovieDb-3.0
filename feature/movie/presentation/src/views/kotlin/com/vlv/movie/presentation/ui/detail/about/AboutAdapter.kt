@@ -45,7 +45,7 @@ class AboutAdapter : ListAdapter<AboutItem, RecyclerView.ViewHolder>(AboutItemDi
         when(val item = currentList[position]) {
             is AboutItem.InformationItem -> {
                 val marginHorizontal = holder.itemView.context.resources.
-                getDimension(com.vlv.imperiya.core.R.dimen.imperiya_carousel_m).toInt()
+                getDimension(R.dimen.imperiya_carousel_m).toInt()
                 holder.itemView.setMargins(left = marginHorizontal, right = marginHorizontal)
                 (holder as? InformationViewHolder)?.bind(item.information)
             }

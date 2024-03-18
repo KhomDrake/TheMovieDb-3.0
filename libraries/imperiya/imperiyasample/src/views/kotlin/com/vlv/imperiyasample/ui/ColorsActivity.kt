@@ -5,7 +5,6 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
@@ -17,8 +16,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arch.toolkit.delegate.viewProvider
 import com.vlv.imperiyasample.R
-import com.vlv.imperiya.core.R as Imperiya
-import com.google.android.material.R as MaterialR
 
 class Colors(
     val main: Int,
@@ -90,219 +87,219 @@ open class ColorsActivity : AppCompatActivity(R.layout.activity_colors) {
     open val colors: List<Colors> =
         listOf(
             Colors(
-                Imperiya.color.color_imperiya_light_primary,
+                R.color.color_imperiya_light_primary,
                 "light_primary",
-                Imperiya.color.color_imperiya_light_onPrimary,
+                R.color.color_imperiya_light_onPrimary,
                 "light_onPrimary"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_primary,
+                R.color.color_imperiya_dark_primary,
                 "dark_primary",
-                Imperiya.color.color_imperiya_dark_onPrimary,
+                R.color.color_imperiya_dark_onPrimary,
                 "dark_onPrimary"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_primaryContainer,
+                R.color.color_imperiya_light_primaryContainer,
                 "light_primaryContainer",
-                Imperiya.color.color_imperiya_light_onPrimaryContainer,
+                R.color.color_imperiya_light_onPrimaryContainer,
                 "light_primaryContainer"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_primaryContainer,
+                R.color.color_imperiya_dark_primaryContainer,
                 "dark_primaryContainer",
-                Imperiya.color.color_imperiya_dark_onPrimaryContainer,
+                R.color.color_imperiya_dark_onPrimaryContainer,
                 "dark_onPrimaryContainer"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_secondary,
+                R.color.color_imperiya_light_secondary,
                 "light_secondary",
-                Imperiya.color.color_imperiya_light_onSecondary,
+                R.color.color_imperiya_light_onSecondary,
                 "light_onSecondary"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_secondary,
+                R.color.color_imperiya_dark_secondary,
                 "dark_secondary",
-                Imperiya.color.color_imperiya_dark_onSecondary,
+                R.color.color_imperiya_dark_onSecondary,
                 "dark_onSecondary"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_secondaryContainer,
+                R.color.color_imperiya_light_secondaryContainer,
                 "light_secondaryContainer",
-                Imperiya.color.color_imperiya_light_onSecondaryContainer,
+                R.color.color_imperiya_light_onSecondaryContainer,
                 "light_onSecondaryContainer"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_secondaryContainer,
+                R.color.color_imperiya_dark_secondaryContainer,
                 "dark_secondaryContainer",
-                Imperiya.color.color_imperiya_dark_onSecondaryContainer,
+                R.color.color_imperiya_dark_onSecondaryContainer,
                 "dark_onSecondaryContainer"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_tertiary,
+                R.color.color_imperiya_light_tertiary,
                 "light_tertiary",
-                Imperiya.color.color_imperiya_light_onTertiary,
+                R.color.color_imperiya_light_onTertiary,
                 "light_onTertiary"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_tertiary,
+                R.color.color_imperiya_dark_tertiary,
                 "dark_tertiary",
-                Imperiya.color.color_imperiya_dark_onTertiary,
+                R.color.color_imperiya_dark_onTertiary,
                 "dark_onTertiary"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_tertiaryContainer,
+                R.color.color_imperiya_light_tertiaryContainer,
                 "light_tertiaryContainer",
-                Imperiya.color.color_imperiya_light_onTertiaryContainer,
+                R.color.color_imperiya_light_onTertiaryContainer,
                 "light_onTertiaryContainer"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_tertiaryContainer,
+                R.color.color_imperiya_dark_tertiaryContainer,
                 "dark_tertiaryContainer",
-                Imperiya.color.color_imperiya_dark_onTertiaryContainer,
+                R.color.color_imperiya_dark_onTertiaryContainer,
                 "dark_onTertiaryContainer"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_error,
+                R.color.color_imperiya_light_error,
                 "light_error",
-                Imperiya.color.color_imperiya_light_onError,
+                R.color.color_imperiya_light_onError,
                 "light_onError"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_error,
+                R.color.color_imperiya_dark_error,
                 "dark_error",
-                Imperiya.color.color_imperiya_dark_onError,
+                R.color.color_imperiya_dark_onError,
                 "dark_onError"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_errorContainer,
+                R.color.color_imperiya_light_errorContainer,
                 "light_errorContainer",
-                Imperiya.color.color_imperiya_light_onErrorContainer,
+                R.color.color_imperiya_light_onErrorContainer,
                 "light_onErrorContainer"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_errorContainer,
+                R.color.color_imperiya_dark_errorContainer,
                 "dark_errorContainer",
-                Imperiya.color.color_imperiya_dark_onErrorContainer,
+                R.color.color_imperiya_dark_onErrorContainer,
                 "dark_onErrorContainer"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_background,
+                R.color.color_imperiya_light_background,
                 "light_background",
-                Imperiya.color.color_imperiya_light_onBackground,
+                R.color.color_imperiya_light_onBackground,
                 "light_onBackground"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_background,
+                R.color.color_imperiya_dark_background,
                 "dark_background",
-                Imperiya.color.color_imperiya_dark_onBackground,
+                R.color.color_imperiya_dark_onBackground,
                 "dark_onBackground"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_surface,
+                R.color.color_imperiya_light_surface,
                 "light_surface",
-                Imperiya.color.color_imperiya_light_onSurface,
+                R.color.color_imperiya_light_onSurface,
                 "light_onSurface"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_surface,
+                R.color.color_imperiya_dark_surface,
                 "dark_surface",
-                Imperiya.color.color_imperiya_dark_onSurface,
+                R.color.color_imperiya_dark_onSurface,
                 "dark_onSurface"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_surfaceVariant,
+                R.color.color_imperiya_light_surfaceVariant,
                 "light_surfaceVariant",
-                Imperiya.color.color_imperiya_light_onSurfaceVariant,
+                R.color.color_imperiya_light_onSurfaceVariant,
                 "light_onSurfaceVariant"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_surfaceVariant,
+                R.color.color_imperiya_dark_surfaceVariant,
                 "dark_surfaceVariant",
-                Imperiya.color.color_imperiya_dark_onSurfaceVariant,
+                R.color.color_imperiya_dark_onSurfaceVariant,
                 "dark_onSurfaceVariant"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_outline,
+                R.color.color_imperiya_light_outline,
                 "light_outline",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_outline,
+                R.color.color_imperiya_dark_outline,
                 "dark_outline",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_inverseSurface,
+                R.color.color_imperiya_light_inverseSurface,
                 "light_inverseSurface",
-                Imperiya.color.color_imperiya_light_inverseOnSurface,
+                R.color.color_imperiya_light_inverseOnSurface,
                 "light_inverseOnSurface"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_inverseSurface,
+                R.color.color_imperiya_dark_inverseSurface,
                 "dark_inverseSurface",
-                Imperiya.color.color_imperiya_dark_inverseOnSurface,
+                R.color.color_imperiya_dark_inverseOnSurface,
                 "dark_inverseOnSurface"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_inversePrimary,
+                R.color.color_imperiya_light_inversePrimary,
                 "light_inversePrimary",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_inversePrimary,
+                R.color.color_imperiya_dark_inversePrimary,
                 "dark_inversePrimary",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_shadow,
+                R.color.color_imperiya_light_shadow,
                 "light_shadow",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_shadow,
+                R.color.color_imperiya_dark_shadow,
                 "dark_shadow",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_surfaceTint,
+                R.color.color_imperiya_light_surfaceTint,
                 "light_surfaceTint",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_surfaceTint,
+                R.color.color_imperiya_dark_surfaceTint,
                 "dark_surfaceTint",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_outlineVariant,
+                R.color.color_imperiya_light_outlineVariant,
                 "light_outlineVariant",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_outlineVariant,
+                R.color.color_imperiya_dark_outlineVariant,
                 "dark_outlineVariant",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_light_scrim,
+                R.color.color_imperiya_light_scrim,
                 "light_scrim",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             ),
             Colors(
-                Imperiya.color.color_imperiya_dark_scrim,
+                R.color.color_imperiya_dark_scrim,
                 "dark_scrim",
-                Imperiya.color.imperiya_title,
+                R.color.imperiya_title,
                 "imperiya_title"
             )
         )
@@ -330,27 +327,27 @@ class ColorsDynamicActivity : ColorsActivity() {
     override val colors: List<Colors>
         get() = listOf(
             getColors(
-                MaterialR.attr.colorPrimary,
+                R.attr.colorPrimary,
                 "colorPrimary",
-                MaterialR.attr.colorOnPrimary,
+                R.attr.colorOnPrimary,
                 "colorOnPrimary"
             ),
             getColors(
-                MaterialR.attr.colorSecondary,
+                R.attr.colorSecondary,
                 "colorSecondary",
-                MaterialR.attr.colorOnSecondary,
+                R.attr.colorOnSecondary,
                 "colorOnSecondary"
             ),
             getColors(
-                MaterialR.attr.colorTertiary,
+                R.attr.colorTertiary,
                 "colorTertiary",
-                MaterialR.attr.colorOnTertiary,
+                R.attr.colorOnTertiary,
                 "colorOnTertiary"
             ),
             getColors(
-                MaterialR.attr.colorSurface,
+                R.attr.colorSurface,
                 "colorSurface",
-                MaterialR.attr.colorOnSurface,
+                R.attr.colorOnSurface,
                 "colorOnSurface"
             )
         )

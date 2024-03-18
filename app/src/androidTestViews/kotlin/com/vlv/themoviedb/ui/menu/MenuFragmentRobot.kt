@@ -57,7 +57,7 @@ class MenuFragmentSetup : Setup<MenuFragmentLaunch, MenuFragmentCheck> {
 
     override fun setupLaunch() {
         launchFragmentInContainer<MenuFragment>(
-            themeResId = com.vlv.imperiya.core.R.style.Imperiya_Theme,
+            themeResId = R.style.Imperiya_Theme,
             fragmentArgs = null
         )
     }
