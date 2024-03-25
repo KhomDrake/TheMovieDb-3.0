@@ -11,11 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewFontScale
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import br.com.khomdrake.imperiya.ui.preview.BackgroundPreview
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTheme
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTypography
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.data.SectionUIType
-import com.vlv.imperiya.core.ui.preview.BackgroundPreview
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
-import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @Composable
 fun SettingsItemSwitch(
@@ -27,7 +27,7 @@ fun SettingsItemSwitch(
         if(sectionData.title != null) {
             Text(
                 text = sectionData.title,
-                style = TheMovieDbTypography.SubTitleBoldStyle,
+                style = ImperiyaTypography.SubTitleBoldStyle,
                 color = MaterialTheme.colorScheme.onBackground
             )
         }
@@ -41,7 +41,7 @@ fun SettingsItemSwitch(
                 modifier = Modifier
                     .weight(4f),
                 text = sectionData.description.toString(),
-                style = TheMovieDbTypography.ParagraphStyle,
+                style = ImperiyaTypography.ParagraphStyle,
                 color = MaterialTheme.colorScheme.onBackground
             )
             Switch(
@@ -61,7 +61,7 @@ fun SettingsItemSwitch(
 @PreviewFontScale
 @Composable
 fun SettingsItemSwitchPreview() {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingsItemSwitch(
                 sectionData = SectionUIItem(

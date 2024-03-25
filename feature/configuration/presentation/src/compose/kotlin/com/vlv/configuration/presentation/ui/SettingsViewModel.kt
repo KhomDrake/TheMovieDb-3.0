@@ -2,9 +2,9 @@ package com.vlv.configuration.presentation.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vlv.bondsmith.data.flow.MutableResponseStateFlow
-import com.vlv.bondsmith.data.flow.ResponseStateFlow
-import com.vlv.bondsmith.data.flow.asResponseStateFlow
+import br.com.khomdrake.request.data.flow.MutableResponseStateFlow
+import br.com.khomdrake.request.data.flow.ResponseStateFlow
+import br.com.khomdrake.request.data.flow.asResponseStateFlow
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.data.toConfigItemType
 import com.vlv.configuration.data.toSectionUIItems

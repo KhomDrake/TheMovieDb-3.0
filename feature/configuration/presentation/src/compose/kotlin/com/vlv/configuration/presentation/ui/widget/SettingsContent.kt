@@ -12,8 +12,11 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import com.vlv.bondsmith.data.Response
-import com.vlv.bondsmith.data.ResponseStatus
+import br.com.khomdrake.imperiya.ui.components.SmallWarningView
+import br.com.khomdrake.imperiya.ui.preview.BackgroundPreview
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTheme
+import br.com.khomdrake.request.data.Response
+import br.com.khomdrake.request.data.ResponseStatus
 import com.vlv.common.route.RouteNavigation
 import com.vlv.common.route.ScreenRoute
 import com.vlv.common.ui.extension.handle
@@ -23,9 +26,6 @@ import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.domain.model.SettingsAction
 import com.vlv.configuration.presentation.ui.SettingsViewModel
-import com.vlv.imperiya.core.ui.components.SmallWarningView
-import com.vlv.imperiya.core.ui.preview.BackgroundPreview
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -117,7 +117,7 @@ fun SettingsError(
 @PreviewLightDark
 @Composable
 fun SettingsStateSuccessPreview() {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingsState(
                 data = Response(
@@ -167,7 +167,7 @@ fun SettingsStateSuccessPreview() {
 @PreviewLightDark
 @Composable
 fun SettingsStateSuccessEmptyPreview() {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingsState(
                 data = Response(
@@ -187,7 +187,7 @@ fun SettingsStateSuccessEmptyPreview() {
 @PreviewLightDark
 @Composable
 fun SettingsStateSuccessNullPreview() {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingsState(
                 data = Response(
@@ -207,7 +207,7 @@ fun SettingsStateSuccessNullPreview() {
 @PreviewLightDark
 @Composable
 fun SettingsStateErrorPreview() {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingsState(
                 data = Response(
@@ -227,7 +227,7 @@ fun SettingsStateErrorPreview() {
 @PreviewLightDark
 @Composable
 fun SettingsStateLoadingPreview() {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingsState(
                 data = Response(

@@ -22,12 +22,13 @@ core-testing-version = "2.2.0"
 compose-shimmer-verison = "1.2.0"
 
 android-lifecycle-livedata-version = "1.1.1"
-androidx-compose-bom-version = "2024.02.01"
+androidx-compose-bom-version = "2024.02.02"
 androidx-compose-activity-version = "1.8.2"
 androidx-compose-viewmodel-version = "2.7.0"
 androidx-compose-paging-version = "3.3.0-alpha04"
 androidx-compose-constraintlayout-version = "1.0.1"
-androidx-compose-preview-version = "1.7.0-alpha03"
+androidx-compose-preview-version = "1.7.0-alpha04"
+androidx-compose-runtime-version = "1.7.0-alpha04"
 androidx-compose-icons-version = "1.6.2"
 androidx-lifecycle-viewmodel-version = "2.7.0"
 androidx-startup-runtime-version = "1.1.1"
@@ -45,9 +46,19 @@ agp = "7.4.1"
 ksp-version = "1.5.31-1.0.0"
 org-jetbrains-kotlin-android = "1.8.0"
 lifecycle-runtime-ktx = "2.7.0"
-
+imperiya-version = "0.0.2"
+zenet-version = "0.0.5-SNAPSHOT"
 
 [libraries]
+# Personal libs
+imperiya = { group = "io.github.khomdrake", name = "imperiya", version.ref = "imperiya-version" }
+zenet-request = { group = "io.github.khomdrake", name = "zenet-request", version.ref = "zenet-version" }
+zenet-extensions-core = { group = "io.github.khomdrake", name = "zenet-extensions-core", version.ref = "zenet-version" }
+zenet-extensions-paging = { group = "io.github.khomdrake", name = "zenet-extensions-paging", version.ref = "zenet-version" }
+zenet-extensions-toolkit = { group = "io.github.khomdrake", name = "zenet-extensions-toolkit", version.ref = "zenet-version" }
+zenet-tests-core = { group = "io.github.khomdrake", name = "zenet-tests-core", version.ref = "zenet-version" }
+zenet-tests-koin = { group = "io.github.khomdrake", name = "zenet-tests-koin", version.ref = "zenet-version" }
+
 # AndroidX
 android-lifecycle-livedata = { group = "android.arch.lifecycle", name = "livedata", version.ref = 'android-lifecycle-livedata-version' }
 androidx-lifecycle-viewmodel-java = { group = "androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = 'androidx-lifecycle-viewmodel-version' }
@@ -73,6 +84,7 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 androidx-compose-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "androidx-compose-constraintlayout-version"  }
 androidx-compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "androidx-compose-preview-version" }
 androidx-compose-tooling-debug = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "androidx-compose-runtime-version" }
 androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-compose-activity-version" }
 androidx-compose-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
 androidx-compose-paging = { group = "androidx.paging", name = "paging-compose", version.ref = "androidx-compose-paging-version" }

@@ -15,10 +15,10 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import br.com.khomdrake.imperiya.ui.preview.BackgroundPreview
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTheme
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTypography
 import com.vlv.configuration.domain.model.ConfigDataItemList
-import com.vlv.imperiya.core.ui.preview.BackgroundPreview
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
-import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @Composable
 fun BottomSheetItem(
@@ -38,7 +38,7 @@ fun BottomSheetItem(
     ) {
         Text(
             text = text,
-            style = TheMovieDbTypography.SubTitleBoldStyle,
+            style = ImperiyaTypography.SubTitleBoldStyle,
             modifier = Modifier
                 .weight(10f)
                 .padding(end = 12.dp),
@@ -99,7 +99,7 @@ class BottomSheetItemPreviewProvider: PreviewParameterProvider<BottomSheetItemPr
 fun BottomSheetItemPreview(
     @PreviewParameter(BottomSheetItemPreviewProvider::class) data: BottomSheetItemPreviewData
 ) {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             BottomSheetItem(
                 selectedItem = data.selectedItem,

@@ -62,7 +62,7 @@ android {
 dependencies {
 
     implementation project(':feature:configuration:domain')
-    implementation project(':libraries:imperiya:core')
+//    implementation project(':libraries:imperiya:core')
     implementation project(':data:network')
     implementation project(':data:database')
     implementation project(':libraries:bondsmith')
@@ -71,10 +71,23 @@ dependencies {
     testImplementation project(path: ':data:common')
 
     // Compose
+    composeImplementation(platform(libs.androidx.compose.bom))
+    composeImplementation(libs.androidx.compose.runtime)
+    composeImplementation(libs.androidx.compose.material3)
     composeImplementation(libs.androidx.compose.activity)
+    composeImplementation(libs.androidx.compose.material3)
+    composeImplementation(libs.google.material)
     composeImplementation(libs.androidx.compose.livedata)
+    composeImplementation(libs.androidx.compose.constraintlayout)
     composeImplementation(libs.androidx.compose.tooling.preview)
     composeImplementation(libs.koin.compose)
+    composeImplementation(libs.imperiya) {
+        artifact {
+            classifier = "compose"
+            type = "aar"
+        }
+    }
+
 
     debugImplementation(libs.tests.compose.ui.manifest)
 

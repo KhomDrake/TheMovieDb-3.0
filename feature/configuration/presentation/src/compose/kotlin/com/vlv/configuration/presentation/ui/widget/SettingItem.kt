@@ -12,15 +12,15 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import br.com.khomdrake.imperiya.ui.preview.BackgroundPreview
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTheme
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTypography
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.data.SectionUIType
 import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.domain.model.SettingOption
 import com.vlv.extensions.idInt
-import com.vlv.imperiya.core.ui.preview.BackgroundPreview
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
-import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 @Composable
 fun SettingItem(
@@ -39,7 +39,7 @@ fun SettingItem(
             topMargin = 8.dp
             Text(
                 text = sectionData.title,
-                style = TheMovieDbTypography.SubTitleBoldStyle,
+                style = ImperiyaTypography.SubTitleBoldStyle,
                 color = MaterialTheme.colorScheme.onBackground
             )
         }
@@ -49,7 +49,7 @@ fun SettingItem(
                 modifier = Modifier
                     .padding(top = topMargin),
                 text = sectionData.descriptionWithSelectedValue,
-                style = TheMovieDbTypography.ParagraphStyle,
+                style = ImperiyaTypography.ParagraphStyle,
                 color = MaterialTheme.colorScheme.onBackground
             )
         }
@@ -94,7 +94,7 @@ class SettingItemProvider: PreviewParameterProvider<SectionUIItem> {
 fun SettingItemPreview(
     @PreviewParameter(SettingItemProvider::class) data: SectionUIItem
 ) {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingItem(
                 sectionData = data,

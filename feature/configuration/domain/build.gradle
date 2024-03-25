@@ -37,13 +37,14 @@ dependencies {
 
     implementation project(":feature:configuration:data")
     implementation project(":data:local")
-    implementation project(':libraries:bondsmith')
+//    implementation project(':libraries:bondsmith')
     implementation project(':tools:extensions')
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.google.material
     implementation libs.toolkit.livedata
+    api(libs.zenet.request)
     testImplementation libs.tests.junit
 
     testImplementation project(':tools:test')

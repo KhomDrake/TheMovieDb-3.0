@@ -18,12 +18,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import br.com.khomdrake.imperiya.ui.preview.BackgroundPreview
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTheme
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTypography
 import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.presentation.R
-import com.vlv.imperiya.core.ui.preview.BackgroundPreview
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
-import com.vlv.imperiya.core.ui.theme.TheMovieDbTypography
 
 private const val TITLE_KEY = "TITLE_KEY"
 private const val BUTTON_KEY = "BUTTON_KEY"
@@ -44,7 +44,7 @@ fun BottomSheetContent(
             item(key = TITLE_KEY) {
                 Text(
                     text = data.title.toString(),
-                    style = TheMovieDbTypography.SubTitleBoldStyle,
+                    style = ImperiyaTypography.SubTitleBoldStyle,
                     color = MaterialTheme.colorScheme.onBackground
                 )
             }
@@ -77,7 +77,7 @@ fun BottomSheetContent(
                 ) {
                     Text(
                         text = stringResource(id = R.string.configuration_button),
-                        style = TheMovieDbTypography.SubTitleBoldStyle,
+                        style = ImperiyaTypography.SubTitleBoldStyle,
                         color = MaterialTheme.colorScheme.onSecondary,
                         modifier = Modifier
                             .testTag("BottomSheetButton")
@@ -93,7 +93,7 @@ fun BottomSheetContent(
 @PreviewLightDark
 @Composable
 fun BottomSheetContentPreview() {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             val items = listOf(
                 ConfigDataItemList(

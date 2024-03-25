@@ -18,13 +18,13 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import br.com.khomdrake.imperiya.ui.preview.BackgroundPreview
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTheme
 import com.vlv.configuration.data.SectionUIItem
 import com.vlv.configuration.data.SectionUIType
 import com.vlv.configuration.domain.model.ConfigDataItemList
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.presentation.ui.widget.bottomsheet.SettingsBottomSheet
-import com.vlv.imperiya.core.ui.preview.BackgroundPreview
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -303,7 +303,7 @@ class SettingsItemsListProvider : PreviewParameterProvider<SettingsItemsDataPrev
 fun SettingsItemsListPreview(
     @PreviewParameter(SettingsItemsListProvider::class) data: SettingsItemsDataPreview
 ) {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingsItemList(
                 items = data.items,

@@ -111,6 +111,8 @@ dependencies {
     implementation(libs.androidx.startup)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)
+    implementation(libs.zenet.request)
+    implementation(libs.zenet.extensions.core)
 
     // Compose
     composeImplementation(libs.androidx.compose.activity)

@@ -88,6 +88,7 @@ dependencies {
     api(libs.androidx.paging)
     api(libs.androidx.constraintlayout)
     api(libs.androidx.startup)
+    api(libs.zenet.request)
     api(libs.android.lifecycle.livedata)
     api(libs.toolkit.delegate)
     api(libs.toolkit.livedata)

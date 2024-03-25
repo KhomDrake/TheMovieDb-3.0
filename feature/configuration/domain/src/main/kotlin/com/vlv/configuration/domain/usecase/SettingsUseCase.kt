@@ -1,7 +1,7 @@
 package com.vlv.configuration.domain.usecase
 
 import android.content.res.Resources
-import com.vlv.bondsmith.bondsmith
+import br.com.khomdrake.request.requestHandler
 import com.vlv.configuration.data.ConfigurationRepository
 import com.vlv.configuration.domain.model.ConfigDataList
 import com.vlv.configuration.domain.model.ConfigItemType
@@ -21,11 +21,10 @@ class SettingsUseCase(
 
         return SettingsResponse(resources, config)
     }
-    fun configData() = bondsmith<SectionsData>("CONFIG-DATA")
+    fun configData() = requestHandler<SectionsData>("CONFIG-DATA")
         .config {
             minDuration(600.milliseconds)
             request {
-                withCache(with = false)
                 val settingsData = newConfig()
                 SectionsData(resources, settingsData)
             }

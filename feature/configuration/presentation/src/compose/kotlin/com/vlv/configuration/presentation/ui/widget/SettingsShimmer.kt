@@ -14,11 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import br.com.khomdrake.imperiya.ui.preview.BackgroundPreview
+import br.com.khomdrake.imperiya.ui.theme.ImperiyaTheme
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.rememberShimmer
 import com.valentinilk.shimmer.shimmer
-import com.vlv.imperiya.core.ui.preview.BackgroundPreview
-import com.vlv.imperiya.core.ui.theme.TheMovieDbAppTheme
 
 @Composable
 fun SettingsShimmer(
@@ -101,7 +101,7 @@ fun SettingsShimmer(
 @PreviewLightDark
 @Composable
 fun SettingsShimmerPreview() {
-    TheMovieDbAppTheme {
+    ImperiyaTheme {
         BackgroundPreview {
             SettingsShimmer(
                 modifier = Modifier
